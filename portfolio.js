@@ -4,6 +4,7 @@ var page = require('./Pages/dunes.js').page.content_fr;
 var header = `<!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>Guillaume Pelletier-Auger</title>
 </head>
 `;
