@@ -1,0 +1,17 @@
+{
+    header: "<head></head><body><h1></h1>",
+    items: {
+        oscillators: {
+            title_fr: "Les Oscillateurs",
+            title_en: "Oscillators",
+            content_fr: "",
+            content_en: ""
+        },
+        joy_and_confusion: {
+
+        },
+        dunes: {
+
+        }
+    }
+}

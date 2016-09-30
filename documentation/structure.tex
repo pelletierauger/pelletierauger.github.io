@@ -1,0 +1,95 @@
+%!TEX program = xelatex
+\documentclass[10pt]{article}
+\usepackage{fontspec}
+\usepackage[top=1.25in, bottom=1.25in, left=1.25in, right=1.25in]{geometry}
+\usepackage{graphicx}
+\usepackage{polyglossia}
+\usepackage{amsmath}
+% \setmainlanguage{french}
+\newfontfamily{\lstsansserif}[Scale=1]{Inconsolata}
+\usepackage[T1]{fontenc}
+\usepackage{listings}
+\DeclareTextCommandDefault{\nobreakspace}{\leavevmode\nobreak\ }
+\makeatletter
+\g@addto@macro\@floatboxreset{\centering}
+\makeatother
+
+\usepackage{color}
+\definecolor{grey}{rgb}{0.95,0.95,0.95}
+\definecolor{lightgray}{rgb}{.9,.9,.9}
+\definecolor{darkgray}{rgb}{.4,.4,.4}
+\definecolor{darkblue}{rgb}{0, 0.3, 0.82}
+\definecolor{darkorange}{rgb}{0.8, 0.4, 0}
+\definecolor{darkgreen}{rgb}{0, 0.55, 0.2}
+\definecolor{darkpurple}{rgb}{0, 0.6, 0.6}
+\definecolor{p5pink}{rgb}{0.85, 0, 0.5}
+\setlength\marginparsep{10pt}
+\setlength\marginparwidth{60pt}
+\setlength{\parskip}{1em}
+
+\lstdefinelanguage{JavaScript}{
+    keywords={break, case, catch, continue, debugger, default, delete, do, else, false, finally, for, function, if, in, instanceof, new, null, return, switch, this, throw, true, try, typeof, var, void, while, with},
+    keywordstyle=\color{darkblue}\lstsansserif,
+    ndkeywords={class, export, boolean, throw, implements, import, this},
+    ndkeywordstyle=\color{darkgray}\lstsansserif,
+    identifierstyle=\color{black},
+    sensitive=false,
+    comment=[l]{//},
+    morecomment=[s]{/*}{*/},
+    commentstyle=\color{darkgray}\lstsansserif,
+    stringstyle=\color{darkorange}\lstsansserif,
+    morestring=[b]',
+    morestring=[b]",
+    morestring=[b]`,
+    keepspaces=true,
+    showstringspaces=false,
+    classoffset=1,
+    morekeywords={background,blendMode,createVector,createCanvas,dist,ellipse,fill,
+    lerp,line,map,rect,translate,
+    abs,acos,asin,atan,atan2,cos,floor,round,sin,stroke,strokeWeight,tan,pow},
+    keywordstyle=\color{p5pink}\lstsansserif
+}
+
+\lstset{backgroundcolor=\color{grey},
+    numbers=left,
+    columns=fullflexible,
+    basicstyle=\footnotesize\lstsansserif,
+    language=JavaScript,
+    numberstyle=\footnotesize,
+    numberstyle=\color{darkgray},
+    xleftmargin=12pt,xrightmargin=12pt,
+    aboveskip=12pt,belowskip=12pt,
+    frame=tlbr,framesep=12pt,framerule=0pt,
+    numbers=none,
+    lineskip={1pt}
+}
+
+\lstset{literate=%
+    *{0}{{{\color{darkgreen}0}}}1
+    {1}{{{\color{darkgreen}1}}}1
+    {2}{{{\color{darkgreen}2}}}1
+    {3}{{{\color{darkgreen}3}}}1
+    {4}{{{\color{darkgreen}4}}}1
+    {5}{{{\color{darkgreen}5}}}1
+    {6}{{{\color{darkgreen}6}}}1
+    {7}{{{\color{darkgreen}7}}}1
+    {8}{{{\color{darkgreen}8}}}1
+    {9}{{{\color{darkgreen}9}}}1
+}
+
+\author{Guillaume Pelletier-Auger}
+\title{Online Portfolio}
+\date{September 29\textsuperscript{th} 2016}
+
+\begin{document}
+
+\maketitle
+%\newpage
+
+% \begin{center}
+% \end{center}
+\input{document}
+% \input{algorithmes_graphes2}
+% \input{introduction}
+
+\end{document}
