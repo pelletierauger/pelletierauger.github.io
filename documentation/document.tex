@@ -83,8 +83,8 @@ En utilisant la méthode \textit{readdirSync} du module \textit{fs} de Node.js, 
 
 \begin{lstlisting}
 var fs = require("fs");
-var files = fs.readdirSync('Pages');
-var page = require('./Pages/' + files[0]);
+var files = fs.readdirSync('pages');
+var page = require('./pages/' + files[0]);
 \end{lstlisting}
 
 Voici à quoi ressemble une page définie comme module Node.js, pour l'instant :
@@ -118,6 +118,41 @@ La fonction qui va générer toutes mes pages doit donc traiter ces données. El
 
 % \item The third etc \ldots 
 \end{enumerate}
+
+Ma boucle pour traiter chacun des fichiers dans le dossier \textit{pages} ressemblera donc à ça :
+
+\begin{lstlisting}
+var fs = require("fs");
+var files = fs.readdirSync('pages');
+for (var i = 0; i < files.length; i++) {
+    var page = require('./pages/' + files[i]);
+    //Do stuff here.
+}
+generateMosaic(files, "fr");
+generateMosaic(files, "en");
+
+function generateMosaic(files, language) {
+    for (var i = 0; i < files.length; i++) {
+        var page = require('./pages/' + files[i]);
+
+        if (language == "fr") {
+            var pageLang = page.fr;
+        } else if (language == "en") {
+            var pageLang = page.en;
+        }
+        
+        var title = pageLang.title;
+        var description = pageLang.description;
+    
+        //I must reformat the filename using a regular expression. 
+        //Here is the RegEx that I need : .*\.\b
+        //I must also find a way to consider the language choice.
+        var link = (page.link || "./" + files[i]);
+    }
+}
+\end{lstlisting}
+
+
 
 \section{Création des liens de navigation}
 La création des liens de navigation sera clairement la partie la plus complexe de mon système.
