@@ -2,9 +2,9 @@ var fs = require("fs");
 // var file;
 // fs.readdir('Pages', function(err, data) { file = data; });
 
-var files = fs.readdirSync('Pages');
+var files = fs.readdirSync('pages');
 
-var page = require('./Pages/' + files[0]);
+var page = require('./pages/' + files[0]);
 
 var header = `<!DOCTYPE html>
 <html>
