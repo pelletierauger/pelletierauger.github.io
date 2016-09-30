@@ -1,5 +1,10 @@
 var fs = require("fs");
-var page = require('./Pages/dunes.js').page.content_fr;
+// var file;
+// fs.readdir('Pages', function(err, data) { file = data; });
+
+var files = fs.readdirSync('Pages');
+
+var page = require('./Pages/' + files[0]);
 
 var header = `<!DOCTYPE html>
 <html>
@@ -12,7 +17,7 @@ var header = `<!DOCTYPE html>
 var body = `
 <body><h1>Guillaume Pelletier-Auger</h1>
 Works - About - Switch Language
-${page}
+${page.fr.description}
 </body>
 </html>
 `;
