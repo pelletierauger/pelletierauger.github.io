@@ -1,20 +1,17 @@
 var fs = require("fs");
+var page = require('./Pages/dunes.js').page.content_fr;
 
 var header = `<!DOCTYPE html>
 <html>
 <head>
-    <script src="add2.js"></script>
-    <script>
-    var base = 10;
-    console.log(addtwo(10));
-    </script>
+    <title>Guillaume Pelletier-Auger</title>
 </head>
 `;
 
 var body = `
-<body><h1>I'm writing my own HTML files with Node.js. It's pretty neat.</h1>
-It's actually like... awesome! It's a big change. I can now think of a website as a data structure.
-Is there something new here? How wonderful is that?
+<body><h1>Guillaume Pelletier-Auger</h1>
+Works - About - Switch Language
+${page}
 </body>
 </html>
 `;
