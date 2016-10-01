@@ -122,17 +122,29 @@ La fonction qui va générer toutes mes pages doit donc traiter ces données. El
 Ma boucle pour traiter chacun des fichiers dans le dossier \textit{pages} ressemblera donc à ça :
 
 \begin{lstlisting}
+//We get a reference to the Node.js filesystem module.
 var fs = require("fs");
+
+//We let the files variable be an array containing 
+//the full names of all the files inside the "pages" folder.
 var files = fs.readdirSync('pages');
-for (var i = 0; i < files.length; i++) {
-    var page = require('./pages/' + files[i]);
-    //Do stuff here.
-}
+
+//for (var i = 0; i < files.length; i++) {
+//    var page = require('./pages/' + files[i]);
+//    //Do stuff here.
+//}
+
+//We call the generateMosaic() function twice, sending it the list of files and language option.
 generateMosaic(files, "fr");
 generateMosaic(files, "en");
 
 function generateMosaic(files, language) {
+    //We start writing the HTML content.
+    var mosaic = `<div class="mosaic">`;
+
+    //We loop through all the files.
     for (var i = 0; i < files.length; i++) {
+        //We let "page" be the file that is currently processed.
         var page = require('./pages/' + files[i]);
 
         if (language == "fr") {
@@ -140,14 +152,26 @@ function generateMosaic(files, language) {
         } else if (language == "en") {
             var pageLang = page.en;
         }
+
+        //I reformat the filename using a regular expression.
+        //This is done because the filenames in the "pages" folder are .js,
+        //and I need .html files for the output.
+
+        var r = /([^:\\/]*?)(?:\.([^ :\\/.]*))?$/;
+
+        var formattedName = files[i].match(r)[1];
+
+        //We form the full link, considering also the language argument.
+        //If page.link exists, we pick it. Otherwise, we build the link.
+        var link = (page.link || "./" + language + "/" + formattedName + ".html");
         
+        //Next, we need to build the divs containing the title and description of the portfolio item.
         var title = pageLang.title;
         var description = pageLang.description;
-    
-        //I must reformat the filename using a regular expression. 
-        //Here is the RegEx that I need : .*\.\b
-        //I must also find a way to consider the language choice.
-        var link = (page.link || "./" + files[i]);
+
+        var itemDiv = `<div><a href="${link}"><img src="../images/${formattedName}.jpg"></a></div>`; 
+        
+        mosaic = mosaic + itemDiv + `</div>`;
     }
 }
 \end{lstlisting}
