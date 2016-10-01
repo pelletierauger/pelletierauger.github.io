@@ -206,6 +206,7 @@ function generatePage(file) {
 \section{Création des liens de navigation}
 La création des liens de navigation sera clairement la partie la plus complexe de mon système.
 
+\clearpage
 \section{Questions ouvertes}
 Comment ferais-je pour trier les divers éléments du portfolio? C'est une chose fondamentale. Pour l'instant, mon système ne fera que créer chaque élément du portfolio en ordre alphabétique. Il me faut absolument un système pour trier ces éléments à ma volonté.
 
@@ -214,3 +215,51 @@ Devrais-je avoir un fichier qui contient plusieurs pages de mon portfolio et opt
 Une idée de réponse à la première question : je pourrais utiliser des nombres au début de mes noms de fichiers, comme \textit{0001-dunes.js} et ensuite mon programme utiliserait ces nombres pour classer les items du portfolio mais ignorerait ces nombres lors de la capture du nom de fichier. \textit{0001-dunes.js} deviendrait \textit{dunes.html}.
 
 Ce n'est pas une bonne solution. Le mieux ce serait d'avoir une liste quelque part qui contiendrait les items que je veux afficher dans l'ordre. Ce système me permettrait d'ajouter aisément un item en début de liste sans modifier les items suivants. Il me permettrait aussi d'ignorer des items à volonté. Je pourrais créer un système qui prendrait cette liste et chercherait chacun des items tout d'abord dans un fichier commun comme \textit{portfolio.json} et ensuite dans le dossier \textit{pages}.
+
+\clearpage
+\section {La base de données}
+Ma base de données sera structurée de la façon suivante : tout est contenu dans le dossier \textit{pages}. Le dossier contient 2 types de choses : un fichier \textit{pages.js} qui définit plusieurs pages de mon site Web, et d'autres fichiers JavaScript qui définissent une seule page. J'utilise ce système pour pouvoir à la fois avoir de nombreuses pages simples (et dont les liens mènent à l'extérieur de mon site Web) et aussi plusieurs pages plus complexes (des articles complets, des pages contenant beaucoup d'éléments) qui seront plus agréables à maintenir dans des fichiers individuels. Par exemple, ma page \textit{about.html} sera suffisamment volumineuse qu'il me sera beaucoup plus agréable de l'écrire dans un fichier distinct.
+
+Tous les fichiers contenus dans le dossier \textit{pages} sont des modules Node.js. Le fichier \textit{pages.js} renvoie 2 objets : \textit{list} et \textit{pages}. L'objet \textit{list} est une liste de toutes les pages que je souhaite afficher dans mon portfolio. Cette liste me sert à déterminer quelles pages apparaissent dans mon portfolio et dans quel ordre. Cette liste me permet de trier les pages et d'en exclure certaines, à ma volonté.
+
+Voici à quoi ressemble le module \textit{pages.js} pour l'instant :
+
+\begin{lstlisting}
+exports.list = ["dunes", "about"];
+
+exports.pages = {
+
+    oscillators: {
+        fr: {
+            title: "Les Oscillateurs",
+            description: "Un film d'animation en noir et blanc réalisé avec p5.js."
+        },
+        en: {
+            title: "Oscillators",
+            description: "A black and white animation film made with p5.js."
+        }
+        link: "http://www.vimeo.com/pelletierauger"
+    },
+
+    joy_and_confusion: {
+        fr: {
+            title: "Les joies confuses",
+            description: "Un film d'animation coloré réalisé avec p5.js."
+        },
+        en: {
+            title: "Joy and Confusion",
+            description: "A colorful animation film made with p5.js."
+        },
+        link: "http://www.vimeo.com/pelletierauger"
+    }
+};
+\end{lstlisting}
+
+\clearpage
+Est-ce que ceci serait une bonne solution ? 
+
+\begin{lstlisting}
+var pages = require("./pages/pages.js");
+pages.map(makePage);
+makeMosaic(pages);
+\end{lstlisting}
