@@ -129,15 +129,24 @@ var fs = require("fs");
 //the full names of all the files inside the "pages" folder.
 var files = fs.readdirSync('pages');
 
-//for (var i = 0; i < files.length; i++) {
-//    var page = require('./pages/' + files[i]);
-//    //Do stuff here.
-//}
+//We loop through the list of files.
+//If the currently processed file doesn't have an external link, we run the generatePage() function.
+for (var i = 0; i < files.length; i++) {
+    var page = require('./pages/' + files[i]);
+    if (!files[i].link){
+        generatePage(files[i]);
+    }
+}
 
 //We call the generateMosaic() function twice, sending it the list of files and language option.
 generateMosaic(files, "fr");
 generateMosaic(files, "en");
 
+\end{lstlisting}
+
+La fonction \textit{generateMosaic()} ressemblerait à ça :
+
+\begin{lstlisting}
 function generateMosaic(files, language) {
     //We start writing the HTML content.
     var mosaic = `<div class="mosaic">`;
@@ -169,14 +178,39 @@ function generateMosaic(files, language) {
         var title = pageLang.title;
         var description = pageLang.description;
 
-        var itemDiv = `<div><a href="${link}"><img src="../images/${formattedName}.jpg"></a></div>`; 
+        var itemDiv = `<div class = "portfolio-item"><div class = "thumbnail">
+        <a href="${link}"><img src="../images/${formattedName}.jpg"></a></div>
+        <div class = "portfolio-description">
+        <h2>${title}</h2><p>${description}</p></div>`; 
         
-        mosaic = mosaic + itemDiv + `</div>`;
+        mosaic = mosaic + itemDiv;
     }
+    //Closing the div of the mosaic
+    mosaic = mosaic + `</div>`;
 }
 \end{lstlisting}
 
+Je n'aime pas vraiment cette immense fonction un peu désordonnée. Peut-être devrais-je apprendre des éléments de programmation fonctionnelle pour améliorer mon code.
 
+Voici la fonction \textit{generatePage()} : 
+
+\begin{lstlisting}
+function generatePage(file) {
+    var header = generateHeader(file);
+
+    var footer = ``;
+
+}
+\end{lstlisting}
 
 \section{Création des liens de navigation}
 La création des liens de navigation sera clairement la partie la plus complexe de mon système.
+
+\section{Questions ouvertes}
+Comment ferais-je pour trier les divers éléments du portfolio? C'est une chose fondamentale. Pour l'instant, mon système ne fera que créer chaque élément du portfolio en ordre alphabétique. Il me faut absolument un système pour trier ces éléments à ma volonté.
+
+Devrais-je avoir un fichier qui contient plusieurs pages de mon portfolio et optionnellement des liens vers des fichiers externes qui définiraient des pages de portfolio plus complexes? Je songe au fait que de nombreux items de mon portfolio pourrait être hébergés sur d'autres serveurs, ce qui rendrait l'acte de créer un fichier JavaScript pour définir chacun de ces items un peu redondant.
+
+Une idée de réponse à la première question : je pourrais utiliser des nombres au début de mes noms de fichiers, comme \textit{0001-dunes.js} et ensuite mon programme utiliserait ces nombres pour classer les items du portfolio mais ignorerait ces nombres lors de la capture du nom de fichier. \textit{0001-dunes.js} deviendrait \textit{dunes.html}.
+
+Ce n'est pas une bonne solution. Le mieux ce serait d'avoir une liste quelque part qui contiendrait les items que je veux afficher dans l'ordre. Ce système me permettrait d'ajouter aisément un item en début de liste sans modifier les items suivants. Il me permettrait aussi d'ignorer des items à volonté. Je pourrais créer un système qui prendrait cette liste et chercherait chacun des items tout d'abord dans un fichier commun comme \textit{portfolio.json} et ensuite dans le dossier \textit{pages}.
