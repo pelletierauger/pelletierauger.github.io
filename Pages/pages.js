@@ -1,4 +1,4 @@
-exports.list = ["dunes", "about"];
+exports.list = ["dunes", "oscillators", "about"];
 
 exports.pages = {
 
@@ -10,7 +10,7 @@ exports.pages = {
         en: {
             title: "Oscillators",
             description: "A black and white animation film made with p5.js."
-        }
+        },
         link: "http://www.vimeo.com/pelletierauger"
     },
 
