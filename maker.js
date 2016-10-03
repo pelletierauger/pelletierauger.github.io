@@ -3,8 +3,9 @@
 var pages = require("./pages/pages.js");
 var filenameFormatter = require('./filename-formatter.js');
 
-makeIndex(pages, "fr");
-makeIndex(pages, "en");
+makeIndex(pages, "fr", "./");
+makeIndex(pages, "en", "./");
+makeIndex(pages, "en", "./en/");
 
 //For each element in the list of pages, the single page is either a property of pages.js module,
 //or it's a property of a standalone module.
@@ -46,7 +47,7 @@ function makeNavigation(page, language) {
     //h1 must be an anchor link to index.html in the chosen language.
     var nav1 = (language == "fr") ? "Travaux" : "Works";
     var nav2 = (language == "fr") ? "À propos" : "About";
-    var nav3 = (language == "fr") ? "Français" : "English";
+    var nav3 = (language == "fr") ? "Français -> English" : "English -> Français";
     var oppositeLanguage = (language == "fr") ? "en" : "fr";
     var navAbout = (language == "fr") ? "a-propos" : "about";
     var navLang = (language == "fr") ? filenameFormatter(page["en"].title) : filenameFormatter(page["fr"].title);
@@ -89,32 +90,34 @@ function makeFile(language, fileName, htmlContent) {
 
 //-----------Indexes-----------------------------------------------------------------------//
 
-function makeIndex(pages, language) {
+function makeIndex(pages, language, prefix) {
     var header = makeHeader();
     var navigation = makeNavigation({
         fr: { title: "index" },
         en: { title: "index" }
     }, language);
-    var mosaic = makeMosaic(pages, language);
+    var mosaic = makeMosaic(pages, language, prefix);
     var footer = makeFooter(page, language);
-    makeFile(language, "index", header + navigation + mosaic + footer);
-    if (language = "en") {
+    if (prefix == "./en/") {
         makeFile(null, "index", header + navigation + mosaic + footer);
+    } else {
+        makeFile(language, "index", header + navigation + mosaic + footer);
     }
 }
 
-function makeMosaic(pages, language) {
+function makeMosaic(pages, language, prefix) {
     var mosaic = `<div class="mosaic">`;
     for (var i = 0; i < pages.list.length; i++) {
         var page = (pages.pages[pages.list[i]] || require('./pages/' + pages.list[i]));
 
         var title = page[language].title;
-        var filename = filenameFormatter(pages.list[i]);
+        var filename = filenameFormatter(page[language].title);
+        var thumbnailName = pages.list[i];
         var description = page[language].description;
-        var link = (page.link || "./" + language + "/" + filename + ".html")
-
+        var link = (page.link || prefix + filename + ".html");
+        console.log("Link : " + link);
         var itemDiv = `<div class = "portfolio-item"><div class = "thumbnail">
-        <a href="${link}"><img src="../images/${filename}.jpg"></a></div>
+        <a href="${link}"><img src="../images/${thumbnailName}.jpg"></a></div>
         <div class = "portfolio-description">
         <h2>${title}</h2><p>${description}</p></div>`;
 
