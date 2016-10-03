@@ -43,8 +43,9 @@ function makeHeader(page, language) {
     `;
 }
 
-function makeNavigation(page, language) {
+function makeNavigation(page, language, prefix) {
     //h1 must be an anchor link to index.html in the chosen language.
+    prefix = (prefix || "../");
     var nav1 = (language == "fr") ? "Travaux" : "Works";
     var nav2 = (language == "fr") ? "À propos" : "About";
     var nav3 = (language == "fr") ? "Français -> English" : "English -> Français";
@@ -54,9 +55,9 @@ function makeNavigation(page, language) {
     console.log("navLang = " + navLang);
     var navigation = `<body><h1><a href="../${language}/index.html">Guillaume Pelletier-Auger</a></h1>
     <div id="nav"><ul>
-    <li><a href="../${language}/index.html">${nav1}</a></li>
-    <li><a href="../${language}/${navAbout}.html">${nav2}</a></li>
-    <li><a href="../${oppositeLanguage}/${navLang}.html">${nav3}</a></li>
+    <li><a href="${prefix}${language}/index.html">${nav1}</a></li>
+    <li><a href="${prefix}${language}/${navAbout}.html">${nav2}</a></li>
+    <li><a href="${prefix}${oppositeLanguage}/${navLang}.html">${nav3}</a></li>
     </ul>
     </div>
     `;
@@ -92,10 +93,11 @@ function makeFile(language, fileName, htmlContent) {
 
 function makeIndex(pages, language, prefix) {
     var header = makeHeader();
+    var navPrefix = (prefix == "./en/") ? "./" : "../";
     var navigation = makeNavigation({
         fr: { title: "index" },
         en: { title: "index" }
-    }, language);
+    }, language, navPrefix);
     var mosaic = makeMosaic(pages, language, prefix);
     var footer = makeFooter(page, language);
     if (prefix == "./en/") {
@@ -115,9 +117,10 @@ function makeMosaic(pages, language, prefix) {
         var thumbnailName = pages.list[i];
         var description = page[language].description;
         var link = (page.link || prefix + filename + ".html");
+        var navPrefix = (prefix == "./en/") ? "./" : "../";
         console.log("Link : " + link);
         var itemDiv = `<div class = "portfolio-item"><div class = "thumbnail">
-        <a href="${link}"><img src="../images/${thumbnailName}.jpg"></a></div>
+        <a href="${link}"><img src="${navPrefix}images/${thumbnailName}.jpg"></a></div>
         <div class = "portfolio-description">
         <h2>${title}</h2><p>${description}</p></div>`;
 
