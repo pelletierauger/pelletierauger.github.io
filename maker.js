@@ -36,6 +36,7 @@ function makeHeader(page, language, prefix) {
         <meta charset="UTF-8">
         <title>Guillaume Pelletier-Auger${title}</title>
         <link href="${prefix}./style.css" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans|Sorts+Mill+Goudy:400,400i" rel="stylesheet">
     </head>`;
 }
 
@@ -43,7 +44,7 @@ function makeNavigation(page, language, prefix) {
     prefix = (prefix || "../");
     var nav1 = (language == "fr") ? "Travaux" : "Works";
     var nav2 = (language == "fr") ? "À propos" : "About";
-    var nav3 = (language == "fr") ? "Français -> English" : "English -> Français";
+    var nav3 = (language == "fr") ? "Français &#8594; English" : "English &#8594; Français";
 
     var liWorks = (page["en"].title == "index") ? `<li class = "selected">` : "<li>";
     var liAbout = (page["en"].title == "About") ? `<li class = "selected">` : "<li>";
@@ -53,8 +54,10 @@ function makeNavigation(page, language, prefix) {
     var navLang = (language == "fr") ? filenameFormatter(page["en"].title) : filenameFormatter(page["fr"].title);
     navLang = (navLang == "index") ? "" : navLang + ".html";
 
-    return `<body><h1><a href="../${language}/">Guillaume Pelletier-Auger</a></h1>
-    <div id="nav"><ul>
+    return `<body><div id="wrapper">
+    <div id="nav">
+    <h1><a href="../${language}/">Guillaume Pelletier-Auger</a></h1>
+    <ul>
     ${liWorks}<a href="${prefix}${language}/">${nav1}</a></li>
     ${liAbout}<a href="${prefix}${language}/${navAbout}.html">${nav2}</a></li>
     <li><a href="${prefix}${oppositeLanguage}/${navLang}">${nav3}</a></li>
@@ -70,7 +73,7 @@ function makeContent(page, language) {
 
 
 function makeFooter(page, language) {
-    return `<div id="footer">Guillaume Pelletier-Auger - 2016</div>
+    return `<div id="footer">Guillaume Pelletier-Auger - 2016</div></div>
     </body>
     </html>`;
 }

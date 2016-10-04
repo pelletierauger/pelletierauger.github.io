@@ -1,27 +1,83 @@
 html {
-    margin: 1em 3em;
+    /*margin: 1em 3em;*/
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.2em;
 }
 
 a {
     text-decoration: none;
 }
 
+p {
+    font-family: 'Sorts Mill Goudy', 'Baskerville', Georgia, serif;
+}
+
+#wrapper {
+    /*background: #B1D9CD;*/
+    margin: 1em 3em;
+}
+
+h1 {
+    /*background: #D9CCA2;*/
+    display: block;
+    float: left;
+    padding: 0;
+    margin: 0;
+    font-size: 1.5em;
+}
+
+h1 a {
+    color: #000000;
+}
+
+#nav {
+    /*background: red;*/
+    height: 2em;
+    margin-bottom: 2em;
+}
+
+#nav a {
+    /*color: #000000;*/
+}
+
 #nav ul {
     list-style: none;
     margin: 0;
     /*background: #D9CCA2;*/
+    float: right;
+}
+
+#nav ul li:last-child a {
+    /*background: #ff0000;*/
+    color: #878787;
 }
 
 #nav ul li {
     display: inline-block;
-    /*background: #D9979D;*/
+    /*background: #B5D9A2;*/
     margin: 0em 0em 0em 1em;
+}
+
+li a {
+    color: #000000;
 }
 
 li.selected a {
     color: #D95218;
 }
 
-.thumbnail img {
+.thumbnail {
     width: 250px;
+    height: 250px;
+    background: #000000;
+}
+
+.thumbnail img {
+    width: 100%;
+}
+
+#footer {
+    text-align: center;
+    margin-top: 2em;
+    font-size: 0.8em;
 }
