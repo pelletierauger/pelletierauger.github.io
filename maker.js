@@ -28,11 +28,6 @@ function makePage(page, language) {
 
 function makeHeader(page, language, prefix) {
     var title = (page) ? " - " + page[language].title : "";
-    // if (page) {
-    //     var title = " - " + page[language].title;
-    // } else {
-    //     var title = "";
-    // }
     prefix = (prefix == "./en/") ? "" : ".";
 
     return `<!DOCTYPE html>
@@ -45,7 +40,6 @@ function makeHeader(page, language, prefix) {
 }
 
 function makeNavigation(page, language, prefix) {
-    //h1 must be an anchor link to index.html in the chosen language.
     prefix = (prefix || "../");
     var nav1 = (language == "fr") ? "Travaux" : "Works";
     var nav2 = (language == "fr") ? "À propos" : "About";

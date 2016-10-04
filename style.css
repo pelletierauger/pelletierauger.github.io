@@ -1,15 +1,27 @@
 html {
-    margin: 2em 3em;
+    margin: 1em 3em;
 }
 
 a {
     text-decoration: none;
 }
 
+#nav ul {
+    list-style: none;
+    margin: 0;
+    /*background: #D9CCA2;*/
+}
+
+#nav ul li {
+    display: inline-block;
+    /*background: #D9979D;*/
+    margin: 0em 0em 0em 1em;
+}
+
 li.selected a {
     color: #D95218;
 }
 
-div .thumbnail img {
+.thumbnail img {
     width: 250px;
 }
