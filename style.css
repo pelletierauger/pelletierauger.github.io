@@ -1,0 +1,15 @@
+html {
+    margin: 2em 3em;
+}
+
+a {
+    text-decoration: none;
+}
+
+li.selected a {
+    color: #D95218;
+}
+
+div .thumbnail img {
+    width: 250px;
+}
