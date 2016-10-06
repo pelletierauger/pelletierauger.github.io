@@ -13,8 +13,10 @@ makeIndex(pages, "en", "./en/");
 
 for (var i = 0; i <  pages.list.length; i++) {
     var page = (pages.pages[pages.list[i]] || require('./pages/' + pages.list[i]));
-    makePage(page, "fr");
-    makePage(page, "en");
+    if (!page.link) {
+        makePage(page, "fr");
+        makePage(page, "en");
+    }
 }
 
 function makePage(page, language) {
@@ -35,6 +37,7 @@ function makeHeader(page, language, prefix) {
     <head>
         <meta charset="UTF-8">
         <title>Guillaume Pelletier-Auger${title}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
         <link href="${prefix}./style.css" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans|Sorts+Mill+Goudy:400,400i" rel="stylesheet">
     </head>`;

@@ -1,4 +1,4 @@
-exports.list = ["dunes", "oscillators", "about"];
+exports.list = ["dunes", "oscillators", "joy_and_confusion", "floating_spirals", "about"];
 
 exports.pages = {
 
@@ -22,6 +22,18 @@ exports.pages = {
         en: {
             title: "Joy and Confusion",
             description: "A colorful animation film made with p5.js."
+        },
+        link: "http://www.vimeo.com/pelletierauger"
+    },
+
+    floating_spirals: {
+        fr: {
+            title: "Les spirales flottantes",
+            description: "De petits algorithmes appliqués sur des graphes."
+        },
+        en: {
+            title: "Floating Spirals",
+            description: "Small algorithms applied on various graphs."
         },
         link: "http://www.vimeo.com/pelletierauger"
     }

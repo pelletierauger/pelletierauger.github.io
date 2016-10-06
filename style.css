@@ -14,7 +14,8 @@ p {
 
 #wrapper {
     /*background: #B1D9CD;*/
-    margin: 1em 3em;
+    margin: 1em auto;
+    max-width: 1200px;
 }
 
 h1 {
@@ -28,6 +29,12 @@ h1 {
 
 h1 a {
     color: #000000;
+}
+
+.portfolio-item h2 {
+    font-size: 1.25em;
+    padding: 0;
+    margin: 0;
 }
 
 #nav {
@@ -66,15 +73,70 @@ li.selected a {
     color: #D95218;
 }
 
-.thumbnail {
-    width: 250px;
+
+/*-----------Portfolio---------------------------------------*/
+
+.portfolio-item {
+    display: block;
+    float: left;
+    background: #D8DABC;
+    /*background: #DDDDDD;*/
+    /*object-fit: cover;*/
     height: 250px;
+    color: #ffffff;
+    position: relative;
+    margin: 0 0 1.5% 0;
+}
+
+@media screen and (min-width: 0px) {
+    .portfolio-item {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    .portfolio-item {
+        width: 49.25%;
+    }
+    .portfolio-item:nth-child(odd) {
+        margin-right: 1.5%;
+        background: #000000;
+    }
+}
+
+.portfolio-description {
+    /*z-index: 3;*/
+    position: absolute;
+    /*top: -250px;*/
+    bottom: 0px;
+    display: block;
+    float: left;
+    width: 94%;
+    padding: 3% 3% 0% 3%;
+    /*padding: 15px;*/
+    background: rgba(0, 0, 0, 0.5);
+    /*opacity: 0.75;*/
+    margin: 0px;
+}
+
+.thumbnail {
+    /*float: left;*/
+    /*    width: 250px;
+    height: 250px;*/
+    height: 100%;
+    overflow: hidden;
     background: #000000;
+    /*width: 1000px;*/
 }
 
 .thumbnail img {
+    /*width: 100%;*/
+    /*height: 50%;*/
     width: 100%;
 }
+
+
+/*-----------Footer---------------------------------------*/
 
 #footer {
     text-align: center;
