@@ -51,22 +51,8 @@ h1 a {
     margin: 0 0 3% 0;
 }
 
-#nav {
-    /*background: red;*/
-    height: 2em;
-    margin-bottom: 2em;
-}
-
 #nav a {
     /*color: #000000;*/
-    /*color: #878787;*/
-}
-
-#nav ul {
-    list-style: none;
-    margin: 0;
-    /*background: #D9CCA2;*/
-    float: right;
     /*color: #878787;*/
 }
 
@@ -96,8 +82,6 @@ li.selected a {
     display: block;
     float: left;
     background: #D8DABC;
-    /*background: #DDDDDD;*/
-    /*object-fit: cover;*/
     height: 250px;
     color: #ffffff;
     position: relative;
@@ -107,10 +91,56 @@ li.selected a {
     color: #ffffff;
 }
 
-@media screen and (min-width: 0px) {
-    .portfolio-item {
+.portfolio-item {
+    width: 100%;
+    margin: 0 0 3% 0;
+}
+
+#nav ul {
+    /*position: absolute;*/
+    /*top: -250px;*/
+    /*bottom: 0px;*/
+    /*right: 0px;*/
+    /*list-style: none;*/
+    margin: 0;
+    /*background: #D9CCA2;*/
+    /*float: right;*/
+    /*color: #878787;*/
+}
+
+@media screen and (max-width: 699px) {
+    #nav {
+        /*background: #BA6965;*/
+        height: 7em;
+        margin-bottom: 2em;
+    }
+    #nav ul {
+        /*float: left;*/
+        background: rgba(255, 255, 255, 0.7);
+        padding: 0.5em 0;
+        margin: 0;
+    }
+    #nav ul li {
         width: 100%;
-        margin: 0 0 3% 0;
+        /*float: left;*/
+        padding: 0.25em 0;
+        margin: 0;
+    }
+}
+
+@media screen and (min-width: 700px) {
+    #nav {
+        /*background: #BA6965;*/
+        height: 2em;
+        margin-bottom: 2em;
+        position: relative;
+    }
+    #nav ul {
+        /*background: rgba(0, 255, 255, 0.7);*/
+        position: absolute;
+        bottom: 0px;
+        right: 0px;
+        list-style: none;
     }
 }
 
@@ -129,6 +159,17 @@ li.selected a {
     .portfolio-item:nth-child(odd) {
         margin-right: 1.5%;
         background: #000000;
+    }
+    #nav ul {
+        position: absolute;
+        /*top: -250px;*/
+        bottom: 0px;
+        right: 0px;
+        list-style: none;
+        margin: 0;
+        /*background: #D9CCA2;*/
+        float: right;
+        /*color: #878787;*/
     }
 }
 
