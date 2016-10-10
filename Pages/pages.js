@@ -1,17 +1,17 @@
-exports.list = ["dunes", "oscillators", "joy_and_confusion", "floating_spirals", "about"];
+exports.list = ["dunes", "growing_wreath", "villeray", "about"];
 
 exports.pages = {
 
-    oscillators: {
+    growing_wreath: {
         fr: {
-            title: "Les Oscillateurs",
-            description: "Un film d'animation en noir et blanc réalisé avec p5.js."
+            title: "Couronne en croissance",
+            description: "Groupe d'arbres dessinés récursivement."
         },
         en: {
-            title: "Oscillators",
+            title: "Growing Wreath",
             description: "A black and white animation film made with p5.js."
         },
-        link: "http://www.vimeo.com/pelletierauger"
+        link: "http://codepen.io/pelletierauger/full/xOqNYa/"
     },
 
     joy_and_confusion: {
