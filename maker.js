@@ -45,7 +45,7 @@ function makeHeader(page, language, prefix) {
 
 function makeNavigation(page, language, prefix) {
     prefix = (prefix || "../");
-    var nav1 = (language == "fr") ? "Travaux" : "Works";
+    var nav1 = (language == "fr") ? "Portfolio" : "Portfolio";
     var nav2 = (language == "fr") ? "À propos" : "About";
     var nav3 = (language == "fr") ? "Français &#8594; English" : "English &#8594; Français";
 
