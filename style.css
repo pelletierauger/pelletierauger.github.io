@@ -23,9 +23,9 @@ p {
 
 h1 {
     /*background: #D9CCA2;*/
-    display: block;
+    /*display: block;*/
     font-weight: normal;
-    float: left;
+    /*float: left;*/
     padding: 0;
     margin: 0;
     font-size: 1.5em;
@@ -109,14 +109,22 @@ li.selected a {
 }
 
 @media screen and (max-width: 699px) {
+    h1 {
+        /*background: blue;*/
+        /*width: 15em;*/
+        /*margin: auto;*/
+        /*text-align: center;*/
+    }
     #nav {
+        text-align: center;
         /*background: #BA6965;*/
         /*height: 7em;*/
         margin-bottom: 0.5em;
     }
     #nav ul {
+        text-align: left;
         /*float: left;*/
-        background: rgba(255, 255, 255, 0.7);
+        /*background: rgba(255, 255, 255, 0.7);*/
         padding: 0.5em 0;
         margin: 0;
     }
