@@ -108,6 +108,13 @@ li.selected a {
     /*color: #878787;*/
 }
 
+@media screen and (max-width: 399px) {
+    h1 {
+        width: 9em;
+        margin: auto;
+    }
+}
+
 @media screen and (max-width: 699px) {
     h1 {
         /*background: blue;*/
