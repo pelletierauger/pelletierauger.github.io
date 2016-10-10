@@ -1,7 +1,8 @@
 html {
-    /*margin: 1em 3em;*/
     font-family: 'Open Sans', sans-serif;
     font-size: 1.2em;
+    padding: 0;
+    margin: 0;
 }
 
 a {
@@ -14,8 +15,10 @@ p {
 
 #wrapper {
     /*background: #B1D9CD;*/
-    margin: 1em auto;
+    margin: 0em auto;
     max-width: 1200px;
+    padding: 0;
+    /*margin: 0;*/
 }
 
 h1 {
@@ -98,7 +101,6 @@ li.selected a {
     height: 250px;
     color: #ffffff;
     position: relative;
-    margin: 0 0 1.5% 0;
 }
 
 .portfolio-item a {
@@ -108,12 +110,21 @@ li.selected a {
 @media screen and (min-width: 0px) {
     .portfolio-item {
         width: 100%;
+        margin: 0 0 3% 0;
+    }
+}
+
+@media screen and (min-width: 500px) {
+    .portfolio-item {
+        width: 100%;
+        margin: 0 0 1.5% 0;
     }
 }
 
 @media screen and (min-width: 1000px) {
     .portfolio-item {
         width: 49.25%;
+        margin: 0 0 1.5% 0;
     }
     .portfolio-item:nth-child(odd) {
         margin-right: 1.5%;
