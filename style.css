@@ -42,6 +42,12 @@ h1 a {
     margin: 0;
 }
 
+.portfolio-item p {
+    font-family: 'Open Sans', sans-serif;
+    padding: 0;
+    margin: 0 0 3% 0;
+}
+
 #nav {
     /*background: red;*/
     height: 2em;
@@ -50,6 +56,7 @@ h1 a {
 
 #nav a {
     /*color: #000000;*/
+    /*color: #878787;*/
 }
 
 #nav ul {
@@ -57,11 +64,12 @@ h1 a {
     margin: 0;
     /*background: #D9CCA2;*/
     float: right;
+    /*color: #878787;*/
 }
 
 #nav ul li:last-child a {
     /*background: #ff0000;*/
-    color: #878787;
+    /*color: #878787;*/
 }
 
 #nav ul li {
@@ -93,6 +101,10 @@ li.selected a {
     margin: 0 0 1.5% 0;
 }
 
+.portfolio-item a {
+    color: #ffffff;
+}
+
 @media screen and (min-width: 0px) {
     .portfolio-item {
         width: 100%;
@@ -117,9 +129,9 @@ li.selected a {
     display: block;
     float: left;
     width: 94%;
-    padding: 3% 3% 0% 3%;
+    padding: 2% 3% 0% 3%;
     /*padding: 15px;*/
-    background: rgba(0, 0, 0, 0.75);
+    background: rgba(0, 0, 0, 1);
     /*opacity: 0.75;*/
     margin: 0px;
 }

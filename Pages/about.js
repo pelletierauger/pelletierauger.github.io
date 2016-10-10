@@ -10,7 +10,9 @@ exports.en = {
     description: "Guillaume Pelletier-Auger is an artist.",
     content: `
 
-        I'm fascinated by nature and complexity. 
+        My primary interests are art and programming.
+
+        I studied animation and illustration.
 
         <h2>This website</h2>
         <p>

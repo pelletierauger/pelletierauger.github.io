@@ -128,10 +128,19 @@ function makeMosaic(pages, language, prefix) {
         var link = (page.link || prefix + filename + ".html");
         var navPrefix = (prefix == "./en/") ? "./" : "../";
 
-        var itemDiv = `<div class = "portfolio-item"><div class = "thumbnail">
-        <a href="${link}"><img src="${navPrefix}images/${thumbnailName}.jpg"></a></div>
-        <div class = "portfolio-description">
-        <h2>${title}</h2><p>${description}</p></div></div>`;
+        var itemDiv = `
+        
+        <div class = "portfolio-item">
+            <a href="${link}">
+            <div class = "thumbnail">
+                <img src="${navPrefix}images/${thumbnailName}.jpg">
+            </div>
+            <div class = "portfolio-description">
+                <h2>${title}</h2><p>${description}</p>
+            </div>
+            </a>
+        </div>
+        `;
 
         mosaic = mosaic + itemDiv;
     }

@@ -1,50 +1,35 @@
 <!DOCTYPE html>
-    <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Guillaume Pelletier-Auger - About</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-        <link href="../style.css" rel="stylesheet" type="text/css">
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans|Sorts+Mill+Goudy:400,400i" rel="stylesheet">
-    </head><body><div id="wrapper">
-    <div id="nav">
-    <h1><a href="../en/">Guillaume Pelletier-Auger</a></h1>
-    <ul>
-    <li><a href="../en/">Works</a></li>
-    <li class = "selected"><a href="../en/about.html">About</a></li>
-    <li><a href="../fr/a-propos.html">English &#8594; Français</a></li>
-    </ul>
-    </div><div id="main">
-    <h2>About</h2>
-    
+<html>
 
-        I'm fascinated by nature and complexity. 
+<head>
+    <meta charset="UTF-8">
+    <title>Guillaume Pelletier-Auger - About</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <link href="../style.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Sorts+Mill+Goudy:400,400i" rel="stylesheet">
+</head>
 
-        <h2>This website</h2>
-        <p>
-            To make this website, I developed a small Node.js module that reads a database
-            and outputs HTML content, generating all the files automatically. 
-            I created this module because I wanted a lightweight 
-            and flexible Static Site Generator and I couldn't find one 
-            that satisfied my taste for simplicity.
+<body>
+    <div id="wrapper">
+        <div id="nav">
+            <h1><a href="../en/">Guillaume Pelletier-Auger</a></h1>
+            <ul>
+                <li><a href="../en/">Works</a></li>
+                <li class="selected"><a href="../en/about.html">About</a></li>
+                <li><a href="../fr/a-propos.html">English &#8594; Français</a></li>
+            </ul>
+        </div>
+        <div id="main">
+            <h2>About</h2> My primary interests are art and programming. I studied animation and illustration.
+            <h2>This website</h2>
+            <p>
+                To make this website, I developed a small Node.js module that reads a database and outputs HTML content, generating all the files automatically. I created this module because I wanted a lightweight and flexible Static Site Generator and I couldn't find one that satisfied my taste for simplicity. You can view the source code for this Node.js module here (along with the source code for my whole website) :
+                <a href="https://github.com/pelletierauger/pelletierauger.github.io">
+            https://github.com/pelletierauger/pelletierauger.github.io</a> The main module is <i>maker.js</i> and it reads the data inside the <i>pages</i> folder. I'm tempted to turn this into a generalized module that could be used by other people, but I think this tool is mostly interesting because it has a single purpose (building my own website). It might be more useful to write an article about the concepts behind the tool to encourage others to make similar singe-purpose site builders. I find it exquisite to use a tool that only does what you want, exactly as you want it, and nothing more. Also, adding custom-made features as needed is rewarding and introduces zero bloat. If this lightweight site builder were to be <i>generalized</i> into a more fully-featured application, I think it would lose its essential simplicity immediately.
+            </p>
+        </div>
+        <div id="footer">Guillaume Pelletier-Auger - 2016</div>
+    </div>
+</body>
 
-            You can view the source code for this Node.js module here (along with the source code
-            for my whole website) :
-            <a href="https://github.com/pelletierauger/pelletierauger.github.io">
-            https://github.com/pelletierauger/pelletierauger.github.io</a>
-
-            The main module is <i>maker.js</i> and it reads the data inside the <i>pages</i> folder.
-
-            I'm tempted to turn this into a generalized module that could be used by other people,
-            but I think this tool is mostly interesting because it has a single purpose
-            (building my own website). It might be more useful to write an article about
-            the concepts behind the tool to encourage others to make similar singe-purpose site
-            builders. I find it exquisite to use a tool that only does what you want, 
-            exactly as you want it, and nothing more. 
-            Also, adding custom-made features as needed is rewarding and introduces zero bloat.
-            If this lightweight site builder were to be <i>generalized</i> into a more fully-featured application,
-            I think it would lose its essential simplicity immediately.
-        </p>
-    </div><div id="footer">Guillaume Pelletier-Auger - 2016</div></div>
-    </body>
-    </html>
+</html>
