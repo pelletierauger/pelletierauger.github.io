@@ -144,6 +144,19 @@ li.selected a {
     /*float: left;*/
 }
 
+#page p {
+    margin: 0 auto;
+    padding: 0;
+    max-width: 700px;
+    margin-bottom: 1em;
+    /*background: #95D2C7;*/
+}
+
+#page img {
+    width: 100%;
+    margin-bottom: 1em;
+}
+
 @media screen and (max-width: 499px) {
     h1 {
         width: 9em;
