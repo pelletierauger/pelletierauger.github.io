@@ -126,7 +126,8 @@ li.selected a {
 }
 
 #contact a {
-    text-decoration: underline;
+    /*text-decoration: underline;*/
+    color: #D95218;
 }
 
 #contact ul {
