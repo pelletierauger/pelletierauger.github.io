@@ -18,6 +18,10 @@ p {
     margin: 0;
 }
 
+p a {
+    color: #D95218;
+}
+
 #wrapper {
     /*background: #B1D9CD;*/
     margin: 0em auto;
