@@ -14,6 +14,8 @@ p {
     -ms-word-break: break-all;
     word-break: break-all;
     word-break: break-word;
+    padding: 0;
+    margin: 0;
 }
 
 #wrapper {
@@ -109,6 +111,31 @@ li.selected a {
     /*background: #D9CCA2;*/
     /*float: right;*/
     /*color: #878787;*/
+}
+
+#contact {
+    /*background: #95D2C7;*/
+    width: 100px;
+    float: left;
+    margin-bottom: 2em;
+}
+
+#contact a {
+    text-decoration: underline;
+}
+
+#contact ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#about {
+    margin: 0 auto;
+    padding: 0;
+    max-width: 700px;
+    /*background: #D2C5A3;*/
+    /*float: left;*/
 }
 
 @media screen and (max-width: 499px) {
@@ -235,6 +262,7 @@ li.selected a {
     float: left;
     width: 100%;
     margin-top: 2em;
+    margin-bottom: 2em;
     font-size: 0.8em;
     text-align: center;
 }
