@@ -117,7 +117,8 @@ li.selected a {
     /*background: #95D2C7;*/
     width: 100px;
     float: left;
-    margin-bottom: 2em;
+    margin-right: 1em;
+    margin-bottom: 1em;
 }
 
 #contact a {
@@ -262,7 +263,7 @@ li.selected a {
     float: left;
     width: 100%;
     margin-top: 2em;
-    margin-bottom: 2em;
+    margin-bottom: 1em;
     font-size: 0.8em;
     text-align: center;
 }
