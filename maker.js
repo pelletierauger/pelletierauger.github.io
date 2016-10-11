@@ -133,7 +133,7 @@ function makeMosaic(pages, language, prefix) {
         <div class = "portfolio-item">
             <a href="${link}">
             <div class = "thumbnail">
-                <img src="${navPrefix}images/${thumbnailName}.jpg">
+                <img src="${navPrefix}thumbnails/${thumbnailName}.jpg">
             </div>
             <div class = "portfolio-description">
                 <h2>${title}</h2><p>${description}</p>
