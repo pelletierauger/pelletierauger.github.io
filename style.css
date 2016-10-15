@@ -285,3 +285,10 @@ li.selected a {
     font-size: 0.8em;
     text-align: center;
 }
+
+.math {
+    /*border: solid 1px #000000;*/
+    max-width: 100%;
+    overflow: auto;
+    margin-bottom: 1em;
+}
