@@ -292,3 +292,22 @@ li.selected a {
     overflow: auto;
     margin-bottom: 1em;
 }
+
+pre {
+    overflow: auto;
+    margin: 0 auto 1.5em auto;
+    max-width: 650px;
+    background: #F2F2F2;
+    padding: 25px;
+    line-height: 1.4em;
+    -ms-word-break: break-all;
+    word-break: break-all;
+    word-break: break-word;
+}
+
+code {
+    padding: 0;
+    margin: 0;
+    font-family: 'Inconsolata', courier, monospace;
+    font-size: 0.85em;
+}

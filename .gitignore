@@ -1,4 +1,5 @@
 .DS_Store
+node_modules
 *.aux
 *.fdb_latexmk
 *.fls

@@ -2,6 +2,8 @@
 //we also get all the pages that are defined inside the pages.js module, in pages.pages.
 var pages = require("./pages/pages.js");
 var filenameFormatter = require('./filename-formatter.js');
+var codeFormatter = require('./code-formatter.js');
+var mathFormatter = require('./math-formatter.js');
 
 makeIndex(pages, "fr", "./");
 makeIndex(pages, "en", "./");
@@ -29,6 +31,21 @@ function makePage(page, language) {
 }
 
 function makeHeader(page, language, prefix) {
+    //If its a page and it has content, test the content with this regular expression.
+    //If there is code embedded in the HTML content,
+    //add the code.css stylesheet to the head of the HTML file.
+    //Also, the font Inconsolata gets added to the head if there is embedded code.
+
+    var codeCSS = "";
+    var codeFont = "";
+    if (page && page[language].content) {
+        var r = /(<code>)([\S\s]*?)(<\/code>)/g;
+        if (page[language].content.match(r)) {
+            codeCSS = `<link href="../code.css" rel="stylesheet" type="text/css">`;
+            codeFont = "Inconsolata|";
+        }
+    }
+
     var title = (page) ? " - " + page[language].title : "";
     prefix = (prefix == "./en/") ? "" : ".";
 
@@ -39,7 +56,8 @@ function makeHeader(page, language, prefix) {
         <title>Guillaume Pelletier-Auger${title}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
         <link href="${prefix}./style.css" rel="stylesheet" type="text/css">
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans|Sorts+Mill+Goudy:400,400i" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=${codeFont}Open+Sans|Sorts+Mill+Goudy:400,400i" rel="stylesheet">
+        ${codeCSS}
     </head>`;
 }
 
@@ -82,15 +100,32 @@ function makeFooter(page, language) {
 }
 
 function makeFile(language, fileName, htmlContent) {
-    var fs = require("fs");
-    var prefix = (language) ? './' + language + '/' : "./";
-    fs.writeFile(prefix + fileName + '.html', htmlContent, function(err) {
-        if (err) {
-            return console.error(err);
-        } else {
-            console.log(fileName + '.html written successfully.');
-        }
-    });
+    //First, we test if htmlContent contains code. We formatted it if it exists.
+    //We modify htmlContent with code-formatter, which is synchronous.
+    htmlContent = codeFormatter(htmlContent, fileName);
+
+    //Then, we test if htmlContent contains LaTeX math.
+    var r = /\\\[/g;
+
+    if (htmlContent.match(r)) {
+        //If it does, we send the htmlContent to math-formatter.js which will write the file itself.
+        //(The MathJax-node module is asynchronous, so it's much simpler if it writes the file itself.)
+        console.log(fileName + " contains math.");
+        mathFormatter(language, fileName, htmlContent);
+    } else {
+
+        //Else, if htmlContent doesn't contain LaTeX math, we write the file right here.
+        var fs = require("fs");
+        var prefix = (language) ? './' + language + '/' : "./";
+        fs.writeFile(prefix + fileName + '.html', htmlContent, function(err) {
+            if (err) {
+                return console.error(err);
+            } else {
+                console.log(fileName + '.html written successfully.');
+            }
+        });
+        // console.log("This is the output of a disabled maker.js");
+    }
 }
 
 //-----------Indexes-----------------------------------------------------------------------//

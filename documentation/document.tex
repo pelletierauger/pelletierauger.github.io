@@ -341,3 +341,15 @@ Mon système doit me permettre de créer des noms de fichiers ajustés à la lan
 C'est très laid! Il faut donc que chaque item de ma base de données possède une nouvelle propriété : \textit{filename}.
 
 Alternativement, je pourrais simplement avoir une fonction qui prendrait la propriété \textit{title} et la transformerait automatiquement en url valide, en transformant les espaces en traits d'union, et en transformant le reste en lettres minuscules. Je vais aussi devoir faire disparaître les accents français.
+
+\clearpage
+\section{Nouvelles fonctionnalités}
+
+Je travaille présentement sur de nouvelles fonctionnalités, dont certaines utiliseront les modules \textit{Highlight.js} et \textit{MathJax-node}.
+
+Choses à faire :
+\begin{enumerate}  
+\item Créer un système qui me permet d'avoir une \textit{url} différente pour les versions anglaises et françaises de mon portfolio. Comme ça je pourrais, par exemple, avoir des liens comme : https://pelletierauger.github.io/growing-wreath.html?lang=fr qui indiqueraient à mes programmes JavaScript quelle langue afficher.
+\item Créer un système qui vérifie si une page contient du code (en utilisant une expression rationnelle) et, si c'est le cas, utilise le module \textit{highlight.js} pour transformer ce code en colorant sa syntaxe.
+\item Créer un système qui vérifie si une page contient des formules mathématiques LaTeX (en utilisant une expression rationnelle), et si c'est le cas, utilise le module \textit{MathJax-node} pour transformer ces formules LaTeX en code HTML avec une feuille de style CSS.
+\end{enumerate}
