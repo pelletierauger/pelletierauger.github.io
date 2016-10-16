@@ -104,8 +104,9 @@ function makeFile(language, fileName, htmlContent) {
     //We modify htmlContent with code-formatter, which is synchronous.
     htmlContent = codeFormatter(htmlContent, fileName);
 
-    //Then, we test if htmlContent contains LaTeX math.
-    var r = /\\\[/g;
+    //Then, we test if htmlContent contains LaTeX math,
+    //whether it is displayed mathematics or in-line mathematics.
+    var r = /\\\[|\\\(/g;
 
     if (htmlContent.match(r)) {
         //If it does, we send the htmlContent to math-formatter.js which will write the file itself.
