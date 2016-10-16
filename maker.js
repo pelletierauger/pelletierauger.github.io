@@ -54,7 +54,7 @@ function makeHeader(page, language, prefix) {
     <head>
         <meta charset="UTF-8">
         <title>Guillaume Pelletier-Auger${title}</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=4, user-scalable=yes" />
         <link href="${prefix}./style.css" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=${codeFont}Open+Sans|Sorts+Mill+Goudy:400,400i" rel="stylesheet">
         ${codeCSS}
