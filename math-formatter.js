@@ -12,7 +12,7 @@ module.exports = function(language, fileName, htmlContent) {
         inputs: ["TeX"],
         xmlns: xmlns
     }, function(result) {
-        console.log(result.html);
+        // console.log(result.html);
 
         document.body.innerHTML = result.html;
         document.head.appendChild(document.body.firstChild);

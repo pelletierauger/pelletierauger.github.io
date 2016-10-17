@@ -161,7 +161,7 @@ function makeMosaic(pages, language, prefix) {
         var filename = filenameFormatter(page[language].title);
         var thumbnailName = pages.list[i];
         var description = page[language].description;
-        var link = (page.link || prefix + filename + ".html");
+        var link = (page[language].link || page.link || prefix + filename + ".html");
         var navPrefix = (prefix == "./en/") ? "./" : "../";
 
         var itemDiv = `
