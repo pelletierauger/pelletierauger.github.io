@@ -53,19 +53,19 @@ exports.en = {
         a = -0.1, b = 1, c = 1, d = 0.1, e = 1
     \]
     </div>
-    <img src="../images/dunes/dunes002.jpg">
+    <img src="../images/dunes/dunes002b.jpg">
     <div class="math">
     \[
         a = -0.1, b = -1, c = 1, d = 0.1, e = 3
     \]
     </div>
-    <img src="../images/dunes/dunes001.jpg">
+    <img src="../images/dunes/dunes001b.jpg">
     <div class="math">
     \[
         a = -0.6, b = 1, c = 1, d = 0.1, e = 1
     \]
     </div>
-    <img src="../images/dunes/dunes003.jpg">
+    <img src="../images/dunes/dunes003b.jpg">
     <div class="math">
     \[
         a = -0.3, b = 1, c = 1, d = 0.12, e = 3
@@ -107,7 +107,6 @@ var duneFour = {
 
 var vals = duneFour;
 var vec = new p5.Vector(0, 0, 0);
-var numPoints = 0;
 
 function setup() {
     createCanvas(windowWidth, windowHeight);
@@ -120,7 +119,7 @@ function draw() {
     translate(width / 2, height / 2);
     for (var i = 0; i < 1500; i++) {
         vec = iterative(vec.x, vec.y, vec.z);
-        drawPoint(vec);
+        ellipse(vec.x * 70, vec.y * 200, 0.5, 0.5);
     }
 }
 
@@ -129,11 +128,6 @@ function iterative(x, y, z) {
     var newY = sin(vals.d * x) + sin(vals.e * z);
     var newZ = z + 0.1;
     return createVector(newX, newY, newZ);
-}
-
-function drawPoint(v) {
-    ellipse(v.x * 70, v.y * 200, 0.5, 0.5);
-    numPoints++;
 }</code></pre>
 <p>This project was heavily inspired by <a href="http://koaning.io/fluctuating-repetition.html">Fluctuating Repetition</a> by Vincent D. Warmerdam.</p>
     </div>
