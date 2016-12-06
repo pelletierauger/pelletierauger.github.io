@@ -129,7 +129,7 @@ function iterative(x, y, z) {
     var newZ = z + 0.1;
     return createVector(newX, newY, newZ);
 }</code></pre>
-<p>This project was heavily inspired by <a href="http://koaning.io/fluctuating-repetition.html">Fluctuating Repetition</a> by Vincent D. Warmerdam.</p>
+<p>This project is based on <a href="http://koaning.io/fluctuating-repetition.html">Fluctuating Repetition</a>, a great blog post by Vincent D. Warmerdam.</p>
     </div>
     `
 }
