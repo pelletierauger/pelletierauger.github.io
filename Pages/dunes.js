@@ -41,7 +41,7 @@ exports.en = {
     <div class="math">
     \[
         \begin{align*}
-            x_{n+1} &= \sin(a \times x_n) + \tan(b \times x_n) - \tan(z_n)\\
+            x_{n+1} &= \sin(a \times x_n) + \tan(b \times x_n) - \tan z_n\\
             y_{n+1} &= \sin(c \times x_n) + \sin(d \times z_n)\\
             z_{n+1} &= z_n + 0.1
         \end{align*}
