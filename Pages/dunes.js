@@ -49,7 +49,7 @@ exports.en = {
     </div>
     <p>I set the value of \(x_{0}, y_{0}, z_{0}\) to \(0\), but setting them to different values
     gives practically identical results (for the purposes of this project). The system is then iterated
-    several million times, and a white dot with a very low opacity is drawn at each iteration.</p>
+    several million times, and a white dot with a very low opacity is drawn on each iteration.</p>
     <p>Different images are obtained when the constants \(a, b, c, d\) are changed. Below are four sets
     of values for these constants, followed by the image that each set generates.</p>
     <div class="math">
