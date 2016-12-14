@@ -25,14 +25,14 @@ exports.fr = {
         <i>traditionnel</i> sur cet autre site : <a href="http://www.gpelletier.com/">www.gpelletier.com</a>.</p>
         <h2>Ce site Web</h2>
         <p>
-            Pour réaliser ce site Web, j'ai développé un petit module Node.js qui lit une
+            Pour réaliser ce site Web, j'ai développé une petite application Node.js qui lit une
             base de données puis génère automatiquement tous les fichiers HTML. J'ai créé
-            ce module parce que je cherchais un <i>générateur de site statique</i> ("static site
+            cette application parce que je cherchais un <i>générateur de site statique</i> ("static site
             generator") à la fois simple et offrant quelques fonctionnalités qui me sont importantes
             (tel que la possibilité de gérer une base de données de contenu bilingue), et
             j'étais insatisfait des générateurs déjà existants.
             <br><br>
-            Vous pouvez voir le code source de ce module Node.js (avec le code source de ce site
+            Vous pouvez voir le code source de cette application Node.js (avec le code source de ce site
             Web au complet) ici : <a href="https://github.com/pelletierauger/pelletierauger.github.io">
             https://github.com/pelletierauger/pelletierauger.github.io</a>
             <br><br>
@@ -71,13 +71,13 @@ exports.en = {
 
         <h2>This website</h2>
         <p>
-            To make this website, I developed a small Node.js module that reads a database
+            To make this website, I developed a small Node.js application that reads a database
             and outputs HTML content, generating all the files automatically. 
-            I created this module because I wanted a lightweight static site generator 
+            I created this application because I wanted a lightweight static site generator 
             with a few key features (like the possibility of easily managing a database of
             bilingual content), and I wasn't satisfied by pre-existing generators.
             <br><br>
-            You can view the source code for this Node.js module here (along with the source code
+            You can view the source code for this Node.js application here (along with the source code
             for my whole website) : <a href="https://github.com/pelletierauger/pelletierauger.github.io">
             https://github.com/pelletierauger/pelletierauger.github.io</a>
             <br><br>
