@@ -4,6 +4,7 @@ var pages = require("./pages/pages.js");
 var filenameFormatter = require('./filename-formatter.js');
 var codeFormatter = require('./code-formatter.js');
 var mathFormatter = require('./math-formatter.js');
+mathFormatter.start();
 
 makeIndex(pages, "fr", "./");
 makeIndex(pages, "en", "./");
@@ -112,7 +113,7 @@ function makeFile(language, fileName, htmlContent) {
         //If it does, we send the htmlContent to math-formatter.js which will write the file itself.
         //(The MathJax-node module is asynchronous, so it's much simpler if it writes the file itself.)
         console.log(fileName + " contains math.");
-        mathFormatter(language, fileName, htmlContent);
+        mathFormatter.typeset(language, fileName, htmlContent);
     } else {
 
         //Else, if htmlContent doesn't contain LaTeX math, we write the file right here.

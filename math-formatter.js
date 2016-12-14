@@ -2,10 +2,13 @@ var fs = require('fs');
 var mj = require('mathjax-node/lib/mj-page.js');
 var jsdom = require('mathjax-node/node_modules/jsdom').jsdom;
 
-module.exports = function(language, fileName, htmlContent) {
+exports.start = function() {
+    mj.start();
+};
+
+exports.typeset = function(language, fileName, htmlContent) {
     var document = jsdom(htmlContent, { features: { FetchExternalResources: false } });
     var xmlns = getXMLNS(document);
-    mj.start();
     mj.typeset({
         html: document.body.innerHTML,
         renderer: "CommonHTML",
