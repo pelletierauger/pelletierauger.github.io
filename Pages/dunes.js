@@ -46,8 +46,8 @@ exports.fr = {
     \]
     </div>
     <img src="../images/dunes/dunes004.jpg">
-    <p>Here's the complete code for the project, written in JavaScript with p5.js:</p>
-        <pre><code>var duneOne = {
+    <p>Voici le code complet de ce projet, écrit en JavaScript avec la bibliothèque <a href="http://p5js.org/">p5.js</a>.</p>
+    <pre><code>var duneOne = {
     a: -0.1,
     b: 1,
     c: 0.1,
@@ -149,7 +149,8 @@ exports.en = {
     \]
     </div>
     <img src="../images/dunes/dunes004.jpg">
-    <p>Here's the complete code for the project, written in JavaScript with p5.js:</p>
+    <p>Here is the complete code for the project, written in JavaScript with the 
+    <a href="http://p5js.org/">p5.js</a> library:</p>
         <pre><code>var duneOne = {
     a: -0.1,
     b: 1,
