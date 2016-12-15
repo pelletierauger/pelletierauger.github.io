@@ -5,11 +5,11 @@ exports.pages = {
     growing_wreath: {
         fr: {
             title: "Couronne grimpante",
-            description: "Groupe d'arbres récursifs en croissance."
+            description: "Groupe d'arbres récursifs en croissance"
         },
         en: {
             title: "Growing Wreath",
-            description: "A group of growing recursive trees."
+            description: "A group of growing recursive trees"
         },
         link: "http://codepen.io/pelletierauger/full/xOqNYa/"
     },
