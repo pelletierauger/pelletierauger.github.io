@@ -3,6 +3,7 @@ html {
     font-size: 1.1em;
     padding: 0;
     margin: 0;
+    /*background-color: #FAE400;*/
 }
 
 a {
@@ -23,7 +24,9 @@ p a {
 }
 
 #wrapper {
-    /*background: #B1D9CD;*/
+    /*    background-color: #FFFFFF;
+    display: block;
+    float: left;*/
     margin: 0em auto;
     max-width: 1200px;
     padding: 0;

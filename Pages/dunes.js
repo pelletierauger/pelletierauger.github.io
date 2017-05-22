@@ -27,25 +27,25 @@ exports.fr = {
         a = -0.1, b = 1, c = 0.1, d = 1
     \]
     </div>
-    <img src="../images/dunes/dunes002b.jpg">
+    <img src="../../images/dunes/dunes002b.jpg">
     <div class="math">
     \[
         a = -0.1, b = -1, c = 0.1, d = 3
     \]
     </div>
-    <img src="../images/dunes/dunes001b.jpg">
+    <img src="../../images/dunes/dunes001b.jpg">
     <div class="math">
     \[
         a = -0.6, b = 1, c = 0.1, d = 1
     \]
     </div>
-    <img src="../images/dunes/dunes003b.jpg">
+    <img src="../../images/dunes/dunes003b.jpg">
     <div class="math">
     \[
         a = -0.3, b = 1, c = 0.12, d = 3
     \]
     </div>
-    <img src="../images/dunes/dunes004.jpg">
+    <img src="../../images/dunes/dunes004.jpg">
     <p>Voici le code complet de ce projet, écrit en JavaScript avec la bibliothèque <a href="http://p5js.org/">p5.js</a>.</p>
     <pre><code>var duneOne = {
     a: -0.1,
@@ -130,25 +130,25 @@ exports.en = {
         a = -0.1, b = 1, c = 0.1, d = 1
     \]
     </div>
-    <img src="../images/dunes/dunes002b.jpg">
+    <img src="../../images/dunes/dunes002b.jpg">
     <div class="math">
     \[
         a = -0.1, b = -1, c = 0.1, d = 3
     \]
     </div>
-    <img src="../images/dunes/dunes001b.jpg">
+    <img src="../../images/dunes/dunes001b.jpg">
     <div class="math">
     \[
         a = -0.6, b = 1, c = 0.1, d = 1
     \]
     </div>
-    <img src="../images/dunes/dunes003b.jpg">
+    <img src="../../images/dunes/dunes003b.jpg">
     <div class="math">
     \[
         a = -0.3, b = 1, c = 0.12, d = 3
     \]
     </div>
-    <img src="../images/dunes/dunes004.jpg">
+    <img src="../../images/dunes/dunes004.jpg">
     <p>Here is the complete code for the project, written in JavaScript with the 
     <a href="http://p5js.org/">p5.js</a> library:</p>
         <pre><code>var duneOne = {
