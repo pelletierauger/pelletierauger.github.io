@@ -345,8 +345,10 @@ li.selected a {
     width: 94%;
     padding: 1.5% 3% 0% 3%;
     /*padding: 15px;*/
-    background: rgba(175, 215, 0, 1);
-    color: #000000;
+    /*background: rgba(175, 215, 0, 1);*/
+    /*color: #000000;*/
+    background: rgba(0, 0, 0, 1);
+    color: #FFFFFF;
     /*opacity: 0.75;*/
     margin: 0 0 0 0;
 }
