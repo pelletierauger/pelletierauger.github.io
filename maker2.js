@@ -1,11 +1,11 @@
 //First, we get the list of all the pages we need to make, in order, in pages.list, and
 //we also get all the pages that are defined inside the pages.js module, in pages.pages.
 var pages = require("./pages/pages.js");
-var filenameFormatter = require('./filename-formatter.js');
-var codeFormatter = require('./code-formatter.js');
+var filenameFormatter = require('./formatters/filename-formatter.js');
+var codeFormatter = require('./formatters/code-formatter.js');
 var fs = require("fs");
-var mathFormatter = require('./math-formatter.js');
-var dateFormatter = require("./date-formatter.js");
+var mathFormatter = require('./formatters/math-formatter.js');
+var dateFormatter = require("./formatters/date-formatter.js");
 mathFormatter.start();
 
 //-------Function Calls-----------------------------------------------------------------------------//
