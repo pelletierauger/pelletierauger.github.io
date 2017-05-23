@@ -4,11 +4,9 @@ exports.fr = {
     content: `
         <div id ="contact">
             <ul>
+            <li><a href="https://twitter.com/pelletierauger">Twitter</a></li>
             <li><a href="mailto:pelletierauger@gmail.com">Courriel</a></li>
             <li><a href="https://github.com/pelletierauger">GitHub</a></li>
-            <li><a href="https://www.instagram.com/pelletierauger/">Instagram</a></li>
-            <li><a href="https://twitter.com/pelletierauger">Twitter</a></li>
-            <li><a href="https://www.facebook.com/pelletierauger">Facebook</a></li>
             </ul>
         </div>
         <div id ="about">
@@ -49,11 +47,9 @@ exports.en = {
     content: `
         <div id ="contact">
             <ul>
+            <li><a href="https://twitter.com/pelletierauger">Twitter</a></li>
             <li><a href="mailto:pelletierauger@gmail.com">Email</a></li>
             <li><a href="https://github.com/pelletierauger">GitHub</a></li>
-            <li><a href="https://www.instagram.com/pelletierauger/">Instagram</a></li>
-            <li><a href="https://twitter.com/pelletierauger">Twitter</a></li>
-            <li><a href="https://www.facebook.com/pelletierauger">Facebook</a></li>
             </ul>
         </div>
         <div id ="about">
