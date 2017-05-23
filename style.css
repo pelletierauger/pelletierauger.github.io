@@ -1,9 +1,15 @@
+body {}
+
 html {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Sorts Mill Goudy', 'Baskerville', Georgia, serif;
     font-size: 1.1em;
     padding: 0;
     margin: 0;
     /*background-color: #FAE400;*/
+    border-left: 1em solid rgba(175, 215, 0, 1);
+    border-right: 1em solid rgba(175, 215, 0, 1);
+    min-height: 100%;
+    box-sizing: border-box;
 }
 
 a {
@@ -11,7 +17,7 @@ a {
 }
 
 p {
-    font-family: 'Sorts Mill Goudy', 'Baskerville', Georgia, serif;
+    /*font-family: 'Sorts Mill Goudy', 'Baskerville', Georgia, serif;*/
     -ms-word-break: break-all;
     word-break: break-all;
     word-break: break-word;
@@ -23,10 +29,14 @@ p a {
     color: #D95218;
 }
 
+.italic {
+    font-style: italic;
+}
+
 #wrapper {
-    /*    background-color: #FFFFFF;
+    /*background-color: #FFE1AA;*/
     display: block;
-    float: left;*/
+    /*float: left;*/
     margin: 0em auto;
     max-width: 1200px;
     padding: 0;
@@ -47,20 +57,48 @@ h2 {
     font-weight: normal;
 }
 
+h3 {
+    font-size: 1.5em;
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+}
+
+h3 a:visited {
+    color: #000000;
+}
+
 h1 a {
     color: #000000;
 }
 
-.portfolio-item h2 {
+.portfolio-description p {
+    padding: 0;
+    margin: 0;
+    /*line-height: 1.5em;*/
+    text-align: center;
+}
+
+.portfolio-description h2 {
     font-size: 1.25em;
     padding: 0;
     margin: 0;
+    /*line-height: 1em;*/
 }
 
 .portfolio-item p {
-    font-family: 'Open Sans', sans-serif;
+    /*font-family: 'Open Sans', sans-serif;*/
     padding: 0;
-    margin: 0 0 3% 0;
+    margin: 0 0 1.5% 0;
+}
+
+#nav {
+    margin-top: 0.75em;
+    /*background-color: red;*/
+}
+
+#nav a:hover {
+    color: #D95218;
 }
 
 #nav a {
@@ -77,6 +115,7 @@ h1 a {
     display: inline-block;
     /*background: #B5D9A2;*/
     margin: 0em 0em 0em 1em;
+    font-size: 1.2em;
 }
 
 li a {
@@ -87,6 +126,14 @@ li.selected a {
     color: #D95218;
 }
 
+.post-content {
+    margin-bottom: 1em;
+}
+
+.date {
+    margin-bottom: 1em;
+}
+
 
 /*-----------Portfolio---------------------------------------*/
 
@@ -94,10 +141,21 @@ li.selected a {
     display: block;
     float: left;
     background: #D8DABC;
-    height: 250px;
+    height: 400px;
     color: #ffffff;
     position: relative;
 }
+
+
+/*.portfolio-item {
+    height: 200px;
+}*/
+
+
+/*.portfolio-item:nth-child(5n+1) {
+    height: 400px;
+}
+*/
 
 .portfolio-item a {
     color: #ffffff;
@@ -155,19 +213,31 @@ li.selected a {
     /*background: #95D2C7;*/
 }
 
+#blog-pagination a {
+    color: #D95218;
+}
+
 #page img {
     width: 100%;
     margin-bottom: 1em;
 }
 
-@media screen and (max-width: 499px) {
+@media screen and (max-width: 650px) {
+    html {
+        border-left: 0px solid rgba(175, 215, 0, 1);
+        border-right: 0px solid rgba(175, 215, 0, 1);
+    }
     h1 {
         width: 9em;
         margin: auto;
     }
 }
 
-@media screen and (max-width: 699px) {
+@media screen and (max-width: 769px) {
+    html {
+        border-left: 0.2em solid rgba(175, 215, 0, 1);
+        border-right: 0.2em solid rgba(175, 215, 0, 1);
+    }
     h1 {
         /*background: blue;*/
         /*width: 15em;*/
@@ -195,7 +265,11 @@ li.selected a {
     }
 }
 
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 770px) {
+    html {
+        border-left: 0.5em solid rgba(175, 215, 0, 1);
+        border-right: 0.5em solid rgba(175, 215, 0, 1);
+    }
     #nav {
         /*background: #BA6965;*/
         height: 2em;
@@ -218,14 +292,34 @@ li.selected a {
     }
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 800px) {
+    html {
+        border-left: 0.5em solid rgba(175, 215, 0, 1);
+        border-right: 0.5em solid rgba(175, 215, 0, 1);
+    }
+    #wrapper {
+        padding: 0 1em 0 1em;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    html {
+        border-left: 1em solid rgba(175, 215, 0, 1);
+        border-right: 1em solid rgba(175, 215, 0, 1);
+    }
+    #wrapper {
+        padding: 0 2em 0 2em;
+    }
     .portfolio-item {
-        width: 49.25%;
-        margin: 0 0 1.5% 0;
+        width: 49.75%;
+        margin: 0 0 0.5% 0;
     }
     .portfolio-item:nth-child(odd) {
-        margin-right: 1.5%;
+        margin-right: 0.5%;
         background: #000000;
+    }
+    #nav {
+        margin-top: 1.5em;
     }
     #nav ul {
         position: absolute;
@@ -242,17 +336,19 @@ li.selected a {
 
 .portfolio-description {
     /*z-index: 3;*/
+    /*background-color: red;*/
     position: absolute;
     /*top: -250px;*/
     bottom: 0px;
     display: block;
     float: left;
     width: 94%;
-    padding: 2% 3% 0% 3%;
+    padding: 1.5% 3% 0% 3%;
     /*padding: 15px;*/
-    background: rgba(0, 0, 0, 1);
+    background: rgba(175, 215, 0, 1);
+    color: #000000;
     /*opacity: 0.75;*/
-    margin: 0px;
+    margin: 0 0 0 0;
 }
 
 .thumbnail {

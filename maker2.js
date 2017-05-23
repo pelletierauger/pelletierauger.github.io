@@ -111,7 +111,7 @@ function makeBlog(language) {
             //We create the content of a post within the blog
             content += `
             <div class = blog-post>`;
-            content += `<a href="../${linkIndividual}.html"><h3>${post[language].title}</h3></a>`;
+            content += `<h3><a href="../${linkIndividual}.html">${post[language].title}</a></h3>`;
             content += `<div class = "date">${date}</div>`;
             content += `
             <div class = "post-content">${post[language].content}</div>`;
@@ -129,7 +129,7 @@ function makeBlog(language) {
             var individualNavigation = makeNavigation(post, language, stepsFromRoot + 2, blogPrefix, oppositePrefix, false);
             var individualContent = individualHeader + individualNavigation;
             individualContent += `<div id="main">
-            <h2>${blog.config[language].title} - ${post[language].title}</h2>
+            <h3>${post[language].title}</h3>
             <div class = "date">${date}</div>
             ${post[language].content}</div>`;
             individualContent += makeFooter(post, language);
@@ -234,7 +234,7 @@ function makeMosaic(pages, language, stepsFromRoot) {
                 <img src="${navPrefix}thumbnails/${thumbnailName}.jpg">
             </div>
             <div class = "portfolio-description">
-                <h2>${title}</h2><p>${description}</p>
+                <p><span class="italic">${title}</span>, ${description}</p>
             </div>
             </a>
         </div>
@@ -377,9 +377,14 @@ function makeNavigation(page, language, stepsFromRoot, parent, oppositeParent, r
 }
 
 function makeContent(page, language) {
-    return `<div id="main">
+    if (page.en.title == "About") {
+        return `<div id="main">
+    ${page[language].content}</div>`;
+    } else {
+        return `<div id="main">
     <h2>${page[language].title}</h2>
     ${page[language].content}</div>`;
+    }
 }
 
 function makeFooter(language) {

@@ -1,15 +1,15 @@
-exports.list = ["dunes", "growing_wreath", "villeray", "about"];
+exports.list = ["dunes", "growing_wreath", "villeray", "dunes", "growing_wreath", "villeray", "about"];
 
 exports.pages = {
 
     growing_wreath: {
         fr: {
             title: "Couronne grimpante",
-            description: "Groupe d'arbres récursifs en croissance"
+            description: "groupe d'arbres récursifs en croissance"
         },
         en: {
             title: "Growing Wreath",
-            description: "A group of growing recursive trees"
+            description: "a group of growing recursive trees"
         },
         link: "http://codepen.io/pelletierauger/full/xOqNYa/"
     },
@@ -17,11 +17,11 @@ exports.pages = {
     joy_and_confusion: {
         fr: {
             title: "Les joies confuses",
-            description: "Un film d'animation coloré réalisé avec p5.js."
+            description: "un film d'animation coloré réalisé avec p5.js."
         },
         en: {
             title: "Joy and Confusion",
-            description: "A colorful animation film made with p5.js."
+            description: "a colorful animation film made with p5.js."
         },
         link: "http://www.vimeo.com/pelletierauger"
     },
