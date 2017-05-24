@@ -1,8 +1,5 @@
 exports.posts = [
-    "trois-generations",
-    "trois-generations",
-    "trois-generations",
-    "trois-generations"
+    "truchet"
 ];
 
 exports.config = {
