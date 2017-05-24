@@ -114,7 +114,7 @@ function makeBlog(language) {
             content += `<h3><a href="../${linkIndividual}.html">${post[language].title}</a></h3>`;
             content += `<div class = "date">${date}</div>`;
             content += `
-            <div class = "post-content">${post[language].content}</div>`;
+            <div id="page">${post[language].content}</div>`;
             content += `
             </div>`;
             currentPost++;
@@ -131,7 +131,7 @@ function makeBlog(language) {
             individualContent += `<div id="main">
             <h3>${post[language].title}</h3>
             <div class = "date">${date}</div>
-            ${post[language].content}</div>`;
+            <div id="page">${post[language].content}</div></div>`;
             individualContent += makeFooter(post, language);
 
             //Change the image links for the individual blog page
