@@ -1,4 +1,4 @@
-exports.list = ["dunes", "growing_wreath", "villeray", "dunes", "growing_wreath", "villeray", "about"];
+exports.list = ["dunes", "growing_wreath", "villeray"];
 
 exports.pages = {
 
