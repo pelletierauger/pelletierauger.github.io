@@ -5,9 +5,6 @@ html {
     font-size: 1.1em;
     padding: 0;
     margin: 0;
-    /*background-color: #FAE400;*/
-    border-left: 1em solid rgba(175, 215, 0, 1);
-    border-right: 1em solid rgba(175, 215, 0, 1);
     min-height: 100%;
     box-sizing: border-box;
 }
@@ -17,7 +14,6 @@ a {
 }
 
 p {
-    /*font-family: 'Sorts Mill Goudy', 'Baskerville', Georgia, serif;*/
     -ms-word-break: break-all;
     word-break: break-all;
     word-break: break-word;
@@ -34,7 +30,6 @@ p a {
 }
 
 #wrapper {
-    /*background-color: #FFE1AA;*/
     display: block;
     /*float: left;*/
     margin: 0em auto;
@@ -139,6 +134,8 @@ li.selected a {
 }
 
 
+
+
 /*-----------Portfolio---------------------------------------*/
 
 .portfolio-item {
@@ -149,6 +146,7 @@ li.selected a {
     color: #ffffff;
     position: relative;
 }
+
 
 
 /*.portfolio-item {
@@ -227,10 +225,6 @@ li.selected a {
 }
 
 @media screen and (max-width: 650px) {
-    html {
-        border-left: 0px solid rgba(175, 215, 0, 1);
-        border-right: 0px solid rgba(175, 215, 0, 1);
-    }
     h1 {
         width: 9em;
         margin: auto;
@@ -238,10 +232,6 @@ li.selected a {
 }
 
 @media screen and (max-width: 769px) {
-    html {
-        border-left: 0.2em solid rgba(175, 215, 0, 1);
-        border-right: 0.2em solid rgba(175, 215, 0, 1);
-    }
     h1 {
         /*background: blue;*/
         /*width: 15em;*/
@@ -270,10 +260,6 @@ li.selected a {
 }
 
 @media screen and (min-width: 770px) {
-    html {
-        border-left: 0.5em solid rgba(175, 215, 0, 1);
-        border-right: 0.5em solid rgba(175, 215, 0, 1);
-    }
     #nav {
         /*background: #BA6965;*/
         height: 2em;
@@ -297,20 +283,12 @@ li.selected a {
 }
 
 @media screen and (min-width: 800px) {
-    html {
-        border-left: 0.5em solid rgba(175, 215, 0, 1);
-        border-right: 0.5em solid rgba(175, 215, 0, 1);
-    }
     #wrapper {
         padding: 0 1em 0 1em;
     }
 }
 
 @media screen and (min-width: 900px) {
-    html {
-        border-left: 1em solid rgba(175, 215, 0, 1);
-        border-right: 1em solid rgba(175, 215, 0, 1);
-    }
     #wrapper {
         padding: 0 2em 0 2em;
     }
@@ -351,8 +329,8 @@ li.selected a {
     /*padding: 15px;*/
     /*background: rgba(175, 215, 0, 1);*/
     /*color: #000000;*/
-    background: rgba(0, 0, 0, 1);
-    color: #FFFFFF;
+    background: rgba(255, 255, 255, 1);
+    color: #000000;
     /*opacity: 0.75;*/
     margin: 0 0 0 0;
 }
@@ -378,6 +356,14 @@ li.selected a {
     width: 100%;
     height: 100%;
 }
+
+
+
+
+
+
+
+
 
 
 /*-----------Footer---------------------------------------*/
