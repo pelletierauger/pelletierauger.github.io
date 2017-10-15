@@ -64,18 +64,8 @@ function makeBlog(language) {
             suffix = " - Page " + (k + 1);
             root = false;
         }
-        var page = {
-            fr: {
-                title: blog.config.fr.title + suffix
-            },
-            en: {
-                title: blog.config.en.title + suffix
-            }
-        };
         var oppositeLang = (language == "fr") ? "en" : "fr";
-        var header = makeHeader(page, language, stepsFromRoot, page[language].title);
-
-        page = {
+        var page = {
             fr: {
                 title: "page-" + (k + 1)
             },
@@ -174,6 +164,17 @@ function makeBlog(language) {
         }
         content += `
         </div>`;
+        page = {
+            fr: {
+                title: blog.config.fr.title + suffix,
+                content: content
+            },
+            en: {
+                title: blog.config.en.title + suffix,
+                content: content
+            }
+        };
+        var header = makeHeader(page, language, stepsFromRoot, page[language].title);
         var footer = makeFooter(page, language);
         var fileName = (k == 0) ? "index" : "page-" + (k + 1);
         makeFile(language, parent + fileName, header + navigation + content + footer);
