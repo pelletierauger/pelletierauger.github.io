@@ -7,6 +7,7 @@ var fs = require("fs");
 var mathFormatter = require('./formatters/math-formatter.js');
 var dateFormatter = require("./formatters/date-formatter.js");
 mathFormatter.start();
+var verbose = (process.argv[2] == "-v") ? true : false;
 
 //-------Function Calls-----------------------------------------------------------------------------//
 
@@ -406,8 +407,8 @@ function makeFile(language, fileName, htmlContent, prefix) {
     if (htmlContent.match(r)) {
         //If it does, we send the htmlContent to math-formatter.js which will write the file itself.
         //(The MathJax-node module is asynchronous, so it's much simpler if it writes the file itself.)
-        console.log(fileName + " contains math.");
-        mathFormatter.typeset(language, fileName, htmlContent);
+        verbalize(fileName + " contains math.");
+        mathFormatter.typeset(language, fileName, htmlContent, verbose);
     } else {
 
 
@@ -422,7 +423,7 @@ function makeFile(language, fileName, htmlContent, prefix) {
             if (err) {
                 return console.error(err);
             } else {
-                console.log(prefix + fileName + '.html written successfully.');
+                verbalize(prefix + fileName + '.html written successfully.');
             }
         });
     }
@@ -448,6 +449,12 @@ function removeDirectory(dirPath) {
 function makeFolder(folder) {
     if (!fs.existsSync(folder)) {
         fs.mkdirSync(folder);
-        console.log("Make folder : " + folder);
+        verbalize("Make folder : " + folder);
+    }
+}
+
+function verbalize(message) {
+    if (verbose) {
+        console.log(message);
     }
 }

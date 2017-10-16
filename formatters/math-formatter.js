@@ -6,7 +6,7 @@ exports.start = function() {
     mj.start();
 };
 
-exports.typeset = function(language, fileName, htmlContent) {
+exports.typeset = function(language, fileName, htmlContent, verbose) {
     var document = jsdom(htmlContent, { features: { FetchExternalResources: false } });
     var xmlns = getXMLNS(document);
     mj.typeset({
@@ -26,7 +26,9 @@ exports.typeset = function(language, fileName, htmlContent) {
             if (err) {
                 return console.error(err);
             } else {
-                console.log(fileName + '.html written successfully with formatted maths.');
+                if (verbose) {
+                    console.log(fileName + '.html written successfully with formatted maths.');
+                }
             }
         });
     });
