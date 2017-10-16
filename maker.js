@@ -101,7 +101,7 @@ function makeBlog(language) {
             //We create the content of a post within the blog
             content += `
             <div class = blog-post>`;
-            content += `<h3><a href="../${linkIndividual}.html">${post[language].title}</a></h3>`;
+            content += `<h2><a href="../${linkIndividual}.html">${post[language].title}</a></h2>`;
             content += `<div class = "date">${date}</div>`;
             content += `
             <div id="page">${post[language].content}</div>`;
@@ -119,7 +119,7 @@ function makeBlog(language) {
             var individualNavigation = makeNavigation(post, language, stepsFromRoot + 2, blogPrefix, oppositePrefix, false);
             var individualContent = individualHeader + individualNavigation;
             individualContent += `<div id="main">
-            <h3>${post[language].title}</h3>
+            <h2>${post[language].title}</h2>
             <div class = "date">${date}</div>
             <div id="page">${post[language].content}</div></div>`;
             individualContent += makeFooter(post, language);
