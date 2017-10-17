@@ -15,6 +15,92 @@ Il y a beaucoup de nouvelles choses à accomplir pour faire de mon site Web un e
 \item Créer une section \textit{Archive} qui présenterait aussi une mappemonde de mes projets, une représentation visuelle de tous les projets que j'ai créés et des connexions entre eux. Il pourrait peut-être même y avoir une place pour les projets non réalisés, pour les \textit{rêves}. Je pourrais définir chacun de mes projets selon certains mots-clés, et selon certaines relations qu'il entretient avec les autres projets, et créer un système où les projets s'organiseraient spatialement eux-mêmes. Ensuite, je dessinerais la position de chaque projet avec une ellipse, et ses connexions avec les autres projets par des lignes. La page \textit{Archive} inclurait la mappemonde, une auto-documentation expliquant comment cette mappemonde a été réalisée, et finalement, au bas de la page, une liste visuellement très sobre de tous les projets. En plaçant le curseur au-dessus d'un point, on obtiendrait un \textit{DIV} superposé à la mappemonde, qui présenterait sommairement le projet et donnerait un hyperlien. Les points devraient décider eux-mêmes de quelles couleurs ils veulent colorer leur propre partie de la mappemonde. Ainsi, la mappemonde pourrait changer complètement à chaque nouveau projet que j'y ajouterais. La visibilité des projets non réalisés pourrait être optionnelle. Les projets pourraient avoir des points plus petits ou plus gros selon la quantité de lignes de code qu'ils contiennent. Et une masse plus grande, aussi! Si je calcule la masse dans mon système de particules, les gros points massifs se déplaceront plus lentement que les petits points agiles et légers. Ce sera beau.
 \end{enumerate}
 
+\newpage
 \section{Intégration de sketchs \textit{p5.js} sur le site Web}
 
-C'est un bon casse-tête. Le pire élément du casse-tête est la nécessité de pouvoir inclure des sketchs \textit{p5.js} dans des notes de blogs, donc possiblement plusieurs sketchs dans le même fichier HTML. Évidemment que, conséquamment, tous les sketchs \textit{p5.js} que je vais inclure sur mon site Web devront être programmés en \textit{instance mode}. Ce n'est pas un très gros problème en soi. Le plus gros problème est de créer un environnement dans lequel je peux créer aisément mes sketchs et ensuite les déployer aussi aisément.
+C'est un bon casse-tête. L'élément le plus compliqué du casse-tête est la nécessité de pouvoir inclure des sketchs \textit{p5.js} dans des notes de blogs, donc possiblement plusieurs sketchs dans le même fichier HTML. Évidemment que, conséquamment, tous les sketchs \textit{p5.js} que je vais inclure sur mon site Web devront être programmés en \textit{instance mode}. Ce n'est pas un très gros problème en soi. Le plus gros problème est de créer un environnement dans lequel je peux créer aisément mes sketchs et ensuite les déployer aussi aisément.
+
+Je définis en ce moment une note de blog avec un paramètre nommé \textit{date}. Je devrais aussi pouvoir donner à une note de blog ou à un projet un paramètre optionnel nommé \textit{p5sketch}, qui serait une liste de fichiers à inclure sur le site Web. Ces fichiers doivent être inclus dans un dossier qui porte le même nom que la page en question, ou la note de blog en question. \textit{maker.js} doit ensuite copier chacun de ces fichiers dans un dossier nommé de la même façon, mais dans l'arborescence du site Web. 
+
+\begin{lstlisting}
+exports.date = {
+    year: 2017,
+    month: 5,
+    day: 23
+};
+
+// Important: Dans la liste ci-dessous, les fichiers doivent apparaître 
+// dans l'ordre dans lequel ils doivent être chargés, 
+// et sketch.js doit toujours être le dernier fichier chargé.
+
+exports.p5sketch = {
+    p5DOM: false,
+    files: ["particle-prototype.js", "particles.js", "sketch.js"]
+};
+\end{lstlisting}
+
+Ainsi, lorsque \textit{maker.js} détecte qu'une page qu'il essaie de créer contient un sketch \textit{p5.js}, il doit :
+
+\begin{enumerate}  
+\item Lire la propriété p5sketch de cette page ou de cette note de blog.
+\item Lire le dossier qui porte le même nom que l'identifiant de la page ou de la note de blog.
+\item Créer un dossier qui porte le même nom aux bons endroits de l'arborescence du site, en français et en anglais.
+\item À l'extérieur de ce nouveau dossier, donc au même endroit où le fichier HTML de la page ou de la note de blog sera situé, créer un fichier vide nommé \textit{sketch.js}.
+\item Copier le contenu du fichier original sketch.js \textit{à la suite du nouveau fichier sketch.js}.
+\item Copier les fichiers du premier dossier vers le deuxième dossier, excepté pour sketch.js.
+\item Créer la section \textit{head} du fichier HTML avec des liens appropriés vers tous les fichiers JavaScript, sketch.js et les autres.
+\end{enumerate}
+
+\section{Mise en place des sketchs \textit{p5.js} dans les pages qui les contiennent}
+Je dois aussi trouver la meilleure façon de mettre en place les sketchs à l'intérieur des pages et des notes de blog. Je crois que je vais faire ça en créant des \textit{DIV} bien nommés dans mes pages et notes elles-mêmes, et ensuite en utilisant la fonction \textit{.parent} de \textit{p5.DOM} pour envoyer mon canevas HTML5 dans le bon \textit{DIV}. Si j'utilise cette méthode, ça veut donc dire que tous les sketchs \textit{p5.js} auront besoin de la bibliothèque \textit{p5.DOM}.
+
+\newpage
+\section{Idée pour une grande simplification}
+Minute... je n'ai pas besoin de copier des fichiers et des dossiers... tout peut se passer dans le dossier nommé \textit{sketches} qui contient tous les sketchs, et même, chacun des sketchs peut avoir son propre fichier \textit{sketch.js}, puisque chaque sketch sera dans son propre dossier. Et le blog n'aura qu'à charger tous les fichiers dans tous les bons sous-dossiers du dossier \textit{sketches}. La seule chose importante sera qu'effectivement, tous les sketchs devront être programmés en \textit{instance mode}.
+
+Je n'ai qu'à envoyer un \textit{array} à ma fonction \textit{makeHeader()} :
+
+\begin{lstlisting}
+function makeHeader(page, language, stepsFromRoot, sketches) {
+
+    var prefix = "";
+    if (stepsFromRoot == 0) {
+        prefix = "./";
+    } else if (stepsFromRoot > 0) {
+        for (var i = 0; i < stepsFromRoot; i++) {
+            prefix += "../";
+        }
+    }
+
+    var scripts = ``;
+    if (sketches) {
+        scripts += `<script src="${prefix}libraries/p5.js" type="text/javascript"></script>
+        `;
+        scripts += `<script src="${prefix}libraries/p5.dom.js" type="text/javascript"></script>   
+        `;       
+        for (let i = 0; i < sketches.length; i++) {
+            scripts += `<script src="${prefix}`;
+            scripts += sketches[i];
+            scripts +=`" type="text/javascript"></script>
+            `;
+        }
+    }
+
+    //...
+
+    return `<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Guillaume Pelletier-Auger${title}</title>
+        <meta name="viewport" 
+        content="width=device-width, initial-scale=1, 
+        maximum-scale=4, user-scalable=yes" />
+        ${scripts}
+        <link href="${prefix}style.css" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=${codeFont}Sorts+Mill+Goudy:400,400i"
+         rel="stylesheet">
+        ${codeCSS}
+    </head>`;
+}
+\end{lstlisting}
