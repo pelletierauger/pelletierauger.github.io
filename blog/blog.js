@@ -1,5 +1,5 @@
 exports.posts = [
-    "truchet"
+    "recursive-harmonic-motion", "truchet"
 ];
 
 exports.config = {

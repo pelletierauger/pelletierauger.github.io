@@ -87,10 +87,17 @@ function makeBlog(language) {
         ${blogNameLanguage}
         <div id = "blog-wrapper">`;
         var postsOnThisPage = Math.min(postsToPrint, blog.config.itemsPerPage);
-
+        var scripts = [];
         //This runs once for every blog post to build
         for (var l = 0; l < postsOnThisPage; l++) {
             var post = require('./blog/posts/' + blog.posts[currentPost]);
+            // console.log("How many times?");
+            if (post.sketch) {
+                // console.log("Sketch!" + post.sketch);
+                for (let i = 0; i < post.sketch.length; i++) {
+                    scripts.push(post.sketch[i]);
+                }
+            }
             var date = dateFormatter(post.date, language);
 
             //We start to build the individual page
@@ -116,13 +123,14 @@ function makeBlog(language) {
             makeFolder("./" + language + "/" + parent + post.date.year + "/" + post.date.month);
 
             //We make the file for an individual blog page
-            var individualHeader = makeHeader(post, language, stepsFromRoot + 2);
+            // console.log("Individual sketch before sending :" + post.sketch);
+            var individualHeader = makeHeader(post, language, stepsFromRoot + 2, post.sketch);
             var individualNavigation = makeNavigation(post, language, stepsFromRoot + 2, blogPrefix, oppositePrefix, false);
             var individualContent = individualHeader + individualNavigation;
-            individualContent += `<div id="main">
+            individualContent += `<div class = blog-post><div id="main">
             <h2>${post[language].title}</h2>
             <div class = "date">${date}</div>
-            <div id="page">${post[language].content}</div></div>`;
+            <div id="page">${post[language].content}</div></div></div>`;
             individualContent += makeFooter(post, language);
 
             //Change the image links for the individual blog page
@@ -131,6 +139,7 @@ function makeBlog(language) {
 
             makeFile(language, blogPrefix + filenameIndividual, individualContent);
         }
+        // console.log("scripts before sending :" + scripts + ", " + language);
         content += `
         </div>`;
         content += `<div id = "blog-pagination">`;
@@ -175,7 +184,7 @@ function makeBlog(language) {
                 content: content
             }
         };
-        var header = makeHeader(page, language, stepsFromRoot, page[language].title);
+        var header = makeHeader(page, language, stepsFromRoot, scripts);
         var footer = makeFooter(page, language);
         var fileName = (k == 0) ? "index" : "page-" + (k + 1);
         makeFile(language, parent + fileName, header + navigation + content + footer);
@@ -248,7 +257,7 @@ function makeMosaic(pages, language, stepsFromRoot) {
     return mosaic;
 }
 
-function makeHeader(page, language, stepsFromRoot) {
+function makeHeader(page, language, stepsFromRoot, sketches) {
     //If its a page and it has content, test the content with this regular expression.
     //If there is code embedded in the HTML content,
     //add the code.css stylesheet to the head of the HTML file.
@@ -257,7 +266,7 @@ function makeHeader(page, language, stepsFromRoot) {
     for (var i = 0; i < stepsFromRoot; i++) {
         prefixToRoot += "../";
     }
-
+    // console.log(page);
     var codeCSS = "";
     var codeFont = "";
     if (page && page[language].content) {
@@ -280,12 +289,28 @@ function makeHeader(page, language, stepsFromRoot) {
             prefix += "../";
         }
     }
+
+    var scripts = ``;
+    if (sketches && sketches.length > 0) {
+        scripts += `
+        <script src="${prefix}libraries/p5.js" type="text/javascript"></script>
+        `;
+        scripts += `<script src="${prefix}libraries/p5.dom.js" type="text/javascript"></script>
+        `;
+        for (let i = 0; i < sketches.length; i++) {
+            scripts += `<script src="${prefix}sketches`;
+            scripts += sketches[i];
+            scripts += `" type="text/javascript"></script>
+        `;
+        }
+    }
+    // console.log(scripts);
     return `<!DOCTYPE html>
     <html>
     <head>
         <meta charset="UTF-8">
         <title>Guillaume Pelletier-Auger${title}</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=4, user-scalable=yes" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=4, user-scalable=yes" />${scripts}
         <link href="${prefix}style.css" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=${codeFont}Sorts+Mill+Goudy:400,400i" rel="stylesheet">
         ${codeCSS}
