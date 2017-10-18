@@ -10,25 +10,28 @@ exports.fr = {
             </ul>
         </div>
         <div id ="about">
-        <h2><i>Comment les choses prennent-elles leurs formes?</i></h2>
+        <h2><i>Comment les choses prennent-elles leurs formes ?</i></h2>
         <p>Je suis un artiste visuel et un cinéaste d'animation vivant à Montréal, Québec, Canada.</p>
         <p>Mon travail explore divers sujets mathématiques. Je suis fasciné par les mathématiques et
         les divers procédés qui nous entourent : comment les arbres croissent et prennent leur forme,
         comment les statistiques gouvernent silencieusement nos vies, comment il nous est possible
         de construire des modèles des choses qui nous entourent afin de mieux les comprendre. 
-        <i>Comment les choses prennent-elles leurs formes?</i> est la question que je me pose 
-        constamment. Et qu'est-ce que la forme des choses révèle sur elles?</p>
+        <i>Comment les choses prennent-elles leurs formes ?</i> est la question que je me pose 
+        constamment. Et qu'est-ce que la forme des choses révèle sur elles ?</p>
 
         <p>Je suis un grand anxieux et découvrir la beauté de la science m'a aidé à appréhender
         le monde et à m'approprier davantage la petite place que j'y occupe. 
         Et l'art me permet d'explorer et de communiquer ces sujets.</p>
         <p>
         J'ai d'abord étudié le film d'animation au Cégep du Vieux Montréal, puis l'illustration
-        à l'Académie d'été internationale des Beaux-Arts de Salzbourg, en Autriche, et 
+        à l'Académie d'été internationale des Beaux-Arts de Salzbourg, en Autriche, et finalement
         les arts graphiques à l'Académie des Beaux-Arts de Varsovie, en Pologne.
         </p>
         <h2>Contact</h2>
-        N'hésitez pas à me contacter par courriel, sur Twitter ou sur GitHub pour toute question
+        N'hésitez pas à me contacter par <a href="mailto:pelletierauger@gmail.com">courriel</a>,
+        sur <a href="https://twitter.com/pelletierauger">Twitter</a>
+        ou sur <a href="https://github.com/pelletierauger">GitHub</a> pour des questions, 
+        commentaires ou suggestions
         concernant mon travail ou les divers sujets qui y sont explorés. Il me fait toujours
         plaisir de discuter et de découvrir des points de vue différents.
 
@@ -41,7 +44,21 @@ exports.fr = {
         me soutenir sur la plateforme Patreon.</p>
 
         <h2>Ce site Web</h2>
-
+        <p>
+            Pour réaliser ce site Web, j'ai développé une petite application Node.js qui lit une
+            base de données puis génère automatiquement tous les fichiers HTML. J'ai créé
+            cette application parce que je cherchais un <i>générateur de site statique</i> ("static site
+            generator") à la fois simple et offrant quelques fonctionnalités qui me sont importantes
+            (tel que la possibilité de gérer une base de données de contenu bilingue), et
+            j'étais insatisfait des générateurs déjà existants.
+            <br><br>
+            Vous pouvez voir le code source de cette application Node.js (avec le code source de ce site
+            Web au complet) ici : <a href="https://github.com/pelletierauger/pelletierauger.github.io">
+            https://github.com/pelletierauger/pelletierauger.github.io</a>
+            <br><br>
+            Le module principal est <i>maker.js</i> et il lit les données présentes dans
+            le dossier <i>pages</i>.
+        </p>
 
         </div>
     `
