@@ -28,16 +28,20 @@ exports.fr = {
         les arts graphiques à l'Académie des Beaux-Arts de Varsovie, en Pologne.
         </p>
         <h2>Contact</h2>
-        N'hésitez pas à me contacter par <a href="mailto:pelletierauger@gmail.com">courriel</a>,
+        <p>N'hésitez pas à me contacter par <a href="mailto:pelletierauger@gmail.com">courriel</a>,
         sur <a href="https://twitter.com/pelletierauger">Twitter</a>
         ou sur <a href="https://github.com/pelletierauger">GitHub</a> pour des questions, 
         commentaires ou suggestions
         concernant mon travail ou les divers sujets qui y sont explorés. Il me fait toujours
-        plaisir de discuter et de découvrir des points de vue différents.
+        plaisir d'écouter, de discuter et de découvrir différents points de vue.</p>
 
         <h2>Code source libre</h2>
-        <p>Les programmes que j'écris pour la création de mes œuvres sont tous offerts en code 
-        source libre, une chose qui me tient à cœur.</p>
+        <p>Les programmes que j'écris pour la création de mes œuvres sont tous distribués en code 
+        source libre. Quiconque est ainsi libre de réutiliser mon travail, de le modifier, 
+        d'en créer de nouvelles versions, etc.
+        L'accessibilité de la culture et du savoir est une chose qui me tient à cœur, et il me
+        fait plaisir de pouvoir y contribuer d'une façon modeste. Les outils que j'utilise
+        pour créer sont également des logiciels libres.</p>
 
         <h2>Soutenir</h2>
         <p>Si vous aimez mon travail et que vous désirez m'aider à continuer, je vous invite à
