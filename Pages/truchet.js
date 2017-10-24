@@ -17,33 +17,86 @@ exports.fr = {
     construites ? À quoi <i>ressemble</i> cette musique ?</p>
 
     <p>J'étais depuis un moment très curieux d'explorer les pavages, un domaine
-    mathématique énorme et riche, et duquel je ne comprends presque rien. 
-    En cherchant sur le Web, j'ai découvert par hasard l'histoire de Marjorie Rice.</p>
+    mathématique énorme et riche, et duquel je ne connais presque rien. 
+    En cherchant sur le Web différents types de pavages qui pourraient me servir
+    dans un film d'animation, je suis tombé sur l'histoire de Marjorie Rice.</p>
 
-    <p>En 1972, Marjorie Rice était une femme au foyer qui aimait lire les chroniques
-    mathématiques de Martin Gardner. Elle n'avait pas de formation post-secondaire
-    en mathématiques mais s'intéressait beaucoup à ce domaine. Après avoir lu une chronique
-    de Gardner sur les pavages, elle s'est mise à y travailler et a découvert de nouveaux pavages
-    qui étaient restés introuvés des mathématiciens professionnels. De plus, sa méthode de travail
+    <p>En 1976, Rice, femme au foyer californienne et mère de cinq enfants, 
+    aimait lire les chroniques mathématiques que Martin Gardner écrivait pour Scientific American. 
+    Elle s'intéressait aux mathématiques et regrettait de ne pas
+    avoir eu l'opportunité de poursuivre des études post-secondaires dans ce domaine. 
+    Après avoir lu une chronique de Gardner sur les huit types de pavages pentagonaux qui
+    étaient connus à cette époque, 
+    elle s'est mise au travail et a éventuellement découvert quatre nouveaux types
+    qui avaient jusque là éludé les mathématiciens. Sa méthode de travail
     était en elle-même aussi géniale que ses résultats : Rice avait inventé un
     système pour définir et classifier les pavages, outil sans lequel ses découvertes
-    eurent été presque impossibles.</p>
+    auraient été presque impossibles.</p>
+
+    <!-- Dans une entrevue réalisée en 1996 par Daniel Zuckerbrot -->
+
+    <p>Dans une entrevue datant de 1996, Rice raconte : 
+    &#171; Je me suis dit que ce devait 
+    être merveilleux de découvrir de beaux motifs qui n'avaient jamais été
+    vus auparavant. Alors je me suis mise à imaginer une façon d'aborder le problème. 
+    J'ai étudié tous les types de pavages qui étaient illustrés dans l'article, 
+    et j'ai tenté d'en découvrir un nouveau. J'étais si ravie lorsque j'ai trouvé, 
+    je ne pouvais pas le croire. Je ne pensais pas réellement que j'allais
+    trouver quoi que ce soit. J'étais tellement excitée. &#187;</p>
 
     <p>L'histoire de Rice m'a fasciné et inspiré, et m'a
     rendu bêtement obsédé par les pavages. Elle nous rappelle que les mathématiques ne 
     sont pas réservées à des académiciens claquemurés dans 
-    leur tour d'ivoire, mais plutôt, qu'elles peuvent offrir du plaisir et de la beauté
-    aux curieuses et aux curieux.</p>
+    leur tour d'ivoire, et qu'il est possible à toutes et à tous de se les approprier.</p>
 
-    <h3>Les permutations de Truchet, les observations de Douat</h3>
+    <h3>Les combinaisons de Truchet, les observations de Douat</h3>
 
-    <p>Après avoir scruté le terrain un peu, j'ai découvert les pavages de Truchet. 
-    Je suis tombé sur ce bouquin écrit par Dominique Douat en 1722, <i>Méthode pour
-    faire une infinité de desseins différens</i>.</p>
-    <div id="narrow">
-    <img src="../../images/truchet/douat-page-09.jpg"></div>
+    <p>Après avoir réfléchi de manière confuse à propos d'algorithmes qui pourraient
+    animer des pavages pentagonaux comme ceux de Marjorie Rice, je me suis dit 
+    que je gagnerais à commencer mon exploration avec des pavages plus simples. J'ai 
+    éventuellement découvert les pavages de Truchet, qui sont à la fois d'une grande
+    beauté et d'une simplicité surprenante.</p>
+    <p>Sébastien Truchet était un homme de science et de religion né en France en 16??. 
+    En 1704, il écrivit un <i>Mémoire sur les combinaisons</i> publié par l'Académie 
+    royale des sciences. Il y relate un voyage durant lequel il trouva &#171; dans un château nommé 
+    la Motte S. Lyé à 4 lieues en-deçà d'Orléans, plusieurs carreaux de fayence carrés 
+    et mipartis de deux couleurs par une ligne diagonale, qui étaient destinés à 
+    carreler une chapelle et plusieurs autres appartements. &#187;</p>
 
-    <h3>À quoi pourraient ressembler des pavages animés ?</h3>
+    <p>Les carreaux que Truchet décrit sont tous identiques, et peuvent être
+    tournés sur eux-mêmes en quatre positions différentes, désignées A, B, C et D.
+    </p>
+
+    <div id="carreaux">
+        <img src="../../images/truchet/carreaux.jpg">
+    </div>
+
+    <p>Truchet continue : &#171; Pour pouvoir former des dessins et des figures agréables par l'arrangement 
+    de ces carreaux, j'examinai d'abord en combien de manières deux de 
+    ces carreaux pourraient se joindre ensemble, en les disposant toujours en échiquier. &#187;
+    Il présente ensuite les figures qui résultent de ces combinaisons, puis celles qui résultent
+    de combinaisons de plus en plus complexes. Voici 
+    quelques unes des superbes planches gravées qui accompagnent son <i>Mémoire</i> :</p>
+
+    <div class="imagedouble">
+        <img src="../../images/truchet/truchet-planches-01.jpg">
+        <img src="../../images/truchet/truchet-planches-02.jpg">
+        <img src="../../images/truchet/truchet-planches-03.jpg">
+        <img src="../../images/truchet/truchet-planches-04.jpg">
+    </div>
+    <p>Je suis également tombé sur un livre écrit par Dominique Douat en 1722, intitulé <i>Méthode pour
+    faire une infinité de desseins différens</i>. Douat reprend les idées de Truchet et présente de
+    nouveaux pavages de son invention.</p>
+    <div class="imagedouble">
+        <img src="../../images/truchet/douat-page-09.jpg">
+        <img src="../../images/truchet/douat-page-74.jpg">
+        <img src="../../images/truchet/douat-page-79.jpg">
+        <img src="../../images/truchet/douat-page-82.jpg">
+        <img src="../../images/truchet/douat-page-102.jpg">
+        <img src="../../images/truchet/douat-page-107.jpg">
+    </div>
+
+    <h3>À quoi peuvent ressembler des pavages animés ?</h3>
 
     <p>Je me suis dit que j'allais essayer d'animer des pavages.</p>
 
@@ -61,6 +114,14 @@ exports.en = {
     description: "a series of images generated by a dynamical system",
     content: String.raw `
     <div id="page"><p>
+
+   <p>Dans une entrevue télévisuelle, Rice raconte : &#171; I thought "My, that must be wondeful that 
+    someone could discover these things which nobody had seen before, these beautiful patterns. 
+    So I started figuring out some way to work on the problem. I studied all of the types 
+    that were pictured in the articles, and tried to discover a new type. 
+    And I was so delighted when I found it. I couldn't believe it, I didn't really think I would find
+    anything. I was just so thrilled. &#187;</p>
+
     </div>
     `
 };
