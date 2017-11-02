@@ -1,16 +1,5 @@
-exports.fr = {
-    title: "À propos",
-    description: "Guillaume Pelletier-Auger est un artiste.",
-    content: `
-        <div id ="contact">
-            <ul>
-            <li><a href="https://twitter.com/pelletierauger">Twitter</a></li>
-            <li><a href="mailto:pelletierauger@gmail.com">Courriel</a></li>
-            <li><a href="https://github.com/pelletierauger">GitHub</a></li>
-            </ul>
-        </div>
-        <div id ="about">
-        <h2><i>Comment les choses prennent-elles leurs formes ?</i></h2>
+let biggerBio = `
+<h2><i>Comment les choses prennent-elles leurs formes ?</i></h2>
         <p>Je suis un artiste visuel et un cinéaste d'animation vivant à Montréal, Québec, Canada.</p>
         <p>Mon travail explore divers sujets mathématiques. Je suis fasciné par les mathématiques et
         les divers procédés qui nous entourent : comment les arbres croissent et prennent leur forme,
@@ -63,7 +52,26 @@ exports.fr = {
             Le module principal est <i>maker.js</i> et il lit les données présentes dans
             le dossier <i>pages</i>.
         </p>
+`;
 
+exports.fr = {
+    title: "À propos",
+    description: "Guillaume Pelletier-Auger est un artiste.",
+    content: `
+        <div id ="contact">
+            <ul>
+            <li><a href="https://twitter.com/pelletierauger">Twitter</a></li>
+            <li><a href="mailto:pelletierauger@gmail.com">Courriel</a></li>
+            <li><a href="https://github.com/pelletierauger">GitHub</a></li>
+            </ul>
+        </div>
+        <div id ="about">
+        <p>Je suis un artiste visuel et un cinéaste d'animation vivant à Montréal, Québec, Canada.</p>
+        <p>
+        J'ai d'abord étudié le film d'animation au Cégep du Vieux Montréal, puis l'illustration
+        à l'Académie d'été internationale des Beaux-Arts de Salzbourg, en Autriche, et finalement
+        les arts graphiques à l'Académie des Beaux-Arts de Varsovie, en Pologne.
+        </p>
         </div>
     `
 };
