@@ -311,7 +311,7 @@ function makeHeader(page, language, stepsFromRoot, sketches) {
         <meta charset="UTF-8">
         <title>Guillaume Pelletier-Auger${title}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=4, user-scalable=yes" />${scripts}
-        <link href="${prefix}style/main.css" rel="stylesheet" type="text/css">
+        <link href="${prefix}style/style.css" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=${codeFont}EB+Garamond" rel="stylesheet">
         ${codeCSS}
     </head>`;

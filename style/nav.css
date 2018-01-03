@@ -1,0 +1,36 @@
+#nav {
+    margin-top: 0.75em;
+    font-family: 'EBG12-SC';
+    text-transform: lowercase;
+}
+
+#nav a {
+    text-decoration: none;
+}
+
+#nav a:hover {
+    border-bottom: 5px solid black;
+}
+
+#nav ul li {
+    display: inline-block;
+    /*background: #B5D9A2;*/
+    margin: 0em 0em 0em 1em;
+    font-size: 1.2em;
+}
+
+li.selected a {
+    border-bottom: 5px solid black;
+}
+
+#nav ul {
+    /*position: absolute;*/
+    /*top: -250px;*/
+    /*bottom: 0px;*/
+    /*right: 0px;*/
+    /*list-style: none;*/
+    margin: 0;
+    /*background: #D9CCA2;*/
+    /*float: right;*/
+    /*color: #878787;*/
+}

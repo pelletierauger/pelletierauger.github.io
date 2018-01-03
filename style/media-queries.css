@@ -1,0 +1,104 @@
+@media screen and (max-width: 650px) {
+    h1 {
+        width: 9em;
+        margin: auto;
+    }
+    .imagedouble img {
+        /*display: block;*/
+        /*float: left;*/
+        max-width: 100%;
+        width: 100%;
+        /*clear: both;*/
+    }
+}
+
+@media screen and (max-width: 769px) {
+    h1 {
+        /*background: blue;*/
+        /*width: 15em;*/
+        /*margin: auto;*/
+        /*text-align: center;*/
+    }
+    #nav {
+        text-align: center;
+        /*background: #BA6965;*/
+        /*height: 7em;*/
+        margin-bottom: 0.5em;
+    }
+    #nav ul {
+        text-align: left;
+        /*float: left;*/
+        /*background: rgba(255, 255, 255, 0.7);*/
+        padding: 0.5em 0;
+        margin: 0;
+    }
+    #nav ul li {
+        width: 100%;
+        /*float: left;*/
+        padding: 0.25em 0;
+        margin: 0;
+    }
+}
+
+@media screen and (min-width: 770px) {
+    #nav {
+        /*background: #BA6965;*/
+        height: 2em;
+        margin-bottom: 2em;
+        position: relative;
+    }
+    #nav ul {
+        /*background: rgba(0, 255, 255, 0.7);*/
+        position: absolute;
+        bottom: 0px;
+        right: 0px;
+        list-style: none;
+    }
+}
+
+@media screen and (min-width: 500px) {
+    /*    .portfolio-item {
+        width: 100%;
+        margin: 0 0 1.5% 0;
+    }*/
+}
+
+@media screen and (min-width: 800px) {
+    #wrapper {
+        padding: 0 1em 0 1em;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    #wrapper {
+        padding: 0 2em 0 2em;
+    }
+    /*    .portfolio-item {
+        width: 49.75%;
+        margin: 0 0 0.5% 0;
+    }*/
+    /*    .portfolio-item:nth-child(odd) {
+        margin-right: 0.5%;
+        background: #000000;
+    }*/
+    #nav {
+        margin-top: 1.5em;
+    }
+    #nav ul {
+        position: absolute;
+        /*top: -250px;*/
+        bottom: 0px;
+        right: 0px;
+        list-style: none;
+        margin: 0;
+        /*background: #D9CCA2;*/
+        float: right;
+        /*color: #878787;*/
+    }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 760px) {
+    body {
+        -webkit-text-size-adjust: none;
+    }
+}
