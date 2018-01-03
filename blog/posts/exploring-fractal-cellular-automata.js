@@ -14,7 +14,7 @@ exports.fr = {
     (dont le <span class="italic">Jeu de la vie</span> est un exemple).
     Voici le résultat de mes premiers essais.</p>
     <div class="ornament">
-    <img class="ornament" src="../../../images/ornaments/terminal-ornament-02.png" width="100px" heigth="100px">
+    <img class="ornament" src="../../../style/ornaments/terminal-ornament-02.png" width="100px" heigth="100px">
     </div>
     <h3>Qu'est-ce qu'un automate cellulaire ?</h3>
     <div class="section">

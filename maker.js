@@ -242,7 +242,7 @@ function makeMosaic(pages, language, stepsFromRoot) {
         <div class = "portfolio-item">
             <a href="${link}">
             <div class = "thumbnail">
-                <img src="${navPrefix}thumbnails/${thumbnailName}.jpg">
+                <img src="${navPrefix}images/thumbnails/${thumbnailName}.jpg">
             </div>
             <div class = "portfolio-description">
                 <p><span class="italic">${title}</span>, ${description}</p>
@@ -393,7 +393,7 @@ function makeNavigation(page, language, stepsFromRoot, parent, oppositeParent, r
 
     return `<body><div id="wrapper">
     <div id="nav">
-    <h1><a href="${titleLink}"><img src="${prefix}./thumbnails/g.png">uillaume Pelletier-Auger</a></h1>
+    <h1><a href="${titleLink}"><img src="${prefix}./style/ornaments/g.png">uillaume Pelletier-Auger</a></h1>
     <ul>
     ${liProjects}<a href="${titleLink}">${nav1}</a></li>
     ${liBlog}<a href="${prefix}${language}/${navBlog}/">${nav15}</a></li>
