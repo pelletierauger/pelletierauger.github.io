@@ -1,5 +1,7 @@
 exports.posts = [
-    "recursive-harmonic-motion", "truchet"
+    "exploring-fractal-cellular-automata",
+    "recursive-harmonic-motion",
+    "truchet"
 ];
 
 exports.config = {
