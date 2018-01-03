@@ -5,11 +5,11 @@
         <title>Guillaume Pelletier-Auger - À propos</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=4, user-scalable=yes" />
         <link href="../style.css" rel="stylesheet" type="text/css">
-        <link href="https://fonts.googleapis.com/css?family=Sorts+Mill+Goudy:400,400i" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=EB+Garamond" rel="stylesheet">
         
     </head><body><div id="wrapper">
     <div id="nav">
-    <h1><a href="../fr/">Guillaume Pelletier-Auger</a></h1>
+    <h1><a href="../fr/"><img src=".././thumbnails/g.png">uillaume Pelletier-Auger</a></h1>
     <ul>
     <li><a href="../fr/">Projets</a></li>
     <li><a href="../fr/blog/">Blog</a></li>
@@ -18,20 +18,73 @@
     </ul>
     </div><div id="main">
     
-        <div id ="contact">
-            <ul>
-            <li><a href="https://twitter.com/pelletierauger">Twitter</a></li>
-            <li><a href="mailto:pelletierauger@gmail.com">Courriel</a></li>
-            <li><a href="https://github.com/pelletierauger">GitHub</a></li>
-            </ul>
-        </div>
-        <div id ="about">
-        <p>Je suis un artiste visuel et un cinéaste d'animation vivant à Montréal, Québec, Canada.</p>
+        <div id="page">
+        <h2>&#171; Comment les choses prennent-elles forme ? &#187;</h2>
+        <div class="section">
+            <p class="noindent">J<em>e suis un artiste et un cinéaste d'animation</em>
+            vivant à Montréal, Québec, Canada. Mon travail explore divers sujets mathématiques. Je suis fasciné par les mathématiques et
+        les divers procédés qui nous entourent : comment les arbres croissent et prennent leur forme,
+        comment les statistiques gouvernent silencieusement nos vies, comment il nous est possible
+        de construire des modèles des choses qui nous entourent afin de mieux les comprendre. 
+        <span class="italic">Comment les choses prennent-elles forme ?</span> 
+        est une question que je me pose constamment. 
+        Qu'est-ce que la forme des choses révèle sur elles ? Comment le mouvement
+        révèle-t-il la structure ? Comment la structure révèle-t-elle la génèse ? Comment la
+        génèse révèle-t-elle le <span class="italic">sens</span> ?</p>
+
+        <p>Je suis un grand anxieux et découvrir la beauté de la science m'a aidé à appréhender
+        le monde et à m'approprier davantage la petite place que j'y occupe. 
+        Et l'art me permet d'explorer et de communiquer ces sujets.</p>
         <p>
         J'ai d'abord étudié le film d'animation au Cégep du Vieux Montréal, puis l'illustration
         à l'Académie d'été internationale des Beaux-Arts de Salzbourg, en Autriche, et finalement
         les arts graphiques à l'Académie des Beaux-Arts de Varsovie, en Pologne.
-        </p>
+            </p>
+            </div>
+            <h3>Contact</h3>
+            <div class="section">
+            <p class="noindent">N'<em>hésitez pas</em> à me contacter par <a href="mailto:pelletierauger@gmail.com">courriel</a>,
+            sur <a href="https://twitter.com/pelletierauger">Twitter</a>
+            ou sur <a href="https://github.com/pelletierauger">GitHub</a> pour des questions, 
+            commentaires ou suggestions
+            concernant mon travail ou les divers sujets qui y sont explorés. Il me fait toujours
+            plaisir d'écouter, de discuter et de découvrir différents points de vue.</p>
+            </div>
+            <h3>Ce site Web</h3>
+            <div class="section">
+            <p class="noindent">P<em>our réaliser ce site Web</em>, j'ai développé une application 
+            Node.js qui lit une
+                base de données puis génère automatiquement tous les fichiers <em>html</em>. J'ai créé
+                cette application parce que je cherchais un 
+                <span class="italic">générateur de site statique</span> (static site
+                generator) à la fois simple et offrant quelques fonctionnalités qui me sont importantes
+                (tel que la possibilité de gérer une base de données de contenu bilingue), et
+                j'étais insatisfait des générateurs déjà existants.
+                </p>
+                <p>
+                Vous pouvez voir <a href="https://github.com/pelletierauger/pelletierauger.github.io">
+                le code source de cette application</a> (avec le code source de ce site Web au complet)
+                sur GitHub. Le module principal est 
+                <span class="inline-code">maker.js</span> et il lit les données présentes dans
+                les dossiers <span class="inline-code">pages</span> et
+                <span class="inline-code">blog</span>, et utilise des modules supplémentaires contenus
+                dans les dossiers
+                <span class="inline-code">formatters</span> et <span class="inline-code">node_modules</span>.
+                Les mathématiques présentes sur le site ont été formattées avec le module
+                <span class="inline-code">mathjax-node</span> et la syntaxe des boîtes de code a été
+                colorée avec le module <span class="inline-code">highlight.js</span>.
+                <p>La police de caractères utilisée pour le corps de ce site est <em>Eb</em> Garamond,
+                une recréation des fontes originales de Claude Garamond telles qu'utilisées
+                dans un spécimen imprimé en 1592 par Konrad Berner. <em>Eb</em> Garamond a été créée par
+                Georg Duffner et est distribuée librement et gratuitement sur GitHub.
+                La police utilisée pour les lettrines est <span class="ATT">ATT4425</span>,
+                une recréation de la police du terminal de l'ordinateur 
+                Teletype 56<em>d</em> (modèle <em>at&t</em> 4425)
+                datant de 1984. Elle a été développée par Seth Morabito et est distribuée librement.
+                La police utilisée pour les boîtes de code est <span class="Incon">Inconsolata</span>,
+                <a href="http://levin.com/type/myfonts/inconsolata.html">créée par Raph Levien</a>
+                et distribuée librement avec une Open Font License.</p>
+            </div>
         </div>
     </div><div id="footer">Guillaume Pelletier-Auger - 2017</div></div>
     </body>
