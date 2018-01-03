@@ -69,9 +69,12 @@ hue-6-2: #e6c07b
 .hljs-type,
 .hljs-selector-class,
 .hljs-selector-attr,
-.hljs-selector-pseudo,
+.hljs-selector-pseudo {
+    color: #C47A12;
+}
+
 .hljs-number {
-    color: #d19a66;
+    color: #5F9A00;
 }
 
 .hljs-symbol,
