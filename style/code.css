@@ -18,6 +18,25 @@ hue-6-2: #e6c07b
 
 */
 
+pre {
+    overflow: auto;
+    margin: 1.5em auto 1.5em auto;
+    max-width: 650px;
+    background: #F2F2F2;
+    padding: 25px;
+    line-height: 1.4em;
+    /*  -ms-word-break: break-all;
+    word-break: break-all;
+    word-break: break-word;*/
+}
+
+code {
+    padding: 0;
+    margin: 0;
+    font-family: 'Inconsolata', courier, monospace;
+    font-size: 0.85em;
+}
+
 .hljs {
     display: block;
     overflow-x: auto;

@@ -1,3 +1,5 @@
+@import url("portfolio.css");
+
 @font-face {
     font-family: 'EBG12-Re';
     src: url(./fonts/EBGaramond12-Regular.eot );
@@ -39,8 +41,6 @@
     src: url('./fonts/ATT4425.ttf') format('truetype');
 }
 
-body {}
-
 html {
     font-family: 'EBG12-Re';
     -moz-font-feature-settings: "liga", "calt", "xtex";
@@ -52,7 +52,6 @@ html {
     -moz-font-variant-ligatures: discretionary-ligatures;
     -webkit-font-variant-ligatures: discretionary-ligatures;
     /*font-variant-ligatures: historical-ligatures;*/
-    /*font-size: 1.3em;*/
     font-size: 1.3em;
     padding: 0;
     margin: 0;
@@ -61,13 +60,14 @@ html {
     line-height: 1.5;
 }
 
-a {
-    /*text-decoration: none;*/
-    /*text-decoration-color: #9A9A9A;*/
+body {
+    margin: 0em auto;
+    max-width: 1200px;
+    padding: 0;
 }
 
-#nav a {
-    text-decoration: none;
+a {
+    color: #000000;
 }
 
 .italic {
@@ -98,22 +98,12 @@ p:first-child::first-letter {
     text-indent: 0;
 }
 
-p:first-child::first-line {
-    /*font-family: 'EBG12-SC';*/
-    /*-moz-font-feature-settings: "smcp=1";*/
-    /*text-transform: uppercase;*/
-    /*letter-spacing: 0.05em;*/
-    /*text-indent: 0;*/
-}
-
 p {
     /*    -ms-word-break: break-all;
     word-break: break-all;
     word-break: break-word;*/
     display: block;
-    /*text-align: left;*/
-    /*text-indent: 1.5em;*/
-    padding: 0 0 0 0;
+    padding: 0;
     margin: 0;
     line-height: 1.3;
     text-align: justify;
@@ -121,6 +111,7 @@ p {
     -webkit-hyphens: auto;
     -moz-hyphens: auto;
 }
+
 em {
     font-style: normal;
     font-family: 'EBG12-SC';
@@ -135,23 +126,6 @@ em {
     text-indent: 0em;
 }
 
-p a {
-    /*color: #D95218;*/
-    color: #000000;
-}
-
-.italic {
-    /*font-style: italic;*/
-}
-
-#wrapper {
-    display: block;
-    /*float: left;*/
-    margin: 0em auto;
-    max-width: 1200px;
-    padding: 0;
-    /*margin: 0;*/
-}
 h1 {
     /*background: #D9CCA2;*/
     /*display: block;*/
@@ -200,46 +174,18 @@ h1 a {
     color: #000000;
 }
 
-.portfolio-description p {
-    padding: 0;
-    margin: 0;
-    /*line-height: 1.5em;*/
-    text-align: center;
-}
-
-.portfolio-description h2 {
-    font-size: 1.25em;
-    padding: 0;
-    margin: 0;
-    /*line-height: 1em;*/
-}
-
-.portfolio-item p {
-    /*font-family: 'Open Sans', sans-serif;*/
-    padding: 0;
-    margin: 0 0 1.5% 0;
-}
-
 #nav {
     margin-top: 0.75em;
-    /*background-color: red;*/
     font-family: 'EBG12-SC';
     text-transform: lowercase;
 }
 
-#nav a:hover {
-    /*color: #D95218;*/
-    border-bottom: 5px solid black;
-}
-
 #nav a {
-    /*color: #000000;*/
-    /*color: #878787;*/
+    text-decoration: none;
 }
 
-#nav ul li:last-child a {
-    /*background: #ff0000;*/
-    /*color: #878787;*/
+#nav a:hover {
+    border-bottom: 5px solid black;
 }
 
 #nav ul li {
@@ -249,12 +195,7 @@ h1 a {
     font-size: 1.2em;
 }
 
-li a {
-    color: #000000;
-}
-
 li.selected a {
-    /*color: #D95218;*/
     border-bottom: 5px solid black;
 }
 
@@ -286,24 +227,6 @@ li.selected a {
     margin-bottom: 0.5em;
 }
 
-.portfolio-item {
-    display: block;
-    float: left;
-    background: #D8DABC;
-    /*height: 300px;*/
-    color: #ffffff;
-    position: relative;
-}
-
-.portfolio-item a {
-    color: #ffffff;
-}
-
-.portfolio-item {
-    width: 100%;
-    margin: 0 0 3% 0;
-}
-
 #nav ul {
     /*position: absolute;*/
     /*top: -250px;*/
@@ -314,37 +237,6 @@ li.selected a {
     /*background: #D9CCA2;*/
     /*float: right;*/
     /*color: #878787;*/
-}
-
-#contact {
-    /*background: #95D2C7;*/
-    width: 100px;
-    float: left;
-    margin-right: 1em;
-    margin-bottom: 1em;
-}
-
-#contact a {
-    /*text-decoration: underline;*/
-    color: #D95218;
-}
-
-#contact ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-#about {
-    margin: 0 auto;
-    padding: 0;
-    max-width: 700px;
-    /*background: #D2C5A3;*/
-    /*float: left;*/
-}
-
-#about a {
-    color: #D95218;
 }
 
 #page p {
@@ -465,10 +357,10 @@ li.selected a {
 }
 
 @media screen and (min-width: 500px) {
-    .portfolio-item {
+    /*    .portfolio-item {
         width: 100%;
         margin: 0 0 1.5% 0;
-    }
+    }*/
 }
 
 @media screen and (min-width: 800px) {
@@ -481,10 +373,10 @@ li.selected a {
     #wrapper {
         padding: 0 2em 0 2em;
     }
-    .portfolio-item {
-        /*width: 49.75%;*/
+    /*    .portfolio-item {
+        width: 49.75%;
         margin: 0 0 0.5% 0;
-    }
+    }*/
     /*    .portfolio-item:nth-child(odd) {
         margin-right: 0.5%;
         background: #000000;
@@ -505,47 +397,6 @@ li.selected a {
     }
 }
 
-.portfolio-description {
-    /*z-index: 3;*/
-    /*background-color: red;*/
-    position: absolute;
-    /*top: -250px;*/
-    bottom: 0px;
-    display: block;
-    float: left;
-    width: 94%;
-    padding: 1.5% 3% 0% 3%;
-    /*padding: 15px;*/
-    /*background: rgba(175, 215, 0, 1);*/
-    /*color: #000000;*/
-    background: rgba(255, 255, 255, 1);
-    color: #000000;
-    /*opacity: 0.75;*/
-    margin: 0 0 0 0;
-}
-
-.thumbnail {
-    /*float: left;*/
-    /*    width: 250px;
-    height: 250px;*/
-    height: 100%;
-    overflow: hidden;
-    background: #000000;
-    /*width: 1000px;*/
-}
-
-.thumbnail img {
-    /*width: 100%;*/
-    /*height: 50%;*/
-    width: 100%;
-}
-
-.portfolio-description a {
-    z-index: 20;
-    width: 100%;
-    height: 100%;
-}
-
 #footer {
 
     font-family: 'EBG08-Re';
@@ -563,25 +414,6 @@ li.selected a {
     overflow: auto;
     margin-bottom: 1em;
     clear: both;
-}
-
-pre {
-    overflow: auto;
-    margin: 1.5em auto 1.5em auto;
-    max-width: 650px;
-    background: #F2F2F2;
-    padding: 25px;
-    line-height: 1.4em;
-    /*  -ms-word-break: break-all;
-    word-break: break-all;
-    word-break: break-word;*/
-}
-
-code {
-    padding: 0;
-    margin: 0;
-    font-family: 'Inconsolata', courier, monospace;
-    font-size: 0.85em;
 }
 
 @media only screen and (min-width: 320px) and (max-width: 760px) {
