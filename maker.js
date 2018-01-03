@@ -134,8 +134,8 @@ function makeBlog(language) {
             individualContent += makeFooter(post, language);
 
             //Change the image links for the individual blog page
-            var re = /img src="..\/..\/..\//gi;
-            individualContent = individualContent.replace(re, `img src="../../../../`);
+            var re = /src="..\/..\/..\//gi;
+            individualContent = individualContent.replace(re, `src="../../../../`);
 
             makeFile(language, blogPrefix + filenameIndividual, individualContent);
         }
@@ -312,7 +312,7 @@ function makeHeader(page, language, stepsFromRoot, sketches) {
         <title>Guillaume Pelletier-Auger${title}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=4, user-scalable=yes" />${scripts}
         <link href="${prefix}style.css" rel="stylesheet" type="text/css">
-        <link href="https://fonts.googleapis.com/css?family=${codeFont}Sorts+Mill+Goudy:400,400i" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=${codeFont}EB+Garamond" rel="stylesheet">
         ${codeCSS}
     </head>`;
 }
@@ -393,7 +393,7 @@ function makeNavigation(page, language, stepsFromRoot, parent, oppositeParent, r
 
     return `<body><div id="wrapper">
     <div id="nav">
-    <h1><a href="${titleLink}">Guillaume Pelletier-Auger</a></h1>
+    <h1><a href="${titleLink}"><img src="${prefix}./thumbnails/g.png">uillaume Pelletier-Auger</a></h1>
     <ul>
     ${liProjects}<a href="${titleLink}">${nav1}</a></li>
     ${liBlog}<a href="${prefix}${language}/${navBlog}/">${nav15}</a></li>
