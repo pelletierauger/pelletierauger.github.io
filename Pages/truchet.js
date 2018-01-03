@@ -9,12 +9,13 @@ exports.fr = {
     chemins et qui se termine (pour l'instant) avec quelques images colorées 
     et une infinité d'avenues non explorées.</div>
     <img src="../../images/truchet/truchet001.jpg">
-    <h3>Premiers pas vers les pavages ; le génie inspirant de Marjorie Rice</h3>
-    <p>J'ai démarré ce projet avec un désir vif mais très flou : celui de réaliser 
+    <h3>Premiers pas vers les pavages ; le génie de Marjorie Rice</h3>
+    <div id="section">
+    <p class="noindent">J'<em>ai démarré ce projet avec un désir vif</em> mais très flou : celui de réaliser 
     une animation abstraite pour accompagner un morceau musical d'Anna Meredith. 
     La musique de Meredith m'évoque de vagues images très colorées 
     et des mouvements agités et décisifs, mais par quels procédés ces images pourraient-elles être
-    construites ? À quoi <i>ressemble</i> cette musique ?</p>
+    construites ? À quoi <span class="italic">ressemble</span> cette musique ?</p>
 
     <p>J'étais depuis un moment très curieux d'explorer les pavages, un domaine
     mathématique énorme et riche, et duquel je ne connais presque rien. 
@@ -48,35 +49,37 @@ exports.fr = {
     rendu bêtement obsédé par les pavages. Elle nous rappelle que les mathématiques ne 
     sont pas réservées à des académiciens claquemurés dans 
     leur tour d'ivoire, et qu'il est possible à toutes et à tous de se les approprier.</p>
-
+    </div>
     <h3>Les combinaisons de Truchet, les observations de Douat</h3>
 
-    <p>Après avoir réfléchi de manière confuse à propos d'algorithmes qui pourraient
+    <div id="section">
+    <p class="noindent">A<em>près avoir réfléchi de manière confuse</em> à propos d'algorithmes qui pourraient
     animer des pavages pentagonaux comme ceux de Marjorie Rice, je me suis dit 
     que je gagnerais à commencer mon exploration avec des pavages plus simples. J'ai 
     éventuellement découvert les pavages de Truchet, qui sont à la fois d'une grande
     beauté et d'une simplicité surprenante.</p>
-    <p>Sébastien Truchet était un homme de science et de religion né en France en 16??. 
-    En 1704, il écrivit un <i>Mémoire sur les combinaisons</i> publié par l'Académie 
+    <p>Sébastien Truchet était un homme de science et de religion né en France en 1657. 
+    En 1704, il écrivit un <span class="italic">Mémoire sur les combinaisons</span> publié par l'Académie 
     royale des sciences. Il y relate un voyage durant lequel il trouva &#171; dans un château nommé 
     la Motte S. Lyé à 4 lieues en-deçà d'Orléans, plusieurs carreaux de fayence carrés 
     et mipartis de deux couleurs par une ligne diagonale, qui étaient destinés à 
     carreler une chapelle et plusieurs autres appartements. &#187;</p>
 
     <p>Les carreaux que Truchet décrit sont tous identiques, et peuvent être
-    tournés sur eux-mêmes en quatre positions différentes, désignées A, B, C et D.
+    tournés sur eux-mêmes en quatre positions différentes, désignées <em>a</em>, <em>b</em>, <em>c</em> et <em>d</em>.
     </p>
 
     <div id="carreaux">
         <img src="../../images/truchet/carreaux.jpg">
     </div>
 
-    <p>Truchet continue : &#171; Pour pouvoir former des dessins et des figures agréables par l'arrangement 
+    <p class="noindent">Truchet continue : &#171; Pour pouvoir former des dessins et des figures agréables par l'arrangement 
     de ces carreaux, j'examinai d'abord en combien de manières deux de 
     ces carreaux pourraient se joindre ensemble, en les disposant toujours en échiquier. &#187;
     Il présente ensuite les figures qui résultent de ces combinaisons, puis celles qui résultent
     de combinaisons de plus en plus complexes. Voici 
-    quelques unes des superbes planches gravées qui accompagnent son <i>Mémoire</i> :</p>
+    quelques unes des superbes planches gravées qui 
+    accompagnent son <span class="italic">Mémoire</span> :</p>
 
     <div class="imagedouble">
         <img src="../../images/truchet/truchet-planches-01.jpg">
@@ -84,8 +87,9 @@ exports.fr = {
         <img src="../../images/truchet/truchet-planches-03.jpg">
         <img src="../../images/truchet/truchet-planches-04.jpg">
     </div>
-    <p>Je suis également tombé sur un livre écrit par Dominique Douat en 1722, intitulé <i>Méthode pour
-    faire une infinité de desseins différens</i>. Douat reprend les idées de Truchet et présente de
+    <p class="noindent">Je suis également tombé sur un livre écrit 
+    par Dominique Douat en 1722, intitulé <span class="italic">Méthode pour
+    faire une infinité de desseins différens</span>. Douat reprend les idées de Truchet et présente de
     nouveaux pavages de son invention.</p>
     <div class="imagedouble">
         <img src="../../images/truchet/douat-page-09.jpg">
@@ -95,7 +99,7 @@ exports.fr = {
         <img src="../../images/truchet/douat-page-102.jpg">
         <img src="../../images/truchet/douat-page-107.jpg">
     </div>
-
+    </div>
     <h3>À quoi peuvent ressembler des pavages animés ?</h3>
 
     <p>Je me suis dit que j'allais essayer d'animer des pavages.</p>
