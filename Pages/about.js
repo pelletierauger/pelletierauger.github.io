@@ -62,8 +62,9 @@ exports.fr = {
     content: `
         <div id="page">
         <h2>&#171; Comment les choses prennent-elles forme ? &#187;</h2>
-        <div class="section">
-            <p class="noindent">J<em>e suis un artiste et un cinéaste d'animation</em>
+        <p class="noindent">
+        <span class="drop-caps">J</span>
+        <span class="small-caps">e suis un artiste et un cinéaste d'animation</span>
             vivant à Montréal, Québec, Canada. Mon travail explore divers sujets mathématiques. Je suis fasciné par les mathématiques et
         les divers procédés qui nous entourent : comment les arbres croissent et prennent leur forme,
         comment les statistiques gouvernent silencieusement nos vies, comment il nous est possible
@@ -82,20 +83,19 @@ exports.fr = {
         à l'Académie d'été internationale des Beaux-Arts de Salzbourg, en Autriche, et finalement
         les arts graphiques à l'Académie des Beaux-Arts de Varsovie, en Pologne.
             </p>
-            </div>
             <h3>Contact</h3>
-            <div class="section">
-            <p class="noindent">N'<em>hésitez pas</em> à me contacter par <a href="mailto:pelletierauger@gmail.com">courriel</a>,
+            <p class="noindent">
+            <span class="drop-caps">N'</span><span class="small-caps">hésitez pas</span>
+            à me contacter par <a href="mailto:pelletierauger@gmail.com">courriel</a>,
             sur <a href="https://twitter.com/pelletierauger">Twitter</a>
             ou sur <a href="https://github.com/pelletierauger">GitHub</a> pour des questions, 
             commentaires ou suggestions
             concernant mon travail ou les divers sujets qui y sont explorés. Il me fait toujours
             plaisir d'écouter, de discuter et de découvrir différents points de vue.</p>
-            </div>
             <h3>Ce site Web</h3>
-            <div class="section">
-            <p class="noindent">P<em>our réaliser ce site Web</em>, j'ai développé une application 
-            Node.js qui lit une
+            <p class="noindent">
+            <span class="drop-caps">P</span><span class="small-caps">our réaliser ce site Web</span>,
+            j'ai développé une application Node.js qui lit une
                 base de données puis génère automatiquement tous les fichiers <em>html</em>. J'ai créé
                 cette application parce que je cherchais un 
                 <span class="italic">générateur de site statique</span> (static site
@@ -126,7 +126,6 @@ exports.fr = {
                 La police utilisée pour les boîtes de code est <span class="Incon">Inconsolata</span>,
                 <a href="http://levin.com/type/myfonts/inconsolata.html">créée par Raph Levien</a>
                 et distribuée librement avec une Open Font License.</p>
-            </div>
         </div>
     `
 };

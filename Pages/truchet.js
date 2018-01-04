@@ -10,8 +10,10 @@ exports.fr = {
     et une infinité d'avenues non explorées.</div>
     <img src="../../images/truchet/truchet001.jpg">
     <h3>Premiers pas vers les pavages ; le génie de Marjorie Rice</h3>
-    <div id="section">
-    <p class="noindent">J'<em>ai démarré ce projet avec un désir vif</em> mais très flou : celui de réaliser 
+    <p class="noindent">
+    <span class="drop-caps">J'</span>
+    <span class="small-caps">ai démarré ce projet avec un désir vif</span> 
+    mais très flou : celui de réaliser 
     une animation abstraite pour accompagner un morceau musical d'Anna Meredith. 
     La musique de Meredith m'évoque de vagues images très colorées 
     et des mouvements agités et décisifs, mais par quels procédés ces images pourraient-elles être
@@ -49,11 +51,13 @@ exports.fr = {
     rendu bêtement obsédé par les pavages. Elle nous rappelle que les mathématiques ne 
     sont pas réservées à des académiciens claquemurés dans 
     leur tour d'ivoire, et qu'il est possible à toutes et à tous de se les approprier.</p>
-    </div>
+
     <h3>Les combinaisons de Truchet, les observations de Douat</h3>
 
-    <div id="section">
-    <p class="noindent">A<em>près avoir réfléchi de manière confuse</em> à propos d'algorithmes qui pourraient
+    <p class="noindent">
+    <span class="drop-caps">A</span>
+    <span class="small-caps">près avoir réfléchi de manière confuse</span>
+    à propos d'algorithmes qui pourraient
     animer des pavages pentagonaux comme ceux de Marjorie Rice, je me suis dit 
     que je gagnerais à commencer mon exploration avec des pavages plus simples. J'ai 
     éventuellement découvert les pavages de Truchet, qui sont à la fois d'une grande
@@ -98,7 +102,6 @@ exports.fr = {
         <img src="../../images/truchet/douat-page-82.jpg">
         <img src="../../images/truchet/douat-page-102.jpg">
         <img src="../../images/truchet/douat-page-107.jpg">
-    </div>
     </div>
     <h3>À quoi peuvent ressembler des pavages animés ?</h3>
 
