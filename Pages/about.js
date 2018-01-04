@@ -135,14 +135,6 @@ exports.en = {
     title: "About",
     description: "Guillaume Pelletier-Auger is an artist.",
     content: `
-        <div id ="contact">
-            <ul>
-            <li><a href="https://twitter.com/pelletierauger">Twitter</a></li>
-            <li><a href="mailto:pelletierauger@gmail.com">Email</a></li>
-            <li><a href="https://github.com/pelletierauger">GitHub</a></li>
-            </ul>
-        </div>
-        <div id ="about">
             <p class ="noindent">
                 I'<em>m an artist and animation filmmaker</em> living in Montréal, Québec, Canada.
                 I first studied animation film at the Cégep du Vieux Montréal, and then took an illustration 
@@ -151,7 +143,6 @@ exports.en = {
                 the Academy of Fine Arts in Warsaw, Poland, were I concentrated on illustration with professor
                 Zygmunt Januszewski and animation with professor Hieronim Neumann.
             </p>
-        </div>
     `
 }
 
