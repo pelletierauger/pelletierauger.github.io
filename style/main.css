@@ -96,6 +96,13 @@ img {
     position: relative;
     bottom: 0.4em;
     font-size: 0.8em;
+    font-family: 'EBG08-Re';
+}
+.superscript-quarter {
+    position: relative;
+    bottom: 0.2em;
+    font-size: 0.8em;
+    font-family: 'EBG08-Re';
 }
 
 p:first-child::first-letter {
