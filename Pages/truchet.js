@@ -1,7 +1,7 @@
 exports.fr = {
     title: "Les pavages de Truchet",
     date: "Hiver 2017 - En cours",
-    description: "Pavages et mathématiques françaises du XVIIe siècle",
+    description: `Pavages et mathématiques françaises du <em>xvii</em><span class="superscript-half">e</span> siècle.`,
     content: String.raw `
     <div id="page">
     <div id="abstract"><div id="abstract-title">Résumé</div>
