@@ -5,11 +5,11 @@ exports.pages = {
     growing_wreath: {
         fr: {
             title: "Couronne grimpante",
-            description: "groupe d'arbres récursifs en croissance"
+            description: "Groupe d'arbres récursifs en croissance."
         },
         en: {
             title: "Growing Wreath",
-            description: "a group of growing recursive trees"
+            description: "A group of growing recursive trees."
         },
         link: "http://codepen.io/pelletierauger/full/xOqNYa/"
     },
@@ -17,11 +17,11 @@ exports.pages = {
     joy_and_confusion: {
         fr: {
             title: "Les joies confuses",
-            description: "un film d'animation coloré réalisé avec p5.js."
+            description: "Un court métrage d'animation explorant les spirales phyllotaxiques."
         },
         en: {
             title: "Joy and Confusion",
-            description: "a colorful animation film made with p5.js."
+            description: "A short animation film exploring phyllotaxic spirals."
         },
         link: "http://www.vimeo.com/pelletierauger"
     },

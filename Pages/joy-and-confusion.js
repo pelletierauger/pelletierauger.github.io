@@ -1,6 +1,6 @@
 exports.fr = {
     title: "Les joies confuses",
-    description: "Un court métrage",
+    description: "Un court métrage d'animation explorant les spirales phyllotaxiques.",
     content: `
     <div id="page">
         <img src="https://pelletierauger.github.io/les-joies-confuses/images/joyandconfusion-0.00.17.20.jpg">
@@ -10,7 +10,7 @@ exports.fr = {
 
 exports.en = {
     title: "Joy and Confusion",
-    description: "A short film",
+    description: "A short animation film exploring phyllotaxic spirals.",
     content: `
     <div id="page">
         <img src="https://pelletierauger.github.io/les-joies-confuses/images/joyandconfusion-0.00.17.20.jpg">
