@@ -223,7 +223,25 @@ function makeMosaic(pages, language, stepsFromRoot) {
     var innerLink = (stepsFromRoot == 0) ? "./en/projects/" : "../fr/projets/";
     var navPrefix = (stepsFromRoot == 0) ? "./" : "../";
 
-    var mosaic = `<div class="mosaic">`;
+    var introduction;
+    if (language == "fr") {
+        introduction = `
+        <p class="introduction">
+        <span class="drop-caps">B</span><span class="small-caps">onjour !</span>
+        Je suis un artiste et un cinéaste d'animation vivant à Montréal, Canada. J'expérimente avec les
+        mathématiques à l'aide de logiciels en code source libre.
+        </p>
+    `;
+    } else {
+        introduction = `
+        <p class="introduction">
+        <span class="drop-caps">H</span><span class="small-caps">ello !</span>
+        I’m an artist and animation filmmaker living in Montréal, Canada. 
+        I experiment with mathematics using open source software.
+        </p>
+    `;
+    }
+    var mosaic = `${introduction}<div class="mosaic">`;
     for (var i = 0; i < pages.list.length; i++) {
         var page = (pages.pages[pages.list[i]] || require('./pages/' + pages.list[i]));
 

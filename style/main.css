@@ -106,7 +106,7 @@ img {
 }
 
 .drop-caps {
-    font-size: 4.5em;
+    font-size: 4.6em;
     font-family: 'ATT4425';
     padding-right: 8px;
     float: left;
@@ -137,6 +137,12 @@ p {
     text-indent: 2em;
     -webkit-hyphens: auto;
     -moz-hyphens: auto;
+}
+
+.introduction {
+    text-indent: 0em;
+    max-width: 550px;
+    margin: 2em auto 2em auto;
 }
 
 .inline-code {
