@@ -68,6 +68,13 @@ a {
     color: #000000;
 }
 
+img {
+    /*vertical-align: middle;*/
+    padding: 0;
+    margin: 0;
+    display: block;
+}
+
 .italic {
     font-family: 'EBG12-It';
 }
@@ -78,6 +85,17 @@ a {
 
 .Incon {
     font-family: 'Inconsolata';
+}
+
+.superscript {
+    position: relative;
+    bottom: 0.5em;
+    font-size: 0.8em;
+}
+.superscript-half {
+    position: relative;
+    bottom: 0.4em;
+    font-size: 0.8em;
 }
 
 p:first-child::first-letter {
@@ -137,6 +155,8 @@ h1 {
 h1 img {
     height: 0.8em;
     padding-right: 0.05em;
+    display: inline-block;
+    /*vertical-align: middle;*/
 }
 
 h2 {
@@ -214,7 +234,7 @@ h1 a {
     max-width: 85px;
     height: 34px;
     margin: 1em auto;
-    padding-bottom: 1em;
+    /*padding-bottom: 1em;*/
 }
 
 #narrow {

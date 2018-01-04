@@ -244,8 +244,14 @@ function makeMosaic(pages, language, stepsFromRoot) {
             <div class = "thumbnail">
                 <img src="${navPrefix}images/thumbnails/${thumbnailName}.jpg">
             </div>
-            <div class = "portfolio-description">
-                <p><span class="italic">${title}</span>, ${description}</p>
+            <div class = "portfolio-banner">
+                <div class = "portfolio-logo">
+                    <img src="${navPrefix}style/ornaments/logo-${thumbnailName}.png">
+                </div>
+                <div class = "portfolio-description">
+                    <h2>${title}</h2> 
+                    ${description}
+                </div>
             </div>
             </a>
         </div>
