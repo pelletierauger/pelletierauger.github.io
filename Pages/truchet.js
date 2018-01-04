@@ -1,7 +1,8 @@
 exports.fr = {
     title: "Les pavages de Truchet",
     date: "Hiver 2017 - En cours",
-    description: `Errances dans les mathématiques françaises du <em>xvii</em><span class="superscript-half">e</span> siècle.`,
+    description: `Errances dans les mathématiques françaises du 
+    <span class="small-caps">xvii</span><span class="superscript-half">e</span> siècle.`,
     content: String.raw `
     <div id="page">
     <div id="abstract"><div id="abstract-title">Résumé</div>
@@ -70,7 +71,11 @@ exports.fr = {
     carreler une chapelle et plusieurs autres appartements. &#187;</p>
 
     <p>Les carreaux que Truchet décrit sont tous identiques, et peuvent être
-    tournés sur eux-mêmes en quatre positions différentes, désignées <em>a</em>, <em>b</em>, <em>c</em> et <em>d</em>.
+    tournés sur eux-mêmes en quatre positions différentes, désignées 
+    <span class="small-caps">a</span>, 
+    <span class="small-caps">b</span>, 
+    <span class="small-caps">c</span> et 
+    <span class="small-caps">d</span>.
     </p>
 
     <div id="carreaux">

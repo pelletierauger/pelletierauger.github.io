@@ -96,7 +96,8 @@ exports.fr = {
             <p class="noindent">
             <span class="drop-caps">P</span><span class="small-caps">our réaliser ce site Web</span>,
             j'ai développé une application Node.js qui lit une
-                base de données puis génère automatiquement tous les fichiers <em>html</em>. J'ai créé
+                base de données puis génère automatiquement tous les fichiers 
+                <span class="small-caps">html</span>. J'ai créé
                 cette application parce que je cherchais un 
                 <span class="italic">générateur de site statique</span> (static site
                 generator) à la fois simple et offrant quelques fonctionnalités qui me sont importantes
@@ -115,13 +116,16 @@ exports.fr = {
                 Les mathématiques présentes sur le site ont été formattées avec le module
                 <span class="inline-code">mathjax-node</span> et la syntaxe des boîtes de code a été
                 colorée avec le module <span class="inline-code">highlight.js</span>.
-                <p>La police de caractères utilisée pour le corps de ce site est <em>Eb</em> Garamond,
+                <p>La police de caractères utilisée pour le corps de ce site est 
+                <span class="small-caps">Eb</span> Garamond,
                 une recréation des fontes originales de Claude Garamond telles qu'utilisées
-                dans un spécimen imprimé en 1592 par Konrad Berner. <em>Eb</em> Garamond a été créée par
+                dans un spécimen imprimé en 1592 par Konrad Berner. 
+                <span class="small-caps">Eb</span> Garamond a été créée par
                 Georg Duffner et est distribuée librement et gratuitement sur GitHub.
                 La police utilisée pour les lettrines est <span class="ATT">ATT4425</span>,
                 une recréation de la police du terminal de l'ordinateur 
-                Teletype 56<em>d</em> (modèle <em>at&t</em> 4425)
+                Teletype 56<span class="small-caps">d</span> 
+                (modèle <span class="small-caps">at&t</span> 4425)
                 datant de 1984. Elle a été développée par Seth Morabito et est distribuée librement.
                 La police utilisée pour les boîtes de code est <span class="Incon">Inconsolata</span>,
                 <a href="http://levin.com/type/myfonts/inconsolata.html">créée par Raph Levien</a>
