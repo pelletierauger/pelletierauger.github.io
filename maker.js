@@ -237,7 +237,7 @@ function makeMosaic(pages, language, stepsFromRoot) {
         <p class="introduction">
         <span class="drop-caps">H</span><span class="small-caps">ello !</span>
         I’m an artist and animation filmmaker living in Montréal, Canada. 
-        I experiment with mathematics using open source software.
+        I create mathematical and algorithmic art using open source software.
         </p>
     `;
     }
@@ -278,6 +278,11 @@ function makeMosaic(pages, language, stepsFromRoot) {
         mosaic = mosaic + itemDiv;
     }
     mosaic = mosaic + `</div>`;
+    mosaic = `${mosaic}
+    <div id="ornament-003">
+        <img src="${navPrefix}style/ornaments/terminal-ornament-003.png">
+    </div>
+    `;
     return mosaic;
 }
 
