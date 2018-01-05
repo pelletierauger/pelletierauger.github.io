@@ -247,6 +247,22 @@ h1 a {
     /*padding-bottom: 1em;*/
 }
 
+#ornament-001 {
+    max-width: 125px;
+    /*max-height: 30px;*/
+    margin: 2em auto 1em auto;
+    /*padding-bottom: 1em;*/
+}
+
+#ornament-003 img {
+    max-width: 60px;
+    clear: both;
+    padding-top: 1em;
+    margin: 0em auto 0em auto;
+    /*padding-bottom: 1em;*/
+}
+
+
 #narrow {
     max-width: 500px;
     margin: 0 auto;
