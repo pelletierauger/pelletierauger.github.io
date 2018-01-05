@@ -54,6 +54,9 @@ let biggerBio = `
             Le module principal est <i>maker.js</i> et il lit les données présentes dans
             le dossier <i>pages</i>.
         </p>
+        <div id="ornament-001">
+        <img src="../../../style/ornaments/terminal-ornament-001.png">
+        </div>
 `;
 
 exports.fr = {
@@ -113,12 +116,12 @@ exports.fr = {
                 <span class="inline-code">blog</span>, et utilise des modules supplémentaires contenus
                 dans les dossiers
                 <span class="inline-code">formatters</span> et <span class="inline-code">node_modules</span>.
-                Les mathématiques présentes sur le site ont été formattées avec le module
+                Les formules mathématiques présentes sur le site ont été mises en forme avec le module
                 <span class="inline-code">mathjax-node</span> et la syntaxe des boîtes de code a été
                 colorée avec le module <span class="inline-code">highlight.js</span>.
                 <p>La police de caractères utilisée pour le corps de ce site est 
                 <span class="small-caps">Eb</span> Garamond,
-                une recréation des fontes originales de Claude Garamond telles qu'utilisées
+                une recréation des fontes originales de Claude Garamont telles qu'utilisées
                 dans un spécimen imprimé en 1592 par Konrad Berner. 
                 <span class="small-caps">Eb</span> Garamond a été créée par
                 Georg Duffner et est distribuée librement et gratuitement sur GitHub.
@@ -130,6 +133,9 @@ exports.fr = {
                 La police utilisée pour les boîtes de code est <span class="Incon">Inconsolata</span>,
                 <a href="http://levin.com/type/myfonts/inconsolata.html">créée par Raph Levien</a>
                 et distribuée librement avec une Open Font License.</p>
+                <div id="ornament-001">
+                    <img src="../../../style/ornaments/terminal-ornament-002.png">
+                </div>
         </div>
     `
 };
