@@ -1,14 +1,17 @@
 exports.fr = {
     title: "Les pavages de Truchet",
-    date: "Hiver 2017 - En cours",
+    date: "Hiver 2017 &mdash; En cours",
     description: `Errances dans les mathématiques françaises du 
-    <span class="small-caps">xvii</span><span class="superscript-half">e</span> siècle.`,
+    <span class="small-caps">xvii</span><span class="superscript">e</span> siècle.`,
     content: String.raw `
     <div id="page">
-    <div id="abstract"><div id="abstract-title">Résumé</div>
-    Une exploration des pavages qui passe par mille différents
-    chemins et qui se termine (pour l'instant) avec quelques images colorées 
-    et une infinité d'avenues non explorées.</div>
+    <p class="noindent">
+        <span class="drop-caps">U</span>
+        <span class="small-caps">ne exploration</span> des pavages qui passe par mille différents
+        chemins et qui se termine (pour l'instant) avec quelques images colorées 
+        et une infinité d'avenues non explorées.
+    </p>
+    <br>
     <img src="../../images/truchet/truchet001.jpg">
     <h3>Premiers pas vers les pavages ; le génie de Marjorie Rice</h3>
     <p class="noindent">
@@ -68,7 +71,7 @@ exports.fr = {
     royale des sciences. Il y relate un voyage durant lequel il trouva &#171; dans un château nommé 
     la Motte S. Lyé à 4 lieues en-deçà d'Orléans, plusieurs carreaux de fayence carrés 
     et mipartis de deux couleurs par une ligne diagonale, qui étaient destinés à 
-    carreler une chapelle et plusieurs autres appartements. &#187;</p>
+    carreler une chapelle et plusieurs autres appartements.&nbsp;&#187;</p>
 
     <p>Les carreaux que Truchet décrit sont tous identiques, et peuvent être
     tournés sur eux-mêmes en quatre positions différentes, désignées 
@@ -122,17 +125,18 @@ exports.fr = {
 
 exports.en = {
     title: "The Tilings of Truchet",
-    date: "Winter 2017 - Ongoing",
-    description: `Wanderings into 17<span class="superscript-quarter">th</span> century French mathematics.`,
+    date: "Winter 2017 &mdash; Ongoing",
+    description: `Wanderings into 
+    <span class="lnum">17</span><span class="superscript">th</span> century French mathematics.`,
     content: String.raw `
     <div id="page"><p>
 
-   <p>Dans une entrevue télévisuelle, Rice raconte : &#171; I thought "My, that must be wondeful that 
+   <p>Dans une entrevue télévisuelle, Rice raconte : &ldquo;I thought it must be wonderful that 
     someone could discover these things which nobody had seen before, these beautiful patterns. 
     So I started figuring out some way to work on the problem. I studied all of the types 
     that were pictured in the articles, and tried to discover a new type. 
     And I was so delighted when I found it. I couldn't believe it, I didn't really think I would find
-    anything. I was just so thrilled. &#187;</p>
+    anything. I was just so thrilled.&rdquo;</p>
 
     </div>
     `
