@@ -131,7 +131,7 @@ exports.en = {
     content: String.raw `
     <div id="page"><p>
 
-   <p>Dans une entrevue télévisuelle, Rice raconte : &ldquo;I thought it must be wonderful that 
+   <p>Dans une entrevue télévisuelle, Rice raconte : &ldquo;I thought My, that must be wondeful that 
     someone could discover these things which nobody had seen before, these beautiful patterns. 
     So I started figuring out some way to work on the problem. I studied all of the types 
     that were pictured in the articles, and tried to discover a new type. 
