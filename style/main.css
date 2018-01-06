@@ -51,7 +51,7 @@ html {
     -webkit-font-variant-ligatures: discretionary-ligatures;
     /*font-variant-ligatures: historical-ligatures;*/
     font-size: 1.25em;
-    padding: 0;
+    padding: 0 2em 0 2em;
     margin: 0;
     min-height: 100%;
     box-sizing: border-box;
@@ -60,7 +60,7 @@ html {
 
 body {
     margin: 0em auto;
-    max-width: 1200px;
+    max-width: 1100px;
     padding: 0;
 }
 
@@ -147,7 +147,7 @@ p {
 
 .inline-code {
     font-family: 'Inconsolata', courier, monospace;
-    background-color: #ECECEC;
+    /*background-color: #ECECEC;*/
 }
 
 .noindent {
