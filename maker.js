@@ -84,8 +84,9 @@ function makeBlog(language) {
             blogNameLanguage = "<h2>Page " + (k + 1) + "</h2>";
         }
         var content = `
+        <div id = "page">
         ${blogNameLanguage}
-        <div id = "blog-wrapper">`;
+        `;
         var postsOnThisPage = Math.min(postsToPrint, blog.config.itemsPerPage);
         var scripts = [];
         //This runs once for every blog post to build
@@ -109,10 +110,9 @@ function makeBlog(language) {
             //We create the content of a post within the blog
             content += `
             <div class = blog-post>`;
-            content += `<h2><a href="../${linkIndividual}.html">${post[language].title}</a></h2>`;
+            content += `<h2 class="with-date"><a href="../${linkIndividual}.html">${post[language].title}</a></h2>`;
             content += `<div class = "date">${date}</div>`;
-            content += `
-            <div id="page">${post[language].content}</div>`;
+            content += `${post[language].content}`;
             content += `
             </div>`;
             currentPost++;
@@ -127,10 +127,15 @@ function makeBlog(language) {
             var individualHeader = makeHeader(post, language, stepsFromRoot + 2, post.sketch);
             var individualNavigation = makeNavigation(post, language, stepsFromRoot + 2, blogPrefix, oppositePrefix, false);
             var individualContent = individualHeader + individualNavigation;
-            individualContent += `<div class = blog-post><div id="main">
-            <h2>${post[language].title}</h2>
-            <div class = "date">${date}</div>
-            <div id="page">${post[language].content}</div></div></div>`;
+            individualContent += `
+            <div id="page">
+                <div class = "blog-post">
+                    <h2 class="with-date">${post[language].title}</h2>
+                    <div class = "date">${date}</div>
+                    ${post[language].content}
+                </div>
+            </div>
+            `;
             individualContent += makeFooter(post, language);
 
             //Change the image links for the individual blog page
@@ -434,17 +439,30 @@ function makeNavigation(page, language, stepsFromRoot, parent, oppositeParent, r
 
 function makeContent(page, language) {
     if (page.en.title == "About") {
-        return `<div id="main">
-    ${page[language].content}</div>`;
+        return `
+        <div id="page">
+            ${page[language].content}
+        </div>`;
     } else {
-        return `<div id="main">
-    <h2>${page[language].title}</h2>
-    ${page[language].content}</div>`;
+        if (page[language].date) {
+            return `
+            <div id="page">
+                <h2 class="with-date">${page[language].title}</h2>
+                <div class="date">${page[language].date}</div>
+                ${page[language].content}
+            </div>`;
+        } else {
+            return `
+            <div id="page">
+                <h2>${page[language].title}</h2>
+                ${page[language].content}
+            </div>`;
+        }
     }
 }
 
 function makeFooter(language) {
-    return `<div id="footer">Guillaume Pelletier-Auger - 2017</div></div>
+    return `<div id="footer">Guillaume Pelletier-Auger &mdash; 2017, 2018</div></div>
     </body>
     </html>`;
 }
