@@ -66,26 +66,26 @@ exports.fr = {
         <h2>&laquo; Comment les choses prennent-elles forme ? &raquo;</h2>
         <p class="noindent">
             <span class="drop-caps">J</span>
-            <span class="small-caps">e suis un artiste et un cinéaste d'animation</span>
+            <span class="small-caps">e suis un artiste et un cinéaste d&rsquo;animation</span>
             vivant à Montréal, Québec, Canada. Mon travail explore divers sujets mathématiques. Je suis fasciné par les mathématiques et
             les divers procédés qui nous entourent : comment les arbres croissent et prennent leur forme,
             comment les statistiques gouvernent silencieusement nos vies, comment il nous est possible
             de construire des modèles des choses qui nous entourent afin de mieux les comprendre. 
             <span class="italic">Comment les choses prennent-elles forme ?</span> 
             est une question que je me pose constamment. 
-            Qu'est-ce que la forme des choses révèle sur elles ? Comment le mouvement
+            Qu&rsquo;est-ce que la forme des choses révèle sur elles ? Comment le mouvement
             révèle-t-il la structure ? Comment la structure révèle-t-elle la génèse ? Comment la
             génèse révèle-t-elle le <span class="italic">sens</span> ?
         </p>
         <p>
-            Je suis un grand anxieux et découvrir la beauté de la science m'a aidé à appréhender
-            le monde et à m'approprier davantage la petite place que j'y occupe. 
-            Et l'art me permet d'explorer et de communiquer ces sujets.
+            Je suis un grand anxieux et découvrir la beauté de la science m&rsquo;a aidé à appréhender
+            le monde et à m&rsquo;approprier davantage la petite place que j&rsquo;y occupe. 
+            Et l&rsquo;art me permet d&rsquo;explorer et de communiquer ces sujets.
         </p>
         <p>
-            J'ai d'abord étudié le film d'animation au Cégep du Vieux Montréal, puis l'illustration
-            à l'Académie d'été internationale des Beaux-Arts de Salzbourg, en Autriche, et finalement
-            les arts graphiques à l'Académie des Beaux-Arts de Varsovie, en Pologne.
+            J&rsquo;ai d&rsquo;abord étudié le film d&rsquo;animation au Cégep du Vieux Montréal, puis l&rsquo;illustration
+            à l&rsquo;Académie d&rsquo;été internationale des Beaux-Arts de Salzbourg, en Autriche, et finalement
+            les arts graphiques à l&rsquo;Académie des Beaux-Arts de Varsovie, en Pologne.
         </p>
         <h3>Contact</h3>
         <p class="noindent">
@@ -95,19 +95,19 @@ exports.fr = {
             ou sur <a href="https://github.com/pelletierauger">GitHub</a> pour des questions, 
             commentaires ou suggestions
             concernant mon travail ou les divers sujets qui y sont explorés. Il me fait toujours
-            plaisir d'écouter, de discuter et de découvrir différents points de vue.
+            plaisir d&rsquo;écouter, de discuter et de découvrir différents points de vue.
         </p>
         <h3>Ce site Web</h3>
         <p class="noindent">
             <span class="drop-caps">P</span><span class="small-caps">our réaliser ce site Web</span>,
-            j'ai développé une application Node.js qui lit une
+            j&rsquo;ai développé une application Node.js qui lit une
             base de données puis génère automatiquement tous les fichiers 
-            <span class="small-caps">html</span>. J'ai créé
+            <span class="small-caps">html</span>. J&rsquo;ai créé
             cette application parce que je cherchais un 
             <span class="italic">générateur de site statique</span> (static site
             generator) à la fois simple et offrant quelques fonctionnalités qui me sont importantes
             (tel que la possibilité de gérer une base de données de contenu bilingue), et
-            j'étais insatisfait des générateurs déjà existants.
+            j&rsquo;étais insatisfait des générateurs déjà existants.
         </p>
         <p>
             Vous pouvez voir <a href="https://github.com/pelletierauger/pelletierauger.github.io">
@@ -119,20 +119,20 @@ exports.fr = {
             dans les dossiers
             <span class="inline-code">formatters</span> et <span class="inline-code">node_modules</span>.
             Les formules mathématiques présentes sur le site ont été mises en forme avec le module
-            <span class="inline-code">mathjax-node</span> et la syntaxe des boîtes de code a été
+            <span class="inline-code">mathjax-node</span> et la syntaxe des boîtes de code informatique a été
             colorée avec le module <span class="inline-code">highlight.js</span>.
             <p>La police de caractères utilisée pour le corps de ce site est 
             <span class="small-caps">Eb</span> Garamond,
-            une recréation des fontes originales de Claude Garamont telles qu'utilisées
+            une recréation des fontes originales de Claude Garamont telles qu&rsquo;utilisées
             dans un spécimen imprimé en 1592 par Konrad Berner. 
             <span class="small-caps">Eb</span> Garamond a été créée par
             Georg Duffner et est distribuée librement et gratuitement sur GitHub.
             La police utilisée pour les lettrines est <span class="ATT">ATT4425</span>,
-            une recréation de la police du terminal de l'ordinateur 
+            une recréation de la police du terminal de l&rsquo;ordinateur 
             Teletype 56<span class="small-caps">d</span> 
             (modèle <span class="small-caps">at&t</span> 4425)
             datant de 1984. Elle a été développée par Seth Morabito et est distribuée librement.
-            La police utilisée pour les boîtes de code est <span class="Incon">Inconsolata</span>,
+            La police utilisée pour l&rsquo;affichage de code informatique est <span class="Incon">Inconsolata</span>,
             <a href="http://levin.com/type/myfonts/inconsolata.html">créée par Raph Levien</a>
             et distribuée librement avec une Open Font License.
         </p>
@@ -183,7 +183,7 @@ exports.en = {
             bilingual content), and I wasn't satisfied by pre-existing generators.
             You can 
             <a href="https://github.com/pelletierauger/pelletierauger.github.io">view the source code
-            </a>for this Node.js module on GitHub (along with the source code
+            </a>for this application on GitHub (along with the source code
             for this whole website).
             The main module is <span class="inline-code">maker.js</span>
             and it reads the data inside the <span class="inline-code">pages</span> folder.
