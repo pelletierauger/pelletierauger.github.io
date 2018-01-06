@@ -45,12 +45,12 @@ html {
     -webkit-font-feature-settings: "liga", "calt", "xtex";
     -ms-font-feature-settings: "liga", "xtex";
     -o-font-feature-settings: "liga", "xtex";
-    font-feature-settings: "liga", "xtex";
+    font-feature-settings: "cv11", "liga", "xtex";
     font-variant-ligatures: discretionary-ligatures;
     -moz-font-variant-ligatures: discretionary-ligatures;
     -webkit-font-variant-ligatures: discretionary-ligatures;
     /*font-variant-ligatures: historical-ligatures;*/
-    font-size: 1.3em;
+    font-size: 1.25em;
     padding: 0;
     margin: 0;
     min-height: 100%;
@@ -88,21 +88,19 @@ img {
 }
 
 .superscript {
-    position: relative;
-    bottom: 0.5em;
-    font-size: 0.8em;
+    -moz-font-feature-settings: "sups", "calt", "xtex";
+    -webkit-font-feature-settings: "sups", "calt", "xtex";
+    -ms-font-feature-settings: "sups", "xtex";
+    -o-font-feature-settings: "sups", "xtex";
+    font-feature-settings: "sups", "xtex";
 }
-.superscript-half {
-    position: relative;
-    bottom: 0.4em;
-    font-size: 0.8em;
-    font-family: 'EBG08-Re';
-}
-.superscript-quarter {
-    position: relative;
-    bottom: 0.2em;
-    font-size: 0.8em;
-    font-family: 'EBG08-Re';
+
+.lnum {
+    -moz-font-feature-settings: "lnum", "calt", "xtex";
+    -webkit-font-feature-settings: "lnum", "calt", "xtex";
+    -ms-font-feature-settings: "lnum", "xtex";
+    -o-font-feature-settings: "lnum", "xtex";
+    font-feature-settings: "lnum", "xtex";
 }
 
 .drop-caps {
@@ -133,7 +131,7 @@ p {
     padding: 0;
     max-width: 700px;
     line-height: 1.3;
-    text-align: justify;
+    text-align: left;
     text-indent: 2em;
     -webkit-hyphens: auto;
     -moz-hyphens: auto;
@@ -142,7 +140,9 @@ p {
 .introduction {
     text-indent: 0em;
     max-width: 550px;
-    margin: 2em auto 2em auto;
+    margin: 0em auto 0em auto;
+    padding: 2em 0;
+    clear: both;
 }
 
 .inline-code {
@@ -156,16 +156,17 @@ p {
 
 h1 {
     /*background: #D9CCA2;*/
-    /*display: block;*/
+    display: block;
     font-weight: normal;
-    /*float: left;*/
+    float: left;
     padding: 0;
     margin: 0;
-    font-size: 1.5em;
+    font-size: 1em;
+    line-height: 1em;
 }
 
 h1 img {
-    height: 0.8em;
+    height: 1em;
     padding-right: 0.05em;
     display: inline-block;
     /*vertical-align: middle;*/
@@ -174,6 +175,11 @@ h1 img {
 h2 {
     font-weight: normal;
     /*font-family: 'EBG12-SC';*/
+}
+
+.with-date {
+    margin-bottom: 0em;
+    padding-bottom: 0em;
 }
 
 h2 a {
@@ -228,6 +234,11 @@ h1 a {
     margin-bottom: 0.5em;
 }
 
+#page {
+    clear: both;
+    padding-top: 1em;
+}
+
 #page p {
 
     /*margin-bottom: 1em;*/
@@ -240,11 +251,10 @@ h1 a {
     margin-bottom: 1em;
 }
 
-.ornament {
+.ornament img {
     max-width: 85px;
-    height: 34px;
-    margin: 1em auto;
-    /*padding-bottom: 1em;*/
+    padding-top: 1em;
+    margin: 0 auto;
 }
 
 #ornament-001 {
@@ -298,6 +308,7 @@ h1 a {
     /*border: solid 1px #000000;*/
     max-width: 100%;
     overflow: auto;
-    margin-bottom: 1em;
+    /*margin-bottom: 1em;*/
+    margin: 0.5em 0;
     clear: both;
 }
