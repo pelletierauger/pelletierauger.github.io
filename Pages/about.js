@@ -142,22 +142,41 @@ exports.en = {
     title: "About",
     description: "Guillaume Pelletier-Auger is an artist.",
     content: `
-            <h2>&ldquo;How do things take form ?&rdquo;</h2>
-            <p class ="noindent">
-                <span class="drop-caps">I'</span>
-                <span class="small-caps">m an artist and animation filmmaker</span> living in Montréal, Québec, Canada.
-                As a visual person, I'm fascinated by the relationships between the form of things
-                and their <span class="italic">meaning</span>.
-                This has lead me to use mathematics and algorithms to explore various processes that
-                generate images and movement.
-                Everything around us is engorged and bursting with meaning and those meanings can
-                be explored by interaction and inquiry.
-                I first studied animation film at the Cégep du Vieux Montréal, and then took an illustration 
-                course at the International Summer Academy of Fine Arts in Salzburg, Austria. I then 
-                studied graphic arts at
-                the Academy of Fine Arts in Warsaw, Poland, where I concentrated on illustration with professor
-                Zygmunt Januszewski and animation with professor Hieronim Neumann.
-            </p>
+        <h2>&ldquo;How do things take form ?&rdquo;</h2>
+        <p class ="noindent">
+            <span class="drop-caps">I'</span>
+            <span class="small-caps">m an artist and animation filmmaker</span> living in Montréal, Québec, Canada.
+            As a visual person, I'm fascinated by the relationships between the form of things
+            and their <span class="italic">meaning</span>.
+            This has lead me to use mathematics and algorithms to explore various processes that
+            generate images and movement.
+            Everything around us is engorged and bursting with meaning and those meanings can
+            be explored by interaction and inquiry.
+            I first studied animation film at the Cégep du Vieux Montréal, and then took an illustration 
+            course at the International Summer Academy of Fine Arts in Salzburg, Austria. I then 
+            studied graphic arts at
+            the Academy of Fine Arts in Warsaw, Poland, where I concentrated on illustration with professor
+            Zygmunt Januszewski and animation with professor Hieronim Neumann.
+        </p>
+        <h3>This website</h3>
+        <p class="noindent">
+            <span class="drop-caps">T</span>
+            <span class="small-caps">o make this website</span>,
+            I developed a Node.js application that reads a database
+            and outputs <span class="small-caps">html</span> content, generating all the files automatically. 
+            I created it because I wanted a lightweight static site generator 
+            with a few key features (like the possibility of easily managing a database of
+            bilingual content), and I wasn't satisfied by pre-existing generators.
+            You can 
+            <a href="https://github.com/pelletierauger/pelletierauger.github.io">view the source code
+            </a>for this Node.js module on GitHub (along with the source code
+            for this whole website).
+            The main module is <span class="inline-code">maker.js</span>
+            and it reads the data inside the <span class="inline-code">pages</span> folder.
+        </p>
+        <div id="ornament-001">
+            <img src="../../../style/ornaments/terminal-ornament-002.png">
+        </div>
     `
 }
 
