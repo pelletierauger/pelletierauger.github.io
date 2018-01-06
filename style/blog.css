@@ -1,21 +1,11 @@
-#blog-pagination a {
-    font-size: 1.5em;
-    color: #D95218;
+#blog-pagination {
+    font-family: 'EBG12-SC';
+    text-transform: lowercase;
+    font-size: 1.25em;
+    text-align: center;
 }
 
 .blog-post {
-    margin-bottom: 3em;
-}
-
-.blog-post h2 {
-    margin-bottom: 0em;
-    padding-bottom: 0em;
-}
-
-#blog-wrapper {
-    margin-bottom: -3em;
-}
-
-.post-content {
-    margin-bottom: 1em;
+    clear: both;
+    padding-bottom: 2em;
 }
