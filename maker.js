@@ -233,15 +233,15 @@ function makeMosaic(pages, language, stepsFromRoot) {
         introduction = `
         <p class="introduction">
         <span class="drop-caps">B</span><span class="small-caps">onjour !</span>
-        Je suis un artiste et un cinéaste d'animation vivant à Montréal, Canada. J'expérimente avec les
-        mathématiques à l'aide de logiciels en code source libre.
+        Je suis un artiste et un cinéaste d&rsquo;animation vivant à Montréal, Canada. J&rsquo;expérimente avec les
+        mathématiques à l&rsquo;aide de logiciels en code source libre.
         </p>
     `;
     } else {
         introduction = `
         <p class="introduction">
         <span class="drop-caps">H</span><span class="small-caps">ello !</span>
-        I’m an artist and animation filmmaker living in Montréal, Canada. 
+        I&rsquo;m an artist and animation filmmaker living in Montréal, Canada. 
         I create mathematical and algorithmic art using open source software.
         </p>
     `;
@@ -366,7 +366,7 @@ function makeNavigation(page, language, stepsFromRoot, parent, oppositeParent, r
     var nav1 = (language == "fr") ? "Projets" : "Projects";
     var nav15 = (language == "fr") ? "Blog" : "Blog";
     var nav2 = (language == "fr") ? "À propos" : "About";
-    var nav3 = (language == "fr") ? "Français &#8594; English" : "English &#8594; Français";
+    var nav3 = (language == "fr") ? "Fr &#8594; En" : "En &#8594; Fr";
 
     var liProjects;
     var rPEN = /projects\//g;
@@ -425,16 +425,17 @@ function makeNavigation(page, language, stepsFromRoot, parent, oppositeParent, r
         titleLink = prefix + "fr/";
     }
 
-    return `<body><div id="wrapper">
+    return `<body>
     <div id="nav">
-    <h1><a href="${titleLink}"><img src="${prefix}./style/ornaments/g.png">uillaume Pelletier-Auger</a></h1>
-    <ul>
-    ${liProjects}<a href="${titleLink}">${nav1}</a></li>
-    ${liBlog}<a href="${prefix}${language}/${navBlog}/">${nav15}</a></li>
-    ${liAbout}<a href="${prefix}${language}/${navAbout}.html">${nav2}</a></li>
-    <li><a href="${prefix}${oppositeLanguage}${navLang}">${nav3}</a></li>
-    </ul>
-    </div>`;
+        <h1><a href="${titleLink}"><img src="${prefix}./style/ornaments/g.png">uillaume Pelletier-Auger</a></h1>
+        <ul>
+            ${liProjects}<a href="${titleLink}">${nav1}</a></li>
+            ${liBlog}<a href="${prefix}${language}/${navBlog}/">${nav15}</a></li>
+            ${liAbout}<a href="${prefix}${language}/${navAbout}.html">${nav2}</a></li>
+            <li><a href="${prefix}${oppositeLanguage}${navLang}">${nav3}</a></li>
+        </ul>
+    </div>
+    `;
 }
 
 function makeContent(page, language) {
@@ -462,7 +463,8 @@ function makeContent(page, language) {
 }
 
 function makeFooter(language) {
-    return `<div id="footer">Guillaume Pelletier-Auger &mdash; 2017, 2018</div></div>
+    return `<div id="footer">Guillaume Pelletier-Auger &mdash; 2016-2018
+    </div>
     </body>
     </html>`;
 }
