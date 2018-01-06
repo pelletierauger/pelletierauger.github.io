@@ -63,8 +63,7 @@ exports.fr = {
     title: "À propos",
     description: "Guillaume Pelletier-Auger est un artiste.",
     content: `
-        <div id="page">
-        <h2>&#171; Comment les choses prennent-elles forme ? &#187;</h2>
+        <h2>&laquo; Comment les choses prennent-elles forme ? &raquo;</h2>
         <p class="noindent">
         <span class="drop-caps">J</span>
         <span class="small-caps">e suis un artiste et un cinéaste d'animation</span>
@@ -136,7 +135,6 @@ exports.fr = {
                 <div id="ornament-001">
                     <img src="../../../style/ornaments/terminal-ornament-002.png">
                 </div>
-        </div>
     `
 };
 
@@ -144,13 +142,20 @@ exports.en = {
     title: "About",
     description: "Guillaume Pelletier-Auger is an artist.",
     content: `
+            <h2>&ldquo;How do things take form ?&rdquo;</h2>
             <p class ="noindent">
                 <span class="drop-caps">I'</span>
                 <span class="small-caps">m an artist and animation filmmaker</span> living in Montréal, Québec, Canada.
+                As a visual person, I'm fascinated by the relationships between the form of things
+                and their <span class="italic">meaning</span>.
+                This has lead me to use mathematics and algorithms to explore various processes that
+                generate images and movement.
+                Everything around us is engorged and bursting with meaning and those meanings can
+                be explored by interaction and inquiry.
                 I first studied animation film at the Cégep du Vieux Montréal, and then took an illustration 
                 course at the International Summer Academy of Fine Arts in Salzburg, Austria. I then 
                 studied graphic arts at
-                the Academy of Fine Arts in Warsaw, Poland, were I concentrated on illustration with professor
+                the Academy of Fine Arts in Warsaw, Poland, where I concentrated on illustration with professor
                 Zygmunt Januszewski and animation with professor Hieronim Neumann.
             </p>
     `
