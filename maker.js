@@ -558,6 +558,10 @@ function parseHTMLTemplate(s) {
     page.fr.description = data.match(/(<!-- fr-description -->)([\S\s]*?)(<!--)/)[2];
     page.fr.content = data.match(/(<!-- fr-content -->)([\S\s]*?)(<!--)/)[2];
 
+    page.fr.content = page.fr.content.replace(/([a-zA-ZÀ-ú])(\')([a-zA-ZÀ-ú])/g, function(a, b, c, d) {
+        return "" + b + "&rsquo;" + d
+    });
+
     let frDate = data.match(/(<!-- fr-date -->)([\S\s]*?)(<!--)/);
     if (frDate) {
         page.fr.date = frDate[2];
