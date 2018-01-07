@@ -1,4 +1,4 @@
-exports.list = ["truchet", "dunes", "turtle-geometry", "growing_wreath", "joy-and-confusion"];
+exports.list = ["truchet", "dunes", "turtle-geometry", "new-medusae", "growing_wreath"];
 
 exports.pages = {
 
