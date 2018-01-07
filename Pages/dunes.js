@@ -1,11 +1,11 @@
 exports.fr = {
     title: "Les dunes",
-    description: "Une série d'images générées par un système dynamique.",
+    description: "Une série d&rsquo;images générées par un système dynamique.",
     content: String.raw `
     <p class="noindent">
     <span class="drop-caps">C</span><span class="small-caps">e projet</span> est basé sur
      <a href="http://koaning.io/fluctuating-repetition.html">Fluctuating Repetition</a>,
-     un article de blog écrit par l'informaticien hollandais Vincent D. Warmerdam. Les images ci-dessous ont été générées
+     un article de blog écrit par l&rsquo;informaticien hollandais Vincent D. Warmerdam. Les images ci-dessous ont été générées
     avec ce système dynamique :</p>
     <div class="math">
     \[
@@ -16,12 +16,12 @@ exports.fr = {
         \end{align*}
     \]
     </div>
-    <p class="noindent">J'ai réglé la valeur de \(x_{0}, y_{0}, z_{0}\) à \(0\), mais le résultat est presque
+    <p class="noindent">J&rsquo;ai réglé la valeur de \(x_{0}, y_{0}, z_{0}\) à \(0\), mais le résultat est presque
     identique peu importe les valeurs initiales. Le système est ensuite itéré plusieurs millions de fois, 
-    et un point blanc d'une très faible opacité est dessiné à chaque itération.</p>
+    et un point blanc d&rsquo;une très faible opacité est dessiné à chaque itération.</p>
    
     <p>Différentes images sont générées lorsque les constantes \(a, b, c, d\) sont changées. On peut voir
-    ci-dessous quatre ensembles de valeurs pour ces constantes, chacun suivi de l'image qu'il génère.</p>
+    ci-dessous quatre ensembles de valeurs pour ces constantes, chacun suivi de l&rsquo;image qu&rsquo;il génère.</p>
     
     <div class="math">
     \[

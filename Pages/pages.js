@@ -5,7 +5,7 @@ exports.pages = {
     growing_wreath: {
         fr: {
             title: "Couronne grimpante",
-            description: "Groupe d'arbres récursifs en croissance."
+            description: "Groupe d&rsquo;arbres récursifs en croissance."
         },
         en: {
             title: "Growing Wreath",
@@ -17,7 +17,7 @@ exports.pages = {
     joy_and_confusion: {
         fr: {
             title: "Les joies confuses",
-            description: "Un court métrage d'animation explorant les spirales phyllotaxiques."
+            description: "Un court métrage d&rsquo;animation explorant les spirales phyllotaxiques."
         },
         en: {
             title: "Joy and Confusion",
