@@ -561,6 +561,12 @@ function parseHTMLTemplate(s) {
     page.fr.content = page.fr.content.replace(/([a-zA-ZÀ-ú])(\')([a-zA-ZÀ-ú])/g, function(a, b, c, d) {
         return "" + b + "&rsquo;" + d
     });
+    page.fr.content = page.fr.content.replace(/<i>/g, `<span class="italic">`);
+    page.fr.content = page.fr.content.replace(/<\/i>/g, `</span>`);
+    page.fr.content = page.fr.content.replace(/<dc>/g, `<span class="drop-caps">`);
+    page.fr.content = page.fr.content.replace(/<\/dc>/g, `</span>`);
+    page.fr.content = page.fr.content.replace(/<sc>/g, `<span class="small-caps">`);
+    page.fr.content = page.fr.content.replace(/<\/sc>/g, `</span>`);
 
     let frDate = data.match(/(<!-- fr-date -->)([\S\s]*?)(<!--)/);
     if (frDate) {
@@ -571,6 +577,16 @@ function parseHTMLTemplate(s) {
     page.en.title = page.en.title.replace(/(?:\r\n|\r|\n)/g, "");
     page.en.description = data.match(/(<!-- en-description -->)([\S\s]*?)(<!--)/)[2];
     page.en.content = data.match(/(<!-- en-content -->)([\S\s]*)/)[2];
+
+    page.en.content = page.en.content.replace(/([a-zA-ZÀ-ú])(\')([a-zA-ZÀ-ú])/g, function(a, b, c, d) {
+        return "" + b + "&rsquo;" + d
+    });
+    page.en.content = page.en.content.replace(/<i>/g, `<span class="italic">`);
+    page.en.content = page.en.content.replace(/<\/i>/g, `</span>`);
+    page.en.content = page.en.content.replace(/<dc>/g, `<span class="drop-caps">`);
+    page.en.content = page.en.content.replace(/<\/dc>/g, `</span>`);
+    page.en.content = page.en.content.replace(/<sc>/g, `<span class="small-caps">`);
+    page.en.content = page.en.content.replace(/<\/sc>/g, `</span>`);
 
     let enDate = data.match(/(<!-- en-date -->)([\S\s]*?)(<!--)/);
     if (enDate) {
