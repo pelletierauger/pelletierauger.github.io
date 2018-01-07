@@ -23,8 +23,8 @@ makeFolder("./fr");
 makeIndex(pages, "en", 0);
 makeIndex(pages, "fr", 1);
 
-makePage(require('./pages/about'), "fr", 1, false);
-makePage(require('./pages/about'), "en", 1, false);
+makePage(seekPage("about"), "fr", 1, false);
+makePage(seekPage("about"), "en", 1, false);
 
 makeFolder("./en/projects");
 makeFolder("./fr/projets");
