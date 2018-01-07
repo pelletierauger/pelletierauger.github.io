@@ -567,6 +567,8 @@ function parseHTMLTemplate(s) {
     page.fr.content = page.fr.content.replace(/<\/dc>/g, `</span>`);
     page.fr.content = page.fr.content.replace(/<sc>/g, `<span class="small-caps">`);
     page.fr.content = page.fr.content.replace(/<\/sc>/g, `</span>`);
+    page.fr.content = page.fr.content.replace(/<math>/g, `<div class="math">`);
+    page.fr.content = page.fr.content.replace(/<\/math>/g, `</div>`);
 
     let frDate = data.match(/(<!-- fr-date -->)([\S\s]*?)(<!--)/);
     if (frDate) {
@@ -587,6 +589,8 @@ function parseHTMLTemplate(s) {
     page.en.content = page.en.content.replace(/<\/dc>/g, `</span>`);
     page.en.content = page.en.content.replace(/<sc>/g, `<span class="small-caps">`);
     page.en.content = page.en.content.replace(/<\/sc>/g, `</span>`);
+    page.en.content = page.en.content.replace(/<math>/g, `<div class="math">`);
+    page.en.content = page.en.content.replace(/<\/math>/g, `</div>`);
 
     let enDate = data.match(/(<!-- en-date -->)([\S\s]*?)(<!--)/);
     if (enDate) {
