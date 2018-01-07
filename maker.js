@@ -558,9 +558,20 @@ function parseHTMLTemplate(s) {
     page.fr.description = data.match(/(<!-- fr-description -->)([\S\s]*?)(<!--)/)[2];
     page.fr.content = data.match(/(<!-- fr-content -->)([\S\s]*?)(<!--)/)[2];
 
+    let frDate = data.match(/(<!-- fr-date -->)([\S\s]*?)(<!--)/);
+    if (frDate) {
+        page.fr.date = frDate[2];
+    }
+
     page.en.title = data.match(/(<!-- en-title -->)([\S\s]*?)(<!--)/)[2];
     page.en.title = page.en.title.replace(/(?:\r\n|\r|\n)/g, "");
     page.en.description = data.match(/(<!-- en-description -->)([\S\s]*?)(<!--)/)[2];
     page.en.content = data.match(/(<!-- en-content -->)([\S\s]*)/)[2];
+
+    let enDate = data.match(/(<!-- en-date -->)([\S\s]*?)(<!--)/);
+    if (enDate) {
+        page.en.date = enDate[2];
+    }
+
     return page;
 }
