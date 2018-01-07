@@ -252,7 +252,7 @@ function makeMosaic(pages, language, stepsFromRoot) {
             continue;
         }
 
-        var title = page[language].title;
+        let title = page[language].HTMLTitle || page[language].title;
         var filename = filenameFormatter(page[language].title);
         var thumbnailName = pages.list[i];
         var description = page[language].description;
@@ -442,17 +442,18 @@ function makeContent(page, language) {
             ${page[language].content}
         </div>`;
     } else {
+        let title = page[language].HTMLTitle || page[language].title;
         if (page[language].date) {
             return `
             <div id="page">
-                <h2 class="with-date">${page[language].title}</h2>
+                <h2 class="with-date">${title}</h2>
                 <div class="date">${page[language].date}</div>
                 ${page[language].content}
             </div>`;
         } else {
             return `
             <div id="page">
-                <h2>${page[language].title}</h2>
+                <h2>${title}</h2>
                 ${page[language].content}
             </div>`;
         }
@@ -577,6 +578,10 @@ function parseHTMLTemplate(s) {
     if (frDate) {
         page.fr.date = frDate[2];
     }
+    let frHTMLTitle = data.match(/(<!-- fr-html-title -->)([\S\s]*?)(<!--)/);
+    if (frHTMLTitle) {
+        page.fr.HTMLTitle = frHTMLTitle[2];
+    }
 
     page.en.title = data.match(/(<!-- en-title -->)([\S\s]*?)(<!--)/)[2];
     page.en.title = page.en.title.replace(/(?:\r\n|\r|\n)/g, "");
@@ -600,6 +605,10 @@ function parseHTMLTemplate(s) {
     let enDate = data.match(/(<!-- en-date -->)([\S\s]*?)(<!--)/);
     if (enDate) {
         page.en.date = enDate[2];
+    }
+    let enHTMLTitle = data.match(/(<!-- en-html-title -->)([\S\s]*?)(<!--)/);
+    if (enHTMLTitle) {
+        page.en.HTMLTitle = enHTMLTitle[2];
     }
 
     return page;
