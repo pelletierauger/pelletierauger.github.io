@@ -558,6 +558,9 @@ function parseHTMLTemplate(s) {
     page.fr.title = page.fr.title.replace(/(?:\r\n|\r|\n)/g, "");
     page.fr.description = data.match(/(<!-- fr-description -->)([\S\s]*?)(<!--)/)[2];
     page.fr.content = data.match(/(<!-- fr-content -->)([\S\s]*?)(<!--)/)[2];
+    page.fr.description = page.fr.description.replace(/([a-zA-ZÀ-ú])(\')([a-zA-ZÀ-ú])/g, function(a, b, c, d) {
+        return "" + b + "&rsquo;" + d
+    });
 
     page.fr.content = page.fr.content.replace(/([a-zA-ZÀ-ú])(\')([a-zA-ZÀ-ú])/g, function(a, b, c, d) {
         return "" + b + "&rsquo;" + d
@@ -586,6 +589,10 @@ function parseHTMLTemplate(s) {
     page.en.title = data.match(/(<!-- en-title -->)([\S\s]*?)(<!--)/)[2];
     page.en.title = page.en.title.replace(/(?:\r\n|\r|\n)/g, "");
     page.en.description = data.match(/(<!-- en-description -->)([\S\s]*?)(<!--)/)[2];
+    page.en.description = page.en.description.replace(/([a-zA-ZÀ-ú])(\')([a-zA-ZÀ-ú])/g, function(a, b, c, d) {
+        return "" + b + "&rsquo;" + d
+    });
+
     page.en.content = data.match(/(<!-- en-content -->)([\S\s]*)/)[2];
 
     page.en.content = page.en.content.replace(/([a-zA-ZÀ-ú])(\')([a-zA-ZÀ-ú])/g, function(a, b, c, d) {
