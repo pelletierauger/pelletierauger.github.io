@@ -30,14 +30,12 @@ makeFolder("./en/projects");
 makeFolder("./fr/projets");
 
 for (var i = 0; i < pages.list.length; i++) {
-    var page = (pages.pages[pages.list[i]] || require('./pages/' + pages.list[i]));
+    let page = seekPage(pages.list[i]);
     if (!page.link && page.en.title != "About") {
-        // console.log(page);
         makePage(page, "en", 2, "projects/", "projets/");
         makePage(page, "fr", 2, "projets/", "projects/");
     }
 }
-
 
 makeFolder("./fr/blog");
 makeFolder("./en/blog");
@@ -248,8 +246,7 @@ function makeMosaic(pages, language, stepsFromRoot) {
     }
     var mosaic = `${introduction}<div class="mosaic">`;
     for (var i = 0; i < pages.list.length; i++) {
-        var page = (pages.pages[pages.list[i]] || require('./pages/' + pages.list[i]));
-
+        let page = seekPage(pages.list[i]);
         //We exclude the "About" page from building an element in the mosaic.
         if (page["en"].title == "About") {
             continue;
@@ -531,4 +528,39 @@ function verbalize(message) {
     if (verbose) {
         console.log(message);
     }
+}
+
+function seekPage(name) {
+    let page;
+    //First, we test if the page is not simply defined in the pages.js file.
+    if (pages.pages[name]) {
+        page = pages.pages[name];
+        //Else, we check if an .html version of the wanted page exists.
+    } else if (fs.existsSync("./pages/" + name + ".html")) {
+        //If this condition is met, we parse the HTML file.
+        page = parseHTMLTemplate("./pages/" + name + ".html");
+        //If this condition fails too, then we simply have a page defined in the "traditional" way.
+        //Inside a .js template.
+    } else {
+        page = require('./pages/' + name);
+    }
+    return page;
+}
+
+function parseHTMLTemplate(s) {
+    let page = {
+        fr: {},
+        en: {}
+    };
+    var data = fs.readFileSync(s, { encoding: "utf8" });
+    page.fr.title = data.match(/(<!-- fr-title -->)([\S\s]*?)(<!--)/)[2];
+    page.fr.title = page.fr.title.replace(/(?:\r\n|\r|\n)/g, "");
+    page.fr.description = data.match(/(<!-- fr-description -->)([\S\s]*?)(<!--)/)[2];
+    page.fr.content = data.match(/(<!-- fr-content -->)([\S\s]*?)(<!--)/)[2];
+
+    page.en.title = data.match(/(<!-- en-title -->)([\S\s]*?)(<!--)/)[2];
+    page.en.title = page.en.title.replace(/(?:\r\n|\r|\n)/g, "");
+    page.en.description = data.match(/(<!-- en-description -->)([\S\s]*?)(<!--)/)[2];
+    page.en.content = data.match(/(<!-- en-content -->)([\S\s]*)/)[2];
+    return page;
 }
