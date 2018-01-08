@@ -557,7 +557,7 @@ function parseHTMLTemplate(s) {
     page.fr.title = data.match(/(<!-- fr-title -->)([\S\s]*?)(<!--)/)[2];
     page.fr.title = page.fr.title.replace(/(?:\r\n|\r|\n)/g, "");
     page.fr.description = data.match(/(<!-- fr-description -->)([\S\s]*?)(<!--)/)[2];
-    page.fr.content = data.match(/(<!-- fr-content -->)([\S\s]*?)(<!--)/)[2];
+    page.fr.content = data.match(/(<!-- fr-content -->)([\S\s]*?)(<!-- en-)/)[2];
     page.fr.description = page.fr.description.replace(/([a-zA-ZÀ-ú])(\')([a-zA-ZÀ-ú])/g, function(a, b, c, d) {
         return "" + b + "&rsquo;" + d
     });
