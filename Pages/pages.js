@@ -1,4 +1,11 @@
-exports.list = ["truchet", "dunes", "turtle-geometry", "new-medusae", "growing_wreath"];
+exports.list = [
+    "truchet",
+    "turtle-geometry",
+    "joy-and-confusion",
+    "growing_wreath",
+    "dunes",
+    "new-medusae"
+];
 
 exports.pages = {
 
