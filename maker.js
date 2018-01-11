@@ -608,6 +608,23 @@ function parseHTMLTemplate(s) {
     page.en.content = page.en.content.replace(/<\/math>/g, String.raw `\]</div>`);
     page.en.content = page.en.content.replace(/<im>/g, String.raw `\(`);
     page.en.content = page.en.content.replace(/<\/im>/g, String.raw `\)`);
+    // Put a non-breaking space between any letter followed immediately by an exclamation point
+    // or an interrogation mark. (There can also be a space between the letter and the punctuation.)
+    page.en.content = page.en.content.replace(/([a-zA-ZÀ-ú])( *[\?\!])/g, function(a, b, c, d) {
+        return "" + b + "&nbsp;" + c
+    });
+
+    // Replace the snl and snr pseudo-HTML tags (used for sidenotes)
+    page.en.content = page.en.content.replace(/(<sn)([lr])( label=")([a-zA-ZÀ-ú\-]*)(">)/g, function(a, b, c, d, e) {
+        let typeOfSidenote = (c == "l") ? "sidenote-left" : "sidenote";
+        let response = `
+        <label for="${e}" class="margin-toggle sidenote-number">
+        </label>
+        <input type="checkbox" id="${e}" class="margin-toggle"/>
+        <span class="${typeOfSidenote}">`;
+        return response;
+    });
+    page.en.content = page.en.content.replace(/<\/sn[lr]>/g, `</span>`);
 
     let enDate = data.match(/(<!-- en-date -->)([\S\s]*?)(<!--)/);
     if (enDate) {
@@ -617,6 +634,5 @@ function parseHTMLTemplate(s) {
     if (enHTMLTitle) {
         page.en.HTMLTitle = enHTMLTitle[2];
     }
-
     return page;
 }
