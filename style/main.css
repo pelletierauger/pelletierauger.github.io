@@ -50,7 +50,7 @@ html {
     -moz-font-variant-ligatures: discretionary-ligatures;
     -webkit-font-variant-ligatures: discretionary-ligatures;
     /*font-variant-ligatures: historical-ligatures;*/
-    font-size: 1.25em;
+    font-size: 1.3em;
     padding: 0 2em 0 2em;
     margin: 0;
     min-height: 100%;
@@ -60,8 +60,9 @@ html {
 
 body {
     margin: 0em auto;
-    max-width: 1100px;
+    max-width: 1300px;
     padding: 0;
+    counter-reset: sidenote-counter;
 }
 
 a {
@@ -79,20 +80,29 @@ img {
     font-family: 'EBG12-It';
 }
 
+.italic8 {
+    font-family: 'EBG08-It';
+}
+
 .ATT {
     font-family: 'ATT4425';
 }
 
 .Incon {
     font-family: 'Inconsolata';
+    line-height: 1em;
+}
+
+.Silentype {
+    font-family: "Silentype";
 }
 
 .superscript {
     -moz-font-feature-settings: "sups", "calt", "xtex";
     -webkit-font-feature-settings: "sups", "calt", "xtex";
-    -ms-font-feature-settings: "sups", "xtex";
-    -o-font-feature-settings: "sups", "xtex";
-    font-feature-settings: "sups", "xtex";
+    -ms-font-feature-settings: "sups", "calt", "xtex";
+    -o-font-feature-settings: "sups", "calt", "xtex";
+    font-feature-settings: "sups", "calt", "xtex";
 }
 
 .lnum {
@@ -213,7 +223,7 @@ h1 a {
 .date {
     font-family: 'EBG08-Re';
     font-size: 0.8em;
-    margin-bottom: 1em;
+    margin-bottom: 3em;
     margin-top: 0em;
     padding-top: 0em;
 }
