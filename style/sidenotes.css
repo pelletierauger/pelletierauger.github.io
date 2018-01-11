@@ -1,0 +1,122 @@
+.sidenote, .marginnote {
+    float: right;
+    clear: right;
+    margin-right: -35%;
+    width: 30%;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-family: 'EBG08-Re';
+    font-size: 0.8em;
+    line-height: 1.3;
+    vertical-align: baseline;
+    position: relative;
+    text-indent: 0;
+    /*background-color: red;*/
+}
+
+.sidenote-left, .marginnote-left {
+    float: left;
+    clear: left;
+    margin-left: -35%;
+    width: 30%;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-family: 'EBG08-Re';
+    font-size: 0.8em;
+    line-height: 1.3;
+    vertical-align: baseline;
+    position: relative;
+    text-indent: 0;
+    /*background-color: red;*/
+}
+
+.sidenote-number {
+    font-family: 'EBG08-Re';
+    counter-increment: sidenote-counter;
+}
+
+.sidenote-number:after,
+.sidenote-left:before,
+.sidenote:before {
+    font-family: 'EBG08-Re';
+    /*font-family: 'EBG12-Re';*/
+    position: relative;
+    vertical-align: baseline;
+    -moz-font-feature-settings: "lnum", "calt", "xtex";
+    -webkit-font-feature-settings: "lnum", "calt", "xtex";
+    -ms-font-feature-settings: "lnum", "xtex";
+    -o-font-feature-settings: "lnum", "xtex";
+    font-feature-settings: "lnum", "xtex";
+}
+
+.sidenote-number:after {
+    content: counter(sidenote-counter);
+    /*font-family: 'EBG08-Re';*/
+    font-family: 'EBG12-Re';
+    /*font-size: 1rem;*/
+    /*top: -0.5rem;*/
+    left: -0.2rem;
+    -moz-font-feature-settings: "lnum", "sups", "calt", "xtex";
+    -webkit-font-feature-settings: "lnum", "sups", "calt", "xtex";
+    -ms-font-feature-settings: "lnum", "sups", "xtex";
+    -o-font-feature-settings: "lnum", "sups", "xtex";
+    font-feature-settings: "lnum", "sups", "xtex";
+}
+
+.sidenote:before {
+    content: counter(sidenote-counter) " ";
+    /*top: -1rem;*/
+    padding-right: 0.5em;
+}
+
+.sidenote-left:before {
+    content: counter(sidenote-counter) " ";
+    /*top: -0.5rem;*/
+    padding-right: 0.5em;
+}
+
+blockquote .sidenote, blockquote .marginnote {
+    margin-right: -82%;
+    min-width: 59%;
+    text-align: left;
+}
+
+.marginnote>code, .sidenote>code {
+    font-size: 1rem;
+}
+
+input.margin-toggle {
+    display: none;
+}
+
+label.sidenote-number {
+    display: inline;
+}
+
+label.margin-toggle:not(.sidenote-number) {
+    display: none;
+}
+
+@media (max-width: 1200px) {
+    label.margin-toggle:not(.sidenote-number) {
+        display: inline;
+    }
+    .sidenote, .marginnote, .sidenote-left {
+        display: none;
+    }
+    .margin-toggle:checked+.sidenote,
+    .margin-toggle:checked+.sidenote-left,
+    .margin-toggle:checked+.marginnote {
+        display: block;
+        float: left;
+        left: 1.4em;
+        clear: both;
+        width: 95%;
+        margin: 1rem 2.5%;
+        vertical-align: baseline;
+        position: relative;
+    }
+    label {
+        cursor: pointer;
+    }
+}
