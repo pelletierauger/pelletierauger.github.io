@@ -75,8 +75,9 @@ a {
     3px 0 0 #fff, -3px 0 0 #fff,
     0px -1px 0 #fff, 0px -2px 0 #fff,
     -1px -1px 0 #fff, 1px -1px 0 #fff,
-    -2px -1px 0 #fff, 2px -1px 0 #fff,
-    -2px -2px 0 #fff, 2px -2px 0 #fff;
+    -2px -1px 0 #fff, 2px -1px 0 #fff;
+    /*   These two extra text-shadows work for italic "f"s but not for roman "pp"s.
+    -2px -2px 0 #fff, 2px -2px 0 #fff;*/
 }
 .cleardescenders {
     padding-left: 1px;
