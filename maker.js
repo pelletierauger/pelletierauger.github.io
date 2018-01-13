@@ -575,7 +575,25 @@ function parseHTMLTemplate(s) {
     page.fr.content = page.fr.content.replace(/<\/math>/g, String.raw `\]</div>`);
     page.fr.content = page.fr.content.replace(/<im>/g, String.raw `\(`);
     page.fr.content = page.fr.content.replace(/<\/im>/g, String.raw `\)`);
+    // Put a non-breaking space between any letter followed immediately by an exclamation point
+    // or an interrogation mark. (There can also be a space between the letter and the punctuation.)
+    page.fr.content = page.fr.content.replace(/([a-zA-ZÀ-ú])( *[\?\!])/g, function(a, b, c, d) {
+        return "" + b + "&nbsp;" + c;
+    });
+    // Replace the snl and snr pseudo-HTML tags (used for sidenotes)
+    page.fr.content = page.fr.content.replace(/(<sn)([lr])( label=")([a-zA-ZÀ-ú\-]*)(">)/g, function(a, b, c, d, e) {
+        let typeOfSidenote = (c == "l") ? "sidenote-left" : "sidenote";
+        let response = `
+        <label for="${e}" class="margin-toggle sidenote-number">
+        </label>
+        <input type="checkbox" id="${e}" class="margin-toggle"/>
+        <span class="${typeOfSidenote}">`;
+        return response;
+    });
+    page.fr.content = page.fr.content.replace(/<\/sn[lr]>/g, `</span>`);
 
+    page.fr.content = page.fr.content.replace(/<\/a>,/g,
+        String.raw `</a><span class="cleardescenders">,</span>`);
 
     let frDate = data.match(/(<!-- fr-date -->)([\S\s]*?)(<!--)/);
     if (frDate) {
@@ -611,7 +629,7 @@ function parseHTMLTemplate(s) {
     // Put a non-breaking space between any letter followed immediately by an exclamation point
     // or an interrogation mark. (There can also be a space between the letter and the punctuation.)
     page.en.content = page.en.content.replace(/([a-zA-ZÀ-ú])( *[\?\!])/g, function(a, b, c, d) {
-        return "" + b + "&nbsp;" + c
+        return "" + b + "&nbsp;" + c;
     });
 
     // Replace the snl and snr pseudo-HTML tags (used for sidenotes)
@@ -625,6 +643,9 @@ function parseHTMLTemplate(s) {
         return response;
     });
     page.en.content = page.en.content.replace(/<\/sn[lr]>/g, `</span>`);
+
+    page.en.content = page.en.content.replace(/<\/a>,/g,
+        String.raw `</a><span class="cleardescenders">,</span>`);
 
     let enDate = data.match(/(<!-- en-date -->)([\S\s]*?)(<!--)/);
     if (enDate) {
