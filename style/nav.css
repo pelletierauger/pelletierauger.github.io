@@ -1,4 +1,4 @@
-#nav {
+nav {
     /*margin-top: 0.75em;*/
     font-family: 'EBG12-SC';
     text-transform: lowercase;
@@ -8,15 +8,15 @@
     /*line-height: 1em;*/
 }
 
-#nav a {
+nav a {
     text-decoration: none;
 }
 
-#nav a:hover {
+nav a:hover {
     border-bottom: 0.2em solid black;
 }
 
-#nav ul {
+nav ul {
 
     display: block;
     /*clear: both;*/
@@ -33,13 +33,13 @@
     /*color: #878787;*/
 }
 
-#nav ul li {
+nav ul li {
     display: inline-block;
     /*background: #B5D9A2;*/
     margin: 0em 0em 0em 1em;
     /*font-size: 1.3em;*/
 }
-#nav ul li:first-child {
+nav ul li:first-child {
     margin: 0em 0em 0em 0em;
 }
 

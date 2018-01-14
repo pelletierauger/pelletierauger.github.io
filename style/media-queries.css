@@ -19,20 +19,20 @@
         /*margin: auto;*/
         /*text-align: center;*/
     }
-    #nav {
+    nav {
         text-align: center;
         /*background: #BA6965;*/
         /*height: 7em;*/
         margin-bottom: 0.5em;
     }
-    #nav ul {
+    nav ul {
         text-align: left;
         /*float: left;*/
         /*background: rgba(255, 255, 255, 0.7);*/
         padding: 0.5em 0;
         margin: 0;
     }
-    #nav ul li {
+    nav ul li {
         width: 100%;
         /*float: left;*/
         padding: 0.25em 0;
@@ -41,13 +41,13 @@
 }
 
 @media screen and (min-width: 770px) {
-    #nav {
+    nav {
         /*background: #BA6965;*/
         /*height: 2em;*/
         /*margin-bottom: 2em;*/
         /*position: relative;*/
     }
-    #nav ul {
+    nav ul {
         /*background: rgba(0, 255, 255, 0.7);*/
         /*position: absolute;*/
         /*        bottom: 0px;
@@ -81,10 +81,10 @@
         margin-right: 0.5%;
         background: #000000;
     }*/
-    #nav {
+    nav {
         margin: 0.73em 0 0 0;
     }
-    #nav ul {
+    nav ul {
         /*position: absolute;*/
         /*top: -250px;*/
         /*bottom: 0px;*/
