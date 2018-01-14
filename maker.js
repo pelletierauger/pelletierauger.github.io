@@ -241,6 +241,7 @@ function makeMosaic(pages, language, stepsFromRoot) {
         </p>
     `;
     }
+    introduction = "";
     var mosaic = `${introduction}<div class="mosaic">`;
     for (var i = 0; i < pages.list.length; i++) {
         let page = seekPage(pages.list[i]);
