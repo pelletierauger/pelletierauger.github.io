@@ -99,6 +99,10 @@ img {
     display: block;
 }
 
+span.nobreak {
+    white-space: nowrap;
+}
+
 .italic {
     font-family: 'EBG12-It';
 }
