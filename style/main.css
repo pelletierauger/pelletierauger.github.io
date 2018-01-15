@@ -40,7 +40,7 @@
 }
 
 html {
-    font-family: 'EBG12-Re';
+    font-family: 'EBG12-Re', Garamond, Georgia, serif;
     -moz-font-feature-settings: "liga", "calt", "xtex";
     -webkit-font-feature-settings: "liga", "calt", "xtex";
     -ms-font-feature-settings: "liga", "xtex";
@@ -156,11 +156,11 @@ article a .italic {
 }
 
 .drop-caps {
-    font-size: 4.6em;
+    font-size: 4.5em;
     font-family: 'ATT4425';
-    padding-right: 8px;
+    padding-right: 5px;
     float: left;
-    line-height: 0.7;
+    line-height: 0.75;
     padding-top: 0.1em;
     padding-left: -0.1em;
     margin-left: -0.04em;
@@ -170,6 +170,11 @@ article a .italic {
 .small-caps {
     font-style: normal;
     font-family: 'EBG12-SC';
+}
+
+.small-caps8 {
+    font-style: normal;
+    font-family: 'EBG08-SC';
 }
 
 p {
@@ -333,22 +338,40 @@ article img {
     padding-top: 1em;
 }
 
+img.inline-figure {
+    /*display: inline-block;*/
+    margin: 2em 0;
+}
+
+.imagedouble-top {
+    display: inline-block;
+    margin-bottom: 2em;
+    padding-bottom: 0em;
+}
+
+.imagedouble-top img {
+    display: block;
+    float: left;
+    max-width: 50%;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-top: 0px;
+    margin-bottom: 0em;
+}
+
 .imagedouble {
-    margin-top: 1em;
-    padding-bottom: 1em;
+    display: inline-block;
+    margin: 1em 0;
 }
 
 .imagedouble img {
     display: block;
     float: left;
     max-width: 50%;
-    /*margin: 1em auto;*/
     padding-top: 0px;
     padding-bottom: 0px;
     margin-top: 0px;
-    margin-bottom: 0px;
-    border-bottom: 0px;
-    border-top: 0px;
+    margin-bottom: 0em;
 }
 
 #carreaux {
