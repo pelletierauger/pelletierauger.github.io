@@ -23,50 +23,34 @@
                 <div class="date">Hiver 2017 &mdash; En cours
 </div>
                 
-<p class="noindent">
+<!-- <p class="noindent">
     <span class="drop-caps">U</span><span class="small-caps">ne exploration</span> des pavages qui passe par mille différents chemins et qui se termine (pour l&rsquo;instant) avec quelques images colorées et une infinité d&rsquo;avenues non explorées.
-</p>
-<br>
-<div class="imagedouble">
+</p> -->
+<div class="imagedouble-top">
     <img src="../../images/truchet/truchet-square001.png">
     <img src="../../images/truchet/truchet-square002.png">
     <img src="../../images/truchet/truchet-square003.png">
     <img src="../../images/truchet/truchet-square004.png">
 </div>
-<p>
-    <br>...
-</p>
-<h3>Premiers pas vers les pavages ; le génie de Marjorie Rice</h3>
 <p class="noindent">
-    <span class="drop-caps">J'</span><span class="small-caps">ai démarré ce projet avec un désir vif</span> mais très flou : celui de réaliser une animation abstraite pour accompagner un morceau musical d&rsquo;Anna Meredith, une compositrice écossaise. La musique de Meredith m&rsquo;évoque de vagues images très colorées et des mouvements agités et décisifs, mais par quels procédés ces images pourraient-elles être construites&nbsp; ? À quoi <span class="italic">ressemble</span> cette musique&nbsp; ?
+    <span class="drop-caps">L</span><span class="small-caps">es pavages ci-dessus</span> ont été générés par un programme que j&rsquo;ai écrit avec JavaScript et <a href=""><span class="lnum">la bibliothèque p5.js</span></a>. Ils sont le produit d&rsquo;un <span class="italic">hasard contrôlé</span> : je n&rsquo;ai pas choisi les palettes de couleur ni les agencements de triangles et de rectangles. J&rsquo;ai plutôt créé les conditions permettant leur création.
+</p>
+<!-- Comme je connais très peu cet immense domaine mathématique que sont les pavages, j&rsquo;ai décidé d&rsquo;explorer des pavages très simples afin d&rsquo;apprivoiser le sujet. Les pavages de Truchet se sont imposés par leur beauté et leur simplicité. -->
+<p>
+    Pour réaliser ce projet, je me suis inspiré des travaux de Sébastien Truchet, un mathématicien et ingénieur français né en 1657. En 1704, Truchet écrivit un <span class="italic">Mémoire sur les combinaisons</span> qui présente ses recherches sur les pavages.
+        <label for="memoire-combinaisons" class="margin-toggle sidenote-number">
+        </label>
+        <input type="checkbox" id="memoire-combinaisons" class="margin-toggle"/>
+        <span class="sidenote">Ce <span class="italic8">Mémoire</span> apparaît à la page 363 de l'<span class="italic8">Histoire de l&rsquo;Académie royale des sciences</span>, un ouvrage <a href="">disponible gratuitement sur Gallica</a><span class="cleardescenders">,</span> un site Web de la Bibliothèque nationale de France. Vous pouvez aussi y consulter un bel ouvrage écrit par le mathématicien Dominique Do&uuml;at en 1722, <a href=""><span class="italic8">Méthode pour faire une infinité de desseins différens</span></a>. Do&uuml;at reprend les idées de Truchet et présente de nouveaux pavages de son invention.</span> Il y relate un voyage à Orléans durant lequel il trouva dans un château &#171;&nbsp;plusieurs carreaux de fayence carrés et mipartis de deux couleurs par une ligne diagonale, qui étaient destinés à carreler une chapelle et plusieurs autres appartements.&nbsp;&#187;
 </p>
 <p>
-    Une première idée : sa musique pourrait ressembler à des <span class="italic">pavages</span>. Je souhaitais depuis un moment explorer ce vaste domaine mathématique que je ne connais très peu, et l&rsquo;occasion me semblait intéressante. En mathématiques, un pavage est une surface couverte par des formes semblables ou dissemblables, appelées <span class="italic">tuiles</span>. En cherchant sur le Web différents types de pavages qui pourraient me servir dans un film d&rsquo;animation, je suis tombé sur l&rsquo;histoire de Marjorie Rice.
+    Les carreaux que Truchet décrit sont tous identiques, et peuvent être tournés sur eux-mêmes en quatre positions différentes, désignées <span class="small-caps">a</span>, <span class="small-caps">b</span>, <span class="small-caps">c</span> et <span class="small-caps">d</span> :
 </p>
 <p>
-    En 1976, Rice, femme au foyer californienne et mère de cinq enfants, aimait lire les chroniques mathématiques que Martin Gardner écrivait pour Scientific American. Elle s&rsquo;intéressait aux mathématiques et regrettait de ne pas avoir eu l&rsquo;opportunité de poursuivre des études post-secondaires dans ce domaine. Après avoir lu une chronique de Gardner sur les huit types de pavages pentagonaux qui étaient connus à cette époque, elle s&rsquo;est mise au travail et a éventuellement découvert quatre nouveaux types qui avaient jusque là éludé les mathématiciens. Sa méthode de travail était en elle-même aussi géniale que ses résultats : Rice avait inventé un système pour définir et classifier les pavages, outil sans lequel ses découvertes auraient été presque impossibles.
+    <img class="inline-figure" src="../../images/truchet/carreaux.jpg">
 </p>
-<p>
-    Dans une entrevue datant de 1996, Rice raconte : &#171; Je me suis dit que ce devait être merveilleux de découvrir de beaux motifs qui n&rsquo;avaient jamais été vus auparavant. Alors je me suis mise à imaginer une façon d&rsquo;aborder le problème. J&rsquo;ai étudié tous les types de pavages qui étaient illustrés dans l&rsquo;article, et j&rsquo;ai tenté d&rsquo;en découvrir un nouveau. J&rsquo;étais si ravie lorsque j&rsquo;ai trouvé, je ne pouvais pas le croire. Je ne pensais pas réellement que j&rsquo;allais trouver quoi que ce soit. J&rsquo;étais tellement excitée. &#187;
-</p>
-<p>
-    L&rsquo;histoire de Rice m&rsquo;a fasciné et inspiré, et m&rsquo;a rendu bêtement obsédé par les pavages. Elle nous rappelle que les mathématiques ne sont pas réservées à des académiciens claquemurés dans leur tour d&rsquo;ivoire, et qu&rsquo;il est possible à toutes et à tous de se les approprier.
-</p>
-<h3>Les combinaisons de Truchet, les observations de Douat</h3>
 <p class="noindent">
-    <span class="drop-caps">A</span><span class="small-caps">près avoir réfléchi de manière confuse</span> à propos d&rsquo;algorithmes qui pourraient animer des pavages pentagonaux comme ceux de Marjorie Rice, je me suis dit que je gagnerais à commencer mon exploration avec des pavages plus simples. J&rsquo;ai éventuellement découvert les pavages de Truchet, qui sont à la fois d&rsquo;une grande beauté et d&rsquo;une simplicité surprenante.
-</p>
-<p>
-    Sébastien Truchet était un homme de science et de religion né en France en 1657. En 1704, il écrivit un <span class="italic">Mémoire sur les combinaisons</span> publié par l&rsquo;Académie royale des sciences. Il y relate un voyage durant lequel il trouva &#171; dans un château nommé la Motte S. Lyé à 4 lieues en-deçà d&rsquo;Orléans, plusieurs carreaux de fayence carrés et mipartis de deux couleurs par une ligne diagonale, qui étaient destinés à carreler une chapelle et plusieurs autres appartements.&nbsp;&#187;
-</p>
-<p>
-    Les carreaux que Truchet décrit sont tous identiques, et peuvent être tournés sur eux-mêmes en quatre positions différentes, désignées <span class="small-caps">a</span>, <span class="small-caps">b</span>, <span class="small-caps">c</span> et <span class="small-caps">d</span>.
-</p>
-<div id="carreaux">
-    <img src="../../images/truchet/carreaux.jpg">
-</div>
-<p class="noindent">
-    Truchet continue : &#171; Pour pouvoir former des dessins et des figures agréables par l&rsquo;arrangement de ces carreaux, j&rsquo;examinai d&rsquo;abord en combien de manières deux de ces carreaux pourraient se joindre ensemble, en les disposant toujours en échiquier. &#187; Il présente ensuite les figures qui résultent de ces combinaisons, puis celles qui résultent de combinaisons de plus en plus complexes. Voici quelques unes des superbes planches gravées qui accompagnent son <span class="italic">Mémoire</span> :
+    Truchet continue : &#171;&nbsp;Pour pouvoir former des dessins et des figures agréables par l&rsquo;arrangement de ces carreaux, j&rsquo;examinai d&rsquo;abord en combien de manières deux de ces carreaux pourraient se joindre ensemble, en les disposant toujours en échiquier.&nbsp;&#187; Il présente ensuite les figures qui résultent de ces combinaisons, puis celles qui résultent de combinaisons de plus en plus élaborées. Voici quelques-unes des superbes planches gravées qui accompagnent son <span class="italic">Mémoire</span> :
 </p>
 <div class="imagedouble">
     <img src="../../images/truchet/truchet-planches-01.jpg">
@@ -75,20 +59,26 @@
     <img src="../../images/truchet/truchet-planches-04.jpg">
 </div>
 <p class="noindent">
-    Je suis également tombé sur un livre écrit par Dominique Douat en 1722, intitulé <span class="italic">Méthode pour faire une infinité de desseins différens</span>. Douat reprend les idées de Truchet et présente de nouveaux pavages de son invention.
+    Truchet s&rsquo;intéresse ainsi à la création de groupements symétriques de carreaux. Puisque les positions différentes d&rsquo;un carreau unique sont obtenues par des rotations, elles sont aussi liées par des symétries. La position <span class="small-caps">a</span> est liée à <span class="small-caps">b</span> par une symétrie à l&rsquo;axe horizontal, à c par une symétrie à l&rsquo;axe diagonal, et à <span class="small-caps">d</span> par une symétrie à l&rsquo;axe vertical.
 </p>
-<div class="imagedouble">
-    <img src="../../images/truchet/douat-page-09.jpg">
-    <img src="../../images/truchet/douat-page-74.jpg">
-    <img src="../../images/truchet/douat-page-79.jpg">
-    <img src="../../images/truchet/douat-page-82.jpg">
-    <img src="../../images/truchet/douat-page-102.jpg">
-    <img src="../../images/truchet/douat-page-107.jpg">
-</div>
-<h3>À quoi peuvent ressembler des pavages animés&nbsp; ?</h3>
-<p>Je me suis dit que j&rsquo;allais essayer d&rsquo;animer des pavages.</p>
-<p>Première tentative d&rsquo;animer, deuxième tentative. Je ne suis pas satisfait.</p>
-<p>Troisième tentative d&rsquo;animer plus intéressante.</p>
+<p>
+    De la même façon, des groupements de carreaux peuvent être liés par des symétries. De nombreuses planches dessinées par Truchet sont basées sur une forme que j&rsquo;appelle un <span class="italic">triangle initial</span>, qui est répétée en .
+</p>
+<h3>Le générateur de pavages aléatoires</h3>
+<p class="noindent">
+    <span class="drop-caps">E</span><span class="small-caps">n voyant la simplicité</span> des triangles initiaux que Truchet utilise pour bâtir ses beaux pavages, j&rsquo;ai décidé d&rsquo;écrire un programme qui choisirait au hasard chacun des carreaux d&rsquo;un triangle initial puis créerait les symétries nécessaires au remplissage d&rsquo;un pavage. J&rsquo;ai aussi décidé d&rsquo;ajouter deux nouveaux carreaux : le carreau vide et le carreau plein, désignés respectivement <span class="small-caps">e</span> et <span class="small-caps">f</span>&nbsp;:
+        <label for="triche" class="margin-toggle sidenote-number">
+        </label>
+        <input type="checkbox" id="triche" class="margin-toggle"/>
+        <span class="sidenote">Le lecteur attentif comprendra que <span class="italic8">je triche</span>, puisque <span class="small-caps8">a, b, c</span> et <span class="small-caps8">d</span> désignent 4 positions différentes du même carreau tandis que <span class="small-caps8">e</span> et <span class="small-caps8">f</span> désignent 2 carreaux complètement distincts. Consultez ma page <a href="https://pelletierauger.github.io/fr/a-propos.html">À propos</a> pour savoir où m&rsquo;envoyer vos messages haineux.</span>
+</p>
+<p>
+    Un pavage dont le triangle initial possède six carreaux de largeur peut être assemblé en plus de quatre milles milliards de combinaisons différentes.
+        <label for="puissances" class="margin-toggle sidenote-number">
+        </label>
+        <input type="checkbox" id="puissances" class="margin-toggle"/>
+        <span class="sidenote-left">Précisément, il y a 4,398,046,511,104 combinaisons possibles, ce qui équivaut à 4 à la puissance 21. Un pavage dont le triangle initial a 6 carreaux de large possède 21 carreaux (1 + 2 + 3 + 4 + 5 + 6), et chacun des carreaux a 4 différentes positions possibles. Il faut ainsi multiplier 4 par lui-même 21 fois pour connaître toutes les combinaisons possibles.</span> Si vous cliquiez pour générer un nouveau pavage à chaque seconde sans arrêt, il vous prendrait environ 130&nbsp;000 ans avant de voir tous les pavages possibles (chose que je ne recommande pas). Et comme, en réalité, le générateur crée des pavages dont la largeur du triangle initial varie entre 3 et 12 carreaux, le temps nécessaire à en épuiser les possibilités se compte davantage en milliards d&rsquo;années plutôt qu&rsquo;en centaines de milliers.
+</p>
 
             </article><div id="footer">Guillaume Pelletier-Auger &mdash; 2016-2018
     </div>
