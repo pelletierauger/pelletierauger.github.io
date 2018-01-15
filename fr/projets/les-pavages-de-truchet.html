@@ -50,7 +50,7 @@
     <img class="inline-figure" src="../../images/truchet/carreaux.jpg">
 </p>
 <p class="noindent">
-    Truchet continue : &#171;&nbsp;Pour pouvoir former des dessins et des figures agréables par l&rsquo;arrangement de ces carreaux, j&rsquo;examinai d&rsquo;abord en combien de manières deux de ces carreaux pourraient se joindre ensemble, en les disposant toujours en échiquier.&nbsp;&#187; Il présente ensuite les figures qui résultent de ces combinaisons, puis celles qui résultent de combinaisons de plus en plus élaborées. Voici quelques-unes des superbes planches gravées qui accompagnent son <span class="italic">Mémoire</span> :
+    Truchet continue : &#171;&nbsp;Pour pouvoir former des dessins et des figures agréables par l&rsquo;arrangement de ces carreaux, j&rsquo;examinai d&rsquo;abord en combien de manières deux de ces carreaux pourraient se joindre ensemble, en les disposant toujours en échiquier.&nbsp;&#187; Il présente ensuite les figures qui résultent de ces combinaisons, puis celles qui résultent de combinaisons de plus en plus élaborées. Voici quelques-unes des superbes planches qui accompagnent son <span class="italic">Mémoire</span>, gravées par Louis Simonneau&nbsp;:
 </p>
 <div class="imagedouble">
     <img src="../../images/truchet/truchet-planches-01.jpg">
@@ -66,18 +66,21 @@
 </p>
 <h3>Le générateur de pavages aléatoires</h3>
 <p class="noindent">
-    <span class="drop-caps">E</span><span class="small-caps">n voyant la simplicité</span> des triangles initiaux que Truchet utilise pour bâtir ses beaux pavages, j&rsquo;ai décidé d&rsquo;écrire un programme qui choisirait au hasard chacun des carreaux d&rsquo;un triangle initial puis créerait les symétries nécessaires au remplissage d&rsquo;un pavage. J&rsquo;ai aussi décidé d&rsquo;ajouter deux nouveaux carreaux : le carreau vide et le carreau plein, désignés respectivement <span class="small-caps">e</span> et <span class="small-caps">f</span>&nbsp;:
+    <span class="drop-caps">E</span><span class="small-caps">n voyant la simplicité</span> des triangles initiaux que Truchet utilise pour bâtir ses beaux pavages, j&rsquo;ai décidé d&rsquo;écrire un programme qui choisirait au hasard chacun des carreaux d&rsquo;un triangle initial puis créerait les symétries nécessaires au remplissage d&rsquo;un pavage. J&rsquo;ai aussi ajouté deux nouveaux carreaux : le carreau vide et le carreau plein, désignés respectivement <span class="small-caps">e</span> et <span class="small-caps">f</span>&nbsp;:
         <label for="triche" class="margin-toggle sidenote-number">
         </label>
         <input type="checkbox" id="triche" class="margin-toggle"/>
         <span class="sidenote">Le lecteur attentif comprendra que <span class="italic8">je triche</span>, puisque <span class="small-caps8">a, b, c</span> et <span class="small-caps8">d</span> désignent 4 positions différentes du même carreau tandis que <span class="small-caps8">e</span> et <span class="small-caps8">f</span> désignent 2 carreaux complètement distincts. Me pardonnera-t-on un tel <span class="nobreak">laisser-aller&nbsp;?</span></span>
 </p>
 <p>
-    Une des choses surprenantes à propos des pavages de Truchet est l&rsquo;énorme quantité de combinaisons possibles. Par exemple, un pavage dont le triangle initial possède cinq carreaux de largeur peut être assemblé en plus de quatre cent milliards de combinaisons différentes.
+    L&rsquo;ajout de ces deux carreaux génère, à mon avis, des pavages qui <span class="italic">respirent</span> davantage : des zones unies, claires ou foncées, créent de plus grands contrastes visuels et des compositions plus aérées. Mon objectif n&rsquo;était pas de copier Truchet, mais plutôt d&rsquo;utiliser ses idées pour continuer d&rsquo;explorer.
+</p>
+<p>
+    Une chose surprenante à propos des pavages de Truchet est l&rsquo;énorme quantité de combinaisons possibles. Par exemple, un pavage dont le triangle initial possède une largeur de cinq carreaux peut être assemblé en plus de <span class="italic">quatre cent milliards</span> de combinaisons différentes.
         <label for="puissances" class="margin-toggle sidenote-number">
         </label>
         <input type="checkbox" id="puissances" class="margin-toggle"/>
-        <span class="sidenote-left">Précisément, il y a 470&nbsp;184&nbsp;984&nbsp;576 combinaisons possibles, ce qui équivaut à 6 à la puissance 15. Un pavage dont le triangle initial a 5 carreaux de largeur possède 15 carreaux (1 + 2 + 3 + 4 + 5), et chacun des carreaux a 6 différentes positions possibles (de <span class="small-caps8">a</span> à <span class="small-caps8">f</span>). Il faut ainsi multiplier 6 par lui-même 15 fois pour connaître toutes les combinaisons possibles.</span> Si vous cliquiez pour générer un nouveau pavage à chaque seconde sans arrêt, il vous faudrait environ 15&nbsp;000 ans pour voir tous ces pavages (chose que je ne recommande pas). Et comme le générateur crée des pavages dont la largeur du triangle initial varie entre 3 et 9 carreaux, le temps nécessaire pour en épuiser les possibilités se compte en trilliards d&rsquo;années plutôt qu&rsquo;en dizaines de milliers. Conséquemment, chaque pavage que vous voyez apparaître n&rsquo;a presque certainement jamais été vu par quiconque avant vous, et vous ne le reverez plus jamais après le prochain clic.
+        <span class="sidenote-left">Précisément, il y a 470&nbsp;184&nbsp;984&nbsp;576 combinaisons possibles, ce qui équivaut à 6 à la puissance 15. Un pavage dont le triangle initial a une largeur de 5 carreaux possède une somme de 15 carreaux (1 + 2 + 3 + 4 + 5), et chacun de ces carreaux peut avoir 6 positions différentes (de <span class="small-caps8">a</span> à <span class="small-caps8">f</span>). Il faut ainsi multiplier 6 par lui-même 15 fois pour connaître toutes les combinaisons possibles.</span> Si vous cliquiez pour générer un nouveau pavage à chaque seconde sans arrêt, il vous faudrait environ 15&nbsp;000 ans pour les voir tous (chose que je ne recommande pas). Et comme le générateur crée des pavages dont la largeur du triangle initial varie entre 3 et 9 carreaux, le temps nécessaire pour en épuiser les possibilités se compte en trilliards d&rsquo;années plutôt qu&rsquo;en dizaines de milliers. Chaque pavage qui est généré n&rsquo;a presque certainement jamais été vu par quiconque avant vous, et vous ne le reverez plus jamais après le prochain clic.
 </p>
 
             </article><div id="footer">Guillaume Pelletier-Auger &mdash; 2016-2018
