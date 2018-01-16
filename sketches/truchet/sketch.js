@@ -18,8 +18,9 @@ let cnvs;
 let padding = 10;
 let button;
 let EFMode = true;
-let EFModeButton, EFOnlyButton;
+let EFModeButton, EFOnlyButton, ABCDButton;
 let EFOnly = false;
+let ABCDMode = false;
 
 function setup() {
     canvasContainer = select("#tiling-generator");
@@ -27,9 +28,16 @@ function setup() {
     w = Math.min(w, 1000);
     cnvs = createCanvas(w, w * 9 / 16);
     cnvs.parent("#tiling-generator");
-    canvasContainer.style("width", "80%");
-    canvasContainer.style("margin", "2em auto");
-    canvasContainer.mouseClicked(function() { redraw(); });
+    // canvasContainer.style("width", "80%");
+    canvasContainer.style("margin", "2em 0");
+    canvasContainer.mouseClicked(function() {
+        if (looping) {
+            looping = false;
+            noLoop();
+        } else {
+            redraw();
+        }
+    });
 
     button = select("#showreel");
     button.style("cursor", "pointer");
@@ -42,27 +50,61 @@ function setup() {
             looping = true;
         }
     });
-    EFModeButton = select("#efmode");
-    EFModeButton.style("cursor", "pointer");
-    EFModeButton.mouseClicked(function() {
-        if (EFMode) {
+    ABCDButton = select("#abcdmode");
+    ABCDButton.style("cursor", "pointer");
+    ABCDButton.style("padding-top", "4px");
+    ABCDButton.style("border-bottom", "1px solid black");
+    ABCDButton.mouseClicked(function() {
+        ABCDButton.style("box-shadow", "0px 1px white, 0px 2px black");
+        EFOnlyButton.style("box-shadow", "unset");
+        EFModeButton.style("box-shadow", "unset");
+        if (EFOnly || EFMode) {
+            EFOnly = false;
             EFMode = false;
             redraw();
         } else {
-            EFMode = true;
-            redraw();
+            EFOnly = false;
+            EFMode = false;
         }
     });
-    EFOnlyButton = select(".efonly");
-    EFOnlyButton.style("cursor", "pointer");
-    EFOnlyButton.mouseClicked(function() {
-        console.log("Does this work?");
-        if (EFOnly) {
+    EFModeButton = select("#efmode");
+    EFModeButton.style("cursor", "pointer");
+    EFModeButton.style("padding-top", "4px");
+    // EFModeButton.style("background-color", "#EAEAEA");
+    EFModeButton.style("box-shadow", "0px 1px white, 0px 2px black");
+    EFModeButton.style("border-bottom", "1px solid black");
+    EFModeButton.mouseClicked(function() {
+        EFModeButton.style("box-shadow", "0px 1px white, 0px 2px black");
+        EFOnlyButton.style("box-shadow", "unset");
+        ABCDButton.style("box-shadow", "unset");
+        if (!EFMode ||  EFOnly) {
             EFOnly = false;
+            EFMode = true;
+            redraw();
+        } else {
+            EFOnly = false;
+            EFMode = true;
+        }
+    });
+    EFOnlyButton = select("#efonly");
+    EFOnlyButton.style("cursor", "pointer");
+    EFOnlyButton.style("padding-top", "4px");
+    EFOnlyButton.style("border-bottom", "1px solid black");
+    EFOnlyButton.mouseClicked(function() {
+        ABCDButton.style("box-shadow", "unset");
+        EFModeButton.style("box-shadow", "unset");
+        EFOnlyButton.style("box-shadow", "0px 1px white, 0px 2px black");
+        // EFOnlyButton.style("background-color", "#E4D87E");
+
+        // EFOnlyButton.style("padding", "2px 10px");
+
+        if (!EFOnly || EFMode) {
+            EFOnly = true;
+            EFMode = false;
             redraw();
         } else {
             EFOnly = true;
-            redraw();
+            EFMode = false;
         }
     });
 
