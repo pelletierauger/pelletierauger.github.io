@@ -4,6 +4,12 @@
         <meta charset="UTF-8">
         <title>Guillaume Pelletier-Auger - Les pavages de Truchet</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=4, user-scalable=yes" />
+        <script src="../../libraries/p5.js" type="text/javascript"></script>
+        <script src="../../libraries/p5.dom.js" type="text/javascript"></script>
+        <script src="../../sketches/truchet/sketch.js" type="text/javascript"></script>
+        <script src="../../sketches/truchet/block-generator.js" type="text/javascript"></script>
+        <script src="../../sketches/truchet/block-prototype.js" type="text/javascript"></script>
+        
         <link href="../../style/style.css" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=EB+Garamond" rel="stylesheet">
         
@@ -59,21 +65,28 @@
     <img src="../../images/truchet/truchet-planches-04.jpg">
 </div>
 <p class="noindent">
-    Truchet s&rsquo;intéresse ainsi à la création de groupements symétriques de carreaux. Puisque les positions différentes d&rsquo;un carreau unique sont obtenues par des rotations, elles sont aussi liées par des symétries. La position <span class="small-caps">a</span> est liée à <span class="small-caps">b</span> par une symétrie à l&rsquo;axe horizontal, à c par une symétrie à l&rsquo;axe diagonal, et à <span class="small-caps">d</span> par une symétrie à l&rsquo;axe vertical.
+    Truchet s&rsquo;intéresse ainsi à la création de groupements symétriques de carreaux. Puisque les positions différentes d&rsquo;un carreau unique sont obtenues par des rotations, elles sont aussi liées par des symétries. La position <span class="small-caps">a</span> est liée à <span class="small-caps">b</span> par une symétrie à l&rsquo;axe horizontal, à <span class="small-caps">c</span> par une symétrie à l&rsquo;axe diagonal, et à <span class="small-caps">d</span> par une symétrie à l&rsquo;axe vertical.
 </p>
 <p>
     De la même façon, des groupements de carreaux peuvent être liés par des symétries. De nombreuses planches dessinées par Truchet sont basées sur un groupement que j&rsquo;appelle un <span class="italic">triangle initial</span>, auquel des copies symétriques sont juxtaposées.
 </p>
 <h3>Le générateur de pavages aléatoires</h3>
 <p class="noindent">
-    <span class="drop-caps">E</span><span class="small-caps">n voyant la simplicité</span> des triangles initiaux que Truchet utilise pour bâtir ses beaux pavages, j&rsquo;ai décidé d&rsquo;écrire un programme qui choisirait au hasard chacun des carreaux d&rsquo;un triangle initial puis créerait les symétries nécessaires au remplissage d&rsquo;un pavage. J&rsquo;ai aussi ajouté deux nouveaux carreaux : le carreau vide et le carreau plein, désignés respectivement <span class="small-caps">e</span> et <span class="small-caps">f</span>&nbsp;:
+    <span class="drop-caps">E</span><span class="small-caps">n voyant la simplicité</span> des triangles initiaux que Truchet utilise pour bâtir ses pavages, j&rsquo;ai décidé d&rsquo;écrire un programme qui choisirait au hasard chacun des carreaux d&rsquo;un triangle initial puis créerait les symétries nécessaires au remplissage d&rsquo;un pavage. J&rsquo;ai aussi ajouté deux nouveaux carreaux : le carreau vide et le carreau plein, désignés respectivement <span class="small-caps">e</span> et <span class="small-caps">f</span>&nbsp;:
         <label for="triche" class="margin-toggle sidenote-number">
         </label>
         <input type="checkbox" id="triche" class="margin-toggle"/>
-        <span class="sidenote">Le lecteur attentif comprendra que <span class="italic8">je triche</span>, puisque <span class="small-caps8">a, b, c</span> et <span class="small-caps8">d</span> désignent 4 positions différentes du même carreau tandis que <span class="small-caps8">e</span> et <span class="small-caps8">f</span> désignent 2 carreaux complètement distincts. Me pardonnera-t-on un tel <span class="nobreak">laisser-aller&nbsp;?</span></span>
+        <span class="sidenote">Le lecteur attentif comprendra que <span class="italic8">je triche</span>, puisque <span class="small-caps8">a, b, c</span> et <span class="small-caps8">d</span> désignent 4 positions différentes du même carreau tandis que <span class="small-caps8">e</span> et <span class="small-caps8">f</span> désignent 2 carreaux distincts. Me pardonnera-t-on un tel <span class="nobreak">laisser-aller&nbsp;?</span> Ces ajouts produisent, à mon avis, des pavages à l&rsquo;aspect plus <span class="italic8">aéré</span>. Je préfère explorer que copier Truchet à la lettre.</span>
 </p>
 <p>
-    L&rsquo;ajout de ces deux carreaux génère, à mon avis, des pavages qui <span class="italic">respirent</span> davantage : des zones unies, claires ou foncées, créent de plus grands contrastes visuels et des compositions plus aérées. Mon objectif n&rsquo;était pas de copier Truchet, mais plutôt d&rsquo;utiliser ses idées pour continuer d&rsquo;explorer.
+    <img class="inline-figure" src="../../images/truchet/carreaux.jpg">
+</p>
+<p class="noindent">
+    <span class="small-caps">Instructions pour le générateur&nbsp;: </span>Cliquez ou appuyez sur le pavage ci-dessous pour en générer un nouveau. La touche <span class="inline-code">r</span> de votre clavier produit le même effet. La touche <span class="inline-code">p</span>, quant à elle, déclanche le mode <span class="inline-code">diapositive</span>&nbsp;: un nouveau pavage sera affiché à chaque seconde jusqu&rsquo;à ce que vous ré-appuyiez sur <span class="inline-code">p</span>. Vous pouvez aussi <a href="" onclick="return false;"><span id="showreel">cliquer ici</span></a> pour activer ou désactiver ce mode.
+</p>
+<div id="tiling-generator"></div>
+<p class="noindent">
+    Vous pouvez également choisir entre trois ensembles de carreaux à utiliser&nbsp;: <span id="abcdmode"><span class="small-caps">&#123;a, b, c, d&#125;</span></span>, <span id="efmode"><span class="small-caps">&#123;a, b, c, d, e, f&#125;</span></span> ou <span id="efonly"><span class="small-caps">&#123;e, f&#125;</span></span>.
 </p>
 <p>
     Une chose surprenante à propos des pavages de Truchet est l&rsquo;énorme quantité de combinaisons possibles. Par exemple, un pavage dont le triangle initial possède une largeur de cinq carreaux peut être assemblé en plus de <span class="italic">quatre cent milliards</span> de combinaisons différentes.
@@ -81,6 +94,10 @@
         </label>
         <input type="checkbox" id="puissances" class="margin-toggle"/>
         <span class="sidenote-left">Précisément, il y a 470&nbsp;184&nbsp;984&nbsp;576 combinaisons possibles, ce qui équivaut à 6 à la puissance 15. Un pavage dont le triangle initial a une largeur de 5 carreaux possède une somme de 15 carreaux (1 + 2 + 3 + 4 + 5), et chacun de ces carreaux peut avoir 6 positions différentes (de <span class="small-caps8">a</span> à <span class="small-caps8">f</span>). Il faut ainsi multiplier 6 par lui-même 15 fois pour connaître toutes les combinaisons possibles.</span> Si vous cliquiez pour générer un nouveau pavage à chaque seconde sans arrêt, il vous faudrait environ 15&nbsp;000 ans pour les voir tous (chose que je ne recommande pas). Et comme le générateur crée des pavages dont la largeur du triangle initial varie entre 3 et 9 carreaux, le temps nécessaire pour en épuiser les possibilités se compte en trilliards d&rsquo;années plutôt qu&rsquo;en dizaines de milliers. Chaque pavage qui est généré n&rsquo;a presque certainement jamais été vu par quiconque avant vous, et vous ne le reverez plus jamais après le prochain clic.
+</p>
+<h3>Beaucoup de couleur et un peu de texture</h3>
+<p class="noindent">
+    <span class="drop-caps">U</span><span class="small-caps">ne des questions</span> à laquelle je souhaitais répondre avec ce projet était&nbsp;: <span class="italic">Comment les pavages de Truchet pourraient-ils être colorés&nbsp;?</span>.
 </p>
 
             </article><div id="footer">Guillaume Pelletier-Auger &mdash; 2016-2018
