@@ -167,6 +167,11 @@ article a .italic {
     text-indent: 0;
 }
 
+canvas {
+    display: block;
+    margin: 0 auto;
+}
+
 .small-caps {
     font-style: normal;
     font-family: 'EBG12-SC';
@@ -246,7 +251,7 @@ h2 a {
 }
 
 h3 {
-    clear: both;
+    /*clear: both;*/
     font-size: 1.5em;
     font-weight: normal;
     margin: 0 auto;
