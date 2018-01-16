@@ -23,14 +23,14 @@ makeFolder("./fr");
 makeIndex(pages, "en", 0);
 makeIndex(pages, "fr", 1);
 
-makePage(seekPage("about"), "fr", 1, false);
-makePage(seekPage("about"), "en", 1, false);
+makePage(seekPage("about", "./pages/"), "fr", 1, false);
+makePage(seekPage("about", "./pages/"), "en", 1, false);
 
 makeFolder("./en/projects");
 makeFolder("./fr/projets");
 
 for (var i = 0; i < pages.list.length; i++) {
-    let page = seekPage(pages.list[i]);
+    let page = seekPage(pages.list[i], "./pages/");
     if (!page.link && page.en.title != "About") {
         makePage(page, "en", 2, "projects/", "projets/");
         makePage(page, "fr", 2, "projets/", "projects/");
@@ -88,7 +88,8 @@ function makeBlog(language) {
         var scripts = [];
         //This runs once for every blog post to build
         for (var l = 0; l < postsOnThisPage; l++) {
-            var post = require('./blog/posts/' + blog.posts[currentPost]);
+            // var post = require('./blog/posts/' + blog.posts[currentPost]);
+            var post = seekPage(blog.posts[currentPost], './blog/posts/');
             // console.log("How many times?");
             if (post.sketch) {
                 // console.log("Sketch!" + post.sketch);
@@ -96,6 +97,7 @@ function makeBlog(language) {
                     scripts.push(post.sketch[i]);
                 }
             }
+            // console.log(post.date);
             var date = dateFormatter(post.date, language);
 
             //We start to build the individual page
@@ -195,7 +197,7 @@ function makePage(page, language, stepsFromRoot, parent, oppositeParent) {
     parent = parent || "";
     // page = require('./pages/' + page);
     var fileName = filenameFormatter(page[language].title);
-    var header = makeHeader(page, language, stepsFromRoot);
+    var header = makeHeader(page, language, stepsFromRoot, page.sketch);
     var navigation = makeNavigation(page, language, stepsFromRoot, parent, oppositeParent, false);
     var content = makeContent(page, language);
     var footer = makeFooter(page, language);
@@ -244,7 +246,7 @@ function makeMosaic(pages, language, stepsFromRoot) {
     introduction = "";
     var mosaic = `${introduction}<div class="mosaic">`;
     for (var i = 0; i < pages.list.length; i++) {
-        let page = seekPage(pages.list[i]);
+        let page = seekPage(pages.list[i], "./pages/");
         //We exclude the "About" page from building an element in the mosaic.
         if (page["en"].title == "About") {
             continue;
@@ -529,19 +531,19 @@ function verbalize(message) {
     }
 }
 
-function seekPage(name) {
+function seekPage(name, folder) {
     let page;
     //First, we test if the page is not simply defined in the pages.js file.
     if (pages.pages[name]) {
         page = pages.pages[name];
         //Else, we check if an .html version of the wanted page exists.
-    } else if (fs.existsSync("./pages/" + name + ".html")) {
+    } else if (fs.existsSync(folder + name + ".html")) {
         //If this condition is met, we parse the HTML file.
-        page = parseHTMLTemplate("./pages/" + name + ".html");
+        page = parseHTMLTemplate(folder + name + ".html");
         //If this condition fails too, then we simply have a page defined in the "traditional" way.
         //Inside a .js template.
     } else {
-        page = require('./pages/' + name);
+        page = require(folder + name);
     }
     return page;
 }
@@ -552,14 +554,43 @@ function parseHTMLTemplate(s) {
         en: {}
     };
     var data = fs.readFileSync(s, { encoding: "utf8" });
+
+    let year = data.match(/(<!-- year -->)([\S\s]*?)(<!--)/);
+    if (year) {
+        let month = data.match(/(<!-- month -->)([\S\s]*?)(<!--)/);
+        let day = data.match(/(<!-- day -->)([\S\s]*?)(<!--)/);
+        page.date = {
+            year: parseInt(year[2]),
+            month: parseInt(month[2]),
+            day: parseInt(day[2])
+        };
+        // console.log(page.date);
+    }
+
+    let sketches = data.match(/(<!-- sketch -->)([\S\s]*?)(<!--)/);
+    if (sketches) {
+        let sketchesToCatch = [];
+        let runThroughSketches = data.replace(/(<!-- sketch -->)([\S\s]*?)([\n\r])/g, function(a, b, c) {
+            // console.log("A catch!!!");
+            sketchesToCatch.push(c);
+        });
+        page.sketch = sketchesToCatch;
+        // console.log(sketchesToCatch);
+    }
+
     page.fr.title = data.match(/(<!-- fr-title -->)([\S\s]*?)(<!--)/)[2];
     page.fr.title = page.fr.title.replace(/(?:\r\n|\r|\n)/g, "");
-    page.fr.description = data.match(/(<!-- fr-description -->)([\S\s]*?)(<!--)/)[2];
-    page.fr.content = data.match(/(<!-- fr-content -->)([\S\s]*?)(<!-- en-)/)[2];
-    page.fr.description = page.fr.description.replace(/([a-zA-ZÀ-ú])(\')([a-zA-ZÀ-ú])/g, function(a, b, c, d) {
-        return "" + b + "&rsquo;" + d
-    });
 
+    // page.fr.description = data.match(/(<!-- fr-description -->)([\S\s]*?)(<!--)/)[2];
+    let frDescription = data.match(/(<!-- fr-description -->)([\S\s]*?)(<!--)/);
+    if (frDescription) {
+        page.fr.description = frDescription[2];
+        page.fr.description = page.fr.description.replace(/([a-zA-ZÀ-ú])(\')([a-zA-ZÀ-ú])/g, function(a, b, c, d) {
+            return "" + b + "&rsquo;" + d
+        });
+    }
+
+    page.fr.content = data.match(/(<!-- fr-content -->)([\S\s]*?)(<!-- en-)/)[2];
     page.fr.content = page.fr.content.replace(/([a-zA-ZÀ-ú])(\')([a-zA-ZÀ-ú])/g, function(a, b, c, d) {
         return "" + b + "&rsquo;" + d
     });
@@ -604,13 +635,19 @@ function parseHTMLTemplate(s) {
 
     page.en.title = data.match(/(<!-- en-title -->)([\S\s]*?)(<!--)/)[2];
     page.en.title = page.en.title.replace(/(?:\r\n|\r|\n)/g, "");
-    page.en.description = data.match(/(<!-- en-description -->)([\S\s]*?)(<!--)/)[2];
-    page.en.description = page.en.description.replace(/([a-zA-ZÀ-ú])(\')([a-zA-ZÀ-ú])/g, function(a, b, c, d) {
-        return "" + b + "&rsquo;" + d
-    });
+    // page.en.description = data.match(/(<!-- en-description -->)([\S\s]*?)(<!--)/)[2];
+    // page.en.description = page.en.description.replace(/([a-zA-ZÀ-ú])(\')([a-zA-ZÀ-ú])/g, function(a, b, c, d) {
+    //     return "" + b + "&rsquo;" + d
+    // });
+    let enDescription = data.match(/(<!-- en-description -->)([\S\s]*?)(<!--)/);
+    if (enDescription) {
+        page.en.description = enDescription[2];
+        page.en.description = page.en.description.replace(/([a-zA-ZÀ-ú])(\')([a-zA-ZÀ-ú])/g, function(a, b, c, d) {
+            return "" + b + "&rsquo;" + d
+        });
+    }
 
     page.en.content = data.match(/(<!-- en-content -->)([\S\s]*)/)[2];
-
     page.en.content = page.en.content.replace(/([a-zA-ZÀ-ú])(\')([a-zA-ZÀ-ú])/g, function(a, b, c, d) {
         return "" + b + "&rsquo;" + d
     });
