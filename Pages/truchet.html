@@ -1,3 +1,6 @@
+<!-- sketch -->/truchet/sketch.js
+<!-- sketch -->/truchet/block-generator.js
+<!-- sketch -->/truchet/block-prototype.js
 <!-- fr-title -->Les pavages de Truchet
 <!-- fr-date -->Hiver 2017 &mdash; En cours
 <!-- fr-description -->Errances dans les mathématiques françaises du <span class="small-caps">xviii</span><span class="superscript">e</span> siècle.
@@ -41,13 +44,24 @@
 </p>
 <h3>Le générateur de pavages aléatoires</h3>
 <p class="noindent">
-    <dc>E</dc><sc>n voyant la simplicité</sc> des triangles initiaux que Truchet utilise pour bâtir ses beaux pavages, j'ai décidé d'écrire un programme qui choisirait au hasard chacun des carreaux d'un triangle initial puis créerait les symétries nécessaires au remplissage d'un pavage. J'ai aussi ajouté deux nouveaux carreaux : le carreau vide et le carreau plein, désignés respectivement <sc>e</sc> et <sc>f</sc>&nbsp;:<snr label="triche">Le lecteur attentif comprendra que <span class="italic8">je triche</span>, puisque <span class="small-caps8">a, b, c</span> et <span class="small-caps8">d</span> désignent 4 positions différentes du même carreau tandis que <span class="small-caps8">e</span> et <span class="small-caps8">f</span> désignent 2 carreaux complètement distincts. Me pardonnera-t-on un tel <span class="nobreak">laisser-aller?</span></snr>
+    <dc>E</dc><sc>n voyant la simplicité</sc> des triangles initiaux que Truchet utilise pour bâtir ses beaux pavages, j'ai décidé d'écrire un programme qui choisirait au hasard chacun des carreaux d'un triangle initial puis créerait les symétries nécessaires au remplissage d'un pavage. J'ai aussi ajouté deux nouveaux carreaux : le carreau vide et le carreau plein, désignés respectivement <sc>e</sc> et <sc>f</sc>&nbsp;:<snr label="triche">Le lecteur attentif comprendra que <span class="italic8">je triche</span>, puisque <span class="small-caps8">a, b, c</span> et <span class="small-caps8">d</span> désignent 4 positions différentes du même carreau tandis que <span class="small-caps8">e</span> et <span class="small-caps8">f</span> désignent 2 carreaux distincts. Me pardonnera-t-on un tel <span class="nobreak">laisser-aller?</span> Ces ajouts produisent, à mon avis, des pavages à l'aspect plus <span class="italic8">aéré</span>. Je préfère explorer que copier Truchet à la lettre.</snr>
 </p>
 <p>
-    L'ajout de ces deux carreaux génère, à mon avis, des pavages qui <i>respirent</i> davantage : des zones unies, claires ou foncées, créent de plus grands contrastes visuels et des compositions plus aérées. Mon objectif n'était pas de copier Truchet, mais plutôt d'utiliser ses idées pour continuer d'explorer.
+    <img class="inline-figure" src="../../images/truchet/carreaux.jpg">
+</p>
+<p class="noindent">
+    <sc>Instructions pour le générateur&nbsp;: </sc>Cliquez ou appuyez sur le pavage ci-dessous pour en générer un nouveau. La touche <span class="inline-code">r</span> de votre clavier produit le même effet. La touche <span class="inline-code">p</span>, quant à elle, déclanche le mode <span class="inline-code">diapositive</span>&nbsp;: un nouveau pavage sera affiché à chaque seconde jusqu'à ce que vous ré-appuyiez sur <span class="inline-code">p</span>. Vous pouvez aussi <a href="" onclick="return false;"><span id="showreel">cliquer ici</span></a> pour activer ou désactiver le mode <span class="inline-code">diapositive</span>.
+</p>
+<div id="tiling-generator"></div>
+<p class="noindent">
+    Vous pouvez également <a href="" onclick="return false;"><span id="efmode">cliquer ici</span></a> pour désactiver ou réactiver l'utilisation des carreaux <sc>e</sc> et <sc>f</sc>. Que préférez-vous?<snr label="efonly">Ne le dites pas à personne, mais vous pouvez aussi <a href="" onclick="return false;"><span class="efonly">cliquer sur ce dernier lien vers nulle part</span></a> pour désactiver tous les carreaux <span class="italic8">excepté</span> <span class="small-caps8">e</span> et <span class="small-caps8">f</span> ! Cela vous amènera plutôt loin des planches originales de Truchet.</snr>
 </p>
 <p>
     Une chose surprenante à propos des pavages de Truchet est l'énorme quantité de combinaisons possibles. Par exemple, un pavage dont le triangle initial possède une largeur de cinq carreaux peut être assemblé en plus de <i>quatre cent milliards</i> de combinaisons différentes.<snl label="puissances">Précisément, il y a 470&nbsp;184&nbsp;984&nbsp;576 combinaisons possibles, ce qui équivaut à 6 à la puissance 15. Un pavage dont le triangle initial a une largeur de 5 carreaux possède une somme de 15 carreaux (1 + 2 + 3 + 4 + 5), et chacun de ces carreaux peut avoir 6 positions différentes (de <span class="small-caps8">a</span> à <span class="small-caps8">f</span>). Il faut ainsi multiplier 6 par lui-même 15 fois pour connaître toutes les combinaisons possibles.</snl> Si vous cliquiez pour générer un nouveau pavage à chaque seconde sans arrêt, il vous faudrait environ 15&nbsp;000 ans pour les voir tous (chose que je ne recommande pas). Et comme le générateur crée des pavages dont la largeur du triangle initial varie entre 3 et 9 carreaux, le temps nécessaire pour en épuiser les possibilités se compte en trilliards d'années plutôt qu'en dizaines de milliers. Chaque pavage qui est généré n'a presque certainement jamais été vu par quiconque avant vous, et vous ne le reverez plus jamais après le prochain clic.
+</p>
+<h3>Beaucoup de couleur et un peu de texture</h3>
+<p class="noindent">
+    <dc>U</dc><sc>ne des questions</sc> à laquelle je souhaitais répondre avec ce projet était&nbsp;: <i>Comment les pavages de Truchet pourraient-ils être colorés?</i>.
 </p>
 <!-- en-title -->The Tilings of Truchet
 <!-- en-date -->Winter 2017 &mdash; Ongoing
