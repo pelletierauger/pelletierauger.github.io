@@ -484,6 +484,34 @@ function showFWavy(x, y, tW, light, dark) {
     arc(x, y, tW, tW, 0, PI / 2);
     arc(x + tW, y, tW, tW, PI / 2, PI);
     arc(x + tW, y + tW, tW, tW, PI, PI * 1.5);
+    let n = 25;
+    let increment = TWO_PI / (n * 4);
+    fill(0);
+    noStroke();
+    beginShape();
+    let r = tW / 2;
+    for (let a = PI; a > PI / 2; a -= increment) {
+        let vx = x + tW + (cos(a) * r);
+        let vy = y + (sin(a) * r);
+        vertex(vx, vy);
+    }
+    for (let a = PI * 1.5; a > PI; a -= increment) {
+        let vx = x + tW + (cos(a) * r);
+        let vy = y + tW + (sin(a) * r);
+        vertex(vx, vy);
+    }
+    for (let a = TWO_PI; a > PI * 1.5; a -= increment) {
+        let vx = x + (cos(a) * r);
+        let vy = y + tW + (sin(a) * r);
+        vertex(vx, vy);
+    }
+    for (let a = PI / 2; a > 0; a -= increment) {
+        let vx = x + (cos(a) * r);
+        let vy = y + (sin(a) * r);
+        vertex(vx, vy);
+    }
+    endShape();
+    noFill();
 }
 
 function showA(x, y, tW, light, dark) {
