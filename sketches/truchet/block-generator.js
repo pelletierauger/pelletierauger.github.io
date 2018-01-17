@@ -1,9 +1,41 @@
 var blockWidth;
 var blockData = [];
+var blockOffset;
 generateRandomBlock();
+
+function calculateOffset(n) {
+    let o;
+    switch (n) {
+        case 3:
+            o = { x: 2, y: 0 };
+            break;
+        case 4:
+            o = { x: 0, y: 7 };
+            break;
+        case 5:
+            o = { x: 4, y: 1 };
+            break;
+        case 6:
+            o = { x: 2, y: 3 };
+            break;
+        case 7:
+            o = { x: 5, y: 5 };
+            break;
+        case 8:
+            o = { x: 0, y: 7 };
+            break;
+        case 9:
+            o = { x: 2, y: 0 };
+            break;
+        default:
+            o = { x: 0, y: 0 };
+    }
+    return o;
+}
 
 function generateRandomBlock() {
     blockWidth = Math.round(Math.random() * 6 + 3);
+    blockOffset = calculateOffset(blockWidth);
     blockData = [];
     var builtBlocks = 0;
     while (builtBlocks < blockWidth) {

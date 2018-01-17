@@ -206,7 +206,8 @@ function draw() {
         maxSize: { width: 500, height: 700 },
         data: blockData,
         horizontalSymmetry: false,
-        verticalSymmetry: false
+        verticalSymmetry: false,
+        offset: blockOffset
     });
     blockRandom001.showTiling();
     // show("A", width / 2, height / 2, tileWidth, light, dark);

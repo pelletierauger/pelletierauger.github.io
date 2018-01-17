@@ -2,6 +2,7 @@ var Block = function(block) {
     this.type = block.type;
     this.size = block.size;
     this.data = block.data;
+    this.offset = block.offset || { x: 0, y: 0 };
     this.horizontalSymmetry = block.horizontalSymmetry;
     this.verticalSymmetry = block.verticalSymmetry;
     this.fullSpace = this.makeLargeSpace(block);
@@ -44,7 +45,7 @@ Block.prototype.makeTiling = function() {
     // console.log(this.fullSpace);
     var myTiling = tilingFiller({
         space: this.fullSpace,
-        offset: { x: 0, y: 0 },
+        offset: this.offset,
         outputSize: { width: gridXAmount, height: gridYAmount }
     });
     // console.log(myTiling);
