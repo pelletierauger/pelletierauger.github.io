@@ -21,6 +21,10 @@ let EFMode = true;
 let EFModeButton, EFOnlyButton, ABCDButton;
 let EFOnly = false;
 let ABCDMode = false;
+let wavy = false;
+let widthWavy = 5;
+let normalButton, wavyButton;
+let manualButton, showreelButton;
 
 function setup() {
     canvasContainer = select("#tiling-generator");
@@ -32,6 +36,8 @@ function setup() {
     canvasContainer.style("margin", "2em 0");
     canvasContainer.mouseClicked(function() {
         if (looping) {
+            manualButton.style("box-shadow", "0px 1px white, 0px 2px black");
+            showreelButton.style("box-shadow", "unset");
             looping = false;
             noLoop();
         } else {
@@ -39,17 +45,17 @@ function setup() {
         }
     });
 
-    button = select("#showreel");
-    button.style("cursor", "pointer");
-    button.mouseClicked(function() {
-        if (looping) {
-            noLoop();
-            looping = false;
-        } else {
-            loop();
-            looping = true;
-        }
-    });
+    // button = select("#showreel");
+    // button.style("cursor", "pointer");
+    // button.mouseClicked(function() {
+    //     if (looping) {
+    //         noLoop();
+    //         looping = false;
+    //     } else {
+    //         loop();
+    //         looping = true;
+    //     }
+    // });
     ABCDButton = select("#abcdmode");
     ABCDButton.style("cursor", "pointer");
     ABCDButton.style("padding-top", "4px");
@@ -108,6 +114,61 @@ function setup() {
         }
     });
 
+    //---------Normal and wavy
+    normalButton = select("#normalmode");
+    normalButton.style("cursor", "pointer");
+    normalButton.style("padding-top", "4px");
+    normalButton.style("border-bottom", "1px solid black");
+    normalButton.style("box-shadow", "0px 1px white, 0px 2px black");
+    normalButton.mouseClicked(function() {
+        if (wavy) {
+            normalButton.style("box-shadow", "0px 1px white, 0px 2px black");
+            wavyButton.style("box-shadow", "unset");
+            wavy = false;
+            redraw();
+        }
+    });
+    wavyButton = select("#wavymode");
+    wavyButton.style("cursor", "pointer");
+    wavyButton.style("padding-top", "4px");
+    wavyButton.style("border-bottom", "1px solid black");
+    wavyButton.mouseClicked(function() {
+        if (!wavy) {
+            wavyButton.style("box-shadow", "0px 1px white, 0px 2px black");
+            normalButton.style("box-shadow", "unset");
+            wavy = true;
+            redraw();
+        }
+    });
+
+
+    //---------Manual and showreel
+    manualButton = select("#manual");
+    manualButton.style("cursor", "pointer");
+    manualButton.style("padding-top", "4px");
+    manualButton.style("border-bottom", "1px solid black");
+    manualButton.style("box-shadow", "0px 1px white, 0px 2px black");
+    manualButton.mouseClicked(function() {
+        if (looping) {
+            manualButton.style("box-shadow", "0px 1px white, 0px 2px black");
+            showreelButton.style("box-shadow", "unset");
+            looping = false;
+            noLoop();
+        }
+    });
+    showreelButton = select("#showreel");
+    showreelButton.style("cursor", "pointer");
+    showreelButton.style("padding-top", "4px");
+    showreelButton.style("border-bottom", "1px solid black");
+    showreelButton.mouseClicked(function() {
+        if (!looping) {
+            showreelButton.style("box-shadow", "0px 1px white, 0px 2px black");
+            manualButton.style("box-shadow", "unset");
+            looping = true;
+            loop();
+        }
+    });
+
     background(51);
     frameRate(1);
     tileWidth = (width - (padding * 3)) / gridXAmount;
@@ -130,6 +191,12 @@ function setup() {
 
 function draw() {
     // truchetAlgorithm3();
+    if (wavy) {
+        widthWavy = random(4, 14);
+        while (widthWavy > 9 && widthWavy < 12.5) {
+            widthWavy = random(4, 14);
+        }
+    }
     background(light);
     translate(padding, padding);
     generateRandomBlock();
@@ -337,28 +404,86 @@ function show(position, x, y, tW, light, dark) {
 
 function showNumeral(position, x, y, tW, light, dark) {
     howMany++;
-    switch (position) {
-        case "A":
-            showA(x, y, tileWidth, light, dark);
-            break;
-        case "B":
-            showB(x, y, tileWidth, light, dark);
-            break;
-        case "C":
-            showC(x, y, tileWidth, light, dark);
-            break;
-        case "D":
-            showD(x, y, tileWidth, light, dark);
-            break;
-        case "E":
-            showE(x, y, tileWidth, light, dark);
-            break;
-        case "F":
-            showF(x, y, tileWidth, light, dark);
-            break;
-        default:
-            showA(x, y, tileWidth, light, dark);
+    if (wavy) {
+        switch (position) {
+            case "A":
+                showAWavy(x, y, tileWidth, light, dark);
+                break;
+            case "B":
+                showBWavy(x, y, tileWidth, light, dark);
+                break;
+            case "C":
+                showCWavy(x, y, tileWidth, light, dark);
+                break;
+            case "D":
+                showDWavy(x, y, tileWidth, light, dark);
+                break;
+            case "E":
+                showE(x, y, tileWidth, light, dark);
+                break;
+            case "F":
+                showFWavy(x, y, tileWidth, light, dark);
+                break;
+            default:
+                showA(x, y, tileWidth, light, dark);
+        }
+    } else {
+        switch (position) {
+            case "A":
+                showA(x, y, tileWidth, light, dark);
+                break;
+            case "B":
+                showB(x, y, tileWidth, light, dark);
+                break;
+            case "C":
+                showC(x, y, tileWidth, light, dark);
+                break;
+            case "D":
+                showD(x, y, tileWidth, light, dark);
+                break;
+            case "E":
+                showE(x, y, tileWidth, light, dark);
+                break;
+            case "F":
+                showF(x, y, tileWidth, light, dark);
+                break;
+            default:
+                showA(x, y, tileWidth, light, dark);
+        }
     }
+}
+
+function showAWavy(x, y, tW, light, dark) {
+    stroke(0);
+    strokeWeight(widthWavy);
+    arc(x, y + tW, tW, tW, PI * 1.5, 0);
+}
+
+function showBWavy(x, y, tW, light, dark) {
+    stroke(0);
+    strokeWeight(widthWavy);
+    arc(x, y, tW, tW, 0, PI / 2);
+}
+
+function showCWavy(x, y, tW, light, dark) {
+    stroke(0);
+    strokeWeight(widthWavy);
+    arc(x + tW, y, tW, tW, PI / 2, PI);
+}
+
+function showDWavy(x, y, tW, light, dark) {
+    stroke(0);
+    strokeWeight(widthWavy);
+    arc(x + tW, y + tW, tW, tW, PI, PI * 1.5);
+}
+
+function showFWavy(x, y, tW, light, dark) {
+    stroke(0);
+    strokeWeight(widthWavy);
+    arc(x, y + tW, tW, tW, PI * 1.5, 0);
+    arc(x, y, tW, tW, 0, PI / 2);
+    arc(x + tW, y, tW, tW, PI / 2, PI);
+    arc(x + tW, y + tW, tW, tW, PI, PI * 1.5);
 }
 
 function showA(x, y, tW, light, dark) {
