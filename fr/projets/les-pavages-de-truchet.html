@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-    <html>
-    <head>
+<html><head>
         <meta charset="UTF-8">
         <title>Guillaume Pelletier-Auger - Les pavages de Truchet</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=4, user-scalable=yes" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=4, user-scalable=yes">
         <script src="../../libraries/p5.js" type="text/javascript"></script>
         <script src="../../libraries/p5.dom.js" type="text/javascript"></script>
         <script src="../../sketches/truchet/sketch.js" type="text/javascript"></script>
@@ -11,22 +10,141 @@
         <script src="../../sketches/truchet/block-prototype.js" type="text/javascript"></script>
         
         <link href="../../style/style.css" rel="stylesheet" type="text/css">
+        <link href="../../style/truchet.css" rel="stylesheet" type="text/css">
+        
         <link href="https://fonts.googleapis.com/css?family=EB+Garamond" rel="stylesheet">
         
-    </head><body>
+    <style id="MathJax_CHTML_styles">.mjx-chtml {display: inline-block; line-height: 0; text-indent: 0; text-align: left; text-transform: none; font-style: normal; font-weight: normal; font-size: 100%; font-size-adjust: none; letter-spacing: normal; word-wrap: normal; word-spacing: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0; min-height: 0; border: 0; margin: 0; padding: 1px 0}
+.MJXc-display {display: block; text-align: center; margin: 1em 0; padding: 0}
+.mjx-chtml[tabindex]:focus, body :focus .mjx-chtml[tabindex] {display: inline-table}
+.mjx-full-width {text-align: center; display: table-cell!important; width: 10000em}
+.mjx-math {display: inline-block; border-collapse: separate; border-spacing: 0}
+.mjx-math * {display: inline-block; -webkit-box-sizing: content-box!important; -moz-box-sizing: content-box!important; box-sizing: content-box!important; text-align: left}
+.mjx-numerator {display: block; text-align: center}
+.mjx-denominator {display: block; text-align: center}
+.MJXc-stacked {height: 0; position: relative}
+.MJXc-stacked > * {position: absolute}
+.MJXc-bevelled > * {display: inline-block}
+.mjx-stack {display: inline-block}
+.mjx-op {display: block}
+.mjx-under {display: table-cell}
+.mjx-over {display: block}
+.mjx-over > * {padding-left: 0px!important; padding-right: 0px!important}
+.mjx-under > * {padding-left: 0px!important; padding-right: 0px!important}
+.mjx-stack > .mjx-sup {display: block}
+.mjx-stack > .mjx-sub {display: block}
+.mjx-prestack > .mjx-presup {display: block}
+.mjx-prestack > .mjx-presub {display: block}
+.mjx-delim-h > .mjx-char {display: inline-block}
+.mjx-surd {vertical-align: top}
+.mjx-mphantom * {visibility: hidden}
+.mjx-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 2px 3px; font-style: normal; font-size: 90%}
+.mjx-annotation-xml {line-height: normal}
+.mjx-menclose > svg {fill: none; stroke: currentColor}
+.mjx-mtr {display: table-row}
+.mjx-mlabeledtr {display: table-row}
+.mjx-mtd {display: table-cell; text-align: center}
+.mjx-label {display: table-row}
+.mjx-box {display: inline-block}
+.mjx-block {display: block}
+.mjx-span {display: inline}
+.mjx-char {display: block; white-space: pre}
+.mjx-itable {display: inline-table; width: auto}
+.mjx-row {display: table-row}
+.mjx-cell {display: table-cell}
+.mjx-table {display: table; width: 100%}
+.mjx-line {display: block; height: 0}
+.mjx-strut {width: 0; padding-top: 1em}
+.mjx-vsize {width: 0}
+.MJXc-space1 {margin-left: .167em}
+.MJXc-space2 {margin-left: .222em}
+.MJXc-space3 {margin-left: .278em}
+.mjx-ex-box-test {position: absolute; width: 1px; height: 60ex}
+.mjx-line-box-test {display: table!important}
+.mjx-line-box-test span {display: table-cell!important; width: 10000em!important; min-width: 0; max-width: none; padding: 0; border: 0; margin: 0}
+.MJXc-TeX-unknown-R {font-family: monospace; font-style: normal; font-weight: normal}
+.MJXc-TeX-unknown-I {font-family: monospace; font-style: italic; font-weight: normal}
+.MJXc-TeX-unknown-B {font-family: monospace; font-style: normal; font-weight: bold}
+.MJXc-TeX-unknown-BI {font-family: monospace; font-style: italic; font-weight: bold}
+.MJXc-TeX-ams-R {font-family: MJXc-TeX-ams-R,MJXc-TeX-ams-Rw}
+.MJXc-TeX-cal-B {font-family: MJXc-TeX-cal-B,MJXc-TeX-cal-Bx,MJXc-TeX-cal-Bw}
+.MJXc-TeX-frak-R {font-family: MJXc-TeX-frak-R,MJXc-TeX-frak-Rw}
+.MJXc-TeX-frak-B {font-family: MJXc-TeX-frak-B,MJXc-TeX-frak-Bx,MJXc-TeX-frak-Bw}
+.MJXc-TeX-math-BI {font-family: MJXc-TeX-math-BI,MJXc-TeX-math-BIx,MJXc-TeX-math-BIw}
+.MJXc-TeX-sans-R {font-family: MJXc-TeX-sans-R,MJXc-TeX-sans-Rw}
+.MJXc-TeX-sans-B {font-family: MJXc-TeX-sans-B,MJXc-TeX-sans-Bx,MJXc-TeX-sans-Bw}
+.MJXc-TeX-sans-I {font-family: MJXc-TeX-sans-I,MJXc-TeX-sans-Ix,MJXc-TeX-sans-Iw}
+.MJXc-TeX-script-R {font-family: MJXc-TeX-script-R,MJXc-TeX-script-Rw}
+.MJXc-TeX-type-R {font-family: MJXc-TeX-type-R,MJXc-TeX-type-Rw}
+.MJXc-TeX-cal-R {font-family: MJXc-TeX-cal-R,MJXc-TeX-cal-Rw}
+.MJXc-TeX-main-B {font-family: MJXc-TeX-main-B,MJXc-TeX-main-Bx,MJXc-TeX-main-Bw}
+.MJXc-TeX-main-I {font-family: MJXc-TeX-main-I,MJXc-TeX-main-Ix,MJXc-TeX-main-Iw}
+.MJXc-TeX-main-R {font-family: MJXc-TeX-main-R,MJXc-TeX-main-Rw}
+.MJXc-TeX-math-I {font-family: MJXc-TeX-math-I,MJXc-TeX-math-Ix,MJXc-TeX-math-Iw}
+.MJXc-TeX-size1-R {font-family: MJXc-TeX-size1-R,MJXc-TeX-size1-Rw}
+.MJXc-TeX-size2-R {font-family: MJXc-TeX-size2-R,MJXc-TeX-size2-Rw}
+.MJXc-TeX-size3-R {font-family: MJXc-TeX-size3-R,MJXc-TeX-size3-Rw}
+.MJXc-TeX-size4-R {font-family: MJXc-TeX-size4-R,MJXc-TeX-size4-Rw}
+@font-face {font-family: MJXc-TeX-ams-R; src: local('MathJax_AMS'), local('MathJax_AMS-Regular')}
+@font-face {font-family: MJXc-TeX-ams-Rw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_AMS-Regular.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_AMS-Regular.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_AMS-Regular.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-cal-B; src: local('MathJax_Caligraphic Bold'), local('MathJax_Caligraphic-Bold')}
+@font-face {font-family: MJXc-TeX-cal-Bx; src: local('MathJax_Caligraphic'); font-weight: bold}
+@font-face {font-family: MJXc-TeX-cal-Bw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Caligraphic-Bold.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Caligraphic-Bold.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Caligraphic-Bold.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-frak-R; src: local('MathJax_Fraktur'), local('MathJax_Fraktur-Regular')}
+@font-face {font-family: MJXc-TeX-frak-Rw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Fraktur-Regular.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Fraktur-Regular.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Fraktur-Regular.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-frak-B; src: local('MathJax_Fraktur Bold'), local('MathJax_Fraktur-Bold')}
+@font-face {font-family: MJXc-TeX-frak-Bx; src: local('MathJax_Fraktur'); font-weight: bold}
+@font-face {font-family: MJXc-TeX-frak-Bw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Fraktur-Bold.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Fraktur-Bold.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Fraktur-Bold.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-math-BI; src: local('MathJax_Math BoldItalic'), local('MathJax_Math-BoldItalic')}
+@font-face {font-family: MJXc-TeX-math-BIx; src: local('MathJax_Math'); font-weight: bold; font-style: italic}
+@font-face {font-family: MJXc-TeX-math-BIw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Math-BoldItalic.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Math-BoldItalic.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Math-BoldItalic.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-sans-R; src: local('MathJax_SansSerif'), local('MathJax_SansSerif-Regular')}
+@font-face {font-family: MJXc-TeX-sans-Rw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_SansSerif-Regular.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_SansSerif-Regular.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_SansSerif-Regular.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-sans-B; src: local('MathJax_SansSerif Bold'), local('MathJax_SansSerif-Bold')}
+@font-face {font-family: MJXc-TeX-sans-Bx; src: local('MathJax_SansSerif'); font-weight: bold}
+@font-face {font-family: MJXc-TeX-sans-Bw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_SansSerif-Bold.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_SansSerif-Bold.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_SansSerif-Bold.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-sans-I; src: local('MathJax_SansSerif Italic'), local('MathJax_SansSerif-Italic')}
+@font-face {font-family: MJXc-TeX-sans-Ix; src: local('MathJax_SansSerif'); font-style: italic}
+@font-face {font-family: MJXc-TeX-sans-Iw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_SansSerif-Italic.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_SansSerif-Italic.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_SansSerif-Italic.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-script-R; src: local('MathJax_Script'), local('MathJax_Script-Regular')}
+@font-face {font-family: MJXc-TeX-script-Rw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Script-Regular.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Script-Regular.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Script-Regular.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-type-R; src: local('MathJax_Typewriter'), local('MathJax_Typewriter-Regular')}
+@font-face {font-family: MJXc-TeX-type-Rw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Typewriter-Regular.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Typewriter-Regular.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Typewriter-Regular.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-cal-R; src: local('MathJax_Caligraphic'), local('MathJax_Caligraphic-Regular')}
+@font-face {font-family: MJXc-TeX-cal-Rw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Caligraphic-Regular.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Caligraphic-Regular.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Caligraphic-Regular.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-main-B; src: local('MathJax_Main Bold'), local('MathJax_Main-Bold')}
+@font-face {font-family: MJXc-TeX-main-Bx; src: local('MathJax_Main'); font-weight: bold}
+@font-face {font-family: MJXc-TeX-main-Bw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Main-Bold.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Main-Bold.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Main-Bold.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-main-I; src: local('MathJax_Main Italic'), local('MathJax_Main-Italic')}
+@font-face {font-family: MJXc-TeX-main-Ix; src: local('MathJax_Main'); font-style: italic}
+@font-face {font-family: MJXc-TeX-main-Iw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Main-Italic.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Main-Italic.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Main-Italic.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-main-R; src: local('MathJax_Main'), local('MathJax_Main-Regular')}
+@font-face {font-family: MJXc-TeX-main-Rw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Main-Regular.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Main-Regular.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Main-Regular.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-math-I; src: local('MathJax_Math Italic'), local('MathJax_Math-Italic')}
+@font-face {font-family: MJXc-TeX-math-Ix; src: local('MathJax_Math'); font-style: italic}
+@font-face {font-family: MJXc-TeX-math-Iw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Math-Italic.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Math-Italic.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Math-Italic.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-size1-R; src: local('MathJax_Size1'), local('MathJax_Size1-Regular')}
+@font-face {font-family: MJXc-TeX-size1-Rw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Size1-Regular.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Size1-Regular.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Size1-Regular.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-size2-R; src: local('MathJax_Size2'), local('MathJax_Size2-Regular')}
+@font-face {font-family: MJXc-TeX-size2-Rw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Size2-Regular.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Size2-Regular.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Size2-Regular.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-size3-R; src: local('MathJax_Size3'), local('MathJax_Size3-Regular')}
+@font-face {font-family: MJXc-TeX-size3-Rw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Size3-Regular.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Size3-Regular.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Size3-Regular.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-size4-R; src: local('MathJax_Size4'), local('MathJax_Size4-Regular')}
+@font-face {font-family: MJXc-TeX-size4-Rw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Size4-Regular.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Size4-Regular.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Size4-Regular.otf') format('opentype')}
+</style></head><body>
     <nav>
         <h1><a href="../../fr/"><img src="../.././style/ornaments/g.png">uillaume Pelletier-Auger</a></h1>
         <ul>
-            <li class = "selected"><a href="../../fr/">Projets</a></li>
+            <li class="selected"><a href="../../fr/">Projets</a></li>
             <li><a href="../../fr/blog/">Blog</a></li>
             <li><a href="../../fr/a-propos.html">À propos</a></li>
-            <li><a href="../../en/projects/the-tilings-of-truchet.html">Fr &#8594; En</a></li>
+            <li><a href="../../en/projects/the-tilings-of-truchet.html">Fr → En</a></li>
         </ul>
     </nav>
     
             <article>
                 <h2 class="with-date">Les pavages de Truchet</h2>
-                <div class="date">Hiver 2017 &mdash; En cours
+                <div class="date">Hiver 2017 — En cours
 </div>
                 
 <!-- <p class="noindent">
@@ -39,24 +157,24 @@
     <img src="../../images/truchet/truchet-square004.png">
 </div>
 <p class="noindent">
-    <span class="drop-caps">L</span><span class="small-caps">es pavages ci-dessus</span> ont été générés par un programme que j&rsquo;ai écrit avec JavaScript et <a href=""><span class="lnum">la bibliothèque p5.js</span></a>. Ils sont le produit d&rsquo;un <span class="italic">hasard contrôlé</span> : je n&rsquo;ai pas choisi les palettes de couleur ni les agencements de triangles et de rectangles. J&rsquo;ai plutôt créé les conditions permettant leur création.
+    <span class="drop-caps">L</span><span class="small-caps">es pavages ci-dessus</span> ont été générés par un programme que j’ai écrit avec JavaScript et <a href=""><span class="lnum">la bibliothèque p5.js</span></a>. Ils sont le produit d’un <span class="italic">hasard contrôlé</span> : je n’ai pas choisi les palettes de couleur ni les agencements de triangles et de rectangles. J’ai plutôt créé les conditions permettant leur création.
 </p>
 <!-- Comme je connais très peu cet immense domaine mathématique que sont les pavages, j&rsquo;ai décidé d&rsquo;explorer des pavages très simples afin d&rsquo;apprivoiser le sujet. Les pavages de Truchet se sont imposés par leur beauté et leur simplicité. -->
 <p>
     Pour réaliser ce projet, je me suis inspiré des travaux de Sébastien Truchet, un mathématicien et ingénieur français né en 1657. En 1704, Truchet écrivit un <span class="italic">Mémoire sur les combinaisons</span> qui présente ses recherches sur les pavages.
         <label for="memoire-combinaisons" class="margin-toggle sidenote-number">
         </label>
-        <input type="checkbox" id="memoire-combinaisons" class="margin-toggle"/>
-        <span class="sidenote">Ce <span class="italic8">Mémoire</span> apparaît à la page 363 de l'<span class="italic8">Histoire de l&rsquo;Académie royale des sciences</span>, un ouvrage <a href="">disponible gratuitement sur Gallica</a><span class="cleardescenders">,</span> un site Web de la Bibliothèque nationale de France. Vous pouvez aussi y consulter un bel ouvrage écrit par le mathématicien Dominique Do&uuml;at en 1722, <a href=""><span class="italic8">Méthode pour faire une infinité de desseins différens</span></a>. Do&uuml;at reprend les idées de Truchet et présente de nouveaux pavages de son invention.</span> Il y relate un voyage à Orléans durant lequel il trouva dans un château &#171;&nbsp;plusieurs carreaux de fayence carrés et mipartis de deux couleurs par une ligne diagonale, qui étaient destinés à carreler une chapelle et plusieurs autres appartements.&nbsp;&#187;
+        <input type="checkbox" id="memoire-combinaisons" class="margin-toggle">
+        <span class="sidenote">Ce <span class="italic8">Mémoire</span> apparaît à la page 363 de l'<span class="italic8">Histoire de l’Académie royale des sciences</span>, un ouvrage <a href="">disponible gratuitement sur Gallica</a><span class="cleardescenders">,</span> un site Web de la Bibliothèque nationale de France. Vous pouvez aussi y consulter un bel ouvrage écrit par le mathématicien Dominique Doüat en 1722, <a href=""><span class="italic8">Méthode pour faire une infinité de desseins différens</span></a>. Doüat reprend les idées de Truchet et présente de nouveaux pavages de son invention.</span> Il y relate un voyage à Orléans durant lequel il trouva dans un château «&nbsp;plusieurs carreaux de fayence carrés et mipartis de deux couleurs par une ligne diagonale, qui étaient destinés à carreler une chapelle et plusieurs autres appartements.&nbsp;»
 </p>
 <p>
-    Les carreaux que Truchet décrit sont tous identiques et peuvent être tournés sur eux-mêmes en quatre positions différentes, qu&rsquo;il désigne <span class="small-caps">a</span>, <span class="small-caps">b</span>, <span class="small-caps">c</span> et <span class="small-caps">d</span> :
+    Les carreaux que Truchet décrit sont tous identiques et peuvent être tournés sur eux-mêmes en quatre positions différentes, qu’il désigne <span class="small-caps">a</span>, <span class="small-caps">b</span>, <span class="small-caps">c</span> et <span class="small-caps">d</span> :
 </p>
 <p>
     <img class="inline-figure" src="../../images/truchet/carreaux.jpg">
 </p>
 <p class="noindent">
-    Truchet continue : &#171;&nbsp;Pour pouvoir former des dessins et des figures agréables par l&rsquo;arrangement de ces carreaux, j&rsquo;examinai d&rsquo;abord en combien de manières deux de ces carreaux pourraient se joindre ensemble, en les disposant toujours en échiquier.&nbsp;&#187; Il présente ensuite les figures qui résultent de ces combinaisons, puis celles qui résultent de combinaisons de plus en plus élaborées. Voici quelques-unes des superbes planches qui accompagnent son <span class="italic">Mémoire</span>, gravées par Louis Simonneau&nbsp;:
+    Truchet continue : «&nbsp;Pour pouvoir former des dessins et des figures agréables par l’arrangement de ces carreaux, j’examinai d’abord en combien de manières deux de ces carreaux pourraient se joindre ensemble, en les disposant toujours en échiquier.&nbsp;» Il présente ensuite les figures qui résultent de ces combinaisons, puis celles qui résultent de combinaisons de plus en plus élaborées. Voici quelques-unes des superbes planches qui accompagnent son <span class="italic">Mémoire</span>, gravées par Louis Simonneau&nbsp;:
 </p>
 <div class="imagedouble">
     <img src="../../images/truchet/truchet-planches-01.jpg">
@@ -65,42 +183,52 @@
     <img src="../../images/truchet/truchet-planches-04.jpg">
 </div>
 <p class="noindent">
-    Truchet s&rsquo;intéresse ainsi à la création de groupements symétriques de carreaux. Puisque les positions différentes d&rsquo;un carreau unique sont obtenues par des rotations, elles sont aussi liées par des symétries. La position <span class="small-caps">a</span> est liée à <span class="small-caps">b</span> par une symétrie à l&rsquo;axe horizontal, à <span class="small-caps">c</span> par une symétrie à l&rsquo;axe diagonal, et à <span class="small-caps">d</span> par une symétrie à l&rsquo;axe vertical.
+    Truchet s’intéresse ainsi à la création de groupements symétriques de carreaux. Puisque les positions différentes d’un carreau unique sont obtenues par des rotations, elles sont aussi liées par des symétries. La position <span class="small-caps">a</span> est liée à <span class="small-caps">b</span> par une symétrie à l’axe horizontal, à <span class="small-caps">c</span> par une symétrie à l’axe diagonal, et à <span class="small-caps">d</span> par une symétrie à l’axe vertical.
 </p>
 <p>
-    De la même façon, des groupements de carreaux peuvent être liés par des symétries. De nombreuses planches dessinées par Truchet sont basées sur un groupement que j&rsquo;appelle un <span class="italic">triangle initial</span>, auquel des copies symétriques sont juxtaposées.
+    De la même façon, des groupements de carreaux peuvent être liés par des symétries. De nombreuses planches dessinées par Truchet sont basées sur un groupement que j’appelle un <span class="italic">triangle initial</span>, auquel des copies symétriques sont juxtaposées.
 </p>
 <h3>Le générateur de pavages aléatoires</h3>
 <p class="noindent">
-    <span class="drop-caps">E</span><span class="small-caps">n voyant la simplicité</span> des triangles initiaux que Truchet utilise pour bâtir ses pavages, j&rsquo;ai décidé d&rsquo;écrire un programme qui choisirait au hasard chacun des carreaux d&rsquo;un triangle initial puis créerait les symétries nécessaires au remplissage d&rsquo;un pavage. J&rsquo;ai aussi ajouté deux nouveaux carreaux : le carreau vide et le carreau plein, désignés respectivement <span class="small-caps">e</span> et <span class="small-caps">f</span>&nbsp;:
+    <span class="drop-caps">E</span><span class="small-caps">n voyant la simplicité</span> des triangles initiaux que Truchet utilise pour bâtir ses pavages, j’ai décidé d’écrire un programme qui choisirait au hasard chacun des carreaux d’un triangle initial puis créerait les symétries nécessaires au remplissage d’un pavage. J’ai aussi ajouté deux nouveaux carreaux : le carreau vide et le carreau plein, désignés respectivement <span class="small-caps">e</span> et <span class="small-caps">f</span>&nbsp;:
         <label for="triche" class="margin-toggle sidenote-number">
         </label>
-        <input type="checkbox" id="triche" class="margin-toggle"/>
-        <span class="sidenote">Le lecteur attentif comprendra que <span class="italic8">je triche</span>, puisque <span class="small-caps8">a, b, c</span> et <span class="small-caps8">d</span> désignent 4 positions différentes du même carreau tandis que <span class="small-caps8">e</span> et <span class="small-caps8">f</span> désignent 2 carreaux distincts. Me pardonnera-t-on un tel <span class="nobreak">laisser-aller&nbsp;?</span> Ces ajouts produisent, à mon avis, des pavages à l&rsquo;aspect plus <span class="italic8">aéré</span>. Je préfère explorer que copier Truchet à la lettre.</span>
+        <input type="checkbox" id="triche" class="margin-toggle">
+        <span class="sidenote">Le lecteur attentif comprendra que <span class="italic8">je triche</span>, puisque <span class="small-caps8">a, b, c</span> et <span class="small-caps8">d</span> désignent 4 positions différentes du même carreau tandis que <span class="small-caps8">e</span> et <span class="small-caps8">f</span> désignent 2 carreaux distincts. Me pardonnera-t-on un tel <span class="nobreak">laisser-aller&nbsp;?</span> Ces ajouts produisent, à mon avis, des pavages à l’aspect plus <span class="italic8">aéré</span>.</span>
 </p>
 <p>
-    <img class="inline-figure" src="../../images/truchet/carreaux.jpg">
+    <img class="abcd" src="../../images/truchet/abcdef.png">
 </p>
 <p class="noindent">
-    <span class="small-caps">Instructions pour le générateur&nbsp;: </span>Cliquez ou appuyez sur le pavage ci-dessous pour en générer un nouveau. La touche <span class="inline-code">r</span> de votre clavier produit le même effet. La touche <span class="inline-code">p</span>, quant à elle, déclanche le mode <span class="inline-code">diapositive</span>&nbsp;: un nouveau pavage sera affiché à chaque seconde jusqu&rsquo;à ce que vous ré-appuyiez sur <span class="inline-code">p</span>. Vous pouvez aussi <a href="" onclick="return false;"><span id="showreel">cliquer ici</span></a> pour activer ou désactiver ce mode.
+    <span class="small-caps">Instructions pour le générateur&nbsp;: </span>Cliquez ou appuyez sur le pavage ci-dessous pour en générer un nouveau. La touche <span class="inline-code">r</span> de votre clavier produit le même effet. Vous pouvez continuer à utiliser ce <span id="manual"><span class="small-caps">mode manuel</span></span> ou opter pour le <span id="showreel"><span class="small-caps">mode diapositives</span></span> qui affiche un nouveau pavage à chaque seconde.
 </p>
 <div id="tiling-generator"></div>
 <p class="noindent">
-    Vous pouvez également choisir entre trois ensembles de carreaux à utiliser&nbsp;: <span id="abcdmode"><span class="small-caps">&#123;a, b, c, d&#125;</span></span>, <span id="efmode"><span class="small-caps">&#123;a, b, c, d, e, f&#125;</span></span> ou <span id="efonly"><span class="small-caps">&#123;e, f&#125;</span></span>.
+    Vous pouvez également choisir entre trois ensembles de carreaux à utiliser&nbsp;: <span id="abcdmode"><span class="small-caps">{a, b, c, d}</span></span>, <span id="efmode"><span class="small-caps">{a, b, c, d, e, f}</span></span> ou <span id="efonly"><span class="small-caps">{e, f}</span></span>.
 </p>
-<p>
-    Une chose surprenante à propos des pavages de Truchet est l&rsquo;énorme quantité de combinaisons possibles. Par exemple, un pavage dont le triangle initial possède une largeur de cinq carreaux peut être assemblé en plus de <span class="italic">quatre cent milliards</span> de combinaisons différentes.
+<h3>L’étendue des possibles</h3>
+<p class="noindent">
+    <span class="drop-caps">U</span><span class="small-caps">ne chose surprenante</span> à propos des pavages de Truchet est l’énorme quantité de combinaisons possibles. Par exemple, un pavage dont le triangle initial possède une largeur de cinq carreaux peut être assemblé en plus de <span class="italic">soixante milliards</span> de combinaisons différentes.
         <label for="puissances" class="margin-toggle sidenote-number">
         </label>
-        <input type="checkbox" id="puissances" class="margin-toggle"/>
-        <span class="sidenote-left">Précisément, il y a 470&nbsp;184&nbsp;984&nbsp;576 combinaisons possibles, ce qui équivaut à 6 à la puissance 15. Un pavage dont le triangle initial a une largeur de 5 carreaux possède une somme de 15 carreaux (1 + 2 + 3 + 4 + 5), et chacun de ces carreaux peut avoir 6 positions différentes (de <span class="small-caps8">a</span> à <span class="small-caps8">f</span>). Il faut ainsi multiplier 6 par lui-même 15 fois pour connaître toutes les combinaisons possibles.</span> Si vous cliquiez pour générer un nouveau pavage à chaque seconde sans arrêt, il vous faudrait environ 15&nbsp;000 ans pour les voir tous (chose que je ne recommande pas). Et comme le générateur crée des pavages dont la largeur du triangle initial varie entre 3 et 9 carreaux, le temps nécessaire pour en épuiser les possibilités se compte en trilliards d&rsquo;années plutôt qu&rsquo;en dizaines de milliers. Chaque pavage qui est généré n&rsquo;a presque certainement jamais été vu par quiconque avant vous, et vous ne le reverez plus jamais après le prochain clic.
+        <input type="checkbox" id="puissances" class="margin-toggle">
+        <span class="sidenote-left">Précisément, il y a <span id="MathJax-Element-1-Frame" class="mjx-chtml"><span id="MJXc-Node-1" class="mjx-math"><span id="MJXc-Node-2" class="mjx-mrow"><span id="MJXc-Node-3" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">61</span></span><span id="MJXc-Node-4" class="mjx-mspace" style="width: 0.222em; height: 0px;"></span><span id="MJXc-Node-5" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">917</span></span><span id="MJXc-Node-6" class="mjx-mspace" style="width: 0.222em; height: 0px;"></span><span id="MJXc-Node-7" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">364</span></span><span id="MJXc-Node-8" class="mjx-mspace" style="width: 0.222em; height: 0px;"></span><span id="MJXc-Node-9" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">224</span></span></span></span></span> combinaisons possibles, ou <span id="MathJax-Element-2-Frame" class="mjx-chtml"><span id="MJXc-Node-10" class="mjx-math"><span id="MJXc-Node-11" class="mjx-mrow"><span id="MJXc-Node-12" class="mjx-msubsup"><span class="mjx-base"><span id="MJXc-Node-13" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">6</span></span></span><span class="mjx-sup" style="font-size: 70.7%; vertical-align: 0.591em; padding-left: 0px; padding-right: 0.071em;"><span id="MJXc-Node-14" class="mjx-texatom" style=""><span id="MJXc-Node-15" class="mjx-mrow"><span id="MJXc-Node-16" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">10</span></span></span></span></span></span><span id="MJXc-Node-17" class="mjx-mo MJXc-space2"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.225em; padding-bottom: 0.298em;">×</span></span><span id="MJXc-Node-18" class="mjx-msubsup MJXc-space2"><span class="mjx-base"><span id="MJXc-Node-19" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">4</span></span></span><span class="mjx-sup" style="font-size: 70.7%; vertical-align: 0.607em; padding-left: 0px; padding-right: 0.071em;"><span id="MJXc-Node-20" class="mjx-mn" style=""><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">5</span></span></span></span></span></span></span>. Le diagramme ci-dessous indique le nombre de valeurs possibles pour chacun des carreaux. <img class="possibilities" src="../../images/truchet/possibilities.png">Il suffit de multiplier toutes ces possibilités pour obtenir la quantité de combinaisons possibles. Certains carreaux sont limités aux <span id="MathJax-Element-3-Frame" class="mjx-chtml"><span id="MJXc-Node-21" class="mjx-math"><span id="MJXc-Node-22" class="mjx-mrow"><span id="MJXc-Node-23" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">4</span></span></span></span></span> formes qui sont diagonalement symétriques avec elles-mêmes&nbsp;: <span class="small-caps8">{b, d, e, f}</span>. Cette limitation n’est pas obligatoire mais elle forme généralement des pavages plus harmonieux.</span> Si vous cliquiez pour générer un nouveau pavage à chaque seconde sans arrêt, il vous faudrait environ 1&nbsp;900 ans pour les voir tous (chose que je ne recommande pas). Et comme le générateur crée des pavages dont la largeur du triangle initial varie entre 3 et 9 carreaux, le temps nécessaire pour en épuiser les possibilités se compte en trilliards d’années plutôt qu’en milliers. Ainsi, chaque pavage qui est généré n’a presque certainement jamais été vu par quiconque avant vous, et vous ne le reverez plus jamais après le prochain clic.
+</p>
+<p>
+    À quoi pourraient ressembler ces pavages si leurs carreaux avaient une apparence différente mais que toutes leurs autres propriétés étaient conservées (symétrie, assemblage, etc.)&nbsp;? Par exemple, l’apparence des carreaux pourrait être altérée de cette façon&nbsp;:
+</p>
+<p>
+    <img class="abcd" src="../../images/truchet/wavy-tiles.png">
+</p>
+<p class="noindent">
+    Pour tester ces nouvelles formes dans le générateur, vous pouvez alterner entre <span id="normalmode"><span class="small-caps">le mode angulaire</span></span> et <span id="wavymode"><span class="small-caps">le mode ondulé</span></span> et y retourner pour voir les changements. Vous remarquerez aussi que l’épaisseur des lignes courbes change d’une génération à l’autre, parce que <span class="italic">ça fait plus joli</span>.
 </p>
 <h3>Beaucoup de couleur et un peu de texture</h3>
 <p class="noindent">
     <span class="drop-caps">U</span><span class="small-caps">ne des questions</span> à laquelle je souhaitais répondre avec ce projet était&nbsp;: <span class="italic">Comment les pavages de Truchet pourraient-ils être colorés&nbsp;?</span>.
 </p>
 
-            </article><div id="footer">Guillaume Pelletier-Auger &mdash; 2016-2018
+            </article><div id="footer">Guillaume Pelletier-Auger — 2016-2018
     </div>
-    </body>
-    </html>
+    
+    </body></html>
