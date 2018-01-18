@@ -1,0 +1,72 @@
+#carreaux {
+    max-width: 500px;
+    margin: 0 auto;
+}
+img.inline-figure {
+    /*display: inline-block;*/
+    max-width: 580px;
+    margin: 2em auto;
+}
+
+img.abcd {
+    /*display: inline-block;*/
+    max-width: 450px;
+    margin: 2em auto;
+}
+.possibilities {
+    float: left;
+    display: inline-block;
+}
+img.possibilities {
+    display: inline-block;
+    padding-top: 0.25em;
+    padding-right: 1em;
+    width: 6em;
+}
+
+.imagedouble-top {
+    display: inline-block;
+    margin-bottom: 2em;
+    padding-bottom: 0em;
+}
+
+.imagedouble-top img {
+    display: block;
+    float: left;
+    max-width: 50%;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-top: 0px;
+    margin-bottom: 0em;
+}
+
+.imagedouble {
+    display: inline-block;
+    margin: 1em 0;
+}
+
+.imagedouble img {
+    display: block;
+    float: left;
+    max-width: 50%;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-top: 0px;
+    margin-bottom: 0em;
+}
+
+#carreaux {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.possibilities {
+    float: left;
+    display: inline-block;
+}
+img.possibilities {
+    display: inline-block;
+    padding-top: 0.25em;
+    padding-right: 1em;
+    width: 6em;
+}
