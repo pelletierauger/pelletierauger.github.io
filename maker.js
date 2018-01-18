@@ -321,6 +321,13 @@ function makeHeader(page, language, stepsFromRoot, sketches) {
         }
     }
 
+    let style = ``;
+    if (page && page.style) {
+        style = `
+        <link href="${prefix}style/${page.style}.css" rel="stylesheet" type="text/css">
+        `;
+    }
+
     var scripts = ``;
     if (sketches && sketches.length > 0) {
         scripts += `
@@ -342,7 +349,7 @@ function makeHeader(page, language, stepsFromRoot, sketches) {
         <meta charset="UTF-8">
         <title>Guillaume Pelletier-Auger${title}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=4, user-scalable=yes" />${scripts}
-        <link href="${prefix}style/style.css" rel="stylesheet" type="text/css">
+        <link href="${prefix}style/style.css" rel="stylesheet" type="text/css">${style}
         <link href="https://fonts.googleapis.com/css?family=${codeFont}EB+Garamond" rel="stylesheet">
         ${codeCSS}
     </head>`;
@@ -565,6 +572,11 @@ function parseHTMLTemplate(s) {
             day: parseInt(day[2])
         };
         // console.log(page.date);
+    }
+
+    let style = data.match(/(<!-- style -->)([\S\s]*?)([\n\r])/);
+    if (style) {
+        page.style = style[2];
     }
 
     let sketches = data.match(/(<!-- sketch -->)([\S\s]*?)(<!--)/);
