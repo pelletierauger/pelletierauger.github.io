@@ -7,7 +7,7 @@
 <!-- fr-description -->Errances dans les mathématiques françaises du <span class="small-caps">xviii</span><span class="superscript">e</span> siècle.
 <!-- fr-content -->
 <!-- <p class="noindent">
-    <dc>U</dc><sc>ne exploration</sc> des pavages qui passe par mille différents chemins et qui se termine (pour l'instant) avec quelques images colorées et une infinité d'avenues non explorées.
+    <sc>U</sc><sc>ne exploration</sc> des pavages qui passe par mille différents chemins et qui se termine (pour l'instant) avec quelques images colorées et une infinité d'avenues non explorées.
 </p> -->
 <div class="imagedouble-top">
     <img src="../../images/truchet/truchet-square001.png">
@@ -15,8 +15,9 @@
     <img src="../../images/truchet/truchet-square003.png">
     <img src="../../images/truchet/truchet-square004.png">
 </div>
+<h3>Premiers pas vers les pavages</h3>
 <p class="noindent">
-    <dc>L</dc><sc>es pavages ci-dessus</sc> ont été générés par un programme que j'ai écrit avec JavaScript et <a href=""><span class="lnum">la bibliothèque p5.js</span></a>. Ils sont le produit d'un <i>hasard contrôlé</i> : je n'ai pas choisi les palettes de couleur ni les agencements de triangles et de rectangles. J'ai plutôt créé les conditions permettant leur création.
+    <sc>L</sc><sc>es pavages ci-dessus</sc> ont été générés par un programme que j'ai écrit avec JavaScript et <a href=""><span class="lnum">la bibliothèque p5.js</span></a>. Ils sont le produit d'un <i>hasard contrôlé</i> : je n'ai pas choisi les palettes de couleur ni les agencements de triangles et de rectangles. J'ai plutôt créé les conditions permettant leur création.
 </p>
 <!-- Comme je connais très peu cet immense domaine mathématique que sont les pavages, j'ai décidé d'explorer des pavages très simples afin d'apprivoiser le sujet. Les pavages de Truchet se sont imposés par leur beauté et leur simplicité. -->
 <p>
@@ -45,7 +46,7 @@
 </p>
 <h3>Le générateur de pavages aléatoires</h3>
 <p class="noindent">
-    <dc>E</dc><sc>n voyant la simplicité</sc> des triangles initiaux que Truchet utilise pour bâtir ses pavages, j'ai décidé d'écrire un programme qui choisirait au hasard chacun des carreaux d'un triangle initial puis créerait les symétries nécessaires au remplissage d'un pavage. J'ai aussi ajouté deux nouveaux carreaux : le carreau vide et le carreau plein, désignés respectivement <sc>e</sc> et <sc>f</sc>&nbsp;:<snr label="triche">Le lecteur attentif comprendra que <span class="italic8">je triche</span>, puisque <span class="small-caps8">a, b, c</span> et <span class="small-caps8">d</span> désignent 4 positions différentes du même carreau tandis que <span class="small-caps8">e</span> et <span class="small-caps8">f</span> désignent 2 carreaux distincts. Me pardonnera-t-on un tel <span class="nobreak">laisser-aller?</span> Ces ajouts produisent, à mon avis, des pavages à l'aspect plus <span class="italic8">aéré</span>.</snr>
+    <sc>E</sc><sc>n voyant la simplicité</sc> des triangles initiaux que Truchet utilise pour bâtir ses pavages, j'ai décidé d'écrire un programme qui choisirait au hasard chacun des carreaux d'un triangle initial puis créerait les symétries nécessaires au remplissage d'un pavage. J'ai aussi ajouté deux nouveaux carreaux : le carreau vide et le carreau plein, désignés respectivement <sc>e</sc> et <sc>f</sc>&nbsp;:<snr label="triche">Le lecteur attentif comprendra que <span class="italic8">je triche</span>, puisque <span class="small-caps8">a, b, c</span> et <span class="small-caps8">d</span> désignent 4 positions différentes du même carreau tandis que <span class="small-caps8">e</span> et <span class="small-caps8">f</span> désignent 2 carreaux distincts. Me pardonnera-t-on un tel <span class="nobreak">laisser-aller?</span> Ces ajouts produisent, à mon avis, des pavages à l'aspect plus <span class="italic8">aéré</span>.</snr>
 </p>
 <p>
     <img class="abcd" src="../../images/truchet/abcdef.png">
@@ -59,7 +60,7 @@
 </p>
 <h3>L'étendue des possibles</h3>
 <p class="noindent">
-    <dc>U</dc><sc>ne chose surprenante</sc> à propos des pavages de Truchet est l'énorme quantité de combinaisons possibles. Par exemple, un pavage dont le triangle initial possède une largeur de cinq carreaux peut être assemblé en plus de <i>soixante milliards</i> de combinaisons différentes.<snl label="puissances">Précisément, il y a <im>61\:917\:364\:224</im> combinaisons possibles, ou <im>6^{10} \times 4^5</im>. Le diagramme ci-dessous indique le nombre de valeurs possibles pour chacun des carreaux. <img class="possibilities" src="../../images/truchet/possibilities.png">Il suffit de multiplier toutes ces possibilités pour obtenir la quantité de combinaisons possibles. Certains carreaux sont limités aux <im>4</im> formes qui sont diagonalement symétriques avec elles-mêmes&nbsp;: <span class="small-caps8">&#123;b, d, e, f&#125;</span>. Cette limitation n'est pas obligatoire mais elle forme généralement des pavages plus harmonieux.</snl> Si vous cliquiez pour générer un nouveau pavage à chaque seconde sans arrêt, il vous faudrait environ 1&nbsp;900 ans pour les voir tous (chose que je ne recommande pas). Et comme le générateur crée des pavages dont la largeur du triangle initial varie entre 3 et 9 carreaux, le temps nécessaire pour en épuiser les possibilités se compte en trilliards d'années plutôt qu'en milliers. Ainsi, chaque pavage qui est généré n'a presque certainement jamais été vu par quiconque avant vous, et vous ne le reverez plus jamais après le prochain clic.
+    <sc>U</sc><sc>ne chose surprenante</sc> à propos des pavages de Truchet est l'énorme quantité de combinaisons possibles. Par exemple, un pavage dont le triangle initial possède une largeur de cinq carreaux peut être assemblé en plus de <i>soixante milliards</i> de combinaisons différentes.<snl label="puissances">Précisément, il y a <im>61\:917\:364\:224</im> combinaisons possibles, ou <im>6^{10} \times 4^5</im>. Le diagramme ci-dessous indique le nombre de valeurs possibles pour chacun des carreaux. <img class="possibilities" src="../../images/truchet/possibilities.png">Il suffit de multiplier toutes ces possibilités pour obtenir la quantité de combinaisons possibles. Certains carreaux sont limités aux <im>4</im> formes qui sont diagonalement symétriques avec elles-mêmes&nbsp;: <span class="small-caps8">&#123;b, d, e, f&#125;</span>. Cette limitation n'est pas obligatoire mais elle forme généralement des pavages plus harmonieux.</snl> Si vous cliquiez pour générer un nouveau pavage à chaque seconde sans arrêt, il vous faudrait environ 1&nbsp;900 ans pour les voir tous (chose que je ne recommande pas). Et comme le générateur crée des pavages dont la largeur du triangle initial varie entre 3 et 9 carreaux, le temps nécessaire pour en épuiser les possibilités se compte en trilliards d'années plutôt qu'en milliers. Ainsi, chaque pavage qui est généré n'a presque certainement jamais été vu par quiconque avant vous, et vous ne le reverez plus jamais après le prochain clic.
 </p>
 <p>
     À quoi pourraient ressembler ces pavages si leurs carreaux avaient une apparence différente mais que toutes leurs autres propriétés étaient conservées (symétrie, assemblage, etc.)&nbsp;? Par exemple, l'apparence des carreaux pourrait être altérée de cette façon&nbsp;:
@@ -72,7 +73,7 @@
 </p>
 <h3>Beaucoup de couleur et un peu de texture</h3>
 <p class="noindent">
-    <dc>U</dc><sc>ne des questions</sc> à laquelle je souhaitais répondre avec ce projet était&nbsp;: <i>Comment les pavages de Truchet pourraient-ils être colorés?</i>.
+    <sc>U</sc><sc>ne des questions</sc> à laquelle je souhaitais répondre avec ce projet était&nbsp;: <i>Comment les pavages de Truchet pourraient-ils être colorés?</i>.
 </p>
 <!-- en-title -->The Tilings of Truchet
 <!-- en-date -->Winter 2017 &mdash; Ongoing
