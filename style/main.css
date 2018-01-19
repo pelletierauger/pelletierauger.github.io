@@ -51,7 +51,7 @@ html {
     -webkit-font-variant-ligatures: discretionary-ligatures;
     /*font-variant-ligatures: historical-ligatures;*/
     font-size: 1.3em;
-    padding: 0 2em 0 2em;
+    padding: 0.1em 2em 0 2em;
     margin: 0;
     min-height: 100%;
     box-sizing: border-box;
@@ -227,6 +227,7 @@ h1 {
     margin: 0;
     font-size: 1em;
     line-height: 1em;
+    padding: 0.27em 0 0 0;
 }
 
 h1 img {
@@ -302,7 +303,7 @@ h1 a {
 
 article {
     clear: both;
-    padding-top: 1em;
+    padding-top: 0.15em;
 }
 
 article p {
