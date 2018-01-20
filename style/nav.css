@@ -1,11 +1,16 @@
 nav {
     /*margin-top: 0.75em;*/
+    /*display: inline-block;*/
+    /*float: left;*/
     font-family: 'EBG12-SC';
     text-transform: lowercase;
     /*background-color: cyan;*/
     /*float: left;*/
     font-size: 1.25em;
     /*line-height: 1em;*/
+    /*padding-bottom: 1em;*/
+    /*margin-bottom: 2em;*/
+    background-color: red;
 }
 
 nav a {
@@ -18,7 +23,7 @@ nav a:hover {
 
 nav ul {
 
-    display: block;
+    display: inline-block;
     /*clear: both;*/
     /*position: relative;*/
     /*top: -250px;*/
@@ -26,11 +31,12 @@ nav ul {
     /*right: 0px;*/
     /*list-style: none;*/
     line-height: 1em;
-    padding: 0.27em 0 0 0;
+    padding: 1em 0 1em 0;
     margin: 0;
     /*background: cyan;*/
     float: right;
     /*color: #878787;*/
+    /*background-color: red;*/
 }
 
 nav ul li {
