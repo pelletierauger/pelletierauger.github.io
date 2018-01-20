@@ -51,7 +51,7 @@ html {
     -webkit-font-variant-ligatures: discretionary-ligatures;
     /*font-variant-ligatures: historical-ligatures;*/
     font-size: 1.3em;
-    padding: 0.1em 2em 0 2em;
+    padding: 0em 2em 0 2em;
     margin: 0;
     min-height: 100%;
     box-sizing: border-box;
@@ -227,7 +227,7 @@ h1 {
     margin: 0;
     font-size: 1em;
     line-height: 1em;
-    padding: 0.27em 0 0 0;
+    padding: 1em 0 1em 0;
 }
 
 h1 img {
@@ -239,6 +239,14 @@ h1 img {
 
 h2 {
     font-weight: normal;
+    font-family: 'EBG12-SC';
+    font-size: 2em;
+    line-height: 1em;
+    /*margin: 0;*/
+    /*padding: 0;*/
+    /*margin-top: 1em;*/
+    padding-top: 0.5em;
+    /*padding-bottom: 0.5em;*/
 }
 
 .with-date {
@@ -260,7 +268,7 @@ h3 {
     margin: 0 auto;
     padding: 0;
     max-width: 700px;
-    margin-bottom: 0.75em;
+    margin-bottom: 0.5em;
     margin-top: 1.5em;
 }
 
@@ -280,9 +288,10 @@ h1 a {
 .date {
     font-family: 'EBG08-Re';
     font-size: 0.8em;
-    margin-bottom: 3em;
-    margin-top: 0em;
+    margin-bottom: 2em;
+    margin-top: 0.5em;
     padding-top: 0em;
+    line-height: 1em;
 }
 
 #abstract {
@@ -303,7 +312,8 @@ h1 a {
 
 article {
     clear: both;
-    padding-top: 0.15em;
+    /*padding-top: 0.15em;*/
+    /*margin-top: 1em;*/
 }
 
 article p {
