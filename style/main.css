@@ -84,6 +84,11 @@ article a {
     /*   These two extra text-shadows work for italic "f"s but not for roman "pp"s.
     -2px -2px 0 #fff, 2px -2px 0 #fff;*/
 }
+
+article a:hover {
+    /*box-shadow: inset 0 -1px 0 0 #fff, inset 0 -2px 0 0 #000, inset 0 -3px 0 0 #fff, inset 0 -4px 0 0 #000;*/
+}
+
 .cleardescenders {
     padding-left: 1px;
     text-shadow: -1px 0px 0 #fff, 1px 0px 0 #fff,
@@ -321,6 +326,34 @@ article p {
     /*margin-bottom: 1em;*/
     /*background: #95D2C7;*/
 }
+
+article ul.dash {
+    display: block;
+    margin: 0 auto;
+    max-width: 700px;
+    list-style: none;
+    /*margin-left: 0;*/
+    /*padding-left: 1em;*/
+    /*background-color: #D4D4D4;*/
+    list-style: normal;
+    font-family: 'EBG12-Re', Garamond, Georgia, serif;
+}
+
+article ul.dash>li {
+
+    padding-left: 2em;
+    display: inline-block;
+    /*text-indent: -2em;*/
+}
+
+article ul.dash>li:before {
+    display: inline-block;
+    content: "\2014";
+    /*width: 1em;*/
+    text-indent: -1.25em;
+}
+
+
 
 article img {
     width: 100%;
