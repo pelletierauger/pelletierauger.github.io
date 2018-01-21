@@ -46,6 +46,29 @@ img.possibilities {
     margin-bottom: 0%;
 }
 
+.imagedouble-margin {
+    display: inline-block;
+    /*margin-bottom: 1em;*/
+    padding-bottom: 0em;
+    padding-top: 2em;
+}
+
+.imagedouble-margin img {
+    display: block;
+    float: left;
+    max-width: 49%;
+    margin: 0 0 2% 0;
+    padding: 0;
+}
+
+.imagedouble-margin img:nth-child(even) {
+    margin-left: 2%;
+}
+
+.imagedouble-margin img:nth-child(1n+7) {
+    margin-bottom: 0%;
+}
+
 .imagedouble {
     display: inline-block;
     margin: 1em 0;
