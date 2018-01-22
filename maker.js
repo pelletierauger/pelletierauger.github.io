@@ -450,17 +450,22 @@ function makeContent(page, language) {
         </article>`;
     } else {
         let title = page[language].HTMLTitle || page[language].title;
+        let description = `
+        <div id="description">
+            ${page[language].description}
+        </div>
+        ` || "";
         if (page[language].date) {
             return `
             <article>
-                <h2 class="with-date">${title}</h2>
+                <h2 class="with-date">${title}</h2>${description}
                 <div class="date">${page[language].date}</div>
                 ${page[language].content}
             </article>`;
         } else {
             return `
             <article>
-                <h2>${title}</h2>
+                <h2>${title}</h2>${description}
                 ${page[language].content}
             <article>`;
         }
