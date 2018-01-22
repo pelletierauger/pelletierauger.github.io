@@ -89,6 +89,13 @@ article a:hover {
     /*box-shadow: inset 0 -1px 0 0 #fff, inset 0 -2px 0 0 #000, inset 0 -3px 0 0 #fff, inset 0 -4px 0 0 #000;*/
 }
 
+#description {
+    margin-top: 1em;
+    font-family: 'EBG08-Re';
+    font-size: 0.8em;
+    text-align: center;
+}
+
 .cleardescenders {
     padding-left: 1px;
     text-shadow: -1px 0px 0 #fff, 1px 0px 0 #fff,
@@ -253,6 +260,12 @@ h2 {
     padding-top: 0.5em;
     /*padding-bottom: 0.5em;*/
 }
+article h2 {
+    text-align: center;
+    padding-top: 1em;
+    margin: 0 auto;
+    max-width: 570px;
+}
 
 .with-date {
     margin-bottom: 0em;
@@ -293,10 +306,11 @@ h1 a {
 .date {
     font-family: 'EBG08-Re';
     font-size: 0.8em;
-    margin-bottom: 2em;
-    margin-top: 0.5em;
+    margin-bottom: 3em;
+    margin-top: 0em;
     padding-top: 0em;
     line-height: 1em;
+    text-align: center;
 }
 
 #abstract {
@@ -325,35 +339,27 @@ article p {
 
     /*margin-bottom: 1em;*/
     /*background: #95D2C7;*/
+    /*background-color: rgba(0, 0, 255, 0.1);*/
 }
 
 article ul.dash {
     display: block;
     margin: 0 auto;
     max-width: 700px;
-    list-style: none;
-    /*margin-left: 0;*/
-    /*padding-left: 1em;*/
-    /*background-color: #D4D4D4;*/
-    list-style: normal;
+    line-height: 1.3;
+    padding-left: 2em;
+    list-style-type: '\2014';
     font-family: 'EBG12-Re', Garamond, Georgia, serif;
+    box-sizing: border-box;
+    /*background-color: rgba(255, 0, 0, 0.1);*/
 }
 
 article ul.dash>li {
-
-    padding-left: 2em;
-    display: inline-block;
+    padding-left: 0.75em;
+    /*display: block;*/
+    /*background-color: rgba(0, 0, 255, 0.2);*/
     /*text-indent: -2em;*/
 }
-
-article ul.dash>li:before {
-    display: inline-block;
-    content: "\2014";
-    /*width: 1em;*/
-    text-indent: -1.25em;
-}
-
-
 
 article img {
     width: 100%;
