@@ -636,6 +636,8 @@ function parseHTMLTemplate(s) {
     page.fr.content = page.fr.content.replace(/<\/a>,/g,
         String.raw `</a><span class="cleardescenders">,</span>`);
 
+    page.fr.content = page.fr.content.replace(/<li>\s\s+/g, "<li>");
+
     let frDate = data.match(/(<!-- fr-date -->)([\S\s]*?)(<!--)/);
     if (frDate) {
         page.fr.date = frDate[2];
@@ -693,6 +695,8 @@ function parseHTMLTemplate(s) {
 
     page.en.content = page.en.content.replace(/<\/a>,/g,
         String.raw `</a><span class="cleardescenders">,</span>`);
+
+    page.en.content = page.en.content.replace(/<li>\s\s+/g, "<li>");
 
     let enDate = data.match(/(<!-- en-date -->)([\S\s]*?)(<!--)/);
     if (enDate) {
