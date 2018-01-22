@@ -51,6 +51,7 @@
     -ms-font-feature-settings: "lnum", "xtex";
     -o-font-feature-settings: "lnum", "xtex";
     font-feature-settings: "lnum", "xtex";
+    margin-right: -0.25em;
 }
 
 .sidenote-number:after {
