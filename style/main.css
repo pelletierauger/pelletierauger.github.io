@@ -264,7 +264,7 @@ article h2 {
     text-align: center;
     padding-top: 1em;
     margin: 0 auto;
-    max-width: 570px;
+    /*max-width: 570px;*/
 }
 
 .with-date {
@@ -288,6 +288,10 @@ h3 {
     max-width: 700px;
     margin-bottom: 0.5em;
     margin-top: 1.5em;
+}
+
+h3.article-top {
+    padding-top: 1em;
 }
 
 h3 a {
@@ -333,6 +337,17 @@ article {
     clear: both;
     /*padding-top: 0.15em;*/
     /*margin-top: 1em;*/
+}
+
+article.blog-post {
+    padding-bottom: 2em;
+}
+
+article.blog-post h2 {
+    /*padding-bottom: 2em;*/
+    /*font-family: 'EBG12-Re';*/
+    font-size: 1.75em;
+    /*max-width: 700px;*/
 }
 
 article p {
