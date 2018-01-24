@@ -108,7 +108,7 @@ function makeBlog(language) {
 
             //We create the content of a post within the blog
             content += `
-            <article>`;
+            <article class="blog-post">`;
             content += `<h2 class="with-date"><a href="../${linkIndividual}.html">${post[language].title}</a></h2>`;
             content += `<div class = "date">${date}</div>`;
             content += `${post[language].content}`;
