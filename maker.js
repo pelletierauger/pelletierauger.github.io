@@ -280,11 +280,11 @@ function makeMosaic(pages, language, stepsFromRoot) {
         mosaic = mosaic + itemDiv;
     }
     mosaic = mosaic + `</div>`;
-    mosaic = `${mosaic}
-    <div id="ornament-003">
-        <img src="${navPrefix}style/ornaments/terminal-ornament-003.png">
-    </div>
-    `;
+    // mosaic = `${mosaic}
+    // <div id="ornament-003">
+    //     <img src="${navPrefix}style/ornaments/terminal-ornament-003.png">
+    // </div>
+    // `;
     return mosaic;
 }
 
