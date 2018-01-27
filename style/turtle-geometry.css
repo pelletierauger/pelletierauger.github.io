@@ -1,0 +1,52 @@
+@font-face {
+    font-family: "ATT4425";
+    src: url('./fonts/ATT4425.ttf') format('truetype');
+}
+@font-face {
+    font-family: "Silentype";
+    src: url('./fonts/Silentype-Regular.ttf') format('truetype');
+}
+
+.ATT {
+    font-family: 'ATT4425';
+}
+
+.Silentype {
+    font-family: "Silentype";
+}
+
+article span.ATTarticle {
+    font-family: 'ATT4425';
+    font-size: 2.5em;
+    line-height: 1em;
+}
+
+article span.supernarrow {
+    margin-left: -0.1em;
+    margin-right: -0.25em;
+}
+
+.drop-caps {
+    font-size: 4.5em;
+    font-family: 'ATT4425';
+    padding-right: 5px;
+    float: left;
+    line-height: 0.75;
+    padding-top: 0.1em;
+    padding-left: -0.1em;
+    margin-left: -0.04em;
+    text-indent: 0;
+}
+
+#att-i {
+    margin-left: -0.1em;
+    padding-right: 2px;
+}
+
+article h2 {
+    /*padding-top: 2em;*/
+}
+
+.date {
+    margin-bottom: 4em;
+}

@@ -34,10 +34,6 @@
     src: url('./fonts/EBGaramond08-Italic.ttf') format('truetype'),
     url('./fonts/EBGaramond08-Italic.woff') format('woff');
 }
-@font-face {
-    font-family: "ATT4425";
-    src: url('./fonts/ATT4425.ttf') format('truetype');
-}
 
 html {
     font-family: 'EBG12-Re', Garamond, Georgia, serif;
@@ -140,17 +136,9 @@ article a .italic {
     font-family: 'EBG08-It';
 }
 
-.ATT {
-    font-family: 'ATT4425';
-}
-
 .Incon {
     font-family: 'Inconsolata';
     line-height: 1em;
-}
-
-.Silentype {
-    font-family: "Silentype";
 }
 
 .superscript {
@@ -167,18 +155,6 @@ article a .italic {
     -ms-font-feature-settings: "lnum", "xtex";
     -o-font-feature-settings: "lnum", "xtex";
     font-feature-settings: "lnum", "xtex";
-}
-
-.drop-caps {
-    font-size: 4.5em;
-    font-family: 'ATT4425';
-    padding-right: 5px;
-    float: left;
-    line-height: 0.75;
-    padding-top: 0.1em;
-    padding-left: -0.1em;
-    margin-left: -0.04em;
-    text-indent: 0;
 }
 
 canvas {
@@ -396,9 +372,8 @@ article img {
 }
 
 #ornament-003 img {
-    max-width: 60px;
-    clear: both;
-    padding-top: 1em;
+    max-width: 55px;
+    padding-top: 2.5em;
     margin: 0em auto 0em auto;
     /*padding-bottom: 1em;*/
 }
