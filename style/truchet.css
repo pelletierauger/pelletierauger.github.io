@@ -13,6 +13,11 @@ img.abcd {
     max-width: 450px;
     margin: 2em auto;
 }
+img.pavasym {
+    /*display: inline-block;*/
+    max-width: 700px;
+    margin: 2em auto;
+}
 .possibilities {
     float: left;
     display: inline-block;
