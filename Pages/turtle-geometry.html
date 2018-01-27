@@ -1,13 +1,13 @@
+<!-- style -->turtle-geometry
 <!-- fr-title -->La tortue géométrique
+<!-- fr-html-title --><span class="ATTarticle">La tortue de Seymour</span>
 <!-- fr-date -->Automne 2017 - En cours
 <!-- fr-description -->Les idées de Seymour Papert réimaginées pour p5.js.
 <!-- fr-content -->
+<img src="../../images/thumbnails/turtle-geometry.jpg">
+<h3>Un mathématicien qui dessine des fleurs</h3>
 <p class="noindent">
-    Récemment, suite à la mise en ligne d'un tutoriel vidéo sur le <i>Jeu de la vie</i> présenté par Daniel Shiffman (en anglais), je me suis mis à m'amuser avec les automates cellulaires (dont le <i>Jeu de la vie</i> est un exemple). Voici le résultat de mes premiers essais.
-</p>
-<h3>Qu'est-ce qu'un automate cellulaire ?</h3>
-<p class="noindent">
-    Un automate cellulaire est une case dans une grille. Il peut être dans une variété d'<i>états</i> différents, par exemple on peut le considérer <i>vivant</i> ou <i>mort</i>, <i>éveillé</i> ou <i>endormi</i>. On pourrait aussi décider de lui donner une valeur numérique, comme
+    <dc>A</dc><sc>l'été 2017</sc>, j'ai lu deux livres qui ont complètement changé ma vision de l'apprentissage et de l'enseignement. Un automate cellulaire est une case dans une grille. Il peut être dans une variété d'<i>états</i> différents, par exemple on peut le considérer <i>vivant</i> ou <i>mort</i>, <i>éveillé</i> ou <i>endormi</i>. On pourrait aussi décider de lui donner une valeur numérique, comme
     <span class="inline-code">0</span>, <span class="inline-code">1</span>,
     <span class="inline-code">3255,498</span> ou quoi que ce soit d'autre.
 </p>
@@ -17,16 +17,28 @@
 <p>
     Généralement, dans un système d'automates cellulaires, chacune des cases d'une grille est un automate. Et puisque chacun des automates répond aux états de son voisinage, le comportement de groupe d'une grille devient très complexe.
 </p>
+<div id="ornament-003">
+    <img src="../../../style/ornaments/terminal-ornament-003.png">
+</div>
+<h3>Crédits typographiques</h3>
+<p class="noindent">
+    <dc>L</dc><sc>a police utilisée</sc> pour le titre et les lettrines de cet article est <span class="ATT">ATT4425</span>, une recréation de la police du terminal de l'ordinateur Teletype 56 <sc>d</sc> (modèle <sc>at&t</sc> 4425) datant de 1984. Elle a été développée par Seth Morabito et est distribuée librement. La police utilisée pour les commandes <sc>logo</sc> est <span class="Silentype">Silentype</span>, une recréation de la police de caractères de l'ordinateur Apple <sc>ii</sc>. Elle a été développée par Sean McNamara et est aussi distribuée librement, sous une license Open Font <sc>sil</sc>.
+</p>
+<div id="ornament-001">
+    <img src="../../../style/ornaments/terminal-ornament-002.png">
+</div>
 <!-- en-title -->Turtle Geometry
+<!-- en-html-title --><span class="ATTarticle">Seymour<span class="supernarrow">'</span>s Turtle</span>
 <!-- en-date -->Fall 2017 - Ongoing
 <!-- en-description -->The ideas of Seymour Papert reimagined for p5.js.
 <!-- en-content -->
 <!-- <p class="noindent">
     <dc>E</dc><sc>xploring the beautiful ideas</sc> that Seymour Papert formulated about learning and mathematics, using his ideas to create a drawing tool with p5.js. Seymour Papert and using his ideas to create a drawing tool with p5.js.
 </p> -->
+<img src="../../images/thumbnails/turtle-geometry.jpg">
 <h3>A mathematician drawing flowers</h3>
 <p class="noindent">
-    <sc>In the Summer of 2017</sc>, I read two books that changed my way of thinking about learning and education. <i>Mindstorms: Children, Computers and Powerful Ideas</i> and <i>The Children's Machine: Rethinking School in the Age of the Computer</i>, both written by Seymour Papert, make the argument that we need to think deeply about how computers can and will change how we learn. The first book, written in 1980, is a fiery and passionate invitation to experiment with computers, to build new computational tools that change how we learn and unite seemingly opposite endeavours like art and mathematics. The second book, written seventeen years later, is a more mature and reflective look on <i>what happened</i> with a bit of sadness in it but still quite a bit of passion, curiosity and openness.
+    <span class="drop-caps" id="att-i">I</span><sc>n the Summer of 2017</sc>, I read two books that changed my way of thinking about learning and education. <i>Mindstorms: Children, Computers and Powerful Ideas</i> and <i>The Children's Machine: Rethinking School in the Age of the Computer</i>, both written by Seymour Papert, make the argument that we need to think deeply about how computers can and will change how we learn. The first book, written in 1980, is a fiery and passionate invitation to experiment with computers, to build new computational tools that change how we learn and unite seemingly opposite endeavours like art and mathematics. The second book, written seventeen years later, is a more mature and reflective look on <i>what happened</i> with a bit of sadness in it but still quite a bit of passion, curiosity and openness.
 </p>
 <p>
     I read <i>Mindstorms</i> as part of a wonderful online book club put together by the p5.diversity initiative and Princeton University's Council on Science and Technology. I was absolutely terrified to take part in this book club because of my social anxiety, but I am very glad I did anyway. My anxiety was such that I was unable to sleep the night before the online meet-ups. I lied awake hoping that people wouldn't think I was stupid or some kind of out-of-touch outsider that had nothing to do with them. Still, I somehow found the courage to participate and found everyone to be very welcoming and kind. It was a beautiful experience, a beautiful way to remind myself that the world can be welcoming and kind sometimes.
@@ -42,10 +54,16 @@
     By contrast, when I learned programming in high school with <span class="Silentype">Hypercard</span>,
     <snr label="hypercard"><span class="Silentype">Hypercard</span> was an utter joy to discover. I recommend it to anyone! Well, I shouldn't because there are even better things now, like p<span class="lnum">5</span>.js!</snr> I was extremely enthusiastic from the start. I could <i>do</i> something with that! Computer programs were things that <i>did</i> stuff, and writing my own programs naturally seemed like a creative activity. I loved <span class="Silentype">Hypercard</span> so much that I used to write programs on paper when I had no access to a computer and then I typed them in during computer class. I spent hours trying to debug code on paper just by imagining it <i>run in my head</i>.
 </p>
+<div id="ornament-003">
+    <img src="../../../style/ornaments/terminal-ornament-003.png">
+</div>
 <h3>&ldquo;What should your turtle do next?&rdquo;</h3>
 <p class="noindent">
-    <sc>Being a mathematician</sc>, Seymour Papert spends a considerable portion of his books talking specifically about mathematics education. Seymour Papert created <span class="Silentype">LOGO</span>, which was a rich programming environment and then he created <span class="Silentype">TURTLE TALK</span>, a language to interact with the turtle. For example, the command <span class="Silentype">FORWARD 10</span> would make the turtle go forward for ten steps, and the command <span class="Silentype">LEFT 180</span> would make it turn left 180 degrees. <span class="Silentype">PENDOWN</span> would lower a pen that drew the turtle's path and <span class="Silentype">PENUP</span> would lift it.
+    <dc>B</dc><sc>eing a mathematician</sc>, Seymour Papert spends a considerable portion of his books talking specifically about mathematics education. Seymour Papert created <span class="Silentype">LOGO</span>, which was a rich programming environment and then he created <span class="Silentype">TURTLE TALK</span>, a language to interact with the turtle. For example, the command <span class="Silentype">FORWARD 10</span> would make the turtle go forward for ten steps, and the command <span class="Silentype">LEFT 180</span> would make it turn left 180 degrees. <span class="Silentype">PENDOWN</span> would lower a pen that drew the turtle's path and <span class="Silentype">PENUP</span> would lift it.
 </p>
 <p>
     Of all the beautiful thoughts that Papert has shared, my favourite is that &ldquo;learning mathematics is like getting to know a person&rdquo;.<snr label="papert-quote">It's from <span class="italic8">The Children's Machine</span>, which I think is more loving and welcoming even than his first book.</snr> I think his whole philosophy is distilled inside this simple thought. It's about technical knowledge becoming warm and humane knowledge, it's about welcoming with an open heart the ultimate frailty of our minds, welcoming our limitations, the limitations of our intellect. Getting to know a person. You can have a rich conversation with someone without knowing anything about where they come from. You can converse richly with them, and then you might learn more about them in good time and all this disorganized knowledge will be linked by the warm and always incomplete idea of <i>them</i>. Mathematics is a person with whom you can have fun and learn about yourself as you learn about them. You can learn things about them, forget things about them, relearn those things. There are no precise order in which you need to learn about them. So, relax. You're not building an intricate house of cards in your head, you're just getting to know a person. This person is warm, welcoming, and creative beyond belief.
 </p>
+<div id="ornament-001">
+    <img src="../../../style/ornaments/terminal-ornament-002.png">
+</div>
