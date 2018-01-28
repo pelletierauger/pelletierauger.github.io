@@ -45,3 +45,17 @@ function getXMLNS(document) {
     }
     return "mml";
 }
+
+let localWoffFile = `
+@font-face {
+        font-family: MJXc-TeX-main-R;
+        src: url('../../style/fonts/MathJax-woff/MathJax_Main-Regular.woff') format('woff');
+    }
+`;
+let localWoffFile2 = `
+    @font-face {
+        font-family: MJXc-TeX-math-Ix;
+        src: url('../../style/fonts/MathJax-woff/MathJax_Math-Italic.woff') format('woff');
+        font-style: italic
+    }
+`;
