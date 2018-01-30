@@ -330,7 +330,7 @@ function makeHeader(page, language, stepsFromRoot, sketches) {
     let style = ``;
     if (page && page.style) {
         for (let i = 0; i < page.style.length; i++) {
-            style = `
+            style += `
         <link href="${prefix}style/${page.style[i]}.css" rel="stylesheet" type="text/css">
         `;
         }
