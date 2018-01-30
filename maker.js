@@ -86,6 +86,7 @@ function makeBlog(language) {
         `;
         var postsOnThisPage = Math.min(postsToPrint, blog.config.itemsPerPage);
         var scripts = [];
+        var styles = [];
         //This runs once for every blog post to build
         for (var l = 0; l < postsOnThisPage; l++) {
             // var post = require('./blog/posts/' + blog.posts[currentPost]);
@@ -97,6 +98,9 @@ function makeBlog(language) {
                     scripts.push(post.sketch[i]);
                 }
             }
+            if (post.style) {
+                styles.push(post.style);
+            }
             // console.log(post.date);
             var date = dateFormatter(post.date, language);
 
@@ -107,9 +111,10 @@ function makeBlog(language) {
             var linkIndividual = blogPrefix + filenameIndividual;
 
             //We create the content of a post within the blog
+            let title = post[language].HTMLTitle || post[language].title;
             content += `
             <article class="blog-post">`;
-            content += `<h2 class="with-date"><a href="../${linkIndividual}.html">${post[language].title}</a></h2>`;
+            content += `<h2 class="with-date"><a href="../${linkIndividual}.html">${title}</a></h2>`;
             content += `<div class = "date">${date}</div>`;
             content += `${post[language].content}`;
             content += `
@@ -128,7 +133,7 @@ function makeBlog(language) {
             var individualContent = individualHeader + individualNavigation;
             individualContent += `
             <article>
-                <h2 class="with-date">${post[language].title}</h2>
+                <h2 class="with-date">${title}</h2>
                 <div class = "date">${date}</div>
                 ${post[language].content}
             </article>
@@ -184,7 +189,8 @@ function makeBlog(language) {
             en: {
                 title: blog.config.en.title + suffix,
                 content: content
-            }
+            },
+            style: styles
         };
         var header = makeHeader(page, language, stepsFromRoot, scripts);
         var footer = makeFooter(page, language);
@@ -323,9 +329,11 @@ function makeHeader(page, language, stepsFromRoot, sketches) {
 
     let style = ``;
     if (page && page.style) {
-        style = `
-        <link href="${prefix}style/${page.style}.css" rel="stylesheet" type="text/css">
+        for (let i = 0; i < page.style.length; i++) {
+            style = `
+        <link href="${prefix}style/${page.style[i]}.css" rel="stylesheet" type="text/css">
         `;
+        }
     }
 
     var scripts = ``;
@@ -581,7 +589,7 @@ function parseHTMLTemplate(s) {
 
     let style = data.match(/(<!-- style -->)([\S\s]*?)([\n\r])/);
     if (style) {
-        page.style = style[2];
+        page.style = [style[2]];
     }
 
     let sketches = data.match(/(<!-- sketch -->)([\S\s]*?)(<!--)/);
@@ -627,7 +635,7 @@ function parseHTMLTemplate(s) {
         return "" + b + "&nbsp;" + c;
     });
     // Replace the snl and snr pseudo-HTML tags (used for sidenotes)
-    page.fr.content = page.fr.content.replace(/(<sn)([lr])( label=")([a-zA-ZÀ-ú\-]*)(">)/g, function(a, b, c, d, e) {
+    page.fr.content = page.fr.content.replace(/(<sn)([lr])( label=")([0-9a-zA-ZÀ-ú\-]*)(">)/g, function(a, b, c, d, e) {
         let typeOfSidenote = (c == "l") ? "sidenote-left" : "sidenote";
         let response = `
         <label for="${e}" class="margin-toggle sidenote-number">
@@ -651,6 +659,11 @@ function parseHTMLTemplate(s) {
     if (frHTMLTitle) {
         page.fr.HTMLTitle = frHTMLTitle[2];
     }
+
+    page.fr.content = page.fr.content.replace(/<code>/g, `<pre><code>`);
+    page.fr.content = page.fr.content.replace(/<\/code>/g, `</code></pre>`);
+    page.fr.content = page.fr.content.replace(/<ic>/g, `<span class="inline-code">`);
+    page.fr.content = page.fr.content.replace(/<\/ic>/g, `</span>`);
 
     page.en.title = data.match(/(<!-- en-title -->)([\S\s]*?)(<!--)/)[2];
     page.en.title = page.en.title.replace(/(?:\r\n|\r|\n)/g, "");
@@ -687,7 +700,7 @@ function parseHTMLTemplate(s) {
     });
 
     // Replace the snl and snr pseudo-HTML tags (used for sidenotes)
-    page.en.content = page.en.content.replace(/(<sn)([lr])( label=")([a-zA-ZÀ-ú\-]*)(">)/g, function(a, b, c, d, e) {
+    page.en.content = page.en.content.replace(/(<sn)([lr])( label=")([0-9a-zA-ZÀ-ú\-]*)(">)/g, function(a, b, c, d, e) {
         let typeOfSidenote = (c == "l") ? "sidenote-left" : "sidenote";
         let response = `
         <label for="${e}" class="margin-toggle sidenote-number">
@@ -711,5 +724,13 @@ function parseHTMLTemplate(s) {
     if (enHTMLTitle) {
         page.en.HTMLTitle = enHTMLTitle[2];
     }
+
+    page.en.content = page.en.content.replace(/<code>/g, `<pre><code>`);
+    page.en.content = page.en.content.replace(/<\/code>/g, `</code></pre>`);
+    page.en.content = page.en.content.replace(/<ic>/g, `<span class="inline-code">`);
+    page.en.content = page.en.content.replace(/<\/ic>/g, `</span>`);
+    page.en.content = page.en.content.replace(/\\'/g, `'`);
+    page.en.content = page.en.content.replace(/\\!/g, `!`);
+    page.en.content = page.en.content.replace(/\\\?/g, `?`);
     return page;
 }
