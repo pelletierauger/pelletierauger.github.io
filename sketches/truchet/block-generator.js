@@ -4,7 +4,7 @@ var blockOffset;
 generateRandomBlock();
 
 function calculateOffset(n) {
-    let o;
+    var o;
     switch (n) {
         case 3:
             o = { x: 2, y: 0 };

@@ -9,26 +9,26 @@ var light;
 var r, g, b;
 var posShaker = 0;
 var shakerToggle = 1;
-let howMany = 0;
-let ran, ranFloor, ranCeiling;
-let linesMult;
-let strokeFloor, strokeCeiling;
-let canvasContainer;
-let cnvs;
-let padding = 10;
-let button;
-let EFMode = true;
-let EFModeButton, EFOnlyButton, ABCDButton;
-let EFOnly = false;
-let ABCDMode = false;
-let wavy = false;
-let widthWavy = 5;
-let normalButton, wavyButton;
-let manualButton, showreelButton;
+var howMany = 0;
+var ran, ranFloor, ranCeiling;
+var linesMult;
+var strokeFloor, strokeCeiling;
+var canvasContainer;
+var cnvs;
+var padding = 10;
+var button;
+var EFMode = true;
+var EFModeButton, EFOnlyButton, ABCDButton;
+var EFOnly = false;
+var ABCDMode = false;
+var wavy = false;
+var widthWavy = 5;
+var normalButton, wavyButton;
+var manualButton, showreelButton;
 
 function setup() {
     canvasContainer = select("#tiling-generator");
-    let w = windowWidth;
+    var w = windowWidth;
     w = Math.min(w, 1000);
     cnvs = createCanvas(w, w * 9 / 16);
     cnvs.parent("#tiling-generator");
@@ -485,30 +485,30 @@ function showFWavy(x, y, tW, light, dark) {
     arc(x, y, tW, tW, 0, PI / 2);
     arc(x + tW, y, tW, tW, PI / 2, PI);
     arc(x + tW, y + tW, tW, tW, PI, PI * 1.5);
-    let n = 25;
-    let increment = TWO_PI / (n * 4);
+    var n = 25;
+    var increment = TWO_PI / (n * 4);
     fill(0);
     noStroke();
     beginShape();
-    let r = tW / 2;
-    for (let a = PI; a > PI / 2; a -= increment) {
-        let vx = x + tW + (cos(a) * r);
-        let vy = y + (sin(a) * r);
+    var r = tW / 2;
+    for (var a = PI; a > PI / 2; a -= increment) {
+        var vx = x + tW + (cos(a) * r);
+        var vy = y + (sin(a) * r);
         vertex(vx, vy);
     }
-    for (let a = PI * 1.5; a > PI; a -= increment) {
-        let vx = x + tW + (cos(a) * r);
-        let vy = y + tW + (sin(a) * r);
+    for (var a = PI * 1.5; a > PI; a -= increment) {
+        var vx = x + tW + (cos(a) * r);
+        var vy = y + tW + (sin(a) * r);
         vertex(vx, vy);
     }
-    for (let a = TWO_PI; a > PI * 1.5; a -= increment) {
-        let vx = x + (cos(a) * r);
-        let vy = y + tW + (sin(a) * r);
+    for (var a = TWO_PI; a > PI * 1.5; a -= increment) {
+        var vx = x + (cos(a) * r);
+        var vy = y + tW + (sin(a) * r);
         vertex(vx, vy);
     }
-    for (let a = PI / 2; a > 0; a -= increment) {
-        let vx = x + (cos(a) * r);
-        let vy = y + (sin(a) * r);
+    for (var a = PI / 2; a > 0; a -= increment) {
+        var vx = x + (cos(a) * r);
+        var vy = y + (sin(a) * r);
         vertex(vx, vy);
     }
     endShape();
@@ -528,15 +528,15 @@ function showA(x, y, tW, light, dark) {
     // fill(dark);
     // stroke(dark);
     // strokeWeight(1);
-    let oX = x;
-    let oY = y;
-    let AmountOfLines = 20 * linesMult;
-    let gutter = tW / AmountOfLines;
-    for (let i = 0; i < AmountOfLines; i++) {
+    var oX = x;
+    var oY = y;
+    var AmountOfLines = 20 * linesMult;
+    var gutter = tW / AmountOfLines;
+    for (var i = 0; i < AmountOfLines; i++) {
         x = oX + random(ran);
         y = oY + random(ran);
-        let x2 = oX + random(ran);
-        let y2 = oY + random(ran);
+        var x2 = oX + random(ran);
+        var y2 = oY + random(ran);
         strokeWeight(random(strokeFloor, strokeCeiling));
         if (i <= AmountOfLines / 2) {
             // line(x, y + (i * gutter * 2), x + (i * gutter), y + (i * gutter));
@@ -547,18 +547,18 @@ function showA(x, y, tW, light, dark) {
         }
     }
 
-    let triangularArray = [];
-    let nX = x;
-    let nY = y + tW;
+    var triangularArray = [];
+    var nX = x;
+    var nY = y + tW;
     // stroke(255, 0, 0);
-    for (let i = 0; i < tW; i += tW / AmountOfLines) {
+    for (var i = 0; i < tW; i += tW / AmountOfLines) {
         // ellipse(nX + i, nY, 5);
         triangularArray.push(createVector(nX + i, nY));
     }
     nX = x + tW;
     nY = y + tW;
-    let dW = Math.sqrt(Math.pow(tW, 2) + Math.pow(tW, 2));
-    for (let i = 0; i < dW; i += dW / AmountOfLines) {
+    var dW = Math.sqrt(Math.pow(tW, 2) + Math.pow(tW, 2));
+    for (var i = 0; i < dW; i += dW / AmountOfLines) {
         nX -= tW / AmountOfLines;
         nY -= tW / AmountOfLines;
         // ellipse(nX, nY, 5);
@@ -566,21 +566,21 @@ function showA(x, y, tW, light, dark) {
     }
     nX = x;
     nY = y;
-    for (let i = 0; i < tW; i += tW / AmountOfLines) {
+    for (var i = 0; i < tW; i += tW / AmountOfLines) {
         nY += tW / AmountOfLines;
         // ellipse(nX, nY, 5);
         triangularArray.push(createVector(nX, nY));
     }
-    for (let i = 0; i < 50; i++) {
-        let aN = Math.round(random(triangularArray.length - 1));
-        let bN = Math.round(random(triangularArray.length - 1));
-        let a = triangularArray[aN];
-        let b = triangularArray[bN];
-        // let opposite = b.y - a.y;
-        // let hypotenuse = dist(a.x, a.y, b.x, b.y);
-        // let adjacent = b.x - a.x;
-        // let angle = Math.sin(opposite / adjacent);
-        let angle = atan2(b.y - a.y, b.x - a.x);
+    for (var i = 0; i < 50; i++) {
+        var aN = Math.round(random(triangularArray.length - 1));
+        var bN = Math.round(random(triangularArray.length - 1));
+        var a = triangularArray[aN];
+        var b = triangularArray[bN];
+        // var opposite = b.y - a.y;
+        // var hypotenuse = dist(a.x, a.y, b.x, b.y);
+        // var adjacent = b.x - a.x;
+        // var angle = Math.sin(opposite / adjacent);
+        var angle = atan2(b.y - a.y, b.x - a.x);
         if ((angle <= -0.574 && angle >= -1.407) || (angle >= 2.03 && angle <= 2.677)) {
             console.log(angle);
             strokeWeight(random(strokeFloor, strokeCeiling));
@@ -607,31 +607,31 @@ function showB(x, y, tW, light, dark) {
     // fill(dark);
     // stroke(dark);
     // strokeWeight(1);
-    let oX = x;
-    let oY = y;
-    let AmountOfLines = 10 * linesMult;
-    let gutter = tW / AmountOfLines;
-    for (let i = 0; i < AmountOfLines; i++) {
+    var oX = x;
+    var oY = y;
+    var AmountOfLines = 10 * linesMult;
+    var gutter = tW / AmountOfLines;
+    for (var i = 0; i < AmountOfLines; i++) {
         x = oX + random(ran);
         y = oY + random(ran);
-        let x2 = oX + random(ran);
-        let y2 = oY + random(ran);
+        var x2 = oX + random(ran);
+        var y2 = oY + random(ran);
         strokeWeight(random(strokeFloor, strokeCeiling));
         line(x, y + (i * gutter), x2 + (i * gutter), y2);
     }
 
-    let triangularArray = [];
-    let nX = x;
-    let nY = y;
+    var triangularArray = [];
+    var nX = x;
+    var nY = y;
     // stroke(255, 0, 0);
-    for (let i = 0; i < tW; i += tW / AmountOfLines) {
+    for (var i = 0; i < tW; i += tW / AmountOfLines) {
         // ellipse(nX + i, nY, 5);
         triangularArray.push(createVector(nX + i, nY));
     }
     nX = x + tW;
     nY = y;
-    let dW = Math.sqrt(Math.pow(tW, 2) + Math.pow(tW, 2));
-    for (let i = 0; i < dW; i += dW / AmountOfLines) {
+    var dW = Math.sqrt(Math.pow(tW, 2) + Math.pow(tW, 2));
+    for (var i = 0; i < dW; i += dW / AmountOfLines) {
         nX -= tW / AmountOfLines;
         nY += tW / AmountOfLines;
         // ellipse(nX, nY, 5);
@@ -639,21 +639,21 @@ function showB(x, y, tW, light, dark) {
     }
     nX = x;
     nY = y + tW;
-    for (let i = 0; i < tW; i += tW / AmountOfLines) {
+    for (var i = 0; i < tW; i += tW / AmountOfLines) {
         nY -= tW / AmountOfLines;
         // ellipse(nX, nY, 5);
         triangularArray.push(createVector(nX, nY));
     }
-    for (let i = 0; i < 50; i++) {
-        let aN = Math.round(random(triangularArray.length - 1));
-        let bN = Math.round(random(triangularArray.length - 1));
-        let a = triangularArray[aN];
-        let b = triangularArray[bN];
-        // let opposite = b.y - a.y;
-        // let hypotenuse = dist(a.x, a.y, b.x, b.y);
-        // let adjacent = b.x - a.x;
-        // let angle = Math.sin(opposite / adjacent);
-        let angle = atan2(b.y - a.y, b.x - a.x);
+    for (var i = 0; i < 50; i++) {
+        var aN = Math.round(random(triangularArray.length - 1));
+        var bN = Math.round(random(triangularArray.length - 1));
+        var a = triangularArray[aN];
+        var b = triangularArray[bN];
+        // var opposite = b.y - a.y;
+        // var hypotenuse = dist(a.x, a.y, b.x, b.y);
+        // var adjacent = b.x - a.x;
+        // var angle = Math.sin(opposite / adjacent);
+        var angle = atan2(b.y - a.y, b.x - a.x);
         if ((angle <= -0.574 && angle >= -1.407) || (angle >= 2.03 && angle <= 2.677)) {
             console.log(angle);
             strokeWeight(random(strokeFloor, strokeCeiling));
@@ -676,15 +676,15 @@ function showC(x, y, tW, light, dark) {
     // fill(dark);
     // stroke(dark);
     // strokeWeight(1);
-    let oX = x;
-    let oY = y;
-    let AmountOfLines = 20 * linesMult;
-    let gutter = tW / AmountOfLines;
-    for (let i = 0; i < AmountOfLines; i++) {
+    var oX = x;
+    var oY = y;
+    var AmountOfLines = 20 * linesMult;
+    var gutter = tW / AmountOfLines;
+    for (var i = 0; i < AmountOfLines; i++) {
         x = oX + random(ran);
         y = oY + random(ran);
-        let x2 = oX + random(ran);
-        let y2 = oY + random(ran);
+        var x2 = oX + random(ran);
+        var y2 = oY + random(ran);
         strokeWeight(random(strokeFloor, strokeCeiling));
         if (i <= AmountOfLines / 2) {
             // line(x + (i * gutter), y + (i * gutter), x + (i * gutter * 2), y);
@@ -694,18 +694,18 @@ function showC(x, y, tW, light, dark) {
             line(x + (i * gutter), y + (i * gutter), x2 + tW, y2 + (i * gutter * 2) - tW);
         }
     }
-    let triangularArray = [];
-    let nX = x + tW;
-    let nY = y;
+    var triangularArray = [];
+    var nX = x + tW;
+    var nY = y;
     // stroke(255, 0, 0);
-    for (let i = 0; i < tW; i += tW / AmountOfLines) {
+    for (var i = 0; i < tW; i += tW / AmountOfLines) {
         // ellipse(nX, nY + i, 5);
         triangularArray.push(createVector(nX, nY + i));
     }
     nX = x + tW;
     nY = y + tW;
-    let dW = Math.sqrt(Math.pow(tW, 2) + Math.pow(tW, 2));
-    for (let i = 0; i < dW; i += dW / AmountOfLines) {
+    var dW = Math.sqrt(Math.pow(tW, 2) + Math.pow(tW, 2));
+    for (var i = 0; i < dW; i += dW / AmountOfLines) {
         nX -= tW / AmountOfLines;
         nY -= tW / AmountOfLines;
         // ellipse(nX, nY, 5);
@@ -713,21 +713,21 @@ function showC(x, y, tW, light, dark) {
     }
     nX = x;
     nY = y;
-    for (let i = 0; i < tW; i += tW / AmountOfLines) {
+    for (var i = 0; i < tW; i += tW / AmountOfLines) {
         nX += tW / AmountOfLines;
         // ellipse(nX, nY, 5);
         triangularArray.push(createVector(nX, nY));
     }
-    for (let i = 0; i < 50; i++) {
-        let aN = Math.round(random(triangularArray.length - 1));
-        let bN = Math.round(random(triangularArray.length - 1));
-        let a = triangularArray[aN];
-        let b = triangularArray[bN];
-        // let opposite = b.y - a.y;
-        // let hypotenuse = dist(a.x, a.y, b.x, b.y);
-        // let adjacent = b.x - a.x;
-        // let angle = Math.sin(opposite / adjacent);
-        let angle = atan2(b.y - a.y, b.x - a.x);
+    for (var i = 0; i < 50; i++) {
+        var aN = Math.round(random(triangularArray.length - 1));
+        var bN = Math.round(random(triangularArray.length - 1));
+        var a = triangularArray[aN];
+        var b = triangularArray[bN];
+        // var opposite = b.y - a.y;
+        // var hypotenuse = dist(a.x, a.y, b.x, b.y);
+        // var adjacent = b.x - a.x;
+        // var angle = Math.sin(opposite / adjacent);
+        var angle = atan2(b.y - a.y, b.x - a.x);
         if ((angle <= -0.574 && angle >= -1.407) || (angle >= 2.03 && angle <= 2.677)) {
             console.log(angle);
             strokeWeight(random(strokeFloor, strokeCeiling));
@@ -750,33 +750,33 @@ function showD(x, y, tW, light, dark) {
     // fill(dark);
     // stroke(dark);
     // strokeWeight(1);
-    let oX = x;
-    let oY = y;
-    let AmountOfLines = 10 * linesMult;
-    let gutter = tW / AmountOfLines;
-    for (let i = 0; i < AmountOfLines; i++) {
+    var oX = x;
+    var oY = y;
+    var AmountOfLines = 10 * linesMult;
+    var gutter = tW / AmountOfLines;
+    for (var i = 0; i < AmountOfLines; i++) {
         x = oX + random(ran);
         y = oY + random(ran);
-        let x2 = oX + random(ran);
-        let y2 = oY + random(ran);
+        var x2 = oX + random(ran);
+        var y2 = oY + random(ran);
         strokeWeight(random(strokeFloor, strokeCeiling));
         // line(x + (i * gutter), y + tW, x + tW, y + (i * gutter));
         line(x + (i * gutter), y + tW, x2 + tW, y2 + (i * gutter));
     }
     showSquare(x, y, tW, light, dark);
     // noStroke();
-    let triangularArray = [];
-    let nX = x + tW;
-    let nY = y + tW;
+    var triangularArray = [];
+    var nX = x + tW;
+    var nY = y + tW;
     // stroke(255, 0, 0);
-    for (let i = 0; i < tW; i += tW / AmountOfLines) {
+    for (var i = 0; i < tW; i += tW / AmountOfLines) {
         // ellipse(nX - i, nY, 5);
         triangularArray.push(createVector(nX - i, nY));
     }
     nX = x;
     nY = y + tW;
-    let dW = Math.sqrt(Math.pow(tW, 2) + Math.pow(tW, 2));
-    for (let i = 0; i < dW; i += dW / AmountOfLines) {
+    var dW = Math.sqrt(Math.pow(tW, 2) + Math.pow(tW, 2));
+    for (var i = 0; i < dW; i += dW / AmountOfLines) {
         nX += tW / AmountOfLines;
         nY -= tW / AmountOfLines;
         // ellipse(nX, nY, 5);
@@ -784,21 +784,21 @@ function showD(x, y, tW, light, dark) {
     }
     nX = x + tW;
     nY = y;
-    for (let i = 0; i < tW; i += tW / AmountOfLines) {
+    for (var i = 0; i < tW; i += tW / AmountOfLines) {
         nY += tW / AmountOfLines;
         // ellipse(nX, nY, 5);
         triangularArray.push(createVector(nX, nY));
     }
-    for (let i = 0; i < 50; i++) {
-        let aN = Math.round(random(triangularArray.length - 1));
-        let bN = Math.round(random(triangularArray.length - 1));
-        let a = triangularArray[aN];
-        let b = triangularArray[bN];
-        // let opposite = b.y - a.y;
-        // let hypotenuse = dist(a.x, a.y, b.x, b.y);
-        // let adjacent = b.x - a.x;
-        // let angle = Math.sin(opposite / adjacent);
-        let angle = atan2(b.y - a.y, b.x - a.x);
+    for (var i = 0; i < 50; i++) {
+        var aN = Math.round(random(triangularArray.length - 1));
+        var bN = Math.round(random(triangularArray.length - 1));
+        var a = triangularArray[aN];
+        var b = triangularArray[bN];
+        // var opposite = b.y - a.y;
+        // var hypotenuse = dist(a.x, a.y, b.x, b.y);
+        // var adjacent = b.x - a.x;
+        // var angle = Math.sin(opposite / adjacent);
+        var angle = atan2(b.y - a.y, b.x - a.x);
         if ((angle <= -0.574 && angle >= -1.407) || (angle >= 2.03 && angle <= 2.677)) {
             console.log(angle);
             strokeWeight(random(strokeFloor, strokeCeiling));
@@ -822,15 +822,15 @@ function showF(x, y, tW, light, dark) {
     // fill(dark);
     // stroke(dark);
     // strokeWeight(1);
-    let oX = x;
-    let oY = y;
-    let AmountOfLines = 20 * linesMult;
-    let gutter = tW / AmountOfLines;
-    for (let i = 0; i < AmountOfLines; i++) {
+    var oX = x;
+    var oY = y;
+    var AmountOfLines = 20 * linesMult;
+    var gutter = tW / AmountOfLines;
+    for (var i = 0; i < AmountOfLines; i++) {
         x = oX + random(ran);
         y = oY + random(ran);
-        let x2 = oX + random(ran);
-        let y2 = oY + random(ran);
+        var x2 = oX + random(ran);
+        var y2 = oY + random(ran);
         strokeWeight(random(strokeFloor, strokeCeiling));
         if (i <= AmountOfLines / 2) {
             // line(x, y + (i * gutter * 2), x + (i * gutter * 2), y);
@@ -840,45 +840,45 @@ function showF(x, y, tW, light, dark) {
             line(x + (i * gutter * 2) - tW, y + tW, x2 + tW, y2 + (i * gutter * 2) - tW);
         }
     }
-    let triangularArray = [];
-    let nX = x;
-    let nY = y;
+    var triangularArray = [];
+    var nX = x;
+    var nY = y;
     // stroke(255, 0, 0);
-    for (let i = 0; i < tW; i += tW / AmountOfLines) {
+    for (var i = 0; i < tW; i += tW / AmountOfLines) {
         // ellipse(nX + i, nY, 5);
         triangularArray.push(createVector(nX + i, nY));
     }
     nX = x + tW;
     nY = y;
-    for (let i = 0; i < tW; i += tW / AmountOfLines) {
+    for (var i = 0; i < tW; i += tW / AmountOfLines) {
         nY += tW / AmountOfLines;
         // ellipse(nX, nY, 5);
         triangularArray.push(createVector(nX, nY));
     }
     nX = x + tW;
     nY = y + tW;
-    for (let i = 0; i < tW; i += tW / AmountOfLines) {
+    for (var i = 0; i < tW; i += tW / AmountOfLines) {
         nX -= tW / AmountOfLines;
         // ellipse(nX, nY, 5);
         triangularArray.push(createVector(nX, nY));
     }
     nX = x;
     nY = y + tW;
-    for (let i = 0; i < tW; i += tW / AmountOfLines) {
+    for (var i = 0; i < tW; i += tW / AmountOfLines) {
         nY -= tW / AmountOfLines;
         // ellipse(nX, nY, 5);
         triangularArray.push(createVector(nX, nY));
     }
-    for (let i = 0; i < 50; i++) {
-        let aN = Math.round(random(triangularArray.length - 1));
-        let bN = Math.round(random(triangularArray.length - 1));
-        let a = triangularArray[aN];
-        let b = triangularArray[bN];
-        // let opposite = b.y - a.y;
-        // let hypotenuse = dist(a.x, a.y, b.x, b.y);
-        // let adjacent = b.x - a.x;
-        // let angle = Math.sin(opposite / adjacent);
-        let angle = atan2(b.y - a.y, b.x - a.x);
+    for (var i = 0; i < 50; i++) {
+        var aN = Math.round(random(triangularArray.length - 1));
+        var bN = Math.round(random(triangularArray.length - 1));
+        var a = triangularArray[aN];
+        var b = triangularArray[bN];
+        // var opposite = b.y - a.y;
+        // var hypotenuse = dist(a.x, a.y, b.x, b.y);
+        // var adjacent = b.x - a.x;
+        // var angle = Math.sin(opposite / adjacent);
+        var angle = atan2(b.y - a.y, b.x - a.x);
         if ((angle <= -0.574 && angle >= -1.407) || (angle >= 2.03 && angle <= 2.677)) {
             console.log(angle);
             strokeWeight(random(strokeFloor, strokeCeiling));
@@ -891,8 +891,8 @@ function showF(x, y, tW, light, dark) {
 function showSquare(x, y, tW, light, dark) {
     // strokeWeight(0.5);
     // stroke(0, 50);
-    // let oX = x;
-    // let oY = y;
+    // var oX = x;
+    // var oY = y;
     // x = oX + random(ran);
     // y = oY + random(ran);
     // line(x, y, x + tW, y);
