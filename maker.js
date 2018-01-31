@@ -664,6 +664,15 @@ function parseHTMLTemplate(s) {
     page.fr.content = page.fr.content.replace(/<\/code>/g, `</code></pre>`);
     page.fr.content = page.fr.content.replace(/<ic>/g, `<span class="inline-code">`);
     page.fr.content = page.fr.content.replace(/<\/ic>/g, `</span>`);
+    page.fr.content = page.fr.content.replace(/\\'/g, `'`);
+    page.fr.content = page.fr.content.replace(/\\!/g, `!`);
+    page.fr.content = page.fr.content.replace(/\\\?/g, `?`);
+    page.fr.content = page.fr.content.replace(/<li>/g, `<li>&mdash;&nbsp;&nbsp;`);
+    page.fr.content = page.fr.content.replace(/\s:/g, `&nbsp;:`);
+    page.fr.content = page.fr.content.replace(/<lnum>/g, `<span class="lnum">`);
+    page.fr.content = page.fr.content.replace(/<\/lnum>/g, `</span>`);
+    page.fr.content = page.fr.content.replace(/<nb>/g, `<span class="nobreak">`);
+    page.fr.content = page.fr.content.replace(/<\/nb>/g, `</span>`);
 
     page.en.title = data.match(/(<!-- en-title -->)([\S\s]*?)(<!--)/)[2];
     page.en.title = page.en.title.replace(/(?:\r\n|\r|\n)/g, "");
@@ -732,5 +741,10 @@ function parseHTMLTemplate(s) {
     page.en.content = page.en.content.replace(/\\'/g, `'`);
     page.en.content = page.en.content.replace(/\\!/g, `!`);
     page.en.content = page.en.content.replace(/\\\?/g, `?`);
+    page.en.content = page.en.content.replace(/<li>/g, `<li>&mdash;&nbsp;&nbsp;`);
+    page.en.content = page.en.content.replace(/<lnum>/g, `<span class="lnum">`);
+    page.en.content = page.en.content.replace(/<\/lnum>/g, `</span>`);
+    page.en.content = page.en.content.replace(/<nb>/g, `<span class="nobreak">`);
+    page.en.content = page.en.content.replace(/<\/nb>/g, `</span>`);
     return page;
 }
