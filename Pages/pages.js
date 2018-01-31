@@ -1,10 +1,10 @@
 exports.list = [
     "truchet",
-    "turtle-geometry",
-    "joy-and-confusion",
-    "growing_wreath",
     "dunes",
-    "new-medusae"
+    "growing_wreath"
+    // "turtle-geometry",
+    // "joy-and-confusion",
+    // "new-medusae"
 ];
 
 exports.pages = {
