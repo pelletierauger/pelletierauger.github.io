@@ -1,4 +1,5 @@
 exports.posts = [
+    "towards-turtle-geometry",
     "exploring-fractal-cellular-automata",
     "recursive-harmonic-motion",
     "truchet"
