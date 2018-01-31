@@ -89,21 +89,24 @@
 <p class="noindent">
     Pour tester ces nouvelles formes dans le générateur, vous pouvez alterner entre <span id="normalmode"><sc>le mode angulaire</sc></span> et <span id="wavymode"><sc>le mode ondulé</sc></span> et y retourner pour voir les changements. Vous remarquerez aussi que l'épaisseur des lignes courbes change d'une génération à l'autre, parce que <i>ça fait plus joli</i>.
 </p>
-<h3>Pavages colorés</h3>
+<h3>Pavages colorés et texturés</h3>
 <p class="noindent">
-    <sc>U</sc><sc>ne des questions</sc> à laquelle je souhaitais répondre avec ce projet était : <i>Comment les pavages de Truchet pourraient-ils être colorés?</i> Afin de colorer les pavages d'une façon qui ait du sens avec la façon dont les pavages sont construits, j'ai décidé de partir du même <i>escalier</i> et de ne colorer que celui-ci. De cette façon, les couleurs aussi sont symétriques.
+    <sc>Une des questions</sc> à laquelle je souhaitais répondre avec ce projet était : <i>Comment les pavages de Truchet pourraient-ils être colorés?</i> Afin que la coloration de ces pavages puisse répondre harmonieusement à leur construction symétrique, j'ai décidé d'utiliser la forme en &ldquo;escalier&rdquo; qui les structure et de ne colorer que celle-ci.
 </p>
 <p>
-    Pour ce faire, j'ai créé un système qui choisit quatre couleurs au hasard. Les couleurs <span class="lnum">1 et 2</span> sont assignées à la part claire des carreaux, et les couleurs <span class="lnum">3 et 4</span> sont assignées à la part foncée. Les couleurs sont ensuite répandues sur l'escalier, créant un dégradé qui passe de la couleur <span class="lnum">1 à la couleur 2</span>, et un autre de la couleur <span class="lnum">3 à la couleur 4</span>. De cette façon, une fois que l'escalier est réfléchi et copié pour former le pavage, les couleurs obtenues sont également réparties symétriquement.
+    Pour ce faire, j'ai créé un système qui choisit quatre couleurs au hasard à chaque génération d'un escalier. Les couleurs <lnum>1 et 2</lnum> sont assignées à la partie claire des carreaux, et les couleurs <lnum>3 et 4</lnum> à la partie foncée. Les couleurs sont ensuite appliquées sur l'escalier, créant un dégradé qui passe de la couleur <lnum>1 à la couleur 2</lnum>, et un autre de la <lnum>3 à la 4</lnum>. Quand l'escalier est réfléchi et copié pour former le pavage, les couleurs obtenues sont ainsi réparties avec les mêmes symétries horizontales, verticales et diagonales.
 </p>
 <p>
     <img class="abcd" src="../../images/truchet/escaliers-couleurs.png">
 </p>
 <p class="noindent">
-    Je n'ai pas inclus le générateur de pavages colorés sur cette page parce que la majorité des palettes de couleur qu'il génère sont peu intéressantes. Les quelques pavages colorés qui sont présentés sur cette page ont été choisis parmi de très nombreuses générations. Néanmoins, si vous êtes d'une patience et d'un courage à toute épreuve, vous êtes les bienvenus à <a href="https://pelletierauger.github.io/Truchet/?lang=fr">essayer le générateur coloré</a> par vous-mêmes.
+    Puis, afin de donner une légère texture aux pavages, le générateur ne dessine pas réellement les triangles et les carrés qui forment le pavage. Il dessine plutôt des milliers de points colorés à l'intérieur des limites de chaque carreau.
 </p>
 <p>
-    Voici quelques pavages colorés choisis parmi ma cueillette de janvier 2018&nbsp;:
+    Je n'ai pas inclus le générateur de pavages colorés sur cette page parce que la majorité des palettes de couleur qu'il génère sont très peu harmonieuses et que le dessin d'un pavage avec des milliers de points prend plusieurs longues minutes. Néanmoins, si vous êtes d'une patience et d'un courage à toute épreuve, vous êtes les bienvenus à <a href="https://pelletierauger.github.io/Truchet/?lang=fr">essayer le générateur coloré</a> par vous-mêmes.
+</p>
+<p>
+    Pour les autres, voici quelques pavages colorés générés en janvier 2018 :
 </p>
 <div class="imagedouble-margin-tilings">
     <img src="../../images/truchet/075-vert.png">
@@ -149,6 +152,10 @@
         Le générateur de pavages en noir et blanc qui affiché sur cette page Web est distribué avec une licence <a href=""><sc>Gnu Gpl</sc><lnum> 3.0</lnum></a>. Le générateur de pavages colorés est distribué avec la même licence.
     </li>
 </ul>
+<h3>Sources</h3>
+<p class="noindent">
+    <sc>J'ai appris l'existence</sc> du <a href=""><i>Mémoire sur les combinaisons</i></a> de Sébastien Truchet et de la <a href=""><i>Méthode pour faire une infinité de desseins différens</i></a> de Dominique Do&uuml;at (qui m'a aussi été d'une grande utilité) grâce aux recherches de <a href="http://Jacques-Andre.fr/">Jacques André</a>, un mathématicien et typographe français. Un <a href="http://Jacques-Andre.fr/ed/douat.pdf">document <sc>pdf</sc></a> qui présente ses recherches est disponible sur son site Web et distribué avec une licence libre.
+</p>
 <!-- <h3>Soutenir</h3>
 <p class="noindent"><sc>Si vous avez apprécié</sc> ce projet, je vous invite à appuyer mon travail sur la plateforme Patreon.</p> -->
 <!-- en-title -->The Tilings of Truchet
@@ -266,7 +273,10 @@
 </p>
 <ul class="dash">
     <li>
-        Explorer des types de pavages plus complexes, tels que les <a href="">pavages pentagonaux</a> ou les <a href="">pavages de Penrose</a>. Je suis particulièrement intéressé par les fascinants pavages <a href="https://fr.wikipedia.org/wiki/Marjorie_Rice">découverts par Marjorie Rice</a> en 1976 et 1977.<snr label="marjorie-rice">Rice était une femme brillante qui a réussit, sans avoir eu l'opportunité de poursuivre les études universitaires en mathématiques dont elle rêvait, à découvrir par <span class="nobreak">elle-même</span> de nouveaux types de pavages pentagonaux qui avaient éludés les chercheurs académiques. Je vous encourage fortement à la connaître.</snr>
+        Créer un générateur qui construirait les &ldquo;escaliers&rdquo; qui sont au c&oelig;ur des pavages de Truchet d'une manière qui ressemblerait davantage aux méthodes que Truchet utilisait lui-même. Pour l'instant, chaque carreau d'un escalier est choisi complètement au hasard, indépendamment des carreaux adjacents. Comme on le voit dans son <i>Mémoire sur les combinaisons</i>, Truchet formait plutôt ses escaliers en répétant les mêmes combinaisons de carreaux. Les pavages créés ainsi sont plus souvent harmonieux.
+    </li>
+    <li>
+        Explorer des types de pavages plus complexes, tels que les <a href="">pavages pentagonaux</a> ou les <a href="">pavages de Penrose</a>. Je suis particulièrement intéressé par les fascinants pavages <a href="https://fr.wikipedia.org/wiki/Marjorie_Rice">découverts par Marjorie Rice</a> en 1976 et 1977.<snr label="marjorie-rice">Je vous encourage fortement à en apprendre sur Rice. C'était une femme brillante qui a réussit, sans avoir eu l'opportunité de poursuivre les études universitaires en mathématiques dont elle rêvait, à découvrir de nouveaux types de pavages pentagonaux qui avaient éludés les chercheurs académiques.</snr>
     </li>
     <li>
         Mélanger les <a href="">automates cellulaires</a> avec les pavages de Truchet. De tels automates pourraient fonctionner avec des règles considérant les états de <sc>a</sc> à <sc>f</sc>. Quelles pourraient être ces règles? Serait-il possible de préserver les symétries qui sont si caractéristiques au travail de Truchet?
@@ -275,13 +285,21 @@
         Créer des pavages animés. À quoi pourrait ressembler un film d'animation constitué de pavages en mouvements? En existe-t-il de bons exemples?
     </li>
 </ul>
-<h3>Licenses et usages</h3>
+<h3>Licenses and usages</h3>
 <p class="noindent">
-    <sc>Le travail</sc> réalisé pour ce projet est entièrement distribué sous des licenses libres. Vous êtes ainsi libres de le redistribuer, de le modifier et de distribuer vos versions modifiées, la seule restriction étant que vos nouvelles versions doivent également être distribuées sous une license libre. Les images de pavages colorés qui apparaissent sur cette page sont distribuées sous une License Art Libre, le générateur de pavages en noir et blanc est distribué sous une license <sc>Gnu Gpl</sc> 3.0, et cette page Web est distribuée sous une license <sc>Gnu Gpl</sc> Documentation License.
+    <sc>Le travail</sc> réalisé pour ce projet est distribué avec des licences libres. Vous êtes libres de le redistribuer, de le modifier et d'en distribuer des versions modifiées, si vous respectez les conditions suivantes : vos versions modifiées doivent également être distribuées avec une licence libre et doivent indiquer le nom de l'auteur de l&rsquo;&oelig;uvre originale. Pour plus de détails, veuillez consulter les licences elles-mêmes :
 </p>
+<ul class="dash">
+    <li>
+        Cette page Web (incluant le texte et les images) est distribuée avec une <a href="">Licence Art Libre <lnum>1.3</lnum></a>. Les images tirées du <i>Mémoire sur les combinaisons</i> de Sébastien Truchet font bien entendu partie du domaine public.
+    </li>
+    <li>
+        Le générateur de pavages en noir et blanc qui affiché sur cette page Web est distribué avec une licence <a href=""><sc>Gnu Gpl</sc><lnum> 3.0</lnum></a>. Le générateur de pavages colorés est distribué avec la même licence.
+    </li>
+</ul>
 <h3>Sources</h3>
 <p class="noindent">
-    <sc>I learned about</sc> the existence of Truchet's <i>Memoir on Combinations</i> and Dominique Do&uuml;at's <i>Method to Make an Infinity of Different Designs</i> (which was also quite helpful in preparing this project) from the research of Jacques André. A <a href="http://Jacques-Andre.fr/ed/douat.pdf"><sc>pdf</sc> document</a> (in French) of his research is available on his website, and distributed under a free license.
+    <sc>I learned about</sc> the existence of Truchet's <a href=""><i>Memoir on Combinations</i></a> and Dominique Do&uuml;at's <a href=""><i>Method to Make an Infinity of Different Designs</i></a> (which was also quite helpful in preparing this project) from the research of <a href="http://Jacques-Andre.fr/">Jacques André</a>, a French mathematician and typographer. A <a href="http://Jacques-Andre.fr/ed/douat.pdf"><sc>pdf</sc> document</a> (in French) of his research is available on his website, and distributed under a free license.
 </p>
 <!-- <h3>Soutenir</h3>
 <p class="noindent"><sc>Si vous avez apprécié</sc> ce projet, je vous invite à appuyer mon travail sur la plateforme Patreon.</p> -->
