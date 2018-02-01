@@ -54,7 +54,7 @@ code {
 .hljs-doctag,
 .hljs-keyword,
 .hljs-formula {
-    color: #c678dd;
+    color: #2A58D3;
 }
 
 .hljs-section,
@@ -66,7 +66,8 @@ code {
 }
 
 .hljs-literal {
-    color: #56b6c2;
+    /*boolean*/
+    color: #259298;
 }
 
 .hljs-string,
@@ -74,12 +75,13 @@ code {
 .hljs-addition,
 .hljs-attribute,
 .hljs-meta-string {
-    color: #98c379;
+    color: #C17101;
 }
 
 .hljs-built_in,
 .hljs-class .hljs-title {
-    color: #e6c07b;
+    /*console.*/
+    color: #000000;
 }
 
 .hljs-attr,
@@ -102,7 +104,8 @@ code {
 .hljs-meta,
 .hljs-selector-id,
 .hljs-title {
-    color: #61aeee;
+    /*The names of functions*/
+    color: #734AC6;
 }
 
 .hljs-emphasis {
