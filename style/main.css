@@ -136,7 +136,7 @@ article a .italic {
     font-family: 'EBG08-It';
 }
 
-.Incon {
+.Incon, .Inconsolata {
     font-family: 'Inconsolata';
     line-height: 1em;
 }
@@ -185,8 +185,8 @@ p {
     line-height: 1.3;
     text-align: left;
     text-indent: 2em;
-    -webkit-hyphens: auto;
-    -moz-hyphens: auto;
+    /*    -webkit-hyphens: auto;
+    -moz-hyphens: auto;*/
 }
 
 .introduction {
@@ -199,6 +199,7 @@ p {
 
 .inline-code {
     font-family: 'Inconsolata', courier, monospace;
+    line-height: 1em;
     /*background-color: #ECECEC;*/
 }
 
@@ -266,8 +267,9 @@ h3 {
     margin-top: 1.5em;
 }
 
-h3.article-top {
-    padding-top: 1em;
+.article-top {
+    margin-top: 2em;
+    text-indent: 0em;
 }
 
 h3 a {
@@ -315,17 +317,6 @@ article {
     /*margin-top: 1em;*/
 }
 
-article.blog-post {
-    padding-bottom: 2em;
-}
-
-article.blog-post h2 {
-    /*padding-bottom: 2em;*/
-    /*font-family: 'EBG12-Re';*/
-    font-size: 1.75em;
-    /*max-width: 700px;*/
-}
-
 article p {
 
     /*margin-bottom: 1em;*/
@@ -340,6 +331,7 @@ article ul.dash {
     line-height: 1.3;
     padding-left: 2em;
     list-style-type: '\2014';
+    list-style-type: none;
     font-family: 'EBG12-Re', Garamond, Georgia, serif;
     box-sizing: border-box;
     /*background-color: rgba(255, 0, 0, 0.1);*/
@@ -349,7 +341,7 @@ article ul.dash>li {
     padding-left: 0.75em;
     /*display: block;*/
     /*background-color: rgba(0, 0, 255, 0.2);*/
-    /*text-indent: -2em;*/
+    text-indent: -1.4em;
 }
 
 article img {
