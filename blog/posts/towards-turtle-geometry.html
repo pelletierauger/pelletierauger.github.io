@@ -8,21 +8,23 @@
     La géométrie des tortues, qu'en dire?
 </p>
 <!-- en-title -->Thoughts on doing Turtle geometry with p5.js
-<!-- en-html-title -->Turtle geometry with <span class="lnum">p5</span>.js
+<!-- en-html-title -->Trying out Turtle geometry with <span class="lnum">p5</span>.js
 <!-- en-content -->
 <img src="../../../images/thumbnails/turtle-geometry.jpg">
 <!-- <p>
     <img class="inline-figure" src="../../../images/thumbnails/turtle-geometry.jpg">
 </p> -->
 <p class="article-top">
-    <sc>In the Summer of 2017</sc>, I read two books that changed my way of thinking about learning and education. <i>Mindstorms: Children, Computers and Powerful Ideas</i> and <i>The Children's Machine: Rethinking School in the Age of the Computer</i>, both written by Seymour Papert, make the argument that we need to think deeply about how computers can and will change how we learn. The first book, written in 1980, is a fiery and passionate invitation to experiment with computers, to build new computational tools that change how we learn and unite seemingly opposite endeavours like art and mathematics. The second book, written seventeen years later, is a more mature and reflective look on <i>what happened</i> with a bit of sadness in it but still quite a bit of passion, curiosity and openness.
+    <sc>In the summer of 2017</sc>, I read two wonderful books by Seymour Papert that profoundly changed my way of thinking about learning and education: <i>Mindstorms</i> and <i>The Children's Machine</i>.<snl label="bookclub">I read <span class="italic8">Mindstorms</span> as part of the <lnum>p5</lnum>.diversity interactive book club. It was an amazing experience.</snl> Papert was a passionate educator, mathematician, and computer scientist who believed that computers could and should change the way we learn. One of his most interesting inventions is <i>Turtle geometry</i>, a tool to learn mathematics in an embodied and intuitive way. While reading about it, I couldn't help wanting to try it for myself. I kept wondering what would be the best way to do Turtle geometry today. This article is about my first foray into it, using <lnum>p5.js</lnum>.
+    <!--     <sc>In the Summer of 2017</sc>, I read two books that changed my way of thinking about learning and education. <i>Mindstorms: Children, Computers and Powerful Ideas</i> and <i>The Children's Machine: Rethinking School in the Age of the Computer</i>, both written by Seymour Papert, make the argument that we need to think deeply about how computers can and will change how we learn. The first book, written in 1980, is a fiery and passionate invitation to experiment with computers, to build new computational tools that change how we learn and unite seemingly opposite endeavours like art and mathematics. The second book, written seventeen years later, is a more mature and reflective look on <i>what happened</i> with a bit of sadness in it but still quite a bit of passion, curiosity and openness. -->
 </p>
 <h3>What is Turtle geometry?</h3>
 <p class="noindent">
-    I want to make Turtle geometry with <span class="lnum">p5</span>.js. What would be the best way to do it? One important thing for me is to be able to <i>see the turtle move</i>. Seeing a whole drawing appear in a flash is a very different experience from seeing how it is made. I don't want to just see the result of the turtle walk, I want to see the walk itself.
+    <sc>There are</sc> a <i>lot</i> of things to say about the fascinating theory and immense potentiel of Turtle geometry, but for now I will limit myself to just describing it as simply as possible for the purposes of this embryonic project.
+    <!--     I want to make Turtle geometry with <span class="lnum">p5</span>.js. What would be the best way to do it? One important thing for me is to be able to <i>see the turtle move</i>. Seeing a whole drawing appear in a flash is a very different experience from seeing how it is made. I don't want to just see the result of the turtle walk, I want to see the walk itself. -->
 </p>
 <p>
-    For example, the code below would draw a rectangle:
+    In 1967, Seymour Papert created <span class="Silentype">LOGO</span>, a computer system and software toolkit to build educational experiences. One of the key part of <span class="Silentype">LOGO</span> was the Turtle, a mathematical object that only has two properties: a position in space and a heading (a direction in which its &ldquo;head&rdquo; is pointing). To make the Turtle move, you give it instructions in a language called <span class="Silentype">TURTLE TALK</span>. For example, the command <span class="Silentype">FORWARD 50</span> makes the turtle go forward 50 steps. The command <span class="Silentype">LEFT 180</span> makes it rotate left by 180 degrees. The code below makes the Turtle draw a square:
 </p>
 <pre><span class="Silentype">FORWARD 100
 RIGHT 90
@@ -33,9 +35,8 @@ RIGHT 90
 FORWARD 100
 RIGHT 90
 </span></pre>
-<h3>Numerous ways to repeat things</h3>
 <p class="noindent">
-    In order to make programs much clearer to read and write, <span class="Silentype">LOGO</span> also had a <span class="Silentype">REPEAT</span> function. It would repeat every commands before the word <span class="Silentype">END</span>, the number of times that was indicated to the right of the command <span class="Silentype">REPEAT</span>. This is how we can draw our rectangle now:
+    To make a series of instructions (a program) easier to read and write, <span class="Silentype">LOGO</span> also had a <span class="Silentype">REPEAT</span> command. It would repeat every commands before the word <span class="Silentype">END</span>, the number of times indicated to the right of the command <span class="Silentype">REPEAT</span>. This is another way to draw the same square:
 </p>
 <pre><span class="Silentype">REPEAT 4
     FORWARD 100
@@ -43,6 +44,103 @@ RIGHT 90
 END
 </span></pre>
 <p class="noindent">
+    The Turtle had other interesting commands, for example <span class="Silentype">PENDOWN</span> would lower a pen to draw the path of the Turtle, and <span class="Silentype">PENUP</span> would lift it. You could also create custom functions, with this syntax:
+</p>
+<pre><span class="Silentype">TO SQUARE
+    REPEAT 4
+        FORWARD 100
+        RIGHT 90
+    END
+END
+</span></pre>
+<p class="noindent">
+    To continue the analogy of talking to a Turtle, creating custom functions was something Papert explained as &ldquo;teaching the Turtle a new word&rdquo;. Your custom functions could also have arguments, using this syntax:
+</p>
+<pre><span class="Silentype">TO SQUARE WIDTH
+    REPEAT 4
+        FORWARD WIDTH
+        RIGHT 90
+    END
+END
+</span></pre>
+<pn>
+    These are the basic building blocks. This is an extreme simplification of it, but we can now move on to the question of replicating this with <lnum>p5.js</lnum>.
+</pn>
+<h3>Replicating <span class="Silentype">TURTLE TALK</span> with <lnum>p5.js</lnum></h3>
+<pn>
+    <sc>On the surface</sc>, it might seem like a trivial problem to replicate <span class="Silentype">TURTLE TALK</span>, but I think it is deceptively intricate. Let's say you create a Turtle class, and then you give it methods like <ic>forward()</ic>, <ic>left()</ic>, and <ic>right()</ic>. Assuming that the methods only do what they are supposed to (move and rotate the Turtle), you would write the following code to create a new Turtle and make it draw a square:
+</pn>
+<code>function draw() {
+    let t = new Turtle();
+    t.forward(100);
+    t.right(90);
+    t.forward(100);
+    t.right(90);
+    t.forward(100);
+    t.right(90);
+    t.forward(100);
+    t.right(90);
+}
+</code>
+<pn>
+    The unfortunate thing here is that you will not get to <i>see the Turtle move</i>. The square will appear fully formed, because all the Turtle methods are called on the same frame of animation.
+</pn>
+<p>
+    This is a unfortunate because Turtle geometry is meant to be a way to learn mathematics using your senses and your intuitions. During <span class="Silentype">LOGO</span> sessions, Papert encouraged children to &ldquo;play Turtle&rdquo;: to walk around replicating the commands written for the Turtle. He strived to create mental links between mathematical abstractions and natural experiences. In a <a href="">film shot at <sc>mit</sc> in 1983</a>, we see children doing Turtle geometry with <span class="Silentype">LOGO</span>, and we can see the Turtles moving on the computer screens. <span class="Silentype">LOGO</span> did not only display the <i>results</i> of a series of commands but the <i>process</i> too. We also see in the film a mechanical Turtle: a small robot that took <span class="Silentype">TURTLE TALK</span> commands and moved around over a piece of paper to draw the resulting shapes. In this situation, the children also saw the Turtle move and draw. The JavaScript code I wrote above is more like letting the children enter a room where a robot has already finished drawing something. It would not build a sensory bridge between the abstract Turtle commands and their visual, physical results.
+</p>
+<p>
+    With that in mind, I created a simple (but somewhat strange) system. I certainly do not claim to have found <i>the</i> way to replicate <span class="Silentype">TURTLE TALK</span> in <lnum>p5.js</lnum>. I'm just experimenting and testing out ideas. This is how I define a Turtle that draws a square:
+</p>
+<code>let t = new Turtle({
+    instructions: function() {
+        forward(100);
+        right(90);
+        forward(100);
+        right(90);
+        forward(100);
+        right(90);
+        forward(100);
+        right(90);
+    }
+}); 
+</code>
+<pn>
+    Two things are <i>strange</i> here. Firstly, the <ic>forward(100)</ic> and <ic>right(90)</ic> calls are not methods of the <ic>Turtle</ic> class, they are public functions. Secondly, this is not visible here but those public functions do not actually do what they &ldquo;claim&rdquo; to be doing. <i>What?</i> What <ic>forward(100)</ic> and <ic>right(90)</ic> are really doing is pushing an object in a global array called <ic>instructionBox</ic>:
+</pn>
+<code>function forward(size) {
+    instructionBox.push({
+        f: "forward",
+        s: size
+    });
+}
+
+function right(angle) {
+    instructionBox.push({
+        f: "right",
+        a: angle
+    });
+}
+</code>
+<pn>
+    Once a series of those objects are inside the <ic>instructionBox</ic> array, the system is able to execute instructions, one per animation frame, letting us see the Turtle's process.
+</pn>
+<p>
+    In the <ic>Turtle</ic> class below, you can see that when an instance of <ic>Turtle</ic> is created, it calls the <ic>instructions()</ic> function that was sent to it, and then collects the results contained in the global <ic>instructionBox</ic> variable, saving it in a private property called <ic>states</ic>:
+</p>
+<code>var Turtle = function(t) {
+    this.heading = t.heading || 0;
+    this.position = t.position || new p5.Vector(0, 0);
+    this.penDown = true;
+    this.awake = (t.awake \!= null) ? t.awake : true;
+    if (this.awake) {
+        t.instructions();
+        this.states = instructionBox;
+        instructionBox = [];
+        turtles.push(this);
+    }
+};
+</code>
+<p>
     I always thought that JavaScript should have a simple <ic>repeat</ic> syntax. I first learned programming with HyperCard and thankfully it had one. I think a simple <ic>repeat</ic> syntax is a great learning tool for beginners. It's the friendliest approach possible to loops. Also, how often do we use a <ic>for</ic> loop just to repeat an action a fixed amount of times? The following syntax could be very useful:
 </p>
 <code>// This is not correct JavaScript but maybe it should be:
