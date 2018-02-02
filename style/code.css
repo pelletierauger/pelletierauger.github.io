@@ -119,3 +119,10 @@ code {
 .hljs-link {
     text-decoration: underline;
 }
+
+.hljs-punctuation {
+    color: #C17101;
+}
+.hljs-p5 {
+    color: #D81C56;
+}
