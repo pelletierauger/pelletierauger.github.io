@@ -22,21 +22,27 @@
     
         
         
-            <article class="blog-post"><h2 class="with-date"><a href="../blog/2018/2/thoughts-on-doing-turtle-geometry-with-p5js.html">Turtle geometry with <span class="lnum">p5</span>.js
+            <article class="blog-post"><h2 class="with-date"><a href="../blog/2018/2/thoughts-on-doing-turtle-geometry-with-p5js.html">Trying out Turtle geometry with <span class="lnum">p5</span>.js
 </a></h2><div class = "date">February 15, 2018</div>
 <img src="../../../images/thumbnails/turtle-geometry.jpg">
 <!-- <p>
     <img class="inline-figure" src="../../../images/thumbnails/turtle-geometry.jpg">
 </p> -->
 <p class="article-top">
-    <span class="small-caps">In the Summer of 2017</span>, I read two books that changed my way of thinking about learning and education. <span class="italic">Mindstorms: Children, Computers and Powerful Ideas</span> and <span class="italic">The Children&rsquo;s Machine: Rethinking School in the Age of the Computer</span>, both written by Seymour Papert, make the argument that we need to think deeply about how computers can and will change how we learn. The first book, written in 1980, is a fiery and passionate invitation to experiment with computers, to build new computational tools that change how we learn and unite seemingly opposite endeavours like art and mathematics. The second book, written seventeen years later, is a more mature and reflective look on <span class="italic">what happened</span> with a bit of sadness in it but still quite a bit of passion, curiosity and openness.
+    <span class="small-caps">In the summer of 2017</span>, I read two wonderful books by Seymour Papert that profoundly changed my way of thinking about learning and education: <span class="italic">Mindstorms</span> and <span class="italic">The Children&rsquo;s Machine</span>.
+        <label for="bookclub" class="margin-toggle sidenote-number">
+        </label>
+        <input type="checkbox" id="bookclub" class="margin-toggle"/>
+        <span class="sidenote-left">I read <span class="italic8">Mindstorms</span> as part of the <span class="lnum">p5</span>.diversity interactive book club. It was an amazing experience.</span> Papert was a passionate educator, mathematician, and computer scientist who believed that computers could and should change the way we learn. One of his most interesting inventions is <span class="italic">Turtle geometry</span>, a tool to learn mathematics in an embodied and intuitive way. While reading about it, I couldn&rsquo;t help wanting to try it for myself. I kept wondering what would be the best way to do Turtle geometry today. This article is about my first foray into it, using <span class="lnum">p5.js</span>.
+    <!--     <span class="small-caps">In the Summer of 2017</span>, I read two books that changed my way of thinking about learning and education. <span class="italic">Mindstorms: Children, Computers and Powerful Ideas</span> and <span class="italic">The Children&rsquo;s Machine: Rethinking School in the Age of the Computer</span>, both written by Seymour Papert, make the argument that we need to think deeply about how computers can and will change how we learn. The first book, written in 1980, is a fiery and passionate invitation to experiment with computers, to build new computational tools that change how we learn and unite seemingly opposite endeavours like art and mathematics. The second book, written seventeen years later, is a more mature and reflective look on <span class="italic">what happened</span> with a bit of sadness in it but still quite a bit of passion, curiosity and openness. -->
 </p>
 <h3>What is Turtle geometry&nbsp;?</h3>
 <p class="noindent">
-    I want to make Turtle geometry with <span class="lnum">p5</span>.js. What would be the best way to do it&nbsp;? One important thing for me is to be able to <span class="italic">see the turtle move</span>. Seeing a whole drawing appear in a flash is a very different experience from seeing how it is made. I don&rsquo;t want to just see the result of the turtle walk, I want to see the walk itself.
+    <span class="small-caps">There are</span> a <span class="italic">lot</span> of things to say about the fascinating theory and immense potentiel of Turtle geometry, but for now I will limit myself to just describing it as simply as possible for the purposes of this embryonic project.
+    <!--     I want to make Turtle geometry with <span class="lnum">p5</span>.js. What would be the best way to do it&nbsp;? One important thing for me is to be able to <span class="italic">see the turtle move</span>. Seeing a whole drawing appear in a flash is a very different experience from seeing how it is made. I don&rsquo;t want to just see the result of the turtle walk, I want to see the walk itself. -->
 </p>
 <p>
-    For example, the code below would draw a rectangle:
+    In 1967, Seymour Papert created <span class="Silentype">LOGO</span>, a computer system and software toolkit to build educational experiences. One of the key part of <span class="Silentype">LOGO</span> was the Turtle, a mathematical object that only has two properties: a position in space and a heading (a direction in which its &ldquo;head&rdquo; is pointing). To make the Turtle move, you give it instructions in a language called <span class="Silentype">TURTLE TALK</span>. For example, the command <span class="Silentype">FORWARD 50</span> makes the turtle go forward 50 steps. The command <span class="Silentype">LEFT 180</span> makes it rotate left by 180 degrees. The code below makes the Turtle draw a square:
 </p>
 <pre><span class="Silentype">FORWARD 100
 RIGHT 90
@@ -47,9 +53,8 @@ RIGHT 90
 FORWARD 100
 RIGHT 90
 </span></pre>
-<h3>Numerous ways to repeat things</h3>
 <p class="noindent">
-    In order to make programs much clearer to read and write, <span class="Silentype">LOGO</span> also had a <span class="Silentype">REPEAT</span> function. It would repeat every commands before the word <span class="Silentype">END</span>, the number of times that was indicated to the right of the command <span class="Silentype">REPEAT</span>. This is how we can draw our rectangle now:
+    To make a series of instructions (a program) easier to read and write, <span class="Silentype">LOGO</span> also had a <span class="Silentype">REPEAT</span> command. It would repeat every commands before the word <span class="Silentype">END</span>, the number of times indicated to the right of the command <span class="Silentype">REPEAT</span>. This is another way to draw the same square:
 </p>
 <pre><span class="Silentype">REPEAT 4
     FORWARD 100
@@ -57,11 +62,104 @@ RIGHT 90
 END
 </span></pre>
 <p class="noindent">
+    The Turtle had other interesting commands, for example <span class="Silentype">PENDOWN</span> would lower a pen to draw the path of the Turtle, and <span class="Silentype">PENUP</span> would lift it. You could also create custom functions, with this syntax:
+</p>
+<pre><span class="Silentype">TO SQUARE
+    REPEAT 4
+        FORWARD 100
+        RIGHT 90
+    END
+END
+</span></pre>
+<p class="noindent">
+    To continue the analogy of talking to a Turtle, creating custom functions was something Papert explained as &ldquo;teaching the Turtle a new word&rdquo;. Your custom functions could also have arguments, using this syntax:
+</p>
+<pre><span class="Silentype">TO SQUARE WIDTH
+    REPEAT 4
+        FORWARD WIDTH
+        RIGHT 90
+    END
+END
+</span></pre>
+<p class="noindent">
+    These are the basic building blocks. This is an extreme simplification of it, but we can now move on to the question of replicating this with <span class="lnum">p5.js</span>.
+</p>
+<h3>Replicating <span class="Silentype">TURTLE TALK</span> with <span class="lnum">p5.js</span></h3>
+<p class="noindent">
+    <span class="small-caps">On the surface</span>, it might seem like a trivial problem to replicate <span class="Silentype">TURTLE TALK</span>, but I think it is deceptively intricate. Let&rsquo;s say you create a Turtle class, and then you give it methods like <span class="inline-code">forward()</span>, <span class="inline-code">left()</span>, and <span class="inline-code">right()</span>. Assuming that the methods only do what they are supposed to (move and rotate the Turtle), you would write the following code to create a new Turtle and make it draw a square:
+</p>
+<pre><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">draw</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">let</span> t<span class="hljs-punctuation"> = </span><span class="hljs-keyword">new</span> Turtle();
+    t<span class="hljs-punctuation">.</span>forward(<span class="hljs-number">100</span>);
+    t<span class="hljs-punctuation">.</span>right(<span class="hljs-number">90</span>);
+    t<span class="hljs-punctuation">.</span>forward(<span class="hljs-number">100</span>);
+    t<span class="hljs-punctuation">.</span>right(<span class="hljs-number">90</span>);
+    t<span class="hljs-punctuation">.</span>forward(<span class="hljs-number">100</span>);
+    t<span class="hljs-punctuation">.</span>right(<span class="hljs-number">90</span>);
+    t<span class="hljs-punctuation">.</span>forward(<span class="hljs-number">100</span>);
+    t<span class="hljs-punctuation">.</span>right(<span class="hljs-number">90</span>);
+}</code></pre>
+<p class="noindent">
+    The unfortunate thing here is that you will not get to <span class="italic">see the Turtle move</span>. The square will appear fully formed, because all the Turtle methods are called on the same frame of animation.
+</p>
+<p>
+    This is a unfortunate because Turtle geometry is meant to be a way to learn mathematics using your senses and your intuitions. During <span class="Silentype">LOGO</span> sessions, Papert encouraged children to &ldquo;play Turtle&rdquo;: to walk around replicating the commands written for the Turtle. He strived to create mental links between mathematical abstractions and natural experiences. In a <a href="">film shot at <span class="small-caps">mit</span> in 1983</a><span class="cleardescenders">,</span> we see children doing Turtle geometry with <span class="Silentype">LOGO</span>, and we can see the Turtles moving on the computer screens. <span class="Silentype">LOGO</span> did not only display the <span class="italic">results</span> of a series of commands but the <span class="italic">process</span> too. We also see in the film a mechanical Turtle: a small robot that took <span class="Silentype">TURTLE TALK</span> commands and moved around over a piece of paper to draw the resulting shapes. In this situation, the children also saw the Turtle move and draw. The JavaScript code I wrote above is more like letting the children enter a room where a robot has already finished drawing something. It would not build a sensory bridge between the abstract Turtle commands and their visual, physical results.
+</p>
+<p>
+    With that in mind, I created a simple (but somewhat strange) system. I certainly do not claim to have found <span class="italic">the</span> way to replicate <span class="Silentype">TURTLE TALK</span> in <span class="lnum">p5.js</span>. I&rsquo;m just experimenting and testing out ideas. This is how I define a Turtle that draws a square:
+</p>
+<pre><code><span class="hljs-keyword">let</span> t<span class="hljs-punctuation"> = </span><span class="hljs-keyword">new</span> Turtle({
+    <span class="hljs-attr">instructions</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        forward(<span class="hljs-number">100</span>);
+        right(<span class="hljs-number">90</span>);
+        forward(<span class="hljs-number">100</span>);
+        right(<span class="hljs-number">90</span>);
+        forward(<span class="hljs-number">100</span>);
+        right(<span class="hljs-number">90</span>);
+        forward(<span class="hljs-number">100</span>);
+        right(<span class="hljs-number">90</span>);
+    }
+});</code></pre>
+<p class="noindent">
+    Two things are <span class="italic">strange</span> here. Firstly, the <span class="inline-code">forward(100)</span> and <span class="inline-code">right(90)</span> calls are not methods of the <span class="inline-code">Turtle</span> class, they are public functions. Secondly, this is not visible here but those public functions do not actually do what they &ldquo;claim&rdquo; to be doing. <span class="italic">What&nbsp;?</span> What <span class="inline-code">forward(100)</span> and <span class="inline-code">right(90)</span> are really doing is pushing an object in a global array called <span class="inline-code">instructionBox</span>:
+</p>
+<pre><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">forward</span>(<span class="hljs-params">size</span>) </span>{
+    instructionBox<span class="hljs-punctuation">.</span>push({
+        <span class="hljs-attr">f</span>: <span class="hljs-string">"forward"</span>,
+        <span class="hljs-attr">s</span>: size
+    });
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">right</span>(<span class="hljs-params">angle</span>) </span>{
+    instructionBox<span class="hljs-punctuation">.</span>push({
+        <span class="hljs-attr">f</span>: <span class="hljs-string">"right"</span>,
+        <span class="hljs-attr">a</span>: angle
+    });
+}</code></pre>
+<p class="noindent">
+    Once a series of those objects are inside the <span class="inline-code">instructionBox</span> array, the system is able to execute instructions, one per animation frame, letting us see the Turtle&rsquo;s process.
+</p>
+<p>
+    In the <span class="inline-code">Turtle</span> class below, you can see that when an instance of <span class="inline-code">Turtle</span> is created, it calls the <span class="inline-code">instructions()</span> function that was sent to it, and then collects the results contained in the global <span class="inline-code">instructionBox</span> variable, saving it in a private property called <span class="inline-code">states</span>:
+</p>
+<pre><code><span class="hljs-keyword">var</span> Turtle<span class="hljs-punctuation"> = </span><span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">t</span>) </span>{
+    <span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>heading<span class="hljs-punctuation"> = </span>t<span class="hljs-punctuation">.</span>heading<span class="hljs-punctuation"> || </span><span class="hljs-number">0</span>;
+    <span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>position<span class="hljs-punctuation"> = </span>t<span class="hljs-punctuation">.</span>position<span class="hljs-punctuation"> || </span><span class="hljs-keyword">new</span> p5<span class="hljs-punctuation">.</span>Vector(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>);
+    <span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>penDown<span class="hljs-punctuation"> = </span><span class="hljs-literal">true</span>;
+    <span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>awake<span class="hljs-punctuation"> = </span>(t<span class="hljs-punctuation">.</span>awake<span class="hljs-punctuation"> != </span><span class="hljs-literal">null</span>)<span class="hljs-punctuation"> ? </span>t<span class="hljs-punctuation">.</span>awake<span class="hljs-punctuation"> : </span><span class="hljs-literal">true</span>;
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>awake) {
+        t<span class="hljs-punctuation">.</span>instructions();
+        <span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>states<span class="hljs-punctuation"> = </span>instructionBox;
+        instructionBox<span class="hljs-punctuation"> = </span>[];
+        turtles<span class="hljs-punctuation">.</span>push(<span class="hljs-keyword">this</span>);
+    }
+};</code></pre>
+<p>
     I always thought that JavaScript should have a simple <span class="inline-code">repeat</span> syntax. I first learned programming with HyperCard and thankfully it had one. I think a simple <span class="inline-code">repeat</span> syntax is a great learning tool for beginners. It&rsquo;s the friendliest approach possible to loops. Also, how often do we use a <span class="inline-code">for</span> loop just to repeat an action a fixed amount of times&nbsp;? The following syntax could be very useful:
 </p>
 <pre><code><span class="hljs-comment">// This is not correct JavaScript but maybe it should be:</span>
 repeat <span class="hljs-number">4</span> {
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"This is such a gentle introduction to looping!"</span>);
+    <span class="hljs-built_in">console</span><span class="hljs-punctuation">.</span>log(<span class="hljs-string">"This is such a gentle introduction to looping!"</span>);
 }</code></pre>
 <!-- // This could also be done in this fantasy world:
 var t = 40;
@@ -79,7 +177,7 @@ repeat Infinity {
 <span class="hljs-comment">// n is the amount of times it should loop.</span>
 <span class="hljs-comment">// f is the function to call n amount of times.</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">repeat</span>(<span class="hljs-params">n, f</span>) </span>{
-    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) {
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i<span class="hljs-punctuation"> = </span><span class="hljs-number">0</span>; i <span class="hljs-punctuation">&lt;</span> n; i<span class="hljs-punctuation">++</span>) {
         <span class="hljs-comment">// We send the index i to the function, for optional use.</span>
         f(i);
     }
@@ -103,22 +201,22 @@ repeat Infinity {
         right(<span class="hljs-number">90</span>);
     });
 });</code></pre>
-<pre><code><span class="hljs-keyword">var</span> marguerite = <span class="hljs-keyword">new</span> Turtle({
+<pre><code><span class="hljs-keyword">var</span> marguerite<span class="hljs-punctuation"> = </span><span class="hljs-keyword">new</span> Turtle({
     <span class="hljs-attr">awake</span>: <span class="hljs-literal">false</span>,
     <span class="hljs-attr">heading</span>: <span class="hljs-number">0</span>,
-    <span class="hljs-attr">position</span>: <span class="hljs-keyword">new</span> p5.Vector(<span class="hljs-number">10</span>, <span class="hljs-number">0</span>),
+    <span class="hljs-attr">position</span>: <span class="hljs-keyword">new</span> p5<span class="hljs-punctuation">.</span>Vector(<span class="hljs-number">10</span>, <span class="hljs-number">0</span>),
     <span class="hljs-attr">instructions</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
-        <span class="hljs-keyword">var</span> s = <span class="hljs-number">10</span>;
+        <span class="hljs-keyword">var</span> s<span class="hljs-punctuation"> = </span><span class="hljs-number">10</span>;
         repeat(<span class="hljs-number">3</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
             repeat(<span class="hljs-number">30</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
                 forward(s);
                 right(<span class="hljs-number">20</span>);
-                s += <span class="hljs-number">0.1</span>;
+                s <span class="hljs-punctuation">+=</span> <span class="hljs-number">0.1</span>;
             });
             repeat(<span class="hljs-number">60</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
                 forward(s);
                 left(<span class="hljs-number">20</span>);
-                s += <span class="hljs-number">0.1</span>;
+                s <span class="hljs-punctuation">+=</span> <span class="hljs-number">0.1</span>;
             });
         });
     }

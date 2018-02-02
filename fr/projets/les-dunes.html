@@ -165,36 +165,36 @@
 <p class="noindent">
     Voici le code complet de ce projet, écrit en JavaScript avec la bibliothèque <a href="http://p5js.org/">p<span class="lnum">5</span>.js</a>.
 </p>
-<pre><code><span class="hljs-keyword">var</span> duneOne = {
+<pre><code><span class="hljs-keyword">var</span> duneOne<span class="hljs-punctuation"> = </span>{
     <span class="hljs-attr">a</span>: <span class="hljs-number">-0.1</span>,
     <span class="hljs-attr">b</span>: <span class="hljs-number">1</span>,
     <span class="hljs-attr">c</span>: <span class="hljs-number">0.1</span>,
     <span class="hljs-attr">d</span>: <span class="hljs-number">1</span>
 };
 
-<span class="hljs-keyword">var</span> duneTwo = {
+<span class="hljs-keyword">var</span> duneTwo<span class="hljs-punctuation"> = </span>{
     <span class="hljs-attr">a</span>: <span class="hljs-number">-0.1</span>,
     <span class="hljs-attr">b</span>: <span class="hljs-number">-1</span>,
     <span class="hljs-attr">c</span>: <span class="hljs-number">0.1</span>,
     <span class="hljs-attr">d</span>: <span class="hljs-number">3</span>
 };
 
-<span class="hljs-keyword">var</span> duneThree = {
+<span class="hljs-keyword">var</span> duneThree<span class="hljs-punctuation"> = </span>{
     <span class="hljs-attr">a</span>: <span class="hljs-number">-0.6</span>,
     <span class="hljs-attr">b</span>: <span class="hljs-number">1</span>,
     <span class="hljs-attr">c</span>: <span class="hljs-number">0.1</span>,
     <span class="hljs-attr">d</span>: <span class="hljs-number">1</span>
 };
 
-<span class="hljs-keyword">var</span> duneFour = {
+<span class="hljs-keyword">var</span> duneFour<span class="hljs-punctuation"> = </span>{
     <span class="hljs-attr">a</span>: <span class="hljs-number">-0.3</span>,
     <span class="hljs-attr">b</span>: <span class="hljs-number">1</span>,
     <span class="hljs-attr">c</span>: <span class="hljs-number">0.12</span>,
     <span class="hljs-attr">d</span>: <span class="hljs-number">3</span>
 };
 
-<span class="hljs-keyword">var</span> vals = duneFour;
-<span class="hljs-keyword">var</span> vec = <span class="hljs-keyword">new</span> p5.Vector(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);
+<span class="hljs-keyword">var</span> vals<span class="hljs-punctuation"> = </span>duneFour;
+<span class="hljs-keyword">var</span> vec<span class="hljs-punctuation"> = </span><span class="hljs-keyword">new</span> p5<span class="hljs-punctuation">.</span>Vector(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);
 
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setup</span>(<span class="hljs-params"></span>) </span>{
     createCanvas(windowWidth, windowHeight);
@@ -204,17 +204,17 @@
 }
 
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">draw</span>(<span class="hljs-params"></span>) </span>{
-    translate(width / <span class="hljs-number">2</span>, height / <span class="hljs-number">2</span>);
-    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">1500</span>; i++) {
-        vec = iterative(vec.x, vec.y, vec.z);
-        ellipse(vec.x * <span class="hljs-number">70</span>, vec.y * <span class="hljs-number">200</span>, <span class="hljs-number">0.5</span>, <span class="hljs-number">0.5</span>);
+    translate(width<span class="hljs-punctuation"> / </span><span class="hljs-number">2</span>, height<span class="hljs-punctuation"> / </span><span class="hljs-number">2</span>);
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i<span class="hljs-punctuation"> = </span><span class="hljs-number">0</span>; i <span class="hljs-punctuation">&lt;</span> <span class="hljs-number">1500</span>; i<span class="hljs-punctuation">++</span>) {
+        vec<span class="hljs-punctuation"> = </span>iterative(vec<span class="hljs-punctuation">.</span>x, vec<span class="hljs-punctuation">.</span>y, vec<span class="hljs-punctuation">.</span>z);
+        ellipse(vec<span class="hljs-punctuation">.</span>x<span class="hljs-punctuation"> * </span><span class="hljs-number">70</span>, vec<span class="hljs-punctuation">.</span>y<span class="hljs-punctuation"> * </span><span class="hljs-number">200</span>, <span class="hljs-number">0.5</span>, <span class="hljs-number">0.5</span>);
     }
 }
 
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">iterative</span>(<span class="hljs-params">x, y, z</span>) </span>{
-    <span class="hljs-keyword">var</span> newX = sin(vals.a * x) + tan(vals.b * x) - tan(z);
-    <span class="hljs-keyword">var</span> newY = sin(vals.c * x) + sin(vals.d * z);
-    <span class="hljs-keyword">var</span> newZ = z + <span class="hljs-number">0.1</span>;
+    <span class="hljs-keyword">var</span> newX<span class="hljs-punctuation"> = </span>sin(vals<span class="hljs-punctuation">.</span>a<span class="hljs-punctuation"> * </span>x)<span class="hljs-punctuation"> + </span>tan(vals<span class="hljs-punctuation">.</span>b<span class="hljs-punctuation"> * </span>x)<span class="hljs-punctuation"> - </span>tan(z);
+    <span class="hljs-keyword">var</span> newY<span class="hljs-punctuation"> = </span>sin(vals<span class="hljs-punctuation">.</span>c<span class="hljs-punctuation"> * </span>x)<span class="hljs-punctuation"> + </span>sin(vals<span class="hljs-punctuation">.</span>d<span class="hljs-punctuation"> * </span>z);
+    <span class="hljs-keyword">var</span> newZ<span class="hljs-punctuation"> = </span>z<span class="hljs-punctuation"> + </span><span class="hljs-number">0.1</span>;
     <span class="hljs-keyword">return</span> createVector(newX, newY, newZ);
 }</code></pre>
 
