@@ -31,28 +31,47 @@ module.exports = function(htmlContent, fileName) {
             //     console.log("YEAH!");
             //     console.log(match);
             // });
-            code.value = code.value.replace(/([>a-zA-ZÀ-ú]\d*)(\.)(\d*[a-zA-ZÀ-ú])/g, function(match, a, b, c) {
+            code.value = code.value.replace(/&amp;nbsp;/g, ``);
+            code.value = code.value.replace(/([\]>a-zA-ZÀ-ú]\d*)(\.)(\d*[a-zA-ZÀ-ú])/g, function(match, a, b, c) {
                 // console.log(match);
                 return a + '<span class="hljs-punctuation">' + b + '</span>' + c;
             });
             code.value = code.value.replace(/ = /g, function(match) {
                 return '<span class="hljs-punctuation">' + match + '</span>';
             });
-            code.value = code.value.replace(/ != /g, function(match) {
+            code.value = code.value.replace(/ \!= /g, function(match) {
                 return '<span class="hljs-punctuation">' + match + '</span>';
             });
-            code.value = code.value.replace(/ \|\| /g, function(match) {
+            code.value = code.value.replace(/\s\|\|\s/g, function(match) {
                 return '<span class="hljs-punctuation">' + match + '</span>';
             });
-            code.value = code.value.replace(/ [:\?\*/] /g, function(match) {
+            code.value = code.value.replace(/\s&amp;&amp;\s/g, function(match) {
                 return '<span class="hljs-punctuation">' + match + '</span>';
             });
-            code.value = code.value.replace(/&lt;/g, function(match) {
+            code.value = code.value.replace(/ [:\?\*\/] /g, function(match) {
                 return '<span class="hljs-punctuation">' + match + '</span>';
             });
-            code.value = code.value.replace(/\+=/g, function(match) {
+            code.value = code.value.replace(/ &lt; /g, function(match) {
                 return '<span class="hljs-punctuation">' + match + '</span>';
             });
+            code.value = code.value.replace(/\s&lt;=\s/g, function(match) {
+                return '<span class="hljs-punctuation">' + match + '</span>';
+            });
+            code.value = code.value.replace(/ &gt; /g, function(match) {
+                return '<span class="hljs-punctuation">' + match + '</span>';
+            });
+            code.value = code.value.replace(/\s&gt;=\s/g, function(match) {
+                return '<span class="hljs-punctuation">' + match + '</span>';
+            });
+            code.value = code.value.replace(/\s===\s/g, function(match) {
+                return '<span class="hljs-punctuation">' + match + '</span>';
+            });
+            code.value = code.value.replace(/\+=|-=|\*=|\/=|==/g, function(match) {
+                return '<span class="hljs-punctuation">' + match + '</span>';
+            });
+            // code.value = code.value.replace(/\s>=\s/g, function(match) {
+            //     return '<span class="hljs-punctuation">' + match + '</span>';
+            // });
             code.value = code.value.replace(/\+\+/g, function(match) {
                 return '<span class="hljs-punctuation">' + match + '</span>';
             });
@@ -62,9 +81,15 @@ module.exports = function(htmlContent, fileName) {
             code.value = code.value.replace(/ - /g, function(match) {
                 return '<span class="hljs-punctuation">' + match + '</span>';
             });
+            code.value = code.value.replace(/\!/g, function(match) {
+                return '<span class="hljs-punctuation">' + match + '</span>';
+            });
+            code.value = code.value.replace(/([ \(>])(-)([a-zA-ZÀ-ú\(])/g, function(match, a, b, c) {
+                return a + '<span class="hljs-punctuation">' + b + '</span>' + c;
+            });
             for (var i = 0; i < 20; i++) {
                 code.value = code.value.replace(
-                    /(\/\/)([<"=>a-zA-ZÀ-ú\d\s\.\|-]*)(<span class="hljs-punctuation">)(.*?)(<\/span>)/g,
+                    /(\/\/)([\(\)\[\]&;\{\}:_\?\,'\+\/\*<"=>a-zA-ZÀ-ú\d \u00a0\.\|-]*)(<span class="hljs-punctuation">)(.*?)(<\/span>)/g,
                     function(match, a, b, c, d, e) {
                         // console.log(a + b);
                         return a + b + d;
