@@ -673,6 +673,8 @@ function parseHTMLTemplate(s) {
     page.fr.content = page.fr.content.replace(/<\/lnum>/g, `</span>`);
     page.fr.content = page.fr.content.replace(/<nb>/g, `<span class="nobreak">`);
     page.fr.content = page.fr.content.replace(/<\/nb>/g, `</span>`);
+    page.fr.content = page.fr.content.replace(/<pn>/g, `<p class="noindent">`);
+    page.fr.content = page.fr.content.replace(/<\/pn>/g, `</p>`);
 
     page.en.title = data.match(/(<!-- en-title -->)([\S\s]*?)(<!--)/)[2];
     page.en.title = page.en.title.replace(/(?:\r\n|\r|\n)/g, "");
@@ -746,5 +748,7 @@ function parseHTMLTemplate(s) {
     page.en.content = page.en.content.replace(/<\/lnum>/g, `</span>`);
     page.en.content = page.en.content.replace(/<nb>/g, `<span class="nobreak">`);
     page.en.content = page.en.content.replace(/<\/nb>/g, `</span>`);
+    page.en.content = page.en.content.replace(/<pn>/g, `<p class="noindent">`);
+    page.en.content = page.en.content.replace(/<\/pn>/g, `</p>`);
     return page;
 }
