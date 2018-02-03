@@ -621,6 +621,8 @@ function parseHTMLTemplate(s) {
     });
     page.fr.content = page.fr.content.replace(/<i>/g, `<span class="italic">`);
     page.fr.content = page.fr.content.replace(/<\/i>/g, `</span>`);
+    page.fr.content = page.fr.content.replace(/<i8>/g, `<span class="italic8">`);
+    page.fr.content = page.fr.content.replace(/<\/i8>/g, `</span>`);
     page.fr.content = page.fr.content.replace(/<dc>/g, `<span class="drop-caps">`);
     page.fr.content = page.fr.content.replace(/<\/dc>/g, `</span>`);
     page.fr.content = page.fr.content.replace(/<sc>/g, `<span class="small-caps">`);
@@ -662,6 +664,8 @@ function parseHTMLTemplate(s) {
 
     page.fr.content = page.fr.content.replace(/<code>/g, `<pre><code>`);
     page.fr.content = page.fr.content.replace(/<\/code>/g, `</code></pre>`);
+    page.fr.content = page.fr.content.replace(/<pre>/g, `<div class="codebox"><pre>`);
+    page.fr.content = page.fr.content.replace(/<\/pre>/g, `</pre></div>`);
     page.fr.content = page.fr.content.replace(/<ic>/g, `<span class="inline-code">`);
     page.fr.content = page.fr.content.replace(/<\/ic>/g, `</span>`);
     page.fr.content = page.fr.content.replace(/\\'/g, `'`);
@@ -700,6 +704,8 @@ function parseHTMLTemplate(s) {
     });
     page.en.content = page.en.content.replace(/<i>/g, `<span class="italic">`);
     page.en.content = page.en.content.replace(/<\/i>/g, `</span>`);
+    page.en.content = page.en.content.replace(/<i8>/g, `<span class="italic8">`);
+    page.en.content = page.en.content.replace(/<\/i8>/g, `</span>`);
     page.en.content = page.en.content.replace(/<dc>/g, `<span class="drop-caps">`);
     page.en.content = page.en.content.replace(/<\/dc>/g, `</span>`);
     page.en.content = page.en.content.replace(/<sc>/g, `<span class="small-caps">`);
@@ -742,6 +748,8 @@ function parseHTMLTemplate(s) {
 
     page.en.content = page.en.content.replace(/<code>/g, `<pre><code>`);
     page.en.content = page.en.content.replace(/<\/code>/g, `</code></pre>`);
+    page.en.content = page.en.content.replace(/<pre>/g, `<div class="codebox"><pre>`);
+    page.en.content = page.en.content.replace(/<\/pre>/g, `</pre></div>`);
     page.en.content = page.en.content.replace(/<ic>/g, `<span class="inline-code">`);
     page.en.content = page.en.content.replace(/<\/ic>/g, `</span>`);
     page.en.content = page.en.content.replace(/\\'/g, `'`);
