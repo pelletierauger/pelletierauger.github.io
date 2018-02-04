@@ -11,18 +11,6 @@
     url('./fonts/EBGaramond/EBGaramond08-Regular.woff') format('woff');
 }
 @font-face {
-    font-family: "EBG08-SC";
-    src: url(./fonts/EBGaramond/EBGaramondSC08-Regular.eot );
-    src: url('./fonts/EBGaramond/EBGaramondSC08-Regular.ttf') format('truetype'),
-    url('./fonts/EBGaramond/EBGaramondSC08-Regular.woff') format('woff');
-}
-@font-face {
-    font-family: "EBG12-SC";
-    src: url(./fonts/EBGaramond/EBGaramondSC12-Regular.eot );
-    src: url('./fonts/EBGaramond/EBGaramondSC12-Regular.ttf') format('truetype'),
-    url('./fonts/EBGaramond/EBGaramondSC12-Regular.woff') format('woff');
-}
-@font-face {
     font-family: "EBG12-It";
     src: url(./fonts/EBGaramond/EBGaramond12-Italic.eot );
     src: url('./fonts/EBGaramond/EBGaramond12-Italic.ttf') format('truetype'),
@@ -33,6 +21,18 @@
     src: url(./fonts/EBGaramond/EBGaramond08-Italic.eot );
     src: url('./fonts/EBGaramond/EBGaramond08-Italic.ttf') format('truetype'),
     url('./fonts/EBGaramond/EBGaramond08-Italic.woff') format('woff');
+}
+@font-face {
+    font-family: "EBG12-SC";
+    src: url(./fonts/EBGaramond/EBGaramondSC12-Regular.eot );
+    src: url('./fonts/EBGaramond/EBGaramondSC12-Regular.ttf') format('truetype'),
+    url('./fonts/EBGaramond/EBGaramondSC12-Regular.woff') format('woff');
+}
+@font-face {
+    font-family: "EBG08-SC";
+    src: url(./fonts/EBGaramond/EBGaramondSC08-Regular.eot );
+    src: url('./fonts/EBGaramond/EBGaramondSC08-Regular.ttf') format('truetype'),
+    url('./fonts/EBGaramond/EBGaramondSC08-Regular.woff') format('woff');
 }
 
 html {
