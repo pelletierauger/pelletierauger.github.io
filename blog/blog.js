@@ -1,4 +1,5 @@
 exports.posts = [
+    "modeling-graphite-strokes",
     "towards-turtle-geometry",
     "exploring-fractal-cellular-automata",
     "recursive-harmonic-motion",
@@ -12,5 +13,5 @@ exports.config = {
     en: {
         title: "Blog"
     },
-    itemsPerPage: 2
+    itemsPerPage: 1
 };
