@@ -1,0 +1,222 @@
+<!-- year -->2018
+<!-- month -->02
+<!-- day -->03
+<!-- fr-title -->Modélisation de lignes de graphite
+<!-- fr-content -->
+<img src="../../../images/graphite/circles.jpg">
+<p class="article-top">
+    <sc>L'an dernier</sc>, j'ai écrit un court programme pour modéliser des lignes dessinées au graphite. Le projet est encore embryonnaire et je veux continuer à le faire avancer sporadiquement cette année. Je commencerai en relisant mon code de l'an dernier afin de bien le comprendre (je ne l'avais malheureusement pas documenté).
+</p>
+<p>
+    L'image ci-dessus a été générée avec ce programme. Je trouve que c'est un point de départ intéressant, mais elle contient plusieurs problèmes. Tout d'abord, les lignes démarrent et s'arrêtent abruptement; elles n'ont pas cette pointe naturelle que l'on s'attendrait à voir aux extrémités d'un trait au graphite. Cela crée une brisure très artificielle dans le tracé des cercles. Ensuite, les lignes d'épaisseur moyenne sont les seules qui fonctionnent bien visuellement, les plus fines et les plus grasses étant des simulacres de graphite peu convainquants. Dernièrement, et c'est le plus grand problème, j'ai l'impression que la variation de l'épaisseur du trait est identique pour toutes les lignes dans le quadrant inférieur droit de chaque cercle. Il y a une <i>régularité désagréable</i> qui semble s'être glissée dans cet algorithme qui cherche à simuler le caractère imprévisible du crayon. De mauvais calculs trigonométriques se cacheraient-ils là-dessous?
+</p>
+<h3>Distribution normale et variations aléatoires</h3>
+<pn>
+    <sc>L'idée initiale</sc> pour mon programme est tirée de l'article <i><a href="">Automatically Mimicking Unique Hand-Drawn Pencil Lines</a></i>, signé par Zainab AlMeraj, Brian Wyvill, Tobias Isenberg, Amy A. Gooch et Richard Guy.
+</pn>
+<p>
+    Voici la formule que j'utilise pour calculer la distribution normale :
+</p>
+<math>
+    y = -\frac{1}{\sqrt{\pi \times 2}} \times 2.71828^{\frac{-x^{2}}{2}}    
+</math>
+<pn>
+    L'idée est de considérer que cette colline représente l'extrémité d'une mine de crayon. L'axe des <im>y</im> représente le taux de probabilité qu'une &ldquo;particule de graphite&rdquo; soit déposée sur le &ldquo;papier&rdquo;. Au niveau microscopique, la mine autant que le papier sont fragmentés comme des chaînes de montagnes. On peut s'imaginer qu'à mesure que le crayon est traîné sur le papier, sa mine vacille; elle change d'angle par rapport au papier; ses différentes aspérités sont appuyées sur la feuille à divers moments et à des niveaux de pression variés. Malgré tout ce chaos, la partie centrale de la mine dépose la plupart du temps beaucoup de graphite sur le papier, tandis que les zones excentriques en déposent moins. L'apparence des lignes de crayon est donc prévisible dans son coup d&rsquo;&oelig;il général et imprévisible dans ses détails.
+</pn>
+<p>
+    Une idée : toujours en restant dans des mathématiques à deux dimensions, on pourrait imaginer une modélisation de la circonférence complète de la mine. Ce serait un cercle brisé par du bruit mais qui se refermerait sur lui-même. On pourrait faire tourner la mine selon l'angle du déplacement du crayon. On pourrait modéliser la dégradation de la mine &mdash; la mine pourrait passer d'une forme circulaire à une forme complètement cassée.
+</p>
+<code>
+var looping = true;
+var exporting = false;
+var arr = [];
+var radiusAugmenter = 0;
+var graphiteWeight = 1;
+
+function setup() {
+    createCanvas(windowWidth, windowWidth);
+    background(255);
+    // noFill();
+    // stroke(255);
+    noStroke();
+    // stroke(0, 30);
+    frameRate(1);
+    // arr = [createVector(0, 0),
+    //     createVector(10, 10),
+    //     createVector(30, 30),
+    //     createVector(50, 100),
+    //     createVector(100, 20),
+    //     createVector(130, 0)
+    // ];
+    // noLoop();
+    blendMode(DARKEST);
+}
+
+function draw() {
+
+    translate(width / 2, height / 2);
+    var total = 100;
+    var increment = TWO_PI / total;
+    for (var i = 0; i < TWO_PI + increment; i += increment) {
+        var x = cos(i) * (50 + radiusAugmenter);
+        var y = sin(i) * (50 + radiusAugmenter);
+        var vec = createVector(x, y);
+        arr.push(vec);
+    }
+
+    // scale(0.5, 0.5);
+    // drawGraphiteBasic();
+    drawGraphite(arr);
+    if (exporting) {
+        frameExport();
+    }
+    radiusAugmenter += 50;
+    graphiteWeight += 1;
+    arr = [];
+}
+
+function drawGraphite(h) {
+    var drawCount = 0;
+    for (var j = 0; j < h.length - 1; j++) {
+        if (h[j + 1]) {
+            // stroke(255, 100);
+            // line(h[j].x, h[j].y, h[j + 1].x, h[j + 1].y);
+            // stroke(0, 30);
+
+            var v1 = h[j];
+            var hypotenuse = dist(h[j].x, h[j].y, h[j + 1].x, h[j + 1].y);
+            // var opposite = abs(h[j + 1].y - h[j].y);
+            // var sinus = opposite / hypotenuse;
+            // var angle = Math.asin(sinus);
+            var angle = atan2(h[j + 1].y - h[j].y, h[j + 1].x - h[j].x);
+
+            push();
+            translate(v1.x, v1.y);
+            rotate(angle + PI / 2);
+            // if (h[j + 1].y < h[j].y) {
+            //     rotate(-angle + (PI / 2));
+            // } else {
+            //     rotate(angle + (PI / 2));
+            // }
+            // stroke(0);
+            // line(-10, 0, 10, 0);
+            // fill(200);
+            // ellipse(0, 0, 5);
+
+            for (var i = 0; i < hypotenuse; i++) {
+                translate(0, -1);
+                drawGraphiteIsolated(drawCount);
+                drawCount++;
+            }
+            // ellipse(0, 0, 5);
+            pop();
+        }
+    }
+
+    //h is an array of vectors
+}
+
+function drawGraphiteIsolated(t) {
+    for (var i = 0; i < 10; i += 0.12) {
+        var x = i - 5;
+        var y = -(1 / sqrt(TWO_PI)) * pow(2.71828, -pow(x, 2) / 2);
+        var noiseValue = i + t / 100;
+        var n = noise(noiseValue) / 200;
+        n += noise(noiseValue) * 2 * y;
+        y += n;
+        y *= 300;
+        var n2 = noise(t / 50);
+        var n3 = noise(100 + t / 50);
+        var lineWidth = graphiteWeight;
+        x *= lineWidth;
+        if (x <= 0) {
+            x *= n2;
+        } else {
+            x *= n3;
+        }
+        var mapCrayon = map(y, -200, 0, 80, 255);
+        mapCrayon = constrain(mapCrayon, 0, 255);
+        fill(round(mapCrayon));
+        push();
+        var nGrain = noise(t) * lineWidth * 1;
+        translate(random(nGrain), random(nGrain));
+        ellipse(x, 0, 2);
+        pop();
+    }
+}
+
+function drawGraphiteBasic() {
+    // background(51);
+
+    translate(width / 2, 0);
+    // scale(2, 2);
+    translate(0, frameCount);
+
+    // beginShape();
+
+    for (var i = 0; i < 10; i += 0.12) {
+        var x = i - 5;
+        var y = -(1 / sqrt(TWO_PI)) * pow(2.71828, -pow(x, 2) / 2);
+        var noiseValue = i + frameCount / 100;
+        var n = noise(noiseValue) / 200;
+        n += noise(noiseValue) * 2 * y;
+        y += n;
+        y *= 300;
+        // console.log(y);
+        // x = map(x, -5, 5, -width / 2 + 20, width / 2 - 20);
+        var n2 = noise(frameCount / 50);
+        var n3 = noise(100 + frameCount / 50);
+        var lineWidth = 10;
+        x *= lineWidth;
+        if (x <= 0) {
+            x *= n2;
+        } else {
+            x *= n3;
+        }
+        var mapCrayon = map(y, -200, 0, 0, 250);
+        mapCrayon = constrain(mapCrayon, 0, 250);
+        // console.log(mapCrayon);
+        fill(round(mapCrayon));
+        // var rando = random(255);
+        // fill((round(mapCrayon) + rando) * 2);
+        // if (random(2) < 1) {
+        push();
+        var nGrain = noise(frameCount) * lineWidth * 1;
+        translate(random(nGrain), random(nGrain));
+        ellipse(x, 0, 2);
+        pop();
+        // }
+        // vertex(x, y + n);
+    }
+    // endShape(OPEN);
+}
+
+function keyPressed() {
+    if (keyCode === 32) {
+        if (looping) {
+            noLoop();
+            looping = false;
+        } else {
+            loop();
+            looping = true;
+        }
+    }
+}
+
+function frameExport() {
+    var formattedFrameCount = "" + frameCount;
+    while (formattedFrameCount.length < 5) {
+        formattedFrameCount = "0" + formattedFrameCount;
+    }
+    save("grooves" + formattedFrameCount + ".png");
+}
+</code>
+<!-- en-title -->Modeling graphite strokes
+<!-- en-content -->
+<img src="../../../images/graphite/circles.jpg">
+<p class="article-top">
+    <sc>About a year ago</sc>, I wrote some code to model graphite strokes. I want to dive into this project again this year, so I first need to recap what I actually did last year. This blog post is just me figuring that out.
+</p>
+<p>
+    So I'm doing this with JavaScript and p5.js.
+</p>
