@@ -20,11 +20,11 @@
 </p>
 <h3>What is Turtle geometry?</h3>
 <p class="noindent">
-    <sc>There are</sc> a <i>lot</i> of things to say about the fascinating theory and immense potentiel of Turtle geometry, but for now I will limit myself to just describing it as simply as possible for the purposes of this embryonic project.
+    <sc>There are</sc> a <i>lot</i> of things to say about the fascinating theory and immense potentiel of Turtle geometry, but for now I will just describe it as simply as possible for the purposes of this embryonic project.
     <!--     I want to make Turtle geometry with <span class="lnum">p5</span>.js. What would be the best way to do it? One important thing for me is to be able to <i>see the turtle move</i>. Seeing a whole drawing appear in a flash is a very different experience from seeing how it is made. I don't want to just see the result of the turtle walk, I want to see the walk itself. -->
 </p>
 <p>
-    In 1967, Seymour Papert created <span class="Silentype">LOGO</span>, a computer system and software toolkit to build educational experiences. One of the key part of <span class="Silentype">LOGO</span> was the Turtle, a mathematical object that only has two properties: a position in space and a heading (a direction in which its &ldquo;head&rdquo; is pointing). To make the Turtle move, you give it instructions in a language called <span class="Silentype">TURTLE TALK</span>. For example, the command <span class="Silentype">FORWARD 50</span> makes the turtle go forward 50 steps. The command <span class="Silentype">LEFT 180</span> makes it rotate left by 180 degrees. The code below makes the Turtle draw a square:
+    In 1967, Seymour Papert created <span class="Silentype">LOGO</span>, a computer system and software toolkit to build educational experiences. One of the key part of <span class="Silentype">LOGO</span> is the Turtle, a mathematical object that only has two properties: a position in space and a heading (a direction in which its &ldquo;head&rdquo; is pointing). To make the Turtle move, you give it instructions in a language called <span class="Silentype">TURTLE TALK</span>. For example, the command <span class="Silentype">FORWARD 50</span> makes the turtle go forward 50 steps. The command <span class="Silentype">LEFT 180</span> makes it rotate left by 180 degrees. The code below makes the Turtle draw a square:
 </p>
 <pre><span class="Silentype">FORWARD 100
 RIGHT 90
@@ -36,7 +36,7 @@ FORWARD 100
 RIGHT 90
 </span></pre>
 <p class="noindent">
-    To make a series of instructions (a program) easier to read and write, <span class="Silentype">LOGO</span> also had a <span class="Silentype">REPEAT</span> command. It would repeat every commands before the word <span class="Silentype">END</span>, the number of times indicated to the right of the command <span class="Silentype">REPEAT</span>. This is another way to draw the same square:
+    To make a series of instructions (a program) easier to read and write, <span class="Silentype">LOGO</span> also has a <span class="Silentype">REPEAT</span> command. It repeats every commands before the word <span class="Silentype">END</span>, the number of times indicated to the right of the command <span class="Silentype">REPEAT</span>. This is another way to draw the same square:
 </p>
 <pre><span class="Silentype">REPEAT 4
     FORWARD 100
@@ -44,7 +44,7 @@ RIGHT 90
 END
 </span></pre>
 <p class="noindent">
-    The Turtle had other interesting commands, for example <span class="Silentype">PENDOWN</span> would lower a pen to draw the path of the Turtle, and <span class="Silentype">PENUP</span> would lift it. You could also create custom functions, with this syntax:
+    The Turtle has other interesting commands, for example <span class="Silentype">PENDOWN</span> lowers a pen to draw the path of the Turtle, and <span class="Silentype">PENUP</span> lifts it. <snr label="pendown">Yes, this does mean that a Turtle has more properties than just <i8>position</i8> and <i8>heading</i8>. While the mathematical theory behind Turtle geometry requires only <i8>position</i8> and <i8>heading</i8>, you'll see soon that playing with Turtles usually involves giving them more properties.</snr>You can also create custom functions, with this syntax:
 </p>
 <pre><span class="Silentype">TO SQUARE
     REPEAT 4
@@ -54,7 +54,7 @@ END
 END
 </span></pre>
 <p class="noindent">
-    To continue the analogy of talking to a Turtle, creating custom functions was something Papert explained as &ldquo;teaching the Turtle a new word&rdquo;. Your custom functions could also have arguments, using this syntax:
+    To continue the analogy of talking to a Turtle, creating custom functions was something Papert explained as &ldquo;teaching the Turtle a new word&rdquo;. Your custom functions can also have arguments, using this syntax:
 </p>
 <pre><span class="Silentype">TO SQUARE WIDTH
     REPEAT 4
@@ -64,13 +64,14 @@ END
 END
 </span></pre>
 <pn>
-    These are the basic building blocks. This is an extreme simplification of it, but we can now move on to the question of replicating this with <lnum>p5.js</lnum>.
+    You can then call <span class="Silentype">SQUARE 500</span> and get a square with a width of 500. These are the basic building blocks. This is very simplified, but we can now move on to the question of replicating this with <lnum>p5.js</lnum>.
 </pn>
 <h3>Replicating <span class="Silentype">TURTLE TALK</span> with <lnum>p5.js</lnum></h3>
 <pn>
-    <sc>On the surface</sc>, it might seem like a trivial problem to replicate <span class="Silentype">TURTLE TALK</span>, but I think it is deceptively intricate. Let's say you create a Turtle class, and then you give it methods like <ic>forward()</ic>, <ic>left()</ic>, and <ic>right()</ic>. Assuming that the methods only do what they are supposed to (move and rotate the Turtle), you would write the following code to create a new Turtle and make it draw a square:
+    <sc>On the surface</sc>, it might seem like a trivial problem to replicate <span class="Silentype">TURTLE TALK</span>, but I think it is deceptively intricate. Let's say we create a <ic>Turtle</ic> class, and then we give it methods like <ic>forward()</ic>, <ic>left()</ic>, and <ic>right()</ic>. Assuming that the methods only do what they are supposed to (move and rotate the Turtle), we would write the following code to create a new Turtle and make it draw a square:
 </pn>
-<code>function draw() {
+<code>
+function draw() {
     let t = new Turtle();
     t.forward(100);
     t.right(90);
@@ -83,15 +84,41 @@ END
 }
 </code>
 <pn>
-    The unfortunate thing here is that you will not get to <i>see the Turtle move</i>. The square will appear fully formed, because all the Turtle methods are called on the same frame of animation.
+    The unfortunate thing here is that we will not get to <i>see the Turtle move</i>. The square will appear fully formed, because all the <ic>Turtle</ic> methods are called on the same frame of animation.
 </pn>
 <p>
-    This is a unfortunate because Turtle geometry is meant to be a way to learn mathematics using your senses and your intuitions. During <span class="Silentype">LOGO</span> sessions, Papert encouraged children to &ldquo;play Turtle&rdquo;: to walk around replicating the commands written for the Turtle. He strived to create mental links between mathematical abstractions and natural experiences. In a <a href="">film shot at <sc>mit</sc> in 1983</a>, we see children doing Turtle geometry with <span class="Silentype">LOGO</span>, and we can see the Turtles moving on the computer screens. <span class="Silentype">LOGO</span> did not only display the <i>results</i> of a series of commands but the <i>process</i> too. We also see in the film a mechanical Turtle: a small robot that took <span class="Silentype">TURTLE TALK</span> commands and moved around over a piece of paper to draw the resulting shapes. In this situation, the children also saw the Turtle move and draw. The JavaScript code I wrote above is more like letting the children enter a room where a robot has already finished drawing something. It would not build a sensory bridge between the abstract Turtle commands and their visual, physical results.
+    This is unfortunate because Turtle geometry is meant to be a way to learn mathematics using our senses and our intuitions, creating mental links between abstractions and experiences. A <a href="">film shot at <sc>mit</sc> in 1983</a> shows a group of children doing Turtle geometry with <span class="Silentype">LOGO</span>, and we can see the Turtles moving on the computer screens. <span class="Silentype">LOGO</span> did not only display the <i>results</i> of a series of commands but the <i>process</i> too. The film also shows a mechanical Turtle: a small robot that takes <span class="Silentype">TURTLE TALK</span> commands and moves over a piece of paper to draw the resulting shapes. While users of <span class="Silentype">LOGO</span> would observe the robot as it moved and drew, the JavaScript code I wrote above is more like entering a room where a robot has already finished drawing something. It builds an incomplete sensory bridge between the abstract Turtle commands and their visual, physical results.
 </p>
 <p>
-    With that in mind, I created a simple (but somewhat strange) system. I certainly do not claim to have found <i>the</i> way to replicate <span class="Silentype">TURTLE TALK</span> in <lnum>p5.js</lnum>. I'm just experimenting and testing out ideas. This is how I define a Turtle that draws a square:
+    So how could we go about replicating <span class="Silentype">TURTLE TALK</span>&rsquo;s friendly syntax and also get an animated Turtle as a result? This would be a simple way to achieve it:
 </p>
-<code>let t = new Turtle({
+<code>
+function draw() {
+    let t = new Turtle();
+    let instructions = [
+        t.forward(100),
+        t.right(90),
+        t.forward(100),
+        t.right(90),
+        t.forward(100),
+        t.right(90),
+        t.forward(100),
+        t.right(90)
+    ];
+    if (instructions[frameCount - 1]) {
+        instructions[frameCount - 1]();
+    }
+}
+</code>
+<pn>
+    The problem here is that we cannot use the <span class="Silentype">REPEAT</span> syntax or easily create our own functions like <span class="Silentype">SQUARE</span>. It's possible to do it, but it's very inconvenient.
+</pn>
+<h3>A way to make it work</h3>
+<pn>
+    <sc>With all of that</sc> in mind, I created a simple (but somewhat strange) system that addresses most issues. I certainly do not claim that it is <i>the</i> way to replicate <span class="Silentype">TURTLE TALK</span> in <lnum>p5.js</lnum>. I'm just experimenting and testing out ideas. This is how I create a Turtle that draws a square:
+</pn>
+<code>
+let t = new Turtle({
     instructions: function() {
         forward(100);
         right(90);
@@ -105,9 +132,10 @@ END
 }); 
 </code>
 <pn>
-    Two things are <i>strange</i> here. Firstly, the <ic>forward(100)</ic> and <ic>right(90)</ic> calls are not methods of the <ic>Turtle</ic> class, they are public functions. Secondly, this is not visible here but those public functions do not actually do what they &ldquo;claim&rdquo; to be doing. <i>What?</i> What <ic>forward(100)</ic> and <ic>right(90)</ic> are really doing is pushing an object in a global array called <ic>instructionBox</ic>:
+    Two things are <i>strange</i> here. Firstly, the <ic>forward(100)</ic> and <ic>right(90)</ic> calls are not methods of the <ic>Turtle</ic> class, they are public functions. Secondly, this is not visible here but those public functions do not actually do what they &ldquo;claim&rdquo; to be doing. They are instead pushing objects in a global array called <ic>instructionBox</ic>:
 </pn>
-<code>function forward(size) {
+<code>
+function forward(size) {
     instructionBox.push({
         f: "forward",
         s: size
@@ -122,28 +150,72 @@ function right(angle) {
 }
 </code>
 <pn>
-    Once a series of those objects are inside the <ic>instructionBox</ic> array, the system is able to execute instructions, one per animation frame, letting us see the Turtle's process.
+    These objects are instructions to be executed later. Once a series of them are inside the <ic>instructionBox</ic> array, the system is able to execute them, one per animation frame, letting us see the Turtle's process.
 </pn>
 <p>
-    In the <ic>Turtle</ic> class below, you can see that when an instance of <ic>Turtle</ic> is created, it calls the <ic>instructions()</ic> function that was sent to it, and then collects the results contained in the global <ic>instructionBox</ic> variable, saving it in a private property called <ic>states</ic>:
+    In the <ic>Turtle</ic> class below, you can see that when an instance of <ic>Turtle</ic> is created, it calls the <ic>instructions()</ic> function that was sent to it, and then collects the results contained in the global <ic>instructionBox</ic> array, saving it in a private property called <ic>states</ic>:
 </p>
-<code>var Turtle = function(t) {
+<code>
+var Turtle = function(t) {
     this.heading = t.heading || 0;
     this.position = t.position || new p5.Vector(0, 0);
     this.penDown = true;
-    this.awake = (t.awake \!= null) ? t.awake : true;
+    this.awake = (t.awake != null) ? t.awake : true;
     if (this.awake) {
+        // We call the instructions() function, filling instructionBox.
         t.instructions();
+        // We collect the resulting instructions in this.states.
         this.states = instructionBox;
+        // And we empty instructionBox to make room for new turtles.
         instructionBox = [];
         turtles.push(this);
     }
 };
 </code>
-<p>
+<pn>
+    The <ic>constructor()</ic> also lets you see all the properties defining an instance of <ic>Turtle</ic>:
+</pn>
+<ul class="dash">
+    <li>
+        <ic>position</ic> and <ic>heading</ic> are most basic. You can see that <ic>position</ic> has a default value of <ic>(0, 0)</ic> and <ic>heading</ic> has a default value of <ic>0</ic>.
+    </li>
+    <li>
+        <ic>penDown</ic> is a boolean letting us know if the Turtle's pen is down or up. It defaults to <ic>true</ic>.
+    </li>
+    <li>
+        <ic>awake</ic> lets us create many turtles and not display all of them. I found out while doing my first experiments with Turtle geometry that it is very useful to create a lot of Turtles with different sets of instructions, and commenting out Turtles to better see others is a very poorly designed experience. So this <ic>awake</ic> boolean, which defaults to <ic>true</ic>, lets us make some turtles &ldquo;sleep&rdquo;.
+    </li>
+</ul>
+<pn>
+    The fact that <ic>forward(100)</ic> and <ic>right(90)</ic> are public functions allows us to use them inside <ic>repeat()</ic> functions at will, without ever worrying about the scope. This would not work (I actually need to test it):
+</pn>
+<code>
+var marguerite = new Turtle({
+    awake: false,
+    heading: 0,
+    position: new p5.Vector(10, 0),
+    instructions: function(t) {
+        var s = 10;
+        repeat(3, function() {
+            repeat(30, function() {
+                t.forward(s);
+                t.right(20);
+                s += 0.1;
+            });
+            repeat(60, function() {
+                t.forward(s);
+                t.left(20);
+                s += 0.1;
+            });
+        });
+    }
+});
+</code>
+<pn>
     I always thought that JavaScript should have a simple <ic>repeat</ic> syntax. I first learned programming with HyperCard and thankfully it had one. I think a simple <ic>repeat</ic> syntax is a great learning tool for beginners. It's the friendliest approach possible to loops. Also, how often do we use a <ic>for</ic> loop just to repeat an action a fixed amount of times? The following syntax could be very useful:
-</p>
-<code>// This is not correct JavaScript but maybe it should be:
+</pn>
+<code>
+// This is not correct JavaScript but maybe it should be:
 repeat 4 {
     console.log("This is such a gentle introduction to looping\!");
 }
@@ -160,7 +232,8 @@ repeat Infinity {
 <p class="noindent">
     Is there some underlying reasons why this couldn't be done? Would it introduce any problem that I'm unaware of? Or is it just <i>dumb?</i> Here is the code to my very simple proposal for a <ic>repeat()</ic> function that offers similar functionality:
 </p>
-<code>// The repeat() function takes 2 arguments: 
+<code>
+// The repeat() function takes 2 arguments: 
 // n is the amount of times it should loop.
 // f is the function to call n amount of times.
 function repeat(n, f) {
@@ -173,7 +246,8 @@ function repeat(n, f) {
 <p class="noindent">
     So now, our square can be drawn with this bit of code, which is quite close to its <span class="Silentype">LOGO</span> equivalent:
 </p>
-<code>repeat(4, function() {
+<code>
+repeat(4, function() {
     forward(100);
     right(90);
 });
@@ -181,7 +255,8 @@ function repeat(n, f) {
 <p class="noindent">
     The <ic>repeat()</ic> function can also be nested at will:
 </p>
-<code>repeat(4, function() {
+<code>
+repeat(4, function() {
     forward(100);
     right(90);
     // Let\'s draw a smaller square at each corner of the big square.
@@ -217,3 +292,15 @@ var marguerite = new Turtle({
 <p class="noindent">
     Of course, there might be much better ways to do Turtle geometry with <span class="lnum">p5.js</span>.
 </p>
+<h3>Licenses and usages</h3>
+<pn>
+    <sc>All the work</sc> done for this article is distributed under free and open source licences. You are free to distribute it, modify it, and distribute your modified versions under some conditions:
+</pn>
+<ul class="dash">
+    <li>
+        This page is Free Documentation License.
+    </li>
+    <li>
+        The <span class="Silentype">beautiful typeface used in this article to indicate LOGO code</span> is called <span class="Silentype">Silentype</span> and was <a href="">developed by Sean McNamara</a>. It is distributed under an Open Font License <sc>sil</sc>.
+    </li>
+</ul>
