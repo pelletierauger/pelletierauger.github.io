@@ -116,6 +116,57 @@ module.exports = function(htmlContent, fileName) {
             //     function(match) {
             //         return '<span class="hljs-p5">' + match + '</span>';
             //     });
+
+            let p5Functions = [
+                /([\s>])(atan2)(\()/g,
+                /(\s)(background)(\()/g,
+                /(\s)(blendMode)(\()/g,
+                /([\s>])(constrain)(\()/g,
+                /([\s>])(cos)(\()/g,
+                /(\s)(createCanvas)(\()/g,
+                /([\s>])(createVector)(\()/g,
+                /([\s>])(dist)(\()/g,
+                /([\s>])(draw)([\(<])/g,
+                /(\s)(ellipse)(\()/g,
+                /([\s>])(fill)(\()/g,
+                /(\s)(frameRate)(\()/g,
+                /([\s>])(keyPressed)([\(<])/g,
+                /(\s)(loop)(\()/g,
+                /([\s>])(map)(\()/g,
+                /([\s>])(noise)(\()/g,
+                /(\s)(noLoop)(\()/g,
+                /(\s)(noStroke)(\()/g,
+                /(\s)(pop)(\()/g,
+                /([\s>])(pow)(\()/g,
+                /(\s)(push)(\()/g,
+                /([\s>])(random)(\()/g,
+                /(\s)(rotate)(\()/g,
+                /([\s>\()])(round)(\()/g,
+                /(\s)(save)(\()/g,
+                /([\s>])(setup)([\(<])/g,
+                /([\s>])(sin)(\()/g,
+                /([\s>])(sqrt)(\()/g,
+                /(\s)(translate)(\()/g
+            ];
+            for (let i = 0; i < p5Functions.length; i++) {
+                // code.value = code.value.replace(p5Functions[i], function(m, a, b, c) {
+                //     return a + '<span class="hljs-p5-function">' + b + '</span>' + c;
+                // });
+            }
+            let p5Values = [
+                /([\s\(>])(windowWidth)([\(\,\)<])/g,
+                /([\s\(>])(windowHeight)([\(\,\)<])/g,
+                /([\s\(>])(width)([\(\,\)<])/g,
+                /([\s\(>])(height)([\(\,\)<])/g,
+                /([\s\(>])(PI)([\s\(\,\)<])/g,
+                /([\s\(>])(TWO_PI)([\s\(\,\)<])/g,
+                /([\s\(>])(keyCode)([\s\(\,\)<])/g
+            ];
+            for (let i = 0; i < p5Values.length; i++) {
+                // code.value = code.value.replace(p5Values[i], function(m, a, b, c) {
+                //     return a + '<span class="hljs-p5-value">' + b + '</span>' + c;
+                // });
+            }
             return one + code.value + three;
         });
         // console.log(htmlContent)
