@@ -73,6 +73,8 @@ code {
 .hljs-literal {
     /*boolean*/
     color: #259298;
+    /*color: #585cf6;*/
+    color: #C17101;
 }
 
 .hljs-string,
@@ -128,6 +130,16 @@ code {
 .hljs-punctuation {
     color: #C17101;
 }
-.hljs-p5 {
-    color: #D81C56;
+.hljs-p5-function, .hljs-p5-function a {
+    /*    color: #D81C56;
+    color: #C92D5E;*/
+    /*color: #000000;*/
+}
+.hljs-p5-function a:hover {
+    /*color: #D81C56;*/
+    /*color: #C92D5E;*/
+}
+.hljs-p5-value {
+    color: #00a1d3;
+    /*color: #C17101;*/
 }
