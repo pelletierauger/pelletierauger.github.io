@@ -272,6 +272,10 @@ h3 {
     text-indent: 0em;
 }
 
+.about {
+    padding-top: 1.5em;
+}
+
 h3 a {
     color: #000000;
     text-decoration: none;
