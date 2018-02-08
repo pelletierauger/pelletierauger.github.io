@@ -4,7 +4,7 @@
 <!-- day -->03
 <!-- fr-title -->Modélisation de lignes crayonnées
 <!-- fr-content -->
-<img src="../../../images/graphite/circles.jpg">
+<img src="../../../images/pencil/circles.jpg">
 <p class="article-top">
     <sc>L'an dernier</sc>, j'ai écrit un court programme pour modéliser des lignes dessinées au crayon. Le projet est encore embryonnaire et je veux continuer à le faire avancer sporadiquement. Je commence aujourd'hui par une relecture du code écrit l'an dernier et une synthèse des idées qu'il contient.
 </p>
@@ -22,7 +22,7 @@
     Cette équation produit la courbe ci-dessous :
 </pn>
 <p>
-    <img class="abcd" src="../../images/graphite/normal-distribution.png">
+    <img class="abcd" src="../../images/pencil/normal-distribution.png">
 </p>
 <pn>
     Cette colline représente donc l'extrémité de la mine du crayon (on peut ignorer les parties horizontales, qui ne seront pas utilisées). L'axe des <im>y</im> de la courbe représente le taux de probabilité qu'une particule de la mine soit déposée sur le papier.
@@ -34,12 +34,12 @@
     Afin d'obtenir une mine de crayon irrégulière, les valeurs obtenues par l'équation de la distribution normale sont altérées par du bruit de Perlin. Voici à quoi ressemble notre mine de crayon maintenant :
 </p>
 <p>
-    <img class="abcd" src="../../images/graphite/normal-distribution-perlin.gif">
+    <img class="abcd" src="../../images/pencil/normal-distribution-perlin.gif">
 </p>
 <pn>
     Maintenant, il suffit de déplacer cette courbe fragmentée sur le plan et de dessiner des points noirs ou gris aux endroits où elle passe. La valeur <im>y</im> de la courbe déterminera la luminosité des points déposés : plus la valeur <im>y</im> est haute, plus le point dessiné est sombre. Le mode de mélange <ic>blendMode(DARKEST)</ic> de <lnum>p5.js</lnum> contribue aussi beaucoup à l'apparence finale de la ligne : chaque point déposé n'apparaît que s'il est plus foncé que le point qui est dessous.
 </pn>
-<img src="../../images/graphite/fat-line.gif">
+<img src="../../images/pencil/fat-line.gif">
 <pn>
     J'ai inclus ci-dessous le code source du programme tel qu'il existe en ce moment. J'ai de nombreuses idées pour le modifier et l'améliorer (<a href="#idees">détaillées plus bas</a>). En fait, il est certain que je vais tout réécrire. Vous pouvez aussi consulter <a href="">le code source sur GitHub</a>. Il est distribué librement avec une <a href="">licence Apache <lnum>2.0</lnum></a>.
 </pn>
@@ -168,7 +168,7 @@ function frameExport() {
 </pn>
 <!-- en-title -->Modeling pencil strokes
 <!-- en-content -->
-<img src="../../../images/graphite/circles.jpg">
+<img src="../../../images/pencil/circles.jpg">
 <p class="article-top">
     <sc>About a year ago</sc>, I wrote a short program to model pencil strokes. The project is still in its embryonic stages and I plan to keep working on it sporadically. I will begin now by revisiting the code written last year to extract its concepts.
 </p>
@@ -186,7 +186,7 @@ function frameExport() {
     It plots the curve below:
 </pn>
 <p>
-    <img class="abcd" src="../../images/graphite/normal-distribution.png">
+    <img class="abcd" src="../../images/pencil/normal-distribution.png">
 </p>
 <pn>
     This hill thus represents the extremity of the pencil's lead (we can ignore the horizontal parts of the curve; they will not be used). The <im>y</im> axis of the curve represents the probability that a particle of the lead will be transfered to the paper.
@@ -198,12 +198,12 @@ function frameExport() {
     To obtain an irregular lead, the values of the normal distribution equation are altered with Perlin noise. This is what our pencil lead resembles now:
 </p>
 <p>
-    <img class="abcd" src="../../images/graphite/normal-distribution-perlin.gif">
+    <img class="abcd" src="../../images/pencil/normal-distribution-perlin.gif">
 </p>
 <pn>
     Now, we only have to move this fragmented curve on the plane and draw black and grey dots at its foot. The <im>y</im> value of the curve determines the brightness of the drawn dots: as the <im>y</im> value increases, the dots get darker. The <ic>blendMode(DARKEST)</ic> option of <lnum>p5.js</lnum> also contributes considerably to the final look of the line: a dot is only drawn if it is darker than the dot below.
 </pn>
-<img src="../../images/graphite/fat-line.gif">
+<img src="../../images/pencil/fat-line.gif">
 <pn>
     The source code of the program as it exists now is included below. I have numerous ideas for ways to modify and improve it (<a href="#scrambled-notes">detailed below</a>). In fact, it is certain that I will rewrite all of it. You can also <a href="">find this code on GitHub</a>. It is distributed as free software under an <a href="">Apache <lnum>2.0</lnum> licence</a>.
 </pn>
