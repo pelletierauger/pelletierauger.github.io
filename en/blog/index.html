@@ -1,39 +1,311 @@
 <!DOCTYPE html>
-    <html>
-    <head>
+<html><head>
         <meta charset="UTF-8">
         <title>Guillaume Pelletier-Auger - Blog</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=4, user-scalable=yes" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=4, user-scalable=yes">
         <link href="../../style/style.css" rel="stylesheet" type="text/css">
-        <link href="https://fonts.googleapis.com/css?family=EB+Garamond" rel="stylesheet">
+        <link href="../../style/truchet.css" rel="stylesheet" type="text/css">
         
-    </head><body>
+        <link href="https://fonts.googleapis.com/css?family=Inconsolata|EB+Garamond" rel="stylesheet">
+        <link href="../../style/code.css" rel="stylesheet" type="text/css">
+    <style id="MathJax_CHTML_styles">.mjx-chtml {display: inline-block; line-height: 0; text-indent: 0; text-align: left; text-transform: none; font-style: normal; font-weight: normal; font-size: 100%; font-size-adjust: none; letter-spacing: normal; word-wrap: normal; word-spacing: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0; min-height: 0; border: 0; margin: 0; padding: 1px 0}
+.MJXc-display {display: block; text-align: center; margin: 1em 0; padding: 0}
+.mjx-chtml[tabindex]:focus, body :focus .mjx-chtml[tabindex] {display: inline-table}
+.mjx-full-width {text-align: center; display: table-cell!important; width: 10000em}
+.mjx-math {display: inline-block; border-collapse: separate; border-spacing: 0}
+.mjx-math * {display: inline-block; -webkit-box-sizing: content-box!important; -moz-box-sizing: content-box!important; box-sizing: content-box!important; text-align: left}
+.mjx-numerator {display: block; text-align: center}
+.mjx-denominator {display: block; text-align: center}
+.MJXc-stacked {height: 0; position: relative}
+.MJXc-stacked > * {position: absolute}
+.MJXc-bevelled > * {display: inline-block}
+.mjx-stack {display: inline-block}
+.mjx-op {display: block}
+.mjx-under {display: table-cell}
+.mjx-over {display: block}
+.mjx-over > * {padding-left: 0px!important; padding-right: 0px!important}
+.mjx-under > * {padding-left: 0px!important; padding-right: 0px!important}
+.mjx-stack > .mjx-sup {display: block}
+.mjx-stack > .mjx-sub {display: block}
+.mjx-prestack > .mjx-presup {display: block}
+.mjx-prestack > .mjx-presub {display: block}
+.mjx-delim-h > .mjx-char {display: inline-block}
+.mjx-surd {vertical-align: top}
+.mjx-mphantom * {visibility: hidden}
+.mjx-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 2px 3px; font-style: normal; font-size: 90%}
+.mjx-annotation-xml {line-height: normal}
+.mjx-menclose > svg {fill: none; stroke: currentColor}
+.mjx-mtr {display: table-row}
+.mjx-mlabeledtr {display: table-row}
+.mjx-mtd {display: table-cell; text-align: center}
+.mjx-label {display: table-row}
+.mjx-box {display: inline-block}
+.mjx-block {display: block}
+.mjx-span {display: inline}
+.mjx-char {display: block; white-space: pre}
+.mjx-itable {display: inline-table; width: auto}
+.mjx-row {display: table-row}
+.mjx-cell {display: table-cell}
+.mjx-table {display: table; width: 100%}
+.mjx-line {display: block; height: 0}
+.mjx-strut {width: 0; padding-top: 1em}
+.mjx-vsize {width: 0}
+.MJXc-space1 {margin-left: .167em}
+.MJXc-space2 {margin-left: .222em}
+.MJXc-space3 {margin-left: .278em}
+.mjx-ex-box-test {position: absolute; width: 1px; height: 60ex}
+.mjx-line-box-test {display: table!important}
+.mjx-line-box-test span {display: table-cell!important; width: 10000em!important; min-width: 0; max-width: none; padding: 0; border: 0; margin: 0}
+.MJXc-TeX-unknown-R {font-family: monospace; font-style: normal; font-weight: normal}
+.MJXc-TeX-unknown-I {font-family: monospace; font-style: italic; font-weight: normal}
+.MJXc-TeX-unknown-B {font-family: monospace; font-style: normal; font-weight: bold}
+.MJXc-TeX-unknown-BI {font-family: monospace; font-style: italic; font-weight: bold}
+.MJXc-TeX-ams-R {font-family: MJXc-TeX-ams-R,MJXc-TeX-ams-Rw}
+.MJXc-TeX-cal-B {font-family: MJXc-TeX-cal-B,MJXc-TeX-cal-Bx,MJXc-TeX-cal-Bw}
+.MJXc-TeX-frak-R {font-family: MJXc-TeX-frak-R,MJXc-TeX-frak-Rw}
+.MJXc-TeX-frak-B {font-family: MJXc-TeX-frak-B,MJXc-TeX-frak-Bx,MJXc-TeX-frak-Bw}
+.MJXc-TeX-math-BI {font-family: MJXc-TeX-math-BI,MJXc-TeX-math-BIx,MJXc-TeX-math-BIw}
+.MJXc-TeX-sans-R {font-family: MJXc-TeX-sans-R,MJXc-TeX-sans-Rw}
+.MJXc-TeX-sans-B {font-family: MJXc-TeX-sans-B,MJXc-TeX-sans-Bx,MJXc-TeX-sans-Bw}
+.MJXc-TeX-sans-I {font-family: MJXc-TeX-sans-I,MJXc-TeX-sans-Ix,MJXc-TeX-sans-Iw}
+.MJXc-TeX-script-R {font-family: MJXc-TeX-script-R,MJXc-TeX-script-Rw}
+.MJXc-TeX-type-R {font-family: MJXc-TeX-type-R,MJXc-TeX-type-Rw}
+.MJXc-TeX-cal-R {font-family: MJXc-TeX-cal-R,MJXc-TeX-cal-Rw}
+.MJXc-TeX-main-B {font-family: MJXc-TeX-main-B,MJXc-TeX-main-Bx,MJXc-TeX-main-Bw}
+.MJXc-TeX-main-I {font-family: MJXc-TeX-main-I,MJXc-TeX-main-Ix,MJXc-TeX-main-Iw}
+.MJXc-TeX-main-R {font-family: MJXc-TeX-main-R,MJXc-TeX-main-Rw}
+.MJXc-TeX-math-I {font-family: MJXc-TeX-math-I,MJXc-TeX-math-Ix,MJXc-TeX-math-Iw}
+.MJXc-TeX-size1-R {font-family: MJXc-TeX-size1-R,MJXc-TeX-size1-Rw}
+.MJXc-TeX-size2-R {font-family: MJXc-TeX-size2-R,MJXc-TeX-size2-Rw}
+.MJXc-TeX-size3-R {font-family: MJXc-TeX-size3-R,MJXc-TeX-size3-Rw}
+.MJXc-TeX-size4-R {font-family: MJXc-TeX-size4-R,MJXc-TeX-size4-Rw}
+@font-face {font-family: MJXc-TeX-ams-R; src: local('MathJax_AMS'), local('MathJax_AMS-Regular')}
+@font-face {font-family: MJXc-TeX-ams-Rw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_AMS-Regular.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_AMS-Regular.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_AMS-Regular.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-cal-B; src: local('MathJax_Caligraphic Bold'), local('MathJax_Caligraphic-Bold')}
+@font-face {font-family: MJXc-TeX-cal-Bx; src: local('MathJax_Caligraphic'); font-weight: bold}
+@font-face {font-family: MJXc-TeX-cal-Bw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Caligraphic-Bold.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Caligraphic-Bold.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Caligraphic-Bold.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-frak-R; src: local('MathJax_Fraktur'), local('MathJax_Fraktur-Regular')}
+@font-face {font-family: MJXc-TeX-frak-Rw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Fraktur-Regular.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Fraktur-Regular.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Fraktur-Regular.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-frak-B; src: local('MathJax_Fraktur Bold'), local('MathJax_Fraktur-Bold')}
+@font-face {font-family: MJXc-TeX-frak-Bx; src: local('MathJax_Fraktur'); font-weight: bold}
+@font-face {font-family: MJXc-TeX-frak-Bw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Fraktur-Bold.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Fraktur-Bold.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Fraktur-Bold.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-math-BI; src: local('MathJax_Math BoldItalic'), local('MathJax_Math-BoldItalic')}
+@font-face {font-family: MJXc-TeX-math-BIx; src: local('MathJax_Math'); font-weight: bold; font-style: italic}
+@font-face {font-family: MJXc-TeX-math-BIw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Math-BoldItalic.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Math-BoldItalic.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Math-BoldItalic.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-sans-R; src: local('MathJax_SansSerif'), local('MathJax_SansSerif-Regular')}
+@font-face {font-family: MJXc-TeX-sans-Rw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_SansSerif-Regular.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_SansSerif-Regular.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_SansSerif-Regular.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-sans-B; src: local('MathJax_SansSerif Bold'), local('MathJax_SansSerif-Bold')}
+@font-face {font-family: MJXc-TeX-sans-Bx; src: local('MathJax_SansSerif'); font-weight: bold}
+@font-face {font-family: MJXc-TeX-sans-Bw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_SansSerif-Bold.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_SansSerif-Bold.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_SansSerif-Bold.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-sans-I; src: local('MathJax_SansSerif Italic'), local('MathJax_SansSerif-Italic')}
+@font-face {font-family: MJXc-TeX-sans-Ix; src: local('MathJax_SansSerif'); font-style: italic}
+@font-face {font-family: MJXc-TeX-sans-Iw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_SansSerif-Italic.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_SansSerif-Italic.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_SansSerif-Italic.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-script-R; src: local('MathJax_Script'), local('MathJax_Script-Regular')}
+@font-face {font-family: MJXc-TeX-script-Rw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Script-Regular.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Script-Regular.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Script-Regular.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-type-R; src: local('MathJax_Typewriter'), local('MathJax_Typewriter-Regular')}
+@font-face {font-family: MJXc-TeX-type-Rw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Typewriter-Regular.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Typewriter-Regular.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Typewriter-Regular.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-cal-R; src: local('MathJax_Caligraphic'), local('MathJax_Caligraphic-Regular')}
+@font-face {font-family: MJXc-TeX-cal-Rw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Caligraphic-Regular.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Caligraphic-Regular.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Caligraphic-Regular.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-main-B; src: local('MathJax_Main Bold'), local('MathJax_Main-Bold')}
+@font-face {font-family: MJXc-TeX-main-Bx; src: local('MathJax_Main'); font-weight: bold}
+@font-face {font-family: MJXc-TeX-main-Bw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Main-Bold.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Main-Bold.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Main-Bold.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-main-I; src: local('MathJax_Main Italic'), local('MathJax_Main-Italic')}
+@font-face {font-family: MJXc-TeX-main-Ix; src: local('MathJax_Main'); font-style: italic}
+@font-face {font-family: MJXc-TeX-main-Iw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Main-Italic.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Main-Italic.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Main-Italic.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-main-R; src: local('MathJax_Main'), local('MathJax_Main-Regular')}
+@font-face {font-family: MJXc-TeX-main-Rw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Main-Regular.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Main-Regular.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Main-Regular.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-math-I; src: local('MathJax_Math Italic'), local('MathJax_Math-Italic')}
+@font-face {font-family: MJXc-TeX-math-Ix; src: local('MathJax_Math'); font-style: italic}
+@font-face {font-family: MJXc-TeX-math-Iw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Math-Italic.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Math-Italic.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Math-Italic.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-size1-R; src: local('MathJax_Size1'), local('MathJax_Size1-Regular')}
+@font-face {font-family: MJXc-TeX-size1-Rw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Size1-Regular.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Size1-Regular.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Size1-Regular.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-size2-R; src: local('MathJax_Size2'), local('MathJax_Size2-Regular')}
+@font-face {font-family: MJXc-TeX-size2-Rw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Size2-Regular.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Size2-Regular.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Size2-Regular.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-size3-R; src: local('MathJax_Size3'), local('MathJax_Size3-Regular')}
+@font-face {font-family: MJXc-TeX-size3-Rw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Size3-Regular.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Size3-Regular.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Size3-Regular.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-size4-R; src: local('MathJax_Size4'), local('MathJax_Size4-Regular')}
+@font-face {font-family: MJXc-TeX-size4-Rw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Size4-Regular.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Size4-Regular.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Size4-Regular.otf') format('opentype')}
+</style></head><body>
     <nav>
         <h1><a href="../../">Guillaume <span class="nobreak">Pelletier-Auger</span></a></h1>
         <ul>
             <li><a href="../../">Projects</a></li>
-            <li class = "selected"><a href="../../en/blog/">Blog</a></li>
+            <li class="selected"><a href="../../en/blog/">Blog</a></li>
             <li><a href="../../en/about.html">About</a></li>
-            <li><a href="../../fr/blog/">En &#8594; Fr</a></li>
+            <li><a href="../../fr/blog/">En → Fr</a></li>
         </ul>
     </nav>
     
         
         
-            <article class="blog-post"><h2 class="with-date"><a href="../blog/2018/2/modeling-graphite-strokes.html">Modeling graphite strokes</a></h2><div class = "date">February 3, 2018</div>
+            <article class="blog-post"><h2 class="with-date"><a href="../blog/2018/2/modeling-pencil-strokes.html">Modeling pencil strokes</a></h2><div class="date">February 3, 2018</div>
 <img src="../../../images/graphite/circles.jpg">
 <p class="article-top">
-    <span class="small-caps">About a year ago</span>, I wrote some code to model graphite strokes. I want to dive into this project again this year, so I first need to recap what I actually did last year. This blog post is just me figuring that out.
+    <span class="small-caps">About a year ago</span>, I wrote a short program to model pencil strokes. The project is still in its embryonic stages and I plan to keep working on it sporadically. I will begin now by revisiting the code written last year to extract its concepts.
 </p>
 <p>
-    So I&rsquo;m doing this with JavaScript and p5.js.
+    The circular lines above were generated by this program. They have several problems that need to be solved. Firstly, they begin and end abruptly; they do not taper off like we would expect hand-drawn lines to do. This creates a very artifical break in the circles. Secondly, while the lines of average width have a relatively natural look, the thinnest and thickest ones look a lot less convincing. Finally, the variations in the width of the lines all seem strangely identical in the lower right quadrant of the circles. An <span class="italic">unpleasant regularity</span> seem to have emerged out of this algorithm that tries to model the unpredictability of a physical pencil. Some erroneous trigonometry might be at the root of this.
 </p>
-            </article><div id = "blog-pagination">
+<h3>Normal distribution and <span class="nobreak">semi-random</span> variations</h3>
+<p class="noindent">
+    <span class="small-caps">The core idea</span> of this program is to use a normal distribution to simulate the shape of a pencil’s lead. The normal distribution is calculated with this equation:
+</p>
+<div class="math"><span class="mjx-chtml MJXc-display" style="text-align: center;"><span id="MathJax-Element-1-Frame" class="mjx-chtml" style="text-align: center;"><span id="MJXc-Node-548" class="mjx-math"><span id="MJXc-Node-549" class="mjx-mrow"><span id="MJXc-Node-550" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.519em; padding-right: 0.006em;">y</span></span><span id="MJXc-Node-551" class="mjx-mo MJXc-space3"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.077em; padding-bottom: 0.298em;">=</span></span><span id="MJXc-Node-552" class="mjx-mfrac MJXc-space3"><span class="mjx-box MJXc-stacked" style="width: 3.328em; padding: 0px 0.12em;"><span class="mjx-numerator" style="width: 3.328em; top: -1.368em;"><span id="MJXc-Node-553" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">1</span></span></span><span class="mjx-denominator" style="width: 3.328em; bottom: -1.15em;"><span id="MJXc-Node-554" class="mjx-msqrt"><span class="mjx-box" style="padding-top: 0.045em;"><span class="mjx-surd"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.519em; padding-bottom: 0.519em;">√</span></span><span class="mjx-box" style="padding-top: 0.124em; border-top: 1px solid;"><span id="MJXc-Node-555" class="mjx-mrow"><span id="MJXc-Node-556" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.298em; padding-right: 0.003em;">π</span></span><span id="MJXc-Node-557" class="mjx-mo MJXc-space2"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.225em; padding-bottom: 0.298em;">×</span></span><span id="MJXc-Node-558" class="mjx-mn MJXc-space2"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">2</span></span></span></span></span></span></span><span style="border-bottom: 1.3px solid; top: -0.296em; width: 3.328em;" class="mjx-line"></span></span><span style="height: 2.518em; vertical-align: -1.15em;" class="mjx-vsize"></span></span><span id="MJXc-Node-559" class="mjx-mo MJXc-space2"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.225em; padding-bottom: 0.298em;">×</span></span><span id="MJXc-Node-560" class="mjx-msubsup MJXc-space2"><span class="mjx-base"><span id="MJXc-Node-561" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">2.71828</span></span></span><span class="mjx-sup" style="font-size: 70.7%; vertical-align: 0.73em; padding-left: 0px; padding-right: 0.071em;"><span id="MJXc-Node-562" class="mjx-texatom" style=""><span id="MJXc-Node-563" class="mjx-mrow"><span id="MJXc-Node-564" class="mjx-mfrac"><span class="mjx-box MJXc-stacked" style="width: 1.75em; padding: 0px 0.12em;"><span class="mjx-numerator" style="font-size: 83.3%; width: 2.1em; top: -1.733em;"><span id="MJXc-Node-565" class="mjx-mrow" style=""><span id="MJXc-Node-566" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.298em; padding-bottom: 0.446em;">−</span></span><span id="MJXc-Node-567" class="mjx-msubsup"><span class="mjx-base"><span id="MJXc-Node-568" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.298em;">x</span></span></span><span class="mjx-sup" style="vertical-align: 0.363em; padding-left: 0px; padding-right: 0.05em;"><span id="MJXc-Node-569" class="mjx-texatom"><span id="MJXc-Node-570" class="mjx-mrow"><span id="MJXc-Node-571" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">2</span></span></span></span></span></span></span></span><span class="mjx-denominator" style="font-size: 83.3%; width: 2.1em; bottom: -0.688em;"><span id="MJXc-Node-572" class="mjx-mn" style=""><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">2</span></span></span><span style="border-bottom: 1px solid; top: -0.296em; width: 1.75em;" class="mjx-line"></span></span><span style="height: 2.017em; vertical-align: -0.573em;" class="mjx-vsize"></span></span></span></span></span></span></span></span></span></span></div>
+<p class="noindent">
+    It plots the curve below:
+</p>
+<p>
+    <img class="abcd" src="../../images/graphite/normal-distribution.png">
+</p>
+<p class="noindent">
+    This hill thus represents the extremity of the pencil’s lead (we can ignore the horizontal parts of the curve; they will not be used). The <span id="MathJax-Element-2-Frame" class="mjx-chtml"><span id="MJXc-Node-573" class="mjx-math"><span id="MJXc-Node-574" class="mjx-mrow"><span id="MJXc-Node-575" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.519em; padding-right: 0.006em;">y</span></span></span></span></span> axis of the curve represents the probability that a particle of the lead will be transfered to the paper.
+</p>
+<p>
+    A real pencil lead, of course, is never as smooth and regular as this hill. On a microscopic scale, both the lead and the sheet of paper are fragmented like mountain ranges. We can imagine that, as the pencil is rubbed on the paper, the lead moves irregularly; its angle relative to the paper changes; its jagged edges are pushed against the paper’s texture at different moments and at varying levels of pressure.
+</p>
+<p>
+    To obtain an irregular lead, the values of the normal distribution equation are altered with Perlin noise. This is what our pencil lead resembles now:
+</p>
+<p>
+    <img class="abcd" src="../../images/graphite/normal-distribution-perlin.gif">
+</p>
+<p class="noindent">
+    Now, we only have to move this fragmented curve on the plane and draw black and grey dots at its foot. The <span id="MathJax-Element-3-Frame" class="mjx-chtml"><span id="MJXc-Node-576" class="mjx-math"><span id="MJXc-Node-577" class="mjx-mrow"><span id="MJXc-Node-578" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.519em; padding-right: 0.006em;">y</span></span></span></span></span> value of the curve determines the brightness of the drawn dots: as the <span id="MathJax-Element-4-Frame" class="mjx-chtml"><span id="MJXc-Node-579" class="mjx-math"><span id="MJXc-Node-580" class="mjx-mrow"><span id="MJXc-Node-581" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.519em; padding-right: 0.006em;">y</span></span></span></span></span> value increases, the dots get darker. The <span class="inline-code">blendMode(DARKEST)</span> option in <span class="lnum">p5.js</span> also contributes considerably to the final look of the line: a dot is only drawn if it is darker than the dot below.
+</p>
+<img src="../../images/graphite/fat-line.gif">
+<p class="noindent">
+    The source code of the program as it exists now is included below. I have numerous ideas for ways to modify and improve it (<a href="#ideas">detailed below</a>). In fact, it is certain that I will rewrite all of it. You can also <a href="">find this code on GitHub</a>. It is distributed as free software under an <a href="">Apache <span class="lnum">2.0</span> licence</a>.
+</p>
+<div class="codebox"><pre><code><span class="hljs-keyword">var</span> looping<span class="hljs-punctuation"> = </span><span class="hljs-literal">true</span>;
+<span class="hljs-keyword">var</span> exporting<span class="hljs-punctuation"> = </span><span class="hljs-literal">false</span>;
+<span class="hljs-keyword">var</span> arr<span class="hljs-punctuation"> = </span>[];
+<span class="hljs-keyword">var</span> radiusAugmenter<span class="hljs-punctuation"> = </span><span class="hljs-number">0</span>;
+<span class="hljs-keyword">var</span> graphiteWeight<span class="hljs-punctuation"> = </span><span class="hljs-number">1</span>;
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setup</span>(<span class="hljs-params"></span>) </span>{
+    createCanvas(windowWidth, windowHeight);
+    background(<span class="hljs-number">255</span>);
+    noStroke();
+    frameRate(<span class="hljs-number">1</span>);
+    blendMode(DARKEST);
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">draw</span>(<span class="hljs-params"></span>) </span>{
+    translate(width<span class="hljs-punctuation"> / </span><span class="hljs-number">2</span>, height<span class="hljs-punctuation"> / </span><span class="hljs-number">2</span>);
+    <span class="hljs-keyword">var</span> total<span class="hljs-punctuation"> = </span><span class="hljs-number">100</span>;
+    <span class="hljs-keyword">var</span> increment<span class="hljs-punctuation"> = </span>TWO_PI<span class="hljs-punctuation"> / </span>total;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i<span class="hljs-punctuation"> = </span><span class="hljs-number">0</span>; i<span class="hljs-punctuation"> &lt; </span>TWO_PI<span class="hljs-punctuation"> + </span>increment; i <span class="hljs-punctuation">+=</span> increment) {
+        <span class="hljs-keyword">var</span> x<span class="hljs-punctuation"> = </span>cos(i)<span class="hljs-punctuation"> * </span>(<span class="hljs-number">50</span><span class="hljs-punctuation"> + </span>radiusAugmenter);
+        <span class="hljs-keyword">var</span> y<span class="hljs-punctuation"> = </span>sin(i)<span class="hljs-punctuation"> * </span>(<span class="hljs-number">50</span><span class="hljs-punctuation"> + </span>radiusAugmenter);
+        <span class="hljs-keyword">var</span> vec<span class="hljs-punctuation"> = </span>createVector(x, y);
+        arr<span class="hljs-punctuation">.</span>push(vec);
+    }
+    drawGraphite(arr);
+    <span class="hljs-keyword">if</span> (exporting) {
+        frameExport();
+    }
+    radiusAugmenter <span class="hljs-punctuation">+=</span> <span class="hljs-number">50</span>;
+    graphiteWeight <span class="hljs-punctuation">+=</span> <span class="hljs-number">1</span>;
+    arr<span class="hljs-punctuation"> = </span>[];
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">drawGraphite</span>(<span class="hljs-params">h</span>) </span>{
+    <span class="hljs-keyword">var</span> drawCount<span class="hljs-punctuation"> = </span><span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> j<span class="hljs-punctuation"> = </span><span class="hljs-number">0</span>; j<span class="hljs-punctuation"> &lt; </span>h<span class="hljs-punctuation">.</span>length<span class="hljs-punctuation"> - </span><span class="hljs-number">1</span>; j<span class="hljs-punctuation">++</span>) {
+        <span class="hljs-keyword">if</span> (h[j<span class="hljs-punctuation"> + </span><span class="hljs-number">1</span>]) {
+            <span class="hljs-keyword">var</span> v1<span class="hljs-punctuation"> = </span>h[j];
+            <span class="hljs-keyword">var</span> hypotenuse<span class="hljs-punctuation"> = </span>dist(h[j]<span class="hljs-punctuation">.</span>x, h[j]<span class="hljs-punctuation">.</span>y, h[j<span class="hljs-punctuation"> + </span><span class="hljs-number">1</span>]<span class="hljs-punctuation">.</span>x, h[j<span class="hljs-punctuation"> + </span><span class="hljs-number">1</span>]<span class="hljs-punctuation">.</span>y);
+            <span class="hljs-keyword">var</span> angle<span class="hljs-punctuation"> = </span>atan2(h[j<span class="hljs-punctuation"> + </span><span class="hljs-number">1</span>]<span class="hljs-punctuation">.</span>y<span class="hljs-punctuation"> - </span>h[j]<span class="hljs-punctuation">.</span>y, h[j<span class="hljs-punctuation"> + </span><span class="hljs-number">1</span>]<span class="hljs-punctuation">.</span>x<span class="hljs-punctuation"> - </span>h[j]<span class="hljs-punctuation">.</span>x);
+            push();
+            translate(v1<span class="hljs-punctuation">.</span>x, v1<span class="hljs-punctuation">.</span>y);
+            rotate(angle<span class="hljs-punctuation"> + </span>PI<span class="hljs-punctuation"> / </span><span class="hljs-number">2</span>);
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i<span class="hljs-punctuation"> = </span><span class="hljs-number">0</span>; i<span class="hljs-punctuation"> &lt; </span>hypotenuse; i<span class="hljs-punctuation">++</span>) {
+                translate(<span class="hljs-number">0</span>, <span class="hljs-number">-1</span>);
+                drawGraphiteSegment(drawCount);
+                drawCount<span class="hljs-punctuation">++</span>;
+            }
+            pop();
+        }
+    }
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">drawGraphiteSegment</span>(<span class="hljs-params">t</span>) </span>{
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i<span class="hljs-punctuation"> = </span><span class="hljs-number">0</span>; i<span class="hljs-punctuation"> &lt; </span><span class="hljs-number">10</span>; i <span class="hljs-punctuation">+=</span> <span class="hljs-number">0.12</span>) {
+        <span class="hljs-keyword">var</span> x<span class="hljs-punctuation"> = </span>i<span class="hljs-punctuation"> - </span><span class="hljs-number">5</span>;
+        <span class="hljs-keyword">var</span> y<span class="hljs-punctuation"> = </span><span class="hljs-punctuation">-</span>(<span class="hljs-number">1</span><span class="hljs-punctuation"> / </span>sqrt(TWO_PI))<span class="hljs-punctuation"> * </span>pow(<span class="hljs-number">2.71828</span>, <span class="hljs-punctuation">-</span>pow(x, <span class="hljs-number">2</span>)<span class="hljs-punctuation"> / </span><span class="hljs-number">2</span>);
+        <span class="hljs-keyword">var</span> noiseValue<span class="hljs-punctuation"> = </span>i<span class="hljs-punctuation"> + </span>t<span class="hljs-punctuation"> / </span><span class="hljs-number">100</span>;
+        <span class="hljs-keyword">var</span> n<span class="hljs-punctuation"> = </span>noise(noiseValue)<span class="hljs-punctuation"> / </span><span class="hljs-number">200</span>;
+        n <span class="hljs-punctuation">+=</span> noise(noiseValue)<span class="hljs-punctuation"> * </span><span class="hljs-number">2</span><span class="hljs-punctuation"> * </span>y;
+        y <span class="hljs-punctuation">+=</span> n;
+        y <span class="hljs-punctuation">*=</span> <span class="hljs-number">300</span>;
+        <span class="hljs-keyword">var</span> n2<span class="hljs-punctuation"> = </span>noise(t<span class="hljs-punctuation"> / </span><span class="hljs-number">50</span>);
+        <span class="hljs-keyword">var</span> n3<span class="hljs-punctuation"> = </span>noise(<span class="hljs-number">100</span><span class="hljs-punctuation"> + </span>t<span class="hljs-punctuation"> / </span><span class="hljs-number">50</span>);
+        <span class="hljs-keyword">var</span> lineWidth<span class="hljs-punctuation"> = </span>graphiteWeight;
+        x <span class="hljs-punctuation">*=</span> lineWidth;
+        <span class="hljs-keyword">if</span> (x<span class="hljs-punctuation"> &lt;= </span><span class="hljs-number">0</span>) {
+            x <span class="hljs-punctuation">*=</span> n2;
+        } <span class="hljs-keyword">else</span> {
+            x <span class="hljs-punctuation">*=</span> n3;
+        }
+        <span class="hljs-keyword">var</span> mapCrayon<span class="hljs-punctuation"> = </span>map(y, <span class="hljs-number">-200</span>, <span class="hljs-number">0</span>, <span class="hljs-number">80</span>, <span class="hljs-number">255</span>);
+        mapCrayon<span class="hljs-punctuation"> = </span>constrain(mapCrayon, <span class="hljs-number">0</span>, <span class="hljs-number">255</span>);
+        fill(round(mapCrayon));
+        push();
+        <span class="hljs-keyword">var</span> nGrain<span class="hljs-punctuation"> = </span>noise(t)<span class="hljs-punctuation"> * </span>lineWidth<span class="hljs-punctuation"> * </span><span class="hljs-number">1</span>;
+        translate(random(nGrain), random(nGrain));
+        ellipse(x, <span class="hljs-number">0</span>, <span class="hljs-number">2</span>);
+        pop();
+    }
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">keyPressed</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">if</span> (keyCode<span class="hljs-punctuation"> <span class="hljs-punctuation">==</span>= </span><span class="hljs-number">32</span>) {
+        <span class="hljs-keyword">if</span> (looping) {
+            noLoop();
+            looping<span class="hljs-punctuation"> = </span><span class="hljs-literal">false</span>;
+        } <span class="hljs-keyword">else</span> {
+            loop();
+            looping<span class="hljs-punctuation"> = </span><span class="hljs-literal">true</span>;
+        }
+    }
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">frameExport</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">var</span> formattedFrameCount<span class="hljs-punctuation"> = </span><span class="hljs-string">""</span><span class="hljs-punctuation"> + </span>frameCount;
+    <span class="hljs-keyword">while</span> (formattedFrameCount<span class="hljs-punctuation">.</span>length<span class="hljs-punctuation"> &lt; </span><span class="hljs-number">5</span>) {
+        formattedFrameCount<span class="hljs-punctuation"> = </span><span class="hljs-string">"0"</span><span class="hljs-punctuation"> + </span>formattedFrameCount;
+    }
+    save(<span class="hljs-string">"grooves"</span><span class="hljs-punctuation"> + </span>formattedFrameCount<span class="hljs-punctuation"> + </span><span class="hljs-string">".png"</span>);
+}</code></pre></div>
+<a name="ideas"><h3>Scrambled notes</h3></a>
+<p class="noindent">
+    <span class="small-caps">What I may require</span> is a <span class="inline-code">Line</span> class. Any process could create a new instance of <span class="inline-code">Line</span> and send line segments to it as pairs of vectors. The <span class="inline-code">Line</span> class would automatically deal with the Perlin noise: it would make sure that each new line segment is added in a coherent way to the rest of the line (continuing its shape and varying width). The class would also deal with the beginnings and endings of lines. Its <span class="inline-code">Line.drawSegment()</span> method could receive an <span class="inline-code">ending</span> boolean to know that it needs to finish the stroke. When receiving a “terminating” segment, the class could put itself in a <span class="inline-code">terminated</span> mode. Any new line segment received after that would reactivate it and make it draw a line beginning. Or should a line that receives a terminating segment just <span class="italic">destroy</span> itself&nbsp;? Remove itself from an array of available lines, for example&nbsp; ?
+</p>
+<p>
+    It could also be interesting to separate the moment when a line segment is sent to an instance of <span class="inline-code">Line</span> from the moment when this segment is drawn. An instance of <span class="inline-code">Line</span> could have an array of line segments to draw. When it would receive new ones, it would simply add them to this array. This would be done with the <span class="inline-code">Line.addSegment()</span> method. The <span class="inline-code">Line.drawSegment()</span> method would draw the next line segment from the array, and then remove it from there (or change its state to <span class="inline-code">drawn</span>). This way, thousands of line segments could be added to a <span class="inline-code">Line</span> in the same frame of animation but then, instead of all drawing them immediately (which could slow down the programming considerably depending on the actual drawing algorithm), these line segments could be drawn over the course of any number of consecutive animation frames. There would also be a way to control the speed at which a <span class="inline-code">Line</span> is drawn.
+</p>
+<p>
+    I could use the <span class="inline-code">randomGaussian()</span> function included in <span class="lnum">p5.js</span> instead of using my own equation for the normal distribution.
+</p>
+<p>
+    Last year’s code uses one-dimensional Perlin noise to “fragment” the normal distribution, but clearly it should use two-dimensional noise.
+</p>
+<p>
+    The visual unpleasantness with the narrowest and widest lines is probably all about <span class="italic">dot density</span>. All the circular lines on the top of this page have the same amount of dots per line segment — so the narrowest lines have too much dots and look too <span class="italic">crowded</span>, too blockish, while the widest lines look too <span class="italic">airy</span> or bushy. Changing the width of the lines should obviously change their dot density.
+</p>
+<p>
+    Less probable ideas: while still only using two-dimensional mathematics, we could imagine modeling the whole circonference of the pencil lead. It would be a curve broken apart by noise but curve that folds on itself — or repeat itself on the <span id="MathJax-Element-5-Frame" class="mjx-chtml"><span id="MJXc-Node-582" class="mjx-math"><span id="MJXc-Node-583" class="mjx-mrow"><span id="MJXc-Node-584" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.298em;">x</span></span></span></span></span> axis. We could even rotate the direction of the lead to accompany the movements of the pencil. We could also model the progressive degradation of the lead.
+</p>
+<h3>Sources</h3>
+<p class="noindent">
+    <span class="small-caps">My thinking</span> for this project started with a reading of <span class="italic"><a href="">Automatically Mimicking Unique Hand-Drawn Pencil Lines</a></span>, an article signed by Zainab AlMeraj, Brian Wyvill, Tobias Isenberg, Amy A. Gooch, and Richard Guy. In the end, I did not use the methods detailed in this article but it was an inspiring read nonetheless.
+</p>
+            </article><div id="blog-pagination">
             <a href="./page-2.html">
             Next page
             </a>
             
-        </div><div id="footer">Guillaume Pelletier-Auger &mdash; 2016-2018
+        </div><div id="footer">Guillaume Pelletier-Auger — 2016-2018
     </div>
-    </body>
-    </html>
+    
+    </body></html>

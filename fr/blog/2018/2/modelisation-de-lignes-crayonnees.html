@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html><head>
         <meta charset="UTF-8">
-        <title>Guillaume Pelletier-Auger - Blog</title>
+        <title>Guillaume Pelletier-Auger - Modélisation de lignes crayonnées</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=4, user-scalable=yes">
-        <link href="../../style/style.css" rel="stylesheet" type="text/css">
-        <link href="../../style/truchet.css" rel="stylesheet" type="text/css">
+        <link href="../../../../style/style.css" rel="stylesheet" type="text/css">
+        <link href="../../../../style/truchet.css" rel="stylesheet" type="text/css">
         
         <link href="https://fonts.googleapis.com/css?family=Inconsolata|EB+Garamond" rel="stylesheet">
-        <link href="../../style/code.css" rel="stylesheet" type="text/css">
+        <link href="../../../../style/code.css" rel="stylesheet" type="text/css">
     <style id="MathJax_CHTML_styles">.mjx-chtml {display: inline-block; line-height: 0; text-indent: 0; text-align: left; text-transform: none; font-style: normal; font-weight: normal; font-size: 100%; font-size-adjust: none; letter-spacing: normal; word-wrap: normal; word-spacing: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0; min-height: 0; border: 0; margin: 0; padding: 1px 0}
 .MJXc-display {display: block; text-align: center; margin: 1em 0; padding: 0}
 .mjx-chtml[tabindex]:focus, body :focus .mjx-chtml[tabindex] {display: inline-table}
@@ -127,19 +127,20 @@
 @font-face {font-family: MJXc-TeX-size4-Rw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Size4-Regular.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Size4-Regular.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Size4-Regular.otf') format('opentype')}
 </style></head><body>
     <nav>
-        <h1><a href="../../fr/">Guillaume <span class="nobreak">Pelletier-Auger</span></a></h1>
+        <h1><a href="../../../../fr/">Guillaume <span class="nobreak">Pelletier-Auger</span></a></h1>
         <ul>
-            <li><a href="../../fr/">Projets</a></li>
-            <li class="selected"><a href="../../fr/blog/">Blog</a></li>
-            <li><a href="../../fr/a-propos.html">À propos</a></li>
-            <li><a href="../../en/blog/">Fr → En</a></li>
+            <li><a href="../../../../fr/">Projets</a></li>
+            <li class="selected"><a href="../../../../fr/blog/">Blog</a></li>
+            <li><a href="../../../../fr/a-propos.html">À propos</a></li>
+            <li><a href="../../../../en/blog/2018/2/modeling-pencil-strokes.html">Fr → En</a></li>
         </ul>
     </nav>
     
-        
-        
-            <article class="blog-post"><h2 class="with-date"><a href="../blog/2018/2/modelisation-de-lignes-crayonnees.html">Modélisation de lignes crayonnées</a></h2><div class="date">3 février 2018</div>
-<img src="../../../images/graphite/circles.jpg">
+            <article>
+                <h2 class="with-date">Modélisation de lignes crayonnées</h2>
+                <div class="date">3 février 2018</div>
+                
+<img src="../../../../images/graphite/circles.jpg">
 <p class="article-top">
     <span class="small-caps">L’an dernier</span>, j’ai écrit un court programme pour modéliser des lignes dessinées au crayon. Le projet est encore embryonnaire et je veux continuer à le faire avancer sporadiquement. Je commence aujourd’hui par une relecture du code écrit l’an dernier et une synthèse des idées qu’il contient.
 </p>
@@ -150,7 +151,7 @@
 <p class="noindent">
     <span class="small-caps">L’idée centrale</span> du programme consiste à utiliser une distribution normale pour simuler la forme d’une mine de crayon ainsi que ses frottements sur le papier. Tout d’abord, notre distribution normale est calculée avec l’équation suivante&nbsp;:
 </p>
-<div class="math"><span class="mjx-chtml MJXc-display" style="text-align: center;"><span id="MathJax-Element-1-Frame" class="mjx-chtml" style="text-align: center;"><span id="MJXc-Node-477" class="mjx-math"><span id="MJXc-Node-478" class="mjx-mrow"><span id="MJXc-Node-479" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.519em; padding-right: 0.006em;">y</span></span><span id="MJXc-Node-480" class="mjx-mo MJXc-space3"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.077em; padding-bottom: 0.298em;">=</span></span><span id="MJXc-Node-481" class="mjx-mfrac MJXc-space3"><span class="mjx-box MJXc-stacked" style="width: 3.328em; padding: 0px 0.12em;"><span class="mjx-numerator" style="width: 3.328em; top: -1.368em;"><span id="MJXc-Node-482" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">1</span></span></span><span class="mjx-denominator" style="width: 3.328em; bottom: -1.15em;"><span id="MJXc-Node-483" class="mjx-msqrt"><span class="mjx-box" style="padding-top: 0.045em;"><span class="mjx-surd"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.519em; padding-bottom: 0.519em;">√</span></span><span class="mjx-box" style="padding-top: 0.124em; border-top: 1px solid;"><span id="MJXc-Node-484" class="mjx-mrow"><span id="MJXc-Node-485" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.298em; padding-right: 0.003em;">π</span></span><span id="MJXc-Node-486" class="mjx-mo MJXc-space2"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.225em; padding-bottom: 0.298em;">×</span></span><span id="MJXc-Node-487" class="mjx-mn MJXc-space2"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">2</span></span></span></span></span></span></span><span style="border-bottom: 1.3px solid; top: -0.296em; width: 3.328em;" class="mjx-line"></span></span><span style="height: 2.518em; vertical-align: -1.15em;" class="mjx-vsize"></span></span><span id="MJXc-Node-488" class="mjx-mo MJXc-space2"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.225em; padding-bottom: 0.298em;">×</span></span><span id="MJXc-Node-489" class="mjx-msubsup MJXc-space2"><span class="mjx-base"><span id="MJXc-Node-490" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">2.71828</span></span></span><span class="mjx-sup" style="font-size: 70.7%; vertical-align: 0.73em; padding-left: 0px; padding-right: 0.071em;"><span id="MJXc-Node-491" class="mjx-texatom" style=""><span id="MJXc-Node-492" class="mjx-mrow"><span id="MJXc-Node-493" class="mjx-mfrac"><span class="mjx-box MJXc-stacked" style="width: 1.75em; padding: 0px 0.12em;"><span class="mjx-numerator" style="font-size: 83.3%; width: 2.1em; top: -1.733em;"><span id="MJXc-Node-494" class="mjx-mrow" style=""><span id="MJXc-Node-495" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.298em; padding-bottom: 0.446em;">−</span></span><span id="MJXc-Node-496" class="mjx-msubsup"><span class="mjx-base"><span id="MJXc-Node-497" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.298em;">x</span></span></span><span class="mjx-sup" style="vertical-align: 0.363em; padding-left: 0px; padding-right: 0.05em;"><span id="MJXc-Node-498" class="mjx-texatom"><span id="MJXc-Node-499" class="mjx-mrow"><span id="MJXc-Node-500" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">2</span></span></span></span></span></span></span></span><span class="mjx-denominator" style="font-size: 83.3%; width: 2.1em; bottom: -0.688em;"><span id="MJXc-Node-501" class="mjx-mn" style=""><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">2</span></span></span><span style="border-bottom: 1px solid; top: -0.296em; width: 1.75em;" class="mjx-line"></span></span><span style="height: 2.017em; vertical-align: -0.573em;" class="mjx-vsize"></span></span></span></span></span></span></span></span></span></span></div>
+<div class="math"><span class="mjx-chtml MJXc-display" style="text-align: center;"><span id="MathJax-Element-1-Frame" class="mjx-chtml" style="text-align: center;"><span id="MJXc-Node-443" class="mjx-math"><span id="MJXc-Node-444" class="mjx-mrow"><span id="MJXc-Node-445" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.519em; padding-right: 0.006em;">y</span></span><span id="MJXc-Node-446" class="mjx-mo MJXc-space3"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.077em; padding-bottom: 0.298em;">=</span></span><span id="MJXc-Node-447" class="mjx-mfrac MJXc-space3"><span class="mjx-box MJXc-stacked" style="width: 3.328em; padding: 0px 0.12em;"><span class="mjx-numerator" style="width: 3.328em; top: -1.368em;"><span id="MJXc-Node-448" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">1</span></span></span><span class="mjx-denominator" style="width: 3.328em; bottom: -1.15em;"><span id="MJXc-Node-449" class="mjx-msqrt"><span class="mjx-box" style="padding-top: 0.045em;"><span class="mjx-surd"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.519em; padding-bottom: 0.519em;">√</span></span><span class="mjx-box" style="padding-top: 0.124em; border-top: 1px solid;"><span id="MJXc-Node-450" class="mjx-mrow"><span id="MJXc-Node-451" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.298em; padding-right: 0.003em;">π</span></span><span id="MJXc-Node-452" class="mjx-mo MJXc-space2"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.225em; padding-bottom: 0.298em;">×</span></span><span id="MJXc-Node-453" class="mjx-mn MJXc-space2"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">2</span></span></span></span></span></span></span><span style="border-bottom: 1.3px solid; top: -0.296em; width: 3.328em;" class="mjx-line"></span></span><span style="height: 2.518em; vertical-align: -1.15em;" class="mjx-vsize"></span></span><span id="MJXc-Node-454" class="mjx-mo MJXc-space2"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.225em; padding-bottom: 0.298em;">×</span></span><span id="MJXc-Node-455" class="mjx-msubsup MJXc-space2"><span class="mjx-base"><span id="MJXc-Node-456" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">2.71828</span></span></span><span class="mjx-sup" style="font-size: 70.7%; vertical-align: 0.73em; padding-left: 0px; padding-right: 0.071em;"><span id="MJXc-Node-457" class="mjx-texatom" style=""><span id="MJXc-Node-458" class="mjx-mrow"><span id="MJXc-Node-459" class="mjx-mfrac"><span class="mjx-box MJXc-stacked" style="width: 1.75em; padding: 0px 0.12em;"><span class="mjx-numerator" style="font-size: 83.3%; width: 2.1em; top: -1.733em;"><span id="MJXc-Node-460" class="mjx-mrow" style=""><span id="MJXc-Node-461" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.298em; padding-bottom: 0.446em;">−</span></span><span id="MJXc-Node-462" class="mjx-msubsup"><span class="mjx-base"><span id="MJXc-Node-463" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.298em;">x</span></span></span><span class="mjx-sup" style="vertical-align: 0.363em; padding-left: 0px; padding-right: 0.05em;"><span id="MJXc-Node-464" class="mjx-texatom"><span id="MJXc-Node-465" class="mjx-mrow"><span id="MJXc-Node-466" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">2</span></span></span></span></span></span></span></span><span class="mjx-denominator" style="font-size: 83.3%; width: 2.1em; bottom: -0.688em;"><span id="MJXc-Node-467" class="mjx-mn" style=""><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">2</span></span></span><span style="border-bottom: 1px solid; top: -0.296em; width: 1.75em;" class="mjx-line"></span></span><span style="height: 2.017em; vertical-align: -0.573em;" class="mjx-vsize"></span></span></span></span></span></span></span></span></span></span></div>
 <p class="noindent">
     Cette équation produit la courbe ci-dessous&nbsp;:
 </p>
@@ -158,7 +159,7 @@
     <img class="abcd" src="../../images/graphite/normal-distribution.png">
 </p>
 <p class="noindent">
-    Cette colline représente donc l’extrémité de la mine du crayon (on peut ignorer les parties horizontales, qui ne seront pas utilisées). L’axe des <span id="MathJax-Element-2-Frame" class="mjx-chtml"><span id="MJXc-Node-502" class="mjx-math"><span id="MJXc-Node-503" class="mjx-mrow"><span id="MJXc-Node-504" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.519em; padding-right: 0.006em;">y</span></span></span></span></span> de la courbe représente le taux de probabilité qu’une particule de la mine soit déposée sur le papier.
+    Cette colline représente donc l’extrémité de la mine du crayon (on peut ignorer les parties horizontales, qui ne seront pas utilisées). L’axe des <span id="MathJax-Element-2-Frame" class="mjx-chtml"><span id="MJXc-Node-468" class="mjx-math"><span id="MJXc-Node-469" class="mjx-mrow"><span id="MJXc-Node-470" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.519em; padding-right: 0.006em;">y</span></span></span></span></span> de la courbe représente le taux de probabilité qu’une particule de la mine soit déposée sur le papier.
 </p>
 <p>
     Une vraie mine de crayon, cependant, n’est jamais aussi lisse et régulière que cette colline. Au niveau microscopique, la mine autant que le papier sont fragmentés comme des chaînes de montagnes. On peut s’imaginer qu’à mesure que le crayon est traîné sur le papier, sa mine vacille; elle change d’angle par rapport au papier; ses différentes aspérités sont appuyées sur la feuille à divers moments et à des niveaux de pression variés.
@@ -170,7 +171,7 @@
     <img class="abcd" src="../../images/graphite/normal-distribution-perlin.gif">
 </p>
 <p class="noindent">
-    Maintenant, il suffit de déplacer cette courbe fragmentée sur le plan et de dessiner des points noirs ou gris aux endroits où elle passe. La valeur <span id="MathJax-Element-3-Frame" class="mjx-chtml"><span id="MJXc-Node-505" class="mjx-math"><span id="MJXc-Node-506" class="mjx-mrow"><span id="MJXc-Node-507" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.519em; padding-right: 0.006em;">y</span></span></span></span></span> de la courbe déterminera la luminosité des points déposés&nbsp;: plus la valeur <span id="MathJax-Element-4-Frame" class="mjx-chtml"><span id="MJXc-Node-508" class="mjx-math"><span id="MJXc-Node-509" class="mjx-mrow"><span id="MJXc-Node-510" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.519em; padding-right: 0.006em;">y</span></span></span></span></span> est haute, plus le point dessiné est sombre. Le mode de mélange <span class="inline-code">blendMode(DARKEST)</span> de <span class="lnum">p5.js</span> contribue aussi beaucoup à l’apparence finale de la ligne&nbsp;: chaque point déposé n’apparaît que s’il est plus foncé que le point qui est dessous.
+    Maintenant, il suffit de déplacer cette courbe fragmentée sur le plan et de dessiner des points noirs ou gris aux endroits où elle passe. La valeur <span id="MathJax-Element-3-Frame" class="mjx-chtml"><span id="MJXc-Node-471" class="mjx-math"><span id="MJXc-Node-472" class="mjx-mrow"><span id="MJXc-Node-473" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.519em; padding-right: 0.006em;">y</span></span></span></span></span> de la courbe déterminera la luminosité des points déposés&nbsp;: plus la valeur <span id="MathJax-Element-4-Frame" class="mjx-chtml"><span id="MJXc-Node-474" class="mjx-math"><span id="MJXc-Node-475" class="mjx-mrow"><span id="MJXc-Node-476" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.519em; padding-right: 0.006em;">y</span></span></span></span></span> est haute, plus le point dessiné est sombre. Le mode de mélange <span class="inline-code">blendMode(DARKEST)</span> de <span class="lnum">p5.js</span> contribue aussi beaucoup à l’apparence finale de la ligne&nbsp;: chaque point déposé n’apparaît que s’il est plus foncé que le point qui est dessous.
 </p>
 <img src="../../images/graphite/fat-line.gif">
 <p class="noindent">
@@ -298,12 +299,8 @@
     <span class="small-caps">Mes réflexions</span> pour ce projet ont démarrées avec la lecture de l’article <span class="italic"><a href="">Automatically Mimicking Unique Hand-Drawn Pencil Lines</a></span>, signé par Zainab AlMeraj, Brian Wyvill, Tobias Isenberg, Amy A. Gooch et Richard Guy. Je n’ai au final pas utilisé les méthodes détaillées dans cet article mais il constitue néanmoins une lecture intéressante.
 </p>
 
-            </article><div id="blog-pagination">
-            <a href="./page-2.html">
-            Page suivante
-            </a>
-            
-        </div><div id="footer">Guillaume Pelletier-Auger — 2016-2018
+            </article>
+            <div id="footer">Guillaume Pelletier-Auger — 2016-2018
     </div>
     
     </body></html>
