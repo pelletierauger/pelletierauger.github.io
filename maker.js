@@ -627,6 +627,8 @@ function parseHTMLTemplate(s) {
     page.fr.content = page.fr.content.replace(/<\/dc>/g, `</span>`);
     page.fr.content = page.fr.content.replace(/<sc>/g, `<span class="small-caps">`);
     page.fr.content = page.fr.content.replace(/<\/sc>/g, `</span>`);
+    page.fr.content = page.fr.content.replace(/<sc8>/g, `<span class="small-caps8">`);
+    page.fr.content = page.fr.content.replace(/<\/sc8>/g, `</span>`);
     page.fr.content = page.fr.content.replace(/<math>/g, String.raw `<div class="math">\[`);
     page.fr.content = page.fr.content.replace(/<\/math>/g, String.raw `\]</div>`);
     page.fr.content = page.fr.content.replace(/<im>/g, String.raw `\(`);
@@ -710,6 +712,8 @@ function parseHTMLTemplate(s) {
     page.en.content = page.en.content.replace(/<\/dc>/g, `</span>`);
     page.en.content = page.en.content.replace(/<sc>/g, `<span class="small-caps">`);
     page.en.content = page.en.content.replace(/<\/sc>/g, `</span>`);
+    page.en.content = page.en.content.replace(/<sc8>/g, `<span class="small-caps8">`);
+    page.en.content = page.en.content.replace(/<\/sc8>/g, `</span>`);
     page.en.content = page.en.content.replace(/<math>/g, String.raw `<div class="math">\[`);
     page.en.content = page.en.content.replace(/<\/math>/g, String.raw `\]</div>`);
     page.en.content = page.en.content.replace(/<im>/g, String.raw `\(`);
