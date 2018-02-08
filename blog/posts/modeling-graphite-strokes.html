@@ -1,31 +1,48 @@
+<!-- style -->truchet
 <!-- year -->2018
 <!-- month -->02
 <!-- day -->03
-<!-- fr-title -->Modélisation de lignes de graphite
+<!-- fr-title -->Modélisation de lignes crayonnées
 <!-- fr-content -->
 <img src="../../../images/graphite/circles.jpg">
 <p class="article-top">
-    <sc>L'an dernier</sc>, j'ai écrit un court programme pour modéliser des lignes dessinées au graphite. Le projet est encore embryonnaire et je veux continuer à le faire avancer sporadiquement cette année. Je commencerai en relisant mon code de l'an dernier afin de bien le comprendre (je ne l'avais malheureusement pas documenté).
+    <sc>L'an dernier</sc>, j'ai écrit un court programme pour modéliser des lignes dessinées au crayon. Le projet est encore embryonnaire et je veux continuer à le faire avancer sporadiquement. Je commence aujourd'hui par une relecture du code écrit l'an dernier et une synthèse des idées qu'il contient.
 </p>
 <p>
-    L'image ci-dessus a été générée avec ce programme. Je trouve que c'est un point de départ intéressant, mais elle contient plusieurs problèmes. Tout d'abord, les lignes démarrent et s'arrêtent abruptement; elles n'ont pas cette pointe naturelle que l'on s'attendrait à voir aux extrémités d'un trait au graphite. Cela crée une brisure très artificielle dans le tracé des cercles. Ensuite, les lignes d'épaisseur moyenne sont les seules qui fonctionnent bien visuellement, les plus fines et les plus grasses étant des simulacres de graphite peu convainquants. Dernièrement, et c'est le plus grand problème, j'ai l'impression que la variation de l'épaisseur du trait est identique pour toutes les lignes dans le quadrant inférieur droit de chaque cercle. Il y a une <i>régularité désagréable</i> qui semble s'être glissée dans cet algorithme qui cherche à simuler le caractère imprévisible du crayon. De mauvais calculs trigonométriques se cacheraient-ils là-dessous?
+    L'image ci-dessus a été générée avec ce programme. Elle contient plusieurs problèmes qu'il me faudra résoudre. Tout d'abord, les lignes démarrent et s'arrêtent abruptement; elles n'ont pas cette pointe naturelle que l'on s'attendrait à voir aux extrémités d'un trait dessiné à la main. Cela crée une brisure très artificielle dans le tracé des cercles. Ensuite, les lignes d'épaisseur moyenne sont les seules qui fonctionnent bien visuellement, les plus fines et les plus grasses ayant un air peu naturel. Dernièrement, et c'est le plus grand problème, j'ai l'impression que la variation de l'épaisseur du trait est identique pour toutes les lignes dans le quadrant inférieur droit de chaque cercle. Il y a une <i>régularité désagréable</i> qui semble s'être glissée dans cet algorithme qui cherche à simuler le caractère imprévisible du crayon. De mauvais calculs trigonométriques se terrent peut-être là-dessous.
 </p>
-<h3>Distribution normale et variations aléatoires</h3>
+<h3>Distribution normale et variations <nb>semi-aléatoires</nb></h3>
 <pn>
-    <sc>L'idée initiale</sc> pour mon programme est tirée de l'article <i><a href="">Automatically Mimicking Unique Hand-Drawn Pencil Lines</a></i>, signé par Zainab AlMeraj, Brian Wyvill, Tobias Isenberg, Amy A. Gooch et Richard Guy.
+    <sc>L'idée centrale</sc> du programme consiste à utiliser une distribution normale pour simuler la forme d'une mine de crayon ainsi que ses frottements sur le papier. Tout d'abord, notre distribution normale est calculée avec l'équation suivante :
 </pn>
-<p>
-    Voici la formule que j'utilise pour calculer la distribution normale :
-</p>
 <math>
-    y = -\frac{1}{\sqrt{\pi \times 2}} \times 2.71828^{\frac{-x^{2}}{2}}    
+    y = \frac{1}{\sqrt{\pi \times 2}} \times 2.71828^{\frac{-x^{2}}{2}}   
 </math>
 <pn>
-    L'idée est de considérer que cette colline représente l'extrémité d'une mine de crayon. L'axe des <im>y</im> représente le taux de probabilité qu'une &ldquo;particule de graphite&rdquo; soit déposée sur le &ldquo;papier&rdquo;. Au niveau microscopique, la mine autant que le papier sont fragmentés comme des chaînes de montagnes. On peut s'imaginer qu'à mesure que le crayon est traîné sur le papier, sa mine vacille; elle change d'angle par rapport au papier; ses différentes aspérités sont appuyées sur la feuille à divers moments et à des niveaux de pression variés. Malgré tout ce chaos, la partie centrale de la mine dépose la plupart du temps beaucoup de graphite sur le papier, tandis que les zones excentriques en déposent moins. L'apparence des lignes de crayon est donc prévisible dans son coup d&rsquo;&oelig;il général et imprévisible dans ses détails.
+    Cette équation produit la courbe ci-dessous :
 </pn>
 <p>
-    Une idée : toujours en restant dans des mathématiques à deux dimensions, on pourrait imaginer une modélisation de la circonférence complète de la mine. Ce serait un cercle brisé par du bruit mais qui se refermerait sur lui-même. On pourrait faire tourner la mine selon l'angle du déplacement du crayon. On pourrait modéliser la dégradation de la mine &mdash; la mine pourrait passer d'une forme circulaire à une forme complètement cassée.
+    <img class="abcd" src="../../images/graphite/normal-distribution.png">
 </p>
+<pn>
+    Cette colline représente donc l'extrémité de la mine du crayon (on peut ignorer les parties horizontales, qui ne seront pas utilisées). L'axe des <im>y</im> de la courbe représente le taux de probabilité qu'une particule de la mine soit déposée sur le papier.
+</pn>
+<p>
+    Une vraie mine de crayon, cependant, n'est jamais aussi lisse et régulière que cette colline. Au niveau microscopique, la mine autant que le papier sont fragmentés comme des chaînes de montagnes. On peut s'imaginer qu'à mesure que le crayon est traîné sur le papier, sa mine vacille; elle change d'angle par rapport au papier; ses différentes aspérités sont appuyées sur la feuille à divers moments et à des niveaux de pression variés.
+</p>
+<p>
+    Afin d'obtenir une mine de crayon irrégulière, les valeurs obtenues par l'équation de la distribution normale sont altérées par du bruit de Perlin. Voici à quoi ressemble notre mine de crayon maintenant :
+</p>
+<p>
+    <img class="abcd" src="../../images/graphite/normal-distribution-perlin.gif">
+</p>
+<pn>
+    Maintenant, il suffit de déplacer cette courbe fragmentée sur le plan et de dessiner des points noirs ou gris aux endroits où elle passe. La valeur <im>y</im> de la courbe déterminera la luminosité des points déposés : plus la valeur <im>y</im> est haute, plus le point dessiné est sombre. Le mode de mélange <ic>blendMode(DARKEST)</ic> de <lnum>p5.js</lnum> contribue aussi beaucoup à l'apparence finale de la ligne : chaque point déposé n'apparaît que s'il est plus foncé que le point qui est dessous.
+</pn>
+<img src="../../images/graphite/fat-line.gif">
+<pn>
+    J'ai inclus ci-dessous le code source du programme tel qu'il existe en ce moment. J'ai de nombreuses idées pour le modifier et l'améliorer (<a href="#idees">détaillées plus bas</a>). En fait, il est certain que je vais tout réécrire. Vous pouvez aussi consulter <a href="">le code source sur GitHub</a>. Il est distribué librement avec une <a href="">licence Apache <lnum>2.0</lnum></a>.
+</pn>
 <code>
 var looping = true;
 var exporting = false;
@@ -34,26 +51,14 @@ var radiusAugmenter = 0;
 var graphiteWeight = 1;
 
 function setup() {
-    createCanvas(windowWidth, windowWidth);
+    createCanvas(windowWidth, windowHeight);
     background(255);
-    // noFill();
-    // stroke(255);
     noStroke();
-    // stroke(0, 30);
     frameRate(1);
-    // arr = [createVector(0, 0),
-    //     createVector(10, 10),
-    //     createVector(30, 30),
-    //     createVector(50, 100),
-    //     createVector(100, 20),
-    //     createVector(130, 0)
-    // ];
-    // noLoop();
     blendMode(DARKEST);
 }
 
 function draw() {
-
     translate(width / 2, height / 2);
     var total = 100;
     var increment = TWO_PI / total;
@@ -63,9 +68,6 @@ function draw() {
         var vec = createVector(x, y);
         arr.push(vec);
     }
-
-    // scale(0.5, 0.5);
-    // drawGraphiteBasic();
     drawGraphite(arr);
     if (exporting) {
         frameExport();
@@ -79,44 +81,23 @@ function drawGraphite(h) {
     var drawCount = 0;
     for (var j = 0; j < h.length - 1; j++) {
         if (h[j + 1]) {
-            // stroke(255, 100);
-            // line(h[j].x, h[j].y, h[j + 1].x, h[j + 1].y);
-            // stroke(0, 30);
-
             var v1 = h[j];
             var hypotenuse = dist(h[j].x, h[j].y, h[j + 1].x, h[j + 1].y);
-            // var opposite = abs(h[j + 1].y - h[j].y);
-            // var sinus = opposite / hypotenuse;
-            // var angle = Math.asin(sinus);
             var angle = atan2(h[j + 1].y - h[j].y, h[j + 1].x - h[j].x);
-
             push();
             translate(v1.x, v1.y);
             rotate(angle + PI / 2);
-            // if (h[j + 1].y < h[j].y) {
-            //     rotate(-angle + (PI / 2));
-            // } else {
-            //     rotate(angle + (PI / 2));
-            // }
-            // stroke(0);
-            // line(-10, 0, 10, 0);
-            // fill(200);
-            // ellipse(0, 0, 5);
-
             for (var i = 0; i < hypotenuse; i++) {
                 translate(0, -1);
-                drawGraphiteIsolated(drawCount);
+                drawGraphiteSegment(drawCount);
                 drawCount++;
             }
-            // ellipse(0, 0, 5);
             pop();
         }
     }
-
-    //h is an array of vectors
 }
 
-function drawGraphiteIsolated(t) {
+function drawGraphiteSegment(t) {
     for (var i = 0; i < 10; i += 0.12) {
         var x = i - 5;
         var y = -(1 / sqrt(TWO_PI)) * pow(2.71828, -pow(x, 2) / 2);
@@ -145,50 +126,168 @@ function drawGraphiteIsolated(t) {
     }
 }
 
-function drawGraphiteBasic() {
-    // background(51);
+function keyPressed() {
+    if (keyCode === 32) {
+        if (looping) {
+            noLoop();
+            looping = false;
+        } else {
+            loop();
+            looping = true;
+        }
+    }
+}
 
-    translate(width / 2, 0);
-    // scale(2, 2);
-    translate(0, frameCount);
+function frameExport() {
+    var formattedFrameCount = "" + frameCount;
+    while (formattedFrameCount.length < 5) {
+        formattedFrameCount = "0" + formattedFrameCount;
+    }
+    save("grooves" + formattedFrameCount + ".png");
+}
+</code>
+<a name="idees"><h3>Notes éparses</h3></a>
+<pn>
+    <sc>En fait</sc>, ce qu'il me faudrait, c'est une classe <ic>Line</ic>. N'importe quel procédé pourrait créer une nouvelle instance de <ic>Line</ic> et lui envoyer des vecteurs pour ajouter des segments à la ligne dessinée. La classe <ic>Line</ic> ferait la gestion automatique du bruit : elle s'assurerait que chaque nouveau segment de ligne ajouté soit une suite cohérente avec le dernier segment. Elle devrait aussi gérer les terminaisons &mdash; les débuts et fins de lignes. Il faudrait simplement que la méthode <ic>Line.drawSegment()</ic> reçoive en argument une booléenne nommée <ic>end</ic>. En recevant un segment terminal, l'instance de <ic>Line</ic> dessinerait un dernier segment pointu, puis changerait sa propriété booléenne <ic>terminated</ic> pour <ic>true</ic>. Le prochain segment dessiné réactiverait la ligne, qui dessinerait un nouveau segment pointu comme segment initial d'une nouvelle ligne. Ou plutôt, est-ce qu'une ligne qui reçoit un segment terminal devrait s'auto-détruire?
+</pn>
+<p>
+    Il pourrait aussi être intéressant de séparer le moment où les segments de lignes sont &ldquo;commandés&rdquo; par un programme et le moment où ils sont dessinés. Une instance de <ic>Line</ic> pourrait avoir une liste de segments à dessiner, et lorsqu'elle en reçoit de nouveaux, elle pourrait simplement les ajouter à cette liste. La méthode s'appelerait <ic>Line.addSegment()</ic>. Une autre méthode appelée <ic>Line.drawSegment()</ic> dessinerait simplement le prochain segment dans la liste. Ainsi, des milliers de segments pourraient être ajoutés dans un seul frame d'animation, mais au lieu d'être tous dessinés simultanément (ce qui ralentirait péniblement le système), ils seraient dessinés dans plusieurs frames d'animation consécutifs.
+</p>
+<p>
+    Je pourrais me servir de la fonction <ic>randomGaussian()</ic> qui est fournie avec <lnum>p5.js</lnum> et qui crée également une distribution normale &mdash; m'en servir au lieu de l'équation présentement utilisée.
+</p>
+<p>
+    Le code de l'an dernier utilise du bruit de Perlin unidimensionnel pour fragmenter la distribution normale alors qu'il me faudrait clairement utiliser du bruit bidimensionnel.
+</p>
+<p>
+    Idée improbable : toujours en restant dans des mathématiques à deux dimensions, on pourrait imaginer une modélisation de la circonférence complète de la mine. Ce serait une courbe brisée par du bruit mais qui se refermerait sur elle-même. On pourrait faire tourner la mine selon l'angle de déplacement du crayon. On pourrait même modéliser la dégradation progressive de la mine.
+</p>
+<h3>Sources</h3>
+<pn>
+    <sc>Mes réflexions</sc> pour ce projet ont démarrées avec la lecture de l'article <i><a href="">Automatically Mimicking Unique Hand-Drawn Pencil Lines</a></i>, signé par Zainab AlMeraj, Brian Wyvill, Tobias Isenberg, Amy A. Gooch et Richard Guy. Je n'ai au final pas utilisé les méthodes détaillées dans cet article mais il constitue néanmoins une lecture intéressante.
+</pn>
+<!-- en-title -->Modeling pencil strokes
+<!-- en-content -->
+<img src="../../../images/graphite/circles.jpg">
+<p class="article-top">
+    <sc>About a year ago</sc>, I wrote a short program to model pencil strokes. The project is still in its embryonic stages and I plan to keep working on it sporadically. I will begin now by revisiting the code written last year to extract its concepts.
+</p>
+<p>
+    The circular lines above were generated by this program. They have several problems that need to be solved. Firstly, they begin and end abruptly; they do not taper off like we would expect hand-drawn lines to do. This creates a very artifical break in the circles. Secondly, while the lines of average width have a relatively natural look, the thinnest and thickest ones look a lot less convincing. Finally, the variations in the width of the lines all seem strangely identical in the lower right quadrant of the circles. An <i>unpleasant regularity</i> seem to have emerged out of this algorithm that tries to model the unpredictability of a physical pencil. Some erroneous trigonometry might be at the root of this.
+</p>
+<h3>Normal distribution and <nb>semi-random</nb> variations</h3>
+<pn>
+    <sc>The core idea</sc> of this program is to use a normal distribution to simulate the shape of a pencil's lead. The normal distribution is calculated with this equation:
+</pn>
+<math>
+    y = \frac{1}{\sqrt{\pi \times 2}} \times 2.71828^{\frac{-x^{2}}{2}}   
+</math>
+<pn>
+    It plots the curve below:
+</pn>
+<p>
+    <img class="abcd" src="../../images/graphite/normal-distribution.png">
+</p>
+<pn>
+    This hill thus represents the extremity of the pencil's lead (we can ignore the horizontal parts of the curve; they will not be used). The <im>y</im> axis of the curve represents the probability that a particle of the lead will be transfered to the paper.
+</pn>
+<p>
+    A real pencil lead, of course, is never as smooth and regular as this hill. On a microscopic scale, both the lead and the sheet of paper are fragmented like mountain ranges. We can imagine that, as the pencil is rubbed on the paper, the lead moves irregularly; its angle relative to the paper changes; its jagged edges are pushed against the paper's texture at different moments and at varying levels of pressure.
+</p>
+<p>
+    To obtain an irregular lead, the values of the normal distribution equation are altered with Perlin noise. This is what our pencil lead resembles now:
+</p>
+<p>
+    <img class="abcd" src="../../images/graphite/normal-distribution-perlin.gif">
+</p>
+<pn>
+    Now, we only have to move this fragmented curve on the plane and draw black and grey dots at its foot. The <im>y</im> value of the curve determines the brightness of the drawn dots: as the <im>y</im> value increases, the dots get darker. The <ic>blendMode(DARKEST)</ic> option in <lnum>p5.js</lnum> also contributes considerably to the final look of the line: a dot is only drawn if it is darker than the dot below.
+</pn>
+<img src="../../images/graphite/fat-line.gif">
+<pn>
+    The source code of the program as it exists now is included below. I have numerous ideas for ways to modify and improve it (<a href="#ideas">detailed below</a>). In fact, it is certain that I will rewrite all of it. You can also <a href="">find this code on GitHub</a>. It is distributed as free software under an <a href="">Apache <lnum>2.0</lnum> licence</a>.
+</pn>
+<code>
+var looping = true;
+var exporting = false;
+var arr = [];
+var radiusAugmenter = 0;
+var graphiteWeight = 1;
 
-    // beginShape();
+function setup() {
+    createCanvas(windowWidth, windowHeight);
+    background(255);
+    noStroke();
+    frameRate(1);
+    blendMode(DARKEST);
+}
 
+function draw() {
+    translate(width / 2, height / 2);
+    var total = 100;
+    var increment = TWO_PI / total;
+    for (var i = 0; i < TWO_PI + increment; i += increment) {
+        var x = cos(i) * (50 + radiusAugmenter);
+        var y = sin(i) * (50 + radiusAugmenter);
+        var vec = createVector(x, y);
+        arr.push(vec);
+    }
+    drawGraphite(arr);
+    if (exporting) {
+        frameExport();
+    }
+    radiusAugmenter += 50;
+    graphiteWeight += 1;
+    arr = [];
+}
+
+function drawGraphite(h) {
+    var drawCount = 0;
+    for (var j = 0; j < h.length - 1; j++) {
+        if (h[j + 1]) {
+            var v1 = h[j];
+            var hypotenuse = dist(h[j].x, h[j].y, h[j + 1].x, h[j + 1].y);
+            var angle = atan2(h[j + 1].y - h[j].y, h[j + 1].x - h[j].x);
+            push();
+            translate(v1.x, v1.y);
+            rotate(angle + PI / 2);
+            for (var i = 0; i < hypotenuse; i++) {
+                translate(0, -1);
+                drawGraphiteSegment(drawCount);
+                drawCount++;
+            }
+            pop();
+        }
+    }
+}
+
+function drawGraphiteSegment(t) {
     for (var i = 0; i < 10; i += 0.12) {
         var x = i - 5;
         var y = -(1 / sqrt(TWO_PI)) * pow(2.71828, -pow(x, 2) / 2);
-        var noiseValue = i + frameCount / 100;
+        var noiseValue = i + t / 100;
         var n = noise(noiseValue) / 200;
         n += noise(noiseValue) * 2 * y;
         y += n;
         y *= 300;
-        // console.log(y);
-        // x = map(x, -5, 5, -width / 2 + 20, width / 2 - 20);
-        var n2 = noise(frameCount / 50);
-        var n3 = noise(100 + frameCount / 50);
-        var lineWidth = 10;
+        var n2 = noise(t / 50);
+        var n3 = noise(100 + t / 50);
+        var lineWidth = graphiteWeight;
         x *= lineWidth;
         if (x <= 0) {
             x *= n2;
         } else {
             x *= n3;
         }
-        var mapCrayon = map(y, -200, 0, 0, 250);
-        mapCrayon = constrain(mapCrayon, 0, 250);
-        // console.log(mapCrayon);
+        var mapCrayon = map(y, -200, 0, 80, 255);
+        mapCrayon = constrain(mapCrayon, 0, 255);
         fill(round(mapCrayon));
-        // var rando = random(255);
-        // fill((round(mapCrayon) + rando) * 2);
-        // if (random(2) < 1) {
         push();
-        var nGrain = noise(frameCount) * lineWidth * 1;
+        var nGrain = noise(t) * lineWidth * 1;
         translate(random(nGrain), random(nGrain));
         ellipse(x, 0, 2);
         pop();
-        // }
-        // vertex(x, y + n);
     }
-    // endShape(OPEN);
 }
 
 function keyPressed() {
@@ -211,12 +310,26 @@ function frameExport() {
     save("grooves" + formattedFrameCount + ".png");
 }
 </code>
-<!-- en-title -->Modeling graphite strokes
-<!-- en-content -->
-<img src="../../../images/graphite/circles.jpg">
-<p class="article-top">
-    <sc>About a year ago</sc>, I wrote some code to model graphite strokes. I want to dive into this project again this year, so I first need to recap what I actually did last year. This blog post is just me figuring that out.
+<a name="ideas"><h3>Scrambled notes</h3></a>
+<pn>
+    <sc>What I may require</sc> is a <ic>Line</ic> class. Any process could create a new instance of <ic>Line</ic> and send line segments to it as pairs of vectors. The <ic>Line</ic> class would automatically deal with the Perlin noise: it would make sure that each new line segment is added in a coherent way to the rest of the line (continuing its shape and varying width). The class would also deal with the beginnings and endings of lines. Its <ic>Line.drawSegment()</ic> method could receive an <ic>ending</ic> boolean to know that it needs to finish the stroke. When receiving a &ldquo;terminating&rdquo; segment, the class could put itself in a <ic>terminated</ic> mode. Any new line segment received after that would reactivate it and make it draw a line beginning. Or should a line that receives a terminating segment just <i>destroy</i> itself? Remove itself from an array of available lines, for example ?
+</pn>
+<p>
+    It could also be interesting to separate the moment when a line segment is sent to an instance of <ic>Line</ic> from the moment when this segment is drawn. An instance of <ic>Line</ic> could have an array of line segments to draw. When it would receive new ones, it would simply add them to this array. This would be done with the <ic>Line.addSegment()</ic> method. The <ic>Line.drawSegment()</ic> method would draw the next line segment from the array, and then remove it from there (or change its state to <ic>drawn</ic>). This way, thousands of line segments could be added to a <ic>Line</ic> in the same frame of animation but then, instead of all drawing them immediately (which could slow down the programming considerably depending on the actual drawing algorithm), these line segments could be drawn over the course of any number of consecutive animation frames. There would also be a way to control the speed at which a <ic>Line</ic> is drawn.
 </p>
 <p>
-    So I'm doing this with JavaScript and p5.js.
+    I could use the <ic>randomGaussian()</ic> function included in <lnum>p5.js</lnum> instead of using my own equation for the normal distribution.
 </p>
+<p>
+    Last year's code uses one-dimensional Perlin noise to &ldquo;fragment&rdquo; the normal distribution, but clearly it should use two-dimensional noise.
+</p>
+<p>
+    The visual unpleasantness with the narrowest and widest lines is probably all about <i>dot density</i>. All the circular lines on the top of this page have the same amount of dots per line segment &mdash; so the narrowest lines have too much dots and look too <i>crowded</i>, too blockish, while the widest lines look too <i>airy</i> or bushy. Changing the width of the lines should obviously change their dot density.
+</p>
+<p>
+    Less probable ideas: while still only using two-dimensional mathematics, we could imagine modeling the whole circonference of the pencil lead. It would be a curve broken apart by noise but curve that folds on itself &mdash; or repeat itself on the <im>x</im> axis. We could even rotate the direction of the lead to accompany the movements of the pencil. We could also model the progressive degradation of the lead.
+</p>
+<h3>Sources</h3>
+<pn>
+    <sc>My thinking</sc> for this project started with a reading of <i><a href="">Automatically Mimicking Unique Hand-Drawn Pencil Lines</a></i>, an article signed by Zainab AlMeraj, Brian Wyvill, Tobias Isenberg, Amy A. Gooch, and Richard Guy. In the end, I did not use the methods detailed in this article but it was an inspiring read nonetheless.
+</pn>
