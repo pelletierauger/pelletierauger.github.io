@@ -32,15 +32,13 @@
     <i>générateur de site statique</i> (static site generator) à la fois simple et offrant quelques fonctionnalités qui me sont importantes (tel que la possibilité de gérer une base de données de contenu bilingue), et j'étais insatisfait des générateurs déjà existants.
 </pn>
 <p>
-    Le <a href="https://github.com/pelletierauger/pelletierauger.github.io">code source de cette application</a> est sur GitHub (avec le code source de ce site Web au complet). Le module principal est <ic>maker.js</ic>. Il lit les données présentes dans les dossiers <ic>pages</ic> et <ic>blog</ic>, et utilise des modules supplémentaires contenus dans les dossiers <ic>formatters</ic> et <ic>node_modules</ic>. Les formules mathématiques affichées sur le site ont été mises en forme avec le module <a href=""><ic>mathjax-node</ic></a> et la syntaxe des boîtes de code informatique a été colorée avec le module <a href=""><ic>highlight.js</ic></a> ainsi qu'avec certains fignolages personnels.</p>
+    Le <a href="https://github.com/pelletierauger/pelletierauger.github.io">code source de cette application</a> est sur GitHub (avec le code source de ce site Web au complet). Le module principal est <ic>maker.js</ic>. Il lit les données présentes dans les dossiers <ic>pages</ic> et <ic>blog</ic>, et utilise des modules supplémentaires contenus dans les dossiers <ic>formatters</ic> et <ic>node_modules</ic>. Les formules mathématiques affichées sur le site ont été mises en forme avec le module <a href=""><ic>mathjax-node</ic></a> et la syntaxe des boîtes de code informatique a été colorée avec le module <a href=""><ic>highlight.js</ic></a> ainsi qu'avec un peu de code supplémentaire.</p>
 <p>
     La police de caractères utilisée pour le corps de ce site est
-    <sc>Eb</sc> Garamond, une recréation des fontes originales de Claude Garamont telles qu'utilisées dans un spécimen imprimé en 1592 par Konrad Berner.
-    <sc>Eb</sc> Garamond a été créée par Georg Duffner et est <a href="">distribuée librement et gratuitement sur GitHub</a>. La police utilisée pour l'affichage de code informatique est <ic>Inconsolata</ic>,
-    <a href="http://levien.com/type/myfonts/inconsolata.html">créée par Raph Levien</a> et distribuée librement avec une licence Open Font <sc>sil</sc>.
+    <a href="http://www.georgduffner.at/ebgaramond/"><sc>Eb</sc> Garamond</a>, une recréation des fontes originales de Claude Garamont telles qu'utilisées dans un spécimen imprimé en 1592 par Konrad Berner. <sc>Eb</sc> Garamond a été créée par Georg Duffner et est distribuée librement avec une licence Open Font <sc>sil</sc>. La police utilisée pour l'affichage de code informatique est <a href="http://levien.com/type/myfonts/inconsolata.html"><ic>Inconsolata</ic></a>, créée par Raph Levien et aussi distribuée librement avec une licence Open Font <sc>sil</sc>.
 </p>
 <p>
-    Le code <sc>css</sc> des notes de marge a été adapté depuis <a href="">Tufte.css</a>, un projet créé par Dave Liepmann d'après les travaux d'Edward Tufte. Tufte.css est distribué librement avec une licence <sc>mit</sc>.
+    Le code <sc>css</sc> des notes de marge a été adapté depuis <a href="https://edwardtufte.github.io/tufte-css/">Tufte.css</a>, un projet créé par Dave Liepmann d'après les travaux d'Edward Tufte. Tufte.css est distribué librement avec une licence <sc>mit</sc>.
 </p>
 <!-- en-title -->About
 <!-- en-description -->Guillaume Pelletier-Auger is an artist.
@@ -56,11 +54,11 @@
 <h3>This website</h3>
 <pn>
     <sc>To make this website</sc>, I developed a Node.js application that reads a database and outputs <sc>html</sc> content, generating all the files automatically. I created it because I wanted a lightweight static site generator with a few key features (like the possibility of easily managing a database of bilingual content), and I wasn't satisfied by pre-existing generators. You can
-    <a href="https://github.com/pelletierauger/pelletierauger.github.io">view the source code</a> for this application on GitHub (along with the source code for this whole website). The main module is <ic>maker.js</ic>. It reads the data inside the <ic>pages</ic> and <ic>blog</ic> folders and uses additionnal modules found in the <ic>formatters</ic> and <ic>node_modules</ic> folders. The mathematical formulas displayed on this site are formatted with the <ic>mathjax-node</ic> module and the syntax of code boxes is coloured with the <ic>highlight.js</ic> module and with some extra personal touches.
+    <a href="https://github.com/pelletierauger/pelletierauger.github.io">view the source code</a> for this application on GitHub (along with the source code for this whole website). The main module is <ic>maker.js</ic>. It reads the data inside the <ic>pages</ic> and <ic>blog</ic> folders and uses additionnal modules found in the <ic>formatters</ic> and <ic>node_modules</ic> folders. The mathematical formulas displayed on this site are formatted with the <a href=""><ic>mathjax-node</ic></a> module and the syntax of code boxes is coloured with the <a href=""><ic>highlight.js</ic></a> module and with some extra custom code.
 </pn>
 <p>
-    The typeface used for the body of this site is <sc>Eb</sc> Garamond, a recreation of Claude Garamont's original work as used in a typographical specimen printed in 1592 by Konrad Berner. <sc>Eb</sc> Garamond was created by Georg Duffner and is <a href="">distributed freely on GitHub</a>. The typeface used to display code is <ic>Inconsolata</ic>, <a href="http://levien.com/type/myfonts/inconsolata.html">created by Raph Levien</a> and distributed freely under an Open Font License <sc>sil</sc>.
+    The typeface used for the body of this site is <a href="http://www.georgduffner.at/ebgaramond/"><sc>Eb</sc> Garamond</a>, a recreation of Claude Garamont's original work as it appeared in a typographical specimen printed in 1592 by Konrad Berner. <sc>Eb</sc> Garamond was created by Georg Duffner and is distributed freely under an Open Font License <sc>sil</sc>. The typeface used to display code is <a href="http://levien.com/type/myfonts/inconsolata.html"><ic>Inconsolata</ic></a>, created by Raph Levien and also distributed freely under an Open Font License <sc>sil</sc>.
 </p>
 <p>
-    Tufte.css is released under the MIT license.
+    The <sc>css</sc> code for the margin notes is adapted from <a href="https://edwardtufte.github.io/tufte-css/">Tufte.css</a>, a project created by Dave Liepmann based on the design work of Edward Tufte. Tufte.css is released under the <sc>mit</sc> licence.
 </p>
