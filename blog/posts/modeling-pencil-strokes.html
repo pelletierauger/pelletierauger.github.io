@@ -41,7 +41,7 @@
 </pn>
 <img src="../../images/pencil/fat-line.gif">
 <pn>
-    J'ai inclus ci-dessous le code source du programme tel qu'il existe en ce moment. J'ai de nombreuses idées pour le modifier et l'améliorer (<a href="#idees">détaillées plus bas</a>). En fait, il est certain que je vais tout réécrire. Vous pouvez aussi consulter <a href="">le code source sur GitHub</a>. Il est distribué librement avec une <a href="">licence Apache <lnum>2.0</lnum></a>.
+    J'ai inclus ci-dessous le code source du programme tel qu'il existe en ce moment. J'ai de nombreuses idées pour le modifier et l'améliorer (<a href="#notes-eparses">détaillées plus bas</a>). En fait, il est certain que je vais tout réécrire. Vous pouvez aussi consulter <a href="">le code source sur GitHub</a>. Il est distribué librement avec une <a href="">licence Apache <lnum>2.0</lnum></a>.
 </pn>
 <code>
 var looping = true;
@@ -146,7 +146,7 @@ function frameExport() {
     save("grooves" + formattedFrameCount + ".png");
 }
 </code>
-<a name="idees"><h3>Notes éparses</h3></a>
+<a name="notes-eparses"><h3>Notes éparses</h3></a>
 <pn>
     <sc>En fait</sc>, ce qu'il me faudrait, c'est une classe <ic>Line</ic>. N'importe quel procédé pourrait créer une nouvelle instance de <ic>Line</ic> et lui envoyer des vecteurs pour ajouter des segments à la ligne dessinée. La classe <ic>Line</ic> ferait la gestion automatique du bruit : elle s'assurerait que chaque nouveau segment de ligne ajouté soit une suite cohérente avec le dernier segment. Elle devrait aussi gérer les terminaisons &mdash; les débuts et fins de lignes. Il faudrait simplement que la méthode <ic>Line.drawSegment()</ic> reçoive en argument une booléenne nommée <ic>end</ic>. En recevant un segment terminal, l'instance de <ic>Line</ic> dessinerait un dernier segment pointu, puis changerait sa propriété booléenne <ic>terminated</ic> pour <ic>true</ic>. Le prochain segment dessiné réactiverait la ligne, qui dessinerait un nouveau segment pointu comme segment initial d'une nouvelle ligne. Ou plutôt, est-ce qu'une ligne qui reçoit un segment terminal devrait s'auto-détruire?
 </pn>
