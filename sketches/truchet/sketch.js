@@ -36,7 +36,7 @@ function setup() {
     canvasContainer.style("margin", "2em 0");
     canvasContainer.mouseClicked(function() {
         if (looping) {
-            manualButton.style("box-shadow", "0px 1px white, 0px 2px black");
+            manualButton.style("box-shadow", "inset 0px -1px white, inset 0px -2px black");
             showreelButton.style("box-shadow", "unset");
             looping = false;
             noLoop();
@@ -119,10 +119,10 @@ function setup() {
     normalButton.style("cursor", "pointer");
     normalButton.style("padding-top", "4px");
     normalButton.style("border-bottom", "1px solid black");
-    normalButton.style("box-shadow", "0px 1px white, 0px 2px black");
+    normalButton.style("box-shadow", "inset 0px -1px white, inset 0px -2px black");
     normalButton.mouseClicked(function() {
         if (wavy) {
-            normalButton.style("box-shadow", "0px 1px white, 0px 2px black");
+            normalButton.style("box-shadow", "inset 0px -1px white, inset 0px -2px black");
             wavyButton.style("box-shadow", "unset");
             wavy = false;
             redraw();
@@ -134,7 +134,7 @@ function setup() {
     wavyButton.style("border-bottom", "1px solid black");
     wavyButton.mouseClicked(function() {
         if (!wavy) {
-            wavyButton.style("box-shadow", "0px 1px white, 0px 2px black");
+            wavyButton.style("box-shadow", "inset 0px -1px white, inset 0px -2px black");
             normalButton.style("box-shadow", "unset");
             wavy = true;
             redraw();
@@ -147,10 +147,10 @@ function setup() {
     manualButton.style("cursor", "pointer");
     manualButton.style("padding-top", "4px");
     manualButton.style("border-bottom", "1px solid black");
-    manualButton.style("box-shadow", "0px 1px white, 0px 2px black");
+    manualButton.style("box-shadow", "inset 0px -1px white, inset 0px -2px black");
     manualButton.mouseClicked(function() {
         if (looping) {
-            manualButton.style("box-shadow", "0px 1px white, 0px 2px black");
+            manualButton.style("box-shadow", "inset 0px -1px white, inset 0px -2px black");
             showreelButton.style("box-shadow", "unset");
             looping = false;
             noLoop();
@@ -162,7 +162,7 @@ function setup() {
     showreelButton.style("border-bottom", "1px solid black");
     showreelButton.mouseClicked(function() {
         if (!looping) {
-            showreelButton.style("box-shadow", "0px 1px white, 0px 2px black");
+            showreelButton.style("box-shadow", "inset 0px -1px white, inset 0px -2px black");
             manualButton.style("box-shadow", "unset");
             looping = true;
             loop();
