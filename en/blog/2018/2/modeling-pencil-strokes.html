@@ -175,7 +175,7 @@
 </p>
 <img src="../../../../images/pencil/fat-line.gif">
 <p class="noindent">
-    The source code of the program as it exists now is included below. I have numerous ideas for ways to modify and improve it (<a href="#scrambled-notes">detailed below</a>). In fact, it is certain that I will rewrite all of it. You can also <a href="">find this code on GitHub</a>. It is distributed as free software under an <a href="">Apache <span class="lnum">2.0</span> licence</a>.
+    The source code of the program as it exists now is included below. I have numerous ideas for ways to modify and improve it (<a href="#scribbled-notes">detailed below</a>). In fact, it is certain that I will rewrite all of it. You can also <a href="">find this code on GitHub</a>. It is distributed as free software under an <a href="">Apache <span class="lnum">2.0</span> licence</a>.
 </p>
 <div class="codebox"><pre><code><span class="hljs-keyword">var</span> looping<span class="hljs-punctuation"> = </span><span class="hljs-literal">true</span>;
 <span class="hljs-keyword">var</span> exporting<span class="hljs-punctuation"> = </span><span class="hljs-literal">false</span>;
@@ -278,7 +278,7 @@
     }
     save(<span class="hljs-string">"grooves"</span><span class="hljs-punctuation"> + </span>formattedFrameCount<span class="hljs-punctuation"> + </span><span class="hljs-string">".png"</span>);
 }</code></pre></div>
-<a name="scrambled-notes"><h3>Scrambled notes</h3></a>
+<a name="scribbled-notes"><h3>Scribbled notes</h3></a>
 <p class="noindent">
     <span class="small-caps">What I may require</span> is a <span class="inline-code">Line</span> class. Any process could create a new instance of <span class="inline-code">Line</span> and send line segments to it as pairs of vectors. The <span class="inline-code">Line</span> class would automatically deal with the Perlin noise: it would make sure that each new line segment is added in a coherent way to the rest of the line (continuing its shape and varying width). The class would also deal with the beginnings and endings of lines. Its <span class="inline-code">Line.drawSegment()</span> method could receive an <span class="inline-code">ending</span> boolean to know that it needs to finish the stroke. When receiving a “terminating” segment, the class could put itself in a <span class="inline-code">terminated</span> mode. Any new line segment received after that would reactivate it and make it draw a line beginning. Or should a line that receives a terminating segment just <span class="italic">destroy</span> itself&nbsp;? Remove itself from an array of available lines, for example&nbsp; ?
 </p>
