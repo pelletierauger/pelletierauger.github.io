@@ -139,7 +139,7 @@
         
         
             <article class="blog-post"><h2 class="with-date"><a href="../blog/2018/2/modeling-pencil-strokes.html">Modeling pencil strokes</a></h2><div class="date">February 3, 2018</div>
-<img src="../../../images/graphite/circles.jpg">
+<img src="../../../images/pencil/circles.jpg">
 <p class="article-top">
     <span class="small-caps">About a year ago</span>, I wrote a short program to model pencil strokes. The project is still in its embryonic stages and I plan to keep working on it sporadically. I will begin now by revisiting the code written last year to extract its concepts.
 </p>
@@ -155,7 +155,7 @@
     It plots the curve below:
 </p>
 <p>
-    <img class="abcd" src="../../images/graphite/normal-distribution.png">
+    <img class="abcd" src="../../../images/pencil/normal-distribution.png">
 </p>
 <p class="noindent">
     This hill thus represents the extremity of the pencil’s lead (we can ignore the horizontal parts of the curve; they will not be used). The <span id="MathJax-Element-2-Frame" class="mjx-chtml"><span id="MJXc-Node-573" class="mjx-math"><span id="MJXc-Node-574" class="mjx-mrow"><span id="MJXc-Node-575" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.519em; padding-right: 0.006em;">y</span></span></span></span></span> axis of the curve represents the probability that a particle of the lead will be transfered to the paper.
@@ -167,12 +167,12 @@
     To obtain an irregular lead, the values of the normal distribution equation are altered with Perlin noise. This is what our pencil lead resembles now:
 </p>
 <p>
-    <img class="abcd" src="../../images/graphite/normal-distribution-perlin.gif">
+    <img class="abcd" src="../../../images/pencil/normal-distribution-perlin.gif">
 </p>
 <p class="noindent">
     Now, we only have to move this fragmented curve on the plane and draw black and grey dots at its foot. The <span id="MathJax-Element-3-Frame" class="mjx-chtml"><span id="MJXc-Node-576" class="mjx-math"><span id="MJXc-Node-577" class="mjx-mrow"><span id="MJXc-Node-578" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.519em; padding-right: 0.006em;">y</span></span></span></span></span> value of the curve determines the brightness of the drawn dots: as the <span id="MathJax-Element-4-Frame" class="mjx-chtml"><span id="MJXc-Node-579" class="mjx-math"><span id="MJXc-Node-580" class="mjx-mrow"><span id="MJXc-Node-581" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.519em; padding-right: 0.006em;">y</span></span></span></span></span> value increases, the dots get darker. The <span class="inline-code">blendMode(DARKEST)</span> option of <span class="lnum">p5.js</span> also contributes considerably to the final look of the line: a dot is only drawn if it is darker than the dot below.
 </p>
-<img src="../../images/graphite/fat-line.gif">
+<img src="../../../images/pencil/fat-line.gif">
 <p class="noindent">
     The source code of the program as it exists now is included below. I have numerous ideas for ways to modify and improve it (<a href="#scrambled-notes">detailed below</a>). In fact, it is certain that I will rewrite all of it. You can also <a href="">find this code on GitHub</a>. It is distributed as free software under an <a href="">Apache <span class="lnum">2.0</span> licence</a>.
 </p>
@@ -282,7 +282,7 @@
     <span class="small-caps">What I may require</span> is a <span class="inline-code">Line</span> class. Any process could create a new instance of <span class="inline-code">Line</span> and send line segments to it as pairs of vectors. The <span class="inline-code">Line</span> class would automatically deal with the Perlin noise: it would make sure that each new line segment is added in a coherent way to the rest of the line (continuing its shape and varying width). The class would also deal with the beginnings and endings of lines. Its <span class="inline-code">Line.drawSegment()</span> method could receive an <span class="inline-code">ending</span> boolean to know that it needs to finish the stroke. When receiving a “terminating” segment, the class could put itself in a <span class="inline-code">terminated</span> mode. Any new line segment received after that would reactivate it and make it draw a line beginning. Or should a line that receives a terminating segment just <span class="italic">destroy</span> itself&nbsp;? Remove itself from an array of available lines, for example&nbsp; ?
 </p>
 <p>
-    It could also be interesting to separate the moment when a line segment is sent to an instance of <span class="inline-code">Line</span> from the moment when this segment is drawn. An instance of <span class="inline-code">Line</span> could have an array of line segments to draw. When it would receive new ones, it would simply add them to this array. This would be done with the <span class="inline-code">Line.addSegment()</span> method. The <span class="inline-code">Line.drawSegment()</span> method would draw the next line segment from the array, and then remove it from there (or change its state to <span class="inline-code">drawn</span>). This way, thousands of line segments could be added to a <span class="inline-code">Line</span> in the same frame of animation but then, instead of all drawing them immediately (which could slow down the programming considerably depending on the actual drawing algorithm), these line segments could be drawn over the course of any number of consecutive animation frames. There would also be a way to control the speed at which a <span class="inline-code">Line</span> is drawn.
+    It could also be interesting to separate the moment when a line segment is sent to an instance of <span class="inline-code">Line</span> from the moment when this segment is drawn. An instance of <span class="inline-code">Line</span> could have an array of line segments to draw. When it would receive new ones, it would simply add them to this array. This would be done with the <span class="inline-code">Line.addSegment()</span> method. The <span class="inline-code">Line.drawSegment()</span> method would draw the next line segment from the array, and then remove it from there (or change its state to <span class="inline-code">drawn</span>). This way, thousands of line segments could be added to a <span class="inline-code">Line</span> in the same frame of animation but then, instead of all drawing them immediately (which would slow the program down considerably), these line segments could be drawn over the course of any number of consecutive animation frames. There would also be a way to control the speed at which a <span class="inline-code">Line</span> is drawn.
 </p>
 <p>
     I could use the <span class="inline-code">randomGaussian()</span> function included in <span class="lnum">p5.js</span> instead of using my own equation for the normal distribution.

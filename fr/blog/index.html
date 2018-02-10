@@ -139,7 +139,7 @@
         
         
             <article class="blog-post"><h2 class="with-date"><a href="../blog/2018/2/modelisation-de-lignes-crayonnees.html">Modélisation de lignes crayonnées</a></h2><div class="date">3 février 2018</div>
-<img src="../../../images/graphite/circles.jpg">
+<img src="../../../images/pencil/circles.jpg">
 <p class="article-top">
     <span class="small-caps">L’an dernier</span>, j’ai écrit un court programme pour modéliser des lignes dessinées au crayon. Le projet est encore embryonnaire et je veux continuer à le faire avancer sporadiquement. Je commence aujourd’hui par une relecture du code écrit l’an dernier et une synthèse des idées qu’il contient.
 </p>
@@ -155,7 +155,7 @@
     Cette équation produit la courbe ci-dessous&nbsp;:
 </p>
 <p>
-    <img class="abcd" src="../../images/graphite/normal-distribution.png">
+    <img class="abcd" src="../../../images/pencil/normal-distribution.png">
 </p>
 <p class="noindent">
     Cette colline représente donc l’extrémité de la mine du crayon (on peut ignorer les parties horizontales, qui ne seront pas utilisées). L’axe des <span id="MathJax-Element-2-Frame" class="mjx-chtml"><span id="MJXc-Node-502" class="mjx-math"><span id="MJXc-Node-503" class="mjx-mrow"><span id="MJXc-Node-504" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.519em; padding-right: 0.006em;">y</span></span></span></span></span> de la courbe représente le taux de probabilité qu’une particule de la mine soit déposée sur le papier.
@@ -167,14 +167,14 @@
     Afin d’obtenir une mine de crayon irrégulière, les valeurs obtenues par l’équation de la distribution normale sont altérées par du bruit de Perlin. Voici à quoi ressemble notre mine de crayon maintenant&nbsp;:
 </p>
 <p>
-    <img class="abcd" src="../../images/graphite/normal-distribution-perlin.gif">
+    <img class="abcd" src="../../../images/pencil/normal-distribution-perlin.gif">
 </p>
 <p class="noindent">
     Maintenant, il suffit de déplacer cette courbe fragmentée sur le plan et de dessiner des points noirs ou gris aux endroits où elle passe. La valeur <span id="MathJax-Element-3-Frame" class="mjx-chtml"><span id="MJXc-Node-505" class="mjx-math"><span id="MJXc-Node-506" class="mjx-mrow"><span id="MJXc-Node-507" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.519em; padding-right: 0.006em;">y</span></span></span></span></span> de la courbe déterminera la luminosité des points déposés&nbsp;: plus la valeur <span id="MathJax-Element-4-Frame" class="mjx-chtml"><span id="MJXc-Node-508" class="mjx-math"><span id="MJXc-Node-509" class="mjx-mrow"><span id="MJXc-Node-510" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.519em; padding-right: 0.006em;">y</span></span></span></span></span> est haute, plus le point dessiné est sombre. Le mode de mélange <span class="inline-code">blendMode(DARKEST)</span> de <span class="lnum">p5.js</span> contribue aussi beaucoup à l’apparence finale de la ligne&nbsp;: chaque point déposé n’apparaît que s’il est plus foncé que le point qui est dessous.
 </p>
-<img src="../../images/graphite/fat-line.gif">
+<img src="../../../images/pencil/fat-line.gif">
 <p class="noindent">
-    J’ai inclus ci-dessous le code source du programme tel qu’il existe en ce moment. J’ai de nombreuses idées pour le modifier et l’améliorer (<a href="#idees">détaillées plus bas</a>). En fait, il est certain que je vais tout réécrire. Vous pouvez aussi consulter <a href="">le code source sur GitHub</a>. Il est distribué librement avec une <a href="">licence Apache <span class="lnum">2.0</span></a>.
+    J’ai inclus ci-dessous le code source du programme tel qu’il existe en ce moment. J’ai de nombreuses idées pour le modifier et l’améliorer (<a href="#notes-eparses">détaillées plus bas</a>). En fait, il est certain que je vais tout réécrire. Vous pouvez aussi consulter <a href="">le code source sur GitHub</a>. Il est distribué librement avec une <a href="">licence Apache <span class="lnum">2.0</span></a>.
 </p>
 <div class="codebox"><pre><code><span class="hljs-keyword">var</span> looping<span class="hljs-punctuation"> = </span><span class="hljs-literal">true</span>;
 <span class="hljs-keyword">var</span> exporting<span class="hljs-punctuation"> = </span><span class="hljs-literal">false</span>;
@@ -277,7 +277,7 @@
     }
     save(<span class="hljs-string">"grooves"</span><span class="hljs-punctuation"> + </span>formattedFrameCount<span class="hljs-punctuation"> + </span><span class="hljs-string">".png"</span>);
 }</code></pre></div>
-<a name="idees"><h3>Notes éparses</h3></a>
+<a name="notes-eparses"><h3>Notes éparses</h3></a>
 <p class="noindent">
     <span class="small-caps">En fait</span>, ce qu’il me faudrait, c’est une classe <span class="inline-code">Line</span>. N’importe quel procédé pourrait créer une nouvelle instance de <span class="inline-code">Line</span> et lui envoyer des vecteurs pour ajouter des segments à la ligne dessinée. La classe <span class="inline-code">Line</span> ferait la gestion automatique du bruit&nbsp;: elle s’assurerait que chaque nouveau segment de ligne ajouté soit une suite cohérente avec le dernier segment. Elle devrait aussi gérer les terminaisons — les débuts et fins de lignes. Il faudrait simplement que la méthode <span class="inline-code">Line.drawSegment()</span> reçoive en argument une booléenne nommée <span class="inline-code">end</span>. En recevant un segment terminal, l’instance de <span class="inline-code">Line</span> dessinerait un dernier segment pointu, puis changerait sa propriété booléenne <span class="inline-code">terminated</span> pour <span class="inline-code">true</span>. Le prochain segment dessiné réactiverait la ligne, qui dessinerait un nouveau segment pointu comme segment initial d’une nouvelle ligne. Ou plutôt, est-ce qu’une ligne qui reçoit un segment terminal devrait s’auto-détruire&nbsp;?
 </p>
