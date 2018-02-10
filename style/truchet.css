@@ -131,3 +131,12 @@ img.possibilities {
 .tightkern {
     margin-right: 0.03em;
 }
+
+.keys {
+    padding: 0 0.4em 0 0.4em;
+    margin: 0 0.1em;
+    border: 1px solid black;
+    box-shadow: 1px 1px black;
+    /*line-height: 0.5em;*/
+    /*padding-bottom: -0.5em;*/
+}
