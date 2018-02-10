@@ -133,10 +133,10 @@ img.possibilities {
 }
 
 .keys {
-    padding: 0 0.4em 0 0.4em;
+    padding: 0 0.4em;
     margin: 0 0.1em;
-    border: 1px solid black;
-    box-shadow: 1px 1px black;
-    /*line-height: 0.5em;*/
-    /*padding-bottom: -0.5em;*/
+    border: 1px solid #000000;
+    box-shadow: 1px 1px #000000;
+    position: relative;
+    bottom: 0.12em;
 }
