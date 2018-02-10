@@ -216,13 +216,13 @@
 </p>
 <h3>The random tiling generator</h3>
 <pn>
-    <sc>When I saw the simplicity</sc> of the staircase-shaped groups of tiles that Truchet uses to build his tilings, I decided to write a program that would choose each tile of a staircase randomly and apply automatically all the symmetries necessary to fill a tiling. I also added two new tiles: the empty tile and the filled tile, which I designate <sc>e</sc> and <sc>f</sc>.<snr label="triche">The attentive reader will understand that <i8>I'm cheating</i8>, since <sc8>a, b, c</sc8>, and <sc8>d</sc8> designate four different rotations of the same tile, while <sc8>e</sc8> and <sc8>f</sc8> designate two distinct tiles. Will such a loose way to group and define things be forgiven ? I find that the inclusion of <sc8>e</sc8> and <sc8>f</sc8> generates patterns that differ in interesting ways with Truchet's own tilings.</snr>
+    <sc>When I saw the simplicity</sc> of the staircase-shaped groups of tiles that Truchet uses to build his tilings, I decided to write a program that would choose each tile of a staircase randomly and apply automatically all the symmetries necessary to fill a tiling. I also added two new tiles: the empty tile and the filled tile, which I designate <sc>e</sc> and <sc>f</sc>.<snr label="triche">The attentive reader will understand that <i8>I'm cheating</i8>, since <sc8>a, b, c</sc8>, and <sc8>d</sc8> designate four different rotations of the same tile, while <sc8>e</sc8> and <sc8>f</sc8> designate two distinct tiles. Will such a loose way to group and define things be forgiven? I find that the inclusion of <sc8>e</sc8> and <sc8>f</sc8> generates patterns that differ in interesting ways with Truchet's own tilings.</snr>
 </pn>
 <p>
     <img class="abcd" src="../../images/truchet/abcdef.png">
 </p>
 <pn>
-    <sc>Instructions for the generator: </sc>Click or touch the tiling below to generate a new one. You can also press <ic>r</ic> on your keyboard to achieve the same effect. You can keep using this <span id="manual"><sc> manual mode</sc></span> or try an <span id="showreel"><sc>automatic mode</sc></span> which generates a new tiling every second.
+    <sc>Instructions for the generator: </sc>Click or touch the tiling below to generate a new one. You can also press <span class="keys">r</span> on your keyboard to achieve the same effect. You can keep using this <span id="manual"><sc> manual mode</sc></span> or try an <span id="showreel"><sc>automatic mode</sc></span> that generates a new tiling every second.
 </pn>
 <div id="tiling-generator"></div>
 <pn>
@@ -243,7 +243,7 @@
 </pn>
 <h3>Tilings of many colours</h3>
 <pn>
-    <sc>One of the questions</sc> I sought to answer with this project was: <i>How could we apply colours to the tilings of Truchet?</i> In order for the colouration of a tiling to respond harmoniously to its symmetrical construction, I decided to define its colours using the same staircase shape from which it is built.
+    <sc>One of the questions</sc> I sought to answer with this project was: <i>How could we apply colours to the tilings of Truchet?</i> In order for the coloration of a tiling to respond harmoniously to its symmetrical construction, I decided to define its colours using the same staircase shape from which it is built.
 </pn>
 <p>
     To do so, I created a system that randomly chooses four colours for each generation of a staircase. Colours <lnum>1 and 2</lnum> and assigned to the tiles's lighter part, and colours <lnum>3 and 4</lnum> to their darker part. The colours are then applied on the staircase, creating a gradient from colour <lnum>1 to colour 2</lnum> and another from <lnum>3 to 4</lnum>. When the staircase is mirrored and copied to create the whole tiling, the colours are thus spread over it with the same horizontal, vertical, and diagonal symmetries.
@@ -255,10 +255,10 @@
     Then, in order to give a subtle textured look to the tilings, the generator doesn't simply draw triangles and squares to form the tiling: it draws thousands of minuscule circles within the limits of each tile. A full tiling is made of around 15 million dots.
 </pn>
 <p>
-    I did not include the generator of multicoloured tilings on this page because the majority of the colour palettes that it generates are not so harmonious and the drawing of a tiling using millions of dots takes a few minutes to complete. Nevertheless, if your patience and your courage are limitless, you are welcome to try <a href="https://pelletierauger.github.io/Truchet/?lang=fr">the multicolour generator</a> for yourself.
+    I did not include the generator of multicoloured tilings on this page because the majority of the colour palettes that it generates are quite dissonant (they are, after all, completely random) and the drawing of a tiling using millions of dots takes a few minutes to complete. Nevertheless, if your patience and your courage are limitless, you are welcome to <a href="https://pelletierauger.github.io/Truchet/?lang=fr">try the multicolour generator</a> for yourself.
 </p>
 <p>
-    For the others, here are some multicoloured tilings generated in early 2018 :
+    For the others, here are some tilings generated in early 2018:
 </p>
 <div class="imagedouble-margin-tilings">
     <img src="../../images/truchet/075-vert.png">
