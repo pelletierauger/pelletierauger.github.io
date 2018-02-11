@@ -3,21 +3,28 @@
 <!-- month -->02
 <!-- day -->03
 <!-- fr-title -->Modélisation de lignes crayonnées
+<!-- fr-description -->Premières ébauches de méthodes pour imiter l'apparence du dessin.
 <!-- fr-content -->
+
 <img src="../../../images/pencil/circles.jpg">
+
 <p class="article-top">
     <sc>L'an dernier</sc>, j'ai écrit un court programme pour modéliser des lignes dessinées au crayon. Le projet est encore embryonnaire et je veux continuer à le faire avancer sporadiquement. Je commence aujourd'hui par une relecture du code écrit l'an dernier et une synthèse des idées qu'il contient.
 </p>
 <p>
     L'image ci-dessus a été générée avec ce programme. Elle contient plusieurs problèmes qu'il me faudra résoudre. Tout d'abord, les lignes démarrent et s'arrêtent abruptement; elles n'ont pas cette pointe naturelle que l'on s'attendrait à voir aux extrémités d'un trait dessiné à la main. Cela crée une brisure très artificielle dans le tracé des cercles. Ensuite, les lignes d'épaisseur moyenne sont les seules qui fonctionnent bien visuellement, les plus fines et les plus grasses ayant un air peu naturel. Dernièrement, et c'est le plus grand problème, j'ai l'impression que la variation de l'épaisseur du trait est identique pour toutes les lignes dans le quadrant inférieur droit de chaque cercle. Il y a une <i>régularité désagréable</i> qui semble s'être glissée dans cet algorithme qui cherche à simuler le caractère imprévisible du crayon. De mauvais calculs trigonométriques se terrent peut-être là-dessous.
 </p>
+
 <h3>Distribution normale et variations <nb>semi-aléatoires</nb></h3>
+
 <pn>
     <sc>L'idée centrale</sc> du programme consiste à utiliser une distribution normale pour simuler la forme d'une mine de crayon ainsi que ses frottements sur le papier. Tout d'abord, notre distribution normale est calculée avec l'équation suivante :
 </pn>
+
 <math>
     y = \frac{1}{\sqrt{\pi \times 2}} \times 2.71828^{\frac{-x^{2}}{2}}   
 </math>
+
 <pn>
     Cette équation produit la courbe ci-dessous :
 </pn>
@@ -43,6 +50,7 @@
 <pn>
     J'ai inclus ci-dessous le code source du programme tel qu'il existe en ce moment. J'ai de nombreuses idées pour le modifier et l'améliorer (<a href="#notes-eparses">détaillées plus bas</a>). En fait, il est certain que je vais tout réécrire. Vous pouvez aussi consulter <a href="">le code source sur GitHub</a>. Il est distribué librement avec une <a href="">licence Apache <lnum>2.0</lnum></a>.
 </pn>
+
 <code>
 var looping = true;
 var exporting = false;
@@ -146,7 +154,9 @@ function frameExport() {
     save("grooves" + formattedFrameCount + ".png");
 }
 </code>
+
 <a name="notes-eparses"><h3>Notes éparses</h3></a>
+
 <pn>
     <sc>En fait</sc>, ce qu'il me faudrait, c'est une classe <ic>Line</ic>. N'importe quel procédé pourrait créer une nouvelle instance de <ic>Line</ic> et lui envoyer des vecteurs pour ajouter des segments à la ligne dessinée. La classe <ic>Line</ic> ferait la gestion automatique du bruit : elle s'assurerait que chaque nouveau segment de ligne ajouté soit une suite cohérente avec le dernier segment. Elle devrait aussi gérer les terminaisons &mdash; les débuts et fins de lignes. Il faudrait simplement que la méthode <ic>Line.drawSegment()</ic> reçoive en argument une booléenne nommée <ic>end</ic>. En recevant un segment terminal, l'instance de <ic>Line</ic> dessinerait un dernier segment pointu, puis changerait sa propriété booléenne <ic>terminated</ic> pour <ic>true</ic>. Le prochain segment dessiné réactiverait la ligne, qui dessinerait un nouveau segment pointu comme segment initial d'une nouvelle ligne. Ou plutôt, est-ce qu'une ligne qui reçoit un segment terminal devrait s'auto-détruire?
 </pn>
@@ -162,26 +172,36 @@ function frameExport() {
 <p>
     Idée improbable : toujours en restant dans des mathématiques à deux dimensions, on pourrait imaginer une modélisation de la circonférence complète de la mine. Ce serait une courbe brisée par du bruit mais qui se refermerait sur elle-même. On pourrait faire tourner la mine selon l'angle de déplacement du crayon. On pourrait même modéliser la dégradation progressive de la mine.
 </p>
+
 <h3>Sources</h3>
+
 <pn>
     <sc>Mes réflexions</sc> pour ce projet ont démarrées avec la lecture de l'article <i><a href="">Automatically Mimicking Unique Hand-Drawn Pencil Lines</a></i>, signé par Zainab AlMeraj, Brian Wyvill, Tobias Isenberg, Amy A. Gooch et Richard Guy. Je n'ai au final pas utilisé les méthodes détaillées dans cet article mais il constitue néanmoins une lecture intéressante.
 </pn>
+
 <!-- en-title -->Modeling pencil strokes
+<!-- en-description -->A first foray into methods to imitate the look of hand drawings.
 <!-- en-content -->
+
 <img src="../../../images/pencil/circles.jpg">
+
 <p class="article-top">
     <sc>About a year ago</sc>, I wrote a short program to model pencil strokes. The project is still in its embryonic stages and I plan to keep working on it sporadically. I will begin now by revisiting the code written last year to extract its concepts.
 </p>
 <p>
     The circular lines above were generated by this program. They have several problems that need to be solved. Firstly, they begin and end abruptly; they do not taper off like we would expect hand-drawn lines to do. This creates a very artifical break in the circles. Secondly, while the lines of average width have a relatively natural look, the thinnest and thickest ones look a lot less convincing. Finally, the variations in the width of the lines all seem strangely identical in the lower right quadrant of the circles. An <i>unpleasant regularity</i> seem to have emerged out of this algorithm that tries to model the unpredictability of a physical pencil. Some erroneous trigonometry might be at the root of this.
 </p>
+
 <h3>Normal distribution and <nb>semi-random</nb> variations</h3>
+
 <pn>
     <sc>The core idea</sc> of this program is to use a normal distribution to simulate the shape of a pencil's lead. The normal distribution is calculated with this equation:
 </pn>
+
 <math>
     y = \frac{1}{\sqrt{\pi \times 2}} \times 2.71828^{\frac{-x^{2}}{2}}   
 </math>
+
 <pn>
     It plots the curve below:
 </pn>
@@ -207,6 +227,7 @@ function frameExport() {
 <pn>
     The source code of the program as it exists now is included below. I have numerous ideas for ways to modify and improve it (<a href="#scribbled-notes">detailed below</a>). In fact, it is certain that I will rewrite all of it. You can also <a href="">find this code on GitHub</a>. It is distributed as free software under an <a href="">Apache <lnum>2.0</lnum> licence</a>.
 </pn>
+
 <code>
 var looping = true;
 var exporting = false;
@@ -310,7 +331,9 @@ function frameExport() {
     save("grooves" + formattedFrameCount + ".png");
 }
 </code>
+
 <a name="scribbled-notes"><h3>Scribbled notes</h3></a>
+
 <pn>
     <sc>What I may require</sc> is a <ic>Line</ic> class. Any process could create a new instance of <ic>Line</ic> and send line segments to it as pairs of vectors. The <ic>Line</ic> class would automatically deal with the Perlin noise: it would make sure that each new line segment is added in a coherent way to the rest of the line (continuing its shape and varying width). The class would also deal with the beginnings and endings of lines. Its <ic>Line.drawSegment()</ic> method could receive an <ic>ending</ic> boolean to know that it needs to finish the stroke. When receiving a &ldquo;terminating&rdquo; segment, the class could put itself in a <ic>terminated</ic> mode. Any new line segment received after that would reactivate it and make it draw a line beginning. Or should a line that receives a terminating segment just <i>destroy</i> itself? Remove itself from an array of available lines, for example ?
 </pn>
@@ -329,7 +352,9 @@ function frameExport() {
 <p>
     Less probable ideas: while still only using two-dimensional mathematics, we could imagine modeling the whole circonference of the pencil lead. It would be a curve broken apart by noise but curve that folds on itself &mdash; or repeat itself on the <im>x</im> axis. We could even rotate the direction of the lead to accompany the movements of the pencil. We could also model the progressive degradation of the lead.
 </p>
+
 <h3>Sources</h3>
+
 <pn>
     <sc>My thinking</sc> for this project started with a reading of <i><a href="">Automatically Mimicking Unique Hand-Drawn Pencil Lines</a></i>, an article signed by Zainab AlMeraj, Brian Wyvill, Tobias Isenberg, Amy A. Gooch, and Richard Guy. In the end, I did not use the methods detailed in this article but it was an inspiring read nonetheless.
 </pn>
