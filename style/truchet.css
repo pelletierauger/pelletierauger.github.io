@@ -140,3 +140,17 @@ img.possibilities {
     position: relative;
     bottom: 0.12em;
 }
+
+#normalmode span:hover,
+#wavymode span:hover,
+#manual span:hover,
+#showreel span:hover {
+    box-shadow: inset 0px -1px white, inset 0px -2px black;
+}
+
+#abcdmode span:hover,
+#efmode span:hover,
+#efonly span:hover {
+    box-shadow: 0px 1px white, 0px 2px black;
+    border-bottom: 1px solid black;
+}
