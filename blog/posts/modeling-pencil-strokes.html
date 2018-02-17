@@ -12,7 +12,7 @@
     <sc>L'an dernier</sc>, j'ai écrit un court programme pour modéliser des lignes dessinées au crayon. Le projet est encore embryonnaire et je veux continuer à le faire avancer sporadiquement. Je commence aujourd'hui par une relecture du code écrit l'an dernier et une synthèse des idées qu'il contient.
 </p>
 <p>
-    L'image ci-dessus a été générée avec ce programme. Elle contient plusieurs problèmes qu'il me faudra résoudre. Tout d'abord, les lignes démarrent et s'arrêtent abruptement; elles n'ont pas cette pointe naturelle que l'on s'attendrait à voir aux extrémités d'un trait dessiné à la main. Cela crée une brisure très artificielle dans le tracé des cercles. Ensuite, les lignes d'épaisseur moyenne sont les seules qui fonctionnent bien visuellement, les plus fines et les plus grasses ayant un air peu naturel. Dernièrement, et c'est le plus grand problème, j'ai l'impression que la variation de l'épaisseur du trait est identique pour toutes les lignes dans le quadrant inférieur droit de chaque cercle. Il y a une <i>régularité désagréable</i> qui semble s'être glissée dans cet algorithme qui cherche à simuler le caractère imprévisible du crayon. De mauvais calculs trigonométriques se terrent peut-être là-dessous.
+    L'image ci-dessus a été générée avec ce programme. Elle contient plusieurs problèmes qu'il me faudra résoudre. Tout d'abord, les lignes démarrent et s'arrêtent abruptement; elles n'ont pas cette pointe naturelle que l'on s'attendrait à voir aux extrémités d'un trait dessiné à la main. Cela crée une brisure très artificielle dans le tracé des cercles. Ensuite, les lignes d'épaisseur moyenne sont les seules qui fonctionnent<mnl label="crayon"><i8>Mais <nb>est-ce</nb><br>du graphite,<br>du fusain,<br>du crayon<br>Conté&hellip;&nbsp;?<br></i8></mnl> bien visuellement, les plus fines et les plus grasses ayant un air peu naturel. Dernièrement, et c'est le plus grand problème, j'ai l'impression que la variation de l'épaisseur du trait est identique pour toutes les lignes dans le quadrant inférieur droit de chaque cercle. Il y a une <i>régularité désagréable</i> qui semble s'être glissée dans cet algorithme qui cherche à simuler le caractère imprévisible du crayon. De mauvais calculs trigonométriques se terrent peut-être là-dessous.
 </p>
 
 <h3>Distribution normale et variations <nb>semi-aléatoires</nb></h3>
@@ -35,7 +35,7 @@
     Cette colline représente donc l'extrémité de la mine du crayon (on peut ignorer les parties horizontales, qui ne seront pas utilisées). L'axe des <im>y</im> de la courbe représente le taux de probabilité qu'une particule de la mine soit déposée sur le papier.
 </pn>
 <p>
-    Une vraie mine de crayon, cependant, n'est jamais aussi lisse et régulière que cette colline. Au niveau microscopique, la mine autant que le papier sont fragmentés comme des chaînes de montagnes. On peut s'imaginer qu'à mesure que le crayon est traîné sur le papier, sa mine vacille; elle change d'angle par rapport au papier; ses différentes aspérités sont appuyées sur la feuille à divers moments et à des niveaux de pression variés.
+    Une vraie mine de crayon, cependant, n'est jamais aussi lisse et régulière que cette colline. Au niveau microscopique,<mnl label="irregularites"><i8>Accueillir<br>l'irrégulier.</i8></mnl>la mine autant que le papier sont fragmentés comme des chaînes de montagnes. On peut s'imaginer qu'à mesure que le crayon est traîné sur le papier, sa mine vacille&nbsp;; elle change d'angle par rapport au papier&nbsp;; ses différentes aspérités sont appuyées sur la feuille à divers moments et à des niveaux de pression variés.
 </p>
 <p>
     Afin d'obtenir une mine de crayon irrégulière, les valeurs obtenues par l'équation de la distribution normale sont altérées par du bruit de Perlin. Voici à quoi ressemble notre mine de crayon maintenant :
@@ -44,7 +44,7 @@
     <img class="abcd" src="../../../images/pencil/normal-distribution-perlin.gif">
 </p>
 <pn>
-    Maintenant, il suffit de déplacer cette courbe fragmentée sur le plan et de dessiner des points noirs ou gris aux endroits où elle passe. La valeur <im>y</im> de la courbe déterminera la luminosité des points déposés : plus la valeur <im>y</im> est haute, plus le point dessiné est sombre. Le mode de mélange <ic>blendMode(DARKEST)</ic> de <lnum>p5.js</lnum> contribue aussi beaucoup à l'apparence finale de la ligne : chaque point déposé n'apparaît que s'il est plus foncé que le point qui est dessous.
+    Maintenant,<mnl label="dessiner"><i8>Dessiner<br>une ligne.</i8></mnl> il suffit de déplacer cette courbe fragmentée sur le plan et de dessiner des points noirs ou gris aux endroits où elle passe. La valeur <im>y</im> de la courbe déterminera la luminosité des points déposés : plus la valeur <im>y</im> est haute, plus le point dessiné est sombre. Le mode de mélange <ic>blendMode(DARKEST)</ic> de <lnum>p5.js</lnum> contribue aussi beaucoup à l'apparence finale de la ligne : chaque point déposé n'apparaît que s'il est plus foncé que le point qui est dessous.
 </pn>
 <img src="../../../images/pencil/fat-line.gif">
 <pn>
@@ -90,8 +90,9 @@ function drawGraphite(h) {
     for (var j = 0; j < h.length - 1; j++) {
         if (h[j + 1]) {
             var v1 = h[j];
-            var hypotenuse = dist(h[j].x, h[j].y, h[j + 1].x, h[j + 1].y);
-            var angle = atan2(h[j + 1].y - h[j].y, h[j + 1].x - h[j].x);
+            var v2 = h[j + 1];
+            var hypotenuse = dist(v1.x, v1.y, v2.x, v2.y);
+            var angle = atan2(v2.y - v1.y, v2.x - v1.x);
             push();
             translate(v1.x, v1.y);
             rotate(angle + PI / 2);
@@ -189,7 +190,7 @@ function frameExport() {
     <sc>About a year ago</sc>, I wrote a short program to model pencil strokes. The project is still in its embryonic stages and I plan to keep working on it sporadically. I will begin now by revisiting the code written last year to extract its concepts.
 </p>
 <p>
-    The circular lines above were generated by this program. They have several problems that need to be solved. Firstly, they begin and end abruptly; they do not taper off like we would expect hand-drawn lines to do. This creates a very artifical break in the circles. Secondly, while the lines of average width have a relatively natural look, the thinnest and thickest ones look a lot less convincing. Finally, the variations in the width of the lines all seem strangely identical in the lower right quadrant of the circles. An <i>unpleasant regularity</i> seem to have emerged out of this algorithm that tries to model the unpredictability of a physical pencil. Some erroneous trigonometry might be at the root of this.
+    The circular lines above were generated by this program. They have several problems that need to be solved. Firstly, they begin and end abruptly; they do not taper off like we would expect hand-drawn lines to do. This creates a very artifical break in the circles. Secondly, while the lines of average width have a relatively natural look,<mnl label="crayon"><i8>But is it<br>graphite, charcoal,<br>Conté pencil&hellip;&nbsp;?<br></i8></mnl> the thinnest and thickest ones look a lot less convincing. Finally, the variations in the width of the lines all seem strangely identical in the lower right quadrant of the circles. An <i>unpleasant regularity</i> seem to have emerged out of this algorithm that tries to model the unpredictability of a physical pencil. Some erroneous trigonometry might be at the root of this.
 </p>
 
 <h3>Normal distribution and <nb>semi-random</nb> variations</h3>
@@ -212,7 +213,7 @@ function frameExport() {
     This hill thus represents the extremity of the pencil's lead (we can ignore the horizontal parts of the curve; they will not be used). The <im>y</im> axis of the curve represents the probability that a particle of the lead will be transfered to the paper.
 </pn>
 <p>
-    A real pencil lead, of course, is never as smooth and regular as this hill. On a microscopic scale, both the lead and the sheet of paper are fragmented like mountain ranges. We can imagine that, as the pencil is rubbed on the paper, the lead moves irregularly; its angle relative to the paper changes; its jagged edges are pushed against the paper's texture at different moments and at varying levels of pressure.
+    A real pencil lead, of course, is never as smooth and regular as this hill. On a microscopic scale,<mnl label="irregularities"><i8>Welcoming<br>irregularities.</i8></mnl> both the lead and the sheet of paper are fragmented like mountain ranges. We can imagine that, as the pencil is rubbed on the paper, the lead moves irregularly; its angle relative to the paper changes; its jagged edges are pushed against the paper's texture at different moments and at varying levels of pressure.
 </p>
 <p>
     To obtain an irregular lead, the values of the normal distribution equation are altered with Perlin noise. This is what our pencil lead resembles now:
@@ -221,7 +222,7 @@ function frameExport() {
     <img class="abcd" src="../../../images/pencil/normal-distribution-perlin.gif">
 </p>
 <pn>
-    Now, we only have to move this fragmented curve on the plane and draw black and grey dots at its foot. The <im>y</im> value of the curve determines the brightness of the drawn dots: as the <im>y</im> value increases, the dots get darker. The <ic>blendMode(DARKEST)</ic> option of <lnum>p5.js</lnum> also contributes considerably to the final look of the line: a dot is only drawn if it is darker than the dot below.
+    Now, <mnl label="drawing"><i8>Drawing<br>a line.</i8></mnl>we only have to move this fragmented curve on the plane and draw black and grey dots at its foot. The <im>y</im> value of the curve determines the brightness of the drawn dots: as the <im>y</im> value increases, the dots get darker. The <ic>blendMode(DARKEST)</ic> option of <lnum>p5.js</lnum> also contributes considerably to the final look of the line: a dot is only drawn if it is darker than the dot below.
 </pn>
 <img src="../../../images/pencil/fat-line.gif">
 <pn>
@@ -267,8 +268,9 @@ function drawGraphite(h) {
     for (var j = 0; j < h.length - 1; j++) {
         if (h[j + 1]) {
             var v1 = h[j];
-            var hypotenuse = dist(h[j].x, h[j].y, h[j + 1].x, h[j + 1].y);
-            var angle = atan2(h[j + 1].y - h[j].y, h[j + 1].x - h[j].x);
+            var v2 = h[j + 1];
+            var hypotenuse = dist(v1.x, v1.y, v2.x, v2.y);
+            var angle = atan2(v2.y - v1.y, v2.x - v1.x);
             push();
             translate(v1.x, v1.y);
             rotate(angle + PI / 2);
