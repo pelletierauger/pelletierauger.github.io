@@ -53,11 +53,10 @@ Block.prototype.makeTiling = function() {
 };
 
 Block.prototype.showTiling = function() {
-    for (var x = 0; x < gridXAmount * tileWidth; x += tileWidth) {
-        for (var y = 0; y < gridYAmount * tileWidth; y += tileWidth) {
-            var current = this.tiling[(x / tileWidth) + (y / tileWidth) * gridXAmount];
-            // console.log(current);
-            showNumeral(current, x, y, tileWidth, light, dark);
+    for (var x = 0; x < gridXAmount; x++) {
+        for (var y = 0; y < gridYAmount; y++) {
+            var current = this.tiling[x + (y * gridXAmount)];
+            showNumeral(current, x * tileWidth, y * tileWidth, tileWidth, light, dark);
         }
     }
 };
