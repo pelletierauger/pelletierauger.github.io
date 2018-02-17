@@ -118,12 +118,12 @@ function setup() {
     normalButton = select("#normalmode");
     normalButton.style("cursor", "pointer");
     normalButton.style("padding-top", "4px");
-    normalButton.style("border-bottom", "1px solid black");
-    normalButton.style("box-shadow", "inset 0px -1px white, inset 0px -2px black");
+    // normalButton.style("border-bottom", "1px solid black");
+    normalButton.style("box-shadow", "0px 1px black, inset 0px -1px white, inset 0px -2px black");
     normalButton.mouseClicked(function() {
         if (wavy) {
-            normalButton.style("box-shadow", "inset 0px -1px white, inset 0px -2px black");
-            wavyButton.style("box-shadow", "unset");
+            normalButton.style("box-shadow", "0px 1px black, inset 0px -1px white, inset 0px -2px black");
+            wavyButton.style("box-shadow", "inset 0px -1px white, inset 0px -2px black");
             wavy = false;
             redraw();
         }
@@ -131,11 +131,12 @@ function setup() {
     wavyButton = select("#wavymode");
     wavyButton.style("cursor", "pointer");
     wavyButton.style("padding-top", "4px");
-    wavyButton.style("border-bottom", "1px solid black");
+    // wavyButton.style("border-bottom", "1px solid black");
+    wavyButton.style("box-shadow", "inset 0px -1px white, inset 0px -2px black");
     wavyButton.mouseClicked(function() {
         if (!wavy) {
-            wavyButton.style("box-shadow", "inset 0px -1px white, inset 0px -2px black");
-            normalButton.style("box-shadow", "unset");
+            wavyButton.style("box-shadow", "0px 1px black, inset 0px -1px white, inset 0px -2px black");
+            normalButton.style("box-shadow", "inset 0px -1px white, inset 0px -2px black");
             wavy = true;
             redraw();
         }
@@ -146,12 +147,12 @@ function setup() {
     manualButton = select("#manual");
     manualButton.style("cursor", "pointer");
     manualButton.style("padding-top", "4px");
-    manualButton.style("border-bottom", "1px solid black");
-    manualButton.style("box-shadow", "inset 0px -1px white, inset 0px -2px black");
+    // manualButton.style("border-bottom", "1px solid black");
+    manualButton.style("box-shadow", "0px 1px black, inset 0px -1px white, inset 0px -2px black");
     manualButton.mouseClicked(function() {
         if (looping) {
-            manualButton.style("box-shadow", "inset 0px -1px white, inset 0px -2px black");
-            showreelButton.style("box-shadow", "unset");
+            manualButton.style("box-shadow", "0px 1px black, inset 0px -1px white, inset 0px -2px black");
+            showreelButton.style("box-shadow", "inset 0px -1px white, inset 0px -2px black");
             looping = false;
             noLoop();
         }
@@ -159,11 +160,12 @@ function setup() {
     showreelButton = select("#showreel");
     showreelButton.style("cursor", "pointer");
     showreelButton.style("padding-top", "4px");
-    showreelButton.style("border-bottom", "1px solid black");
+    // showreelButton.style("border-bottom", "1px solid black");
+    showreelButton.style("box-shadow", "inset 0px -1px white, inset 0px -2px black");
     showreelButton.mouseClicked(function() {
         if (!looping) {
-            showreelButton.style("box-shadow", "inset 0px -1px white, inset 0px -2px black");
-            manualButton.style("box-shadow", "unset");
+            showreelButton.style("box-shadow", "0px 1px black, inset 0px -1px white, inset 0px -2px black");
+            manualButton.style("box-shadow", "inset 0px -1px white, inset 0px -2px black");
             looping = true;
             loop();
         }
