@@ -26,9 +26,27 @@ var widthWavy = 5;
 var normalButton, wavyButton;
 var manualButton, showreelButton;
 
+function windowResized() {
+    canvasContainer = select("#tiling-generator");
+    var w = canvasContainer.width;
+    w = Math.min(w, 1000);
+    cnvs = resizeCanvas(w, w * 9 / 16);
+    tileWidth = (width - (padding * 3)) / gridXAmount;
+    ran = 0.4;
+    ranFloor = 0.7;
+    ranCeiling = 1.5;
+    linesMult = 2;
+    strokeFloor = 1 * (width / 1280);
+    strokeCeiling = 2.5 * (width / 1280);
+    if (!looping) {
+        redraw();
+    }
+}
+
+
 function setup() {
     canvasContainer = select("#tiling-generator");
-    var w = windowWidth;
+    var w = canvasContainer.width;
     w = Math.min(w, 1000);
     cnvs = createCanvas(w, w * 9 / 16);
     cnvs.parent("#tiling-generator");
@@ -198,6 +216,7 @@ function draw() {
         while (widthWavy > 9 && widthWavy < 12.5) {
             widthWavy = random(4, 14);
         }
+        widthWavy *= (width / 1000);
     }
     background(light);
     translate(padding, padding);
