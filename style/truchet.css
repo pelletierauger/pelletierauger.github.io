@@ -154,3 +154,9 @@ img.possibilities {
     box-shadow: 0px 1px white, 0px 2px black;
     border-bottom: 1px solid black;
 }
+
+#tiling-generator {
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+}
