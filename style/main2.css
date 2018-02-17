@@ -1,0 +1,289 @@
+@font-face {
+    font-family: 'EBG12-Re';
+    src: url(./fonts/EBGaramond/EBGaramond12-Regular.eot );
+    src: url('./fonts/EBGaramond/EBGaramond12-Regular.ttf') format('truetype'),
+    url('./fonts/EBGaramond/EBGaramond12-Regular.woff') format('woff');
+}
+@font-face {
+    font-family: "EBG08-Re";
+    src: url(./fonts/EBGaramond/EBGaramond08-Regular.eot );
+    src: url('./fonts/EBGaramond/EBGaramond08-Regular.ttf') format('truetype'),
+    url('./fonts/EBGaramond/EBGaramond08-Regular.woff') format('woff');
+}
+@font-face {
+    font-family: "EBG12-It";
+    src: url(./fonts/EBGaramond/EBGaramond12-Italic.eot );
+    src: url('./fonts/EBGaramond/EBGaramond12-Italic.ttf') format('truetype'),
+    url('./fonts/EBGaramond/EBGaramond12-Italic.woff') format('woff');
+}
+@font-face {
+    font-family: "EBG08-It";
+    src: url(./fonts/EBGaramond/EBGaramond08-Italic.eot );
+    src: url('./fonts/EBGaramond/EBGaramond08-Italic.ttf') format('truetype'),
+    url('./fonts/EBGaramond/EBGaramond08-Italic.woff') format('woff');
+}
+@font-face {
+    font-family: "EBG12-SC";
+    src: url(./fonts/EBGaramond/EBGaramondSC12-Regular.eot );
+    src: url('./fonts/EBGaramond/EBGaramondSC12-Regular.ttf') format('truetype'),
+    url('./fonts/EBGaramond/EBGaramondSC12-Regular.woff') format('woff');
+}
+@font-face {
+    font-family: "EBG08-SC";
+    src: url(./fonts/EBGaramond/EBGaramondSC08-Regular.eot );
+    src: url('./fonts/EBGaramond/EBGaramondSC08-Regular.ttf') format('truetype'),
+    url('./fonts/EBGaramond/EBGaramondSC08-Regular.woff') format('woff');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-family: 'EBG12-Re', Georgia, serif;
+    -moz-font-feature-settings: "liga", "calt", "xtex";
+    -webkit-font-feature-settings: "liga", "calt", "xtex";
+    -ms-font-feature-settings: "liga", "xtex";
+    -o-font-feature-settings: "liga", "xtex";
+    font-feature-settings: "cv11", "liga", "xtex";
+    font-variant-ligatures: discretionary-ligatures;
+    -moz-font-variant-ligatures: discretionary-ligatures;
+    -webkit-font-variant-ligatures: discretionary-ligatures;
+    /*font-size: 1.4em;*/
+}
+
+.inline-code {
+    font-family: 'Inconsolata', courier, monospace;
+    line-height: 1em;
+    /*background-color: #ECECEC;*/
+}
+
+body {
+    font-size: 22px;
+    /*font-size: 1.5em;*/
+    margin: 0em auto;
+    max-width: 76rem;
+    counter-reset: sidenote-counter;
+}
+
+.italic {
+    font-family: 'EBG12-It';
+    -moz-font-feature-settings: unset;
+    -webkit-font-feature-settings: unset;
+    -ms-font-feature-settings: unset;
+    -o-font-feature-settings: unset;
+    font-feature-settings: unset;
+    font-variant-ligatures: no-discretionary-ligatures;
+    -moz-font-variant-ligatures: no-discretionary-ligatures;
+    -webkit-font-variant-ligatures: no-discretionary-ligatures;
+}
+
+.italic8 {
+    font-family: 'EBG08-It';
+    -moz-font-feature-settings: none;
+    -webkit-font-feature-settings: none;
+    -ms-font-feature-settings: none;
+    -o-font-feature-settings: none;
+    font-feature-settings: none;
+    font-variant-ligatures: no-discretionary-ligatures;
+    -moz-font-variant-ligatures: no-discretionary-ligatures;
+    -webkit-font-variant-ligatures: no-discretionary-ligatures;
+}
+.small-caps {
+    font-style: normal;
+    font-family: 'EBG12-SC';
+}
+
+.small-caps8 {
+    font-style: normal;
+    font-family: 'EBG08-SC';
+}
+
+.superscript {
+    -moz-font-feature-settings: "sups", "calt", "xtex";
+    -webkit-font-feature-settings: "sups", "calt", "xtex";
+    -ms-font-feature-settings: "sups", "calt", "xtex";
+    -o-font-feature-settings: "sups", "calt", "xtex";
+    font-feature-settings: "sups", "calt", "xtex";
+}
+
+.lnum {
+    -moz-font-feature-settings: "lnum", "calt", "xtex";
+    -webkit-font-feature-settings: "lnum", "calt", "xtex";
+    -ms-font-feature-settings: "lnum", "xtex";
+    -o-font-feature-settings: "lnum", "xtex";
+    font-feature-settings: "lnum", "xtex";
+}
+
+span.nobreak {
+    white-space: nowrap;
+}
+
+a {
+    color: #000000;
+    text-decoration: none;
+}
+
+article a {
+    color: #000000;
+    text-decoration: none;
+    box-shadow: inset 0 -3px 0 0 #fff, inset 0 -4px 0 0 #000;
+    /*box-shadow: inset 0 -0.02em 0 0 #fff, inset 0 -0.05em 0 0 #000;*/
+    text-shadow: 1px 1px 0 #fff, -1px 1px 0 #fff,
+    2px 0 0 #fff, -2px 0 0 #fff,
+    3px 0 0 #fff, -3px 0 0 #fff,
+    0px -1px 0 #fff, 0px -2px 0 #fff,
+    -1px -1px 0 #fff, 1px -1px 0 #fff,
+    -2px -1px 0 #fff, 2px -1px 0 #fff;
+    /*   These two extra text-shadows work for italic "f"s but not for roman "pp"s.
+    -2px -2px 0 #fff, 2px -2px 0 #fff;*/
+}
+
+h1 {
+    display: inline-block;
+    line-height: 4rem;
+    vertical-align: middle;
+    font-weight: normal;
+    float: left;
+    font-size: 1em;
+}
+
+h2 {
+    font-weight: normal;
+    font-family: 'EBG12-SC';
+    font-size: 2em;
+    line-height: 1rem;
+    /*display: inline-block;*/
+    /*vertical-align: middle;*/
+    margin: 0 auto;
+    /*margin: 0;*/
+    /*padding: 0;*/
+    /*margin-top: 1em;*/
+    /*padding-top: 0.5em;*/
+    /*padding-bottom: 0.5em;*/
+}
+article h2 {
+    text-align: center;
+    margin-top: 4rem;
+    /*max-width: 570px;*/
+}
+
+.with-date {
+    margin-bottom: 0em;
+    padding-bottom: 0em;
+}
+
+h2 a {
+    color: #000000;
+    text-decoration: none;
+    box-shadow: unset;
+    text-shadow: unset;
+}
+
+h3 {
+    /*clear: both;*/
+    /*font-family: 'EBG12-It';*/
+    font-size: 1.5em;
+    line-height: 1rem;
+    font-weight: normal;
+    /*vertical-align: middle;*/
+    margin: 0 auto;
+    padding: 0;
+    max-width: 700px;
+    margin-top: 4.5rem;
+    margin-bottom: 1.5rem;
+}
+
+
+#description {
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-family: 'EBG08-Re';
+    font-size: 0.8em;
+    height: 1rem;
+    text-align: center;
+}
+.date {
+    font-family: 'EBG08-Re';
+    font-size: 0.8em;
+    margin-bottom: 3rem;
+    height: 1rem;
+    /*margin-top: 0em;*/
+    /*padding-top: 0em;*/
+    /*line-height: 1em;*/
+    text-align: center;
+}
+
+.article-top {
+    margin-top: 2rem;
+    text-indent: 0em;
+}
+
+p {
+    /*    -ms-word-break: break-all;
+    word-break: break-all;
+    word-break: break-word;*/
+    display: block;
+    margin: 0 auto;
+    padding: 0;
+    max-width: 700px;
+    line-height: 1.9rem;
+    text-align: left;
+    text-indent: 2rem;
+}
+
+article img {
+    width: 100%;
+}
+
+article ul.dash {
+    display: block;
+    margin: 0 auto;
+    max-width: 700px;
+    /*line-height: 1.3;*/
+    line-height: 1.75rem;
+    padding-left: 1.75rem;
+    list-style-type: '\2014';
+    list-style-type: none;
+    font-family: 'EBG12-Re', Garamond, Georgia, serif;
+    box-sizing: border-box;
+    /*background-color: rgba(255, 0, 0, 0.1);*/
+}
+
+article ul.dash>li {
+    padding-left: 0.75rem;
+    /*display: block;*/
+    /*background-color: rgba(0, 0, 255, 0.2);*/
+    text-indent: -1.9rem;
+}
+
+img {
+    padding: 0;
+    margin: 0;
+    display: block;
+}
+
+.noindent {
+    text-indent: 0em;
+}
+
+canvas {
+    display: block;
+    margin: 0 auto;
+}
+
+#footer {
+
+    font-family: 'EBG08-Re';
+    float: left;
+    display: inline-block;
+    vertical-align: middle;
+    height: 1rem;
+    line-height: 1rem;
+    width: 100%;
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+    font-size: 0.8em;
+    text-align: center;
+}
