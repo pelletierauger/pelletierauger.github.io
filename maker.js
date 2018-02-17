@@ -112,11 +112,16 @@ function makeBlog(language) {
 
             //We create the content of a post within the blog
             let title = post[language].HTMLTitle || post[language].title;
+            let description = (post[language].description) ? `
+                <div id="description">
+                    ${post[language].description}
+                </div>
+                ` : "";
             content += `
             <article class="blog-post">`;
-            content += `<h2 class="with-date"><a href="../${linkIndividual}.html">${title}</a></h2>`;
+            content += `<h2 class="with-date"><a href="../${linkIndividual}.html">${title}</a></h2>${description}`;
             content += `<div class = "date">${date}</div>`;
-            content += `${post[language].content}`;
+            // content += `${post[language].content}`;
             content += `
             </article>`;
             currentPost++;
@@ -133,7 +138,7 @@ function makeBlog(language) {
             var individualContent = individualHeader + individualNavigation;
             individualContent += `
             <article>
-                <h2 class="with-date">${title}</h2>
+                <h2 class="with-date">${title}</h2>${description}
                 <div class = "date">${date}</div>
                 ${post[language].content}
             </article>
@@ -649,7 +654,16 @@ function parseHTMLTemplate(s) {
         return response;
     });
     page.fr.content = page.fr.content.replace(/<\/sn[lr]>/g, `</span>`);
-
+    page.fr.content = page.fr.content.replace(/(<mn)([lr])( label=")([0-9a-zA-ZÀ-ú\-]*)(">)/g, function(a, b, c, d, e) {
+        let typeOfMarginnote = (c == "l") ? "marginnote-left" : "marginnote";
+        let response = `
+        <label for="${e}" class="margin-toggle">&mdash;
+        </label>
+        <input type="checkbox" id="${e}" class="margin-toggle" />
+        <span class="${typeOfMarginnote}">`;
+        return response;
+    });
+    page.fr.content = page.fr.content.replace(/<\/mn[lr]>/g, `</span>`);
     page.fr.content = page.fr.content.replace(/<\/a>,/g,
         String.raw `</a><span class="cleardescenders">,</span>`);
 
@@ -735,6 +749,16 @@ function parseHTMLTemplate(s) {
         return response;
     });
     page.en.content = page.en.content.replace(/<\/sn[lr]>/g, `</span>`);
+    page.en.content = page.en.content.replace(/(<mn)([lr])( label=")([0-9a-zA-ZÀ-ú\-]*)(">)/g, function(a, b, c, d, e) {
+        let typeOfMarginnote = (c == "l") ? "marginnote-left" : "marginnote";
+        let response = `
+        <label for="${e}" class="margin-toggle">&mdash;
+        </label>
+        <input type="checkbox" id="${e}" class="margin-toggle" />
+        <span class="${typeOfMarginnote}">`;
+        return response;
+    });
+    page.en.content = page.en.content.replace(/<\/mn[lr]>/g, `</span>`);
 
     page.en.content = page.en.content.replace(/<\/a>,/g,
         String.raw `</a><span class="cleardescenders">,</span>`);
