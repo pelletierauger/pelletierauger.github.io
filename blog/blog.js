@@ -13,5 +13,5 @@ exports.config = {
     en: {
         title: "Blog"
     },
-    itemsPerPage: 1
+    itemsPerPage: 10
 };
