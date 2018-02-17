@@ -137,21 +137,37 @@
     </nav>
     
             <article>
-                <h2 class="with-date">Modélisation de lignes crayonnées</h2>
+                <h2 class="with-date">Modélisation de <span class="nobreak">lignes crayonnées</span>
+</h2>
+                <div id="description">
+                    Premières ébauches de méthodes pour imiter <span class="nobreak">l’apparence du dessin.</span>
+
+                </div>
+                
                 <div class="date">3 février 2018</div>
                 
+
 <img src="../../../../images/pencil/circles.jpg">
+
 <p class="article-top">
     <span class="small-caps">L’an dernier</span>, j’ai écrit un court programme pour modéliser des lignes dessinées au crayon. Le projet est encore embryonnaire et je veux continuer à le faire avancer sporadiquement. Je commence aujourd’hui par une relecture du code écrit l’an dernier et une synthèse des idées qu’il contient.
 </p>
 <p>
-    L’image ci-dessus a été générée avec ce programme. Elle contient plusieurs problèmes qu’il me faudra résoudre. Tout d’abord, les lignes démarrent et s’arrêtent abruptement; elles n’ont pas cette pointe naturelle que l’on s’attendrait à voir aux extrémités d’un trait dessiné à la main. Cela crée une brisure très artificielle dans le tracé des cercles. Ensuite, les lignes d’épaisseur moyenne sont les seules qui fonctionnent bien visuellement, les plus fines et les plus grasses ayant un air peu naturel. Dernièrement, et c’est le plus grand problème, j’ai l’impression que la variation de l’épaisseur du trait est identique pour toutes les lignes dans le quadrant inférieur droit de chaque cercle. Il y a une <span class="italic">régularité désagréable</span> qui semble s’être glissée dans cet algorithme qui cherche à simuler le caractère imprévisible du crayon. De mauvais calculs trigonométriques se terrent peut-être là-dessous.
+    L’image ci-dessus a été générée avec ce programme. Elle contient plusieurs problèmes qu’il me faudra résoudre. Tout d’abord, les lignes démarrent et s’arrêtent abruptement; elles n’ont pas cette pointe naturelle que l’on s’attendrait à voir aux extrémités d’un trait dessiné à la main. Cela crée une brisure très artificielle dans le tracé des cercles. Ensuite, les lignes d’épaisseur moyenne sont les seules qui fonctionnent
+        <label for="crayon" class="margin-toggle">—
+        </label>
+        <input type="checkbox" id="crayon" class="margin-toggle">
+        <span class="marginnote-left"><span class="italic8">Mais <span class="nobreak">est-ce</span><br>du graphite,<br>du fusain,<br>du crayon<br>Conté…&nbsp;?<br></span></span> bien visuellement, les plus fines et les plus grasses ayant un air peu naturel. Dernièrement, et c’est le plus grand problème, j’ai l’impression que la variation de l’épaisseur du trait est identique pour toutes les lignes dans le quadrant inférieur droit de chaque cercle. Il y a une <span class="italic">régularité désagréable</span> qui semble s’être glissée dans cet algorithme qui cherche à simuler le caractère imprévisible du crayon. De mauvais calculs trigonométriques se terrent peut-être là-dessous.
 </p>
+
 <h3>Distribution normale et variations <span class="nobreak">semi-aléatoires</span></h3>
+
 <p class="noindent">
     <span class="small-caps">L’idée centrale</span> du programme consiste à utiliser une distribution normale pour simuler la forme d’une mine de crayon ainsi que ses frottements sur le papier. Tout d’abord, notre distribution normale est calculée avec l’équation suivante&nbsp;:
 </p>
+
 <div class="math"><span class="mjx-chtml MJXc-display" style="text-align: center;"><span id="MathJax-Element-1-Frame" class="mjx-chtml" style="text-align: center;"><span id="MJXc-Node-443" class="mjx-math"><span id="MJXc-Node-444" class="mjx-mrow"><span id="MJXc-Node-445" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.519em; padding-right: 0.006em;">y</span></span><span id="MJXc-Node-446" class="mjx-mo MJXc-space3"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.077em; padding-bottom: 0.298em;">=</span></span><span id="MJXc-Node-447" class="mjx-mfrac MJXc-space3"><span class="mjx-box MJXc-stacked" style="width: 3.328em; padding: 0px 0.12em;"><span class="mjx-numerator" style="width: 3.328em; top: -1.368em;"><span id="MJXc-Node-448" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">1</span></span></span><span class="mjx-denominator" style="width: 3.328em; bottom: -1.15em;"><span id="MJXc-Node-449" class="mjx-msqrt"><span class="mjx-box" style="padding-top: 0.045em;"><span class="mjx-surd"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.519em; padding-bottom: 0.519em;">√</span></span><span class="mjx-box" style="padding-top: 0.124em; border-top: 1px solid;"><span id="MJXc-Node-450" class="mjx-mrow"><span id="MJXc-Node-451" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.298em; padding-right: 0.003em;">π</span></span><span id="MJXc-Node-452" class="mjx-mo MJXc-space2"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.225em; padding-bottom: 0.298em;">×</span></span><span id="MJXc-Node-453" class="mjx-mn MJXc-space2"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">2</span></span></span></span></span></span></span><span style="border-bottom: 1.3px solid; top: -0.296em; width: 3.328em;" class="mjx-line"></span></span><span style="height: 2.518em; vertical-align: -1.15em;" class="mjx-vsize"></span></span><span id="MJXc-Node-454" class="mjx-mo MJXc-space2"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.225em; padding-bottom: 0.298em;">×</span></span><span id="MJXc-Node-455" class="mjx-msubsup MJXc-space2"><span class="mjx-base"><span id="MJXc-Node-456" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">2.71828</span></span></span><span class="mjx-sup" style="font-size: 70.7%; vertical-align: 0.73em; padding-left: 0px; padding-right: 0.071em;"><span id="MJXc-Node-457" class="mjx-texatom" style=""><span id="MJXc-Node-458" class="mjx-mrow"><span id="MJXc-Node-459" class="mjx-mfrac"><span class="mjx-box MJXc-stacked" style="width: 1.75em; padding: 0px 0.12em;"><span class="mjx-numerator" style="font-size: 83.3%; width: 2.1em; top: -1.733em;"><span id="MJXc-Node-460" class="mjx-mrow" style=""><span id="MJXc-Node-461" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.298em; padding-bottom: 0.446em;">−</span></span><span id="MJXc-Node-462" class="mjx-msubsup"><span class="mjx-base"><span id="MJXc-Node-463" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.298em;">x</span></span></span><span class="mjx-sup" style="vertical-align: 0.363em; padding-left: 0px; padding-right: 0.05em;"><span id="MJXc-Node-464" class="mjx-texatom"><span id="MJXc-Node-465" class="mjx-mrow"><span id="MJXc-Node-466" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">2</span></span></span></span></span></span></span></span><span class="mjx-denominator" style="font-size: 83.3%; width: 2.1em; bottom: -0.688em;"><span id="MJXc-Node-467" class="mjx-mn" style=""><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">2</span></span></span><span style="border-bottom: 1px solid; top: -0.296em; width: 1.75em;" class="mjx-line"></span></span><span style="height: 2.017em; vertical-align: -0.573em;" class="mjx-vsize"></span></span></span></span></span></span></span></span></span></span></div>
+
 <p class="noindent">
     Cette équation produit la courbe ci-dessous&nbsp;:
 </p>
@@ -162,7 +178,11 @@
     Cette colline représente donc l’extrémité de la mine du crayon (on peut ignorer les parties horizontales, qui ne seront pas utilisées). L’axe des <span id="MathJax-Element-2-Frame" class="mjx-chtml"><span id="MJXc-Node-468" class="mjx-math"><span id="MJXc-Node-469" class="mjx-mrow"><span id="MJXc-Node-470" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.519em; padding-right: 0.006em;">y</span></span></span></span></span> de la courbe représente le taux de probabilité qu’une particule de la mine soit déposée sur le papier.
 </p>
 <p>
-    Une vraie mine de crayon, cependant, n’est jamais aussi lisse et régulière que cette colline. Au niveau microscopique, la mine autant que le papier sont fragmentés comme des chaînes de montagnes. On peut s’imaginer qu’à mesure que le crayon est traîné sur le papier, sa mine vacille; elle change d’angle par rapport au papier; ses différentes aspérités sont appuyées sur la feuille à divers moments et à des niveaux de pression variés.
+    Une vraie mine de crayon, cependant, n’est jamais aussi lisse et régulière que cette colline. Au niveau microscopique,
+        <label for="irregularites" class="margin-toggle">—
+        </label>
+        <input type="checkbox" id="irregularites" class="margin-toggle">
+        <span class="marginnote-left"><span class="italic8">Accueillir<br>l’irrégulier.</span></span>la mine autant que le papier sont fragmentés comme des chaînes de montagnes. On peut s’imaginer qu’à mesure que le crayon est traîné sur le papier, sa mine vacille&nbsp;; elle change d’angle par rapport au papier&nbsp;; ses différentes aspérités sont appuyées sur la feuille à divers moments et à des niveaux de pression variés.
 </p>
 <p>
     Afin d’obtenir une mine de crayon irrégulière, les valeurs obtenues par l’équation de la distribution normale sont altérées par du bruit de Perlin. Voici à quoi ressemble notre mine de crayon maintenant&nbsp;:
@@ -171,12 +191,17 @@
     <img class="abcd" src="../../../../images/pencil/normal-distribution-perlin.gif">
 </p>
 <p class="noindent">
-    Maintenant, il suffit de déplacer cette courbe fragmentée sur le plan et de dessiner des points noirs ou gris aux endroits où elle passe. La valeur <span id="MathJax-Element-3-Frame" class="mjx-chtml"><span id="MJXc-Node-471" class="mjx-math"><span id="MJXc-Node-472" class="mjx-mrow"><span id="MJXc-Node-473" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.519em; padding-right: 0.006em;">y</span></span></span></span></span> de la courbe déterminera la luminosité des points déposés&nbsp;: plus la valeur <span id="MathJax-Element-4-Frame" class="mjx-chtml"><span id="MJXc-Node-474" class="mjx-math"><span id="MJXc-Node-475" class="mjx-mrow"><span id="MJXc-Node-476" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.519em; padding-right: 0.006em;">y</span></span></span></span></span> est haute, plus le point dessiné est sombre. Le mode de mélange <span class="inline-code">blendMode(DARKEST)</span> de <span class="lnum">p5.js</span> contribue aussi beaucoup à l’apparence finale de la ligne&nbsp;: chaque point déposé n’apparaît que s’il est plus foncé que le point qui est dessous.
+    Maintenant,
+        <label for="dessiner" class="margin-toggle">—
+        </label>
+        <input type="checkbox" id="dessiner" class="margin-toggle">
+        <span class="marginnote-left"><span class="italic8">Dessiner<br>une ligne.</span></span> il suffit de déplacer cette courbe fragmentée sur le plan et de dessiner des points noirs ou gris aux endroits où elle passe. La valeur <span id="MathJax-Element-3-Frame" class="mjx-chtml"><span id="MJXc-Node-471" class="mjx-math"><span id="MJXc-Node-472" class="mjx-mrow"><span id="MJXc-Node-473" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.519em; padding-right: 0.006em;">y</span></span></span></span></span> de la courbe déterminera la luminosité des points déposés&nbsp;: plus la valeur <span id="MathJax-Element-4-Frame" class="mjx-chtml"><span id="MJXc-Node-474" class="mjx-math"><span id="MJXc-Node-475" class="mjx-mrow"><span id="MJXc-Node-476" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.519em; padding-right: 0.006em;">y</span></span></span></span></span> est haute, plus le point dessiné est sombre. Le mode de mélange <span class="inline-code">blendMode(DARKEST)</span> de <span class="lnum">p5.js</span> contribue aussi beaucoup à l’apparence finale de la ligne&nbsp;: chaque point déposé n’apparaît que s’il est plus foncé que le point qui est dessous.
 </p>
 <img src="../../../../images/pencil/fat-line.gif">
 <p class="noindent">
     J’ai inclus ci-dessous le code source du programme tel qu’il existe en ce moment. J’ai de nombreuses idées pour le modifier et l’améliorer (<a href="#notes-eparses">détaillées plus bas</a>). En fait, il est certain que je vais tout réécrire. Vous pouvez aussi consulter <a href="">le code source sur GitHub</a>. Il est distribué librement avec une <a href="">licence Apache <span class="lnum">2.0</span></a>.
 </p>
+
 <div class="codebox"><pre><code><span class="hljs-keyword">var</span> looping<span class="hljs-punctuation"> = </span><span class="hljs-literal">true</span>;
 <span class="hljs-keyword">var</span> exporting<span class="hljs-punctuation"> = </span><span class="hljs-literal">false</span>;
 <span class="hljs-keyword">var</span> arr<span class="hljs-punctuation"> = </span>[];
@@ -215,8 +240,9 @@
     <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> j<span class="hljs-punctuation"> = </span><span class="hljs-number">0</span>; j<span class="hljs-punctuation"> &lt; </span>h<span class="hljs-punctuation">.</span>length<span class="hljs-punctuation"> - </span><span class="hljs-number">1</span>; j<span class="hljs-punctuation">++</span>) {
         <span class="hljs-keyword">if</span> (h[j<span class="hljs-punctuation"> + </span><span class="hljs-number">1</span>]) {
             <span class="hljs-keyword">var</span> v1<span class="hljs-punctuation"> = </span>h[j];
-            <span class="hljs-keyword">var</span> hypotenuse<span class="hljs-punctuation"> = </span>dist(h[j]<span class="hljs-punctuation">.</span>x, h[j]<span class="hljs-punctuation">.</span>y, h[j<span class="hljs-punctuation"> + </span><span class="hljs-number">1</span>]<span class="hljs-punctuation">.</span>x, h[j<span class="hljs-punctuation"> + </span><span class="hljs-number">1</span>]<span class="hljs-punctuation">.</span>y);
-            <span class="hljs-keyword">var</span> angle<span class="hljs-punctuation"> = </span>atan2(h[j<span class="hljs-punctuation"> + </span><span class="hljs-number">1</span>]<span class="hljs-punctuation">.</span>y<span class="hljs-punctuation"> - </span>h[j]<span class="hljs-punctuation">.</span>y, h[j<span class="hljs-punctuation"> + </span><span class="hljs-number">1</span>]<span class="hljs-punctuation">.</span>x<span class="hljs-punctuation"> - </span>h[j]<span class="hljs-punctuation">.</span>x);
+            <span class="hljs-keyword">var</span> v2<span class="hljs-punctuation"> = </span>h[j<span class="hljs-punctuation"> + </span><span class="hljs-number">1</span>];
+            <span class="hljs-keyword">var</span> hypotenuse<span class="hljs-punctuation"> = </span>dist(v1<span class="hljs-punctuation">.</span>x, v1<span class="hljs-punctuation">.</span>y, v2<span class="hljs-punctuation">.</span>x, v2<span class="hljs-punctuation">.</span>y);
+            <span class="hljs-keyword">var</span> angle<span class="hljs-punctuation"> = </span>atan2(v2<span class="hljs-punctuation">.</span>y<span class="hljs-punctuation"> - </span>v1<span class="hljs-punctuation">.</span>y, v2<span class="hljs-punctuation">.</span>x<span class="hljs-punctuation"> - </span>v1<span class="hljs-punctuation">.</span>x);
             push();
             translate(v1<span class="hljs-punctuation">.</span>x, v1<span class="hljs-punctuation">.</span>y);
             rotate(angle<span class="hljs-punctuation"> + </span>PI<span class="hljs-punctuation"> / </span><span class="hljs-number">2</span>);
@@ -278,7 +304,9 @@
     }
     save(<span class="hljs-string">"grooves"</span><span class="hljs-punctuation"> + </span>formattedFrameCount<span class="hljs-punctuation"> + </span><span class="hljs-string">".png"</span>);
 }</code></pre></div>
+
 <a name="notes-eparses"><h3>Notes éparses</h3></a>
+
 <p class="noindent">
     <span class="small-caps">En fait</span>, ce qu’il me faudrait, c’est une classe <span class="inline-code">Line</span>. N’importe quel procédé pourrait créer une nouvelle instance de <span class="inline-code">Line</span> et lui envoyer des vecteurs pour ajouter des segments à la ligne dessinée. La classe <span class="inline-code">Line</span> ferait la gestion automatique du bruit&nbsp;: elle s’assurerait que chaque nouveau segment de ligne ajouté soit une suite cohérente avec le dernier segment. Elle devrait aussi gérer les terminaisons — les débuts et fins de lignes. Il faudrait simplement que la méthode <span class="inline-code">Line.drawSegment()</span> reçoive en argument une booléenne nommée <span class="inline-code">end</span>. En recevant un segment terminal, l’instance de <span class="inline-code">Line</span> dessinerait un dernier segment pointu, puis changerait sa propriété booléenne <span class="inline-code">terminated</span> pour <span class="inline-code">true</span>. Le prochain segment dessiné réactiverait la ligne, qui dessinerait un nouveau segment pointu comme segment initial d’une nouvelle ligne. Ou plutôt, est-ce qu’une ligne qui reçoit un segment terminal devrait s’auto-détruire&nbsp;?
 </p>
@@ -294,10 +322,13 @@
 <p>
     Idée improbable&nbsp;: toujours en restant dans des mathématiques à deux dimensions, on pourrait imaginer une modélisation de la circonférence complète de la mine. Ce serait une courbe brisée par du bruit mais qui se refermerait sur elle-même. On pourrait faire tourner la mine selon l’angle de déplacement du crayon. On pourrait même modéliser la dégradation progressive de la mine.
 </p>
+
 <h3>Sources</h3>
+
 <p class="noindent">
     <span class="small-caps">Mes réflexions</span> pour ce projet ont démarrées avec la lecture de l’article <span class="italic"><a href="">Automatically Mimicking Unique Hand-Drawn Pencil Lines</a></span>, signé par Zainab AlMeraj, Brian Wyvill, Tobias Isenberg, Amy A. Gooch et Richard Guy. Je n’ai au final pas utilisé les méthodes détaillées dans cet article mais il constitue néanmoins une lecture intéressante.
 </p>
+
 
             </article>
             <div id="footer">Guillaume Pelletier-Auger — 2016-2018
