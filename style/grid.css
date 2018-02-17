@@ -1,0 +1,229 @@
+/*    border: 1px solid rgba(255, 0, 0, 0.5);
+    box-sizing: border-box;*/
+
+
+/*}*/
+
+
+/*.dummy {*/
+
+
+/*body {
+    background-size: 2.2ex 2.2ex;
+    background-image: linear-gradient(to right, rgba(0, 0, 255, 0.8) 0.05ex, transparent 0.05ex),
+    linear-gradient(to bottom, rgba(0, 0, 255, 0.8) 0.05ex, transparent 0.05ex),
+    linear-gradient(to right, transparent, transparent 1.45ex, rgba(0, 255, 0, 0.5) 1.45ex, rgba(0, 255, 0, 0.5) 1.455ex, transparent 1.455ex),
+    linear-gradient(to bottom, transparent, transparent 1.45ex, rgba(0, 255, 0, 0.5) 1.45ex, rgba(0, 255, 0, 0.5) 1.455ex, transparent 1.455ex);
+    /*linear-gradient(to bottom, transparent 50%, rgba(0, 255, 0, 0.5) 50%, transparent 1px);*/
+
+
+/*}*/
+
+
+/*}*/
+
+
+/*body:before, body:after {*/
+
+
+/*    content: '',
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0px;
+    left: 0px;
+    background-size: 1ex 1ex;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 255, 0.5) 0.1ex,
+    transparent 0.1ex),
+    linear-gradient(to right, rgba(0, 0, 255, 0.5) 0.1ex,
+    transparent 0.1ex);*/
+
+
+/*}*/
+
+.bodyfaux {
+    background-size: 2ex 2ex;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 255, 0.5) 0.1ex,
+    transparent 0.1ex,
+    transparent 1.1ex,
+    rgba(0, 0, 255, 0.25) 1.2ex,
+    transparent 1.2ex),
+    linear-gradient(to right, rgba(0, 0, 255, 0.5) 0.1ex,
+    transparent 0.1ex,
+    transparent 1.1ex,
+    rgba(0, 0, 255, 0.25) 1.2ex,
+    transparent 1.2ex)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*.dummies {*/
+
+
+/*body {
+    background-size: 1.1ex 1.1ex;
+    background-image: linear-gradient(to right, rgba(0, 0, 255, 0.8) 0.05ex, transparent 0.05ex),
+    linear-gradient(to bottom, rgba(0, 0, 255, 0.8) 0.05ex, transparent 0.05ex);
+}
+*/
+
+
+/*body {
+    background-size: 1ex 1ex;
+    background-image: linear-gradient(to right, rgba(0, 0, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 255, 0.1) 1px, transparent 1px);
+    background-size: 2ex 2ex;
+    background-image: linear-gradient(to right, rgba(0, 255, 0, 0.15) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 255, 0, 0.15) 1px, transparent 1px);
+}*/
+
+html::before {
+    z-index: 2;
+    content: '';
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-size: 1rem 1rem;
+    background-image: linear-gradient(to right, rgba(0, 150, 255, 0.25) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 150, 255, 0.25) 1px, transparent 1px);
+    padding: 0;
+    margin: 0;
+    pointer-events: none;
+}
+
+nav {
+    background-color: yellow;
+}
+
+nav ul {
+    /*border: 1px solid red;*/
+    /*margin-top: 0;*/
+    /*padding-top: 0;*/
+    /*background-color: rgba(0, 255, 255, 0.2);*/
+    /*height: 2.4rem;*/
+}
+
+nav ul li {
+    /*background-color: rgba(255, 125, 0, 0.5);*/
+    background-color: rgba(255, 0, 0, 0.1);
+}
+
+h1 {
+    /*margin: 1.2rem;*/
+    /*height: 3rem;*/
+    background-color: rgba(255, 0, 0, 0.1);
+}
+
+h2 {
+    /*margin: 1.2rem;*/
+    /*height: 3rem;*/
+    background-color: rgba(255, 255, 0, 1);
+}
+
+h3 {
+    /*margin: 1.2rem;*/
+    /*height: 3rem;*/
+    background-color: rgba(255, 255, 0, 1);
+}
+
+h3::before {
+    z-index: -1;
+    content: '';
+    float: left;
+    width: 100%;
+    position: relative;
+    bottom: 4.5rem;
+    height: 1px;
+    background-color: red;
+}
+#description {
+    background-color: rgba(0, 255, 255, 0.35);
+}
+
+.date {
+    background-color: rgba(255, 255, 0, 1);
+}
+
+p, .sidenote, .sidenote-left, .marginnote, .marginnote-left {
+    background-color: rgba(0, 0, 255, 0.1);
+}
+
+article ul {
+    background-color: rgba(0, 126, 126, 0.1);
+}
+
+#footer {
+    background-color: rgba(255, 255, 0, 1);
+}
+
+#footer::before {
+    z-index: -1;
+    content: '';
+    float: left;
+    width: 100%;
+    position: relative;
+    bottom: 4rem;
+    height: 1px;
+    background-color: red;
+}
