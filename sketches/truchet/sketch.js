@@ -51,7 +51,7 @@ function setup() {
     cnvs = createCanvas(w, w * 9 / 16);
     cnvs.parent("#tiling-generator");
     // canvasContainer.style("width", "80%");
-    canvasContainer.style("margin", "2em 0");
+    // canvasContainer.style("margin", "2em 0");
     canvasContainer.mouseClicked(function() {
         if (looping) {
             manualButton.style("box-shadow", "inset 0px -1px white, inset 0px -2px black");
