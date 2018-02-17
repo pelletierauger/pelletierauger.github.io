@@ -28,13 +28,13 @@ img.pavasym {
 .imagedouble-top img {
     display: block;
     float: left;
-    max-width: 49%;
-    margin: 0 0 2% 0;
+    max-width: 49.3%;
+    margin: 0 0 1.4% 0;
     padding: 0;
 }
 
 .imagedouble-top img:nth-child(even) {
-    margin-left: 2%;
+    margin-left: 1.4%;
 }
 
 .imagedouble-top img:nth-child(1n+3) {
@@ -145,7 +145,7 @@ img.possibilities {
 #wavymode span:hover,
 #manual span:hover,
 #showreel span:hover {
-    box-shadow: inset 0px -1px white, inset 0px -2px black;
+    box-shadow: 0px 1px black, inset 0px -1px white, inset 0px -2px black;
 }
 
 #abcdmode span:hover,
