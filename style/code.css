@@ -25,11 +25,11 @@ hue-6-2: #e6c07b
 
 pre {
     overflow: auto;
-    margin: 1.5em auto 1.5em auto;
+    margin: 2rem auto 2rem auto;
     max-width: 650px;
     background: #F2F2F2;
-    padding: 25px;
-    line-height: 1.4em;
+    padding: 1.5rem 2rem 1.75rem 2rem;
+    line-height: 1em;
     /*  -ms-word-break: break-all;
     word-break: break-all;
     word-break: break-word;*/
