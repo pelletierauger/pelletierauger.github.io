@@ -1,9 +1,9 @@
 .sidenote, .marginnote {
     float: right;
     clear: right;
-    margin-right: -35%;
+    margin-right: -34.5%;
     width: 30%;
-    margin-top: 0;
+    margin-top: 0.25rem;
     margin-bottom: 0;
     font-family: 'EBG08-Re';
     font-size: 0.8em;
@@ -17,9 +17,9 @@
 .sidenote-left, .marginnote-left {
     float: left;
     clear: left;
-    margin-left: -35%;
+    margin-left: -34.5%;
     width: 30%;
-    margin-top: 0;
+    margin-top: 0.25rem;
     margin-bottom: 0;
     font-family: 'EBG08-Re';
     font-size: 0.8em;
@@ -27,6 +27,7 @@
     vertical-align: baseline;
     position: relative;
     text-indent: 0;
+    text-align: right;
     /*background-color: red;*/
 }
 
@@ -106,7 +107,7 @@ label.margin-toggle:not(.sidenote-number) {
     label.margin-toggle:not(.sidenote-number) {
         display: inline;
     }
-    .sidenote, .marginnote, .sidenote-left {
+    .sidenote, .marginnote, .sidenote-left, .marginnote-left {
         display: none;
     }
     .margin-toggle:checked+.sidenote,
@@ -121,7 +122,13 @@ label.margin-toggle:not(.sidenote-number) {
         vertical-align: baseline;
         position: relative;
     }
+    label.margin-toggle:not(.sidenote-number) {
+        display: none;
+    }
     label {
         cursor: pointer;
+    }
+    .sidenote-left, .marginnote-left {
+        text-align: left;
     }
 }
