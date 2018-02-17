@@ -77,7 +77,7 @@ function tilingFiller(instructions) {
     for (var i = 0; i < tiling.length; i++) {
         tilingAsAString = tilingAsAString + tiling[i];
     }
-    console.log(tilingAsAString);
+    // console.log(tilingAsAString);
     return tiling;
 }
 

@@ -584,7 +584,7 @@ function showA(x, y, tW, light, dark) {
         // var angle = Math.sin(opposite / adjacent);
         var angle = atan2(b.y - a.y, b.x - a.x);
         if ((angle <= -0.574 && angle >= -1.407) || (angle >= 2.03 && angle <= 2.677)) {
-            console.log(angle);
+            // console.log(angle);
             strokeWeight(random(strokeFloor, strokeCeiling));
             line(a.x, a.y, b.x, b.y);
         }
@@ -657,7 +657,7 @@ function showB(x, y, tW, light, dark) {
         // var angle = Math.sin(opposite / adjacent);
         var angle = atan2(b.y - a.y, b.x - a.x);
         if ((angle <= -0.574 && angle >= -1.407) || (angle >= 2.03 && angle <= 2.677)) {
-            console.log(angle);
+            // console.log(angle);
             strokeWeight(random(strokeFloor, strokeCeiling));
             line(a.x, a.y, b.x, b.y);
         }
@@ -731,7 +731,7 @@ function showC(x, y, tW, light, dark) {
         // var angle = Math.sin(opposite / adjacent);
         var angle = atan2(b.y - a.y, b.x - a.x);
         if ((angle <= -0.574 && angle >= -1.407) || (angle >= 2.03 && angle <= 2.677)) {
-            console.log(angle);
+            // console.log(angle);
             strokeWeight(random(strokeFloor, strokeCeiling));
             line(a.x, a.y, b.x, b.y);
         }
@@ -802,7 +802,7 @@ function showD(x, y, tW, light, dark) {
         // var angle = Math.sin(opposite / adjacent);
         var angle = atan2(b.y - a.y, b.x - a.x);
         if ((angle <= -0.574 && angle >= -1.407) || (angle >= 2.03 && angle <= 2.677)) {
-            console.log(angle);
+            // console.log(angle);
             strokeWeight(random(strokeFloor, strokeCeiling));
             line(a.x, a.y, b.x, b.y);
         }
@@ -882,7 +882,7 @@ function showF(x, y, tW, light, dark) {
         // var angle = Math.sin(opposite / adjacent);
         var angle = atan2(b.y - a.y, b.x - a.x);
         if ((angle <= -0.574 && angle >= -1.407) || (angle >= 2.03 && angle <= 2.677)) {
-            console.log(angle);
+            // console.log(angle);
             strokeWeight(random(strokeFloor, strokeCeiling));
             line(a.x, a.y, b.x, b.y);
         }
