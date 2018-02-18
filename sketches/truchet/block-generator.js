@@ -4,33 +4,15 @@ var blockOffset;
 generateRandomBlock();
 
 function calculateOffset(n) {
-    var o;
-    switch (n) {
-        case 3:
-            o = { x: 2, y: 0 };
-            break;
-        case 4:
-            o = { x: 0, y: 7 };
-            break;
-        case 5:
-            o = { x: 4, y: 1 };
-            break;
-        case 6:
-            o = { x: 2, y: 3 };
-            break;
-        case 7:
-            o = { x: 5, y: 5 };
-            break;
-        case 8:
-            o = { x: 0, y: 7 };
-            break;
-        case 9:
-            o = { x: 2, y: 0 };
-            break;
-        default:
-            o = { x: 0, y: 0 };
+    var xOffset = subtractRemainder(n, gridXAmount);
+    var yOffset = subtractRemainder(n, gridYAmount);
+
+    function subtractRemainder(n, w) {
+        var half = w / 2;
+        var remainder = half % n;
+        return n - remainder;
     }
-    return o;
+    return { x: xOffset, y: yOffset };
 }
 
 function generateRandomBlock() {
