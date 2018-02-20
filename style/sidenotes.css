@@ -115,7 +115,7 @@ label.margin-toggle:not(.sidenote-number) {
     .margin-toggle:checked+.marginnote {
         display: block;
         float: left;
-        left: 1.4em;
+        left: 2rem;
         clear: both;
         width: 95%;
         margin: 1rem 2.5%;
