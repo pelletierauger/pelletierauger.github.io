@@ -1,6 +1,6 @@
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 550px) {
     body {
-        padding: 0 1rem;
+        padding: 0 0.5rem;
     }
     .sidenote, .marginnote, .sidenote-left, .marginnote-left {
         /*margin-right: 2rem;*/
@@ -16,10 +16,108 @@
         left: 0rem;
         margin-left: 0;
     }
+    nav {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        padding-bottom: 8rem;
+        text-align: center;
+    }
+    nav ul li:nth-child(1), nav ul li:nth-child(2) {
+        border-bottom: 2px solid black;
+    }
+    nav ul li:nth-child(1), nav ul li:nth-child(2) {
+        border-bottom: 2px solid black;
+        line-height: 2rem;
+        padding-bottom: 1rem;
+        margin-top: 1rem;
+    }
+    nav ul li:nth-child(3), nav ul li:nth-child(4) {
+        /*border-bottom: 2px solid black;*/
+        line-height: 2rem;
+        padding-top: 1rem;
+        margin-bottom: 1rem;
+    }
+    nav ul li:nth-child(2n+1) {
+        border-right: 2px solid black;
+        box-sizing: border-box;
+    }
+    nav ul {
+        display: block;
+        width: 100%;
+        border-top: 2px solid black;
+        border-bottom: 2px solid black;
+        margin: 0 auto;
+        padding: 0;
+        margin-bottom: 2rem;
+        /*float: right;*/
+        /*vertical-align: middle;*/
+    }
+    nav ul li {
+        display: block;
+        float: left;
+        /*line-height: 3rem;*/
+        width: 50%;
+        /*margin: 0.5rem 0;*/
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
+    h1 {
+        width: 100%;
+        /*padding: 0 5rem;*/
+        float: left;
+        text-align: center;
+        /*height: 6rem;*/
+        margin: 1rem auto;
+        /*margin-top: 1rem;*/
+        /*margin-bottom: 1rem;*/
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .portfolio-banner {
+        background-color: white;
+        position: absolute;
+        top: 1rem;
+        padding: 1rem;
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+        transform: translateX(-50%)
+    }
+    .portfolio-description, .portfolio-banner h2 {
+        margin: 0 auto;
+        text-align: center;
+    }
+    .portfolio-item {
+        height: 565px;
+        overflow: hidden;
+    }
+    .thumbnail {
+        /*height: 1000px;*/
+        /*        position: relative;
+        overflow: hidden;*/
+        display: inline-block;
+        position: relative;
+        right: -50%;
+    }
+    .thumbnail img {
+        position: relative;
+        left: -50%;
+        /*margin-left: 50%;*/
+        /*transform: translateX(-50%);*/
+        /*position: absolute;*/
+        /*height: 600px;*/
+        width: 1000px;
+        /*        top: 0;
+        left: -9999px;
+        right: -9999px;*/
+        /*margin: auto;*/
+    }
 }
 
 @media screen and (min-width: 376px) and (max-width: 550px) {
-    body {
+    /*    body {
         padding: 0 1rem;
     }
     .margin-toggle:checked+.sidenote,
@@ -27,18 +125,66 @@
     .margin-toggle:checked+.marginnote {
         left: 0rem;
         margin-left: 0;
-    }
+    }*/
 }
 
 @media screen and (min-width: 551px) and (max-width: 750px) {
+    /*    body {
+        padding: 0 2rem;
+    }*/
+}
+@media screen and (min-width: 551px) and (max-width: 950px) {
     body {
         padding: 0 2rem;
     }
-}
-@media screen and (min-width: 751px) and (max-width: 950px) {
-    body {
-        padding: 0 2rem;
+    nav {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        padding-bottom: 8rem;
+        text-align: center;
+    }
+    nav ul {
+        display: block;
+        width: 100%;
+        border-top: 2px solid black;
+        border-bottom: 2px solid black;
+        margin: 0 auto;
+        padding: 0;
+        /*float: right;*/
+        /*vertical-align: middle;*/
+    }
+    nav ul li {
+        display: block;
+        float: left;
+        width: 25%;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
+    h1 {
+        width: 100%;
+        text-align: center;
+        /*height: 6rem;*/
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+    .portfolio-banner {
+        background-color: white;
+        position: absolute;
+        top: 2rem;
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+        transform: translateX(-50%)
+    }
+    .portfolio-description, .portfolio-banner h2 {
+        margin: 0 auto;
+        text-align: center;
     }
 }
 
-@media screen and (min-width: 950px) {}
+@media screen and (min-width: 950px) {
+    body {
+        /*padding: 0 2rem;*/
+    }
+}
