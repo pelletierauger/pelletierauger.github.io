@@ -1,9 +1,10 @@
 nav {
-    /*padding: 0 2rem;*/
+    padding: 1rem 0rem 1rem 0rem;
     margin: 0;
     height: 4rem;
     font-size: 1.3em;
     font-family: 'EBG12-SC';
+    /*font-family: "EBG12-It";*/
     text-transform: lowercase;
 }
 
@@ -14,11 +15,20 @@ nav a {
 nav ul {
     display: inline-block;
     float: right;
+    /*vertical-align: middle;*/
 }
 
 nav ul li {
     display: inline-block;
+
+    /*font-family: "EBG12-Re";*/
+    /*font-size: 0.85em;*/
     line-height: 4rem;
-    vertical-align: middle;
+    /*vertical-align: baseline;*/
     margin: 0em 0em 0em 1em;
+}
+
+li.selected a, nav a:hover {
+    /*border-bottom: 3px solid black;*/
+    box-shadow: inset 0px -1px white, inset 0px -2px black, inset 0px -3px white, inset 0px -4px black;
 }
