@@ -17,6 +17,10 @@
     url('./fonts/EBGaramond/EBGaramond12-Italic.woff') format('woff');
 }
 @font-face {
+    font-family: "vegetal-g";
+    src: url(./fonts/EBGaramond/EBGaramond12-Italic-Vegetalia3.otf);
+}
+@font-face {
     font-family: "EBG08-It";
     src: url(./fonts/EBGaramond/EBGaramond08-Italic.eot );
     src: url('./fonts/EBGaramond/EBGaramond08-Italic.ttf') format('truetype'),
@@ -62,6 +66,7 @@ html {
 body {
     font-size: 22px;
     /*font-size: 1.5em;*/
+    padding: 0 2em;
     margin: 0em auto;
     max-width: 76rem;
     counter-reset: sidenote-counter;
@@ -125,7 +130,7 @@ a {
     text-decoration: none;
 }
 
-article a {
+article a, nav ul li a, h1 a {
     color: #000000;
     text-decoration: none;
     box-shadow: inset 0 -3px 0 0 #fff, inset 0 -4px 0 0 #000;
@@ -140,8 +145,20 @@ article a {
     -2px -2px 0 #fff, 2px -2px 0 #fff;*/
 }
 
+nav ul li a, h1 a {
+    box-shadow: unset;
+    text-shadow: 1px 1px 0 #fff, -1px 1px 0 #fff,
+    2px 0 0 #fff, -2px 0 0 #fff,
+    3px 0 0 #fff, -3px 0 0 #fff,
+    3px -1px 0 #fff, 3px -2px 0 #fff,
+    0px -1px 0 #fff, 0px -2px 0 #fff,
+    -1px -1px 0 #fff, 1px -1px 0 #fff,
+    -2px -1px 0 #fff, 2px -1px 0 #fff;
+}
 h1 {
     display: inline-block;
+
+    /*font-family: "EBG12-It";*/
     line-height: 4rem;
     vertical-align: middle;
     font-weight: normal;
@@ -153,7 +170,7 @@ h2 {
     font-weight: normal;
     font-family: 'EBG12-SC';
     font-size: 2em;
-    line-height: 1rem;
+    line-height: 3rem;
     /*display: inline-block;*/
     /*vertical-align: middle;*/
     margin: 0 auto;
@@ -165,7 +182,7 @@ h2 {
 }
 article h2 {
     text-align: center;
-    margin-top: 4rem;
+    margin-top: 3rem;
     /*max-width: 570px;*/
 }
 
@@ -197,11 +214,14 @@ h3 {
 
 
 #description {
-    margin-top: 1.5rem;
-    margin-bottom: 0.5rem;
+    display: block;
+    vertical-align: middle;
+    margin-top: 0.5rem;
+    margin-bottom: 0rem;
     font-family: 'EBG08-Re';
     font-size: 0.8em;
-    height: 1rem;
+    line-height: 1.5rem;
+    padding: 0.25em 0;
     text-align: center;
 }
 .date {
@@ -228,7 +248,7 @@ p {
     margin: 0 auto;
     padding: 0;
     max-width: 700px;
-    line-height: 1.9rem;
+    line-height: 2rem;
     text-align: left;
     text-indent: 2rem;
 }
@@ -242,7 +262,8 @@ article ul.dash {
     margin: 0 auto;
     max-width: 700px;
     /*line-height: 1.3;*/
-    line-height: 1.75rem;
+    /*line-height: 1.75rem;*/
+    line-height: 2rem;
     padding-left: 1.75rem;
     list-style-type: '\2014';
     list-style-type: none;
@@ -255,7 +276,7 @@ article ul.dash>li {
     padding-left: 0.75rem;
     /*display: block;*/
     /*background-color: rgba(0, 0, 255, 0.2);*/
-    text-indent: -1.9rem;
+    text-indent: -2rem;
 }
 
 img {
@@ -266,6 +287,15 @@ img {
 
 .noindent {
     text-indent: 0em;
+}
+
+.vegetal {
+    font-family: 'vegetal-g', 'EBG12-It';
+    -moz-font-feature-settings: 'swsh';
+    -webkit-font-feature-settings: 'swsh';
+    -ms-font-feature-settings: 'swsh';
+    -o-font-feature-settings: 'swsh';
+    font-feature-settings: 'swsh';
 }
 
 canvas {
@@ -286,4 +316,12 @@ canvas {
     margin-bottom: 2rem;
     font-size: 0.8em;
     text-align: center;
+}
+
+.swash {
+    -moz-font-feature-settings: 'swsh';
+    -webkit-font-feature-settings: 'swsh';
+    -ms-font-feature-settings: 'swsh';
+    -o-font-feature-settings: 'swsh';
+    font-feature-settings: 'swsh';
 }
