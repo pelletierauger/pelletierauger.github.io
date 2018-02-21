@@ -117,6 +117,25 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*.dummies {*/
 
 
@@ -184,6 +203,10 @@ h2 {
     background-color: rgba(255, 255, 0, 1);
 }
 
+.blog-post h2 {
+    background-color: rgba(255, 125, 0, 0.3);
+}
+
 h3 {
     /*margin: 1.2rem;*/
     /*height: 3rem;*/
@@ -196,7 +219,7 @@ h3::before {
     float: left;
     width: 100%;
     position: relative;
-    bottom: 4.5rem;
+    bottom: 3rem;
     height: 1px;
     background-color: red;
 }
@@ -210,6 +233,20 @@ h3::before {
 
 p, .sidenote, .sidenote-left, .marginnote, .marginnote-left, .portfolio-description {
     background-color: rgba(0, 0, 255, 0.1);
+}
+
+.blog-posts {
+    background-color: rgba(255, 0, 0, 0.1);
+    /*border: 1px solid green;*/
+}
+
+.blog-post .description {
+    background-color: rgba(0, 255, 0, 0.1);
+}
+
+.blog-post {
+    /*box-shadow: 0px -1px 0 0 red;*/
+    border-bottom: 1px solid rgba(0, 255, 255, 1);
 }
 
 article ul {
