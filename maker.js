@@ -733,9 +733,9 @@ function parseHTMLTemplate(s) {
     page.en.content = page.en.content.replace(/<\/im>/g, String.raw `\)`);
     // Put a non-breaking space between any letter followed immediately by an exclamation point
     // or an interrogation mark. (There can also be a space between the letter and the punctuation.)
-    page.en.content = page.en.content.replace(/([a-zA-ZÀ-ú])( *[\?\!])/g, function(a, b, c, d) {
-        return "" + b + "&nbsp;" + c;
-    });
+    // page.en.content = page.en.content.replace(/([a-zA-ZÀ-ú])( *[\?\!])/g, function(a, b, c, d) {
+    //     return "" + b + "&nbsp;" + c;
+    // });
 
     // Replace the snl and snr pseudo-HTML tags (used for sidenotes)
     page.en.content = page.en.content.replace(/(<sn)([lr])( label=")([0-9a-zA-ZÀ-ú\-]*)(">)/g, function(a, b, c, d, e) {
