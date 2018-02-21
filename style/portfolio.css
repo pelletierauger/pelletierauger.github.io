@@ -90,3 +90,8 @@
     padding: 0 0em 0 0;
     line-height: 1.5em;
 }
+@media screen and (min-width: 950px) {
+    .portfolio-description h2 {
+        text-align: left;
+    }
+}
