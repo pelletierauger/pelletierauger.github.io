@@ -81,9 +81,8 @@ function makeBlog(language) {
             // blogNameLanguage += " - page " + (k + 1);
             blogNameLanguage = "<h2>Page " + (k + 1) + "</h2>";
         }
-        var content = `
-        ${blogNameLanguage}
-        `;
+        var content = `${blogNameLanguage}`;
+        content += `<div class="blog-posts">`;
         var postsOnThisPage = Math.min(postsToPrint, blog.config.itemsPerPage);
         var scripts = [];
         var styles = [];
@@ -112,18 +111,15 @@ function makeBlog(language) {
 
             //We create the content of a post within the blog
             let title = post[language].HTMLTitle || post[language].title;
-            let description = (post[language].description) ? `
-                <div id="description">
+            let description = (post[language].description) ? `<div class="description">
                     ${post[language].description}
-                </div>
-                ` : "";
+            </div>` : "";
             content += `
-            <article class="blog-post">`;
-            content += `<h2 class="with-date"><a href="../${linkIndividual}.html">${title}</a></h2>${description}`;
-            content += `<div class = "date">${date}</div>`;
-            // content += `${post[language].content}`;
-            content += `
-            </article>`;
+            <div class="blog-post">
+                <a href="../${linkIndividual}.html"><div class="date">${date}</div>
+                <div class="blog-title-box"><h2 class="header">${title}</h2></div>
+                ${description}</a>
+            </div>`;
             currentPost++;
             postsToPrint--;
 
@@ -139,7 +135,7 @@ function makeBlog(language) {
             individualContent += `
             <article>
                 <h2 class="with-date">${title}</h2>${description}
-                <div class = "date">${date}</div>
+                <div class="date">${date}</div>
                 ${post[language].content}
             </article>
             `;
@@ -151,10 +147,13 @@ function makeBlog(language) {
 
             makeFile(language, blogPrefix + filenameIndividual, individualContent);
         }
+        content += `
+        </div>`;
         // console.log("scripts before sending :" + scripts + ", " + language);
         // content += `
         // </div>`;
-        content += `<div id = "blog-pagination">`;
+        content += `
+        <div id = "blog-pagination">`;
         var pagination = {
             fr: {
                 prev: "Page précédente",
@@ -195,9 +194,9 @@ function makeBlog(language) {
                 title: blog.config.en.title + suffix,
                 content: content
             },
-            style: styles
+            style: null
         };
-        var header = makeHeader(page, language, stepsFromRoot, scripts);
+        var header = makeHeader(page, language, stepsFromRoot, null);
         var footer = makeFooter(page, language);
         var fileName = (k == 0) ? "index" : "page-" + (k + 1);
         makeFile(language, parent + fileName, header + navigation + content + footer);
@@ -464,7 +463,7 @@ function makeContent(page, language) {
     } else {
         let title = page[language].HTMLTitle || page[language].title;
         let description = `
-        <div id="description">
+        <div class="description">
             ${page[language].description}
         </div>
         ` || "";
