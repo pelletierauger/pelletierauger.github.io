@@ -30,5 +30,5 @@ nav ul li {
 
 li.selected a, nav a:hover {
     /*border-bottom: 3px solid black;*/
-    box-shadow: inset 0px -1px white, inset 0px -2px black, inset 0px -3px white, inset 0px -4px black;
+    box-shadow: inset 0px -2px white, inset 0px -3px black, inset 0px -4px white, inset 0px -5px black;
 }
