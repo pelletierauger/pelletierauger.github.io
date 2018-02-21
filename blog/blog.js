@@ -1,9 +1,9 @@
 exports.posts = [
     "modeling-pencil-strokes",
     "towards-turtle-geometry",
-    "exploring-fractal-cellular-automata",
-    "recursive-harmonic-motion",
-    "truchet"
+    // "exploring-fractal-cellular-automata",
+    "recursive-harmonic-motion"
+    // "truchet"
 ];
 
 exports.config = {
