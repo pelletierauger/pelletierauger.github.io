@@ -2,6 +2,10 @@
     body {
         padding: 0 0.5rem;
     }
+    .portfolio-item {
+
+        margin: 0 0 0.5rem 0;
+    }
     .sidenote, .marginnote, .sidenote-left, .marginnote-left {
         /*margin-right: 2rem;*/
         /*max-width: 100%;*/
@@ -20,33 +24,39 @@
         margin: 0;
         padding: 0;
         width: 100%;
-        padding-bottom: 8rem;
+        /*padding-bottom: 8rem;*/
         text-align: center;
     }
     nav ul li:nth-child(1), nav ul li:nth-child(2) {
-        border-bottom: 2px solid black;
+        /*border-bottom: 2px solid black;*/
+        box-shadow: 0 1.5px 0 #000000;
     }
     nav ul li:nth-child(1), nav ul li:nth-child(2) {
-        border-bottom: 2px solid black;
+        /*border-bottom: 2px solid black;*/
         line-height: 2rem;
-        padding-bottom: 1rem;
-        margin-top: 1rem;
+        padding-bottom: 0.5rem;
+        margin-top: 0.5rem;
     }
     nav ul li:nth-child(3), nav ul li:nth-child(4) {
         /*border-bottom: 2px solid black;*/
         line-height: 2rem;
-        padding-top: 1rem;
-        margin-bottom: 1rem;
+        padding-top: 0.5rem;
+        margin-bottom: 0.5rem;
     }
     nav ul li:nth-child(2n+1) {
-        border-right: 2px solid black;
-        box-sizing: border-box;
+        /*border-right: 2px solid black;*/
+        box-shadow: 1.5px 0px 0 #000000;
+        /*box-sizing: border-box;*/
+    }
+    nav ul li:nth-child(1) {
+        box-shadow: 0 1.5px 0 #000000, 1.5px 0px 0 #000000;
     }
     nav ul {
         display: block;
         width: 100%;
-        border-top: 2px solid black;
-        border-bottom: 2px solid black;
+        /*border-top: 2px solid black;*/
+        /*border-bottom: 2px solid black;*/
+        box-shadow: 0 1.5px 0 #000000, 0 -1.5px 0 #000000;
         margin: 0 auto;
         padding: 0;
         margin-bottom: 2rem;
@@ -64,12 +74,15 @@
         text-align: center;
     }
     h1 {
-        width: 100%;
+        /*width: 100%;*/
+        width: 70%;
         /*padding: 0 5rem;*/
-        float: left;
-        text-align: center;
+        /*float: left;*/
+        line-height: 1.75rem;
+        /*text-align: center;*/
         /*height: 6rem;*/
-        margin: 1rem auto;
+        margin: 1.5rem auto;
+        margin-left: 15%;
         /*margin-top: 1rem;*/
         /*margin-bottom: 1rem;*/
     }
@@ -79,9 +92,10 @@
     .portfolio-banner {
         background-color: white;
         position: absolute;
-        top: 1rem;
-        padding: 1rem;
+        top: 1.5rem;
+        padding: 2rem;
         left: 50%;
+        min-width: 65%;
         -webkit-transform: translateX(-50%);
         transform: translateX(-50%)
     }
@@ -137,22 +151,28 @@
     body {
         padding: 0 2rem;
     }
+    .mosaic {
+        line-height: 1.3;
+        /*padding-top: 3rem;*/
+    }
     nav {
         margin: 0;
         padding: 0;
+        height: 11rem;
         width: 100%;
-        padding-bottom: 8rem;
+        padding-bottom: 0rem;
         text-align: center;
     }
     nav ul {
         display: block;
         width: 100%;
-        border-top: 2px solid black;
-        border-bottom: 2px solid black;
+        /*border-top: 2px solid black;*/
+        /*border-bottom: 2px solid black;*/
         margin: 0 auto;
         padding: 0;
         /*float: right;*/
         /*vertical-align: middle;*/
+        box-shadow: 0 1.5px 0 #000000, 0 -1.5px 0 #000000;
     }
     nav ul li {
         display: block;
@@ -161,6 +181,7 @@
         margin: 0;
         padding: 0;
         text-align: center;
+        line-height: 3rem;
     }
     h1 {
         width: 100%;
