@@ -953,15 +953,15 @@ function showSquare(x, y, tW, light, dark) {
 }
 
 function keyPressed() {
-    if (key == 'p' || key == 'P') {
-        if (looping) {
-            noLoop();
-            looping = false;
-        } else {
-            loop();
-            looping = true;
-        }
-    }
+    // if (key == 'p' || key == 'P') {
+    //     if (looping) {
+    //         noLoop();
+    //         looping = false;
+    //     } else {
+    //         loop();
+    //         looping = true;
+    //     }
+    // }
     if (key == 'r' || key == 'R') {
         redraw();
     }
