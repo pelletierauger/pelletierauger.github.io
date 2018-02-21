@@ -145,7 +145,7 @@ article a, nav ul li a, h1 a {
     -2px -2px 0 #fff, 2px -2px 0 #fff;*/
 }
 
-nav ul li a, h1 a {
+nav ul li a, h1 a, .blog-post h2 {
     box-shadow: unset;
     text-shadow: 1px 1px 0 #fff, -1px 1px 0 #fff,
     2px 0 0 #fff, -2px 0 0 #fff,
@@ -157,7 +157,6 @@ nav ul li a, h1 a {
 }
 h1 {
     display: inline-block;
-
     /*font-family: "EBG12-It";*/
     line-height: 4rem;
     vertical-align: middle;
@@ -166,7 +165,7 @@ h1 {
     font-size: 1em;
 }
 
-h2 {
+article h2, .portfolio-description h2 {
     font-weight: normal;
     font-family: 'EBG12-SC';
     font-size: 2em;
@@ -179,11 +178,8 @@ h2 {
     /*margin-top: 1em;*/
     /*padding-top: 0.5em;*/
     /*padding-bottom: 0.5em;*/
-}
-article h2 {
     text-align: center;
     margin-top: 3rem;
-    /*max-width: 570px;*/
 }
 
 .with-date {
@@ -202,18 +198,17 @@ h3 {
     /*clear: both;*/
     /*font-family: 'EBG12-It';*/
     font-size: 1.5em;
-    line-height: 1rem;
+    line-height: 2.5rem;
     font-weight: normal;
     /*vertical-align: middle;*/
     margin: 0 auto;
     padding: 0;
     max-width: 700px;
-    margin-top: 4.5rem;
-    margin-bottom: 1.5rem;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
 }
 
-
-#description {
+article .description {
     display: block;
     vertical-align: middle;
     margin-top: 0.5rem;
@@ -224,7 +219,7 @@ h3 {
     padding: 0.25em 0;
     text-align: center;
 }
-.date {
+article .date {
     font-family: 'EBG08-Re';
     font-size: 0.8em;
     margin-bottom: 3rem;
@@ -236,7 +231,7 @@ h3 {
 }
 
 .article-top {
-    margin-top: 2rem;
+    margin-top: 3rem;
     text-indent: 0em;
 }
 
@@ -324,4 +319,14 @@ canvas {
     -ms-font-feature-settings: 'swsh';
     -o-font-feature-settings: 'swsh';
     font-feature-settings: 'swsh';
+}
+
+@font-face {
+    font-family: "Silentype";
+    src: url('./fonts/Silentype-Regular.ttf') format('truetype');
+}
+
+.Silentype {
+    font-family: "Silentype";
+    font-size: 0.9em;
 }
