@@ -1,6 +1,6 @@
 exports.posts = [
     "modeling-pencil-strokes",
-    "towards-turtle-geometry",
+    // "towards-turtle-geometry",
     // "exploring-fractal-cellular-automata",
     "recursive-harmonic-motion"
     // "truchet"
