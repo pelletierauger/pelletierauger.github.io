@@ -643,11 +643,17 @@ function parseHTMLTemplate(s) {
         return "" + b + "&nbsp;" + c;
     });
     // Replace the snl and snr pseudo-HTML tags (used for sidenotes)
+
+    page.fr.content = page.fr.content.replace(/&nbsn;/g, String.raw `<span class="nobreak">`);
+    // page.fr.content = page.fr.content.replace(/(\s)(?!span)([0-9a-zA-ZÀ-ú\.<>":;&\/\?\-=]+?|<span\sclass=)(<sn[lr])/g, function(a, b, c, d) {
+    //     console.log(page.fr.title + "--->b" + b + "--->c" + c + "--->d" + d);
+    //     return b + '<span class="nobreak">' + c + d;
+    // });
     page.fr.content = page.fr.content.replace(/(<sn)([lr])( label=")([0-9a-zA-ZÀ-ú\-]*)(">)/g, function(a, b, c, d, e) {
         let typeOfSidenote = (c == "l") ? "sidenote-left" : "sidenote";
         let response = `
         <label for="${e}" class="margin-toggle sidenote-number">
-        </label>
+        </label></span>
         <input type="checkbox" id="${e}" class="margin-toggle"/>
         <span class="${typeOfSidenote}">`;
         return response;
@@ -738,9 +744,14 @@ function parseHTMLTemplate(s) {
     // });
 
     // Replace the snl and snr pseudo-HTML tags (used for sidenotes)
+    page.en.content = page.en.content.replace(/&nbsn;/g, String.raw `<span class="nobreak">`);
+    // page.en.content = page.en.content.replace(/(\s)([0-9a-zA-ZÀ-ú\.<>":;&\/\?]*)(<sn[lr])/g, function(a, b, c, d) {
+    //     console.log(page.en.title + ", " + b + c + d);
+    //     return b + '<span class="nobreak">' + c + d;
+    // });
     page.en.content = page.en.content.replace(/(<sn)([lr])( label=")([0-9a-zA-ZÀ-ú\-]*)(">)/g, function(a, b, c, d, e) {
         let typeOfSidenote = (c == "l") ? "sidenote-left" : "sidenote";
-        let response = `<label for="${e}" class="margin-toggle sidenote-number"></label>
+        let response = `<label for="${e}" class="margin-toggle sidenote-number"></label></span>
         <input type="checkbox" id="${e}" class="margin-toggle"/>
         <span class="${typeOfSidenote}">`;
         return response;
