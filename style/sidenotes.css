@@ -52,7 +52,7 @@
     -ms-font-feature-settings: "lnum", "xtex";
     -o-font-feature-settings: "lnum", "xtex";
     font-feature-settings: "lnum", "xtex";
-    margin-right: -0.25em;
+    /*margin-right: 0.25em;*/
 }
 
 .sidenote-number:after {
@@ -115,10 +115,11 @@ label.margin-toggle:not(.sidenote-number) {
     .margin-toggle:checked+.marginnote {
         display: block;
         float: left;
-        left: 2rem;
+        left: 0rem;
         clear: both;
-        width: 95%;
-        margin: 1rem 2.5%;
+        width: 80%;
+        padding: 0 10%;
+        margin: 1rem 0%;
         vertical-align: baseline;
         position: relative;
     }
