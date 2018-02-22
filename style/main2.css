@@ -74,26 +74,26 @@ body {
 
 .italic {
     font-family: 'EBG12-It';
-    -moz-font-feature-settings: unset;
+    /*   -moz-font-feature-settings: unset;
     -webkit-font-feature-settings: unset;
     -ms-font-feature-settings: unset;
     -o-font-feature-settings: unset;
     font-feature-settings: unset;
     font-variant-ligatures: no-discretionary-ligatures;
     -moz-font-variant-ligatures: no-discretionary-ligatures;
-    -webkit-font-variant-ligatures: no-discretionary-ligatures;
+    -webkit-font-variant-ligatures: no-discretionary-ligatures;*/
 }
 
 .italic8 {
     font-family: 'EBG08-It';
-    -moz-font-feature-settings: none;
+    /*    -moz-font-feature-settings: none;
     -webkit-font-feature-settings: none;
     -ms-font-feature-settings: none;
     -o-font-feature-settings: none;
     font-feature-settings: none;
     font-variant-ligatures: no-discretionary-ligatures;
     -moz-font-variant-ligatures: no-discretionary-ligatures;
-    -webkit-font-variant-ligatures: no-discretionary-ligatures;
+    -webkit-font-variant-ligatures: no-discretionary-ligatures;*/
 }
 .small-caps {
     font-style: normal;
