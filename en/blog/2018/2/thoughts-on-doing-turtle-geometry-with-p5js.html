@@ -38,10 +38,10 @@
         <span class="sidenote-left">I read <span class="italic8">Mindstorms</span> as part of the <span class="lnum">p5</span>.diversity interactive book club. It was an amazing experience.</span> Papert was a passionate educator, mathematician, and computer scientist who believed that computers could and should change the way we learn. One of his most interesting inventions is <span class="italic">Turtle geometry</span>, a tool to learn mathematics in an embodied and intuitive way. While reading about it, I couldn&rsquo;t help wanting to try it for myself. I kept wondering what would be the best way to do Turtle geometry today. This article is about my first foray into it, using <span class="lnum">p5.js</span>.
     <!--     <span class="small-caps">In the Summer of 2017</span>, I read two books that changed my way of thinking about learning and education. <span class="italic">Mindstorms: Children, Computers and Powerful Ideas</span> and <span class="italic">The Children&rsquo;s Machine: Rethinking School in the Age of the Computer</span>, both written by Seymour Papert, make the argument that we need to think deeply about how computers can and will change how we learn. The first book, written in 1980, is a fiery and passionate invitation to experiment with computers, to build new computational tools that change how we learn and unite seemingly opposite endeavours like art and mathematics. The second book, written seventeen years later, is a more mature and reflective look on <span class="italic">what happened</span> with a bit of sadness in it but still quite a bit of passion, curiosity and openness. -->
 </p>
-<h3>What is Turtle geometry&nbsp;?</h3>
+<h3>What is Turtle geometry?</h3>
 <p class="noindent">
     <span class="small-caps">There are</span> a <span class="italic">lot</span> of things to say about the fascinating theory and immense potentiel of Turtle geometry, but for now I will just describe it as simply as possible for the purposes of this embryonic project.
-    <!--     I want to make Turtle geometry with <span class="lnum">p5</span>.js. What would be the best way to do it&nbsp;? One important thing for me is to be able to <span class="italic">see the turtle move</span>. Seeing a whole drawing appear in a flash is a very different experience from seeing how it is made. I don&rsquo;t want to just see the result of the turtle walk, I want to see the walk itself. -->
+    <!--     I want to make Turtle geometry with <span class="lnum">p5</span>.js. What would be the best way to do it? One important thing for me is to be able to <span class="italic">see the turtle move</span>. Seeing a whole drawing appear in a flash is a very different experience from seeing how it is made. I don&rsquo;t want to just see the result of the turtle walk, I want to see the walk itself. -->
 </p>
 <p>
     In 1967, Seymour Papert created <span class="Silentype">LOGO</span>, a computer system and software toolkit to build educational experiences. One of the key part of <span class="Silentype">LOGO</span> is the Turtle, a mathematical object that only has two properties: a position in space and a heading (a direction in which its &ldquo;head&rdquo; is pointing). To make the Turtle move, you give it instructions in a language called <span class="Silentype">TURTLE TALK</span>. For example, the command <span class="Silentype">FORWARD 50</span> makes the turtle go forward 50 steps. The command <span class="Silentype">LEFT 180</span> makes it rotate left by 180 degrees. The code below makes the Turtle draw a square:
@@ -110,7 +110,7 @@ END
     This is unfortunate because Turtle geometry is meant to be a way to learn mathematics using our senses and our intuitions, creating mental links between abstractions and experiences. A <a href="">film shot at <span class="small-caps">mit</span> in 1983</a> shows a group of children doing Turtle geometry with <span class="Silentype">LOGO</span>, and we can see the Turtles moving on the computer screens. <span class="Silentype">LOGO</span> did not only display the <span class="italic">results</span> of a series of commands but the <span class="italic">process</span> too. The film also shows a mechanical Turtle: a small robot that takes <span class="Silentype">TURTLE TALK</span> commands and moves over a piece of paper to draw the resulting shapes. While users of <span class="Silentype">LOGO</span> would observe the robot as it moved and drew, the JavaScript code I wrote above is more like entering a room where a robot has already finished drawing something. It builds an incomplete sensory bridge between the abstract Turtle commands and their visual, physical results.
 </p>
 <p>
-    So how could we go about replicating <span class="Silentype">TURTLE TALK</span>&rsquo;s friendly syntax and also get an animated Turtle as a result&nbsp;? This would be a simple way to achieve it:
+    So how could we go about replicating <span class="Silentype">TURTLE TALK</span>&rsquo;s friendly syntax and also get an animated Turtle as a result? This would be a simple way to achieve it:
 </p>
 <div class="codebox"><pre><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">draw</span>(<span class="hljs-params"></span>) </span>{
     <span class="hljs-keyword">let</span> t<span class="hljs-punctuation"> = </span><span class="hljs-keyword">new</span> Turtle();
@@ -219,7 +219,7 @@ END
     }
 });</code></pre></div>
 <p class="noindent">
-    I always thought that JavaScript should have a simple <span class="inline-code">repeat</span> syntax. I first learned programming with HyperCard and thankfully it had one. I think a simple <span class="inline-code">repeat</span> syntax is a great learning tool for beginners. It&rsquo;s the friendliest approach possible to loops. Also, how often do we use a <span class="inline-code">for</span> loop just to repeat an action a fixed amount of times&nbsp;? The following syntax could be very useful:
+    I always thought that JavaScript should have a simple <span class="inline-code">repeat</span> syntax. I first learned programming with HyperCard and thankfully it had one. I think a simple <span class="inline-code">repeat</span> syntax is a great learning tool for beginners. It&rsquo;s the friendliest approach possible to loops. Also, how often do we use a <span class="inline-code">for</span> loop just to repeat an action a fixed amount of times? The following syntax could be very useful:
 </p>
 <div class="codebox"><pre><code><span class="hljs-comment">// This is not correct JavaScript but maybe it should be:</span>
 repeat <span class="hljs-number">4</span> {
@@ -235,7 +235,7 @@ repeat Infinity {
     console.log("And Sisyphus watched his rock barrel down the hill.");
 } -->
 <p class="noindent">
-    Is there some underlying reasons why this couldn&rsquo;t be done&nbsp;? Would it introduce any problem that I&rsquo;m unaware of&nbsp;? Or is it just <span class="italic">dumb&nbsp;?</span> Here is the code to my very simple proposal for a <span class="inline-code">repeat()</span> function that offers similar functionality:
+    Is there some underlying reasons why this couldn&rsquo;t be done? Would it introduce any problem that I&rsquo;m unaware of? Or is it just <span class="italic">dumb?</span> Here is the code to my very simple proposal for a <span class="inline-code">repeat()</span> function that offers similar functionality:
 </p>
 <div class="codebox"><pre><code><span class="hljs-comment">// The repeat() function takes 2 arguments: </span>
 <span class="hljs-comment">// n is the amount of times it should loop.</span>

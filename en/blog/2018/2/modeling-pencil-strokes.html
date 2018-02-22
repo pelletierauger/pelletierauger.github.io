@@ -139,7 +139,7 @@
             <article>
                 <h2 class="with-date">Modeling <span class="nobreak">pencil strokes</span>
 </h2><div class="description">
-                    A first foray into methods to imitate the look of hand drawings.
+                    A first foray into methods of imitating the look of hand drawings.
 
             </div>
                 <div class="date">February 3, 2018</div>
@@ -155,7 +155,7 @@
         <label for="crayon" class="margin-toggle">—
         </label>
         <input type="checkbox" id="crayon" class="margin-toggle">
-        <span class="marginnote-left"><span class="italic8">But is it<br>graphite, charcoal,<br>Conté pencil…&nbsp;?<br></span></span> the thinnest and thickest ones look a lot less convincing. Finally, the variations in the width of the lines all seem strangely identical in the lower right quadrant of the circles. An <span class="italic">unpleasant regularity</span> seem to have emerged out of this algorithm that tries to model the unpredictability of a physical pencil. Some erroneous trigonometry might be at the root of this.
+        <span class="marginnote-left"><span class="italic8">But is it<br>graphite, charcoal,<br>Conté pencil…?<br></span></span> the thinnest and thickest ones look a lot less convincing. Finally, the variations in the width of the lines all seem strangely identical in the lower right quadrant of the circles. An <span class="italic">unpleasant regularity</span> seem to have emerged out of this algorithm that tries to model the unpredictability of a physical pencil. Some erroneous trigonometry might be at the root of this.
 </p>
 
 <h3>Normal distribution and <span class="nobreak">semi-random</span> variations</h3>
@@ -306,7 +306,7 @@
 <a name="scribbled-notes"><h3>Scribbled notes</h3></a>
 
 <p class="noindent">
-    <span class="small-caps">What I may require</span> is a <span class="inline-code">Line</span> class. Any process could create a new instance of <span class="inline-code">Line</span> and send line segments to it as pairs of vectors. The <span class="inline-code">Line</span> class would automatically deal with the Perlin noise: it would make sure that each new line segment is added in a coherent way to the rest of the line (continuing its shape and varying width). The class would also deal with the beginnings and endings of lines. Its <span class="inline-code">Line.drawSegment()</span> method could receive an <span class="inline-code">ending</span> boolean to know that it needs to finish the stroke. When receiving a “terminating” segment, the class could put itself in a <span class="inline-code">terminated</span> mode. Any new line segment received after that would reactivate it and make it draw a line beginning. Or should a line that receives a terminating segment just <span class="italic">destroy</span> itself&nbsp;? Remove itself from an array of available lines, for example&nbsp; ?
+    <span class="small-caps">What I may require</span> is a <span class="inline-code">Line</span> class. Any process could create a new instance of <span class="inline-code">Line</span> and send line segments to it as pairs of vectors. The <span class="inline-code">Line</span> class would automatically deal with the Perlin noise: it would make sure that each new line segment is added in a coherent way to the rest of the line (continuing its shape and varying width). The class would also deal with the beginnings and endings of lines. Its <span class="inline-code">Line.drawSegment()</span> method could receive an <span class="inline-code">ending</span> boolean to know that it needs to finish the stroke. When receiving a “terminating” segment, the class could put itself in a <span class="inline-code">terminated</span> mode. Any new line segment received after that would reactivate it and make it draw a line beginning. Or should a line that receives a terminating segment just <span class="italic">destroy</span> itself? Remove itself from an array of available lines, for example?
 </p>
 <p>
     It could also be interesting to separate the moment when a line segment is sent to an instance of <span class="inline-code">Line</span> from the moment when this segment is drawn. An instance of <span class="inline-code">Line</span> could have an array of line segments to draw. When it would receive new ones, it would simply add them to this array. This would be done with the <span class="inline-code">Line.addSegment()</span> method. The <span class="inline-code">Line.drawSegment()</span> method would draw the next line segment from the array, and then remove it from there (or change its state to <span class="inline-code">drawn</span>). This way, thousands of line segments could be added to a <span class="inline-code">Line</span> in the same frame of animation but then, instead of all drawing them immediately (which would slow the program down considerably), these line segments could be drawn over the course of any number of consecutive animation frames. There would also be a way to control the speed at which a <span class="inline-code">Line</span> is drawn.
@@ -318,10 +318,10 @@
     Last year’s code uses one-dimensional Perlin noise to “fragment” the normal distribution, but clearly it should use two-dimensional noise.
 </p>
 <p>
-    The visual unpleasantness with the narrowest and widest lines is probably all about <span class="italic">dot density</span>. All the circular lines on the top of this page have the same amount of dots per line segment — so the narrowest lines have too much dots and look too <span class="italic">crowded</span>, too blockish, while the widest lines look too <span class="italic">airy</span> or bushy. Changing the width of the lines should obviously change their dot density.
+    The visual unpleasantness with the narrowest and widest lines is probably all about <span class="italic">dot density</span>. All the circular lines on the top of this page have the same amount of dots per line segment—so the narrowest lines have too much dots and look too <span class="italic">crowded</span>, too blockish, while the widest lines look too <span class="italic">airy</span> or bushy. Changing the width of the lines should obviously change their dot density.
 </p>
 <p>
-    Less probable ideas: while still only using two-dimensional mathematics, we could imagine modeling the whole circonference of the pencil lead. It would be a curve broken apart by noise but curve that folds on itself — or repeat itself on the <span id="MathJax-Element-5-Frame" class="mjx-chtml"><span id="MJXc-Node-511" class="mjx-math"><span id="MJXc-Node-512" class="mjx-mrow"><span id="MJXc-Node-513" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.298em;">x</span></span></span></span></span> axis. We could even rotate the direction of the lead to accompany the movements of the pencil. We could also model the progressive degradation of the lead.
+    Less probable ideas: while still only using two-dimensional mathematics, we could imagine modeling the whole circonference of the pencil lead. It would be a curve broken apart by noise but curve that folds on itself—or repeat itself on the <span id="MathJax-Element-5-Frame" class="mjx-chtml"><span id="MJXc-Node-511" class="mjx-math"><span id="MJXc-Node-512" class="mjx-mrow"><span id="MJXc-Node-513" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.298em;">x</span></span></span></span></span> axis. We could even rotate the direction of the lead to accompany the movements of the pencil. We could also model the progressive degradation of the lead.
 </p>
 
 <h3>Sources</h3>
