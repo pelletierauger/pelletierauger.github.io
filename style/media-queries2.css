@@ -86,16 +86,20 @@
         /*margin-top: 1rem;*/
         /*margin-bottom: 1rem;*/
     }
+
+    .portfolio-banner {
+        min-width: 50%;
+    }
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 950px) {
     .portfolio-banner {
         background-color: white;
         position: absolute;
         top: 1.5rem;
         padding: 2rem;
         left: 50%;
-        min-width: 65%;
+        /*min-width: 65%;*/
         -webkit-transform: translateX(-50%);
         transform: translateX(-50%)
     }
@@ -190,7 +194,7 @@
         margin-top: 1rem;
         margin-bottom: 1rem;
     }
-    .portfolio-banner {
+    /*    .portfolio-banner {
         background-color: white;
         position: absolute;
         top: 2rem;
@@ -201,7 +205,7 @@
     .portfolio-description, .portfolio-banner h2 {
         margin: 0 auto;
         text-align: center;
-    }
+    }*/
 }
 
 @media screen and (min-width: 950px) {
