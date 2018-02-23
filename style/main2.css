@@ -179,7 +179,7 @@ article h2, .portfolio-description h2 {
     /*padding-top: 0.5em;*/
     /*padding-bottom: 0.5em;*/
     text-align: center;
-    margin-top: 3rem;
+    margin-top: 2rem;
 }
 
 .with-date {
@@ -216,18 +216,30 @@ article .description {
     font-family: 'EBG08-Re';
     font-size: 0.8em;
     line-height: 1.5rem;
-    padding: 0.25em 0;
+    padding: 0.25em 0 0 0;
     text-align: center;
 }
+
+article .description .small-caps {
+    font-style: normal;
+    font-family: 'EBG08-SC';
+}
+
 article .date {
     font-family: 'EBG08-Re';
     font-size: 0.8em;
-    margin-bottom: 3rem;
+    margin-bottom: 4rem;
     height: 1rem;
     /*margin-top: 0em;*/
     /*padding-top: 0em;*/
     /*line-height: 1em;*/
     text-align: center;
+}
+
+@media screen and (max-width: 550px) {
+    article .date {
+        margin-bottom: 2rem;
+    }
 }
 
 .article-top {
@@ -319,6 +331,15 @@ canvas {
     -ms-font-feature-settings: 'swsh';
     -o-font-feature-settings: 'swsh';
     font-feature-settings: 'swsh';
+}
+
+.math {
+    /*border: solid 1px #000000;*/
+    max-width: 100%;
+    overflow: auto;
+    /*margin-bottom: 1em;*/
+    margin: 1rem 0;
+    clear: both;
 }
 
 @font-face {
