@@ -229,7 +229,8 @@ article .date {
     font-family: 'EBG08-Re';
     font-size: 0.8em;
     margin-bottom: 4rem;
-    height: 1rem;
+    /*height: 1rem;*/
+    line-height: 1.5rem;
     /*margin-top: 0em;*/
     /*padding-top: 0em;*/
     /*line-height: 1em;*/
