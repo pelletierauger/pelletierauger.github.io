@@ -47,8 +47,9 @@ function windowResized() {
     ranFloor = 0.7;
     ranCeiling = 1.5;
     linesMult = 2;
-    strokeFloor = 1 * (tileWidth * 32 / 1280);
-    strokeCeiling = 2.5 * (tileWidth * 32 / 1280);
+    var strokeFloorScalar = (w > 500) ? 1.125 : 1.5;
+    strokeFloor = strokeFloorScalar * (tileWidth * 32 / 1280);
+    strokeCeiling = 2.75 * (tileWidth * 32 / 1280);
     if (!looping) {
         redraw();
     }
@@ -227,8 +228,9 @@ function setup() {
     ranFloor = 0.7;
     ranCeiling = 1.5;
     linesMult = 2;
-    strokeFloor = 1 * (tileWidth * 32 / 1280);
-    strokeCeiling = 2.5 * (tileWidth * 32 / 1280);
+    var strokeFloorScalar = (w > 500) ? 1.125 : 1.5;
+    strokeFloor = strokeFloorScalar * (tileWidth * 32 / 1280);
+    strokeCeiling = 2.75 * (tileWidth * 32 / 1280);
 }
 
 function draw() {
