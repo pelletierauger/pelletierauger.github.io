@@ -18,7 +18,7 @@
 </div>
 <h3>Premiers pas vers les pavages</h3>
 <p class="noindent">
-    <sc>L</sc><sc>es pavages ci-dessus</sc> ont été générés par un programme que j'ai écrit avec JavaScript et <a href=""><span class="lnum">la bibliothèque p5.js</span></a>. Ils sont le produit d'un <i>hasard contrôlé</i> : je n'ai pas choisi les palettes de couleur ni la position des triangles et des rectangles dont ils sont faits. J'ai plutôt créé les conditions permettant leur création.
+    <sc>L</sc><sc>es pavages ci-dessus</sc> ont été générés par un programme que j'ai écrit avec JavaScript et <a href=""><span class="lnum">la bibliothèque p5.js</span></a>. Ils sont le produit d'un hasard contrôlé : je n'ai pas choisi les palettes de couleur ni la position des triangles et des rectangles dont ils sont faits. J'ai plutôt créé les conditions permettant leur création.
 </p>
 <!-- Comme je connais très peu cet immense domaine mathématique que sont les pavages, j'ai décidé d'explorer des pavages très simples afin d'apprivoiser le sujet. Les pavages de Truchet se sont imposés par leur beauté et leur simplicité. -->
 <p>
@@ -79,7 +79,7 @@
 </p>
 <h3>L'étendue des possibles</h3>
 <p class="noindent">
-    <sc>U</sc><sc>ne chose surprenante</sc> à propos des pavages de Truchet est l'énorme quantité de combinaisons possibles. Par exemple, un pavage dont l'escalier possède une largeur de cinq carreaux peut être assemblé en plus de <i>soixante milliards</i> de combinaisons &nbsn;différentes.<snr label="diagramme">Précisément, ce pavage a <im>61\:917\:364\:224</im> combinaisons possibles, ou <im>6^{10} \times 4^5</im>. Le diagramme ci-dessous indique le nombre de valeurs possibles pour chacun des carreaux. <img class="possibilities" src="../../images/truchet/possibilities.png">Il suffit de multiplier toutes ces possibilités pour obtenir la quantité de combinaisons possibles. Certains carreaux sont limités aux <im>4</im> formes qui sont diagonalement symétriques avec elles-mêmes&nbsp;: <span class="small-caps8">&#123;b, d, e, f&#125;</span>. Cette limitation n'est pas obligatoire mais elle forme généralement des pavages plus harmonieux, surtout dans un contexte où les carreaux sont choisis aléatoirement.</snr> Si vous cliquiez pour générer un nouveau pavage à chaque seconde sans arrêt, il vous faudrait environ 1&nbsp;900 ans pour les voir tous (chose que je ne recommande pas). Et comme le générateur crée des pavages dont la largeur de l'escalier varie entre 3 et 9 carreaux, le temps nécessaire pour en épuiser les possibilités à ce rythme est près d'un trillion d'années (le chiffre <lnum>1</lnum> suivis de <lnum>18</lnum> zéros). Ainsi, chaque pavage qui est généré n'a presque certainement jamais été vu par quiconque avant vous, et vous ne le reverez plus jamais après le prochain clic.
+    <sc>U</sc><sc>ne chose surprenante</sc> à propos des pavages de Truchet est l'énorme quantité de combinaisons possibles. Par exemple, un pavage dont l'escalier possède une largeur de cinq carreaux peut être assemblé en plus de <i>soixante milliards</i> de combinaisons &nbsn;différentes.<snr label="diagramme">Précisément, ce pavage a <im>61\:917\:364\:224</im> combinaisons possibles, ou <nb><im>6^{10} \times 4^5</im>.</nb> Le diagramme ci-dessous indique le nombre de valeurs possibles pour chacun des carreaux. <img class="possibilities" src="../../images/truchet/possibilities.png">Il suffit de multiplier toutes ces possibilités pour obtenir la quantité de combinaisons possibles. Certains carreaux sont limités aux <im>4</im> formes qui sont diagonalement symétriques avec elles-mêmes&nbsp;: <span class="small-caps8">&#123;b, d, e, f&#125;</span>. Cette limitation n'est pas obligatoire mais elle forme généralement des pavages plus harmonieux, surtout dans un contexte où les carreaux sont choisis aléatoirement.</snr> Si vous cliquiez pour générer un nouveau pavage à chaque seconde sans arrêt, il vous faudrait environ 1&nbsp;900 ans pour les voir tous (chose que je ne recommande pas). Et comme le générateur crée des pavages dont la largeur de l'escalier varie entre trois et neuf carreaux, le temps nécessaire pour en épuiser les possibilités à ce rythme est près d'un trillion d'années (le chiffre <lnum>1</lnum> suivi de <lnum>18</lnum> zéros). Ainsi, chaque pavage qui est généré n'a presque certainement jamais été vu par quiconque avant vous, et vous ne le reverez plus jamais après le prochain clic.
 </p>
 <p>
     À quoi pourraient ressembler ces pavages si leurs carreaux avaient une apparence différente mais que toutes leurs autres propriétés étaient conservées (symétrie, assemblage par escalier, etc.)&nbsp;? Par exemple, l'apparence des carreaux pourrait être altérée de cette façon :
@@ -110,26 +110,26 @@
     Pour les autres, voici quelques pavages colorés générés en janvier 2018 :
 </p>
 <div class="doubleimage">
-    <a href="../../images/truchet/075-vert.png"><img src="../../images/truchet/075-vert.png"></a>
-    <a href="../../images/truchet/070.png"><img src="../../images/truchet/070.png"></a>
-    <a href="../../images/truchet/123.png"><img src="../../images/truchet/123.png"></a>
-    <a href="../../images/truchet/040.png"><img src="../../images/truchet/040.png"></a>
+    <a href="../../images/truchet/tiling-075.jpg"><img src="../../images/truchet/tiling-075.jpg"></a>
+    <a href="../../images/truchet/tiling-070.jpg"><img src="../../images/truchet/tiling-070.jpg"></a>
+    <a href="../../images/truchet/tiling-123.jpg"><img src="../../images/truchet/tiling-123.jpg"></a>
+    <a href="../../images/truchet/tiling-040.jpg"><img src="../../images/truchet/tiling-040.jpg"></a>
 </div>
-<a href="../../images/truchet/092-levels.png"><img class="singleimage" src="../../images/truchet/092-levels.png"></a>
+<a href="../../images/truchet/tiling-092.jpg"><img class="singleimage" src="../../images/truchet/tiling-092.jpg"></a>
 <div class="doubleimage" id="imagetop">
-    <a href="../../images/truchet/082-levels.png"><img src="../../images/truchet/082-levels.png"></a>
-    <a href="../../images/truchet/051.png"><img src="../../images/truchet/051.png"></a>
-    <a href="../../images/truchet/096.png"><img src="../../images/truchet/096.png"></a>
-    <a href="../../images/truchet/098.png"><img src="../../images/truchet/098.png"></a>
+    <a href="../../images/truchet/tiling-082.jpg"><img src="../../images/truchet/tiling-082.jpg"></a>
+    <a href="../../images/truchet/tiling-051.jpg"><img src="../../images/truchet/tiling-051.jpg"></a>
+    <a href="../../images/truchet/tiling-096.jpg"><img src="../../images/truchet/tiling-096.jpg"></a>
+    <a href="../../images/truchet/tiling-098.jpg"><img src="../../images/truchet/tiling-098.jpg"></a>
 </div>
-<a href="../../images/truchet/110.png"><img class="singleimage" src="../../images/truchet/110.png"></a>
+<a href="../../images/truchet/tiling-110.jpg"><img class="singleimage" src="../../images/truchet/tiling-110.jpg"></a>
 <div class="doubleimage" id="imagetop">
-    <a href="../../images/truchet/132.png"><img src="../../images/truchet/132.png"></a>
-    <a href="../../images/truchet/146.png"><img src="../../images/truchet/146.png"></a>
-    <a href="../../images/truchet/153.png"><img src="../../images/truchet/153.png"></a>
-    <a href="../../images/truchet/138.png"><img src="../../images/truchet/138.png"></a>
+    <a href="../../images/truchet/tiling-132.jpg"><img src="../../images/truchet/tiling-132.jpg"></a>
+    <a href="../../images/truchet/tiling-146.jpg"><img src="../../images/truchet/tiling-146.jpg"></a>
+    <a href="../../images/truchet/tiling-153.jpg"><img src="../../images/truchet/tiling-153.jpg"></a>
+    <a href="../../images/truchet/tiling-138.jpg"><img src="../../images/truchet/tiling-138.jpg"></a>
 </div>
-<a href="../../images/truchet/133.png"><img class="singleimage" src="../../images/truchet/133.png"></a>
+<a href="../../images/truchet/tiling-133.jpg"><img class="singleimage" src="../../images/truchet/tiling-133.jpg"></a>
 <h3>Suites possibles</h3>
 <p class="noindent">
     <sc>Les pavages</sc> forment un énorme domaine mathématique, et il y a beaucoup de nouvelles avenues que j'aimerais emprunter pour faire suite à ce projet. En voici quelques-unes :
@@ -171,15 +171,15 @@
 <!-- en-date -->Winter 2017 &mdash; Ongoing
 <!-- en-description -->Wanderings in 18<span class="superscript">th</span> century <span class="nobreak">French mathematics.</span>
 <!-- en-content -->
-<div class="imagedouble-top">
-    <img src="../../images/truchet/tiling-top-01.jpg">
-    <img src="../../images/truchet/tiling-top-02.jpg">
-    <img src="../../images/truchet/tiling-top-03.jpg">
-    <img src="../../images/truchet/tiling-top-04.jpg">
+<div class="doubleimage" id="imagetop">
+    <a href="../../images/truchet/tiling-top-01.jpg"><img src="../../images/truchet/tiling-top-01.jpg"></a>
+    <a href="../../images/truchet/tiling-top-02.jpg"><img src="../../images/truchet/tiling-top-02.jpg"></a>
+    <a href="../../images/truchet/tiling-top-03.jpg"><img src="../../images/truchet/tiling-top-03.jpg"></a>
+    <a href="../../images/truchet/tiling-top-04.jpg"><img src="../../images/truchet/tiling-top-04.jpg"></a>
 </div>
 <h3>First steps towards tilings</h3>
 <p class="noindent">
-    <sc>The tilings above</sc> were generated by a program I wrote in JavaScript using the <a href=""><span class="lnum">p5.js</span> library,</a> a tool dedicated to the development of digital and interactive art. They are the result of <i>controlled randomness</i>: I did not decide what their colours should be or what exact patterns of triangles and rectangles should be used to build them. I instead created the general conditions allowing their creation.
+    <sc>The tilings above</sc> were generated by a program I wrote in JavaScript using the <a href=""><span class="lnum">p5.js</span> library,</a> a tool dedicated to the development of digital and interactive art. They are the result of controlled randomness: I did not decide what their colours should be or what exact patterns of triangles and rectangles should be used to build them. I instead created the general conditions allowing their creation.
 </p>
 <p>
     To make this project, I took inspiration from the work of Sébastien Truchet, a French mathematician and engineer active at the beginning of the Enlightenment. In 1704, Truchet wrote a <i>Memoir on Combinations</i> to present his work on &nbsn;tilings.<snl label="memoir-on-combinations">This <span class="italic8">Memoir</span> appears on page 363 of the <span class="italic8">History of the Royal Academy of Science</span>, a book <a href="">available for free</a> (in French) on Gallica, a website from the Bibliothèque nationale de France (National Library of France). You can also find a beautiful book written by mathematician Dominique Do&uuml;at in 1722, <a href=""><span class="italic8">Method to Make an Infinity of Different Designs</span></a> (also in French). Do&uuml;at reuses Truchet's ideas and presents new tilings.</snl> In it, he recounts a trip to the city of Orléans during which he found, in a castle, &ldquo;several earthenware tiles that were square and evenly divided in two colours by a diagonal line. They were destined to pave a chapel and several other apartments.&rdquo;
@@ -193,7 +193,7 @@
 <p class="noindent">
     Truchet continues: &ldquo;To form pleasant designs by the arrangement of these tiles, I first examined in how many different combinations two of them could be joined together, always placing them in a checkerboard pattern.&rdquo; He then shows the figures resulting from these combinations, and then the ones resulting from more and more elaborate combinations. Here are some of the superb plates featured in his <i>Memoir</i>, engraved by Louis Simonneau:
 </p>
-<div class="imagedouble">
+<div class="doubleimage">
     <img src="../../images/truchet/truchet-planches-01.jpg">
     <img src="../../images/truchet/truchet-planches-02.jpg">
     <img src="../../images/truchet/truchet-planches-03.jpg">
@@ -225,7 +225,7 @@
 </p>
 <h3>The random tiling generator</h3>
 <pn>
-    <sc>When I saw the simplicity</sc> of the staircase-shaped groups of tiles that Truchet uses to build his tilings, I decided to write a program that would choose each tile of a staircase randomly and apply automatically all the symmetries necessary to fill a tiling. I also added two new tiles: the empty tile and the filled tile, which I designate <sc>e</sc> and &nbsn;<sc>f</sc>.<snr label="triche">The attentive reader will understand that <i8>I'm cheating</i8>, since <sc8>a, b, c</sc8>, and <sc8>d</sc8> designate four different rotations of the same tile, while <sc8>e</sc8> and <sc8>f</sc8> designate two distinct tiles. Will such a loose way to group and define things be forgiven? I find that the inclusion of <sc8>e</sc8> and <sc8>f</sc8> generates patterns that differ in interesting ways with Truchet's own tilings.</snr>
+    <sc>When I saw the simplicity</sc> of the staircase-shaped groups of tiles that Truchet uses to build his tilings, I decided to write a program that would choose each tile of a staircase randomly and apply automatically all the symmetries necessary to fill a tiling. I also added two new tiles: the empty tile and the filled tile, which I designate <sc>e</sc> and &nbsn;<sc>f</sc>.<snr label="triche">The attentive reader will understand that <i8>I'm cheating</i8>, since <sc8>a, b, c</sc8>, and <sc8>d</sc8> designate four different rotations of the same tile, while <sc8>e</sc8> and <sc8>f</sc8> designate two distinct tiles. Will such a loose way of grouping and defining things be forgiven? I find that the inclusion of <sc8>e</sc8> and <sc8>f</sc8> generates patterns that differ in interesting ways with Truchet's own tilings.</snr>
 </pn>
 <p>
     <img class="abcd" src="../../images/truchet/abcdef.png">
@@ -248,7 +248,7 @@
     <img class="abcd" src="../../images/truchet/wavy-tiles.png">
 </p>
 <pn>
-    To test these new designs in the generator, you can alternate between <span id="normalmode"><sc>the angular mode</sc></span> and the <span id="wavymode"><sc>the wavy mode</sc></span> and scroll back up to see the results. Make sure to try this new mode with the full set of tiles <nb><sc>(&#123;a, b, c, d, e, f&#125;)</sc></nb> for best results. You'll also notice that the width of the wavy lines changes from one generation to the next, because <i>it makes it prettier</i>.
+    To test these new designs in the generator, you can alternate between <span id="normalmode"><sc>the angular mode</sc></span> and <span id="wavymode"><sc>the wavy mode</sc></span> and scroll back up to see the results. Make sure to try this new mode with the full set of tiles <nb><sc>(&#123;a, b, c, d, e, f&#125;)</sc></nb> for the best results. You'll also notice that the width of the wavy lines changes from one generation to the next, because <i>it makes it prettier</i>.
 </pn>
 <h3>Tilings of many colours</h3>
 <pn>
@@ -269,20 +269,27 @@
 <p>
     For the others, here are some tilings generated in early 2018:
 </p>
-<div class="imagedouble-margin-tilings">
-    <img src="../../images/truchet/075-vert.png">
-    <img src="../../images/truchet/070.png">
-    <img src="../../images/truchet/123.png">
-    <img src="../../images/truchet/040.png">
+<div class="doubleimage">
+    <a href="../../images/truchet/tiling-075.jpg"><img src="../../images/truchet/tiling-075.jpg"></a>
+    <a href="../../images/truchet/tiling-070.jpg"><img src="../../images/truchet/tiling-070.jpg"></a>
+    <a href="../../images/truchet/tiling-123.jpg"><img src="../../images/truchet/tiling-123.jpg"></a>
+    <a href="../../images/truchet/tiling-040.jpg"><img src="../../images/truchet/tiling-040.jpg"></a>
 </div>
-<img src="../../images/truchet/092-levels.png">
-<div class="imagedouble-margin-tilings">
-    <img src="../../images/truchet/082-levels.png">
-    <img src="../../images/truchet/051.png">
-    <img src="../../images/truchet/096.png">
-    <img src="../../images/truchet/098.png">
+<a href="../../images/truchet/tiling-092.jpg"><img class="singleimage" src="../../images/truchet/tiling-092.jpg"></a>
+<div class="doubleimage" id="imagetop">
+    <a href="../../images/truchet/tiling-082.jpg"><img src="../../images/truchet/tiling-082.jpg"></a>
+    <a href="../../images/truchet/tiling-051.jpg"><img src="../../images/truchet/tiling-051.jpg"></a>
+    <a href="../../images/truchet/tiling-096.jpg"><img src="../../images/truchet/tiling-096.jpg"></a>
+    <a href="../../images/truchet/tiling-098.jpg"><img src="../../images/truchet/tiling-098.jpg"></a>
 </div>
-<img src="../../images/truchet/110.png">
+<a href="../../images/truchet/tiling-110.jpg"><img class="singleimage" src="../../images/truchet/tiling-110.jpg"></a>
+<div class="doubleimage" id="imagetop">
+    <a href="../../images/truchet/tiling-132.jpg"><img src="../../images/truchet/tiling-132.jpg"></a>
+    <a href="../../images/truchet/tiling-146.jpg"><img src="../../images/truchet/tiling-146.jpg"></a>
+    <a href="../../images/truchet/tiling-153.jpg"><img src="../../images/truchet/tiling-153.jpg"></a>
+    <a href="../../images/truchet/tiling-138.jpg"><img src="../../images/truchet/tiling-138.jpg"></a>
+</div>
+<a href="../../images/truchet/tiling-133.jpg"><img class="singleimage" src="../../images/truchet/tiling-133.jpg"></a>
 <h3>Possibles new paths</h3>
 <pn>
     <sc>Tilings form</sc> an enormous mathematical domain, and there are many new avenues that I would love to take to bring this project further. Here are a few of them:
@@ -303,7 +310,7 @@
 </ul>
 <h3>Licences and usages</h3>
 <p class="noindent">
-    <sc>The work done</sc> for this project is distributed under free and open licences. You are free to distribute it, to modify it, and to distribute your modified versions, if you respect the following conditions : your modified versions must also be distributed under a free licence and must mention the source of the original work. For more details, see the licences themselves:
+    <sc>The work done</sc> for this project is distributed under free and open licences. You are free to distribute it, to modify it, and to distribute your modified versions, if you respect the following conditions: your modified versions must also be distributed under a free licence and must mention the source of the original work. For more details, see the licences themselves:
 </p>
 <ul class="dash">
     <li>
