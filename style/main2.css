@@ -330,6 +330,7 @@ canvas {
     -ms-user-select: none;
     /* Internet Explorer/Edge */
     user-select: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 #footer {
