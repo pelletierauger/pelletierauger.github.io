@@ -42,7 +42,6 @@
     font-family: "Silentype";
     src: url('./fonts/Silentype-Regular-Accents.ttf') format('truetype');
     src: url('./fonts/Silentype-Regular-Accents.woff') format('woff');
-    src: url('./fonts/Silentype-Regular-Accents.otf') format('otf');
 }
 @font-face {
     font-family: "Genericons";
