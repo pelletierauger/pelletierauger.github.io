@@ -259,6 +259,8 @@ function draw() {
             widthWavy = random(4, 14);
         }
         widthWavy *= (tileWidth * 32 / 1000);
+    } else {
+        stroke(dark);
     }
     // blendMode(NORMAL);
     background(light);
@@ -580,6 +582,8 @@ function showFWavy(x, y, tW, light, dark) {
     }
     endShape();
     noFill();
+    stroke(0);
+    strokeWeight(widthWavy);
 }
 
 function showA(x, y, tW, light, dark) {
