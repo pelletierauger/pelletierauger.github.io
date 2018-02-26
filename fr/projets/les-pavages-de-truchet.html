@@ -164,7 +164,7 @@
 </div>
 <h3>Premiers pas vers les pavages</h3>
 <p class="noindent">
-    <span class="small-caps">L</span><span class="small-caps">es pavages ci-dessus</span> ont été générés par un programme que j’ai écrit avec JavaScript et <a href=""><span class="lnum">la bibliothèque p5.js</span></a>. Ils sont le produit d’un hasard contrôlé&nbsp;: je n’ai pas choisi les palettes de couleur ni la position des triangles et des rectangles dont ils sont faits. J’ai plutôt créé les conditions permettant leur création.
+    <span class="small-caps">L</span><span class="small-caps">es pavages ci-dessus</span> ont été générés par un programme que j’ai écrit avec JavaScript et <a href="https://p5js.org/"><span class="lnum">la bibliothèque p5.js</span></a>. Ils sont le produit d’un hasard contrôlé&nbsp;: je n’ai pas choisi les palettes de couleur ni la position des triangles et des rectangles dont ils sont faits. J’ai plutôt créé les conditions permettant leur création.
 </p>
 <!-- Comme je connais très peu cet immense domaine mathématique que sont les pavages, j&rsquo;ai décidé d&rsquo;explorer des pavages très simples afin d&rsquo;apprivoiser le sujet. Les pavages de Truchet se sont imposés par leur beauté et leur simplicité. -->
 <p>
@@ -172,7 +172,7 @@
         <label for="memoire-combinaisons" class="margin-toggle sidenote-number">
         </label></span>
         <input type="checkbox" id="memoire-combinaisons" class="margin-toggle">
-        <span class="sidenote-left">Ce <span class="italic8">Mémoire</span> apparaît à la page 363 de l’<span class="italic8">Histoire de l’Académie royale des sciences</span>, un ouvrage <a href="">disponible gratuitement sur Gallica</a><span class="cleardescenders">,</span> un site Web de la Bibliothèque nationale de France. Vous pouvez aussi y trouver un bel ouvrage écrit par le mathématicien Dominique Doüat en 1722, <a href=""><span class="italic8">Méthode pour faire une infinité de desseins différens</span></a>. Doüat reprend les idées de Truchet et présente de nouveaux pavages.</span> Il y relate un voyage à Orléans durant lequel il trouva dans un château «&nbsp;plusieurs carreaux de faïence carrés et mipartis de deux couleurs par une ligne diagonale, qui étaient destinés à carreler une chapelle et plusieurs autres appartements.&nbsp;»
+        <span class="sidenote-left">Ce <span class="italic8">Mémoire</span> apparaît à la page 363 de l’<span class="italic8">Histoire de l’Académie royale des sciences</span>, un ouvrage <a href="http://gallica.bnf.fr/ark:/12148/bpt6k3486m">disponible gratuitement sur Gallica</a><span class="cleardescenders">,</span> un site Web de la Bibliothèque nationale de France. Vous pouvez aussi y trouver un bel ouvrage écrit par le mathématicien Dominique Doüat en 1722, <a href="http://gallica.bnf.fr/ark:/12148/bpt6k15100709"><span class="italic8">Méthode pour faire une infinité de desseins différens</span></a>. Doüat reprend les idées de Truchet et présente de nouveaux pavages.</span> Il y relate un voyage à Orléans durant lequel il trouva dans un château «&nbsp;plusieurs carreaux de faïence carrés et mipartis de deux couleurs par une ligne diagonale, qui étaient destinés à carreler une chapelle et plusieurs autres appartements.&nbsp;»
 </p>
 <p>
     Les carreaux que Truchet décrit sont tous identiques et peuvent être tournés sur eux-mêmes en quatre positions différentes, qu’il désigne <span class="small-caps">a</span>, <span class="small-caps">b</span>, <span class="small-caps">c</span> et <span class="small-caps">d</span>&nbsp;:
@@ -262,7 +262,7 @@
     Puis, afin de donner une légère texture aux pavages, le générateur ne dessine pas réellement les triangles et les carrés qui forment le pavage&nbsp;; il dessine plutôt des milliers de points colorés à l’intérieur des limites de chaque carreau. Un pavage entier est constitué d’environ 15 millions de points.
 </p>
 <p>
-    Je n’ai pas inclus le générateur de pavages colorés sur cette page parce que la majorité des palettes de couleur qu’il génère sont plutôt dissonantes (après tout, elles sont déterminées complètement par le hasard). De plus, un pavage dessiné avec des millions de points prend plusieurs longues minutes à apparaître. Néanmoins, si vous êtes d’une patience et d’un courage à toute épreuve, vous êtes les bienvenus à <a href="https://pelletierauger.github.io/Truchet/?lang=fr">essayer le générateur coloré</a> par vous-mêmes.
+    Je n’ai pas inclus le générateur de pavages colorés sur cette page parce que la majorité des palettes de couleur qu’il génère sont plutôt dissonantes (après tout, elles sont déterminées complètement par le hasard). De plus, un pavage dessiné avec des millions de points prend plusieurs longues minutes à apparaître. Néanmoins, si vous êtes d’une patience et d’un courage à toute épreuve, vous êtes les bienvenus à <a href="https://github.com/pelletierauger/Truchet/">essayer le générateur coloré</a> par vous-mêmes.
 </p>
 <p>
     Pour les autres, voici quelques pavages colorés générés en janvier 2018&nbsp;:
@@ -295,13 +295,13 @@
 <ul class="dash">
     <li>—&nbsp;&nbsp;Créer un générateur qui construirait les “escaliers” qui sont au cœur des pavages de Truchet d’une manière qui ressemblerait davantage aux méthodes que Truchet utilisait lui-même. Pour l’instant, chaque carreau d’un escalier est choisi complètement au hasard, indépendamment des carreaux adjacents. Comme on le voit dans son <span class="italic">Mémoire sur les combinaisons</span>, Truchet formait plutôt ses escaliers en choisissant quelques combinaisons de carreaux et en les répétant plusieurs fois. Les pavages créés ainsi sont plus souvent harmonieux.
     </li>
-    <li>—&nbsp;&nbsp;Explorer des types de pavages plus complexes, tels que les <a href="">pavages pentagonaux</a> ou les <a href="">pavages de Penrose</a>. Je suis particulièrement intéressé par les fascinants pavages <a href="https://fr.wikipedia.org/wiki/Marjorie_Rice">découverts par Marjorie Rice</a> en 1976 et <span class="nobreak">1977.
+    <li>—&nbsp;&nbsp;Explorer des types de pavages plus complexes, tels que les <a href="https://fr.wikipedia.org/wiki/Pavage_pentagonal">pavages pentagonaux</a> ou les <a href="https://fr.wikipedia.org/wiki/Pavage_de_Penrose">pavages de Penrose</a>. Je suis particulièrement intéressé par les fascinants pavages <a href="https://fr.wikipedia.org/wiki/Marjorie_Rice">découverts par Marjorie Rice</a> en 1976 et <span class="nobreak">1977.
         <label for="marjorie-rice" class="margin-toggle sidenote-number">
         </label></span>
         <input type="checkbox" id="marjorie-rice" class="margin-toggle">
         <span class="sidenote">Je vous encourage fortement à en apprendre sur Rice si vous ne la connaissez pas déjà. C’était une femme brillante qui a réussit, sans avoir eu l’opportunité de poursuivre les études universitaires en mathématiques dont elle rêvait, à découvrir de nouveaux types de pavages pentagonaux qui avaient éludés les chercheurs académiques.</span>
     </li>
-    <li>—&nbsp;&nbsp;Mélanger les <a href="">automates cellulaires</a> avec les pavages de Truchet. De tels automates pourraient fonctionner avec des règles considérant les états de <span class="small-caps">a</span> à <span class="small-caps">f</span>. Quelles pourraient être ces règles&nbsp;? Serait-il possible de préserver les symétries qui sont si caractéristiques au travail de Truchet&nbsp;?
+    <li>—&nbsp;&nbsp;Mélanger les <a href="https://fr.wikipedia.org/wiki/Automate_cellulaire">automates cellulaires</a> avec les pavages de Truchet. De tels automates pourraient fonctionner avec des règles considérant les états de <span class="small-caps">a</span> à <span class="small-caps">f</span>. Quelles pourraient être ces règles&nbsp;? Serait-il possible de préserver les symétries qui sont si caractéristiques au travail de Truchet&nbsp;?
     </li>
     <li>—&nbsp;&nbsp;Créer des pavages animés. À quoi pourrait ressembler un film d’animation constitué de pavages en mouvements&nbsp;? En existe-t-il de bons exemples&nbsp;?
     </li>
@@ -313,12 +313,12 @@
 <ul class="dash">
     <li>—&nbsp;&nbsp;Cette page Web (incluant le texte et les images) est distribuée avec une <a href="http://artlibre.org/">Licence Art Libre <span class="lnum">1.3</span></a>. Les images tirées du <span class="italic">Mémoire sur les combinaisons</span> de Sébastien Truchet font bien entendu partie du domaine public.
     </li>
-    <li>—&nbsp;&nbsp;Le générateur de pavages en noir et blanc affiché sur cette page Web est distribué avec une licence <a href=""><span class="small-caps">Gnu Gpl</span><span class="lnum"> 3.0</span></a>. Le générateur de pavages colorés est distribué avec la même licence.
+    <li>—&nbsp;&nbsp;Le générateur de pavages en noir et blanc affiché sur cette page Web est distribué avec une licence <a href="https://www.gnu.org/licenses/gpl-3.0.txt"><span class="small-caps">Gnu Gpl</span><span class="lnum"> 3.0</span></a>. Le générateur de pavages colorés est distribué avec la même licence.
     </li>
 </ul>
 <h3>Sources</h3>
 <p class="noindent">
-    <span class="small-caps">J’ai appris l’existence</span> du <a href=""><span class="italic">Mémoire sur les combinaisons</span></a> de Sébastien Truchet et de la <a href=""><span class="italic">Méthode pour faire une infinité de desseins différens</span></a> de Dominique Doüat (qui m’a aussi été d’une grande utilité) grâce aux recherches de <a href="http://Jacques-Andre.fr/">Jacques André</a><span class="cleardescenders">,</span> un mathématicien et typographe français. Un document <span class="small-caps">pdf</span> qui présente ses recherches est <a href="http://Jacques-Andre.fr/ed/douat.pdf">disponible sur son site Web</a> et distribué avec une licence libre.
+    <span class="small-caps">J’ai appris l’existence</span> du <a href="http://gallica.bnf.fr/ark:/12148/bpt6k3486m"><span class="italic">Mémoire sur les combinaisons</span></a> de Sébastien Truchet et de la <a href="http://gallica.bnf.fr/ark:/12148/bpt6k15100709"><span class="italic">Méthode pour faire une infinité de desseins différens</span></a> de Dominique Doüat (qui m’a aussi été d’une grande utilité) grâce aux recherches de <a href="http://Jacques-Andre.fr/">Jacques André</a><span class="cleardescenders">,</span> un mathématicien et typographe français. Un document <span class="small-caps">pdf</span> qui présente ses recherches est <a href="http://Jacques-Andre.fr/ed/douat.pdf">disponible sur son site Web</a> et distribué avec une licence libre.
 </p>
 <!-- <h3>Soutenir</h3>
 <p class="noindent"><span class="small-caps">Si vous avez apprécié</span> ce projet, je vous invite à appuyer mon travail sur la plateforme Patreon.</p> -->
