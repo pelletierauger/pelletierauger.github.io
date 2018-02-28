@@ -224,3 +224,16 @@ img.possibilities {
     user-select: none;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
+
+#download {
+    cursor: pointer;
+    box-shadow: inset 0px -1px white, inset 0px -2px black;
+}
+
+#download:hover .small-caps {
+    box-shadow: 0px 1px black, inset 0px -1px white, inset 0px -2px black;
+}
+
+#download #Genericons {
+    background-color: white;
+}

@@ -43,12 +43,14 @@ var widthWavy = 5;
 var normalButton, wavyButton;
 var manualButton, showreelButton;
 var linesDrawn = 100;
+var downloadButton;
+var tilingNumber = 1;
 
 function windowResized() {
     canvasContainer = select("#tiling-generator");
     var w = canvasContainer.width;
     w = Math.min(w, 1000);
-    padding = 10 * (w / 1000);
+    padding = 15 * (w / 1000);
     if (w < 550) {
         gridXAmount = 18;
         gridYAmount = 18;
@@ -59,8 +61,8 @@ function windowResized() {
         gridXAmount = 32;
         gridYAmount = 18;
     }
-    cnvs = resizeCanvas(w, w * gridYAmount / gridXAmount);
-    tileWidth = (width - (padding * 3)) / gridXAmount;
+    cnvs = resizeCanvas(w, ((w - (padding * 2)) * gridYAmount / gridXAmount) + padding * 2);
+    tileWidth = (width - (padding * 2)) / gridXAmount;
     ran = 0.4;
     ranFloor = 0.7;
     ranCeiling = 1.5;
@@ -78,7 +80,7 @@ function setup() {
     canvasContainer = select("#tiling-generator");
     var w = canvasContainer.width;
     w = Math.min(w, 1000);
-    padding = 10 * (w / 1000);
+    padding = 15 * (w / 1000);
     if (w < 550) {
         gridXAmount = 18;
         gridYAmount = 18;
@@ -89,7 +91,7 @@ function setup() {
         gridXAmount = 32;
         gridYAmount = 18;
     }
-    cnvs = createCanvas(w, w * gridYAmount / gridXAmount);
+    cnvs = createCanvas(w, ((w - (padding * 2)) * gridYAmount / gridXAmount) + padding * 2);
     cnvs.parent("#tiling-generator");
     // canvasContainer.style("width", "80%");
     // canvasContainer.style("margin", "2em 0");
@@ -229,10 +231,24 @@ function setup() {
             loop();
         }
     });
+    downloadButton = select("#download");
+    downloadButton.mouseClicked(function() {
+        var formattedFrameCount = "" + tilingNumber;
+        while (formattedFrameCount.length < 3) {
+            formattedFrameCount = "0" + formattedFrameCount;
+        }
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth() + 1;
+        mm = "" + mm;
+        mm = (mm.length == 1) ? "0" + mm : mm;
+        var yyyy = today.getFullYear();
 
+        save("truchet-" + yyyy + "-" + mm + "-" + dd + "-no-" + formattedFrameCount + ".png");
+    });
     background(51);
     frameRate(1);
-    tileWidth = (width - (padding * 3)) / gridXAmount;
+    tileWidth = (width - (padding * 2)) / gridXAmount;
 
     // noStroke();
     // stroke(70);
@@ -289,6 +305,7 @@ function draw() {
     //     posShaker = -250;
     //     shakerToggle *= -1;
     // }
+    tilingNumber++;
 }
 
 function animate2TilingsAlgo() {
