@@ -93,6 +93,7 @@ blockquote .sidenote, blockquote .marginnote {
 
 input.margin-toggle {
     display: none;
+    /*opacity: 0;*/
 }
 
 label.sidenote-number {
@@ -123,8 +124,51 @@ label.margin-toggle:not(.sidenote-number) {
         vertical-align: baseline;
         position: relative;
     }
+    .sidenote-number:after {
+        z-index: 2;
+        left: .8rem;
+        top: 0.25rem;
+        text-align: center;
+        /*background-color: yellow;*/
+        width: 2rem;
+    }
     label.margin-toggle:not(.sidenote-number) {
         display: none;
+    }
+    input.margin-toggle {
+        display: inline;
+        /*opacity: 0;*/
+    }
+    input.margin-toggle {
+        z-index: -1;
+        width: 1.5rem;
+    }
+    input.margin-toggle:before {
+        /*display: block;*/
+        /*z-index: -1;*/
+        float: left;
+        left: -10px;
+        top: -10px;
+        width: 1.5rem;
+        height: 1.5rem;
+        margin-left: 0.25rem;
+        margin-right: 0.5rem;
+        line-height: 1rem;
+        position: relative;
+        content: 'a';
+        background-image: url("circle-simple.svg");
+        background-size: cover;
+        /*background-color: rgba(255, 255, 0, 1);*/
+        background-color: rgba(255, 255, 255, 1);
+    }
+    input.margin-toggle:checked:before {
+        /*display: block;*/
+        /*position: relative;*/
+        /*content: 'aaa';*/
+        /*background: url("circle.svg");*/
+        background-image: url("circle.svg");
+        /*background-size: 100px 100px;*/
+        /*background-color: rgba(255, 0, 0, 1);*/
     }
     label {
         cursor: pointer;
