@@ -43,8 +43,8 @@ var widthWavy = 5;
 var normalButton, wavyButton;
 var manualButton, showreelButton;
 var linesDrawn = 100;
-var downloadButton;
-var tilingNumber = 1;
+// var downloadButton;
+// var tilingNumber = 1;
 
 function windowResized() {
     canvasContainer = select("#tiling-generator");
@@ -231,21 +231,21 @@ function setup() {
             loop();
         }
     });
-    downloadButton = select("#download");
-    downloadButton.mouseClicked(function() {
-        var formattedFrameCount = "" + tilingNumber;
-        while (formattedFrameCount.length < 3) {
-            formattedFrameCount = "0" + formattedFrameCount;
-        }
-        var today = new Date();
-        var dd = today.getDate();
-        var mm = today.getMonth() + 1;
-        mm = "" + mm;
-        mm = (mm.length == 1) ? "0" + mm : mm;
-        var yyyy = today.getFullYear();
+    // downloadButton = select("#download");
+    // downloadButton.mouseClicked(function() {
+    //     var formattedFrameCount = "" + tilingNumber;
+    //     while (formattedFrameCount.length < 3) {
+    //         formattedFrameCount = "0" + formattedFrameCount;
+    //     }
+    //     var today = new Date();
+    //     var dd = today.getDate();
+    //     var mm = today.getMonth() + 1;
+    //     mm = "" + mm;
+    //     mm = (mm.length == 1) ? "0" + mm : mm;
+    //     var yyyy = today.getFullYear();
 
-        save("truchet-" + yyyy + "-" + mm + "-" + dd + "-no-" + formattedFrameCount + ".png");
-    });
+    //     save("truchet-" + yyyy + "-" + mm + "-" + dd + "-no-" + formattedFrameCount + ".png");
+    // });
     background(51);
     frameRate(1);
     tileWidth = (width - (padding * 2)) / gridXAmount;
@@ -305,7 +305,7 @@ function draw() {
     //     posShaker = -250;
     //     shakerToggle *= -1;
     // }
-    tilingNumber++;
+    // tilingNumber++;
 }
 
 function animate2TilingsAlgo() {
