@@ -56,6 +56,7 @@
 }
 
 html {
+    -webkit-text-size-adjust: 100%;
     font-family: 'EBG12-Re', Georgia, serif;
     -moz-font-feature-settings: "liga", "calt", "xtex";
     -webkit-font-feature-settings: "liga", "calt", "xtex";
