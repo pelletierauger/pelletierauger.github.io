@@ -372,6 +372,10 @@ canvas {
     font-size: 0.9em;
 }
 
+.Silentype a {
+    box-shadow: inset 0 -2px 0 0 #fff, inset 0 -3px 0 0 #000;
+}
+
 #Genericons {
     font-family: "Genericons";
     position: relative;
@@ -390,4 +394,8 @@ canvas {
 
 a #Genericons, a #Genericons-GitHub {
     background-color: white;
+}
+
+.small-title {
+    font-size: 0.65em;
 }
