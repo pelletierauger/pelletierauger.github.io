@@ -1,0 +1,49 @@
+<!-- year -->2018
+<!-- month -->04
+<!-- day -->09
+<!-- fr-title -->Suite logistique
+<!-- fr-description -->
+<!-- fr-content -->
+<pn>
+    Je suis en train de lire <i>Complexity: A Guided Tour</i> by Melanie Mitchell right now, and I'm making experiments with the logistic map.
+</pn>
+<p>
+    Suite convergente, suite soumise à oscillations ou une suite chaotique. (suite soumise à oscillants = attracteur période ?)
+</p>
+<p>
+    Voici la suite logistique :
+</p>
+<math>
+    x_{t+1} = Rx_t(1-x_t)
+</math>
+<pn>
+    La suite logistique sert à modéliser la croissance ou la décroissance de la taille d'une population d'une génération à l'autre. La valeur <im>x_t</im> représente la taille de la population (<im>x</im>) lors de la génération <im>t</im>.
+</pn>
+<p>
+    Voici donc comment j'initialise mon système :
+</p>
+<math>
+    \begin{align*}
+        R &= 3.58\\
+        x_0 &= 0.0001\\
+        y_0 &= 0.0002
+    \end{align*}
+</math>
+<h3>Notes éparses</h3>
+<pn>
+    Il sera très intéressant de voir si je peux utiliser cette suite logistique pour modéliser la croissance d'une population de plantes définies algorithmiquement, par exemple. Un espace pourrait être créé où une certaine population maximale de plantes pourrait survivre — et j'utiliserais la suite logistique pour déterminer combien de plantes y poussent. Quant à la définition de la population maximale, elle pourrait se faire de bien des façons ; par exemple, un terrain pourrait être généré avec du bruit de Perlin et ses ressources naturelles pourraient déterminer la population maximale de plantes.
+</pn>
+<!-- en-title -->Logistic map
+<!-- en-description -->Slowly learning about complexity and chaos
+<!-- en-content -->
+<pn>
+    I'm reading <i>Complexity: A Guided Tour</i> by Melanie Mitchell right now, and I'm making experiments with the logistic map.
+</pn>
+<p>
+    Here is the logistic map:
+</p>
+<math>
+    x_{t+1} = Rx_t(1-x_t)
+</math>
+
+<!-- Rxt(1−xt). -->
