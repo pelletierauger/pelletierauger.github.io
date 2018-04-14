@@ -6,47 +6,80 @@
 }
 
 .blog-posts {
-    max-width: 700px;
-    display: block;
-    margin: 0 auto;
+    /*max-width: 700px;*/
+    /*display: block;*/
+    /*margin: 0 auto;*/
 }
 
+.blog-post p {
+    /*width: 100%;*/
+    /*margin: 0 auto;*/
+    /*padding: 0;*/
+    /*background-color: red;*/
+    /*text-indent: 0em;*/
+    max-width: 650px;
+}
+
+.blog-post img.inline-image {
+    /*display: inline-block;*/
+    max-width: 650px;
+    /*margin: 2em auto;*/
+}
+
+.languageJump {
+    max-width: 650px;
+    text-align: left;
+    margin: 1.7rem auto 0 auto;
+}
+
+.blog-post-content {
+    margin-top: 1.7rem;
+}
 .blog-post {
+    display: block;
+    /*clear: both;*/
+    text-align: center;
+}
+
+.blog-post-header {
+    max-width: 650px;
     clear: both;
     display: block;
     /*padding-bottom: 2em;*/
-    margin: 0 1rem;
+    /*margin: 0 1rem;*/
+    margin: 0 auto;
     text-align: center;
 }
 
 
-.blog-post h2, .blog-post .date {
+.blog-post-header h2, .blog-post-header .date {
     text-align: left;
     /*padding-bottom: 0.25em;*/
     font-family: 'EBG12-Sc';
-    font-size: 1em;
+    /*font-size: 1em;*/
+    font-size: 1.3em;
     font-weight: normal;
     /*max-width: 700px;*/
     line-height: 1.15em;
 }
 
-.blog-post h2, .blog-post date {
+.blog-post-header h2, .blog-post-header date {
     /*font-size: 1em;*/
 }
-.blog-post .description {
+.blog-post-header .description {
     /*font-size: 1em;*/
 }
 
-.blog-post h2 {
+.blog-post-header h2 {
     margin-top: 0.5rem;
 }
 
-.blog-post .description {
+.blog-post-header .description {
     clear: both;
     text-align: left;
-    padding-top: 0.25rem;
+    padding-top: 0.75rem;
     font-family: 'EBG12-It';
-    line-height: 1.15em;
+    line-height: 1.35em;
 }
 
 .blog-post:after {
@@ -56,14 +89,14 @@
     /*float: left;*/
     display: inline-block;
     content: "\2014";
-    margin: 2rem auto;
+    margin: 3rem auto;
 }
 .blog-post:last-child:after {
     display: none;
     content: ".";
 }
 
-article.blog-post .date {
+article.blog-post-header .date {
     /*padding-bottom: 0em;*/
     /*margin-bottom: 2em;*/
 }
@@ -72,15 +105,15 @@ article.blog-post .date {
     .blog-posts {
         padding-top: 2rem;
     }
-    .blog-post .date {
+    .blog-post-header .date {
         float: right;
         margin-top: 0rem;
     }
-    .blog-post h2 {
+    .blog-post-header h2 {
         float: left;
         margin-top: 0rem;
     }
-    .blog-post .description {
+    .blog-post-header .description {
         clear: both;
         /*float: left;*/
         max-width: 70%;
@@ -94,7 +127,7 @@ article.blog-post .date {
     }
 }
 
-.blog-post h2 {
+.blog-post-header h2 {
     display: inline;
     /*text-align: left;*/
 }
@@ -113,12 +146,12 @@ article.blog-post .date {
         padding-top: 0.25rem;
     }
 }
-.blog-post a {
+.blog-post-header a {
     width: 100%;
     height: 100%;
 }
 
-.blog-post a:hover h2 {
+.blog-post-header a:hover h2 {
     /*border-bottom: 3px solid black;*/
     box-shadow: inset 0px -1px white, inset 0px -2px black, inset 0px -3px white, inset 0px -4px black;
 }
@@ -127,4 +160,13 @@ article.blog-post .date {
     .blog-posts {
         padding-top: 3rem;
     }
+}
+
+
+.blog-description-italic {
+    font-family: 'EBG08-It';
+}
+
+.blog-post .blog-description-italic {
+    font-family: 'EBG12-Re';
 }
