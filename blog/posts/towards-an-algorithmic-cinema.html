@@ -2,21 +2,16 @@
 <!-- month -->04
 <!-- day -->05
 <!-- fr-title -->Vers un cinéma algorithmique
-<!-- fr-description -->Un projet de recherche expérimentale sur le cinéma d'animation abstrait.
-<!-- fr-excerpt -->
-<p class="noindent">
-    <img class="drop-caps" src="../../../images/towards-an-algorithmic-cinema/drop-caps-a.png"><span class="small-caps">u cours des douze prochains mois</span>, je serai occupé par un nouveau projet qui me rend très enthousiaste. Grâce à l'appui du Conseil des Arts et des Lettres du Québec ainsi qu'au <span class="italic">Plan culturel numérique du Québec</span> (un programme du Gouvernement du Québec), j'ai l'opportunité de faire de la recherche portant sur l'art numérique &mdash; et plus spécifiquement, sur le cinéma algorithmique, c'est-à-dire un cinéma d'animation abstrait réalisé par l'écriture de code informatique qui génère des images et du mouvement.
-</p>
-<p>
-    Comme ce cinéma est largement inconnu du grand public et qu'encore peu d'artistes le pratiquent, j'espère le démystifier un peu à travers un journal de travail que je tiendrai pendant mon projet. J'y partagerai de courtes animations expérimentales ainsi qu'une part du processus créatif. Ce journal contiendra ainsi un mélange de choses très accessibles et de choses plus pointues et techniques, tel que des morceaux de code informatique et des formules mathématiques. Nous verrons bien à quoi ressemblera ce joyeux agrégat.
-</p>
+<!-- fr-description -->Début d'un projet de recherche expérimentale sur le cinéma d'animation abstrait.
 <!-- fr-content -->
 <pn>
-    <img class="drop-caps" src="../../../images/towards-an-algorithmic-cinema/drop-caps-a.png"><sc>u cours des douze prochains mois</sc>, je serai occupé par un nouveau projet qui me rend très enthousiaste. Grâce au Conseil des Arts et des Lettres du Québec ainsi qu'au <i>Plan culturel numérique du Québec</i> (un programme du Gouvernement du Québec), j'ai l'opportunité de faire de la recherche portant sur l'art numérique &mdash; et plus spécifiquement, sur le cinéma algorithmique, c'est-à-dire un cinéma d'animation abstrait réalisé par l'écriture de code informatique qui génère des images et du mouvement.
+    <img class="drop-caps" src="../../../images/towards-an-algorithmic-cinema/drop-caps-a.png"><sc>u cours des douze prochains mois</sc>, je serai occupé par un nouveau projet qui me rend très enthousiaste. Grâce à l'appui financier du <a href="">Conseil des Arts et des Lettres du Québec</a> ainsi que du <a href="http://culturenumerique.mcc.gouv.qc.ca/"><i>Plan culturel numérique du Québec</i></a> (un programme du Gouvernement du Québec), j'ai l'opportunité de faire de la recherche portant sur l'art numérique &mdash; et plus spécifiquement, sur le cinéma algorithmique, c'est-à-dire un cinéma d'animation abstrait réalisé par l'écriture de code informatique qui génère des images et du mouvement.
 </pn>
 <p>
-    Comme ce cinéma est largement inconnu du grand public et qu'encore peu d'artistes le pratiquent, j'espère le démystifier un peu à travers un journal de travail que je tiendrai pendant mon projet. J'y partagerai de courtes animations expérimentales ainsi qu'une part du processus créatif. Ce journal contiendra ainsi un mélange de choses très accessibles et de choses plus pointues et techniques, tel que des morceaux de code informatique et des formules mathématiques. Nous verrons bien à quoi ressemblera ce joyeux agrégat.
+    Comme ce cinéma est peu connu du grand public et pratiqué par un nombre d'artistes assez restreint, j'espère aider à le démystifier par un journal de travail que je tiendrai tout au long de mon projet. J'y partagerai de courtes animations expérimentales ainsi qu'une part du processus créatif ; on y trouvera ainsi un mélange de choses accessibles à tou&middot;te&middot;s et de choses plus pointues et techniques, tel que des morceaux de code informatique et des formules mathématiques. Nous verrons bien à quoi ressemblera ce joyeux agrégat.
 </p>
+
+<!-- read-more -->
 
 <h3>Logiciel libre</h3>
 
@@ -36,17 +31,17 @@
 </ul>
 <h3>Un premier exemple</h3>
 <pn>
-    <img class="drop-caps" src="../../../images/towards-an-algorithmic-cinema/drop-caps-c.png"><sc>ommençons tout de suite</sc> avec une première expérimentation. Les lettrines que vous voyez dans cet article (les grandes lettres ornées au début de chacune des sections) ont été conçues de façon semi-algorithmique. Les lettres elles-mêmes ont été dessinées à la main dans un programme que j'ai écrit, et les ornementations en forme de racines qui les entourent ont été générées par un algorithme appelé <i>l'agrégation par diffusion limitée</i>. Voici cet algorithme en action :
+    <img class="drop-caps" src="../../../images/towards-an-algorithmic-cinema/drop-caps-c.png"><sc>ommençons tout de suite</sc> avec une première expérimentation. Les lettrines que vous voyez dans cet article (les grandes lettres ornées au début de chacune des sections) ont été conçues de façon semi-algorithmique. Les lettres elles-mêmes ont été dessinées à la main dans un programme que j'ai écrit, et les ornementations en forme de racines qui les entourent ont été générées par un algorithme appelé <i>l'agrégation par diffusion limitée</i>. Voici une visualisation de cet algorithme en action :
 </pn>
 <img class="full-size-image" src="../../../images/towards-an-algorithmic-cinema/april-at-the-docks-02-small.gif">
 <pn>
-    L'aggrégation par diffusion limitée est relativement simple à expliquer : l'animation ci-dessus est divisée dans une grille. Chaque carreau de la grille peut être soit « éveillé » ou &nbsn;«&nbsp;endormi&nbsp;».<snl label="metaphore">N'importe quelle autre métaphore pourrait être utilisée. On parle souvent de <i8>carreaux vivants</i8> et de <i8>carreaux morts</i8>, mais je préfère que mes carreaux s'endorment et s'éveillent.</snl> Un carreau éveillé est coloré, un carreau endormi est noir. Entre chaque image de l'animation, des milliers de <i>fourmis invisibles</i> se déplacent aléatoirement sur la grille. Les fourmis ne peuvent se déplacer que sur des cases endormies. Lorsqu'une fourmi se retrouve sur une case qui est voisine d'une case éveillée, elle réveille cette nouvelle case puis disparaît. Cette case devient donc colorée. C'est tout!
+    L'aggrégation par diffusion limitée est relativement simple à expliquer : l'animation ci-dessus est divisée dans une grille. Chaque carreau de la grille peut être soit « éveillé » ou &nbsn;«&nbsp;endormi&nbsp;».<snl label="metaphore">N'importe quelle autre métaphore pourrait être utilisée. On parle souvent de <i8>carreaux vivants</i8> et de <i8>carreaux morts</i8>, mais je préfère que mes carreaux s'endorment et s'éveillent.</snl> Un carreau éveillé est coloré, un carreau endormi est noir. Entre chaque image de l'animation, des milliers de <i>fourmis invisibles</i> se déplacent aléatoirement sur la grille. Les fourmis ne peuvent se déplacer que sur des carreaux endormis. Lorsqu'une fourmi se retrouve sur un carreau qui est voisin d'un carreau éveillé, elle <i>réveille</i> le carreau où elle se trouve, puis disparaît. Ce carreau devient donc coloré. C'est tout!
 </pn>
 <p>
-    La chose remarquable à propos de l'aggrégation par diffusion limitée est qu'à partir d'un système aussi simple et basé sur le hasard (la marche des fourmis ne suit aucune autre règle que le hasard), un motif aussi distinctif puisse se former. Le motif formé par les fourmis ressemble à des racines ou à des branches — il a une certaine qualité <i>fractale</i>, une notion qui sera importante pour mes prochaines expérimentations.
+    La chose remarquable à propos de l'aggrégation par diffusion limitée est qu'à partir d'un système aussi simple et basé sur le hasard (la marche des fourmis ne suit aucune autre règle que le hasard), un motif aussi distinctif puisse se former. Le motif ressemble à des racines ou à des branches — il a une certaine qualité <i>fractale</i>, une notion qui sera importante pour mes prochaines expérimentations.
 </p>
 <p>
-    Voici à quoi ressemble l'action de ce même algorithme lorsqu'il appliqué à une grille dont une seule case est initialement <i>éveillée</i>&nbsp;:
+    Voici à quoi ressemble l'action de ce même algorithme lorsqu'il est appliqué à une grille dont un seul carreau est initialement <i>éveillé</i>&nbsp;:
 </p>
 <img class="full-size-image" src="../../../images/towards-an-algorithmic-cinema/april-at-the-docks-02b-small.gif">
 <pn>
@@ -54,22 +49,15 @@
 </pn>
 
 <!-- en-title -->Towards an algorithmic cinema
-<!-- en-description -->An experimental research project about abstract animation film.
-<!-- en-excerpt -->
-<p class="noindent">
-    <img class="drop-caps" src="../../../images/towards-an-algorithmic-cinema/drop-caps-a.png"> <span class="small-caps">new project will occupy me</span> throughout the next twelve months. Thanks to the support of the Québec Council for Arts and Letters and the <span class="italic">Québec's Digital Culture Plan</span> of the Government of Québec, I have the opportunity to do research about digital art—and more specifically, about algorithmic cinema.
-</p>
-<p>
-    Because this cinema is largely unknown to the general public and it's practiced by very few artists around the world, I hope to help in demystifying it by maintening a journal of my work during this project. It will contain short experimental animations and parts of the creative process—so, a mixture of things that are accessible to all and other things that are more technical and arcane, like blocks of code and mathematical formulas. We'll see how this joyous aggregate ends up looking.
-</p>
+<!-- en-description -->The beginning of an experimental research project about abstract animation film.
 <!-- en-content -->
 <pn>
-    <img class="drop-caps" src="../../../images/towards-an-algorithmic-cinema/drop-caps-a.png"><sc>new project will occupy me</sc> throughout the next twelve months. Thanks to the Québec Council for Arts and Letters and the <i>Québec's Digital Culture Plan</i> of the Government of Québec, I have the opportunity to do research about digital art—and more specifically, about algorithmic cinema.
+    <img class="drop-caps" src="../../../images/towards-an-algorithmic-cinema/drop-caps-a.png"><sc>new project will occupy me</sc> throughout the next twelve months. Thanks to the financial support of the <a href="">Québec Council for Arts and Letters</a> and the <a href=""><i>Québec's Digital Culture Plan</i></a> (a program of the Government of Québec), I have the opportunity to do research about digital <nb>art—and</nb> more specifically, about algorithmic cinema.
 </pn>
 <p>
-    Because this cinema is largely unknown to the general public and it's practiced by very few artists around the world, I hope to help in demystifying it slightly by maintening a journal of my work during this project. It will contain short experimental animations and parts of the creative process—so, a mixture of things that are accessible to all and other things that are more technical and arcane, like blocks of code and mathematical formulas. We'll see how this joyous aggregate ends up looking.
+    Because this cinema is somewhat unknown to the general public and practiced by few artists around the world, I hope to help in demystifying it by maintening a journal of my work during this project. The journal will contain short experimental animations and parts of the creative process—so, a mixture of things that are accessible to all and other things that are more technical or &ldquo;arcane&rdquo;, like blocks of code and mathematical formulas. We'll see how this joyous aggregate ends up looking.
 </p>
-
+<!-- read-more -->
 <h3>Free software and gratis learning material</h3>
 
 <pn>
@@ -90,7 +78,7 @@
 <h3>A first example</h3>
 
 <pn>
-    <img class="drop-caps" src="../../../images/towards-an-algorithmic-cinema/drop-caps-c.png"><sc>ommencing right away</sc> with a first experiment. The drop caps that you see in this article (the big ornate letters at the beginning of each section of text) were created with a semi-algorithmic method. The letters themselves were hand-drawn using a program I created, and then the root-like patterns surrounding the letters were generated with an algorithm called <i>Diffusion Limited Aggregation</i>. Here is this algorithm in action:
+    <img class="drop-caps" src="../../../images/towards-an-algorithmic-cinema/drop-caps-c.png"><sc>ommencing right away</sc> with an experiment is the best thing to do. The drop caps that you see in this article (the big ornate letters at the beginning of each section of text) were created with a semi-algorithmic method. The letters themselves were hand-drawn using a program I created, and then the root-like patterns surrounding the letters were generated with an algorithm called <i>Diffusion Limited Aggregation</i>. Here is a visualization of this algorithm in action:
 </pn>
 <img class="full-size-image" src="../../../images/towards-an-algorithmic-cinema/april-at-the-docks-02-small.gif">
 <pn>
