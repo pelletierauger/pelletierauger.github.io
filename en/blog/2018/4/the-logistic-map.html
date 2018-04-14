@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html><head>
         <meta charset="UTF-8">
-        <title>Guillaume Pelletier-Auger - Blog</title>
+        <title>Guillaume Pelletier-Auger - The logistic map</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=4, user-scalable=yes">
-        <link href="../../style/style.css" rel="stylesheet" type="text/css">
+        <link href="../../../../style/style.css" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=EB+Garamond" rel="stylesheet">
         
     <style id="MathJax_CHTML_styles">.mjx-chtml {display: inline-block; line-height: 0; text-indent: 0; text-align: left; text-transform: none; font-style: normal; font-weight: normal; font-size: 100%; font-size-adjust: none; letter-spacing: normal; word-wrap: normal; word-spacing: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0; min-height: 0; border: 0; margin: 0; padding: 1px 0}
@@ -125,32 +125,28 @@
 @font-face {font-family: MJXc-TeX-size4-Rw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Size4-Regular.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Size4-Regular.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Size4-Regular.otf') format('opentype')}
 </style></head><body>
     <nav>
-        <h1><a href="../../">Guillaume <span class="nobreak">Pelletier-Auger</span></a></h1>
+        <h1><a href="../../../../">Guillaume <span class="nobreak">Pelletier-Auger</span></a></h1>
         <ul>
-            <li><a href="../../">Projects</a></li>
-            <li class="selected"><a href="../../en/blog/">Blog</a></li>
-            <li><a href="../../en/about.html">About</a></li>
-            <li><a href="../../fr/blog/">En → Fr</a></li>
+            <li><a href="../../../../">Projects</a></li>
+            <li class="selected"><a href="../../../../en/blog/">Blog</a></li>
+            <li><a href="../../../../en/about.html">About</a></li>
+            <li><a href="../../../../fr/blog/2018/4/la-suite-logistique.html">En → Fr</a></li>
         </ul>
     </nav>
-    <div class="blog-posts">
-            <div class="blog-post">
-                <div class="blog-post-header">
-                    <a href="../blog/2018/4/the-logistic-map.html"><div class="date">April 9, 2018</div>
-                    <div class="blog-title-box"><h2 class="header">The logistic map</h2></div>
-                    <div class="description">
+    
+            <article>
+                <h2 class="with-date">The logistic map</h2><div class="description">
                     A first dive into complexity and chaos.
 
-            </div></a>
-                </div>
-                <div class="blog-post-content">
-                    
-<img class="inline-image" src="../../../images/logistic-map/logistic-map-600x600.gif">
+            </div>
+                <div class="date">April 9, 2018</div>
+                
+<img class="inline-image" src="../../../../images/logistic-map/logistic-map-600x600.gif">
 <p class="article-top">
     I’m currently reading <span class="italic">Complexity: A Guided Tour</span>, a book written by the American scientist Melanie Mitchell. In it, I just learned about the logistic map:
 </p>
 
-<div class="math"><span class="mjx-chtml MJXc-display" style="text-align: center;"><span id="MathJax-Element-1-Frame" class="mjx-chtml" style="text-align: center;"><span id="MJXc-Node-1180" class="mjx-math"><span id="MJXc-Node-1181" class="mjx-mrow"><span id="MJXc-Node-1182" class="mjx-msubsup"><span class="mjx-base"><span id="MJXc-Node-1183" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.298em;">x</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-1184" class="mjx-texatom" style=""><span id="MJXc-Node-1185" class="mjx-mrow"><span id="MJXc-Node-1186" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.372em; padding-bottom: 0.298em;">t</span></span><span id="MJXc-Node-1187" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.298em; padding-bottom: 0.446em;">+</span></span><span id="MJXc-Node-1188" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">1</span></span></span></span></span></span><span id="MJXc-Node-1189" class="mjx-mo MJXc-space3"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.077em; padding-bottom: 0.298em;">=</span></span><span id="MJXc-Node-1190" class="mjx-mi MJXc-space3"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.446em; padding-bottom: 0.298em;">R</span></span><span id="MJXc-Node-1191" class="mjx-msubsup"><span class="mjx-base"><span id="MJXc-Node-1192" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.298em;">x</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-1193" class="mjx-mi" style=""><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.372em; padding-bottom: 0.298em;">t</span></span></span></span><span id="MJXc-Node-1194" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.446em; padding-bottom: 0.593em;">(</span></span><span id="MJXc-Node-1195" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">1</span></span><span id="MJXc-Node-1196" class="mjx-mo MJXc-space2"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.298em; padding-bottom: 0.446em;">−</span></span><span id="MJXc-Node-1197" class="mjx-msubsup MJXc-space2"><span class="mjx-base"><span id="MJXc-Node-1198" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.298em;">x</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-1199" class="mjx-mi" style=""><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.372em; padding-bottom: 0.298em;">t</span></span></span></span><span id="MJXc-Node-1200" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.446em; padding-bottom: 0.593em;">)</span></span></span></span></span></span></div>
+<div class="math"><span class="mjx-chtml MJXc-display" style="text-align: center;"><span id="MathJax-Element-1-Frame" class="mjx-chtml" style="text-align: center;"><span id="MJXc-Node-1122" class="mjx-math"><span id="MJXc-Node-1123" class="mjx-mrow"><span id="MJXc-Node-1124" class="mjx-msubsup"><span class="mjx-base"><span id="MJXc-Node-1125" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.298em;">x</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-1126" class="mjx-texatom" style=""><span id="MJXc-Node-1127" class="mjx-mrow"><span id="MJXc-Node-1128" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.372em; padding-bottom: 0.298em;">t</span></span><span id="MJXc-Node-1129" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.298em; padding-bottom: 0.446em;">+</span></span><span id="MJXc-Node-1130" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">1</span></span></span></span></span></span><span id="MJXc-Node-1131" class="mjx-mo MJXc-space3"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.077em; padding-bottom: 0.298em;">=</span></span><span id="MJXc-Node-1132" class="mjx-mi MJXc-space3"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.446em; padding-bottom: 0.298em;">R</span></span><span id="MJXc-Node-1133" class="mjx-msubsup"><span class="mjx-base"><span id="MJXc-Node-1134" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.298em;">x</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-1135" class="mjx-mi" style=""><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.372em; padding-bottom: 0.298em;">t</span></span></span></span><span id="MJXc-Node-1136" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.446em; padding-bottom: 0.593em;">(</span></span><span id="MJXc-Node-1137" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">1</span></span><span id="MJXc-Node-1138" class="mjx-mo MJXc-space2"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.298em; padding-bottom: 0.446em;">−</span></span><span id="MJXc-Node-1139" class="mjx-msubsup MJXc-space2"><span class="mjx-base"><span id="MJXc-Node-1140" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.298em;">x</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-1141" class="mjx-mi" style=""><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.372em; padding-bottom: 0.298em;">t</span></span></span></span><span id="MJXc-Node-1142" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.446em; padding-bottom: 0.593em;">)</span></span></span></span></span></span></div>
 
 <p class="noindent">
     This equation is used to model the growth of populations.
@@ -162,95 +158,8 @@
 <p class="noindent">
     J’ai écrit un court programme pour voir comment je peux explorer les propriétés surprenantes de cette suite logistique qui m’est nouvelle. Il est important de considérer que, lors de ces expériences, je ne porte pas nécessairement attention aux origines “réelles” ou “physiques” de cette équation. Dans ce sens, j’ai beaucoup aimé ce passage tiré du livre de Mitchell : « Given this simplified model [the logistic map], scientists and mathematicians promptly forget all about population growth, carrying capacity, and anything else connected to the real world, and simply get lost in the astounding behavior of the equation itself. We will do the same. »
 </p>
-                </div>
-            </div>
-            <div class="blog-post">
-                <div class="blog-post-header">
-                    <a href="../blog/2018/4/towards-an-algorithmic-cinema.html"><div class="date">April 5, 2018</div>
-                    <div class="blog-title-box"><h2 class="header">Towards an algorithmic cinema</h2></div>
-                    <div class="description">
-                    The beginning of an experimental research project about abstract animation film.
-
-            </div></a>
-                </div>
-                <div class="blog-post-content">
-                    
-<p class="noindent">
-    <img class="drop-caps" src="../../../images/towards-an-algorithmic-cinema/drop-caps-a.png"><span class="small-caps">new project will occupy me</span> throughout the next twelve months. Thanks to the financial support of the <a href="">Québec Council for Arts and Letters</a> and the <a href=""><span class="italic">Québec’s Digital Culture Plan</span></a> (a program of the Government of Québec), I have the opportunity to do research about digital <span class="nobreak">art—and</span> more specifically, about algorithmic cinema.
-</p>
-<p>
-    Because this cinema is somewhat unknown to the general public and practiced by few artists around the world, I hope to help in demystifying it by maintening a journal of my work during this project. The journal will contain short experimental animations and parts of the creative process—so, a mixture of things that are accessible to all and other things that are more technical or “arcane”, like blocks of code and mathematical formulas. We’ll see how this joyous aggregate ends up looking.
-</p>
-
-                <div class="languageJump">
-                    <a href="../blog/2018/4/towards-an-algorithmic-cinema.html">Read more…</a>
-                </div>
-               
-                </div>
-            </div>
-            <div class="blog-post">
-                <div class="blog-post-header">
-                    <a href="../blog/2018/3/branches-and-stems.html"><div class="date">March 14, 2018</div>
-                    <div class="blog-title-box"><h2 class="header">Branches and stems</h2></div>
-                    <div class="description">
-                    Sketch made after yet one more browsing of <span class="blog-description-italic">Manuale Tipografico</span> by Giambattista Bodoni.
-
-            </div></a>
-                </div>
-                <div class="blog-post-content">
-                    
-<img class="inline-image" src="../../../images/hand-drawings/bodoni-vegetal.jpg">
-                </div>
-            </div>
-            <div class="blog-post">
-                <div class="blog-post-header">
-                    <a href="../blog/2018/2/modeling-pencil-strokes.html"><div class="date">February 3, 2018</div>
-                    <div class="blog-title-box"><h2 class="header">Modeling <span class="nobreak">pencil strokes</span>
-</h2></div>
-                    <div class="description">
-                    A first foray into methods of algorithmically imitating the look of hand drawings.
-
-            </div></a>
-                </div>
-                <div class="blog-post-content">
-                    
-<img class="inline-image" src="../../../images/pencil/circles.jpg">
-<br>
-<br>
-<p class="noindent">
-    <span class="small-caps">About a year ago</span>, I wrote a short program to model pencil strokes. The project is still in its embryonic stages and I plan to keep working on it sporadically. I will begin now by revisiting the code written last year to extract its concepts.
-</p>
-
-                <div class="languageJump">
-                    <a href="../blog/2018/2/modeling-pencil-strokes.html">Read more…</a>
-                </div>
-               
-                </div>
-            </div>
-            <div class="blog-post">
-                <div class="blog-post-header">
-                    <a href="../blog/2017/10/recursive-harmonic-motion.html"><div class="date">October 17, 2017</div>
-                    <div class="blog-title-box"><h2 class="header">Recursive harmonic motion</h2></div>
-                    <div class="description">
-                    Two animations made while experimenting with simple examples of recursion.
-
-            </div></a>
-                </div>
-                <div class="blog-post-content">
-                    
-<p class="noindent">
-    <span class="small-caps">These animations</span> were created with the <span class="lnum"><a href="https://p5js.org/">p5.js library</a></span>, in response to two <span class="italic">coding challenges</span> presented by Daniel Shiffman on his YouTube channel <a href="https://www.youtube.com/thecodingtrain"><span class="italic">The Coding Train</span></a>.
-</p>
-
-                <div class="languageJump">
-                    <a href="../blog/2017/10/recursive-harmonic-motion.html">Read more…</a>
-                </div>
-               
-                </div>
-            </div>
-        </div>
-        <div id="blog-pagination">
-        </div><div id="footer">Guillaume Pelletier-Auger — 2016-2018
+            </article>
+            <div id="footer">Guillaume Pelletier-Auger — 2016-2018
     </div>
     
     </body></html>
