@@ -107,6 +107,11 @@ body {
     -moz-font-variant-ligatures: no-discretionary-ligatures;
     -webkit-font-variant-ligatures: no-discretionary-ligatures;*/
 }
+
+.roman {
+    font-family: 'EBG12-Re';
+}
+
 .small-caps {
     font-style: normal;
     font-family: 'EBG12-SC';
@@ -142,7 +147,7 @@ a {
     text-decoration: none;
 }
 
-article a, nav ul li a, h1 a {
+article a, nav ul li a, h1 a, .blog-post-content a {
     color: #000000;
     text-decoration: none;
     box-shadow: inset 0 -3px 0 0 #fff, inset 0 -4px 0 0 #000;
@@ -213,6 +218,7 @@ h3 {
     line-height: 2.5rem;
     font-weight: normal;
     /*vertical-align: middle;*/
+    text-align: left;
     margin: 0 auto;
     padding: 0;
     max-width: 650px;
@@ -398,4 +404,45 @@ a #Genericons, a #Genericons-GitHub {
 
 .small-title {
     font-size: 0.65em;
+}
+
+img.inline-image {
+    /*display: inline-block;*/
+    width: 100%;
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+img.drop-caps {
+    /*display: inline-block;*/
+    width: 11em;
+    /*max-width: 10em;*/
+    /*margin: 0 auto;*/
+    margin-right: 0.5rem;
+    margin: 2rem 2rem 1rem 2rem;
+    /*margin-bottom: 1rem;*/
+    display: inline-block;
+    float: left;
+}
+
+img.full-size-image {
+    /*display: inline-block;*/
+    /*width: 11em;*/
+    /*max-width: 10em;*/
+    /*margin: 0 auto;*/
+    /*margin-right: 0.5rem;*/
+    margin: 2rem 0;
+    /*margin-bottom: 1rem;*/
+    /*display: inline-block;*/
+    /*float: left;*/
+}
+
+.mjx-charbox, .mjx-mtext {
+    font-family: "EBG12-Re";
+    /*color: red;*/
+}
+
+.mjx-mfrac .mjx-charbox {
+    font-family: "EBG08-Re";
+    /*color: red;*/
 }
