@@ -1,0 +1,63 @@
+<!-- year -->2018
+<!-- month -->04
+<!-- day -->02
+<!-- fr-title -->Colonies de fourmis
+<!-- fr-content -->
+<pn>
+    Je crée un système de colonies de fourmis inspiré par le modèle de fourmi inclus dans NetLogo. Je démarre d'un système créé pour des automates cellulaires.
+</pn>
+<p>
+    J'ai déjà un prototype <ic>scene</ic>. Il me faut un prototype <ic>cell</ic>, et un prototype <ic>ant</ic>. Peut-être n'utiliserai-je pas la syntaxe <sc>es6</sc> pour les classes puisque je me retrouve à combiner ça étrangement avec <sc>es5</sc> par la suite.
+</p>
+<h3>Le prototype <ic>ant</ic></h3>
+<pn>
+    La méthode <ic>update</ic> doit déplacer la fourmi. Si elle arrive sur une cellule qui contient de la nourriture, elle doit enlever la nourriture de cette cellule, ajuster sa propriété <ic>pheromoneLevel</ic> à <ic>1</ic>, et ajuster la propriété <ic>pheromone</ic> de la cellule à <ic>1</ic>.
+
+</pn>
+<code>
+let Ant = function(x, y, h) {
+    this.x = x;
+    this.y = y;
+    this.heading = h;
+    this.pheromoneLevel = 0;
+    this.getCurrentCell();
+};
+
+Ant.prototype.getCurrentCell = function() {
+    this.cell = scene.getCell(x, y);
+}
+
+Ant.prototype.update = function() {
+    this.move();
+    this.checkForFood();
+};
+
+Ant.prototype.move = function() {
+
+};
+
+Ant.prototype.checkForFood() = function() {
+
+};
+
+Ant.prototype.secretePheromones = function() {
+
+};
+</code>
+<pn>
+    Une fourmi doit pouvoir <i>enregistrer sa position</i> dans une grille, pour que les fourmis puissent savoir combien d'autres fourmis sont positionnées au même endroit. En fait, ce n'est pas une priorité pour l'instant.
+</pn>
+<h3>Le prototype <ic>cell</ic></h3>
+<pn>
+    Une instance de <ic>cell</ic> doit contenir une certaine quantité de phéromones. La propriété <ic>changed</ic> est utilisée pour l'affichage. <ic>changes</ic> et<ic>state</ic> pourraient aussi servir à l'affichage. Il me faut réfléchir à ce dont j'ai besoin exactement. L'idée c'est que je veux un système généraliste mais pas inutilement trop généraliste.
+</pn>
+<code>
+let cell = function(o) {
+    state: 0, 
+    changed: false,
+    changes: 0,
+    pheromones: 0
+};
+</code>
+<!-- en-title -->Ant colonies
+<!-- en-content -->
