@@ -114,11 +114,37 @@ function makeBlog(language) {
             let description = (post[language].description) ? `<div class="description">
                     ${post[language].description}
             </div>` : "";
+
+            //We decide on what excerpt to display within the blog
+            let languageJump = (language == "fr") ? "Continuer à lire…" : "Read more…";
+            let blogPostContent;
+            if (post[language].content.match(/<!-- read-more -->/)) {
+                console.log(post[language].title + " has an excerpt to be extracted!");
+                blogPostContent = post[language].content.match(/([\S\s]*?)(<!-- read-more -->)/)[1];
+                blogPostContent = `${blogPostContent}
+                <div class="languageJump">
+                    <a href="../${linkIndividual}.html">${languageJump}</a>
+                </div>
+               `;
+            } else {
+                blogPostContent = (post[language].excerpt) ?
+                    `${post[language].excerpt}
+                <div class="languageJump">
+                    <a href="../${linkIndividual}.html">${languageJump}</a>
+                </div>
+               ` : post[language].content;
+            }
+
             content += `
             <div class="blog-post">
-                <a href="../${linkIndividual}.html"><div class="date">${date}</div>
-                <div class="blog-title-box"><h2 class="header">${title}</h2></div>
-                ${description}</a>
+                <div class="blog-post-header">
+                    <a href="../${linkIndividual}.html"><div class="date">${date}</div>
+                    <div class="blog-title-box"><h2 class="header">${title}</h2></div>
+                    ${description}</a>
+                </div>
+                <div class="blog-post-content">
+                    ${blogPostContent}
+                </div>
             </div>`;
             currentPost++;
             postsToPrint--;
@@ -615,13 +641,21 @@ function parseHTMLTemplate(s) {
     if (frDescription) {
         page.fr.description = frDescription[2];
         page.fr.description = page.fr.description.replace(/([a-zA-ZÀ-ú])(\')([a-zA-ZÀ-ú])/g, function(a, b, c, d) {
-            return "" + b + "&rsquo;" + d
+            return "" + b + "&rsquo;" + d;
+        });
+    }
+
+    let frExcerpt = data.match(/(<!-- fr-excerpt -->)([\S\s]*?)(<!--)/);
+    if (frExcerpt) {
+        page.fr.excerpt = frExcerpt[2];
+        page.fr.excerpt = page.fr.excerpt.replace(/([a-zA-ZÀ-ú])(\')([a-zA-ZÀ-ú])/g, function(a, b, c, d) {
+            return "" + b + "&rsquo;" + d;
         });
     }
 
     page.fr.content = data.match(/(<!-- fr-content -->)([\S\s]*?)(<!-- en-)/)[2];
     page.fr.content = page.fr.content.replace(/([a-zA-ZÀ-ú])(\')([a-zA-ZÀ-ú])/g, function(a, b, c, d) {
-        return "" + b + "&rsquo;" + d
+        return "" + b + "&rsquo;" + d;
     });
     page.fr.content = page.fr.content.replace(/<i>/g, `<span class="italic">`);
     page.fr.content = page.fr.content.replace(/<\/i>/g, `</span>`);
@@ -716,6 +750,14 @@ function parseHTMLTemplate(s) {
         page.en.description = enDescription[2];
         page.en.description = page.en.description.replace(/([a-zA-ZÀ-ú])(\')([a-zA-ZÀ-ú])/g, function(a, b, c, d) {
             return "" + b + "&rsquo;" + d
+        });
+    }
+
+    let enExcerpt = data.match(/(<!-- en-excerpt -->)([\S\s]*?)(<!--)/);
+    if (enExcerpt) {
+        page.en.excerpt = enExcerpt[2];
+        page.en.excerpt = page.en.excerpt.replace(/([a-zA-ZÀ-ú])(\')([a-zA-ZÀ-ú])/g, function(a, b, c, d) {
+            return "" + b + "&rsquo;" + d;
         });
     }
 
