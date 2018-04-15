@@ -370,7 +370,17 @@ canvas {
     overflow: auto;
     /*margin-bottom: 1em;*/
     margin: 1rem 0;
-    clear: both;
+    /*clear: both;*/
+    /*background: #F2F2F2;*/
+}
+
+.mathbox-clear-left {
+    /*display: block;*/
+    clear: left;
+    /*float: left;*/
+    max-width: 650px;
+    margin: 0 auto 0 auto;
+    text-align: left;
 }
 
 .Silentype {
@@ -411,18 +421,6 @@ img.inline-image {
     width: 100%;
     max-width: 650px;
     margin: 0 auto;
-}
-
-img.drop-caps {
-    /*display: inline-block;*/
-    width: 11em;
-    /*max-width: 10em;*/
-    /*margin: 0 auto;*/
-    margin-right: 0.5rem;
-    margin: 2rem 2rem 1rem 2rem;
-    /*margin-bottom: 1rem;*/
-    display: inline-block;
-    float: left;
 }
 
 img.full-size-image {
