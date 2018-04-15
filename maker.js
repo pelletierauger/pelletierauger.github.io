@@ -220,7 +220,7 @@ function makeBlog(language) {
                 title: blog.config.en.title + suffix,
                 content: content
             },
-            style: null
+            style: styles
         };
         var header = makeHeader(page, language, stepsFromRoot, null);
         var footer = makeFooter(page, language);
