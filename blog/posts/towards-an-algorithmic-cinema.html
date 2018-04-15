@@ -1,11 +1,13 @@
 <!-- year -->2018
 <!-- month -->04
 <!-- day -->05
+<!-- style -->towards-an-algorithmic-cinema
 <!-- fr-title -->Vers un cinéma algorithmique
 <!-- fr-description -->Début d'un projet de recherche expérimentale sur le cinéma d'animation abstrait.
 <!-- fr-content -->
+
 <pn>
-    <img class="drop-caps" src="../../../images/towards-an-algorithmic-cinema/drop-caps-a.png"><sc>u cours des douze prochains mois</sc>, je serai occupé par un nouveau projet qui me rend très enthousiaste. Grâce à l'appui financier du <a href="">Conseil des Arts et des Lettres du Québec</a> ainsi que du <a href="http://culturenumerique.mcc.gouv.qc.ca/"><i>Plan culturel numérique du Québec</i></a> (un programme du Gouvernement du Québec), j'ai l'opportunité de faire de la recherche portant sur l'art numérique &mdash; et plus spécifiquement, sur le cinéma algorithmique, c'est-à-dire un cinéma d'animation abstrait réalisé par l'écriture de code informatique qui génère des images et du mouvement.
+    <img class="drop-caps" src="../../../images/towards-an-algorithmic-cinema/drop-caps-a.png"><sc>u cours des douze prochains mois</sc>, je serai occupé par un nouveau projet qui me rend très enthousiaste. Grâce au Conseil des Arts et des Lettres du Québec ainsi qu'au <i>Plan culturel numérique du Québec</i>, j'aurai l'opportunité de faire de la recherche portant sur l'art numérique&nbsp;&mdash; et plus spécifiquement, sur le cinéma algorithmique, c'est-à-dire un cinéma d'animation expérimental (et le plus souvent abstrait), réalisé par l'écriture de code informatique qui génère des images et du mouvement.
 </pn>
 <p>
     Comme ce cinéma est peu connu du grand public et pratiqué par un nombre d'artistes assez restreint, j'espère aider à le démystifier par un journal de travail que je tiendrai tout au long de mon projet. J'y partagerai de courtes animations expérimentales ainsi qu'une part du processus créatif ; on y trouvera ainsi un mélange de choses accessibles à tou&middot;te&middot;s et de choses plus pointues et techniques, tel que des morceaux de code informatique et des formules mathématiques. Nous verrons bien à quoi ressemblera ce joyeux agrégat.
@@ -19,23 +21,27 @@
     <img class="drop-caps" src="../../../images/towards-an-algorithmic-cinema/drop-caps-u.png"><sc>ne facette importante de ce projet</sc> est l'utilisation de licences libres pour tout le matériel que je créerai au courant de l'année. Puisque tout sera distribué avec des licences libres, quiconque aura la possibilité de redistribuer et de modifier mon travail, et ce gratuitement et sans avoir besoin de demander ma permission. Les principales licences utilisées seront la <a href="http://artlibre.org/">licence Art Libre <lnum>1.3</lnum></a>, la <a href="https://www.gnu.org/licenses/gpl-3.0.txt">licence <sc>Gnu Gpl</sc><lnum> 3.0</lnum></a> et la <a href="http://www.apache.org/licenses/LICENSE-2.0.txt">licence Apache <lnum>2.0</lnum></a>.
 </pn>
 <p>
-    De plus, les logiciels et la matière que j'utiliserai pour bâtir mes animations sont également disponibles gratuitement. La matière sera puisée dans un petit ensemble de cours offerts en ligne (souvent nommés « <sc>mooc</sc> »). Voici les cours en question :
+    De plus, les logiciels et la matière que j'utiliserai pour bâtir mes animations sont également disponibles gratuitement. La matière sera puisée en grande partie dans un petit ensemble de cours offerts en ligne (souvent nommés « <sc>mooc</sc> », pour <i>massive online open courses</i>). Voici les cours en &nbsn;question :<snr label="cours">J'ai traduit le nom des cours en français, mais en fait, ils sont tous donnés uniquement en anglais.</snr>
 </p>
 <ul class="dash">
-    <li><i>Introduction to Complexity</i>, par Melanie Mitchell.</li>
-    <li><i>Introduction to Agent Based Modeling</i>, par William Rand.</li>
-    <li><i>Algorithms on Graphs</i>, by Daniel Kane.</li>
-    <li><i>Introduction to Dynamical Systems and Chaos</i>, par Dave Feldman.</li>
-    <li><i>Machine Learning for Musician and Artists</i>, par Rebecca Feibrink.</li>
-    <li><i>Intelligence and Learning</i>, par Daniel Shiffman.</li>
+    <li><a href=""><i>Introduction à la complexité</i></a>, par Melanie Mitchell.</li>
+    <li><a href=""><i>Introduction à la modélisation à base d'agents</i></a>, par William Rand.</li>
+    <li><a href=""><i>Algorithmes sur les graphes</i></a>, par Daniel Kane.</li>
+    <li><a href=""><i>Introduction aux systèmes dynamiques et au chaos</i></a>, par Dave Feldman.</li>
+    <li><a href=""><i>Apprentissage automatique pour les musiciens et les artistes</i></a>, par Rebecca Feibrink.</li>
+    <li><a href=""><i>Intelligence et apprentissage</i></a>, par Daniel Shiffman.</li>
 </ul>
+
 <h3>Un premier exemple</h3>
+
 <pn>
     <img class="drop-caps" src="../../../images/towards-an-algorithmic-cinema/drop-caps-c.png"><sc>ommençons tout de suite</sc> avec une première expérimentation. Les lettrines que vous voyez dans cet article (les grandes lettres ornées au début de chacune des sections) ont été conçues de façon semi-algorithmique. Les lettres elles-mêmes ont été dessinées à la main dans un programme que j'ai écrit, et les ornementations en forme de racines qui les entourent ont été générées par un algorithme appelé <i>l'agrégation par diffusion limitée</i>. Voici une visualisation de cet algorithme en action :
 </pn>
+
 <img class="full-size-image" src="../../../images/towards-an-algorithmic-cinema/april-at-the-docks-02-small.gif">
+
 <pn>
-    L'aggrégation par diffusion limitée est relativement simple à expliquer : l'animation ci-dessus est divisée dans une grille. Chaque carreau de la grille peut être soit « éveillé » ou &nbsn;«&nbsp;endormi&nbsp;».<snl label="metaphore">N'importe quelle autre métaphore pourrait être utilisée. On parle souvent de <i8>carreaux vivants</i8> et de <i8>carreaux morts</i8>, mais je préfère que mes carreaux s'endorment et s'éveillent.</snl> Un carreau éveillé est coloré, un carreau endormi est noir. Entre chaque image de l'animation, des milliers de <i>fourmis invisibles</i> se déplacent aléatoirement sur la grille. Les fourmis ne peuvent se déplacer que sur des carreaux endormis. Lorsqu'une fourmi se retrouve sur un carreau qui est voisin d'un carreau éveillé, elle <i>réveille</i> le carreau où elle se trouve, puis disparaît. Ce carreau devient donc coloré. C'est tout!
+    L'aggrégation par diffusion limitée est relativement simple à expliquer : l'animation ci-dessus est divisée dans une grille. Chaque carreau de la grille peut être soit « éveillé » ou &nbsn;«&nbsp;endormi&nbsp;».<snl label="metaphore">N'importe quelle autre métaphore pourrait être utilisée. On parle souvent de <i8>carreaux vivants</i8> et de <i8>carreaux morts</i8>, mais je préfère que mes carreaux s'endorment et s'éveillent.</snl> Un carreau éveillé est coloré, un carreau endormi est noir. Entre chaque image de l'animation, des milliers de <i>fourmis invisibles</i> se déplacent aléatoirement sur la grille. Les fourmis ne peuvent se déplacer que sur des carreaux endormis. Lorsqu'une fourmi se retrouve sur un carreau qui est voisin d'un carreau éveillé (ou de plusieurs carreaux éveillés), elle <i>réveille</i> le carreau où elle se trouve, puis disparaît. Ce carreau devient donc coloré. C'est tout!
 </pn>
 <p>
     La chose remarquable à propos de l'aggrégation par diffusion limitée est qu'à partir d'un système aussi simple et basé sur le hasard (la marche des fourmis ne suit aucune autre règle que le hasard), un motif aussi distinctif puisse se former. Le motif ressemble à des racines ou à des branches — il a une certaine qualité <i>fractale</i>, une notion qui sera importante pour mes prochaines expérimentations.
@@ -43,22 +49,41 @@
 <p>
     Voici à quoi ressemble l'action de ce même algorithme lorsqu'il est appliqué à une grille dont un seul carreau est initialement <i>éveillé</i>&nbsp;:
 </p>
+
 <img class="full-size-image" src="../../../images/towards-an-algorithmic-cinema/april-at-the-docks-02b-small.gif">
+
 <pn>
     J'ajoute au passage que le «&nbsp;grain de film&nbsp;» qui est visible dans l'image a été généré par le même programme qui crée le motif animé — il ne s'agit pas d'un filtre After Effects ou d'une autre chose ajoutée par la suite. Le programme a été écrit en JavaScript avec <lnum>p5.js</lnum>, Node.js, Socket.io, et le rendu des images a été fait avec Puppeteer (la nouvelle mouture de Headless Chrome) et <sc>ffmpeg</sc>.
 </pn>
 
+<h3>Sources</h3>
+
+<pn>
+    J'ai appris l'existence (et le fonctionnement) de l'agrégation par diffusion limitée dans <a href="">un tutoriel vidéo</a> réalisé par Daniel Shiffman et présenté sur sa chaîne YouTube <a href=""><i>The Coding Train</i></a>.
+</pn>
+
+<h3>Remerciements</h3>
+
+<pn>
+    Je remercie le <a href="">Conseil des Arts et des Lettres du Québec</a> ainsi que le <a href="http://culturenumerique.mcc.gouv.qc.ca/"><i>Plan culturel du numérique du Québec</i></a> (un programme du Gouvernement du Québec) pour leur appui financier dans ce projet.
+</pn>
+
+<a href=""><img class="calq-logo" src="../../../images/towards-an-algorithmic-cinema/calq-cyan-1200.png"></a>
+
 <!-- en-title -->Towards an algorithmic cinema
 <!-- en-description -->The beginning of an experimental research project about abstract animation film.
 <!-- en-content -->
+
 <pn>
-    <img class="drop-caps" src="../../../images/towards-an-algorithmic-cinema/drop-caps-a.png"><sc>new project will occupy me</sc> throughout the next twelve months. Thanks to the financial support of the <a href="">Québec Council for Arts and Letters</a> and the <a href=""><i>Québec's Digital Culture Plan</i></a> (a program of the Government of Québec), I have the opportunity to do research about digital <nb>art—and</nb> more specifically, about algorithmic cinema.
+    <img class="drop-caps" src="../../../images/towards-an-algorithmic-cinema/drop-caps-a.png"><sc>new project will occupy me</sc> throughout the next twelve months. Thanks to the Conseil des Arts et des Lettres du Québec and the <i>Plan culturel numérique du Québec</i>, I have the opportunity to do research about digital <nb>art—and</nb> more specifically, about algorithmic cinema.
 </pn>
 <p>
-    Because this cinema is somewhat unknown to the general public and practiced by few artists around the world, I hope to help in demystifying it by maintening a journal of my work during this project. The journal will contain short experimental animations and parts of the creative process—so, a mixture of things that are accessible to all and other things that are more technical or &ldquo;arcane&rdquo;, like blocks of code and mathematical formulas. We'll see how this joyous aggregate ends up looking.
+    Because this cinema is somewhat unknown to the general public and practiced by relatively few artists around the world, I hope to help in demystifying it by maintening a journal of my work during this project. The journal will contain short experimental animations and parts of the creative process—so, a mixture of things that are accessible to all and other things that are more technical or &ldquo;arcane&rdquo;, like blocks of code and mathematical formulas. We'll see how this joyous aggregate ends up looking.
 </p>
+
 <!-- read-more -->
-<h3>Free software and gratis learning material</h3>
+
+<h3>Free software</h3>
 
 <pn>
     <img class="drop-caps" src="../../../images/towards-an-algorithmic-cinema/drop-caps-u.png"><sc>sing and releasing free software</sc> will be an important facet of this projet. Everything I create as part of my research will be released under free licences, so anyone will be free to distribute it, to modify it, and to distribute modified versions of it (including paid versions). The main licences that I will use are the <a href="http://artlibre.org/">Free Art Licence <lnum>1.3</lnum></a>, the <a href="https://www.gnu.org/licenses/gpl-3.0.txt"><sc>Gnu Gpl</sc><lnum> 3.0</lnum> Licence</a> and the <a href="http://www.apache.org/licenses/LICENSE-2.0.txt">Apache <lnum>2.0</lnum> Licence</a>.
@@ -67,12 +92,12 @@
     Additionally, the software and the learning material around which my research will be articulated will be either free or gratis. De plus, les logiciels et la matière que j'utiliserai pour bâtir mes animations sont également disponibles gratuitement. La matière sera puisée dans un petit ensemble de cours offerts en ligne (souvent nommés « <sc>mooc</sc> »). Voici les cours en question :
 </p>
 <ul class="dash">
-    <li><i>Introduction to Complexity</i>, by Melanie Mitchell.</li>
-    <li><i>Introduction to Agent Based Modeling</i>, by William Rand.</li>
-    <li><i>Algorithms on Graphs</i>, by Daniel Kane.</li>
-    <li><i>Introduction to Dynamical Systems and Chaos</i>, by Dave Feldman.</li>
-    <li><i>Machine Learning for Musician and Artists</i>, by Rebecca Feibrink.</li>
-    <li><i>Intelligence and Learning</i>, by Daniel Shiffman.</li>
+    <li><a href=""><i>Introduction to Complexity</i></a>, by Melanie Mitchell.</li>
+    <li><a href=""><i>Introduction to Agent Based Modeling</i></a>, by William Rand.</li>
+    <li><a href=""><i>Algorithms on Graphs</i></a>, by Daniel Kane.</li>
+    <li><a href=""><i>Introduction to Dynamical Systems and Chaos</i></a>, by Dave Feldman.</li>
+    <li><a href=""><i>Machine Learning for Musician and Artists</i></a>, by Rebecca Feibrink.</li>
+    <li><a href=""><i>Intelligence and Learning</i></a>, by Daniel Shiffman.</li>
 </ul>
 
 <h3>A first example</h3>
@@ -80,17 +105,35 @@
 <pn>
     <img class="drop-caps" src="../../../images/towards-an-algorithmic-cinema/drop-caps-c.png"><sc>ommencing right away</sc> with an experiment is the best thing to do. The drop caps that you see in this article (the big ornate letters at the beginning of each section of text) were created with a semi-algorithmic method. The letters themselves were hand-drawn using a program I created, and then the root-like patterns surrounding the letters were generated with an algorithm called <i>Diffusion Limited Aggregation</i>. Here is a visualization of this algorithm in action:
 </pn>
+
 <img class="full-size-image" src="../../../images/towards-an-algorithmic-cinema/april-at-the-docks-02-small.gif">
+
 <pn>
-    L'aggrégation par diffusion limitée est relativement simple à expliquer : l'animation ci-dessus est divisée dans une grille. Chaque carreau de la grille peut être soit « éveillé » ou &nbsn;«&nbsp;endormi&nbsp;».<snl label="metaphore">N'importe quelle autre métaphore pourrait être utilisée. On parle souvent de <i8>carreaux vivants</i8> et de <i8>carreaux morts</i8>, mais je préfère que mes carreaux s'endorment et s'éveillent.</snl> Un carreau éveillé est coloré, un carreau endormi est noir. Entre chaque image de l'animation, des milliers de <i>fourmis invisibles</i> se déplacent aléatoirement sur la grille. Les fourmis ne peuvent se déplacer que sur des cases endormies. Lorsqu'une fourmi se retrouve sur une case qui est voisine d'une case éveillée, elle réveille cette nouvelle case puis disparaît. Cette case devient donc colorée. C'est tout!
+    Diffusion limited aggregation is relatively simple to explain: the animation above is divived on a grid, and each cell of this grid can either be “awake” or &nbsn;“sleeping”.<snl label="metaphor">Any other metaphor could be used. People often talk of <i8>live cells</i8> and <i8>dead cells</i8>, but I prefer to let my cells fall asleep and wake up. What matters is that the cells can be in two different <i8>states</i8>.</snl> An awake cell has a colour, and a sleeping cell is black. Between each frame of animation, thousands of <i>invisible ants</i> move randomly on the grid. Ants can only move on sleeping cells. When an ant arrives on a cell that has one or more awaken neighbours, it awakens the cell where it is currently standing, and then it disappears. The newly awaken cell is then coloured. That's it!
 </pn>
 <p>
-    La chose remarquable à propos de l'aggrégation par diffusion limitée est qu'à partir d'un système aussi simple et basé sur le hasard (la marche des fourmis ne suit aucune autre règle que le hasard), un motif aussi distinctif puisse se former. Le motif formé par les fourmis ressemble à des racines ou à des branches — il a une certaine qualité <i>fractale</i>, une notion qui sera importante pour mes prochaines expérimentations.
+    The remarkable thing about diffusion limited aggregation is that such a simple system, based largely on randomness (the paths of the walking ants are completely random), is able to generate a distinctly structured pattern. The pattern resembles the roots or the branches of a tree—they have a certain <i>fractal</i> quality, a notion that will be very important for many of my upcoming experiments.
 </p>
 <p>
     Voici à quoi ressemble l'action de ce même algorithme lorsqu'il appliqué à une grille dont une seule case est initialement <i>éveillée</i>&nbsp;:
 </p>
+
 <img class="full-size-image" src="../../../images/towards-an-algorithmic-cinema/april-at-the-docks-02b-small.gif">
+
 <pn>
     J'ajoute au passage que le «&nbsp;grain de film&nbsp;» qui est visible dans l'image a été généré par le même programme qui crée le motif animé — il ne s'agit pas d'un filtre After Effects ou d'une autre chose ajoutée par la suite. Le programme a été écrit en JavaScript avec <lnum>p5.js</lnum>, Node.js, Socket.io, et le rendu des images a été fait avec Puppeteer (la nouvelle mouture de Headless Chrome) et <sc>ffmpeg</sc>.
 </pn>
+
+<h3>Sources</h3>
+
+<pn>
+    J'ai appris l'existence (et le fonctionnement) de l'agrégation par diffusion limitée dans <a href="">un tutoriel vidéo</a> réalisé par Daniel Shiffman et présenté sur sa chaîne YouTube <a href=""><i>The Coding Train</i></a>.
+</pn>
+
+<h3>Thanks</h3>
+
+<pn>
+    I thank the <a href="">Conseil des Arts et des Lettres du Québec</a> (<i>Québec Council for Arts and Letters</i>) as well as the <a href="http://culturenumerique.mcc.gouv.qc.ca/"><i>Plan culturel du numérique du Québec</i></a> (<i>Québec Digital Culture Plan</i>), a program from the Québec Government, for their financial support in this project.
+</pn>
+
+<a href=""><img class="calq-logo" src="../../../images/towards-an-algorithmic-cinema/calq-cyan-1200.png"></a>
