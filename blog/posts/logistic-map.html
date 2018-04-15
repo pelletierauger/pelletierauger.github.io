@@ -6,7 +6,7 @@
 <!-- fr-content -->
 <img class="inline-image" src="../../../images/logistic-map/logistic-map-600x600.gif">
 <p class="article-top">
-    <sc>Je suis en train de lire</sc> <i>Complexity: A Guided Tour</i>, un livre écrit par la scientifique américaine Melanie Mitchell. Je viens d'y apprendre l'existence de la <i>suite logistique</i>, grâce à laquelle j'ai réalisé l'animation ci-dessus. Il s'agit de la plus célèbre équation dans le champ de la théorie du chaos. La voici :
+    <sc>Je suis en train de lire</sc> <i>Complexity: A Guided Tour</i>, un ouvrage formidable écrit par la scientifique américaine Melanie Mitchell. Je viens d'y apprendre l'existence de la <i>suite logistique</i>, grâce à laquelle j'ai réalisé l'animation ci-dessus. Il s'agit de la plus célèbre équation dans le champ de la théorie du chaos. La voici :
 </p>
 <math>
     x_{t+1} = Rx_t(1-x_t)
@@ -94,7 +94,7 @@
     \end{align*}
 </math>
 <pn>
-    Il est intéressant de constater comment cette suite logistique crée des points aux positions aussi fluctuantes à partir de points initiaux si semblables — une notion très importante et bien expliquée par Melanie Mitchell : la <i>dépendance sensible aux conditions initiales</i>.
+    Il est intéressant de constater comment cette suite logistique crée des points aux positions aussi fluctuantes à partir de points initiaux si semblables — une notion très importante et bien expliquée par Melanie Mitchell : la «&nbsp;dépendance sensible aux conditions initiales&nbsp;».
 </pn>
 <!-- <p>
     Suite convergente, suite soumise à oscillations ou une suite chaotique. (suite soumise à oscillations = attracteur périodique ?)
@@ -187,56 +187,73 @@ function keyPressed() {
 <!-- en-title -->The logistic map
 <!-- en-description -->A first dive into complexity and chaos.
 <!-- en-content -->
+
 <img class="inline-image" src="../../../images/logistic-map/logistic-map-600x600.gif">
+
 <p class="article-top">
-    <sc>I'm currently reading</sc> <i>Complexity: A Guided Tour</i>, a book written by the American scientist Melanie Mitchell. I created the animation above using concepts I learn from the book, namely the <i>logistic map</i>. It's the most famous equation in the field of chaos theory. Here it is:
+    <sc>I'm currently reading</sc> <i>Complexity: A Guided Tour</i>, a wonderful book written by the American scientist Melanie Mitchell. I created the animation above using an equation I learned from the book, namely the <i>logistic map</i>, which is the most famous equation in the field of chaos theory. Here it is:
 </p>
+
 <math>
     x_{t+1} = Rx_t(1-x_t)
 </math>
+
 <!-- read-more -->
+
 <pn>
-    At its core, this equation is used to model the growth a population from one generation to the next. In order to take it apart and understand it, let's first consider the birth rate (or natality) of a population, which we well name <im>TN</im> and calculate this way:
+    At its core, the logistic map is used to model the growth of a population from one generation to the next. In order to take it apart and understand it, let's first consider the birth rate (or <i>natality</i>) of a population, which we will designate <im>TN</im> and calculate this way:
 </pn>
+
 <math>
     TN = \frac{v}{p} \times 1000
 </math>
+
 <pn>
-    <im>v</im> represents the number of births (over a full year, for example) and <im>p</im> represents the size of the total population. <snl label="population">That being said, I wonder if <im>p</im> represents the size of the population at the beginning or at the end of the year. Does the population <im>p</im> include the new births <nb><im>v</im>?</nb></snl>The quotient of <im>v</im> and <im>p</im> is then multiplied by <im>1000</im> because the birth rate is usually expressed in per thousand. The death rate <nb>(<im>TM</im>)</nb> is calculated in the same way but by replacing births by deaths. Another fundamental notion is the carrying capacity <nb>(<im>K</im>)</nb> of an environment: the maximum amount of individuals of a given population that the environment can sustain. Here is the logistic model that uses these values and allows us to calculate the size of the population <nb>(<im>n</im>)</nb> at the generation (or time) <im>t</im>:
+    <im>v</im> represents the amount of births (over a full year, for example) and <im>p</im> represents the size of the total population. <snl label="population">That being said, I wonder if <im>p</im> represents the size of the population at the beginning or at the end of the year. Does the population <im>p</im> include the new births <nb><im>v</im>?</nb></snl>The quotient of <im>v</im> and <im>p</im> is then multiplied by <im>1000</im> because the birth rate is usually expressed in per thousand. The death rate <nb>(<im>TM</im>)</nb> is calculated in the same way but by replacing births by deaths. Another fundamental notion is the carrying capacity <nb>(<im>K</im>)</nb> of an environment: the maximum amount of individuals of a given population that the environment can sustain. Here is the logistic model that uses these values and allows us to calculate the size of the population <nb>(<im>n</im>)</nb> at the generation <im>t</im>:
 </pn>
+
 <math>
     n_{t+1} = (TN-TM)\bigg(n_t - \frac{n^2_t}{K}\bigg)
 </math>
+
 <pn>
-    The amount of individuals who die from overcrowding is represented by <im>\frac{n^2_t}{K}</im> (which is something I do not understand and that I will need to investigate). Now, to get to the simpler equation of the <i>logistic map</i>, we first need to consider the variable <im>R</im>, whose value is calculated this way: <im>R = TN - TM</im>. We now obtain this equation:
+    The amount of individuals who perish from overcrowding is <im>\frac{n^2_t}{K}</im> (which is something I do not yet understand and that I will need to investigate). Now, to get to the simpler equation of the <i>logistic map</i>, we first need to consider the variable <im>R</im>, whose value is the birth rate minus the death rate <nb>(<im>TN - TM</im>)</nb>. We now obtain this equation:
 </pn>
+
 <math>
     n_{t+1} = R\bigg(n_t - \frac{n^2_t}{K}\bigg)
 </math>
+
 <pn>
     We then need to divide each side of the equation by the carrying capacity <nb>(<im>K</im>):</nb>
 </pn>
+
 <math>
     \frac{n_{t+1}}{K} = R\bigg(\frac{n_t}{K} - \frac{n^2_t}{K^2}\bigg)
 </math>
+
 <pn>
     Now, we will do something surprising and interesting: we will represent <im>\frac{n_t}{K}</im> (which is the size of the population divided by the carrying capacity, or the fraction of the carrying capacity that is currently used) by the value <im>x_t</im>. By replacing this first expression by the second one, we finally obtain the &nbsn;<i>logistic map</i>:&nbsp;<snr label="verhulst">I find it amusing to realize that the term “logistic” is here mostly arbitrary. It comes from a book by the French mathematician Pierre François Verhulst and, <a href="https://fr.wikipedia.org/wiki/Suite_logistique">according to Wikipedia</a>, “the author doesn't explain his choice but &lsquo;logistic&rsquo; has the same root as logarithm and <i8>logistikos</i8> means &lsquo;calculation&rsquo; in Greek.” It would be difficult to pick a more imprecise term.</snr>
 </pn>
+
 <div class="mathbox-clear-left">
     <math>
         x_{t+1} = R(x_t - x^2_t)
     </math>
 </div>
+
 <pn>
     We can also reduce the equation:
 </pn>
+
 <div class="mathbox-clear-left">
     <math>
         x_{t+1} = Rx_t(1-x_t)
     </math>
 </div>
+
 <pn>
-    Now, when <im>x_t = 0</im>, the population is not occupying any part of the carrying capacity, and when <im>x_t = 1</im>, it is occupying all of it. The value of <im>x_t</im> is always situated between <im>0</im> and <im>1</im> inclusively, which can be written <im>x_t \in [0;1]</im>.
+    So when <im>x_t = 0</im>, the population is not occupying any part of the carrying capacity, and when <im>x_t = 1</im>, it is occupying all of it. The value of <im>x_t</im> is always between <im>0</im> and <im>1</im> inclusively, which can be written <im>x_t \in [0;1]</im>.
 </pn>
 
 <h3>An equation with an astounding behaviour</h3>
@@ -257,8 +274,7 @@ function keyPressed() {
 </math>
 
 <pn>
-    Ces variables sont ensuites envoyées <im>1000</im> fois dans la suite logistique (dans laquelle <im>R = 3.58</im>). Le résultat est affiché sur une seule image d'animation, qui contient donc <im>1000</im> points. Ensuite, pour la prochaine image, tout est effacé et les variables <im>x</im> et <im>y</im> sont réinitialisées à leur point de départ, cependant
-    <i>ce point de départ est altéré</i>. À chaque nouvelle image, les deux points de départ sont incrémentés de <im>0.000001</im>. Par exemple, à la deuxième image de l'animation, le système est initialisé de cette façon :
+    These variables are then iterated <im>1000</im> times in the logistic map (whose <im>R</im> value is set to <im>3.58</im>). The result is displayed on a single frame of animation, which consequently contains <im>1000</im> dots. Then, for the next frame of animation, everything is erased and the variables <im>x</im> and <im>y</im> are initialized again to their starting value, but <i>that starting value has changed</i>. For each new frame, both starting values are incremented by <im>0.000001</im>. For example, for the second frame of animation, the system is initialized in this way:
 </pn>
 
 <math>
@@ -268,7 +284,7 @@ function keyPressed() {
     \end{align*}
 </math>
 <pn>
-    Ainsi, je crois que si l'on considère <im>a</im> comme étant une image d'animation, et <im>t</im> comme étant toujours l'index de récurrence de la suite logistique appliqué à cette image d'animation, on peut dire que chaque image d'animation est initialisée ainsi :
+    Thus, I think that if we let <im>a</im> be a frame of animation, and <im>t</im> still represents the iteration index of the logistic map inside that frame of animation, we can say that each animation frame is initialized like this:
 </pn>
 <math>
     \begin{align*}
@@ -277,15 +293,13 @@ function keyPressed() {
     \end{align*}
 </math>
 <pn>
-    Il est intéressant de constater comment cette suite logistique crée des points aux positions aussi fluctuantes à partir de points initiaux si semblables — une notion très importante et bien expliquée par Melanie Mitchell : la <i>dépendance sensible aux conditions initiales</i>.
+    It's interesting to realize how the logistic map creates such fluctuations in the positions of all dots, even with very similar starting values. This is an important notion and one that is superbly explained by Melanie Mitchell, the “sensitive dependence on initial conditions”.
 </pn>
-<!-- <p>
-    Suite convergente, suite soumise à oscillations ou une suite chaotique. (suite soumise à oscillations = attracteur périodique ?)
-</p> -->
-<h3>Le code</h3>
+
+<h3>The code</h3>
 
 <pn>
-    <sc>Voici le code</sc> écrit pour réaliser cette animation. Il contient de nombreux éléments qui font partie de mon programme de base à partir duquel je démarre chacune de mes expérimentations ; ces éléments ne sont pas essentiels mais je trouve néanmoins utile de les laisser en place. Le code entier peut-être lu et téléchargé <a href="">sur GitHub</a>. Il est distribué librement avec une <a href="http://www.apache.org/licenses/LICENSE-2.0.txt">licence Apache <lnum>2.0</lnum></a>.
+    <sc>Here is the code</sc> written to create this animation. It contains many elements that are part of a basic template I use for all my animations; these elements are not essential to this specific experiment but I nonetheless find it preferable to leave them in place. The full code can be read and downloaded <a href="">on GitHub</a>. It is released freely under an <a href="http://www.apache.org/licenses/LICENSE-2.0.txt">Apache <lnum>2.0</lnum> licence</a>.
 </pn>
 
 <code>
@@ -356,10 +370,10 @@ function keyPressed() {
 <h3>Scribbled notes</h3>
 
 <pn>
-    <sc>Il sera très intéressant</sc> de voir si je peux utiliser cette suite logistique pour modéliser la croissance d'une population de plantes définies algorithmiquement, par exemple. Un espace pourrait être créé où une certaine population maximale de plantes pourrait survivre — et j'utiliserais la suite logistique pour déterminer combien de plantes y poussent. Quant à la définition de la capacité porteuse, elle pourrait se faire de bien des façons ; par exemple, un terrain pourrait être généré avec du bruit de Perlin et ses ressources naturelles pourraient déterminer la population maximale de plantes.
+    <sc>It will be very interesting</sc> to see if I can use the logistic map to model the growth of a population of plants whose designs would be algorithmically defined. An environment could be created where a certain maximum population of plants could survive—and I would use the logistic map to determine how many plants are growing. The definition of the carrying capacity could be done in numerous ways; for example, a terrain could be genereated with Perlin noise and its natural resources could determine the carrying capacity of various regions.
 </pn>
 <p>
-    Également, penser à une population et à sa croissance permet aussi de penser à la génétique qui pourrait déterminer l'apparence d'une plante dessinée algorithmiquement : les “gènes” d'une telle plante représentent aussi une population, et la façon par laquelle cette plante enfante une nouvelle plante représente une nouvelle génération de cette population de gènes. Ainsi, chaque plante peut être imaginée comme une population et toutes ces populations font elles-mêmes partie d'une “métapopulation”. Je m'avance beaucoup — il me faudra voir si je peux me servir de ces notions pour créer des formes intéressantes.
+    Also, thinking about a population and its growth allows us to think about the genetic information that could determine the physical appearance of an algorithmic plant: the “gene pool” of a given plant can be thought of as a kind of “population”, and the way in which these genes reproduce to a new generation of the plant could perhaps be calculated by something akin to the logistic map. The “population” that represents a single plant could also be part of a “metapopulation” (a group of plants), and we can imagine all sorts of interaction between those different levels of complexity. We'll see if these ideas can generate interesting shapes and movements.
 </p>
 
 <h3>Context</h3>
