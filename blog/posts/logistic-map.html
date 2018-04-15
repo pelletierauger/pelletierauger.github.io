@@ -6,19 +6,12 @@
 <!-- fr-content -->
 <img class="inline-image" src="../../../images/logistic-map/logistic-map-600x600.gif">
 <p class="article-top">
-    <sc>Je suis en train de lire</sc> <i>Complexity: A Guided Tour</i>, un livre écrit par la scientifique américaine Melanie Mitchell. Je viens d'y apprendre l'existence de la <i>suite logistique</i>, grâce à laquelle j'ai réalisé l'animation ci-dessus. Il s'agit, selon Mitchell, de la plus célèbre équation dans le champ de la théorie du chaos. La voici :
+    <sc>Je suis en train de lire</sc> <i>Complexity: A Guided Tour</i>, un livre écrit par la scientifique américaine Melanie Mitchell. Je viens d'y apprendre l'existence de la <i>suite logistique</i>, grâce à laquelle j'ai réalisé l'animation ci-dessus. Il s'agit de la plus célèbre équation dans le champ de la théorie du chaos. La voici :
 </p>
-
-<!-- <p>
-    Suite convergente, suite soumise à oscillations ou une suite chaotique. (suite soumise à oscillations = attracteur périodique ?)
-</p>
-<p>
-    Voici la suite logistique :
-</p> -->
 <math>
     x_{t+1} = Rx_t(1-x_t)
 </math>
-
+<!-- read-more -->
 <pn>
     À la base, cette équation sert à modéliser la croissance de la taille d'une population d'une génération à l'autre. Afin de la décortiquer, considérons tout d'abord le taux de natalité d'une population, que l'on nommera <im>TN</im> et calculera ainsi :
 </pn>
@@ -26,7 +19,7 @@
     TN = \frac{v}{p} \times 1000
 </math>
 <pn>
-    <im>v</im> représente le nombre de naissances (dans une année complète, par exemple) tandis que <im>p</im> représente la taille de la population totale. <snl label="population">Ceci dit, je me demande si <im>p</im> représente la taille de la population au début ou à la fin de l'année. Est-ce que la population <im>p</im> inclut les nouvelles naissances <nb><im>v</im>&nbsp;?</nb></snl>Le quotient de <im>v</im> et <im>p</im> est multiplié par <im>1000</im> parce que le taux de natalité s'exprime couramment en pour mille. Le taux de mortalité (<im>TM</im>) se calcule de la même façon mais en remplaçant les naissances par les décès. Une autre notion fondamentale est la capacité porteuse (<im>K</im>) d'un environnement : le nombre maximal d'une population qu'un environnement peut soutenir. Voici le modèle logistique utilisant ces données et permettant de calculer la taille de la population (<im>n</im>) lors de la génération <im>t</im> :
+    <im>v</im> représente le nombre de naissances (dans une année complète, par exemple) tandis que <im>p</im> représente la taille de la population totale. <snl label="population">Ceci dit, je me demande si <im>p</im> représente la taille de la population au début ou à la fin de l'année. Est-ce que la population <im>p</im> inclut les nouvelles naissances <nb><im>v</im>&nbsp;?</nb></snl>Le quotient de <im>v</im> et <im>p</im> est multiplié par <im>1000</im> parce que le taux de natalité s'exprime couramment en pour mille. Le taux de mortalité <nb>(<im>TM</im>)</nb> se calcule de la même façon mais en remplaçant les naissances par les décès. Une autre notion fondamentale est la capacité porteuse <nb>(<im>K</im>)</nb> d'un environnement : le nombre maximal d'individus d'une population qu'un environnement peut soutenir. Voici le modèle logistique utilisant ces données et permettant de calculer la taille de la population <nb>(<im>n</im>)</nb> lors de la génération <im>t</im> :
 </pn>
 <math>
     n_{t+1} = (TN-TM)\bigg(n_t - \frac{n^2_t}{K}\bigg)
@@ -44,59 +37,72 @@
     \frac{n_{t+1}}{K} = R\bigg(\frac{n_t}{K} - \frac{n^2_t}{K^2}\bigg)
 </math>
 <pn>
-    Maintenant, chose très intéressante, nous allons représenter <im>\frac{n_t}{K}</im> (qui est la taille de la population divisée par la capacité porteuse, donc la portion de la capacité porteuse qui est présentement utilisée) par la valeur <im>x_t</im>. En remplaçant cette première expression par cette seconde, plus simple, l'on obtient finalement la <i>suite logistique</i>&nbsp;:
+    Maintenant, chose très intéressante, nous allons représenter <im>\frac{n_t}{K}</im> (qui est la taille de la population divisée par la capacité porteuse, donc la portion de la capacité porteuse qui est présentement utilisée) par la valeur <im>x_t</im>. En remplaçant cette première expression par cette seconde, plus simple, l'on obtient finalement la &nbsn;<i>suite logistique</i><snr label="verhulst">Je trouve amusant de remarquer que le terme &#171;&nbsp;logistique&nbsp;&#187; est ici plutôt arbitraire. Il provient d'un ouvrage du mathématicien français Pierre François Verhulst et, <a href="https://fr.wikipedia.org/wiki/Suite_logistique">selon Wikipedia</a>, l'auteur &#171;&nbsp;n'explique pas son choix mais “&nbsp;logistique&nbsp;” a la même racine que logarithme et <i8>logistikos</i8> signifie “&nbsp;calcul&nbsp;” en grec.&nbsp;&#187; Ce serait difficile de choisir un terme plus imprécis.</snr>:
 </pn>
-<math>
-    x_{t+1} = R(x_t - x^2_t)
-</math>
+<div class="mathbox-clear-left">
+    <math>
+        x_{t+1} = R(x_t - x^2_t)
+    </math>
+</div>
 <pn>
     On peut réduire cette équation ainsi :
 </pn>
-<math>
-    x_{t+1} = Rx_t(1-x_t)
-</math>
+<div class="mathbox-clear-left">
+    <math>
+        x_{t+1} = Rx_t(1-x_t)
+    </math>
+</div>
 <pn>
     Donc, lorsque <im>x_t = 0</im>, la population n'occupe présentement aucune part de la capacité porteuse, et lorsque <im>x_t = 1</im>, elle accapare cette capacité porteuse au complet. La valeur de <im>x_t</im> se situe toujours entre <im>0</im> et <im>1</im>, ce qui peut s'exprimer ainsi : <im>x_t \in [0;1]</im>.
 </pn>
+
 <h3>Une équation au comportement fascinant</h3>
 
 <pn>
-    <sc>J'ai écrit un court programme</sc> pour voir comment je peux explorer les propriétés surprenantes de cette suite logistique qui m'est nouvelle. Il est important de considérer que, lors de ces expériences, je ne porte pas nécessairement attention aux origines “réelles” ou “physiques” de cette équation. J'ai ainsi beaucoup aimé ce passage tiré du livre de Mitchell : «&nbsp;Lorsque ce modèle simplifié [la suite logistique] leur est présenté, les scientifiques et les mathématicien&middot;ne&middot;s oublient prestement tout ce qui concerne la croissance des populations, la capacité porteuse, ou toute autre chose reliée au monde réel, et se perdent tout simplement dans le comportement fascinant de l'équation elle-même. Nous ferons la même chose.&nbsp;»
+    <sc>Pour réaliser l'animation</sc> en tête de cet article, j'ai écrit un court programme me permettant d'explorer les propriétés surprenantes de cette suite logistique. Je trouve important de mentionner que, lors de ces expériences, je ne porte pas nécessairement attention aux origines “réelles” ou “physiques” de cette équation — j'ai ainsi beaucoup aimé ce passage tiré du livre de Mitchell : «&nbsp;Lorsque ce modèle simplifié [la suite logistique] leur est présenté, les scientifiques et les mathématicien&middot;ne&middot;s oublient prestement tout ce qui concerne la croissance des populations, la capacité porteuse, ou toute autre chose reliée au monde réel, et se perdent tout simplement dans le comportement fascinant de l'équation elle-même. Nous ferons la même chose.&nbsp;»
 </pn>
-<!-- read-more -->
+
 <p>
-    Après plusieurs expériences, j'ai eu cette idée de créer un graphe avec des points définis par des variables <im>x</im> et <im>y</im>, auxquelles je donne tout d'abord des valeurs initiales très légèrement différentes :
+    Après plusieurs expériences, j'ai eu l'idée de créer un graphe avec des sommets définis par des variables <im>x</im> et <im>y</im>, auxquelles je donne tout d'abord des valeurs initiales très légèrement différentes :
 </p>
 
 <math>
     \begin{align*}
-        R &= 3.58\\
         x_0 &= 0.0001\\
         y_0 &= 0.0002
     \end{align*}
 </math>
 
 <pn>
-    Ces variables sont ensuites itérées <im>1000</im> fois dans la suite logistique. Le résultat est affiché sur une seule image d'animation, qui contient donc <im>1000</im> points. Ensuite, pour la prochaine image, tout est effacé et les variables <im>x</im> et <im>y</im> sont réinitialisées à leur point de départ, cependant
-    <i>ce point de départ est changé</i>. À chaque nouvelle image, les deux points de départ sont incrémentés de <im>0.000001</im>. Ainsi, à la deuxième image de l'animation, le système est initialisé de cette façon :
+    Ces variables sont ensuites envoyées <im>1000</im> fois dans la suite logistique (dans laquelle <im>R = 3.58</im>). Le résultat est affiché sur une seule image d'animation, qui contient donc <im>1000</im> points. Ensuite, pour la prochaine image, tout est effacé et les variables <im>x</im> et <im>y</im> sont réinitialisées à leur point de départ, cependant
+    <i>ce point de départ est altéré</i>. À chaque nouvelle image, les deux points de départ sont incrémentés de <im>0.000001</im>. Par exemple, à la deuxième image de l'animation, le système est initialisé de cette façon :
 </pn>
 
 <math>
     \begin{align*}
-        R &= 3.58\\
         x_0 &= 0.000101\\
         y_0 &= 0.000201
     \end{align*}
 </math>
-
+<pn>
+    Ainsi, je crois que si l'on considère <im>a</im> comme étant une image d'animation, et <im>t</im> comme étant toujours l'index de récurrence de la suite logistique appliqué à cette image d'animation, on peut dire que chaque image d'animation est initialisée ainsi :
+</pn>
+<math>
+    \begin{align*}
+        x_{0_a} &= 0.0001 + (a \times 0.000001)\\
+        y_{0_a} &= 0.0002 + (a \times 0.000001)
+    \end{align*}
+</math>
 <pn>
     Il est intéressant de constater comment cette suite logistique crée des points aux positions aussi fluctuantes à partir de points initiaux si semblables — une notion très importante et bien expliquée par Melanie Mitchell : la <i>dépendance sensible aux conditions initiales</i>.
 </pn>
-
+<!-- <p>
+    Suite convergente, suite soumise à oscillations ou une suite chaotique. (suite soumise à oscillations = attracteur périodique ?)
+</p> -->
 <h3>Le code</h3>
 
 <pn>
-    <sc>Voici le code</sc> écrit pour réaliser cette animation. Il contient de nombreux éléments qui font partie de mon programme de base à partir duquel je démarre chacune de mes expérimentations ; ces éléments ne sont pas essentiels mais je trouve néanmoins utile de les laisser en place. Le code entier peut-être lu et téléchargé <a href="">sur GitHub</a>. Il est distribué librement avec une licence Apache 2.0.
+    <sc>Voici le code</sc> écrit pour réaliser cette animation. Il contient de nombreux éléments qui font partie de mon programme de base à partir duquel je démarre chacune de mes expérimentations ; ces éléments ne sont pas essentiels mais je trouve néanmoins utile de les laisser en place. Le code entier peut-être lu et téléchargé <a href="">sur GitHub</a>. Il est distribué librement avec une <a href="http://www.apache.org/licenses/LICENSE-2.0.txt">licence Apache <lnum>2.0</lnum></a>.
 </pn>
 
 <code>
@@ -167,7 +173,7 @@ function keyPressed() {
 <h3>Notes éparses</h3>
 
 <pn>
-    <sc>Il sera très intéressant</sc> de voir si je peux utiliser cette suite logistique pour modéliser la croissance d'une population de plantes définies algorithmiquement, par exemple. Un espace pourrait être créé où une certaine population maximale de plantes pourrait survivre — et j'utiliserais la suite logistique pour déterminer combien de plantes y poussent. Quant à la définition de la population maximale, elle pourrait se faire de bien des façons ; par exemple, un terrain pourrait être généré avec du bruit de Perlin et ses ressources naturelles pourraient déterminer la population maximale de plantes.
+    <sc>Il sera très intéressant</sc> de voir si je peux utiliser cette suite logistique pour modéliser la croissance d'une population de plantes définies algorithmiquement, par exemple. Un espace pourrait être créé où une certaine population maximale de plantes pourrait survivre — et j'utiliserais la suite logistique pour déterminer combien de plantes y poussent. Quant à la définition de la capacité porteuse, elle pourrait se faire de bien des façons ; par exemple, un terrain pourrait être généré avec du bruit de Perlin et ses ressources naturelles pourraient déterminer la population maximale de plantes.
 </pn>
 <p>
     Également, penser à une population et à sa croissance permet aussi de penser à la génétique qui pourrait déterminer l'apparence d'une plante dessinée algorithmiquement : les “gènes” d'une telle plante représentent aussi une population, et la façon par laquelle cette plante enfante une nouvelle plante représente une nouvelle génération de cette population de gènes. Ainsi, chaque plante peut être imaginée comme une population et toutes ces populations font elles-mêmes partie d'une “métapopulation”. Je m'avance beaucoup — il me faudra voir si je peux me servir de ces notions pour créer des formes intéressantes.
@@ -183,20 +189,180 @@ function keyPressed() {
 <!-- en-content -->
 <img class="inline-image" src="../../../images/logistic-map/logistic-map-600x600.gif">
 <p class="article-top">
-    I'm currently reading <i>Complexity: A Guided Tour</i>, a book written by the American scientist Melanie Mitchell. In it, I just learned about the logistic map:
+    <sc>I'm currently reading</sc> <i>Complexity: A Guided Tour</i>, a book written by the American scientist Melanie Mitchell. I created the animation above using concepts I learn from the book, namely the <i>logistic map</i>. It's the most famous equation in the field of chaos theory. Here it is:
 </p>
-
 <math>
     x_{t+1} = Rx_t(1-x_t)
 </math>
-
+<!-- read-more -->
 <pn>
-    This equation is used to model the growth of populations.
+    At its core, this equation is used to model the growth a population from one generation to the next. In order to take it apart and understand it, let's first consider the birth rate (or natality) of a population, which we well name <im>TN</im> and calculate this way:
+</pn>
+<math>
+    TN = \frac{v}{p} \times 1000
+</math>
+<pn>
+    <im>v</im> represents the number of births (over a full year, for example) and <im>p</im> represents the size of the total population. <snl label="population">That being said, I wonder if <im>p</im> represents the size of the population at the beginning or at the end of the year. Does the population <im>p</im> include the new births <nb><im>v</im>?</nb></snl>The quotient of <im>v</im> and <im>p</im> is then multiplied by <im>1000</im> because the birth rate is usually expressed in per thousand. The death rate <nb>(<im>TM</im>)</nb> is calculated in the same way but by replacing births by deaths. Another fundamental notion is the carrying capacity <nb>(<im>K</im>)</nb> of an environment: the maximum amount of individuals of a given population that the environment can sustain. Here is the logistic model that uses these values and allows us to calculate the size of the population <nb>(<im>n</im>)</nb> at the generation (or time) <im>t</im>:
+</pn>
+<math>
+    n_{t+1} = (TN-TM)\bigg(n_t - \frac{n^2_t}{K}\bigg)
+</math>
+<pn>
+    The amount of individuals who die from overcrowding is represented by <im>\frac{n^2_t}{K}</im> (which is something I do not understand and that I will need to investigate). Now, to get to the simpler equation of the <i>logistic map</i>, we first need to consider the variable <im>R</im>, whose value is calculated this way: <im>R = TN - TM</im>. We now obtain this equation:
+</pn>
+<math>
+    n_{t+1} = R\bigg(n_t - \frac{n^2_t}{K}\bigg)
+</math>
+<pn>
+    We then need to divide each side of the equation by the carrying capacity <nb>(<im>K</im>):</nb>
+</pn>
+<math>
+    \frac{n_{t+1}}{K} = R\bigg(\frac{n_t}{K} - \frac{n^2_t}{K^2}\bigg)
+</math>
+<pn>
+    Now, we will do something surprising and interesting: we will represent <im>\frac{n_t}{K}</im> (which is the size of the population divided by the carrying capacity, or the fraction of the carrying capacity that is currently used) by the value <im>x_t</im>. By replacing this first expression by the second one, we finally obtain the &nbsn;<i>logistic map</i>:&nbsp;<snr label="verhulst">I find it amusing to realize that the term “logistic” is here mostly arbitrary. It comes from a book by the French mathematician Pierre François Verhulst and, <a href="https://fr.wikipedia.org/wiki/Suite_logistique">according to Wikipedia</a>, “the author doesn't explain his choice but &lsquo;logistic&rsquo; has the same root as logarithm and <i8>logistikos</i8> means &lsquo;calculation&rsquo; in Greek.” It would be difficult to pick a more imprecise term.</snr>
+</pn>
+<div class="mathbox-clear-left">
+    <math>
+        x_{t+1} = R(x_t - x^2_t)
+    </math>
+</div>
+<pn>
+    We can also reduce the equation:
+</pn>
+<div class="mathbox-clear-left">
+    <math>
+        x_{t+1} = Rx_t(1-x_t)
+    </math>
+</div>
+<pn>
+    Now, when <im>x_t = 0</im>, the population is not occupying any part of the carrying capacity, and when <im>x_t = 1</im>, it is occupying all of it. The value of <im>x_t</im> is always situated between <im>0</im> and <im>1</im> inclusively, which can be written <im>x_t \in [0;1]</im>.
 </pn>
 
-<!-- Rxt(1−xt). -->
 <h3>An equation with an astounding behaviour</h3>
 
 <pn>
-    J'ai écrit un court programme pour voir comment je peux explorer les propriétés surprenantes de cette suite logistique qui m'est nouvelle. Il est important de considérer que, lors de ces expériences, je ne porte pas nécessairement attention aux origines “réelles” ou “physiques” de cette équation. Dans ce sens, j'ai beaucoup aimé ce passage tiré du livre de Mitchell : « Given this simplified model [the logistic map], scientists and mathematicians promptly forget all about population growth, carrying capacity, and anything else connected to the real world, and simply get lost in the astounding behavior of the equation itself. We will do the same. »
+    <sc>To make the animation</sc> shown at the top of this article, I wrote a short program allowing me to explore the surprising properties of the logistic map. It's important to mention that, while doing these experiments, I'm no longer concerned about the “real” or “physical” origins of this equation. In this spirit, I really loved this quote from Mitchell's book: “Given this simplified model [the logistic map], scientists and mathematicians promptly forget all about population growth, carrying capacity, and anything else connected to the real world, and simply get lost in the astounding behavior of the equation itself. We will do the same.”
+</pn>
+
+<p>
+    After several experiments, I had the idea of creating a graph where the positions of points are defined by the variables <im>x</im> and <im>y</im>, to which I give slightly different initial values:
+</p>
+
+<math>
+    \begin{align*}
+        x_0 &= 0.0001\\
+        y_0 &= 0.0002
+    \end{align*}
+</math>
+
+<pn>
+    Ces variables sont ensuites envoyées <im>1000</im> fois dans la suite logistique (dans laquelle <im>R = 3.58</im>). Le résultat est affiché sur une seule image d'animation, qui contient donc <im>1000</im> points. Ensuite, pour la prochaine image, tout est effacé et les variables <im>x</im> et <im>y</im> sont réinitialisées à leur point de départ, cependant
+    <i>ce point de départ est altéré</i>. À chaque nouvelle image, les deux points de départ sont incrémentés de <im>0.000001</im>. Par exemple, à la deuxième image de l'animation, le système est initialisé de cette façon :
+</pn>
+
+<math>
+    \begin{align*}
+        x_0 &= 0.000101\\
+        y_0 &= 0.000201
+    \end{align*}
+</math>
+<pn>
+    Ainsi, je crois que si l'on considère <im>a</im> comme étant une image d'animation, et <im>t</im> comme étant toujours l'index de récurrence de la suite logistique appliqué à cette image d'animation, on peut dire que chaque image d'animation est initialisée ainsi :
+</pn>
+<math>
+    \begin{align*}
+        x_{0_a} &= 0.0001 + (a \times 0.000001)\\
+        y_{0_a} &= 0.0002 + (a \times 0.000001)
+    \end{align*}
+</math>
+<pn>
+    Il est intéressant de constater comment cette suite logistique crée des points aux positions aussi fluctuantes à partir de points initiaux si semblables — une notion très importante et bien expliquée par Melanie Mitchell : la <i>dépendance sensible aux conditions initiales</i>.
+</pn>
+<!-- <p>
+    Suite convergente, suite soumise à oscillations ou une suite chaotique. (suite soumise à oscillations = attracteur périodique ?)
+</p> -->
+<h3>Le code</h3>
+
+<pn>
+    <sc>Voici le code</sc> écrit pour réaliser cette animation. Il contient de nombreux éléments qui font partie de mon programme de base à partir duquel je démarre chacune de mes expérimentations ; ces éléments ne sont pas essentiels mais je trouve néanmoins utile de les laisser en place. Le code entier peut-être lu et téléchargé <a href="">sur GitHub</a>. Il est distribué librement avec une <a href="http://www.apache.org/licenses/LICENSE-2.0.txt">licence Apache <lnum>2.0</lnum></a>.
+</pn>
+
+<code>
+let looping = true;
+let socket, cnvs, ctx, canvasDOM;
+let fileName = "./frames/logistic-map";
+let maxFrames = 20;
+let x, y;
+let startX = 0.0001;
+let startY = 0.0002;
+let r = 3.58;
+// 3.569946
+let increment = 0;
+
+function setup() {
+    socket = io.connect('http://localhost:8080');
+    cnvs = createCanvas(windowWidth / 16 * 9, windowWidth / 16 * 9);
+    ctx = cnvs.drawingContext;
+    canvasDOM = document.getElementById('defaultCanvas0');
+    frameRate(30);
+    background(0);
+    fill(255, 255);
+    noStroke();
+    if (!looping) {
+        noLoop();
+    }
+}
+
+function draw() {
+    x = startX + increment;
+    y = startY + increment;
+    background(0, 50);
+    translate(-320, -320);
+    for (var i = 0; i < 1000; i++) {
+        ellipse(x * 1100, y * 1100, 2);
+        x = logisticMap(x);
+        y = logisticMap(y);
+    }
+    increment += 0.000001;
+    if (exporting && frameCount < maxFrames) {
+        frameExport();
+    }
+}
+
+function logisticMap(n) {
+    return r * n * (1 - n);
+}
+
+function keyPressed() {
+    if (keyCode === 32) {
+        if (looping) {
+            noLoop();
+            looping = false;
+        } else {
+            loop();
+            looping = true;
+        }
+    }
+    if (key == 'p' || key == 'P') {
+        frameExport(p);
+    }
+    if (key == 'r' || key == 'R') {
+        window.location.reload();
+    }
+}
+</code>
+
+<h3>Scribbled notes</h3>
+
+<pn>
+    <sc>Il sera très intéressant</sc> de voir si je peux utiliser cette suite logistique pour modéliser la croissance d'une population de plantes définies algorithmiquement, par exemple. Un espace pourrait être créé où une certaine population maximale de plantes pourrait survivre — et j'utiliserais la suite logistique pour déterminer combien de plantes y poussent. Quant à la définition de la capacité porteuse, elle pourrait se faire de bien des façons ; par exemple, un terrain pourrait être généré avec du bruit de Perlin et ses ressources naturelles pourraient déterminer la population maximale de plantes.
+</pn>
+<p>
+    Également, penser à une population et à sa croissance permet aussi de penser à la génétique qui pourrait déterminer l'apparence d'une plante dessinée algorithmiquement : les “gènes” d'une telle plante représentent aussi une population, et la façon par laquelle cette plante enfante une nouvelle plante représente une nouvelle génération de cette population de gènes. Ainsi, chaque plante peut être imaginée comme une population et toutes ces populations font elles-mêmes partie d'une “métapopulation”. Je m'avance beaucoup — il me faudra voir si je peux me servir de ces notions pour créer des formes intéressantes.
+</p>
+
+<h3>Context</h3>
+<pn>
+    <sc>This blog post</sc> is part of my research project <i>Towards an algorithmic cinema</i>, started in April 2018. I invite you to read <a href="https://pelletierauger.github.io/fr/blog/2018/4/vers-un-cinema-algorithmique.html">the first blog post of the project</a> to learn more about it.
 </pn>
