@@ -63,9 +63,9 @@ html {
     -ms-font-feature-settings: "liga", "xtex";
     -o-font-feature-settings: "liga", "xtex";
     font-feature-settings: "cv11", "liga", "xtex";
-    font-variant-ligatures: discretionary-ligatures;
-    -moz-font-variant-ligatures: discretionary-ligatures;
-    -webkit-font-variant-ligatures: discretionary-ligatures;
+    /*font-variant-ligatures: discretionary-ligatures;*/
+    /*-moz-font-variant-ligatures: discretionary-ligatures;*/
+    /*-webkit-font-variant-ligatures: discretionary-ligatures;*/
     /*font-size: 1.4em;*/
 }
 
