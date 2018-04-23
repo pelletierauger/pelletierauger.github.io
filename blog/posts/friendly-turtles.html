@@ -1,0 +1,106 @@
+<!-- year -->2018
+<!-- month -->04
+<!-- day -->18
+<!-- fr-title -->Les tortues amicales
+<!-- fr-description -->Formes collectives qui émergent de comportements individuels.
+<!-- fr-content -->
+<pn>
+    <sc>L'animation ci-dessus</sc> est inspirée des idées derrières <i>Heroes and Cowards</i>, un modèle à base d'agents NetLogo créé par William Rand et Uri Wilensky (mais il s'agit tout de même d'une altération très distante de ce modèle).
+</pn>
+<p>
+    Serait-il possible de faire apparaître les nouvelles spirales de façon progressive ? En apparaissant de façon progressive, peut-être se déformeraient-elles suffisamment en chemin pour ne jamais ressembler à des spirales. Ou peut-être que pendant son apparition, une nouvelle spirale pourrait être déconnectée du reste des tortues. Pourrais-je imaginer différents groupes de tortues entre lesquels les « amitiés » pourraient être impossibles ?
+</p>
+<!-- en-title -->Friendly turtles
+<!-- en-description -->Collective shapes emerging from individual behaviours.
+<!-- en-content -->
+<pn>
+    <sc>The animation above</sc> is based on the ideas behind <i>Heroes and Cowards</i>, a NetLogo model designed by William Rand and Uri Wilensky, although it is a significantly distant alteration of it. Each dot in the animation represents a “turtle” that can be given instructions and that possesses simple behaviours. When the animation starts, each turtle selects two friends among the group of turtles, and then, it tries to position itself exactly in between those two friends. The resulting animation is formed by the combined behaviours of all turtles—it's the <i>emergent</i> shape of all their individual actions.
+</pn>
+
+<!-- read-more -->
+
+<p>
+    A chain of turtles. What if I change the order of the loop... Three types of xsheets. event-sheets, running-sheets, slow-sheets. En faire un sketch audio-réactif... ? Chaque note de guitare créerait une nouvelle spirale. Des évènements pourraient aussi changer les algorithmes de cheminements des tortues — faire trembler leurs parcours, etc.
+</p>
+<p>
+    Ajouter des textures — une texture de papier dans le fond, qui vacillerait. Les points seraient des petits dessins vacillants. Ils pourraient être colorés.
+</p>
+<p>
+    Des x-sheets créées par session audio-réactives - pour ensuite être renderées en slow-sheets.
+</p>
+<h3>Some ideas about animation sheets</h3>
+<pn>
+    <sc>This short animation provides</sc> an interesting opportunity to think about “animation sheets”. Because I originally studied in traditional paper animation, I learned to use <i>exposure sheets</i> when planning a sequence of events. And since I started doing algorithmic animation, I've been interested in different ways in which a sequence of events could be planned in code. Ways to orchestrate sporadic “human” interventions inside generative processes. Because I wanted to program the creation of a few new spirals during the course of this animation, I ended up using a lot of tests in <ic>draw()</ic> loop, tests of this form:
+</pn>
+<code>
+if (frameCount == 200) { doSomething(); }
+</code>
+<pn>
+    I'm trying to find a nicely structured way of organizing a list of events inside an animation film. I don't like to have a long list of tests such as
+</pn>
+<pn>
+    in my <ic>draw()</ic> loop; it seems very messy.
+</pn>
+<p>
+    The <ic>eventSheet</ic> is an object that has numeric property names, and each property is a function to be executed when the <ic>frameCount</ic> is equal to its name. It's good for when you want to orchestrate various events at <i>deliberate but not algorithmically defined</i> moments.
+</p>
+
+<code>
+let eventSheet = {
+    10: function(){
+        console.log("Yeah! Ten frames!");
+    },
+    20: function(){
+        console.log("Twenty frames! Good job!");
+    },
+    run: function(f) {
+        if (this[f]) {
+            this[f]();
+        }
+    }
+};
+
+// What it would look like inside the draw() loop:
+function draw() {
+    eventSheet.run(frameCount);    
+}
+</code>
+
+<pn>
+    But what if you want to be able to move those moments in time relative to each other without altering <i>all</i> the property names? You could maybe alter the <ic>run()</ic> method of the <i>eventSheet</i>, like so :
+</pn>
+<code>
+function(f) {
+    if (this[f + 20]) {
+        this[f + 20]();
+    }
+}
+</code>
+<pn>
+    But it does seem very impractical.
+</pn>
+
+<code>
+let eventSheet = {
+    bigExplosion: {
+        t: () => 10, 
+        f: function(){
+            console.log("Yeah! Ten frames!");
+        },
+    },
+    quietMoment: {
+        t: () => eventSheet.bigExplosion.t() + 10,
+        f: function(){
+            console.log("Twenty frames! Good job!");
+        },
+    },
+    run: function(f) {
+        if (this[f]) {
+            this[f]();
+        }
+    }
+};
+</code>
+<pn>
+    Et évidemment, il peut être intéressant de définir une <ic>eventSheet</ic> de façon à ce qu'elle puisse être elle-même générée algorithmiquement. Je pourrais créer algorithmiquement des séquences d'évènements et ensuite, sélectionner les plus intéressantes séquences et les sauvegarder dans des fichiers <sc>json</sc>.
+</pn>
