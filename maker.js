@@ -657,6 +657,15 @@ function parseHTMLTemplate(s) {
     page.fr.content = page.fr.content.replace(/([a-zA-ZÀ-ú])(\')([a-zA-ZÀ-ú])/g, function(a, b, c, d) {
         return "" + b + "&rsquo;" + d;
     });
+
+    // Add a non-breaking space after French opening quotes and before French closing quotes.
+    page.fr.content = page.fr.content.replace(/([a-zA-ZÀ-ú])(\s?)(»)/g, function(a, b, c, d) {
+        return "" + b + "&nbsp;" + d;
+    });
+    page.fr.content = page.fr.content.replace(/(«)(\s?)([a-zA-ZÀ-ú])/g, function(a, b, c, d) {
+        return "" + b + "&nbsp;" + d;
+    });
+
     page.fr.content = page.fr.content.replace(/<i>/g, `<span class="italic">`);
     page.fr.content = page.fr.content.replace(/<\/i>/g, `</span>`);
     page.fr.content = page.fr.content.replace(/<i8>/g, `<span class="italic8">`);
@@ -671,14 +680,19 @@ function parseHTMLTemplate(s) {
     page.fr.content = page.fr.content.replace(/<\/math>/g, String.raw `\]</div>`);
     page.fr.content = page.fr.content.replace(/<im>/g, String.raw `\(`);
     page.fr.content = page.fr.content.replace(/<\/im>/g, String.raw `\)`);
+
     // Put a non-breaking space between any letter followed immediately by an exclamation point
     // or an interrogation mark. (There can also be a space between the letter and the punctuation.)
-    page.fr.content = page.fr.content.replace(/([a-zA-ZÀ-ú])( *[\?\!])/g, function(a, b, c, d) {
-        return "" + b + "&nbsp;" + c;
+    page.fr.content = page.fr.content.replace(/([a-zA-ZÀ-ú])(\s?)([\?\!])/g, function(a, b, c, d) {
+        return "" + b + "&nbsp;" + d;
     });
-    // Replace the snl and snr pseudo-HTML tags (used for sidenotes)
+    // page.fr.content = page.fr.content.replace(/([a-zA-ZÀ-ú])(\s)([:;])/g, function(a, b, c, d) {
+    //     return "" + b + "&nbsp;" + d;
+    // });
 
+    // Replace the snl and snr pseudo-HTML tags (used for sidenotes)
     page.fr.content = page.fr.content.replace(/&nbsn;/g, String.raw `<span class="nobreak">`);
+
     // page.fr.content = page.fr.content.replace(/(\s)(?!span)([0-9a-zA-ZÀ-ú\.<>":;&\/\?\-=]+?|<span\sclass=)(<sn[lr])/g, function(a, b, c, d) {
     //     console.log(page.fr.title + "--->b" + b + "--->c" + c + "--->d" + d);
     //     return b + '<span class="nobreak">' + c + d;
@@ -728,6 +742,7 @@ function parseHTMLTemplate(s) {
     page.fr.content = page.fr.content.replace(/\\\?/g, `?`);
     page.fr.content = page.fr.content.replace(/<li>/g, `<li>&mdash;&nbsp;&nbsp;`);
     page.fr.content = page.fr.content.replace(/\s:/g, `&nbsp;:`);
+    page.fr.content = page.fr.content.replace(/\s;/g, `&nbsp;;`);
     page.fr.content = page.fr.content.replace(/<lnum>/g, `<span class="lnum">`);
     page.fr.content = page.fr.content.replace(/<\/lnum>/g, `</span>`);
     page.fr.content = page.fr.content.replace(/<nb>/g, `<span class="nobreak">`);
