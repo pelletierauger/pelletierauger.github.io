@@ -1,5 +1,8 @@
 exports.posts = [
     // "ant-colonies",
+    // "density-maps",
+    // "friendly-turtles",
+    // "logistic-meanders",
     "logistic-map",
     "towards-an-algorithmic-cinema",
     "rameaux-et-jambages",
