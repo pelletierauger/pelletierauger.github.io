@@ -2,13 +2,73 @@
 <!-- month -->04
 <!-- day -->19
 <!-- fr-title -->Vagabondages logistiques
-<!-- fr-description -->Quelques expérimentations diverses autour de la suite logistique.
+<!-- fr-description -->Quelques expérimentations avec la suite logistique.
 <!-- fr-content -->
 <pn>
-    <sc>La semaine dernière,</sc> j'ai commencé l'exploration de la <i>suite logistique</i>, cette équation utilisée dans l'étude du chaos.
+    <sc>La semaine dernière,</sc> j'ai appris l'existence de la <i>suite logistique</i> et j'ai essayé de comprendre son fonctionnement. Depuis, je me suis essayé à la visualer de diverses façons afin de voir de quel bois elle se chauffe.
 </pn>
+<p>
+    Comme je suis habitué à m'amuser avec des fonctions trigonométriques, j'ai d'abord pensé à transformer le résultat de la suite logistique avec les fonctions sinus et cosinus. La première image ci-dessous est divisée en <im>2560</im> lignes verticales (représentant la valeur <im>x</im> de <im>0</im> à <im>2559</im>). À chacune de ces <im>2560</im> positions de <im>x</im>, une valeur <im>t</im> est calculée ainsi :
+</p>
+
+<math>
+    t_x = 0.012 + x \times 0.000001
+</math>
+
+<pn>
+    Pour chaque valeur <im>x</im>, <im>200</im> couples <im>(x,y)</im> sont formés par un système dynamique indépendant. Le système est initialisé par la valeur <im>t_x</im>, qu'on renomme <im>c_0</im>. La valeur <im>n</im> représente l'index de récurrence du système. Le système entier est calculé ainsi :
+</pn>
+
+<math>
+\begin{align*}
+    R &= 3.58\\
+    c_0 &= 0.012 + x \times 0.000001\\
+    c_{n+1} &= Rc_n(1-c_n)\\
+    y_n &= sin(c_n)
+\end{align*}
+</math>
+
+<pn>
+    Il en a résulté l'image ci-dessous, dans laquelle on voit une structure très régulière et qui semble se répéter infiniment. Les lignes courbes les plus visibles ont certaines qualités en commun avec les ondes sinusoïdales, mais n'en sont pas.
+</pn>
+
+<img class="full-size-image" src="../../../images/logistic-map/logistic-map-cos-function-00000.png">
+
+<!-- read-more -->
+
+<h3>Vers les profondeurs</h3>
+
+<pn>
+    <sc>J'étais très curieux</sc> de me promener à l'intérieur de ces résultats. Pour ce faire, j'ai conçu une animation dans laquelle tous les principes détaillés ci-dessus sont utilisés, à une importante différence près. La valeur <im>t_x</im>, qui s'exprimait jusqu'ici <im>t_x = 0.012 + x \times 0.000001</im>, s'exprime maintenant ainsi :
+</pn>
+
+<math>
+    t_x = 0.012 + x \times 0.000001 \times 0.99^a
+</math>
+
+<pn>
+    La valeur <im>a</im> représente le numéro d'image de l'animation, qui commence à <im>1</im> et augmente de <im>1</im> à chaque nouvelle image. Ce changement dans <im>t_x</im> a pour conséquence de réduire de façon exponentielle, d'image en image, l'incrément de la valeur <im>t</im> qui est envoyée à chacun des <im>2560</im> systèmes dynamiques indépendants. D'une certaine façon, c'est comme si nous nous déplacions de plus en plus lentement à l'intérieur de la suite logistique. On pourrait aussi dire que nous « étirons » les résultats de la suite logistique horizontalement.
+</pn>
+<p>
+    L'animation ci-dessous, qui résulte de tout ça, illustre de façon très claire les propriétés fractales de la suite logistique : à chaque image, nous observons une part de plus en plus petite de cette équation, cependant les mêmes formes apparaissent à toutes les échelles.
+</p>
+
+<img class="full-size-image" src="../../../images/logistic-map/logistic-map-cos-function-00000.png">
+
+<pn>
+    À la fin de l'animation, on ne voit plus que des lignes claires et le « bruit » qui était présent se dissipe. Ceci n'est pas dû au fait que nous sommes arrivés à la « fin » de la suite logistique, mais plutôt au fait que le programme que j'ai écrit dessine un nombre limité de points pour chaque image, et qu'il faudrait dessiner beaucoup plus de points à cette échelle pour continuer à voir toutes les structures fractales qui sont encore existantes.
+</pn>
+
+<h3>Brisures et irrégularités</h3>
+
+<pn>
+    <sc>Une autre chose</sc> que j'étais très curieux de faire lorsque j'ai vu le motif créé par la fonction sinus et la suite logistique était de le <i>briser</i>. Je trouve souvent que briser un objet mathématique aide à mieux le connaître — la façon dont un objet se brise, si elle ne révèle pas nécessairement comment il s'est formé, est tout de même propice à révéler certaines propriétés de sa structure.
+</pn>
+
+<img class="full-size-image" src="../../../images/logistic-map/logistic-field.jpg">
+
 <!-- en-title -->Logistic meanders
-<!-- en-description -->A few experiments around the logistic map.
+<!-- en-description -->A few experiments with the logistic map.
 <!-- en-content -->
 <pn>
     <sc></sc>
