@@ -429,6 +429,7 @@ img.full-size-image {
     /*max-width: 10em;*/
     /*margin: 0 auto;*/
     /*margin-right: 0.5rem;*/
+    width: 100%;
     margin: 2rem 0;
     /*margin-bottom: 1rem;*/
     /*display: inline-block;*/
