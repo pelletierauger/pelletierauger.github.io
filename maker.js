@@ -119,7 +119,7 @@ function makeBlog(language) {
             let languageJump = (language == "fr") ? "Continuer à lire…" : "Read more…";
             let blogPostContent;
             if (post[language].content.match(/<!-- read-more -->/)) {
-                console.log(post[language].title + " has an excerpt to be extracted!");
+                // console.log(post[language].title + " has an excerpt to be extracted!");
                 blogPostContent = post[language].content.match(/([\S\s]*?)(<!-- read-more -->)/)[1];
                 blogPostContent = `${blogPostContent}
                 <div class="languageJump">
@@ -583,6 +583,11 @@ function verbalize(message) {
 
 function seekPage(name, folder) {
     let page;
+
+    if (folder == './blog/posts/') {
+        // We are seeking a blog post
+    }
+
     //First, we test if the page is not simply defined in the pages.js file.
     if (pages.pages[name]) {
         page = pages.pages[name];
