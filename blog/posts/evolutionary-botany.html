@@ -1,0 +1,52 @@
+<!-- year -->2018
+<!-- month -->05
+<!-- day -->04
+<!-- fr-title -->Botanique évolutive
+<!-- fr-description -->Croisements entre la botanique algorithmique et les algorithmes génétiques.
+<!-- fr-content -->
+
+<h3>Le prototype <ic>Tree</ic></h3>
+<pn>
+    Il me faut tout d'abord un objet <ic>Tree</ic>.
+</pn>
+<p>
+    Je veux pouvoir enregistrer des formes dans une liste de formes, et ensuite, je pourrai déterminer combien de formes je veux dessiner par image d'animation.
+</p>
+
+<h3>L'objet <ic>Segment</ic></h3>
+
+<pn>
+    Comment pourrait être défini un segment? Un segment ne devrait pas avoir de coordonnées <ic>x</ic> et <ic>y</ic> mais plutôt des propriétés <ic>l</ic> pour sa longueur et <ic>w</ic> pour sa largeur. Et une propriété <ic>parent</ic>, bien entendu. Les seules coordonnées <ic>x</ic> et <ic>y</ic> qui doivent exister dans un arbre seront assignées au point initial de l'arbre.
+</pn>
+<p>
+    Et si un segment ne recevait en arguments que <ic>parent</ic> et <ic>dna</ic> et qu'il devait tout construire seulement avec cela? Puisqu'il connaît son parent, il peut « réagir » à lui. Un segment devient une sorte d'automate cellulaire dont le « voisin » est son parent, et dont les règles sont toutes encodées dans sa propriété <ic>dna</ic>. Ça me semble être un bon système.
+</p>
+
+<code>
+let Segment = function(parent, dna) {
+    // ???
+};
+</code>
+
+<h3>L'âge de l'arbre</h3>
+
+<pn>
+    L'âge de l'arbre devrait pouvoir influencer l'expression de ses gênes. Par exemple, l'angle dans lesquel s'étend un nouvel embranchement doit pouvoir dépendre de l'âge de l'arbre. Un arbre plus vieux pourrait être en mesure de créer des embranchements à angles plus grands ou plus courts. Donc, un objet <ic>Segment</ic> doit connaître l'âge de l'arbre à tout moment. Ou alors n'aurait-il qu'à connaître l'âge de son <ic>parent</ic>&nbsp;? Ça serait peut-être mieux ainsi. Tout <ic>Segment</ic> ne connaîtrait ainsi que l'âge de son parent, et prendrait des « décisions » en conséquence.
+</pn>
+
+<h3>Les embranchements</h3>
+
+<pn>
+    <sc>Les embranchements constituent</sc> un des plus compliqués aspects du système. Il doit y avoir trois sortes d'embranchements : à gauche, tout droit et à droite. Il me semble clair qu'un embranchement « tout droit » ne doit pouvoir se faire qu'une seule fois puisqu'il représente, d'une certaine, l'extension naturelle du rameau ; mais les embranchements à gauche et à droite sont nettement plus compliqués.
+</pn>
+<p>
+    Les embranchements « tout droit » serviront tout d'abord à créer des branches croches, et aussi à laisser des embranchements pousser « le long » d'une branche : un embranchement ne signifiera pas nécessairement la fin apparente d'un segment.
+</p>
+
+<h3>L'épaisseur des rameaux</h3>
+<pn>
+    Il me faudra aussi un système de rameaux à épaisseurs variables.
+</pn>
+<!-- en-title -->Evolutionary botany
+<!-- en-description -->Experiments with genetic algorithms.
+<!-- en-content -->
