@@ -1,15 +1,18 @@
 <!-- year -->2018
 <!-- month -->04
 <!-- day -->19
-<!-- fr-title -->Vagabondages logistiques
-<!-- fr-description -->Quelques expérimentations avec la suite logistique.
+<!-- fr-title -->Méandres logistiques
+<!-- fr-description -->Quelques explorations vagabondes autour de la suite logistique.
 <!-- fr-content -->
 <pn>
-    <sc>La semaine dernière,</sc> j'ai appris l'existence de la <i>suite logistique</i> et j'ai essayé de comprendre son fonctionnement. Depuis, je me suis essayé à la visualer de diverses façons afin de voir de quel bois elle se chauffe.
+    <sc>La semaine dernière,</sc> j'apprenais l'existence de la <i>suite logistique</i> et cherchais à en comprendre le fonctionnement. Depuis, j'ai visualisé le champ de cette fonction de diverses manières, afin de mieux voir ses propriétés et ses potentielles applications en art algorithmique. Le code écrit pour réaliser le matériel ci-dessous peut-être lu <a href="https://github.com/pelletierauger/Logistic-Map">sur GitHub</a>.
 </pn>
-<p>
-    Comme je suis habitué à m'amuser avec des fonctions trigonométriques, j'ai d'abord pensé à transformer le résultat de la suite logistique avec les fonctions sinus et cosinus. La première image ci-dessous est divisée en <im>2560</im> lignes verticales (représentant la valeur <im>x</im> de <im>0</im> à <im>2559</im>). À chacune de ces <im>2560</im> positions de <im>x</im>, une valeur <im>t</im> est calculée ainsi :
-</p>
+<!-- read-more -->
+<h3>Mouvements sinueux</h3>
+
+<pn>
+    <sc>Comme je suis habitué</sc> à m'amuser avec des fonctions trigonométriques, j'ai d'abord pensé à transformer le résultat de la suite logistique avec les fonctions sinus et &nbsn;cosinus.<snl label="sketch8b">Le code de cette expérience est contenu dans le fichier <a href=""><ic>sketch8b.js</ic></a> dans le dossier GitHub du projet.</snl> La première image ci-dessous est divisée en <im>25600</im> lignes verticales (représentant la valeur <im>x</im> de <im>0</im> à <im>25599</im>). À chacune de ces <im>25600</im> positions de <im>x</im>, une valeur <im>t</im> est calculée ainsi :
+</pn>
 
 <math>
     t_x = 0.012 + x \times 0.000001
@@ -29,7 +32,7 @@
 </math>
 
 <pn>
-    Il en a résulté l'image ci-dessous, dans laquelle on voit une structure très régulière et qui semble se répéter infiniment. Les lignes courbes les plus visibles ont certaines qualités en commun avec les ondes sinusoïdales, mais n'en sont pas.
+    Il en résulte l'image ci-dessous, dans laquelle on voit une structure très régulière et qui semble se répéter infiniment. Les lignes ondulantes ont certaines qualités en commun avec les ondes sinusoïdales, mais n'en sont pas.
 </pn>
 
 <img class="full-size-image" src="../../../images/logistic-map/logistic-map-cos-function-00000.png">
@@ -39,7 +42,7 @@
 <h3>Vers les profondeurs</h3>
 
 <pn>
-    <sc>J'étais très curieux</sc> de me promener à l'intérieur de ces résultats. Pour ce faire, j'ai conçu une animation dans laquelle tous les principes détaillés ci-dessus sont utilisés, à une importante différence près. La valeur <im>t_x</im>, qui s'exprimait jusqu'ici <im>t_x = 0.012 + x \times 0.000001</im>, s'exprime maintenant ainsi :
+    <sc>J'étais très curieux</sc> de me promener à l'intérieur de ces résultats. Pour ce faire, j'ai conçu une &nbsn;animation<snr label="sketch8">Le code de cette animation se trouve dans le fichier <a href=""><ic>sketch8.js</ic></a> sur GitHub.</snr> dans laquelle tous les principes détaillés ci-dessus sont utilisés, à une importante différence près. La valeur <im>t_x</im>, qui s'exprimait jusqu'ici <im>t_x = 0.012 + x \times 0.000001</im>, s'exprime maintenant ainsi :
 </pn>
 
 <math>
@@ -47,7 +50,7 @@
 </math>
 
 <pn>
-    La valeur <im>a</im> représente le numéro d'image de l'animation, qui commence à <im>1</im> et augmente de <im>1</im> à chaque nouvelle image. Ce changement dans <im>t_x</im> a pour conséquence de réduire de façon exponentielle, d'image en image, l'incrément de la valeur <im>t</im> qui est envoyée à chacun des <im>2560</im> systèmes dynamiques indépendants. D'une certaine façon, c'est comme si nous nous déplacions de plus en plus lentement à l'intérieur de la suite logistique. On pourrait aussi dire que nous « étirons » les résultats de la suite logistique horizontalement.
+    Cette nouvelle valeur <im>a</im> représente le numéro d'image de l'animation, qui commence à <im>1</im> et augmente de <im>1</im> à chaque nouvelle image. Ce changement dans <im>t_x</im> a pour conséquence de réduire de façon exponentielle, d'image en image, l'incrément de la valeur <im>t</im> qui est envoyée à chacun des <im>25600</im> systèmes dynamiques indépendants. D'une certaine façon, c'est comme si nous nous déplacions de plus en plus lentement à l'intérieur de la suite logistique. On pourrait aussi dire que nous « étirons » les résultats de la suite logistique horizontalement.
 </pn>
 <p>
     L'animation ci-dessous, qui résulte de tout ça, illustre de façon très claire les propriétés fractales de la suite logistique : à chaque image, nous observons une part de plus en plus petite de cette équation, cependant les mêmes formes apparaissent à toutes les échelles.
@@ -64,12 +67,44 @@
 <pn>
     <sc>Une autre chose</sc> que j'étais très curieux de faire lorsque j'ai vu le motif créé par la fonction sinus et la suite logistique était de le <i>briser</i>. Je trouve souvent que briser un objet mathématique aide à mieux le connaître — la façon dont un objet se brise, si elle ne révèle pas nécessairement comment il s'est formé, est tout de même propice à révéler certaines propriétés de sa structure.
 </pn>
-
+<p>
+    La première image ci-dessous a été créée en croisant le résultat de deux séquences de nombres (<ic>t</ic> et <ic>t2</ic>) obtenues par itérations dans la suite logistique à partir de points de départs différents. Voici la partie du code dans lequel ces calculs sont faits (le code complet est dans le fichier <ic>sketch3.js</ic> sur GitHub)&nbsp;:
+</p>
+<code>
+function draw() {
+    for (let j = 0; j < 20; j++) {
+        let f = drawCount * 0.5;
+        t = startT + increment;
+        t2 = startT2 + increment;
+        for (var i = 0; i < 100; i++) {
+            t = logisticMap(t);
+            t2 = logisticMap(t2);
+            x = sin(t2) * f;
+            y = sin(t * t2) * 1100;
+            ellipse(x, y, 0.5);
+        }
+        increment += 0.00001;
+    }
+    drawCount++;
+}
+</code>
 <img class="full-size-image" src="../../../images/logistic-map/logistic-field.jpg">
+
+<pn>
+    J'ai ensuite réalisé une autre animation de « plongée en profondeur » avec une de ces « suites logistiques brisées ».
+</pn>
+
+<h3>Contexte</h3>
+
+<pn>
+    <sc>Cette note de blog</sc> fait partie de mon projet de recherche <i>Vers un cinéma algorithmique</i>, démarré en avril 2018. Je vous invite à consulter <a href="https://pelletierauger.github.io/fr/blog/2018/4/vers-un-cinema-algorithmique.html">la toute première note du projet</a> pour en apprendre davantage.
+</pn>
 
 <!-- en-title -->Logistic meanders
 <!-- en-description -->A few experiments with the logistic map.
 <!-- en-content -->
+
+<h3>Context</h3>
 <pn>
-    <sc></sc>
+    <sc>This blog post</sc> is part of my research project <i>Towards an algorithmic cinema</i>, started in April 2018. I invite you to read <a href="https://pelletierauger.github.io/en/blog/2018/4/towards-an-algorithmic-cinema.html">the first blog post of the project</a> to learn more about it.
 </pn>
