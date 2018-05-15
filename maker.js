@@ -338,9 +338,15 @@ function makeHeader(page, language, stepsFromRoot, sketches) {
     var codeFont = "";
     if (page && page[language].content) {
         var r = /(<code>)([\S\s]*?)(<\/code>)/g;
+        var inlineCodeTest = /(<span class="inline-code8">)([\S\s]*?)(<\/span>)/g;
+        if (page[language].content.match(inlineCodeTest)) {
+            codeFont = "Inconsolata:400,700|";
+        }
         if (page[language].content.match(r)) {
             codeCSS = `<link href="${prefixToRoot}style/code.css" rel="stylesheet" type="text/css">`;
-            codeFont = "Inconsolata|";
+            if (!codeFont) {
+                codeFont = "Inconsolata|";
+            }
         }
     }
 
@@ -664,7 +670,7 @@ function parseHTMLTemplate(s) {
     });
 
     // Add a non-breaking space after French opening quotes and before French closing quotes.
-    page.fr.content = page.fr.content.replace(/([a-zA-ZÀ-ú])(\s?)(»)/g, function(a, b, c, d) {
+    page.fr.content = page.fr.content.replace(/([a-zA-ZÀ-ú\.\?])(\s?)(»)/g, function(a, b, c, d) {
         return "" + b + "&nbsp;" + d;
     });
     page.fr.content = page.fr.content.replace(/(«)(\s?)([a-zA-ZÀ-ú])/g, function(a, b, c, d) {
@@ -675,6 +681,8 @@ function parseHTMLTemplate(s) {
     page.fr.content = page.fr.content.replace(/<\/i>/g, `</span>`);
     page.fr.content = page.fr.content.replace(/<i8>/g, `<span class="italic8">`);
     page.fr.content = page.fr.content.replace(/<\/i8>/g, `</span>`);
+    page.fr.content = page.fr.content.replace(/<ic8>/g, `<span class="inline-code8">`);
+    page.fr.content = page.fr.content.replace(/<\/ic8>/g, `</span>`);
     page.fr.content = page.fr.content.replace(/<dc>/g, `<span class="drop-caps">`);
     page.fr.content = page.fr.content.replace(/<\/dc>/g, `</span>`);
     page.fr.content = page.fr.content.replace(/<sc>/g, `<span class="small-caps">`);
@@ -789,6 +797,8 @@ function parseHTMLTemplate(s) {
     page.en.content = page.en.content.replace(/<\/i>/g, `</span>`);
     page.en.content = page.en.content.replace(/<i8>/g, `<span class="italic8">`);
     page.en.content = page.en.content.replace(/<\/i8>/g, `</span>`);
+    page.en.content = page.en.content.replace(/<ic8>/g, `<span class="inline-code8">`);
+    page.en.content = page.en.content.replace(/<\/ic8>/g, `</span>`);
     page.en.content = page.en.content.replace(/<dc>/g, `<span class="drop-caps">`);
     page.en.content = page.en.content.replace(/<\/dc>/g, `</span>`);
     page.en.content = page.en.content.replace(/<sc>/g, `<span class="small-caps">`);
