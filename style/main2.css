@@ -75,6 +75,13 @@ html {
     /*background-color: #ECECEC;*/
 }
 
+.inline-code8 {
+    font-family: 'Inconsolata', courier, monospace;
+    font-weight: 700;
+    font-size: 0.82em;
+    line-height: 1em;
+}
+
 body {
     font-size: 20px;
     /*font-size: 1.5em;*/
