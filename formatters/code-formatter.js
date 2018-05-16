@@ -32,6 +32,7 @@ module.exports = function(htmlContent, fileName) {
             //     console.log(match);
             // });
             code.value = code.value.replace(/&amp;nbsp;/g, ``);
+            code.value = code.value.replace(/&amp;rsquo;/g, `'`);
             code.value = code.value.replace(/([\]>a-zA-ZÀ-ú]\d*)(\.)(\d*[a-zA-ZÀ-ú])/g, function(match, a, b, c) {
                 // console.log(match);
                 return a + '<span class="hljs-punctuation">' + b + '</span>' + c;
