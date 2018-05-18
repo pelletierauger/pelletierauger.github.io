@@ -1,0 +1,185 @@
+<!-- year -->2018
+<!-- month -->05
+<!-- day -->09
+<!-- fr-title -->Automates cellulaires génétiques
+<!-- fr-description -->Notes éparses à propos d'un système en construction.
+<!-- fr-content -->
+
+<pn>
+    <sc>Cet article</sc> consiste en une série de notes un peu éparpillées prises alors que je me familiarise avec les <a href="https://fr.wikipedia.org/wiki/Algorithme_g%C3%A9n%C3%A9tique">algorithmes génétiques</a> et, plus particulièrement, leurs applications dans les automates cellulaires. Je ne suis pas certain que ces notes puissent servir à quiconque à part moi, mais je les inclus tout de même dans ce blog qui me sert de journal de travail.
+</pn>
+
+<!-- read-more -->
+
+<p>
+    Si un système d'automates cellulaires a un « voisinage » de 9 cellules, et que chacune de ces cellulaires peut avoir un état de 0, 1 ou 2, un exemple de voisinage possible pourrait s'écrire : <ic>"101022010"</ic>. Ça me limiterait cependant à 10 états possibles (de 0 à 9). Une autre façon d'encoder ce voisinage serait :
+</p>
+
+<code>
+    let neighborhood = [0, 1, 0, 11, 13, 2, 20, 1, 0];
+</code>
+
+<pn>
+    Mais comment ferais-je pour générer chacune des règles d'un système ?
+</pn>
+
+<code>
+let rule = {
+    neighborhood: [0, 1, 0, 11, 13, 2, 20, 1, 0],
+    newState: 0
+};
+</code>
+
+<pn>
+    En base <im>5</im>, je pourrais par exemple avoir <ic>"031423021"</ic> comme voisinage. Dans ce cas, j'aurais <im>5^9</im> (ou <im>1\:953\:125</im>) possibilités, donc je gagnerais beaucoup à compresser l'information le plus possible.
+</pn>
+<p>
+    Disons qu'il y a toujours <im>9</im> voisins, et que la « base » du système (le nombre d'états possibles dans une case) peut aller de <im>2</im> à <im>8</im>. Une règle doit donc être définie par une valeur texte de <im>10</im> positions : les <im>9</im> positions du voisinage présent et la nouvelle position à adopter par la cellule du milieu. Mais donc… comme toutes les possibilités de voisinages seront toujours considérées dans le même ordre… l'ensemble des règles d'un système est en réalité… une seule valeur texte qui possède <im>b^9</im> positions, où <im>b</im> est la base utilisée par le système. Chaque donnée de ce texte sera un chiffre de <im>0</im> à <im>b - 1</im>.
+</p>
+<p>
+    Chaque membre <im>t_i</im> de ce texte représente une nouvelle position <im>t</im> à appliquer lorsque le voisinage <im>i</im> est présent. Le voisinage <im>i</im> est une représentation décimale d'un nombre dont la base <im>\in [2;8]</im>.
+</p>
+<p>
+    Par exemple, si j'utilise une base de <im>5</im>, je pourrais avoir un voisinage <im>v = \{1, 0, 4, 0, 2\}</im>. Je considère donc ce voisinage <im>i = 10402_5</im>, donc <im>i = 727_{10}</im>. Donc, je vais chercher la valeur <im>727</im> dans mon texte qui définit l'ensemble des règles.
+</p>
+
+<math>
+\begin{align*}
+    727_{10}  &= 625 + 100 + 2\\
+            &= 1 \times 5^4 + 4 \times 5^2 + 2 \times 5^0\\
+            &= 10402_5
+\end{align*}
+</math>
+
+<pn>
+    Je viens d'écrire un algorithme pas trop compliqué pour convertir des nombres décimaux en nombres à base <im>b</im>. Il est certain que cet algorithme pourrait être grandement optimisé.
+</pn>
+
+<code>
+let originalNumber = 727;
+let base = 5;
+let factors = [];
+let n = originalNumber;
+let powers = [1];
+
+let b = base;
+for (let i = 0; i < 10; i++) {
+    powers.push(b);
+    b *= base;
+}
+
+let counter = 0;
+while (originalNumber > base) {
+    while (originalNumber >= powers[counter]) {
+        n = powers[counter];
+        counter++;
+    }
+    originalNumber -= n;
+    factors.push([n, counter - 1]);
+    counter = 0;
+}
+
+if (originalNumber) {
+    if (originalNumber == base) {
+        factors.push([originalNumber, 1]);
+    } else {
+        factors.push([originalNumber, 0]);
+    }
+}
+
+let convertedNumber = [];
+for (let i = 0; i < factors.length; i++) {
+    let increment = factors[i][1];
+    if (increment == 0) {
+        convertedNumber[increment] = factors[i][0];
+    } else {
+        if (!convertedNumber[increment]) {
+            convertedNumber[increment] = 1;
+        } else {
+            convertedNumber[increment]++;
+        }
+    }
+}
+
+let revertedNumber = "";
+for (let i = convertedNumber.length - 1; i >= 0; i--) {
+    if (convertedNumber[i] > 0) {
+        revertedNumber += convertedNumber[i];
+    } else {
+        revertedNumber += 0;
+    }
+}
+
+console.log(factors);
+console.log(convertedNumber);
+console.log(revertedNumber.toString());
+</code>
+
+<pn>
+    J'ai aussi écrit cet autre algorithme, qui convertit un nombre à base <im>b</im> en nombre décimal (c'est finalement cet algorithme dont je me sers). Il est très simple mais semble fonctionner.
+</pn>
+
+<code>
+// This method receives a number in base this.geneticBase 
+// as a string, and returns a decimal number, as an integer.
+
+Scene.prototype.applyRules = function(r) {
+    let s = r;
+    let b = this.geneticBase;
+    let ns = "";
+    for (let i = s.length - 1; i >= 0; i--) {
+        ns += s[i];
+    }
+    let decimal = 0;
+    for (let i = 0; i <= ns.length - 1; i++) {
+        decimal += parseInt(ns[i]) * Math.pow(b, i);
+    }
+    return this.geneticRules[decimal];
+};
+</code>
+
+<h3>Création d'un ensemble aléatoire de règles</h3>
+
+<code>
+// b étant la base
+let b = 5;
+let r = "";
+let rl = Math.pow(b, 9);
+for (let i = 0; i < rl; i++) {
+    r += Math.floor(Math.random() * b);
+}
+</code>
+<pn>
+    <sc>En fait,</sc> je viens de réaliser qu'un système à base de <im>5</im> crée un ensemble de règles à <im>1\:953\:125</im> caractères, ce qui pèse (logiquement) <im>2</im> Mo lorsque sauvegardé dans un fichier texte. Comme mon système me demandera de sauvegarder une grande quantité de tels fichiers, je devrais me limiter à <im>b \in [2;4]</im>, puisque <im>4^9 = 262\:144</im> ce qui produit un fichier de <im>262</im> ko. Ça me paraît plus raisonnable.
+</pn>
+
+<h3>Créer et évaluer une population</h3>
+
+<pn>
+    <sc>Comment ferai-je</sc> pour créer et évaluer une population, et pour croiser des individus et créer leurs enfants ? Premièrement, la sélection sera interactive : c'est-à-dire que la seule valeur d'un individu sera déterminée par moi, qui lui assignera un score. Il me faudrait donc une liste <ic>population</ic> qui serait un ensemble de couples <im>(i, s)</im> où <im>i</im> est un individu et <im>s</im> son score.
+</pn>
+<p>
+    Il me faut une liste d'individus, sauvegardée dans un fichier <sc>json</sc>. Ce sera mon ensemble de couples. Il me faut un bouton pour générer un nouvel individu aléatoire. Il me faut un bouton pour réduire ou augmenter le score de cet individu.Il me faut un bouton pour sauvegarder cet individu si j'apprécie sa performance.
+</p>
+<p>
+    Ça va donc fonctionner de façon relativement analogue à mon ensemble de palettes : je peux charger une palette déjà sauvegardée, je peux en générer des nouvelles, et je peux sauvegarder sur le disque les palettes que j'apprécie. Maintenant, j'aurai un bouton « Generate ruleset randomly » et un autre « Generate ruleset from crossover ». Ce deuxième bouton sélectionnera deux individus de la population sauvegardée et créera un nouvel individu en croisant leurs données.
+</p>
+<p>
+    Le fichier d'un individu contiendra à la fois son <sc>« adn »</sc> et son score. Ce sera beaucoup plus simple ainsi. Très important : un individu doit aussi contenir sa base, et une population est en fait « l'ensemble des individus sauvegardés sur le disque qui ont la même base ». Je ne peux évidemment pas croiser des individus à bases différentes. Donc, lorsque je commence une « session » d'expérimentations, je dois choisir ma base, et celle-ci permettra à mon système de ne considérer qu'un sous-ensemble de tous les individus sauvegardés sur le disque.
+</p>
+
+<h3>Contexte</h3>
+
+<pn>
+    <sc>Cette note de blog</sc> fait partie de mon projet de recherche <i>Vers un cinéma algorithmique</i>, démarré en avril 2018. Je vous invite à consulter <a href="https://pelletierauger.github.io/fr/blog/2018/4/vers-un-cinema-algorithmique.html">la toute première note du projet</a> pour en apprendre davantage.
+</pn>
+
+<!-- en-title -->Genetic Cellular Automata
+<!-- en-description -->
+<!-- en-content -->
+
+<h3>Context</h3>
+
+<pn>
+    <sc>This blog post</sc> is part of my research project <i>Towards an algorithmic cinema</i>, started in April 2018. I invite you to read <a href="https://pelletierauger.github.io/en/blog/2018/4/towards-an-algorithmic-cinema.html">the first blog post of the project</a> to learn more about it.
+</pn>
