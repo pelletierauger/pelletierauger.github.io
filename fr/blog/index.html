@@ -8,8 +8,8 @@
         
         <link href="../../style/truchet.css" rel="stylesheet" type="text/css">
         
-        <link href="https://fonts.googleapis.com/css?family=EB+Garamond" rel="stylesheet">
-        
+        <link href="https://fonts.googleapis.com/css?family=Inconsolata|EB+Garamond" rel="stylesheet">
+        <link href="../../style/code.css" rel="stylesheet" type="text/css">
     <style id="MathJax_CHTML_styles">.mjx-chtml {display: inline-block; line-height: 0; text-indent: 0; text-align: left; text-transform: none; font-style: normal; font-weight: normal; font-size: 100%; font-size-adjust: none; letter-spacing: normal; word-wrap: normal; word-spacing: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0; min-height: 0; border: 0; margin: 0; padding: 1px 0}
 .MJXc-display {display: block; text-align: center; margin: 1em 0; padding: 0}
 .mjx-chtml[tabindex]:focus, body :focus .mjx-chtml[tabindex] {display: inline-table}
@@ -140,6 +140,134 @@
     <div class="blog-posts">
             <div class="blog-post">
                 <div class="blog-post-header">
+                    <a href="../blog/2018/5/automates-cellulaires-genetiques.html"><div class="date">9 mai 2018</div>
+                    <div class="blog-title-box"><h2 class="header">Automates cellulaires génétiques</h2></div>
+                    <div class="description">
+                    Notes éparses à propos d’un système en construction.
+
+            </div></a>
+                </div>
+                <div class="blog-post-content">
+                    
+
+<p class="noindent">
+    <span class="small-caps">Cet article</span> consiste en une série de notes un peu éparpillées prises alors que je me familiarise avec les <a href="https://fr.wikipedia.org/wiki/Algorithme_g%C3%A9n%C3%A9tique">algorithmes génétiques</a> et, plus particulièrement, leurs applications dans les automates cellulaires. Je ne suis pas certain que ces notes puissent servir à quiconque à part moi, mais je les inclus tout de même dans ce blog qui me sert de journal de travail.
+</p>
+
+
+                <div class="languageJump">
+                    <a href="../blog/2018/5/automates-cellulaires-genetiques.html">Continuer à lire…</a>
+                </div>
+               
+                </div>
+            </div>
+            <div class="blog-post">
+                <div class="blog-post-header">
+                    <a href="../blog/2018/5/botanique-evolutive.html"><div class="date">4 mai 2018</div>
+                    <div class="blog-title-box"><h2 class="header">Botanique évolutive</h2></div>
+                    <div class="description">
+                    Croisements entre la botanique algorithmique et les algorithmes génétiques.
+
+            </div></a>
+                </div>
+                <div class="blog-post-content">
+                    
+
+<h3>Le prototype <span class="inline-code">Tree</span></h3>
+<p class="noindent">
+    Il me faut tout d’abord un objet <span class="inline-code">Tree</span>.
+</p>
+<p>
+    Je veux pouvoir enregistrer des formes dans une liste de formes, et ensuite, je pourrai déterminer combien de formes je veux dessiner par image d’animation.
+</p>
+
+<h3>L’objet <span class="inline-code">Segment</span></h3>
+
+<p class="noindent">
+    Comment pourrait être défini un segment&nbsp;? Un segment ne devrait pas avoir de coordonnées <span class="inline-code">x</span> et <span class="inline-code">y</span> mais plutôt des propriétés <span class="inline-code">l</span> pour sa longueur et <span class="inline-code">w</span> pour sa largeur. Et une propriété <span class="inline-code">parent</span>, bien entendu. Les seules coordonnées <span class="inline-code">x</span> et <span class="inline-code">y</span> qui doivent exister dans un arbre seront assignées au point initial de l’arbre.
+</p>
+<p>
+    Et si un segment ne recevait en arguments que <span class="inline-code">parent</span> et <span class="inline-code">dna</span> et qu’il devait tout construire seulement avec cela&nbsp;? Puisqu’il connaît son parent, il peut «&nbsp;réagir&nbsp;» à lui. Un segment devient une sorte d’automate cellulaire dont le «&nbsp;voisin&nbsp;» est son parent, et dont les règles sont toutes encodées dans sa propriété <span class="inline-code">dna</span>. Ça me semble être un bon système.
+</p>
+
+<div class="codebox"><pre><code><span class="hljs-keyword">let</span> Segment<span class="hljs-punctuation"> = </span><span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">parent, dna</span>) </span>{
+    <span class="hljs-comment">// ???</span>
+};</code></pre></div>
+
+<h3>L’âge de l’arbre</h3>
+
+<p class="noindent">
+    L’âge de l’arbre devrait pouvoir influencer l’expression de ses gênes. Par exemple, l’angle dans lesquel s’étend un nouvel embranchement doit pouvoir dépendre de l’âge de l’arbre. Un arbre plus vieux pourrait être en mesure de créer des embranchements à angles plus grands ou plus courts. Donc, un objet <span class="inline-code">Segment</span> doit connaître l’âge de l’arbre à tout moment. Ou alors n’aurait-il qu’à connaître l’âge de son <span class="inline-code">parent</span>&nbsp;? Ça serait peut-être mieux ainsi. Tout <span class="inline-code">Segment</span> ne connaîtrait ainsi que l’âge de son parent, et prendrait des «&nbsp;décisions&nbsp;» en conséquence.
+</p>
+
+<h3>Les embranchements</h3>
+
+<p class="noindent">
+    <span class="small-caps">Les embranchements constituent</span> un des plus compliqués aspects du système. Il doit y avoir trois sortes d’embranchements&nbsp;: à gauche, tout droit et à droite. Il me semble clair qu’un embranchement «&nbsp;tout droit&nbsp;» ne doit pouvoir se faire qu’une seule fois puisqu’il représente, d’une certaine, l’extension naturelle du rameau&nbsp;; mais les embranchements à gauche et à droite sont nettement plus compliqués.
+</p>
+<p>
+    Les embranchements «&nbsp;tout droit&nbsp;» serviront tout d’abord à créer des branches croches, et aussi à laisser des embranchements pousser «&nbsp;le long&nbsp;» d’une branche&nbsp;: un embranchement ne signifiera pas nécessairement la fin apparente d’un segment.
+</p>
+
+<h3>L’épaisseur des rameaux</h3>
+<p class="noindent">
+    Il me faudra aussi un système de rameaux à épaisseurs variables.
+</p>
+
+                </div>
+            </div>
+            <div class="blog-post">
+                <div class="blog-post-header">
+                    <a href="../blog/2018/4/les-tortues-amicales.html"><div class="date">18 avril 2018</div>
+                    <div class="blog-title-box"><h2 class="header">Les tortues amicales</h2></div>
+                    <div class="description">
+                    Formes collectives qui émergent de comportements individuels.
+
+            </div></a>
+                </div>
+                <div class="blog-post-content">
+                    
+
+<p class="noindent">
+    <span class="small-caps">L’animation ci-dessus</span> est inspirée des idées derrières <span class="italic">Heroes and Cowards</span>, un modèle à base d’agents créé par William Rand et Uri Wilensky, mais il s’agit d’une altération tout de même très distante de ce modèle.
+</p>
+<p>
+    Les principes de l’animation sont simples&nbsp;: chaque point noir représente une <span class="italic">tortue</span> qui peut recevoir des instructions et qui possède aussi un certain comportement. Lorsque l’animation démarre, chacune des tortues est associée à deux <span class="italic">amies</span> (deux autres points parmi le groupe). Ensuite, entre chaque nouvelle image de l’animation, chacune des tortues s’approche très légèrement du point équidistant entre ses deux amies.
+</p>
+<p>
+    Toutes les tortues ont donc un comportement individuel identique, mais puisque la position initiale de chacune des tortues est différente, il en résulte un comportement de groupe complexe.
+</p>
+
+
+                <div class="languageJump">
+                    <a href="../blog/2018/4/les-tortues-amicales.html">Continuer à lire…</a>
+                </div>
+               
+                </div>
+            </div>
+            <div class="blog-post">
+                <div class="blog-post-header">
+                    <a href="../blog/2018/4/meandres-logistiques.html"><div class="date">19 avril 2018</div>
+                    <div class="blog-title-box"><h2 class="header">Méandres logistiques</h2></div>
+                    <div class="description">
+                    Quelques explorations vagabondes autour de la suite logistique.
+
+            </div></a>
+                </div>
+                <div class="blog-post-content">
+                    
+<p class="noindent">
+    <span class="small-caps">La semaine dernière,</span> j’apprenais l’existence de la <span class="italic">suite logistique</span> et cherchais à en comprendre le fonctionnement. Depuis, j’ai visualisé le champ de cette fonction de diverses manières, afin de mieux voir ses propriétés et ses potentielles applications artistiques. Le code écrit pour réaliser le matériel ci-dessous peut-être lu <a href="https://github.com/pelletierauger/Logistic-Map">sur GitHub</a>.
+</p>
+
+                <div class="languageJump">
+                    <a href="../blog/2018/4/meandres-logistiques.html">Continuer à lire…</a>
+                </div>
+               
+                </div>
+            </div>
+            <div class="blog-post">
+                <div class="blog-post-header">
                     <a href="../blog/2018/4/la-suite-logistique.html"><div class="date">9 avril 2018</div>
                     <div class="blog-title-box"><h2 class="header">La suite logistique</h2></div>
                     <div class="description">
@@ -153,7 +281,7 @@
 <p class="article-top">
     <span class="small-caps">Je lis présentement</span> <span class="italic">Complexity: A Guided Tour</span>, un formidable ouvrage écrit par la scientifique américaine Melanie Mitchell. Je viens d’y apprendre l’existence de la <span class="italic">suite logistique</span>, grâce à laquelle j’ai réalisé l’animation ci-dessus. Il s’agit de la plus célèbre équation dans le champ de la théorie du chaos. La voici&nbsp;:
 </p>
-<div class="math"><span class="mjx-chtml MJXc-display" style="text-align: center;"><span id="MathJax-Element-1-Frame" class="mjx-chtml" style="text-align: center;"><span id="MJXc-Node-882" class="mjx-math"><span id="MJXc-Node-883" class="mjx-mrow"><span id="MJXc-Node-884" class="mjx-msubsup"><span class="mjx-base"><span id="MJXc-Node-885" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.298em;">x</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-886" class="mjx-texatom" style=""><span id="MJXc-Node-887" class="mjx-mrow"><span id="MJXc-Node-888" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.372em; padding-bottom: 0.298em;">t</span></span><span id="MJXc-Node-889" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.298em; padding-bottom: 0.446em;">+</span></span><span id="MJXc-Node-890" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">1</span></span></span></span></span></span><span id="MJXc-Node-891" class="mjx-mo MJXc-space3"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.077em; padding-bottom: 0.298em;">=</span></span><span id="MJXc-Node-892" class="mjx-mi MJXc-space3"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.446em; padding-bottom: 0.298em;">R</span></span><span id="MJXc-Node-893" class="mjx-msubsup"><span class="mjx-base"><span id="MJXc-Node-894" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.298em;">x</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-895" class="mjx-mi" style=""><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.372em; padding-bottom: 0.298em;">t</span></span></span></span><span id="MJXc-Node-896" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.446em; padding-bottom: 0.593em;">(</span></span><span id="MJXc-Node-897" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">1</span></span><span id="MJXc-Node-898" class="mjx-mo MJXc-space2"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.298em; padding-bottom: 0.446em;">−</span></span><span id="MJXc-Node-899" class="mjx-msubsup MJXc-space2"><span class="mjx-base"><span id="MJXc-Node-900" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.298em;">x</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-901" class="mjx-mi" style=""><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.372em; padding-bottom: 0.298em;">t</span></span></span></span><span id="MJXc-Node-902" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.446em; padding-bottom: 0.593em;">)</span></span></span></span></span></span></div>
+<div class="math"><span class="mjx-chtml MJXc-display" style="text-align: center;"><span id="MathJax-Element-1-Frame" class="mjx-chtml" style="text-align: center;"><span id="MJXc-Node-1273" class="mjx-math"><span id="MJXc-Node-1274" class="mjx-mrow"><span id="MJXc-Node-1275" class="mjx-msubsup"><span class="mjx-base"><span id="MJXc-Node-1276" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.298em;">x</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-1277" class="mjx-texatom" style=""><span id="MJXc-Node-1278" class="mjx-mrow"><span id="MJXc-Node-1279" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.372em; padding-bottom: 0.298em;">t</span></span><span id="MJXc-Node-1280" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.298em; padding-bottom: 0.446em;">+</span></span><span id="MJXc-Node-1281" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">1</span></span></span></span></span></span><span id="MJXc-Node-1282" class="mjx-mo MJXc-space3"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.077em; padding-bottom: 0.298em;">=</span></span><span id="MJXc-Node-1283" class="mjx-mi MJXc-space3"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.446em; padding-bottom: 0.298em;">R</span></span><span id="MJXc-Node-1284" class="mjx-msubsup"><span class="mjx-base"><span id="MJXc-Node-1285" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.298em;">x</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-1286" class="mjx-mi" style=""><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.372em; padding-bottom: 0.298em;">t</span></span></span></span><span id="MJXc-Node-1287" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.446em; padding-bottom: 0.593em;">(</span></span><span id="MJXc-Node-1288" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">1</span></span><span id="MJXc-Node-1289" class="mjx-mo MJXc-space2"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.298em; padding-bottom: 0.446em;">−</span></span><span id="MJXc-Node-1290" class="mjx-msubsup MJXc-space2"><span class="mjx-base"><span id="MJXc-Node-1291" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.298em;">x</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-1292" class="mjx-mi" style=""><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.372em; padding-bottom: 0.298em;">t</span></span></span></span><span id="MJXc-Node-1293" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.446em; padding-bottom: 0.593em;">)</span></span></span></span></span></span></div>
 
                 <div class="languageJump">
                     <a href="../blog/2018/4/la-suite-logistique.html">Continuer à lire…</a>

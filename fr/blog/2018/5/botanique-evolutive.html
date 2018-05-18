@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Guillaume Pelletier-Auger - Botanique évolutive</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=4, user-scalable=yes" />
+        <link href="../../../../style/style.css" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Inconsolata|EB+Garamond" rel="stylesheet">
+        <link href="../../../../style/code.css" rel="stylesheet" type="text/css">
+    </head><body>
+    <nav>
+        <h1><a href="../../../../fr/">Guillaume <span class="nobreak">Pelletier-Auger</span></a></h1>
+        <ul>
+            <li><a href="../../../../fr/">Projets</a></li>
+            <li class = "selected"><a href="../../../../fr/blog/">Blog</a></li>
+            <li><a href="../../../../fr/a-propos.html">À propos</a></li>
+            <li><a href="../../../../en/blog/2018/5/evolutionary-botany.html">Fr &#8594; En</a></li>
+        </ul>
+    </nav>
+    
+            <article>
+                <h2 class="with-date">Botanique évolutive</h2><div class="description">
+                    Croisements entre la botanique algorithmique et les algorithmes génétiques.
+
+            </div>
+                <div class="date">4 mai 2018</div>
+                
+
+<h3>Le prototype <span class="inline-code">Tree</span></h3>
+<p class="noindent">
+    Il me faut tout d&rsquo;abord un objet <span class="inline-code">Tree</span>.
+</p>
+<p>
+    Je veux pouvoir enregistrer des formes dans une liste de formes, et ensuite, je pourrai déterminer combien de formes je veux dessiner par image d&rsquo;animation.
+</p>
+
+<h3>L&rsquo;objet <span class="inline-code">Segment</span></h3>
+
+<p class="noindent">
+    Comment pourrait être défini un segment&nbsp;? Un segment ne devrait pas avoir de coordonnées <span class="inline-code">x</span> et <span class="inline-code">y</span> mais plutôt des propriétés <span class="inline-code">l</span> pour sa longueur et <span class="inline-code">w</span> pour sa largeur. Et une propriété <span class="inline-code">parent</span>, bien entendu. Les seules coordonnées <span class="inline-code">x</span> et <span class="inline-code">y</span> qui doivent exister dans un arbre seront assignées au point initial de l&rsquo;arbre.
+</p>
+<p>
+    Et si un segment ne recevait en arguments que <span class="inline-code">parent</span> et <span class="inline-code">dna</span> et qu&rsquo;il devait tout construire seulement avec cela&nbsp;? Puisqu&rsquo;il connaît son parent, il peut «&nbsp;réagir&nbsp;» à lui. Un segment devient une sorte d&rsquo;automate cellulaire dont le «&nbsp;voisin&nbsp;» est son parent, et dont les règles sont toutes encodées dans sa propriété <span class="inline-code">dna</span>. Ça me semble être un bon système.
+</p>
+
+<div class="codebox"><pre><code><span class="hljs-keyword">let</span> Segment<span class="hljs-punctuation"> = </span><span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">parent, dna</span>) </span>{
+    <span class="hljs-comment">// ???</span>
+};</code></pre></div>
+
+<h3>L&rsquo;âge de l&rsquo;arbre</h3>
+
+<p class="noindent">
+    L&rsquo;âge de l&rsquo;arbre devrait pouvoir influencer l&rsquo;expression de ses gênes. Par exemple, l&rsquo;angle dans lesquel s&rsquo;étend un nouvel embranchement doit pouvoir dépendre de l&rsquo;âge de l&rsquo;arbre. Un arbre plus vieux pourrait être en mesure de créer des embranchements à angles plus grands ou plus courts. Donc, un objet <span class="inline-code">Segment</span> doit connaître l&rsquo;âge de l&rsquo;arbre à tout moment. Ou alors n&rsquo;aurait-il qu&rsquo;à connaître l&rsquo;âge de son <span class="inline-code">parent</span>&nbsp;? Ça serait peut-être mieux ainsi. Tout <span class="inline-code">Segment</span> ne connaîtrait ainsi que l&rsquo;âge de son parent, et prendrait des «&nbsp;décisions&nbsp;» en conséquence.
+</p>
+
+<h3>Les embranchements</h3>
+
+<p class="noindent">
+    <span class="small-caps">Les embranchements constituent</span> un des plus compliqués aspects du système. Il doit y avoir trois sortes d&rsquo;embranchements&nbsp;: à gauche, tout droit et à droite. Il me semble clair qu&rsquo;un embranchement «&nbsp;tout droit&nbsp;» ne doit pouvoir se faire qu&rsquo;une seule fois puisqu&rsquo;il représente, d&rsquo;une certaine, l&rsquo;extension naturelle du rameau&nbsp;; mais les embranchements à gauche et à droite sont nettement plus compliqués.
+</p>
+<p>
+    Les embranchements «&nbsp;tout droit&nbsp;» serviront tout d&rsquo;abord à créer des branches croches, et aussi à laisser des embranchements pousser «&nbsp;le long&nbsp;» d&rsquo;une branche&nbsp;: un embranchement ne signifiera pas nécessairement la fin apparente d&rsquo;un segment.
+</p>
+
+<h3>L&rsquo;épaisseur des rameaux</h3>
+<p class="noindent">
+    Il me faudra aussi un système de rameaux à épaisseurs variables.
+</p>
+
+            </article>
+            <div id="footer">Guillaume Pelletier-Auger &mdash; 2016-2018
+    </div>
+    </body>
+    </html>

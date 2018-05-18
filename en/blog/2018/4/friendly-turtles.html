@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Guillaume Pelletier-Auger - Friendly turtles</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=4, user-scalable=yes" />
+        <link href="../../../../style/style.css" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Inconsolata|EB+Garamond" rel="stylesheet">
+        <link href="../../../../style/code.css" rel="stylesheet" type="text/css">
+    </head><body>
+    <nav>
+        <h1><a href="../../../../">Guillaume <span class="nobreak">Pelletier-Auger</span></a></h1>
+        <ul>
+            <li><a href="../../../../">Projects</a></li>
+            <li class = "selected"><a href="../../../../en/blog/">Blog</a></li>
+            <li><a href="../../../../en/about.html">About</a></li>
+            <li><a href="../../../../fr/blog/2018/4/les-tortues-amicales.html">En &#8594; Fr</a></li>
+        </ul>
+    </nav>
+    
+            <article>
+                <h2 class="with-date">Friendly turtles</h2><div class="description">
+                    Collective shapes emerging from individual behaviours.
+
+            </div>
+                <div class="date">April 18, 2018</div>
+                
+<p class="noindent">
+    <span class="small-caps">The animation above</span> is based on the ideas behind <span class="italic">Heroes and Cowards</span>, a NetLogo model designed by William Rand and Uri Wilensky, although it is a significantly distant alteration of it. Each dot in the animation represents a “turtle” that can be given instructions and that possesses simple behaviours. When the animation starts, each turtle selects two friends among the group of turtles, and then, it tries to position itself exactly in between those two friends. The resulting animation is formed by the combined behaviours of all turtles—it&rsquo;s the <span class="italic">emergent</span> shape of all their individual actions.
+</p>
+
+<!-- read-more -->
+
+<p>
+    A chain of turtles. What if I change the order of the loop... Three types of xsheets. event-sheets, running-sheets, slow-sheets. En faire un sketch audio-réactif... ? Chaque note de guitare créerait une nouvelle spirale. Des évènements pourraient aussi changer les algorithmes de cheminements des tortues — faire trembler leurs parcours, etc.
+</p>
+<p>
+    Ajouter des textures — une texture de papier dans le fond, qui vacillerait. Les points seraient des petits dessins vacillants. Ils pourraient être colorés.
+</p>
+<p>
+    Des x-sheets créées par session audio-réactives - pour ensuite être renderées en slow-sheets.
+</p>
+<h3>Some ideas about animation sheets</h3>
+<p class="noindent">
+    <span class="small-caps">This short animation provides</span> an interesting opportunity to think about “animation sheets”. Because I originally studied in traditional paper animation, I learned to use <span class="italic">exposure sheets</span> when planning a sequence of events. And since I started doing algorithmic animation, I&rsquo;ve been interested in different ways in which a sequence of events could be planned in code. Ways to orchestrate sporadic “human” interventions inside generative processes. Because I wanted to program the creation of a few new spirals during the course of this animation, I ended up using a lot of tests in <span class="inline-code">draw()</span> loop, tests of this form:
+</p>
+<div class="codebox"><pre><code><span class="hljs-keyword">if</span> (frameCount <span class="hljs-punctuation">==</span> <span class="hljs-number">200</span>) { doSomething(); }</code></pre></div>
+<p class="noindent">
+    I&rsquo;m trying to find a nicely structured way of organizing a list of events inside an animation film. I don&rsquo;t like to have a long list of tests such as
+</p>
+<p class="noindent">
+    in my <span class="inline-code">draw()</span> loop; it seems very messy.
+</p>
+<p>
+    The <span class="inline-code">eventSheet</span> is an object that has numeric property names, and each property is a function to be executed when the <span class="inline-code">frameCount</span> is equal to its name. It&rsquo;s good for when you want to orchestrate various events at <span class="italic">deliberate but not algorithmically defined</span> moments.
+</p>
+
+<div class="codebox"><pre><code><span class="hljs-keyword">let</span> eventSheet<span class="hljs-punctuation"> = </span>{
+    <span class="hljs-number">10</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+        <span class="hljs-built_in">console</span><span class="hljs-punctuation">.</span>log(<span class="hljs-string">"Yeah<span class="hljs-punctuation">!</span> Ten frames<span class="hljs-punctuation">!</span>"</span>);
+    },
+    <span class="hljs-number">20</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+        <span class="hljs-built_in">console</span><span class="hljs-punctuation">.</span>log(<span class="hljs-string">"Twenty frames<span class="hljs-punctuation">!</span> Good job<span class="hljs-punctuation">!</span>"</span>);
+    },
+    <span class="hljs-attr">run</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">f</span>) </span>{
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>[f]) {
+            <span class="hljs-keyword">this</span>[f]();
+        }
+    }
+};
+
+<span class="hljs-comment">// What it would look like inside the draw() loop:</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">draw</span>(<span class="hljs-params"></span>) </span>{
+    eventSheet<span class="hljs-punctuation">.</span>run(frameCount);    
+}</code></pre></div>
+
+<p class="noindent">
+    But what if you want to be able to move those moments in time relative to each other without altering <span class="italic">all</span> the property names? You could maybe alter the <span class="inline-code">run()</span> method of the <span class="italic">eventSheet</span>, like so :
+</p>
+<div class="codebox"><pre><code><span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">f</span>) </span>{
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>[f<span class="hljs-punctuation"> + </span><span class="hljs-number">20</span>]) {
+        <span class="hljs-keyword">this</span>[f<span class="hljs-punctuation"> + </span><span class="hljs-number">20</span>]();
+    }
+}</code></pre></div>
+<p class="noindent">
+    But it does seem very impractical.
+</p>
+
+<div class="codebox"><pre><code><span class="hljs-keyword">let</span> eventSheet<span class="hljs-punctuation"> = </span>{
+    <span class="hljs-attr">bigExplosion</span>: {
+        <span class="hljs-attr">t</span>: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-number">10</span>, 
+        <span class="hljs-attr">f</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+            <span class="hljs-built_in">console</span><span class="hljs-punctuation">.</span>log(<span class="hljs-string">"Yeah<span class="hljs-punctuation">!</span> Ten frames<span class="hljs-punctuation">!</span>"</span>);
+        },
+    },
+    <span class="hljs-attr">quietMoment</span>: {
+        <span class="hljs-attr">t</span>: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> eventSheet<span class="hljs-punctuation">.</span>bigExplosion<span class="hljs-punctuation">.</span>t()<span class="hljs-punctuation"> + </span><span class="hljs-number">10</span>,
+        <span class="hljs-attr">f</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+            <span class="hljs-built_in">console</span><span class="hljs-punctuation">.</span>log(<span class="hljs-string">"Twenty frames<span class="hljs-punctuation">!</span> Good job<span class="hljs-punctuation">!</span>"</span>);
+        },
+    },
+    <span class="hljs-attr">run</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">f</span>) </span>{
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>[f]) {
+            <span class="hljs-keyword">this</span>[f]();
+        }
+    }
+};</code></pre></div>
+<p class="noindent">
+    Et évidemment, il peut être intéressant de définir une <span class="inline-code">eventSheet</span> de façon à ce qu&rsquo;elle puisse être elle-même générée algorithmiquement. Je pourrais créer algorithmiquement des séquences d&rsquo;évènements et ensuite, sélectionner les plus intéressantes séquences et les sauvegarder dans des fichiers <span class="small-caps">json</span>.
+</p>
+
+<h3>Context</h3>
+<p class="noindent">
+    <span class="small-caps">This blog post</span> is part of my research project <span class="italic">Towards an algorithmic cinema</span>, started in April 2018. I invite you to read <a href="https://pelletierauger.github.io/en/blog/2018/4/towards-an-algorithmic-cinema.html">the first blog post of the project</a> to learn more about it.
+</p>
+            </article>
+            <div id="footer">Guillaume Pelletier-Auger &mdash; 2016-2018
+    </div>
+    </body>
+    </html>

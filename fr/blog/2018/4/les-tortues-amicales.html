@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Guillaume Pelletier-Auger - Les tortues amicales</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=4, user-scalable=yes" />
+        <link href="../../../../style/style.css" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Inconsolata|EB+Garamond" rel="stylesheet">
+        <link href="../../../../style/code.css" rel="stylesheet" type="text/css">
+    </head><body>
+    <nav>
+        <h1><a href="../../../../fr/">Guillaume <span class="nobreak">Pelletier-Auger</span></a></h1>
+        <ul>
+            <li><a href="../../../../fr/">Projets</a></li>
+            <li class = "selected"><a href="../../../../fr/blog/">Blog</a></li>
+            <li><a href="../../../../fr/a-propos.html">À propos</a></li>
+            <li><a href="../../../../en/blog/2018/4/friendly-turtles.html">Fr &#8594; En</a></li>
+        </ul>
+    </nav>
+    
+            <article>
+                <h2 class="with-date">Les tortues amicales</h2><div class="description">
+                    Formes collectives qui émergent de comportements individuels.
+
+            </div>
+                <div class="date">18 avril 2018</div>
+                
+
+<p class="noindent">
+    <span class="small-caps">L&rsquo;animation ci-dessus</span> est inspirée des idées derrières <span class="italic">Heroes and Cowards</span>, un modèle à base d&rsquo;agents créé par William Rand et Uri Wilensky, mais il s&rsquo;agit d&rsquo;une altération tout de même très distante de ce modèle.
+</p>
+<p>
+    Les principes de l&rsquo;animation sont simples&nbsp;: chaque point noir représente une <span class="italic">tortue</span> qui peut recevoir des instructions et qui possède aussi un certain comportement. Lorsque l&rsquo;animation démarre, chacune des tortues est associée à deux <span class="italic">amies</span> (deux autres points parmi le groupe). Ensuite, entre chaque nouvelle image de l&rsquo;animation, chacune des tortues s&rsquo;approche très légèrement du point équidistant entre ses deux amies.
+</p>
+<p>
+    Toutes les tortues ont donc un comportement individuel identique, mais puisque la position initiale de chacune des tortues est différente, il en résulte un comportement de groupe complexe.
+</p>
+
+<!-- read-more -->
+
+<!-- Each dot in the animation represents a “turtle” that can be given instructions and that possesses simple behaviours. When the animation starts, each turtle selects two friends among the group of turtles, and then, it tries to position itself exactly in between those two friends. The resulting animation is formed by the combined behaviours of all turtles—it&rsquo;s the <span class="italic">emergent</span> shape of all their individual actions. -->
+
+<h3>Feuilles d&rsquo;animation</h3>
+
+<p class="noindent">
+    <span class="small-caps">Cette courte animation</span> offre une opportunité de réfléchir aux <span class="italic">feuilles d&rsquo;animation</span> (en anglais, <span class="italic">x-sheet</span> ou <span class="italic">exposure sheets</span>), cet outil qui a une grande importance dans le domaine de l&rsquo;animation traditionnelle mais qui, à ma connaissance, est rarement transposé en cinéma algorithmique.
+</p>
+<p>
+    Il arrive souvent, lors de la création d&rsquo;une animation algorithmique, que l&rsquo;on veuille ajouter un évènement précis à un moment précis (donc, intervenir dans le processus de l&rsquo;animation en cours). Il est très rapide de réaliser ceci avec une simple expression conditionnelle&nbsp;:
+</p>
+
+<div class="codebox"><pre><code><span class="hljs-keyword">if</span> (frameCount <span class="hljs-punctuation">==</span> <span class="hljs-number">200</span>) { intervene(); }</code></pre></div>
+
+<p class="noindent">
+    Cependant, une accumulation de telles expressions conditionnelles devient promptement désagréable et difficile à gérer.
+</p>
+
+<div class="codebox"><pre><code><span class="hljs-keyword">let</span> eventSheet<span class="hljs-punctuation"> = </span>{
+    <span class="hljs-number">10</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+        <span class="hljs-built_in">console</span><span class="hljs-punctuation">.</span>log(<span class="hljs-string">"Yeah<span class="hljs-punctuation">!</span> Ten frames<span class="hljs-punctuation">!</span>"</span>);
+    },
+    <span class="hljs-number">20</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+        <span class="hljs-built_in">console</span><span class="hljs-punctuation">.</span>log(<span class="hljs-string">"Twenty frames<span class="hljs-punctuation">!</span> Good job<span class="hljs-punctuation">!</span>"</span>);
+    },
+    <span class="hljs-attr">run</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">f</span>) </span>{
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>[f]) {
+            <span class="hljs-keyword">this</span>[f]();
+        }
+    }
+};
+
+<span class="hljs-comment">// À quoi ressemblerait l'activation </span>
+<span class="hljs-comment">// de cette feuille dans la boucle draw():</span>
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">draw</span>(<span class="hljs-params"></span>) </span>{
+    eventSheet<span class="hljs-punctuation">.</span>run(frameCount);    
+}</code></pre></div>
+
+<h3>Notes éparses</h3>
+
+<p class="noindent">
+    <span class="small-caps">Serait-il possible</span> de faire apparaître les nouvelles spirales de façon progressive&nbsp;? En apparaissant de façon progressive, peut-être se déformeraient-elles suffisamment en chemin pour ne jamais ressembler à des spirales. Ou peut-être que pendant son apparition, une nouvelle spirale pourrait être déconnectée du reste des tortues. Pourrais-je imaginer différents groupes de tortues entre lesquels les «&nbsp;amitiés&nbsp;» seraient impossibles&nbsp;?
+</p>
+<p>
+    Dans son cours
+        <label for="question" class="margin-toggle">&mdash;
+        </label>
+        <input type="checkbox" id="question" class="margin-toggle" />
+        <span class="marginnote-left"><span class="italic8">«&nbsp;Construire vers une question.&nbsp;»</span></span> <span class="italic">Introduction à la modélisation à base d&rsquo;agents</span>, William Rand explique qu&rsquo;il est important, dès la conception d&rsquo;un modèle, de chercher à «&nbsp;construire vers une question&nbsp;», c&rsquo;est-à-dire qu&rsquo;un modèle doit répondre à une question précise (il s&rsquo;agit, après tout, d&rsquo;un outil scientifique). Évidemment, ce point est difficile à considérer lors de la création de modèles à buts artistiques — il peut sembler ici qu&rsquo;on ne construit pas vers des questions, mais je crois que c&rsquo;est une impression fausse. Les questions sont simplement différentes, et peut-être plus floues.
+</p>
+<p>
+    Par exemple, si je veux enchaîner différentes scènes animées semblables à certains égards à celle ci-dessus afin de créer un court film d&rsquo;animation, je peux me demander&nbsp;: «&nbsp;Quels types de comportements pourraient générer des “danses géométriques” de diverses natures mais dont l&rsquo;ensemble aurait une cohérence&nbsp;?&nbsp;» Ou&nbsp;: «&nbsp;Comment la couleur pourrait-elle être intégrée dans ce type de danse&nbsp;? Des tortues de couleurs différentes auraient-elles des comportements différents&nbsp;? Si oui, quelles pourraient être ces différences et quelles conséquences auraient-elles sur les animations obtenues&nbsp;? Les tortues pourraient-elles changer de couleur&nbsp;? Que pourraient représenter ces couleurs, au juste&nbsp;?&nbsp;»
+</p>
+<p>
+    En voyant cette animation,
+        <label for="son" class="margin-toggle">&mdash;
+        </label>
+        <input type="checkbox" id="son" class="margin-toggle" />
+        <span class="marginnote-left"><span class="italic8">Considérations<br>sonores.</span></span> j&rsquo;ai aussi envie d&rsquo;en créer une nouvelle version qui répondrait au son. Par exemple, divers moments d&rsquo;une pièce de musique pourraient faire apparaître de nouvelles tortues, et la hauteur et la vélocité des notes jouées pourraient déterminer certaines propriétés des nouvelles tortues.
+</p>
+
+<h3>Contexte</h3>
+
+<p class="noindent">
+    <span class="small-caps">Cette note de blog</span> fait partie de mon projet de recherche <span class="italic">Vers un cinéma algorithmique</span>, démarré en avril 2018. Je vous invite à consulter <a href="https://pelletierauger.github.io/fr/blog/2018/4/vers-un-cinema-algorithmique.html">la toute première note du projet</a> pour en apprendre davantage.
+</p>
+
+
+            </article>
+            <div id="footer">Guillaume Pelletier-Auger &mdash; 2016-2018
+    </div>
+    </body>
+    </html>
