@@ -4,12 +4,82 @@
 <!-- fr-title -->Les tortues amicales
 <!-- fr-description -->Formes collectives qui émergent de comportements individuels.
 <!-- fr-content -->
+
 <pn>
-    <sc>L'animation ci-dessus</sc> est inspirée des idées derrières <i>Heroes and Cowards</i>, un modèle à base d'agents NetLogo créé par William Rand et Uri Wilensky (mais il s'agit tout de même d'une altération très distante de ce modèle).
+    <sc>L'animation ci-dessus</sc> est inspirée des idées derrières <i>Heroes and Cowards</i>, un modèle à base d'agents créé par William Rand et Uri Wilensky, mais il s'agit d'une altération tout de même très distante de ce modèle.
 </pn>
 <p>
-    Serait-il possible de faire apparaître les nouvelles spirales de façon progressive ? En apparaissant de façon progressive, peut-être se déformeraient-elles suffisamment en chemin pour ne jamais ressembler à des spirales. Ou peut-être que pendant son apparition, une nouvelle spirale pourrait être déconnectée du reste des tortues. Pourrais-je imaginer différents groupes de tortues entre lesquels les « amitiés » pourraient être impossibles ?
+    Les principes de l'animation sont simples : chaque point noir représente une <i>tortue</i> qui peut recevoir des instructions et qui possède aussi un certain comportement. Lorsque l'animation démarre, chacune des tortues est associée à deux <i>amies</i> (deux autres points parmi le groupe). Ensuite, entre chaque nouvelle image de l'animation, chacune des tortues s'approche très légèrement du point équidistant entre ses deux amies.
 </p>
+<p>
+    Toutes les tortues ont donc un comportement individuel identique, mais puisque la position initiale de chacune des tortues est différente, il en résulte un comportement de groupe complexe.
+</p>
+
+<!-- read-more -->
+
+<!-- Each dot in the animation represents a “turtle” that can be given instructions and that possesses simple behaviours. When the animation starts, each turtle selects two friends among the group of turtles, and then, it tries to position itself exactly in between those two friends. The resulting animation is formed by the combined behaviours of all turtles—it's the <i>emergent</i> shape of all their individual actions. -->
+
+<h3>Feuilles d'animation</h3>
+
+<pn>
+    <sc>Cette courte animation</sc> offre une opportunité de réfléchir aux <i>feuilles d'animation</i> (en anglais, <i>x-sheet</i> ou <i>exposure sheets</i>), cet outil qui a une grande importance dans le domaine de l'animation traditionnelle mais qui, à ma connaissance, est rarement transposé en cinéma algorithmique.
+</pn>
+<p>
+    Il arrive souvent, lors de la création d'une animation algorithmique, que l'on veuille ajouter un évènement précis à un moment précis (donc, intervenir dans le processus de l'animation en cours). Il est très rapide de réaliser ceci avec une simple expression conditionnelle :
+</p>
+
+<code>
+if (frameCount == 200) { intervene(); }
+</code>
+
+<pn>
+    Cependant, une accumulation de telles expressions conditionnelles devient promptement désagréable et difficile à gérer.
+</pn>
+
+<code>
+let eventSheet = {
+    10: function(){
+        console.log("Yeah! Ten frames!");
+    },
+    20: function(){
+        console.log("Twenty frames! Good job!");
+    },
+    run: function(f) {
+        if (this[f]) {
+            this[f]();
+        }
+    }
+};
+
+// À quoi ressemblerait l'activation 
+// de cette feuille dans la boucle draw() :
+
+function draw() {
+    eventSheet.run(frameCount);    
+}
+</code>
+
+<h3>Notes éparses</h3>
+
+<pn>
+    <sc>Serait-il possible</sc> de faire apparaître les nouvelles spirales de façon progressive ? En apparaissant de façon progressive, peut-être se déformeraient-elles suffisamment en chemin pour ne jamais ressembler à des spirales. Ou peut-être que pendant son apparition, une nouvelle spirale pourrait être déconnectée du reste des tortues. Pourrais-je imaginer différents groupes de tortues entre lesquels les « amitiés » seraient impossibles ?
+</pn>
+<p>
+    Dans son cours<mnl label="question"><i8>« Construire vers une question. »</i8></mnl> <i>Introduction à la modélisation à base d'agents</i>, William Rand explique qu'il est important, dès la conception d'un modèle, de chercher à « construire vers une question », c'est-à-dire qu'un modèle doit répondre à une question précise (il s'agit, après tout, d'un outil scientifique). Évidemment, ce point est difficile à considérer lors de la création de modèles à buts artistiques — il peut sembler ici qu'on ne construit pas vers des questions, mais je crois que c'est une impression fausse. Les questions sont simplement différentes, et peut-être plus floues.
+</p>
+<p>
+    Par exemple, si je veux enchaîner différentes scènes animées semblables à certains égards à celle ci-dessus afin de créer un court film d'animation, je peux me demander : « Quels types de comportements pourraient générer des “danses géométriques” de diverses natures mais dont l'ensemble aurait une cohérence ? » Ou : « Comment la couleur pourrait-elle être intégrée dans ce type de danse ? Des tortues de couleurs différentes auraient-elles des comportements différents ? Si oui, quelles pourraient être ces différences et quelles conséquences auraient-elles sur les animations obtenues ? Les tortues pourraient-elles changer de couleur ? Que pourraient représenter ces couleurs, au juste ? »
+</p>
+<p>
+    En voyant cette animation,<mnl label="son"><i8>Considérations<br>sonores.</i8></mnl> j'ai aussi envie d'en créer une nouvelle version qui répondrait au son. Par exemple, divers moments d'une pièce de musique pourraient faire apparaître de nouvelles tortues, et la hauteur et la vélocité des notes jouées pourraient déterminer certaines propriétés des nouvelles tortues.
+</p>
+
+<h3>Contexte</h3>
+
+<pn>
+    <sc>Cette note de blog</sc> fait partie de mon projet de recherche <i>Vers un cinéma algorithmique</i>, démarré en avril 2018. Je vous invite à consulter <a href="https://pelletierauger.github.io/fr/blog/2018/4/vers-un-cinema-algorithmique.html">la toute première note du projet</a> pour en apprendre davantage.
+</pn>
+
 <!-- en-title -->Friendly turtles
 <!-- en-description -->Collective shapes emerging from individual behaviours.
 <!-- en-content -->
@@ -103,4 +173,9 @@ let eventSheet = {
 </code>
 <pn>
     Et évidemment, il peut être intéressant de définir une <ic>eventSheet</ic> de façon à ce qu'elle puisse être elle-même générée algorithmiquement. Je pourrais créer algorithmiquement des séquences d'évènements et ensuite, sélectionner les plus intéressantes séquences et les sauvegarder dans des fichiers <sc>json</sc>.
+</pn>
+
+<h3>Context</h3>
+<pn>
+    <sc>This blog post</sc> is part of my research project <i>Towards an algorithmic cinema</i>, started in April 2018. I invite you to read <a href="https://pelletierauger.github.io/en/blog/2018/4/towards-an-algorithmic-cinema.html">the first blog post of the project</a> to learn more about it.
 </pn>
