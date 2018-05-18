@@ -5,13 +5,13 @@
 <!-- fr-description -->Quelques explorations vagabondes autour de la suite logistique.
 <!-- fr-content -->
 <pn>
-    <sc>La semaine dernière,</sc> j'apprenais l'existence de la <i>suite logistique</i> et cherchais à en comprendre le fonctionnement. Depuis, j'ai visualisé le champ de cette fonction de diverses manières, afin de mieux voir ses propriétés et ses potentielles applications en art algorithmique. Le code écrit pour réaliser le matériel ci-dessous peut-être lu <a href="https://github.com/pelletierauger/Logistic-Map">sur GitHub</a>.
+    <sc>La semaine dernière,</sc> j'apprenais l'existence de la <i>suite logistique</i> et cherchais à en comprendre le fonctionnement. Depuis, j'ai visualisé le champ de cette fonction de diverses manières, afin de mieux voir ses propriétés et ses potentielles applications artistiques. Le code écrit pour réaliser le matériel ci-dessous peut-être lu <a href="https://github.com/pelletierauger/Logistic-Map">sur GitHub</a>.
 </pn>
 <!-- read-more -->
 <h3>Mouvements sinueux</h3>
 
 <pn>
-    <sc>Comme je suis habitué</sc> à m'amuser avec des fonctions trigonométriques, j'ai d'abord pensé à transformer le résultat de la suite logistique avec les fonctions sinus et &nbsn;cosinus.<snl label="sketch8b">Le code de cette expérience est contenu dans le fichier <a href=""><ic>sketch8b.js</ic></a> dans le dossier GitHub du projet.</snl> La première image ci-dessous est divisée en <im>25600</im> lignes verticales (représentant la valeur <im>x</im> de <im>0</im> à <im>25599</im>). À chacune de ces <im>25600</im> positions de <im>x</im>, une valeur <im>t</im> est calculée ainsi :
+    <sc>Comme je suis habitué</sc> à m'amuser avec des fonctions trigonométriques, j'ai d'abord pensé à transformer le résultat de la suite logistique avec les fonctions sinus et &nbsn;cosinus.<snl label="sketch8b">Le code de cette expérience est contenu dans le fichier <a href="https://github.com/pelletierauger/Logistic-Map/blob/master/sketch8b.js"><ic8>sketch8b.js</ic8></a> dans le dossier GitHub du projet.</snl> La première image ci-dessous est divisée en <im>25600</im> lignes verticales (représentant la valeur <im>x</im> de <im>0</im> à <im>25599</im>). À chacune de ces <im>25600</im> positions de <im>x</im>, une valeur <im>t</im> est calculée ainsi :
 </pn>
 
 <math>
@@ -42,7 +42,7 @@
 <h3>Vers les profondeurs</h3>
 
 <pn>
-    <sc>J'étais très curieux</sc> de me promener à l'intérieur de ces résultats. Pour ce faire, j'ai conçu une &nbsn;animation<snr label="sketch8">Le code de cette animation se trouve dans le fichier <a href=""><ic>sketch8.js</ic></a> sur GitHub.</snr> dans laquelle tous les principes détaillés ci-dessus sont utilisés, à une importante différence près. La valeur <im>t_x</im>, qui s'exprimait jusqu'ici <im>t_x = 0.012 + x \times 0.000001</im>, s'exprime maintenant ainsi :
+    <sc>J'étais très curieux</sc> de me promener à l'intérieur de ces résultats. Pour ce faire, j'ai conçu une &nbsn;animation<snr label="sketch8">Le code de cette animation se trouve dans le fichier <a href="https://github.com/pelletierauger/Logistic-Map/blob/master/sketch8.js"><ic8>sketch8.js</ic8></a> sur GitHub.</snr> dans laquelle tous les principes détaillés ci-dessus sont utilisés, à une importante différence près. La valeur <im>t_x</im>, qui s'exprimait jusqu'ici <im>t_x = 0.012 + x \times 0.000001</im>, s'exprime maintenant ainsi :
 </pn>
 
 <math>
@@ -65,10 +65,10 @@
 <h3>Brisures et irrégularités</h3>
 
 <pn>
-    <sc>Une autre chose</sc> que j'étais très curieux de faire lorsque j'ai vu le motif créé par la fonction sinus et la suite logistique était de le <i>briser</i>. Je trouve souvent que briser un objet mathématique aide à mieux le connaître — la façon dont un objet se brise, si elle ne révèle pas nécessairement comment il s'est formé, est tout de même propice à révéler certaines propriétés de sa structure.
+    <sc>Une autre chose</sc> que j'étais très curieux de faire lorsque j'ai vu le motif créé par la fonction sinus et la suite logistique était de le &nbsn;<i>briser</i>.<snl label="briser">J'utilise le terme <i8>briser</i8> d'une façon très libre et plutôt vague. Je considère que je <i8>brise</i8> un objet mathématique lorsque j'en altère certaines propriétés de façon arbitraire afin d'observer le résultat.</snl> Je trouve souvent que briser un objet mathématique aide à mieux le connaître — la façon par laquelle un objet se brise, si elle ne révèle pas nécessairement comment il s'est formé, est tout de même propice à révéler certaines propriétés de sa structure.
 </pn>
 <p>
-    La première image ci-dessous a été créée en croisant le résultat de deux séquences de nombres (<ic>t</ic> et <ic>t2</ic>) obtenues par itérations dans la suite logistique à partir de points de départs différents. Voici la partie du code dans lequel ces calculs sont faits (le code complet est dans le fichier <ic>sketch3.js</ic> sur GitHub)&nbsp;:
+    La première image ci-dessous a été créée en croisant le résultat de deux séquences de nombres (<ic>t</ic> et <ic>t2</ic>) obtenues par itérations dans la suite logistique à partir de points de départs différents. Voici la partie du code dans lequel ces calculs sont &nbsn;faits<snr label="sketch3">Le code complet est dans le fichier <ic8>sketch3.js</ic8> sur GitHub. </snr>&nbsp;:
 </p>
 <code>
 function draw() {
