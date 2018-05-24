@@ -143,13 +143,13 @@
                 
 
 <p class="noindent">
-    <span class="small-caps">Cet article</span> consiste en une série de notes un peu éparpillées prises alors que je me familiarise avec les <a href="https://fr.wikipedia.org/wiki/Algorithme_g%C3%A9n%C3%A9tique">algorithmes génétiques</a> et, plus particulièrement, leurs applications dans les automates cellulaires. Je ne suis pas certain que ces notes puissent servir à quiconque à part moi, mais je les inclus tout de même dans ce blog qui me sert de journal de travail.
+    <span class="small-caps">Cet article</span> consiste en une série de notes un peu éparpillées prises alors que je me familiarise avec les <a href="https://fr.wikipedia.org/wiki/Algorithme_g%C3%A9n%C3%A9tique">algorithmes génétiques</a> et, plus particulièrement, leurs applications dans les automates cellulaires. Je ne suis pas certain que ces notes puissent servir à quiconque à part moi, mais elles ont néanmoins leur place dans un journal de travail.
 </p>
 
 <!-- read-more -->
 
 <p>
-    Si un système d’automates cellulaires a un «&nbsp;voisinage&nbsp;» de 9 cellules, et que chacune de ces cellulaires peut avoir un état de 0, 1 ou 2, un exemple de voisinage possible pourrait s’écrire&nbsp;: <span class="inline-code">"101022010"</span>. Ça me limiterait cependant à 10 états possibles (de 0 à 9). Une autre façon d’encoder ce voisinage serait&nbsp;:
+    Si un système d’automates cellulaires a un «&nbsp;voisinage&nbsp;» de 9 cellules, et que chacune de ces cellules peut avoir un état de 0, 1 ou 2, un exemple de voisinage possible pourrait s’écrire&nbsp;: <span class="inline-code">"101022010"</span>. Ça me limiterait cependant à 10 états possibles (de 0 à 9). Une autre façon d’encoder ce voisinage serait&nbsp;:
 </p>
 
 <div class="codebox"><pre><code><span class="hljs-keyword">let</span> neighborhood<span class="hljs-punctuation"> = </span>[<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">11</span>, <span class="hljs-number">13</span>, <span class="hljs-number">2</span>, <span class="hljs-number">20</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>];</code></pre></div>
@@ -287,6 +287,12 @@ Scene<span class="hljs-punctuation">.</span>prototype<span class="hljs-punctuati
 </p>
 <p>
     Le fichier d’un individu contiendra à la fois son <span class="small-caps">«&nbsp;adn&nbsp;»</span> et son score. Ce sera beaucoup plus simple ainsi. Très important&nbsp;: un individu doit aussi contenir sa base, et une population est en fait «&nbsp;l’ensemble des individus sauvegardés sur le disque qui ont la même base&nbsp;». Je ne peux évidemment pas croiser des individus à bases différentes. Donc, lorsque je commence une «&nbsp;session&nbsp;» d’expérimentations, je dois choisir ma base, et celle-ci permettra à mon système de ne considérer qu’un sous-ensemble de tous les individus sauvegardés sur le disque.
+</p>
+
+<h3>Conclusions du moment</h3>
+
+<p class="noindent">
+    <span class="small-caps">Pour l’instant,</span> je ne suis pas satisfait des résultats de cette première expérience avec les algorithmes génétiques. J’ai appris beaucoup de choses à propos de structures de données qui peuvent aider à gérer certains éléments de ces algorithmes, mais les animations que j’ai créées lors de ces apprentissages ne sont pas très intéressantes. Il me faudra plus temps pour créer un système d’algorithmes génétiques entier, qui incluera notamment des moyens de comparer la performance des individus d’une population.
 </p>
 
 <h3>Contexte</h3>

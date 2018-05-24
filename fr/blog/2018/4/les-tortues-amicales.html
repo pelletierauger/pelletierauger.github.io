@@ -46,13 +46,13 @@
     <span class="small-caps">Cette courte animation</span> offre une opportunité de réfléchir aux <span class="italic">feuilles d&rsquo;animation</span> (en anglais, <span class="italic">x-sheet</span> ou <span class="italic">exposure sheets</span>), cet outil qui a une grande importance dans le domaine de l&rsquo;animation traditionnelle mais qui, à ma connaissance, est rarement transposé en cinéma algorithmique.
 </p>
 <p>
-    Il arrive souvent, lors de la création d&rsquo;une animation algorithmique, que l&rsquo;on veuille ajouter un évènement précis à un moment précis (donc, intervenir dans le processus de l&rsquo;animation en cours). Il est très rapide de réaliser ceci avec une simple expression conditionnelle&nbsp;:
+    Il arrive souvent, lors de la création d&rsquo;une animation algorithmique, que l&rsquo;on veuille ajouter un évènement précis à un moment précis (donc, intervenir dans le processus de l&rsquo;animation en cours). Il est très simple de réaliser ceci avec une expression conditionnelle&nbsp;:
 </p>
 
 <div class="codebox"><pre><code><span class="hljs-keyword">if</span> (frameCount <span class="hljs-punctuation">==</span> <span class="hljs-number">200</span>) { intervene(); }</code></pre></div>
 
 <p class="noindent">
-    Cependant, une accumulation de telles expressions conditionnelles devient promptement désagréable et difficile à gérer.
+    Cependant, une accumulation de telles expressions conditionnelles devient rapidement désagréable et difficile à gérer.
 </p>
 
 <div class="codebox"><pre><code><span class="hljs-keyword">let</span> eventSheet<span class="hljs-punctuation"> = </span>{
