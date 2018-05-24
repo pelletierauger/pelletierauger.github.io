@@ -1,13 +1,17 @@
 <!-- year -->2018
 <!-- month -->04
-<!-- day -->19
+<!-- day -->16
 <!-- fr-title -->Méandres logistiques
 <!-- fr-description -->Quelques explorations vagabondes autour de la suite logistique.
+<!-- fr-excerpt -->
+<p class="noindent">
+    <span class="small-caps">La semaine dernière,</span> j'apprenais l'existence de la <span class="italic">suite logistique</span> et cherchais à en comprendre le fonctionnement. Depuis, j'ai visualisé le champ de cette fonction de diverses manières, afin de mieux voir ses propriétés et ses potentielles applications artistiques. Le code écrit pour réaliser le matériel ci-dessous peut-être lu et téléchargé <a href="https://github.com/pelletierauger/Logistic-Map">sur GitHub</a>.
+</p>
 <!-- fr-content -->
 <pn>
-    <sc>La semaine dernière,</sc> j'apprenais l'existence de la <i>suite logistique</i> et cherchais à en comprendre le fonctionnement. Depuis, j'ai visualisé le champ de cette fonction de diverses manières, afin de mieux voir ses propriétés et ses potentielles applications artistiques. Le code écrit pour réaliser le matériel ci-dessous peut-être lu <a href="https://github.com/pelletierauger/Logistic-Map">sur GitHub</a>.
+    <a href="https://pelletierauger.github.io/fr/blog/2018/4/la-suite-logistique.html"><sc>La semaine dernière,</sc></a> j'apprenais l'existence de la <i>suite logistique</i> et cherchais à en comprendre le fonctionnement. Depuis, j'ai visualisé le champ de cette fonction de diverses manières, afin de mieux voir ses propriétés et ses potentielles applications artistiques. Le code écrit pour réaliser le matériel ci-dessous peut-être lu et téléchargé <a href="https://github.com/pelletierauger/Logistic-Map">sur GitHub</a>.
 </pn>
-<!-- read-more -->
+
 <h3>Mouvements sinueux</h3>
 
 <pn>
@@ -37,8 +41,6 @@
 
 <img class="full-size-image" src="../../../images/logistic-map/logistic-map-cos-function-00000.png">
 
-<!-- read-more -->
-
 <h3>Vers les profondeurs</h3>
 
 <pn>
@@ -50,7 +52,7 @@
 </math>
 
 <pn>
-    Cette nouvelle valeur <im>a</im> représente le numéro d'image de l'animation, qui commence à <im>1</im> et augmente de <im>1</im> à chaque nouvelle image. Ce changement dans <im>t_x</im> a pour conséquence de réduire de façon exponentielle, d'image en image, l'incrément de la valeur <im>t</im> qui est envoyée à chacun des <im>25600</im> systèmes dynamiques indépendants. D'une certaine façon, c'est comme si nous nous déplacions de plus en plus lentement à l'intérieur de la suite logistique. On pourrait aussi dire que nous « étirons » les résultats de la suite logistique horizontalement.
+    Cette nouvelle variable <im>a</im> représente le numéro d'image de l'animation, qui commence à <im>1</im> et augmente de <im>1</im> à chaque nouvelle image. Ce changement dans <im>t_x</im> a pour conséquence de réduire de façon exponentielle, d'image en image, l'incrément de la valeur <im>t</im> qui est envoyée à chacun des <im>25600</im> systèmes dynamiques indépendants. D'une certaine façon, c'est comme si nous nous déplacions de plus en plus lentement à l'intérieur de la suite logistique. On peut aussi dire que nous « étirons » les résultats de la suite logistique horizontalement.
 </pn>
 <p>
     L'animation ci-dessous, qui résulte de tout ça, illustre de façon très claire les propriétés fractales de la suite logistique : à chaque image, nous observons une part de plus en plus petite de cette équation, cependant les mêmes formes apparaissent à toutes les échelles.
@@ -65,10 +67,10 @@
 <h3>Brisures et irrégularités</h3>
 
 <pn>
-    <sc>Une autre chose</sc> que j'étais très curieux de faire lorsque j'ai vu le motif créé par la fonction sinus et la suite logistique était de le &nbsn;<i>briser</i>.<snl label="briser">J'utilise le terme <i8>briser</i8> d'une façon très libre et plutôt vague. Je considère que je <i8>brise</i8> un objet mathématique lorsque j'en altère certaines propriétés de façon arbitraire afin d'observer le résultat.</snl> Je trouve souvent que briser un objet mathématique aide à mieux le connaître — la façon par laquelle un objet se brise, si elle ne révèle pas nécessairement comment il s'est formé, est tout de même propice à révéler certaines propriétés de sa structure.
+    <sc>Une autre chose</sc> que j'étais très curieux de faire lorsque j'ai vu le motif créé par la fonction sinus et la suite logistique était de le &nbsn;<i>briser</i>.<snl label="briser">J'utilise le terme <i8>briser</i8> d'une façon très libre et vague. Je considère que je « brise » un objet mathématique lorsque j'en altère certaines propriétés de façon arbitraire afin d'observer les résultats.</snl> Je trouve souvent que briser un objet mathématique aide à mieux le connaître — la façon par laquelle un objet se brise, si elle ne révèle pas nécessairement comment il s'est formé, est tout de même propice à révéler certaines propriétés de sa structure.
 </pn>
 <p>
-    La première image ci-dessous a été créée en croisant le résultat de deux séquences de nombres (<ic>t</ic> et <ic>t2</ic>) obtenues par itérations dans la suite logistique à partir de points de départs différents. Voici la partie du code dans lequel ces calculs sont &nbsn;faits<snr label="sketch3">Le code complet est dans le fichier <ic8>sketch3.js</ic8> sur GitHub. </snr>&nbsp;:
+    La première image ci-dessous a été créée en croisant le résultat de deux séquences de nombres (<ic>t</ic> et <ic>t2</ic>) obtenues par itérations dans la suite logistique à partir de points de départs différents. Voici la partie du code dans lequel ces calculs sont &nbsn;faits<snr label="sketch3">Le code complet se trouve dans le fichier <a href="https://github.com/pelletierauger/Logistic-Map/blob/master/sketch3.js"><ic8>sketch3.js</ic8></a>.</snr>:
 </p>
 <code>
 function draw() {
@@ -91,8 +93,13 @@ function draw() {
 <img class="full-size-image" src="../../../images/logistic-map/logistic-field.jpg">
 
 <pn>
-    J'ai ensuite réalisé une autre animation de « plongée en profondeur » avec une de ces « suites logistiques brisées ».
+    J'ai ensuite réalisé une autre animation de « plongée en profondeur » avec une de ces « suites logistiques brisées ». Ici, alors que je n'utilisais précédemment que des suites de nombres calculées de façons simples et élégantes, comme ceci :
 </pn>
+<math>
+    x_{t+1} = Rx_t(1-x_t)
+    x_{t+1} = Rx_t(1-x_t)
+</math>
+
 
 <h3>Contexte</h3>
 
