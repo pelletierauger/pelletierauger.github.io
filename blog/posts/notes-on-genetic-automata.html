@@ -1,18 +1,17 @@
 <!-- year -->2018
 <!-- month -->05
-<!-- day -->09
-<!-- fr-title -->Automates cellulaires génétiques
-<!-- fr-description -->Notes éparses à propos d'un système en construction.
+<!-- day -->12
+<!-- style -->notes-on-genetic-automata
+<!-- fr-title -->Notes sur les automates génétiques
+<!-- fr-description -->Pour un système en construction.
 <!-- fr-content -->
 
 <pn>
-    <sc>Cet article</sc> consiste en une série de notes un peu éparpillées prises alors que je me familiarise avec les <a href="https://fr.wikipedia.org/wiki/Algorithme_g%C3%A9n%C3%A9tique">algorithmes génétiques</a> et, plus particulièrement, leurs applications dans les automates cellulaires. Je ne suis pas certain que ces notes puissent servir à quiconque à part moi, mais elles ont néanmoins leur place dans un journal de travail.
+    <img class="genetic-drop-caps" src="../../../images/c.jpg"><sc>et article</sc> contient une série de notes un peu éparpillées prises alors que je me familiarise avec les algorithmes génétiques et, plus particulièrement, leurs applications dans les automates cellulaires. Je ne suis pas certain que ces notes puissent servir à quiconque à part moi, mais elles ont néanmoins leur place dans un journal de travail.
 </pn>
 
-<!-- read-more -->
-
 <p>
-    Si un système d'automates cellulaires a un « voisinage » de 9 cellules, et que chacune de ces cellules peut avoir un état de 0, 1 ou 2, un exemple de voisinage possible pourrait s'écrire : <ic>"101022010"</ic>. Ça me limiterait cependant à 10 états possibles (de 0 à 9). Une autre façon d'encoder ce voisinage serait :
+    Si un système d'automates cellulaires a un « voisinage » de <im>9</im> cellules, et que chacune de ces cellules peut avoir un état de <im>0</im>, <im>1</im> ou <im>2</im>, un exemple de voisinage possible pourrait s'écrire : <ic>"101022010"</ic>. Ça me limiterait cependant à <im>10</im> états possibles (de <im>0</im> à <im>9</im>) pour un système. Une autre façon d'encoder un voisinage serait :
 </p>
 
 <code>
@@ -20,8 +19,10 @@
 </code>
 
 <pn>
-    Mais comment ferais-je pour générer chacune des règles d'un système ?
+    Ici, je ne serais pas limité à <im>9</im> états possibles. Mais, dans tous les cas, comment ferais-je pour générer chacune des règles d'un système ?
 </pn>
+
+<!-- read-more -->
 
 <code>
 let rule = {
@@ -31,10 +32,10 @@ let rule = {
 </code>
 
 <pn>
-    En base <im>5</im>, je pourrais par exemple avoir <ic>"031423021"</ic> comme voisinage. Dans ce cas, j'aurais <im>5^9</im> (ou <im>1\:953\:125</im>) possibilités, donc je gagnerais beaucoup à compresser l'information le plus possible.
+    Si j'encodais l&rsquo;<sc>adn</sc> d'un système dans un nombre à base <im>5</im>, je pourrais par exemple avoir <ic>"031423021"</ic> comme voisinage. Dans ce cas, j'aurais <im>5^9</im> (ou <im>1\:953\:125</im>) possibilités, donc je gagnerais beaucoup à compresser l'information le plus possible.
 </pn>
 <p>
-    Disons qu'il y a toujours <im>9</im> voisins, et que la « base » du système (le nombre d'états possibles dans une case) peut aller de <im>2</im> à <im>8</im>. Une règle doit donc être définie par une valeur texte de <im>10</im> positions : les <im>9</im> positions du voisinage présent et la nouvelle position à adopter par la cellule du milieu. Mais donc… comme toutes les possibilités de voisinages seront toujours considérées dans le même ordre… l'ensemble des règles d'un système est en réalité… une seule valeur texte qui possède <im>b^9</im> positions, où <im>b</im> est la base utilisée par le système. Chaque donnée de ce texte sera un chiffre de <im>0</im> à <im>b - 1</im>.
+    Disons qu'il y a toujours <im>9</im> voisins, et que la « base » du système (le nombre d'états possibles dans une cellule) peut aller de <im>2</im> à <im>8</im>. Une règle doit donc être définie par une valeur texte de <im>10</im> positions : les <im>9</im> positions du voisinage présent et la nouvelle position à adopter par la cellule du milieu. Mais donc… comme toutes les possibilités de voisinages seront toujours considérées dans le même ordre… l'ensemble des règles d'un système est en réalité… une seule valeur texte qui possède <im>b^9</im> positions, où <im>b</im> est la base utilisée par le système. Chaque donnée de ce texte sera un chiffre de <im>0</im> à <im>b - 1</im>.
 </p>
 <p>
     Chaque membre <im>t_i</im> de ce texte représente une nouvelle position <im>t</im> à appliquer lorsque le voisinage <im>i</im> est présent. Le voisinage <im>i</im> est une représentation décimale d'un nombre dont la base <im>\in [2;8]</im>.
@@ -138,7 +139,7 @@ Scene.prototype.applyRules = function(r) {
 };
 </code>
 
-<h3>Création d'un ensemble aléatoire de règles</h3>
+<pn>Il me faut aussi créer des ensembles aléatoires de règles :</pn>
 
 <code>
 // b étant la base
@@ -150,16 +151,16 @@ for (let i = 0; i < rl; i++) {
 }
 </code>
 <pn>
-    <sc>En fait,</sc> je viens de réaliser qu'un système à base de <im>5</im> crée un ensemble de règles à <im>1\:953\:125</im> caractères, ce qui pèse (logiquement) <im>2</im> Mo lorsque sauvegardé dans un fichier texte. Comme mon système me demandera de sauvegarder une grande quantité de tels fichiers, je devrais me limiter à <im>b \in [2;4]</im>, puisque <im>4^9 = 262\:144</im> ce qui produit un fichier de <im>262</im> ko. Ça me paraît plus raisonnable.
+    En fait, je viens de réaliser qu'un système à base de <im>5</im> crée un ensemble de règles à <im>1\:953\:125</im> caractères, ce qui pèse (logiquement) <im>2</im> Mo lorsque sauvegardé dans un fichier texte. Comme mon système me demandera de sauvegarder une grande quantité de tels fichiers, je devrais me limiter à <im>b \in [2;4]</im>, puisque <im>4^9 = 262\:144</im> ce qui produit un fichier de <im>262</im> ko. Ça me paraît plus raisonnable.
 </pn>
 
 <h3>Créer et évaluer une population</h3>
 
 <pn>
-    <sc>Comment ferai-je</sc> pour créer et évaluer une population, et pour croiser des individus et créer leurs enfants ? Premièrement, la sélection sera interactive : c'est-à-dire que la seule valeur d'un individu sera déterminée par moi, qui lui assignera un score. Il me faudrait donc une liste <ic>population</ic> qui serait un ensemble de couples <im>(i, s)</im> où <im>i</im> est un individu et <im>s</im> son score.
+    <img class="genetic-drop-caps" src="../../../images/c2.jpg"><sc>omment ferai-je</sc> pour créer et évaluer une population, et pour croiser des individus et créer leurs enfants ? Premièrement, la sélection sera interactive : c'est-à-dire que la seule valeur d'un individu sera déterminée par moi, qui lui assignera un score. Il me faudrait donc une liste <ic>population</ic> qui serait un ensemble de couples <im>(i, s)</im> où <im>i</im> est un individu et <im>s</im> son score.
 </pn>
 <p>
-    Il me faut une liste d'individus, sauvegardée dans un fichier <sc>json</sc>. Ce sera mon ensemble de couples. Il me faut un bouton pour générer un nouvel individu aléatoire. Il me faut un bouton pour réduire ou augmenter le score de cet individu.Il me faut un bouton pour sauvegarder cet individu si j'apprécie sa performance.
+    Il me faut une liste d'individus, sauvegardée dans un fichier <sc>json</sc>. Ce sera mon ensemble de couples. Il me faut un bouton pour générer un nouvel individu aléatoire. Il me faut un bouton pour réduire ou augmenter le score de cet individu, et il me faut un bouton pour le sauvegarder dans un fichier.
 </p>
 <p>
     Ça va donc fonctionner de façon relativement analogue à mon ensemble de palettes : je peux charger une palette déjà sauvegardée, je peux en générer des nouvelles, et je peux sauvegarder sur le disque les palettes que j'apprécie. Maintenant, j'aurai un bouton « Generate ruleset randomly » et un autre « Generate ruleset from crossover ». Ce deuxième bouton sélectionnera deux individus de la population sauvegardée et créera un nouvel individu en croisant leurs données.
@@ -171,8 +172,11 @@ for (let i = 0; i < rl; i++) {
 <h3>Conclusions du moment</h3>
 
 <pn>
-    <sc>Pour l'instant,</sc> je ne suis pas satisfait des résultats de cette première expérience avec les algorithmes génétiques. J'ai appris beaucoup de choses à propos de structures de données qui peuvent aider à gérer certains éléments de ces algorithmes, mais les animations que j'ai créées lors de ces apprentissages ne sont pas très intéressantes. Il me faudra plus temps pour créer un système d'algorithmes génétiques entier, qui incluera notamment des moyens de comparer la performance des individus d'une population.
+    <img class="genetic-drop-caps" src="../../../images/l.jpg"><sc>a première implémentation</sc> des algorithmes génétiques dans mes animations d'automates cellulaires a nécessité beaucoup de travail et, en chemin, j'ai créé plusieurs systèmes différents. Chacun de ces systèmes fonctionne d'une façon distincte, autant pour l'encodage de l&rsquo;<sc>adn</sc> (le <i>génotype</i>) que l'utilisation de ce code génétique dans les méthodes de mise à jour de la grille (le <i>phénotype</i>). Les quelques systèmes que j'ai trouvés les plus intéressants sont contenus dans le fichier <a href=""><ic>scenes-genetic-01.js</ic></a> dans <a href="">le dossier GitHub du projet</a>. Les scènes sont numérotées de <ic>geneticScene01</ic> à <ic>geneticScene07</ic>.
 </pn>
+<p>
+    <ic>geneticScene05</ic> est la scène qui m'a le plus occupé jusqu'à maintenant ; en explorant ses possibilités, j'ai noté plus d'une centaine d'animations différentes qu'elle peut générer et je compte les rassembler afin de créer un court film d'animation.
+</p>
 
 <h3>Contexte</h3>
 
@@ -180,7 +184,7 @@ for (let i = 0; i < rl; i++) {
     <sc>Cette note de blog</sc> fait partie de mon projet de recherche <i>Vers un cinéma algorithmique</i>, démarré en avril 2018. Je vous invite à consulter <a href="https://pelletierauger.github.io/fr/blog/2018/4/vers-un-cinema-algorithmique.html">la toute première note du projet</a> pour en apprendre davantage.
 </pn>
 
-<!-- en-title -->Genetic Cellular Automata
+<!-- en-title -->Notes on Genetic Automata
 <!-- en-description -->
 <!-- en-content -->
 
