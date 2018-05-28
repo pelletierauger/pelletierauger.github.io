@@ -427,7 +427,8 @@ img.inline-image {
     /*display: inline-block;*/
     width: 100%;
     max-width: 650px;
-    margin: 0 auto;
+    /*margin: 0 auto;*/
+    margin: 2em auto;
 }
 
 img.full-size-image {
