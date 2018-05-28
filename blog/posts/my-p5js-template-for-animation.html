@@ -1,0 +1,91 @@
+<!-- year -->2018
+<!-- month -->05
+<!-- day -->27
+<!-- fr-title -->Mon modèle p5.js pour l'animation
+<!-- fr-html-title -->Mon modèle <span class="lnum">p5.js</span> pour l&rsquo;animation
+<!-- fr-description -->
+<!-- fr-content -->
+
+<!-- en-title -->My p5.js template for animation
+<!-- en-html-title -->My <span class="lnum">p5.js</span> template for animation
+<!-- en-description -->
+<!-- en-content -->
+<pn>
+    <sc>I've been doing</sc> a lot of animation with <span class="lnum">p5.js</span> over the last few months, and in the process I've developed a template that I use as the basis of all my projects. It's designed for my own use but perhaps it could also be useful (in part or as a whole) for other people. So I'm <a href="">sharing it on GitHub</a> and below, I'll spend some time to document it.
+</pn>
+
+<!-- read-more -->
+
+<h3>Exporting frames</h3>
+
+<pn>
+    <sc>The main feature</sc> of this template is certainly the exportation of frames to create videos and gifs. It took me a few months to get a functioning pipeline to export frames in a satisfying way, and I find my solution very good. The basic way in which it is done : the template works with a Node.js server named <ic>server.js</ic>. This server is also running Socket.io. The p5.js sketch itself is also running Socket.io To export frames just means to send the whole canvas from the client to the server, and then the server will save to disk. The best part is that the exportation doesn't require a running web browser. It will happen behind the scene, in the command line, using Puppeteer.
+</pn>
+
+<h3>The <ic>setup()</ic> function</h3>
+
+<code>
+function setup() {
+    socket = io.connect('http://localhost:8080');
+    cnvs = createCanvas(windowWidth, windowWidth / 16 * 9);
+    ctx = cnvs.drawingContext;
+    canvasDOM = document.getElementById('defaultCanvas0');
+</code>
+
+
+
+
+<code>
+if (exporting) {
+    frameRate(2);
+} else {
+    frameRate(30);
+}
+</code>
+
+<pn>
+    And then, I set the <ic>frameRate</ic> of the sketch according to the <ic>exporting</ic> variable. This is done because, when exporting simple frames that do not require a lot of computation, I find that exporting too many frames per second ends up clogging the system. I'm still testing this out, but for now, exporting <lnum>2</lnum> frames per second seems like a good compromise. It's generally slower but more consistent—it will not slow down over time.
+</pn>
+<p>
+    On the other hand, if <ic>exporting</ic> is <ic>false</ic>, I set the <ic>frameRate</ic> to <ic>30</ic>. This is just a personal preference—I studied in traditional paper animation and I'm used to thinking in terms of <lnum>24 or 30</lnum> frames per second (typical frame rates for film and <sc>ntsc</sc> video, respectively). From what I've been able to observe, it doesn't seem like the web canvas is actually able to dependably refresh at the rate of <lnum>24</lnum> frames per second. It seems to only refresh correctly at fractions of <lnum>60 (so 10, 20, and 30).</lnum>
+</p>
+
+<h3>The <ic>draw()</ic> loop</h3>
+
+<code>
+function draw() {
+    for (let i = 0; i < 500; i++) {
+        let x = random(width);
+        let y = random(height);
+        ellipse(x, y, 5);
+    }
+    if (exporting && frameCount <= maxFrames) {
+        frameExport();
+    }
+}
+</code>
+
+<h3>Some convenient hot keys</h3>
+
+<code>
+function keyPressed() {
+    if (keyCode === 32) {
+        if (looping) {
+            noLoop();
+            looping = false;
+        } else {
+            loop();
+            looping = true;
+        }
+    }
+    if (key == 'p' || key == 'P') {
+        frameExport();
+    }
+    if (key == 'r' || key == 'R') {
+        window.location.reload();
+    }
+    if (key == 'm' || key == 'M') {
+        redraw();
+    }
+}
+</code>
