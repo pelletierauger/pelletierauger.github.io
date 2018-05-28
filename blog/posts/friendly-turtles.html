@@ -1,28 +1,39 @@
 <!-- year -->2018
 <!-- month -->04
-<!-- day -->18
+<!-- day -->28
 <!-- fr-title -->Les tortues amicales
 <!-- fr-description -->Formes collectives qui émergent de comportements individuels.
 <!-- fr-content -->
 
-<pn>
-    <sc>L'animation ci-dessus</sc> est inspirée des idées derrières <i>Heroes and Cowards</i>, un modèle à base d'agents créé par William Rand et Uri Wilensky, mais il s'agit d'une altération tout de même très distante de ce modèle.
-</pn>
+<img class="inline-image" src="../../../images/second-version-long-640x360.gif">
+
+<p class="article-top">
+    <sc>L'animation ci-dessus</sc> est inspirée des idées derrières <i>Heroes and Cowards</i>, un modèle à base d'agents créé par William Rand et Uri Wilensky, mais il s'agit d'une altération tout de même très distante de ce &nbsn;modèle.<snl label="second-version">Le code écrit pour réaliser cette animation est contenu dans la branche <a href=""><ic8>second-version</ic8></a> de l'arborescence Git du projet, qui <a href="">se trouve sur GitHub</a>.</snl>
+</p>
 <p>
     Les principes de l'animation sont simples : chaque point noir représente une <i>tortue</i> qui peut recevoir des instructions et qui possède aussi un certain comportement. Lorsque l'animation démarre, chacune des tortues est associée à deux <i>amies</i> (deux autres points parmi le groupe). Ensuite, entre chaque nouvelle image de l'animation, chacune des tortues s'approche très légèrement du point équidistant entre ses deux amies.
 </p>
 <p>
-    Toutes les tortues ont donc un comportement individuel identique, mais puisque la position initiale de chacune des tortues est différente, il en résulte un comportement de groupe complexe.
+    Les tortues ont donc toutes un comportement individuel identique, mais puisque la position initiale de chacune d'elles est différente, il en résulte un comportement de groupe complexe : l'ensemble des tortues cherche à ne former qu'une seule « boucle ». Lorsqu'une nouvelle spirale est ajoutée, elle est « mise en contact » avec les autres tortues et se mêle rapidement au tracé général.
 </p>
 
 <!-- read-more -->
+
+<h3>Une variation</h3>
+
+<pn>
+    <sc>L'animation ci-dessous</sc> est construite avec la même mécanique, mais les tortues sont maintenant représentées par de petites taches d'encre de Chine que j'ai &nbsn;numérisées.<snr label="master">Le code de cette animation se trouve dans la branche <a href=""><ic8>master</ic8></a> de l'arborescence du projet.</snr> De plus, l'apparition des tortues est ici contrôlée à la main, par des gestes faits avec la souris de mon ordinateur.
+</pn>
+<p>
+    <img class="inline-image" src="../../../images/friendly-turtles-dots-640x360.gif">
+</p>
 
 <!-- Each dot in the animation represents a “turtle” that can be given instructions and that possesses simple behaviours. When the animation starts, each turtle selects two friends among the group of turtles, and then, it tries to position itself exactly in between those two friends. The resulting animation is formed by the combined behaviours of all turtles—it's the <i>emergent</i> shape of all their individual actions. -->
 
 <h3>Feuilles d'animation</h3>
 
 <pn>
-    <sc>Cette courte animation</sc> offre une opportunité de réfléchir aux <i>feuilles d'animation</i> (en anglais, <i>x-sheet</i> ou <i>exposure sheets</i>), cet outil qui a une grande importance dans le domaine de l'animation traditionnelle mais qui, à ma connaissance, est rarement transposé en cinéma algorithmique.
+    <sc>Ces courtes animations</sc> m'offrent aussi une opportunité de réfléchir un peu aux feuilles d'animation (en anglais, <i>exposure sheets</i> ou <i>x-sheets</i>), un outil qui a une grande importance dans le domaine de l'animation traditionnelle mais qui, à ma connaissance, est rarement transposé en cinéma algorithmique.
 </pn>
 <p>
     Il arrive souvent, lors de la création d'une animation algorithmique, que l'on veuille ajouter un évènement précis à un moment précis (donc, intervenir dans le processus de l'animation en cours). Il est très simple de réaliser ceci avec une expression conditionnelle :
@@ -33,16 +44,16 @@ if (frameCount == 200) { intervene(); }
 </code>
 
 <pn>
-    Cependant, une accumulation de telles expressions conditionnelles devient rapidement désagréable et difficile à gérer.
+    Cependant, une accumulation de telles expressions conditionnelles devient rapidement désagréable et difficile à gérer, et il est intéressant de réfléchir à de potentielles alternatives à cette méthode. Le modèle ci-dessous, appelé <ic>evenSheet</ic>, est un exemple qui pourrait bien fonctionner dans plusieurs situations.
 </pn>
 
 <code>
 let eventSheet = {
     10: function(){
-        console.log("Yeah! Ten frames!");
+        console.log("Ten frames!");
     },
     20: function(){
-        console.log("Twenty frames! Good job!");
+        console.log("Twenty frames!");
     },
     run: function(f) {
         if (this[f]) {
@@ -68,10 +79,10 @@ function draw() {
     Dans son cours<mnl label="question"><i8>« Construire vers une question. »</i8></mnl> <i>Introduction à la modélisation à base d'agents</i>, William Rand explique qu'il est important, dès la conception d'un modèle, de chercher à « construire vers une question », c'est-à-dire qu'un modèle doit répondre à une question précise (il s'agit, après tout, d'un outil scientifique). Évidemment, ce point est difficile à considérer lors de la création de modèles à buts artistiques — il peut sembler ici qu'on ne construit pas vers des questions, mais je crois que c'est une impression fausse. Les questions sont simplement différentes, et peut-être plus floues.
 </p>
 <p>
-    Par exemple, si je veux enchaîner différentes scènes animées semblables à certains égards à celle ci-dessus afin de créer un court film d'animation, je peux me demander : « Quels types de comportements pourraient générer des “danses géométriques” de diverses natures mais dont l'ensemble aurait une cohérence ? » Ou : « Comment la couleur pourrait-elle être intégrée dans ce type de danse ? Des tortues de couleurs différentes auraient-elles des comportements différents ? Si oui, quelles pourraient être ces différences et quelles conséquences auraient-elles sur les animations obtenues ? Les tortues pourraient-elles changer de couleur ? Que pourraient représenter ces couleurs, au juste ? »
+    Par exemple, si je veux enchaîner différentes scènes animées semblables à certains égards à celle ci-dessus afin de créer un court film d'animation, je peux me demander : « Quels types de comportements pourraient générer des “danses géométriques” de diverses natures mais dont l'ensemble aurait une cohérence ? » Ou : « Comment la couleur pourrait-elle être intégrée dans ce type de danse ? Des tortues de couleurs différentes auraient-elles des mouvements différents ? Si oui, quelles pourraient être ces différences et quelles conséquences auraient-elles sur les animations obtenues ? Les tortues pourraient-elles changer de couleur ? Que pourraient représenter ces couleurs, au juste ? »
 </p>
 <p>
-    En voyant cette animation,<mnl label="son"><i8>Considérations<br>sonores.</i8></mnl> j'ai aussi envie d'en créer une nouvelle version qui répondrait au son. Par exemple, divers moments d'une pièce de musique pourraient faire apparaître de nouvelles tortues, et la hauteur et la vélocité des notes jouées pourraient déterminer certaines propriétés des nouvelles tortues.
+    En regardant cette animation,<mnl label="son"><i8>Considérations<br>sonores.</i8></mnl> j'ai aussi envie d'en créer une nouvelle version qui répondrait au son. Par exemple, divers moments d'une pièce de musique pourraient faire apparaître de nouvelles tortues, et la hauteur et la vélocité des notes jouées pourraient déterminer certaines propriétés des nouvelles tortues.
 </p>
 
 <h3>Contexte</h3>
