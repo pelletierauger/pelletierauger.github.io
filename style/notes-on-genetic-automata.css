@@ -1,0 +1,19 @@
+img.genetic-drop-caps {
+    /*display: inline-block;*/
+    width: 11em;
+    /*max-width: 10em;*/
+    /*margin: 0 auto;*/
+    /*margin-right: 0.5rem;*/
+    margin: 2.75rem 2.5rem 1rem 2.5rem;
+    /*margin-bottom: 1rem;*/
+    display: inline-block;
+    float: left;
+}
+
+@media screen and (max-width: 450px) {
+    img.genetic-drop-caps {
+        width: 80%;
+        padding: 10%;
+        margin: 0 auto;
+    }
+}
