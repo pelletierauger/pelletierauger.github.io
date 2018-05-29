@@ -1,0 +1,104 @@
+<!-- year -->2018
+<!-- month -->05
+<!-- day -->27
+<!-- fr-title -->Un modèle p5.js pour l'animation
+<!-- fr-html-title -->Un modèle <span class="lnum">p5.js</span> pour l&rsquo;animation
+<!-- fr-description -->
+<!-- fr-content -->
+
+<!-- en-title -->A p5.js template for animation
+<!-- en-html-title -->A <span class="lnum">p5.js</span> template for animation
+<!-- en-description -->
+<!-- en-content -->
+<pn>
+    <sc>While doing a lot of animation</sc> with <span class="lnum">p5.js</span> over the last few months, I've slowly developed a template that I now use to start all my projects. It's designed for my own use but perhaps it could also be useful (in part or as a whole) for other people. So I'm <a href="">sharing it on GitHub</a> and documenting it below. There's always ample room for improvement, so if you have any ideas don't hesite to <a href="">get in touch</a>.
+</pn>
+<p>
+    The main feature of this template is a convenient system to export frames to create videos and gifs. This is accomplished with a small Node.js server, named <ic>server.js</ic>, that communicates with the <lnum>p5.js</lnum> sketch via Socket.io. To export frames, the sketch gets a reference to the web canvas and sends it to <ic>server.js</ic>, which saves it to disk. The best part is that the exportation can all happen behind the scene, in the command line, using the Node module Puppeteer. Then, when all the frames are exported, they can be turned into videos and gifs using <sc>ffmpeg</sc>.
+</p>
+<p>
+    I'll now look at all the template's pieces in details.
+</p>
+
+<!-- read-more -->
+
+<h3>Global variables in <ic>sketch.js</ic></h3>
+
+<code>
+let looping = true;
+let socket, cnvs, ctx, canvasDOM;
+let fileName = "./frames/sketch";
+let maxFrames = 20;
+</code>
+
+<pn>
+    We first declare a <ic>looping</ic> variable, used to pause and restart the animation by pushing the spacebar. Then, <ic>socket</ic>, <ic>cnvs</ic>, <ic>ctx</ic>, and <i>canvasDOM</i> are all going to be used to
+</pn>
+
+<h3>The <ic>setup()</ic> function</h3>
+
+<code>
+function setup() {
+    socket = io.connect('http://localhost:8080');
+    cnvs = createCanvas(windowWidth, windowWidth / 16 * 9);
+    ctx = cnvs.drawingContext;
+    canvasDOM = document.getElementById('defaultCanvas0');
+</code>
+
+
+
+
+<code>
+if (exporting) {
+    frameRate(2);
+} else {
+    frameRate(30);
+}
+</code>
+
+<pn>
+    And then, the sketch's <ic>frameRate</ic> is set according to the <ic>exporting</ic> variable. This is done because, when exporting simple frames that do not require a lot of computation, I find that exporting too many frames per second ends up clogging the system. I'm still testing this out, but for now, exporting <lnum>2</lnum> frames per second seems like a good compromise. It's generally slower but more consistent—it will not slow down over time.
+</pn>
+<p>
+    On the other hand, if <ic>exporting</ic> is <ic>false</ic>, I set the <ic>frameRate</ic> to <ic>30</ic>. This is just a personal preference—I studied in traditional paper animation and I'm used to thinking in terms of <lnum>24 or 30</lnum> frames per second (typical frame rates for film and <sc>ntsc</sc> video, respectively). From what I've been able to observe, it doesn't seem like the web canvas is actually able to dependably refresh at the rate of <lnum>24</lnum> frames per second. It seems to only refresh correctly at fractions of <lnum>60 (so 10, 20, and 30).</lnum>
+</p>
+
+<h3>The <ic>draw()</ic> loop</h3>
+
+<code>
+function draw() {
+    for (let i = 0; i < 500; i++) {
+        let x = random(width);
+        let y = random(height);
+        ellipse(x, y, 5);
+    }
+    if (exporting && frameCount <= maxFrames) {
+        frameExport();
+    }
+}
+</code>
+
+<h3>Some convenient hot keys</h3>
+
+<code>
+function keyPressed() {
+    if (keyCode === 32) {
+        if (looping) {
+            noLoop();
+            looping = false;
+        } else {
+            loop();
+            looping = true;
+        }
+    }
+    if (key == 'p' || key == 'P') {
+        frameExport();
+    }
+    if (key == 'r' || key == 'R') {
+        window.location.reload();
+    }
+    if (key == 'm' || key == 'M') {
+        redraw();
+    }
+}
+</code>
