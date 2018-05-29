@@ -5,7 +5,7 @@
 <!-- fr-description -->Formes collectives qui émergent de comportements individuels.
 <!-- fr-content -->
 
-<img class="inline-image" src="../../../images/second-version-long-640x360.gif">
+<img class="inline-image" src="../../../images/friendly-turtles/second-version-long-640x360.gif">
 
 <p class="article-top">
     <sc>L'animation ci-dessus</sc> est inspirée des idées derrières <i>Heroes and Cowards</i>, un modèle à base d'agents créé par William Rand et Uri Wilensky, mais il s'agit d'une altération tout de même très distante de ce &nbsn;modèle.<snl label="second-version">Le code écrit pour réaliser cette animation est contenu dans la branche <a href=""><ic8>second-version</ic8></a> de l'arborescence Git du projet, qui <a href="">se trouve sur GitHub</a>.</snl>
@@ -14,7 +14,7 @@
     Les principes de l'animation sont simples : chaque point noir représente une <i>tortue</i> qui peut recevoir des instructions et qui possède aussi un certain comportement. Lorsque l'animation démarre, chacune des tortues est associée à deux <i>amies</i> (deux autres points parmi le groupe). Ensuite, entre chaque nouvelle image de l'animation, chacune des tortues s'approche très légèrement du point équidistant entre ses deux amies.
 </p>
 <p>
-    Les tortues ont donc toutes un comportement individuel identique, mais puisque la position initiale de chacune d'elles est différente, il en résulte un comportement de groupe complexe : l'ensemble des tortues cherche à ne former qu'une seule « boucle ». Lorsqu'une nouvelle spirale est ajoutée, elle est « mise en contact » avec les autres tortues et se mêle rapidement au tracé général.
+    Les tortues ont donc toutes un comportement individuel identique, mais puisque la position initiale de chacune d'elles est différente, il en résulte un comportement de groupe complexe : l'ensemble des tortues cherche à ne former qu'une seule boucle. Lorsqu'une nouvelle spirale est ajoutée, elle est « mise en contact » avec les autres tortues et se mêle rapidement au tracé général.
 </p>
 
 <!-- read-more -->
@@ -25,7 +25,7 @@
     <sc>L'animation ci-dessous</sc> est construite avec la même mécanique, mais les tortues sont maintenant représentées par de petites taches d'encre de Chine que j'ai &nbsn;numérisées.<snr label="master">Le code de cette animation se trouve dans la branche <a href=""><ic8>master</ic8></a> de l'arborescence du projet.</snr> De plus, l'apparition des tortues est ici contrôlée à la main, par des gestes faits avec la souris de mon ordinateur.
 </pn>
 <p>
-    <img class="inline-image" src="../../../images/friendly-turtles-dots-640x360.gif">
+    <img class="inline-image" src="../../../images/friendly-turtles/friendly-turtles-dots-640x360.gif">
 </p>
 
 <!-- Each dot in the animation represents a “turtle” that can be given instructions and that possesses simple behaviours. When the animation starts, each turtle selects two friends among the group of turtles, and then, it tries to position itself exactly in between those two friends. The resulting animation is formed by the combined behaviours of all turtles—it's the <i>emergent</i> shape of all their individual actions. -->
@@ -44,7 +44,7 @@ if (frameCount == 200) { intervene(); }
 </code>
 
 <pn>
-    Cependant, une accumulation de telles expressions conditionnelles devient rapidement désagréable et difficile à gérer, et il est intéressant de réfléchir à de potentielles alternatives à cette méthode. Le modèle ci-dessous, appelé <ic>evenSheet</ic>, est un exemple qui pourrait bien fonctionner dans plusieurs situations.
+    Cependant, une accumulation de telles expressions conditionnelles devient rapidement désagréable et difficile à gérer, et il est intéressant de réfléchir à de potentielles alternatives à cette méthode. Le modèle ci-dessous, appelé <ic>eventSheet</ic>, est un exemple qui pourrait servir dans plusieurs situations.
 </pn>
 
 <code>
@@ -62,13 +62,41 @@ let eventSheet = {
     }
 };
 
-// À quoi ressemblerait l'activation 
-// de cette feuille dans la boucle draw() :
-
 function draw() {
     eventSheet.run(frameCount);    
 }
 </code>
+
+<pn>
+    Cette construction est plutôt rigide ; il pourrait être intéressant de pouvoir altérer la durée des scènes d'une façon plus fluide. Ci-dessous, j'ai écrit un autre brouillon d&rsquo;<ic>eventSheet</ic> un peu bizarre.
+</pn>
+
+<code>
+let eventSheet = {
+    slowScene: {
+        t: () => 10, 
+        f: function(){
+            console.log("Ten frames!");
+        },
+    },
+    fastScene: {
+        t: () => eventSheet.slowScene.t() + 10,
+        f: function(){
+            console.log("Twenty frames!");
+        },
+    }
+    // run: function(f) {
+    //     if (this[f]) {
+    //         this[f]();
+    //     }
+    // }
+};
+</code>
+
+<pn>
+    Il pourrait aussi être intéressant de définir une <ic>eventSheet</ic> de façon à ce qu'elle puisse être elle-même générée algorithmiquement. Je pourrais créer algorithmiquement des séquences d'évènements et ensuite, sélectionner les plus intéressantes séquences et les sauvegarder dans des fichiers <sc>json</sc>. Une feuille d'animation pourrait même être imaginée comme étant un génotype qui peut avoir des mutations et des croisements.
+</pn>
+
 
 <h3>Notes éparses</h3>
 
@@ -79,10 +107,10 @@ function draw() {
     Dans son cours<mnl label="question"><i8>« Construire vers une question. »</i8></mnl> <i>Introduction à la modélisation à base d'agents</i>, William Rand explique qu'il est important, dès la conception d'un modèle, de chercher à « construire vers une question », c'est-à-dire qu'un modèle doit répondre à une question précise (il s'agit, après tout, d'un outil scientifique). Évidemment, ce point est difficile à considérer lors de la création de modèles à buts artistiques — il peut sembler ici qu'on ne construit pas vers des questions, mais je crois que c'est une impression fausse. Les questions sont simplement différentes, et peut-être plus floues.
 </p>
 <p>
-    Par exemple, si je veux enchaîner différentes scènes animées semblables à certains égards à celle ci-dessus afin de créer un court film d'animation, je peux me demander : « Quels types de comportements pourraient générer des “danses géométriques” de diverses natures mais dont l'ensemble aurait une cohérence ? » Ou : « Comment la couleur pourrait-elle être intégrée dans ce type de danse ? Des tortues de couleurs différentes auraient-elles des mouvements différents ? Si oui, quelles pourraient être ces différences et quelles conséquences auraient-elles sur les animations obtenues ? Les tortues pourraient-elles changer de couleur ? Que pourraient représenter ces couleurs, au juste ? »
+    Par exemple, si je veux enchaîner différentes scènes animées semblables à certains égards à celles ci-dessus afin de créer un court film d'animation, je peux me demander : « Quels types de comportements pourraient générer des “danses géométriques” de diverses natures mais dont l'ensemble aurait une cohérence ? » Ou : « Comment la couleur pourrait-elle être intégrée dans ce type de danse ? Des tortues de couleurs différentes auraient-elles des mouvements différents ? Si oui, quelles pourraient être ces différences et quelles conséquences auraient-elles sur les animations obtenues ? Les tortues pourraient-elles changer de couleur ? »
 </p>
 <p>
-    En regardant cette animation,<mnl label="son"><i8>Considérations<br>sonores.</i8></mnl> j'ai aussi envie d'en créer une nouvelle version qui répondrait au son. Par exemple, divers moments d'une pièce de musique pourraient faire apparaître de nouvelles tortues, et la hauteur et la vélocité des notes jouées pourraient déterminer certaines propriétés des nouvelles tortues.
+    En regardant ces animations,<mnl label="son"><i8>Considérations<br>sonores.</i8></mnl> j'ai aussi envie d'en créer de nouvelles versions qui répondraient au son. Par exemple, divers moments d'une pièce de musique pourraient faire apparaître de nouvelles tortues, et la hauteur et la vélocité des notes jouées pourraient déterminer certaines propriétés des nouvelles tortues.
 </p>
 
 <h3>Contexte</h3>
@@ -94,11 +122,130 @@ function draw() {
 <!-- en-title -->Friendly turtles
 <!-- en-description -->Collective shapes emerging from individual behaviours.
 <!-- en-content -->
-<pn>
-    <sc>The animation above</sc> is based on the ideas behind <i>Heroes and Cowards</i>, a NetLogo model designed by William Rand and Uri Wilensky, although it is a significantly distant alteration of it. Each dot in the animation represents a “turtle” that can be given instructions and that possesses simple behaviours. When the animation starts, each turtle selects two friends among the group of turtles, and then, it tries to position itself exactly in between those two friends. The resulting animation is formed by the combined behaviours of all turtles—it's the <i>emergent</i> shape of all their individual actions.
-</pn>
+
+
+
+<img class="inline-image" src="../../../images/friendly-turtles/second-version-long-640x360.gif">
+
+<p class="article-top">
+    <sc>The animation above</sc> is inspired by the ideas behind <i>Heroes and Cowards</i>, an agent based model created by William Rand and Uri Wilensky, although it's a very distant alteration of this &nbsn;model.<snl label="second-version">The code written to generate this animation is contained on the <a href=""><ic8>second-version</ic8></a> branch of the project's Git repository, which is <a href="">hosted on GitHub</a>.</snl>
+</p>
+<p>
+    The animation's mechanism is simple : each black dot represents a <i>turtle</i> that can receive instructions and that possesses a certain behaviour. When the animation starts, each turtle is associated with two <i>friends</i> (two different dots in the group). Then, between each new frame of animation, each turtle walks in the direction of a point that is equally distant between its two friends.
+</p>
+<p>
+    The turtles thus have an identical individual behaviour, but because their initial positions are all different, a complex collective behaviour emerges from the aggregate of their actions : the group of turtles are collectively trying to form a single loop. When a new spiral is added in the scene, those new turtles are rapidly merging with the path of older turtles.
+</p>
 
 <!-- read-more -->
+
+<h3>A variation</h3>
+
+<pn>
+    <sc>The animation below</sc> is built with the same mechanism, but each turtle is now represented by a small dot of black India &nbsn;ink.<snr label="master">The code for this animation is on the <a href=""><ic8>master</ic8></a> branch of the project's repository.</snr> Also, the creation of new turtles is now controlled by hand, with gestures made on my computer's trackpad.
+</pn>
+<p>
+    <img class="inline-image" src="../../../images/friendly-turtles/friendly-turtles-dots-640x360.gif">
+</p>
+
+<!-- Each dot in the animation represents a “turtle” that can be given instructions and that possesses simple behaviours. When the animation starts, each turtle selects two friends among the group of turtles, and then, it tries to position itself exactly in between those two friends. The resulting animation is formed by the combined behaviours of all turtles—it's the <i>emergent</i> shape of all their individual actions. -->
+
+<h3>Animation sheets</h3>
+
+<pn>
+    <sc>These short animations</sc> are also an opportunity to think about “animation sheets” (traditionally called <i>exposure sheets</i> or <i>x-sheets</i>), a crucial tool in the field of classical paper animation that could potentially be useful for algorithmic art.
+</pn>
+<p>
+    It often happens, when I create algorithmic aniamtions, that I want to add a precise event at a precise moment (to <i>intervene</i>, so to speak, in an ongoing process). This can be simply done with a conditional expression:
+</p>
+
+<code>
+if (frameCount == 200) { intervene(); }
+</code>
+
+<pn>
+    But an accumulation of too many of those conditional expressions can rapidly become unwieldy, and it's interesting to think of alternative methods. The model below, named <ic>eventSheet</ic>, is an example of a simple mechanism that could potentially be useful in many situations.
+</pn>
+
+<code>
+let eventSheet = {
+    10: function(){
+        console.log("Ten frames!");
+    },
+    20: function(){
+        console.log("Twenty frames!");
+    },
+    run: function(f) {
+        if (this[f]) {
+            this[f]();
+        }
+    }
+};
+
+function draw() {
+    eventSheet.run(frameCount);    
+}
+</code>
+
+<pn>
+    But this construction is rather rigid; it would be interesting to be able to alter the duration of scenes more fluidly. Below is another rough idea for an <ic>eventSheet</ic>. It's a bit strange, though.
+</pn>
+
+<code>
+let eventSheet = {
+    slowScene: {
+        t: () => 10, 
+        f: function(){
+            console.log("Ten frames!");
+        },
+    },
+    fastScene: {
+        t: () => eventSheet.slowScene.t() + 10,
+        f: function(){
+            console.log("Twenty frames!");
+        },
+    }
+    // run: function(f) {
+    //     if (this[f]) {
+    //         this[f]();
+    //     }
+    // }
+};
+</code>
+
+<pn>
+    It could also interesting to define an <ic>eventSheet</ic> in a way that would make it possible to generate new ones algorithmically. I could algorithmically create sequences of events and then select the most interesting ones and save them in <sc>json</sc> files. An animation sheet could even be envisioned as something that has a genotype that can mutate and reproduce itself.
+</pn>
+
+
+<h3>Scribbled notes</h3>
+
+<pn>
+    <sc>Would it be possible</sc> to make the spirals appear progressively in the first animation? If they were to appear progressively, maybe they would be too deformed and would never look like spirals. Or maybe when they are appearing, the new spirals could be disconnected from the other turtles. Could I have different groups of turtles between which “friendships” would be impossible?
+</pn>
+<p>
+    In his course<mnl label="question"><i8>“Build towards<br>a question.”</i8></mnl> <i>Introduction to Agent Based Models</i>, William Rand explains how important it is, while developing a model, to “build towards a question”, meaning that a model should answer a precise question (it is, after all, a scientific tool). Evidently, this point is difficult to consider while creating models for artistic goals—it can seem like we are not building towards questions but I think this is mostly a false impression. The questions are simply different and blurrier.
+</p>
+<p>
+    For example, if I want to create a sequence of various animated scenes that are similar in some ways to the ones above, and create a short animation film with them, I can ask myself: “What types of behaviours could generate &lsquo;geometric dances&rsquo; with various sections that are coherently connected together?” Or: “How could colour be added to such dances? Would turtles of different colours move differently? If so, what could those differences be and what effects would they have on the resulting animations? Could turtles change colours?”
+</p>
+<p>
+    While watching those animations,<mnl label="audio"><i8>Audio<br>considerations.</i8></mnl> I'm also tempted to create new versions of them that would respond to sound. Different moments of a musical piece could be accompanied by various types of turtles, and the pitch and velocity of the notes could determine some properties of the turtles.
+</p>
+
+<h3>Context</h3>
+
+<pn>
+    <sc>This blog post</sc> is part of my research project <i>Towards an algorithmic cinema</i>, started in April 2018. I invite you to read <a href="https://pelletierauger.github.io/en/blog/2018/4/towards-an-algorithmic-cinema.html">the first blog post of the project</a> to learn more about it.
+</pn>
+
+
+<!-- <pn>
+    <sc>The animation above</sc> is based on the ideas behind <i>Heroes and Cowards</i>, a NetLogo model designed by William Rand and Uri Wilensky, although it is a significantly distant alteration of it. Each dot in the animation represents a “turtle” that can be given instructions and that possesses simple behaviours. When the animation starts, each turtle selects two friends among the group of turtles, and then, it tries to position itself exactly in between those two friends. The resulting animation is formed by the combined behaviours of all turtles—it's the <i>emergent</i> shape of all their individual actions.
+</pn>
+-->
+
+<!--
 
 <p>
     A chain of turtles. What if I change the order of the loop... Three types of xsheets. event-sheets, running-sheets, slow-sheets. En faire un sketch audio-réactif... ? Chaque note de guitare créerait une nouvelle spirale. Des évènements pourraient aussi changer les algorithmes de cheminements des tortues — faire trembler leurs parcours, etc.
@@ -185,8 +332,4 @@ let eventSheet = {
 <pn>
     Et évidemment, il peut être intéressant de définir une <ic>eventSheet</ic> de façon à ce qu'elle puisse être elle-même générée algorithmiquement. Je pourrais créer algorithmiquement des séquences d'évènements et ensuite, sélectionner les plus intéressantes séquences et les sauvegarder dans des fichiers <sc>json</sc>.
 </pn>
-
-<h3>Context</h3>
-<pn>
-    <sc>This blog post</sc> is part of my research project <i>Towards an algorithmic cinema</i>, started in April 2018. I invite you to read <a href="https://pelletierauger.github.io/en/blog/2018/4/towards-an-algorithmic-cinema.html">the first blog post of the project</a> to learn more about it.
-</pn>
+ -->
