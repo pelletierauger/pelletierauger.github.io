@@ -1,0 +1,123 @@
+<!-- year -->2018
+<!-- month -->06
+<!-- day -->02
+<!-- fr-title -->Embranchements déterministes
+<!-- fr-description -->En chemin vers des jardins algorithmiques.
+<!-- fr-content -->
+
+<pn>
+    <sc>Je veux créer</sc> un système d'embranchements pour mon système de botanique algorithmique qui ne repose pas du tout sur le hasard, de façon à ce que mes algorithmes génétiques peuvent déterminer de façon plus efficace quels sont les types d'arbres les plus « performants ». En ce moment, tout dépend d'une probabilité, définie dans le prototype <ic>DNA</ic> :
+</pn>
+
+<code>
+this.branchingProbability = 0.02;
+</code>
+
+<pn>
+    Et ensuite, dans la méthode <ic>grow</ic> d'un objet <ic>Segment</ic>, un simple test permet de déterminer si un embranchement doit se faire :
+</pn>
+
+<code>
+if (Math.random() <= this.dna.branchingProbability) {
+    this.branch();
+}
+</code>
+
+<pn>
+    Les embranchements sont ainsi complètement probabilistes, et peuvent aussi se faire à répétition. Ils ne sont pas limités. Ce qu'il me faut, maintenant, ce sont des objets <ic>Segment</ic> qui aient deux nouvelles propriétés lors de leur création :
+</pn>
+
+<code>
+this.branchedLeft = false;
+this.branchedRight = false;
+</code>
+
+<pn>
+    Et une fois qu'un embranchement se ferait, une de ces deux booléennes deviendrait <ic>true</ic> et cet embranchement ne pourrait plus se faire. Il pourrait quand même y avoir une probabilité qu'un embranchement se fasse ou non… Ce serait quand même beau de voir certains petits rameaux se former sur des segments d'arbres qui ont déjà créé des embranchements plus grands.
+</pn>
+
+<h3>Fréquence d'embranchement</h3>
+
+<pn>
+    <sc>Le problème plus compliqué</sc> est celui de la fréquence d'embranchement. Il doit y avoir quatre valeurs différentes pour gérer cette fréquence dans l'objet &nbsn;<ic>DNA</ic>.<snl label="normalized-genotype">Chaque gène du génotype d'un arbre sera, comme on le voit ici, <i8>normalisé</i8>, c'est-à-dire que sa valeur sera située entre <lnum>0 et 1</lnum>. Je ne suis pas certain que ce soit la meilleure solution mais, pour l'instant, j'avance avec cette idée.</snl>
+</pn>
+
+<code>
+this.branchingFequencyLeft = 0.1;
+this.branchingFequencyRight = 0.20;
+this.branchingOffsetLeft = 0.5;
+this.branchingOffsetRight = 0.9;
+</code>
+
+<pn>
+    Cependant, ces quatres valeurs devront être transformées en nombres entiers par la partie du code qui interprétera l'objet <ic>DNA</ic>.
+</pn>
+<p>
+    Maintenant, je dois avoir un nombre qui représente la distance <i>en segments</i> d'un segment à la base de l'arbre. Je pourrais déclarer une propriété <ic>segmentID</ic> lors de la création d'un arbre.
+</p>
+
+<code>
+let Tree = function(x, y, dna) {
+    //...
+    this.segmentID = 0;
+};
+</code>
+
+<pn>
+    Et ensuite, incrémenter cette valeur à chaque nouveau segment.
+</pn>
+
+<code>
+let Segment = function(parent) {
+    this.parent = parent;
+    this.dna = parent.dna;
+    this.isRoot = this.parent instanceof Tree;
+    this.segmentID = parent.segmentID + 1;
+</code>
+
+<pn>
+    Maintenant, un embranchement à gauche peut être réalisé si…
+</pn>
+
+<code>
+let fL = this.dna.branchingFequencyLeft;
+let oL = this.dna.branchingOffsetLeft;
+if ((this.segmentID - oL) % fL == 0) {
+    branchLeft();
+}
+</code>
+
+<pn>
+    À moins que… j'initialise les booléennes <ic>branchedLeft</ic> et <ic>branchedRight</ic> avec ce test.
+</pn>
+
+<code>
+let Segment = function(parent) {
+    //...
+    let fL = this.dna.branchingFrequencyLeft;
+    let oL = this.dna.branchingOffsetLeft;
+    let fR = this.dna.branchingFrequencyRight;
+    let oR = this.dna.branchingOffsetRight;
+    this.branchedLeft = (this.segmentID - oL) % fL == 0;
+    this.branchedRight = (this.segmentID - oR) % fR == 0;
+</code>
+
+<pn>
+    Ainsi, lorsque <ic>branchedLeft</ic> ou <ic>branchedRight</ic> sont <ic>true</ic>, ces embranchements ne peuvent pas se faire, peu importe s'ils se sont déjà faits. Et si elles sont <ic>false</ic>, le petit test probabiliste peut être exécuté.
+</pn>
+
+<h3>Contexte</h3>
+
+<pn>
+    <sc>Cette note de blog</sc> fait partie de mon projet de recherche <i>Vers un cinéma algorithmique</i>, démarré en avril 2018. Je vous invite à consulter <a href="https://pelletierauger.github.io/fr/blog/2018/4/vers-un-cinema-algorithmique.html">la toute première note du projet</a> pour en apprendre davantage.
+</pn>
+
+<!-- en-title -->Deterministic branching
+<!-- en-description -->
+<!-- en-content -->
+
+<h3>Context</h3>
+
+<pn>
+    <sc>This blog post</sc> is part of my research project <i>Towards an algorithmic cinema</i>, started in April 2018. I invite you to read <a href="https://pelletierauger.github.io/en/blog/2018/4/towards-an-algorithmic-cinema.html">the first blog post of the project</a> to learn more about it.
+</pn>
