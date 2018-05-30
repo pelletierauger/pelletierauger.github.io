@@ -131,10 +131,10 @@ let eventSheet = {
     <sc>The animation above</sc> is inspired by the ideas behind <i>Heroes and Cowards</i>, an agent based model created by William Rand and Uri Wilensky, although it's a very distant alteration of this &nbsn;model.<snl label="second-version">The code written to generate this animation is contained on the <a href=""><ic8>second-version</ic8></a> branch of the project's Git repository, which is <a href="">hosted on GitHub</a>.</snl>
 </p>
 <p>
-    The animation's mechanism is simple : each black dot represents a <i>turtle</i> that can receive instructions and that possesses a certain behaviour. When the animation starts, each turtle is associated with two <i>friends</i> (two different dots in the group). Then, between each new frame of animation, each turtle walks in the direction of a point that is equally distant between its two friends.
+    The animation's mechanism is simple: each black dot represents a <i>turtle</i> that can receive instructions and that possesses a certain behaviour. When the animation starts, each turtle is associated with two <i>friends</i> (two different dots in the group). Then, between each new frame of animation, each turtle walks in the direction of a point that is equally distant between its two friends.
 </p>
 <p>
-    The turtles thus have an identical individual behaviour, but because their initial positions are all different, a complex collective behaviour emerges from the aggregate of their actions : the group of turtles are collectively trying to form a single loop. When a new spiral is added in the scene, those new turtles are rapidly merging with the path of older turtles.
+    The turtles thus have an identical individual behaviour, but because their initial positions are all different, a complex collective behaviour emerges from the aggregate of their actions: the group of turtles is collectively trying to form a single loop. When a new spiral is added in the scene, those new turtles are rapidly merging with the path of older turtles.
 </p>
 
 <!-- read-more -->
@@ -156,7 +156,7 @@ let eventSheet = {
     <sc>These short animations</sc> are also an opportunity to think about “animation sheets” (traditionally called <i>exposure sheets</i> or <i>x-sheets</i>), a crucial tool in the field of classical paper animation that could potentially be useful for algorithmic art.
 </pn>
 <p>
-    It often happens, when I create algorithmic aniamtions, that I want to add a precise event at a precise moment (to <i>intervene</i>, so to speak, in an ongoing process). This can be simply done with a conditional expression:
+    It often happens, when I create algorithmic animations, that I want to add a precise event at a precise moment (to <i>intervene</i>, so to speak, in an ongoing process). This can be simply done with a conditional expression:
 </p>
 
 <code>
@@ -214,7 +214,7 @@ let eventSheet = {
 </code>
 
 <pn>
-    It could also interesting to define an <ic>eventSheet</ic> in a way that would make it possible to generate new ones algorithmically. I could algorithmically create sequences of events and then select the most interesting ones and save them in <sc>json</sc> files. An animation sheet could even be envisioned as something that has a genotype that can mutate and reproduce itself.
+    It could also interesting to define an <ic>eventSheet</ic> in a way that would make it possible to generate new ones algorithmically. I could algorithmically create sequences of events and then select the most interesting ones and save them in <sc>json</sc> files. An animation sheet could even be envisioned as something that has a genotype able to mutate and reproduce itself.
 </pn>
 
 
