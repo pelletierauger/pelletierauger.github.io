@@ -13,6 +13,8 @@
 this.branchingProbability = 0.02;
 </code>
 
+<!-- read-more -->
+
 <pn>
     Et ensuite, dans la méthode <ic>grow</ic> d'un objet <ic>Segment</ic>, un simple test permet de déterminer si un embranchement doit se faire :
 </pn>
@@ -43,8 +45,8 @@ this.branchedRight = false;
 </pn>
 
 <code>
-this.branchingFequencyLeft = 0.1;
-this.branchingFequencyRight = 0.20;
+this.branchingFrequencyLeft = 0.1;
+this.branchingFrequencyRight = 0.20;
 this.branchingOffsetLeft = 0.5;
 this.branchingOffsetRight = 0.9;
 </code>
@@ -80,7 +82,7 @@ let Segment = function(parent) {
 </pn>
 
 <code>
-let fL = this.dna.branchingFequencyLeft;
+let fL = this.dna.branchingFrequencyLeft;
 let oL = this.dna.branchingOffsetLeft;
 if ((this.segmentID - oL) % fL == 0) {
     branchLeft();
@@ -98,13 +100,48 @@ let Segment = function(parent) {
     let oL = this.dna.branchingOffsetLeft;
     let fR = this.dna.branchingFrequencyRight;
     let oR = this.dna.branchingOffsetRight;
-    this.branchedLeft = (this.segmentID - oL) % fL == 0;
-    this.branchedRight = (this.segmentID - oR) % fR == 0;
+    this.branchedLeft = (this.segmentID + oL) % fL == 0;
+    this.branchedRight = (this.segmentID + oR) % fR == 0;
+    this.branchedForward = false;
 </code>
 
 <pn>
     Ainsi, lorsque <ic>branchedLeft</ic> ou <ic>branchedRight</ic> sont <ic>true</ic>, ces embranchements ne peuvent pas se faire, peu importe s'ils se sont déjà faits. Et si elles sont <ic>false</ic>, le petit test probabiliste peut être exécuté.
 </pn>
+<p>
+    Il me faut donc deux nouvelles méthodes, <ic>branchLeft</ic> et <ic>branchRight</ic>, dans le prototype <ic>Segment</ic>. Elles seront bien entendu presque identiques.
+</p>
+
+<code>
+Segment.prototype.branchLeft = function() {
+    this.children.push(new Segment(this));
+    this.energy -= this.dna.branchingCost;
+    this.branchedLeft = true;
+};
+</code>
+
+<pn>
+    Quand je crée un nouveau segment, maintenant, ce segment doit pouvoir recevoir un second argument, <ic>direction</ic>, qui pourra être égal à <ic>left</ic>, <ic>forward</ic>, ou <ic>right</ic>. Ah, et pendant tout ce temps, j'ai aussi besoin d'une propriété <ic>branchedForward</ic> déclarée dans le constructeur du prototype <ic>Segment</ic>. L'argument <ic>direction</ic> ne sert qu'à ajuster l'angle du nouveau segment créé. Je crois bien, si j'y pense, qu'un segment n'a pas besoin de savoir s'il est à gauche, devant ou à droite de son parent.
+</pn>
+<p>
+    Dont je peux préserver la propriété <ic>branchingProbability</ic> du prototype <ic>DNA</ic> telle quelle, mais maintenant elle servira dans trois contextes — elle déterminera l'embranchement à gauche, devant et à droite.
+</p>
+
+<code>
+Segment.prototype.branch = function(direction) {
+    this.children.push(new Segment(this, direction));
+    this.energy -= this.dna.branchingCost;
+    if (direction == "left") {
+        this.branchedLeft = true;
+    } else if (direction == "forward") {
+        this.branchedForward = true;
+    } else if (direction == "right") {
+        this.branchedRight = true;
+    } else {
+        console.error("Invalid branching direction.");
+    }
+};
+</code>
 
 <h3>Contexte</h3>
 
@@ -113,7 +150,7 @@ let Segment = function(parent) {
 </pn>
 
 <!-- en-title -->Deterministic branching
-<!-- en-description -->
+<!-- en-description -->En route to an algorithmic garden.
 <!-- en-content -->
 
 <h3>Context</h3>
