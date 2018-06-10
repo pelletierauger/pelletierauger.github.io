@@ -1,0 +1,53 @@
+<!-- year -->2018
+<!-- month -->06
+<!-- day -->09
+<!-- fr-title -->Scènes botaniques
+<!-- fr-description -->
+<!-- fr-content -->
+
+<pn>
+    <sc>Il me faut créer</sc> un système de scènes botaniques qui puissent gérer des animations contenant de quantités quasi illimitées d'éléments. Pour cela, il faut séparer le concept du <ic>frame</ic> d'animation de celui du <ic>frameCount</ic> de <lnum>p5.js</lnum>, comme je l'ai fait dans ma machine à automates cellulaires.
+</pn>
+
+<!-- read-more -->
+
+<p>
+    Donc, je peux créer autant d'arbres que je veux, et ces arbres-là doivent s'ajouter aux objets d'une <ic>scene</ic>.
+</p>
+<p>
+    En même temps, une <ic>scene</ic> devrait être une opportunité de créer de nouveaux arbres… d'interpréter différemment leurs génotypes, etc.
+</p>
+<p>
+    Y aura-t-il plusieurs <i>sortes</i> de scènes ? Qu'est-ce qui pourrait séparer le mécanisme d'une scène de celui d'une autre ? Chaque scène doit gérer les images d'animation, peu importe la quantité d'objets à dessiner qu'elles contiennent. Elle doit aussi activer elle-même la croissance des plantes. C'est vrai qu'au final, j'imagine des scènes qui auraient différents niveaux de profondeur, différentes répartitions de ressources naturelles et différentes ressources naturelles. Donc, au final, oui, il y aura des scènes de natures très distinctes. Mais tout ce mécanisme est très compliqué à construire et rien n'est échafaudé pour l'instant.
+</p>
+<p>
+    Il y a donc une fonctionnalité importante qui est <i>au-dessus</i> de toutes les scènes imaginables : la possibilité de gérer les images d'animation et leurs objets... car au fond, chacune des scènes disparates devra, en fin de compte, envoyer à <i>quelque chose</i> une série d'objets à dessiner, et ce <i>quelque chose</i> devra gérer le dessin. Même les scènes multi-plans ne feront qu'envoyer leurs éléments de décors comme des formes à la machine à dessiner.
+</p>
+<p>
+    Il y a donc une <i>machine à dessiner</i> à concevoir. Une machine flexible et qui gère la mémoire intelligemment.
+</p>
+
+<h3>La machine paysagiste</h3>
+
+<pn>
+    <sc>Cette machine doit pouvoir</sc> recevoir des objets, en faire des listes, séparer cette liste en plus petites listes (à longueurs variables). Les objets qu'elle peut recevoir sont : des lignes, des polygones. Ces objets ont des coordonnées cartésiennes et une information de couleur. Cette information de couleur peut être un dégradé.
+</pn>
+<p>
+    La machine doit aussi avoir un mode <i>simple</i> et un mode <i>pointilliste</i>. Lorsqu'elle se fait pointilliste, elle peint chaque forme avec une texture formées avec de tout petits points. Les détails précis de ces informations de textures doivent pouvoir changer.<snl label="pointillisme">Je pourrais aussi pousser l'idée du pointillisme plus loin : je pourrais avoir des masses de très petits points, chose que j'ai déjà réalisée, mais je pourrais aussi avoir des masses de gros points, plus proches de Seurat. Et ces gros points pourraient eux-mêmes être constitués de masses de petits points (du grain de film, finalement). Et si je veux pousser les hommages à l'impressionnisme plus loin, je pourrais aussi jouer avec le fondu enchaîné, créer des scènes où tout serait en double exposition comme à la Frédéric Back et <i8>L'homme qui plantait des arbres</i8>, et comme à la Caroline Leaf.</snl>
+</p>
+
+<h3>Contexte</h3>
+
+<pn>
+    <sc>Cette note de blog</sc> fait partie de mon projet de recherche <i>Vers un cinéma algorithmique</i>, démarré en avril 2018. Je vous invite à consulter <a href="https://pelletierauger.github.io/fr/blog/2018/4/vers-un-cinema-algorithmique.html">la toute première note du projet</a> pour en apprendre davantage.
+</pn>
+
+<!-- en-title -->Botanical Scenes
+<!-- en-description -->
+<!-- en-content -->
+
+<h3>Context</h3>
+
+<pn>
+    <sc>This blog post</sc> is part of my research project <i>Towards an algorithmic cinema</i>, started in April 2018. I invite you to read <a href="https://pelletierauger.github.io/en/blog/2018/4/towards-an-algorithmic-cinema.html">the first blog post of the project</a> to learn more about it.
+</pn>
