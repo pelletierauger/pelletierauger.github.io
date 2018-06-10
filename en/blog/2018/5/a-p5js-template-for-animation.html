@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Guillaume Pelletier-Auger - A p5.js template for animation</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=4, user-scalable=yes" />
+        <link href="../../../../style/style.css" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Inconsolata|EB+Garamond" rel="stylesheet">
+        <link href="../../../../style/code.css" rel="stylesheet" type="text/css">
+    </head><body>
+    <nav>
+        <h1><a href="../../../../">Guillaume <span class="nobreak">Pelletier-Auger</span></a></h1>
+        <ul>
+            <li><a href="../../../../">Projects</a></li>
+            <li class = "selected"><a href="../../../../en/blog/">Blog</a></li>
+            <li><a href="../../../../en/about.html">About</a></li>
+            <li><a href="../../../../fr/blog/2018/5/un-modele-p5js-pour-l'animation.html">En &#8594; Fr</a></li>
+        </ul>
+    </nav>
+    
+            <article>
+                <h2 class="with-date">A <span class="lnum">p5.js</span> template for animation
+</h2><div class="description">
+                    
+
+            </div>
+                <div class="date">May 27, 2018</div>
+                
+<p class="noindent">
+    <span class="small-caps">While doing a lot of animation</span> with <span class="lnum">p5.js</span> over the last few months, I&rsquo;ve slowly developed a template that I now use to start all my projects. It&rsquo;s designed for my own use but perhaps it could also be useful (in part or as a whole) for other people. So I&rsquo;m <a href="">sharing it on GitHub</a> and documenting it below. There&rsquo;s always ample room for improvement, so if you have any ideas don&rsquo;t hesite to <a href="">get in touch</a>.
+</p>
+<p>
+    The main feature of this template is a convenient system to export frames to create videos and gifs. This is accomplished with a small Node.js server, named <span class="inline-code">server.js</span>, that communicates with the <span class="lnum">p5.js</span> sketch via Socket.io. To export frames, the sketch gets a reference to the web canvas and sends it to <span class="inline-code">server.js</span>, which saves it to disk. The best part is that the exportation can all happen behind the scene, in the command line, using the Node module Puppeteer. Then, when all the frames are exported, they can be turned into videos and gifs using <span class="small-caps">ffmpeg</span>.
+</p>
+<p>
+    I&rsquo;ll now look at all the template&rsquo;s pieces in details.
+</p>
+
+<!-- read-more -->
+
+<h3>Global variables in <span class="inline-code">sketch.js</span></h3>
+
+<div class="codebox"><pre><code><span class="hljs-keyword">let</span> looping<span class="hljs-punctuation"> = </span><span class="hljs-literal">true</span>;
+<span class="hljs-keyword">let</span> socket, cnvs, ctx, canvasDOM;
+<span class="hljs-keyword">let</span> fileName<span class="hljs-punctuation"> = </span><span class="hljs-string">"./frames/sketch"</span>;
+<span class="hljs-keyword">let</span> maxFrames<span class="hljs-punctuation"> = </span><span class="hljs-number">20</span>;</code></pre></div>
+
+<p class="noindent">
+    We first declare a <span class="inline-code">looping</span> variable, used to pause and restart the animation by pushing the spacebar. Then, <span class="inline-code">socket</span>, <span class="inline-code">cnvs</span>, <span class="inline-code">ctx</span>, and <span class="italic">canvasDOM</span> are all going to be used to
+</p>
+
+<h3>The <span class="inline-code">setup()</span> function</h3>
+
+<div class="codebox"><pre><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setup</span>(<span class="hljs-params"></span>) </span>{
+    socket<span class="hljs-punctuation"> = </span>io<span class="hljs-punctuation">.</span>connect(<span class="hljs-string">'http://localhost:8080'</span>);
+    cnvs<span class="hljs-punctuation"> = </span>createCanvas(windowWidth, windowWidth<span class="hljs-punctuation"> / </span><span class="hljs-number">16</span><span class="hljs-punctuation"> * </span><span class="hljs-number">9</span>);
+    ctx<span class="hljs-punctuation"> = </span>cnvs<span class="hljs-punctuation">.</span>drawingContext;
+    canvasDOM<span class="hljs-punctuation"> = </span><span class="hljs-built_in">document</span><span class="hljs-punctuation">.</span>getElementById(<span class="hljs-string">'defaultCanvas0'</span>);</code></pre></div>
+
+
+
+
+<div class="codebox"><pre><code><span class="hljs-keyword">if</span> (exporting) {
+    frameRate(<span class="hljs-number">2</span>);
+} <span class="hljs-keyword">else</span> {
+    frameRate(<span class="hljs-number">30</span>);
+}</code></pre></div>
+
+<p class="noindent">
+    And then, the sketch&rsquo;s <span class="inline-code">frameRate</span> is set according to the <span class="inline-code">exporting</span> variable. This is done because, when exporting simple frames that do not require a lot of computation, I find that exporting too many frames per second ends up clogging the system. I&rsquo;m still testing this out, but for now, exporting <span class="lnum">2</span> frames per second seems like a good compromise. It&rsquo;s generally slower but more consistent—it will not slow down over time.
+</p>
+<p>
+    On the other hand, if <span class="inline-code">exporting</span> is <span class="inline-code">false</span>, I set the <span class="inline-code">frameRate</span> to <span class="inline-code">30</span>. This is just a personal preference—I studied in traditional paper animation and I&rsquo;m used to thinking in terms of <span class="lnum">24 or 30</span> frames per second (typical frame rates for film and <span class="small-caps">ntsc</span> video, respectively). From what I&rsquo;ve been able to observe, it doesn&rsquo;t seem like the web canvas is actually able to dependably refresh at the rate of <span class="lnum">24</span> frames per second. It seems to only refresh correctly at fractions of <span class="lnum">60 (so 10, 20, and 30).</span>
+</p>
+
+<h3>The <span class="inline-code">draw()</span> loop</h3>
+
+<div class="codebox"><pre><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">draw</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i<span class="hljs-punctuation"> = </span><span class="hljs-number">0</span>; i<span class="hljs-punctuation"> &lt; </span><span class="hljs-number">500</span>; i<span class="hljs-punctuation">++</span>) {
+        <span class="hljs-keyword">let</span> x<span class="hljs-punctuation"> = </span>random(width);
+        <span class="hljs-keyword">let</span> y<span class="hljs-punctuation"> = </span>random(height);
+        ellipse(x, y, <span class="hljs-number">5</span>);
+    }
+    <span class="hljs-keyword">if</span> (exporting<span class="hljs-punctuation"> &amp;&amp; </span>frameCount<span class="hljs-punctuation"> &lt;= </span>maxFrames) {
+        frameExport();
+    }
+}</code></pre></div>
+
+<h3>Some convenient hot keys</h3>
+
+<div class="codebox"><pre><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">keyPressed</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">if</span> (keyCode<span class="hljs-punctuation"> <span class="hljs-punctuation">==</span>= </span><span class="hljs-number">32</span>) {
+        <span class="hljs-keyword">if</span> (looping) {
+            noLoop();
+            looping<span class="hljs-punctuation"> = </span><span class="hljs-literal">false</span>;
+        } <span class="hljs-keyword">else</span> {
+            loop();
+            looping<span class="hljs-punctuation"> = </span><span class="hljs-literal">true</span>;
+        }
+    }
+    <span class="hljs-keyword">if</span> (key <span class="hljs-punctuation">==</span> <span class="hljs-string">'p'</span><span class="hljs-punctuation"> || </span>key <span class="hljs-punctuation">==</span> <span class="hljs-string">'P'</span>) {
+        frameExport();
+    }
+    <span class="hljs-keyword">if</span> (key <span class="hljs-punctuation">==</span> <span class="hljs-string">'r'</span><span class="hljs-punctuation"> || </span>key <span class="hljs-punctuation">==</span> <span class="hljs-string">'R'</span>) {
+        <span class="hljs-built_in">window</span><span class="hljs-punctuation">.</span>location<span class="hljs-punctuation">.</span>reload();
+    }
+    <span class="hljs-keyword">if</span> (key <span class="hljs-punctuation">==</span> <span class="hljs-string">'m'</span><span class="hljs-punctuation"> || </span>key <span class="hljs-punctuation">==</span> <span class="hljs-string">'M'</span>) {
+        redraw();
+    }
+}</code></pre></div>
+            </article>
+            <div id="footer">Guillaume Pelletier-Auger &mdash; 2016-2018
+    </div>
+    </body>
+    </html>

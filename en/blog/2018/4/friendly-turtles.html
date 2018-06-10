@@ -5,7 +5,7 @@
         <title>Guillaume Pelletier-Auger - Friendly turtles</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=4, user-scalable=yes" />
         <link href="../../../../style/style.css" rel="stylesheet" type="text/css">
-        <link href="https://fonts.googleapis.com/css?family=Inconsolata|EB+Garamond" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700|EB+Garamond" rel="stylesheet">
         <link href="../../../../style/code.css" rel="stylesheet" type="text/css">
     </head><body>
     <nav>
@@ -23,13 +23,138 @@
                     Collective shapes emerging from individual behaviours.
 
             </div>
-                <div class="date">April 18, 2018</div>
+                <div class="date">April 28, 2018</div>
                 
-<p class="noindent">
-    <span class="small-caps">The animation above</span> is based on the ideas behind <span class="italic">Heroes and Cowards</span>, a NetLogo model designed by William Rand and Uri Wilensky, although it is a significantly distant alteration of it. Each dot in the animation represents a “turtle” that can be given instructions and that possesses simple behaviours. When the animation starts, each turtle selects two friends among the group of turtles, and then, it tries to position itself exactly in between those two friends. The resulting animation is formed by the combined behaviours of all turtles—it&rsquo;s the <span class="italic">emergent</span> shape of all their individual actions.
+
+
+
+<img class="inline-image" src="../../../../images/friendly-turtles/second-version-long-640x360.gif">
+
+<p class="article-top">
+    <span class="small-caps">The animation above</span> is inspired by the ideas behind <span class="italic">Heroes and Cowards</span>, an agent based model created by William Rand and Uri Wilensky, although it&rsquo;s a very distant alteration of this <span class="nobreak">model.<label for="second-version" class="margin-toggle sidenote-number"></label></span>
+        <input type="checkbox" id="second-version" class="margin-toggle"/>
+        <span class="sidenote-left">The code written to generate this animation is contained on the <a href=""><span class="inline-code8">second-version</span></a> branch of the project&rsquo;s Git repository, which is <a href="">hosted on GitHub</a>.</span>
+</p>
+<p>
+    The animation&rsquo;s mechanism is simple: each black dot represents a <span class="italic">turtle</span> that can receive instructions and that possesses a certain behaviour. When the animation starts, each turtle is associated with two <span class="italic">friends</span> (two different dots in the group). Then, between each new frame of animation, each turtle walks in the direction of a point that is equally distant between its two friends.
+</p>
+<p>
+    The turtles thus have an identical individual behaviour, but because their initial positions are all different, a complex collective behaviour emerges from the aggregate of their actions: the group of turtles is collectively trying to form a single loop. When a new spiral is added in the scene, those new turtles are rapidly merging with the path of older turtles.
 </p>
 
 <!-- read-more -->
+
+<h3>A variation</h3>
+
+<p class="noindent">
+    <span class="small-caps">The animation below</span> is built with the same mechanism, but each turtle is now represented by a small dot of black India <span class="nobreak">ink.<label for="master" class="margin-toggle sidenote-number"></label></span>
+        <input type="checkbox" id="master" class="margin-toggle"/>
+        <span class="sidenote">The code for this animation is on the <a href=""><span class="inline-code8">master</span></a> branch of the project&rsquo;s repository.</span> Also, the creation of new turtles is now controlled by hand, with gestures made on my computer&rsquo;s trackpad.
+</p>
+<p>
+    <img class="inline-image" src="../../../../images/friendly-turtles/friendly-turtles-dots-640x360.gif">
+</p>
+
+<!-- Each dot in the animation represents a “turtle” that can be given instructions and that possesses simple behaviours. When the animation starts, each turtle selects two friends among the group of turtles, and then, it tries to position itself exactly in between those two friends. The resulting animation is formed by the combined behaviours of all turtles—it&rsquo;s the <span class="italic">emergent</span> shape of all their individual actions. -->
+
+<h3>Animation sheets</h3>
+
+<p class="noindent">
+    <span class="small-caps">These short animations</span> are also an opportunity to think about “animation sheets” (traditionally called <span class="italic">exposure sheets</span> or <span class="italic">x-sheets</span>), a crucial tool in the field of classical paper animation that could potentially be useful for algorithmic art.
+</p>
+<p>
+    It often happens, when I create algorithmic animations, that I want to add a precise event at a precise moment (to <span class="italic">intervene</span>, so to speak, in an ongoing process). This can be simply done with a conditional expression:
+</p>
+
+<div class="codebox"><pre><code><span class="hljs-keyword">if</span> (frameCount <span class="hljs-punctuation">==</span> <span class="hljs-number">200</span>) { intervene(); }</code></pre></div>
+
+<p class="noindent">
+    But an accumulation of too many of those conditional expressions can rapidly become unwieldy, and it&rsquo;s interesting to think of alternative methods. The model below, named <span class="inline-code">eventSheet</span>, is an example of a simple mechanism that could potentially be useful in many situations.
+</p>
+
+<div class="codebox"><pre><code><span class="hljs-keyword">let</span> eventSheet<span class="hljs-punctuation"> = </span>{
+    <span class="hljs-number">10</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+        <span class="hljs-built_in">console</span><span class="hljs-punctuation">.</span>log(<span class="hljs-string">"Ten frames<span class="hljs-punctuation">!</span>"</span>);
+    },
+    <span class="hljs-number">20</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+        <span class="hljs-built_in">console</span><span class="hljs-punctuation">.</span>log(<span class="hljs-string">"Twenty frames<span class="hljs-punctuation">!</span>"</span>);
+    },
+    <span class="hljs-attr">run</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">f</span>) </span>{
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>[f]) {
+            <span class="hljs-keyword">this</span>[f]();
+        }
+    }
+};
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">draw</span>(<span class="hljs-params"></span>) </span>{
+    eventSheet<span class="hljs-punctuation">.</span>run(frameCount);    
+}</code></pre></div>
+
+<p class="noindent">
+    But this construction is rather rigid; it would be interesting to be able to alter the duration of scenes more fluidly. Below is another rough idea for an <span class="inline-code">eventSheet</span>. It&rsquo;s a bit strange, though.
+</p>
+
+<div class="codebox"><pre><code><span class="hljs-keyword">let</span> eventSheet<span class="hljs-punctuation"> = </span>{
+    <span class="hljs-attr">slowScene</span>: {
+        <span class="hljs-attr">t</span>: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-number">10</span>, 
+        <span class="hljs-attr">f</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+            <span class="hljs-built_in">console</span><span class="hljs-punctuation">.</span>log(<span class="hljs-string">"Ten frames<span class="hljs-punctuation">!</span>"</span>);
+        },
+    },
+    <span class="hljs-attr">fastScene</span>: {
+        <span class="hljs-attr">t</span>: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> eventSheet<span class="hljs-punctuation">.</span>slowScene<span class="hljs-punctuation">.</span>t()<span class="hljs-punctuation"> + </span><span class="hljs-number">10</span>,
+        <span class="hljs-attr">f</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+            <span class="hljs-built_in">console</span><span class="hljs-punctuation">.</span>log(<span class="hljs-string">"Twenty frames<span class="hljs-punctuation">!</span>"</span>);
+        },
+    }
+    <span class="hljs-comment">// run: function(f) {</span>
+    <span class="hljs-comment">//     if (this[f]) {</span>
+    <span class="hljs-comment">//         this[f]();</span>
+    <span class="hljs-comment">//     }</span>
+    <span class="hljs-comment">// }</span>
+};</code></pre></div>
+
+<p class="noindent">
+    It could also interesting to define an <span class="inline-code">eventSheet</span> in a way that would make it possible to generate new ones algorithmically. I could algorithmically create sequences of events and then select the most interesting ones and save them in <span class="small-caps">json</span> files. An animation sheet could even be envisioned as something that has a genotype able to mutate and reproduce itself.
+</p>
+
+
+<h3>Scribbled notes</h3>
+
+<p class="noindent">
+    <span class="small-caps">Would it be possible</span> to make the spirals appear progressively in the first animation? If they were to appear progressively, maybe they would be too deformed and would never look like spirals. Or maybe when they are appearing, the new spirals could be disconnected from the other turtles. Could I have different groups of turtles between which “friendships” would be impossible?
+</p>
+<p>
+    In his course
+        <label for="question" class="margin-toggle">&mdash;
+        </label>
+        <input type="checkbox" id="question" class="margin-toggle" />
+        <span class="marginnote-left"><span class="italic8">“Build towards<br>a question.”</span></span> <span class="italic">Introduction to Agent Based Models</span>, William Rand explains how important it is, while developing a model, to “build towards a question”, meaning that a model should answer a precise question (it is, after all, a scientific tool). Evidently, this point is difficult to consider while creating models for artistic goals—it can seem like we are not building towards questions but I think this is mostly a false impression. The questions are simply different and blurrier.
+</p>
+<p>
+    For example, if I want to create a sequence of various animated scenes that are similar in some ways to the ones above, and create a short animation film with them, I can ask myself: “What types of behaviours could generate &lsquo;geometric dances&rsquo; with various sections that are coherently connected together?” Or: “How could colour be added to such dances? Would turtles of different colours move differently? If so, what could those differences be and what effects would they have on the resulting animations? Could turtles change colours?”
+</p>
+<p>
+    While watching those animations,
+        <label for="audio" class="margin-toggle">&mdash;
+        </label>
+        <input type="checkbox" id="audio" class="margin-toggle" />
+        <span class="marginnote-left"><span class="italic8">Audio<br>considerations.</span></span> I&rsquo;m also tempted to create new versions of them that would respond to sound. Different moments of a musical piece could be accompanied by various types of turtles, and the pitch and velocity of the notes could determine some properties of the turtles.
+</p>
+
+<h3>Context</h3>
+
+<p class="noindent">
+    <span class="small-caps">This blog post</span> is part of my research project <span class="italic">Towards an algorithmic cinema</span>, started in April 2018. I invite you to read <a href="https://pelletierauger.github.io/en/blog/2018/4/towards-an-algorithmic-cinema.html">the first blog post of the project</a> to learn more about it.
+</p>
+
+
+<!-- <p class="noindent">
+    <span class="small-caps">The animation above</span> is based on the ideas behind <span class="italic">Heroes and Cowards</span>, a NetLogo model designed by William Rand and Uri Wilensky, although it is a significantly distant alteration of it. Each dot in the animation represents a “turtle” that can be given instructions and that possesses simple behaviours. When the animation starts, each turtle selects two friends among the group of turtles, and then, it tries to position itself exactly in between those two friends. The resulting animation is formed by the combined behaviours of all turtles—it&rsquo;s the <span class="italic">emergent</span> shape of all their individual actions.
+</p>
+-->
+
+<!--
 
 <p>
     A chain of turtles. What if I change the order of the loop... Three types of xsheets. event-sheets, running-sheets, slow-sheets. En faire un sketch audio-réactif... ? Chaque note de guitare créerait une nouvelle spirale. Des évènements pourraient aussi changer les algorithmes de cheminements des tortues — faire trembler leurs parcours, etc.
@@ -108,11 +233,7 @@
 <p class="noindent">
     Et évidemment, il peut être intéressant de définir une <span class="inline-code">eventSheet</span> de façon à ce qu&rsquo;elle puisse être elle-même générée algorithmiquement. Je pourrais créer algorithmiquement des séquences d&rsquo;évènements et ensuite, sélectionner les plus intéressantes séquences et les sauvegarder dans des fichiers <span class="small-caps">json</span>.
 </p>
-
-<h3>Context</h3>
-<p class="noindent">
-    <span class="small-caps">This blog post</span> is part of my research project <span class="italic">Towards an algorithmic cinema</span>, started in April 2018. I invite you to read <a href="https://pelletierauger.github.io/en/blog/2018/4/towards-an-algorithmic-cinema.html">the first blog post of the project</a> to learn more about it.
-</p>
+ -->
             </article>
             <div id="footer">Guillaume Pelletier-Auger &mdash; 2016-2018
     </div>

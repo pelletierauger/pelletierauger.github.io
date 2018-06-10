@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Guillaume Pelletier-Auger - Embranchements déterministes</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=4, user-scalable=yes" />
+        <link href="../../../../style/style.css" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Inconsolata|EB+Garamond" rel="stylesheet">
+        <link href="../../../../style/code.css" rel="stylesheet" type="text/css">
+    </head><body>
+    <nav>
+        <h1><a href="../../../../fr/">Guillaume <span class="nobreak">Pelletier-Auger</span></a></h1>
+        <ul>
+            <li><a href="../../../../fr/">Projets</a></li>
+            <li class = "selected"><a href="../../../../fr/blog/">Blog</a></li>
+            <li><a href="../../../../fr/a-propos.html">À propos</a></li>
+            <li><a href="../../../../en/blog/2018/6/deterministic-branching.html">Fr &#8594; En</a></li>
+        </ul>
+    </nav>
+    
+            <article>
+                <h2 class="with-date">Embranchements déterministes</h2><div class="description">
+                    En chemin vers un jardin algorithmique.
+
+            </div>
+                <div class="date">2 juin 2018</div>
+                
+
+<p class="noindent">
+    <span class="small-caps">Je veux créer</span> un système d&rsquo;embranchements pour mon système de botanique algorithmique qui ne repose pas du tout sur le hasard, de façon à ce que mes algorithmes génétiques puissent déterminer de façon plus efficace quels sont les types d&rsquo;arbres les plus «&nbsp;performants&nbsp;». En ce moment, tout dépend d&rsquo;une probabilité, définie dans le prototype <span class="inline-code">DNA</span>&nbsp;:
+</p>
+
+<div class="codebox"><pre><code><span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>branchingProbability<span class="hljs-punctuation"> = </span><span class="hljs-number">0.02</span>;</code></pre></div>
+
+<!-- read-more -->
+
+<p class="noindent">
+    Et ensuite, dans la méthode <span class="inline-code">grow</span> d&rsquo;un objet <span class="inline-code">Segment</span>, un simple test permet de déterminer si un embranchement doit se faire&nbsp;:
+</p>
+
+<div class="codebox"><pre><code><span class="hljs-keyword">if</span> (<span class="hljs-built_in">Math</span><span class="hljs-punctuation">.</span>random()<span class="hljs-punctuation"> &lt;= </span><span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>dna<span class="hljs-punctuation">.</span>branchingProbability) {
+    <span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>branch();
+}</code></pre></div>
+
+<p class="noindent">
+    Les embranchements sont ainsi complètement probabilistes, et peuvent aussi se faire à répétition. Ils ne sont pas limités. Ce qu&rsquo;il me faut, maintenant, ce sont des objets <span class="inline-code">Segment</span> qui aient deux nouvelles propriétés lors de leur création&nbsp;:
+</p>
+
+<div class="codebox"><pre><code><span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>branchedLeft<span class="hljs-punctuation"> = </span><span class="hljs-literal">false</span>;
+<span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>branchedRight<span class="hljs-punctuation"> = </span><span class="hljs-literal">false</span>;</code></pre></div>
+
+<p class="noindent">
+    Et une fois qu&rsquo;un embranchement se ferait, une de ces deux booléennes deviendrait <span class="inline-code">true</span> et cet embranchement ne pourrait plus se faire. Il pourrait quand même y avoir une probabilité qu&rsquo;un embranchement se fasse ou non… Ce serait quand même beau de voir certains petits rameaux se former sur des segments d&rsquo;arbres qui ont déjà créé des embranchements plus grands.
+</p>
+
+<h3>Fréquence d&rsquo;embranchement</h3>
+
+<p class="noindent">
+    <span class="small-caps">Le problème plus compliqué</span> est celui de la fréquence d&rsquo;embranchement. Il doit y avoir quatre valeurs différentes pour gérer cette fréquence dans l&rsquo;objet <span class="nobreak"><span class="inline-code">DNA</span>.
+        <label for="normalized-genotype" class="margin-toggle sidenote-number">
+        </label></span>
+        <input type="checkbox" id="normalized-genotype" class="margin-toggle"/>
+        <span class="sidenote-left">Chaque gène du génotype d&rsquo;un arbre sera, comme on le voit ici, <span class="italic8">normalisé</span>, c&rsquo;est-à-dire que sa valeur sera située entre <span class="lnum">0 et 1</span>. Je ne suis pas certain que ce soit la meilleure solution mais, pour l&rsquo;instant, j&rsquo;avance avec cette idée.</span>
+</p>
+
+<div class="codebox"><pre><code><span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>branchingFrequencyLeft<span class="hljs-punctuation"> = </span><span class="hljs-number">0.1</span>;
+<span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>branchingFrequencyRight<span class="hljs-punctuation"> = </span><span class="hljs-number">0.20</span>;
+<span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>branchingOffsetLeft<span class="hljs-punctuation"> = </span><span class="hljs-number">0.5</span>;
+<span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>branchingOffsetRight<span class="hljs-punctuation"> = </span><span class="hljs-number">0.9</span>;</code></pre></div>
+
+<p class="noindent">
+    Cependant, ces quatres valeurs devront être transformées en nombres entiers par la partie du code qui interprétera l&rsquo;objet <span class="inline-code">DNA</span>.
+</p>
+<p>
+    Maintenant, je dois avoir un nombre qui représente la distance <span class="italic">en segments</span> d&rsquo;un segment à la base de l&rsquo;arbre. Je pourrais déclarer une propriété <span class="inline-code">segmentID</span> lors de la création d&rsquo;un arbre.
+</p>
+
+<div class="codebox"><pre><code><span class="hljs-keyword">let</span> Tree<span class="hljs-punctuation"> = </span><span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">x, y, dna</span>) </span>{
+    <span class="hljs-comment">//...</span>
+    <span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>segmentID<span class="hljs-punctuation"> = </span><span class="hljs-number">0</span>;
+};</code></pre></div>
+
+<p class="noindent">
+    Et ensuite, incrémenter cette valeur à chaque nouveau segment.
+</p>
+
+<div class="codebox"><pre><code><span class="hljs-keyword">let</span> Segment<span class="hljs-punctuation"> = </span><span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">parent</span>) </span>{
+    <span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>parent<span class="hljs-punctuation"> = </span>parent;
+    <span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>dna<span class="hljs-punctuation"> = </span>parent<span class="hljs-punctuation">.</span>dna;
+    <span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>isRoot<span class="hljs-punctuation"> = </span><span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>parent <span class="hljs-keyword">instanceof</span> Tree;
+    <span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>segmentID<span class="hljs-punctuation"> = </span>parent<span class="hljs-punctuation">.</span>segmentID<span class="hljs-punctuation"> + </span><span class="hljs-number">1</span>;</code></pre></div>
+
+<p class="noindent">
+    Maintenant, un embranchement à gauche peut être réalisé si…
+</p>
+
+<div class="codebox"><pre><code><span class="hljs-keyword">let</span> fL<span class="hljs-punctuation"> = </span><span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>dna<span class="hljs-punctuation">.</span>branchingFrequencyLeft;
+<span class="hljs-keyword">let</span> oL<span class="hljs-punctuation"> = </span><span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>dna<span class="hljs-punctuation">.</span>branchingOffsetLeft;
+<span class="hljs-keyword">if</span> ((<span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>segmentID<span class="hljs-punctuation"> - </span>oL) <span class="hljs-punctuation">%</span> fL <span class="hljs-punctuation">==</span> <span class="hljs-number">0</span>) {
+    branchLeft();
+}</code></pre></div>
+
+<p class="noindent">
+    À moins que… j&rsquo;initialise les booléennes <span class="inline-code">branchedLeft</span> et <span class="inline-code">branchedRight</span> avec ce test.
+</p>
+
+<div class="codebox"><pre><code><span class="hljs-keyword">let</span> Segment<span class="hljs-punctuation"> = </span><span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">parent</span>) </span>{
+    <span class="hljs-comment">//...</span>
+    <span class="hljs-keyword">let</span> fL<span class="hljs-punctuation"> = </span><span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>dna<span class="hljs-punctuation">.</span>branchingFrequencyLeft;
+    <span class="hljs-keyword">let</span> oL<span class="hljs-punctuation"> = </span><span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>dna<span class="hljs-punctuation">.</span>branchingOffsetLeft;
+    <span class="hljs-keyword">let</span> fR<span class="hljs-punctuation"> = </span><span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>dna<span class="hljs-punctuation">.</span>branchingFrequencyRight;
+    <span class="hljs-keyword">let</span> oR<span class="hljs-punctuation"> = </span><span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>dna<span class="hljs-punctuation">.</span>branchingOffsetRight;
+    <span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>branchedLeft<span class="hljs-punctuation"> = </span>(<span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>segmentID<span class="hljs-punctuation"> + </span>oL) <span class="hljs-punctuation">%</span> fL <span class="hljs-punctuation">==</span> <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>branchedRight<span class="hljs-punctuation"> = </span>(<span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>segmentID<span class="hljs-punctuation"> + </span>oR) <span class="hljs-punctuation">%</span> fR <span class="hljs-punctuation">==</span> <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>branchedForward<span class="hljs-punctuation"> = </span><span class="hljs-literal">false</span>;</code></pre></div>
+
+<p class="noindent">
+    Ainsi, lorsque <span class="inline-code">branchedLeft</span> ou <span class="inline-code">branchedRight</span> sont <span class="inline-code">true</span>, ces embranchements ne peuvent pas se faire, peu importe s&rsquo;ils se sont déjà faits. Et si elles sont <span class="inline-code">false</span>, le petit test probabiliste peut être exécuté.
+</p>
+<p>
+    Il me faut donc deux nouvelles méthodes, <span class="inline-code">branchLeft</span> et <span class="inline-code">branchRight</span>, dans le prototype <span class="inline-code">Segment</span>. Elles seront bien entendu presque identiques.
+</p>
+
+<div class="codebox"><pre><code>Segment<span class="hljs-punctuation">.</span>prototype<span class="hljs-punctuation">.</span>branchLeft<span class="hljs-punctuation"> = </span><span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>children<span class="hljs-punctuation">.</span>push(<span class="hljs-keyword">new</span> Segment(<span class="hljs-keyword">this</span>));
+    <span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>energy <span class="hljs-punctuation">-=</span> <span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>dna<span class="hljs-punctuation">.</span>branchingCost;
+    <span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>branchedLeft<span class="hljs-punctuation"> = </span><span class="hljs-literal">true</span>;
+};</code></pre></div>
+
+<p class="noindent">
+    Quand je crée un nouveau segment, maintenant, ce segment doit pouvoir recevoir un second argument, <span class="inline-code">direction</span>, qui pourra être égal à <span class="inline-code">left</span>, <span class="inline-code">forward</span>, ou <span class="inline-code">right</span>. Ah, et pendant tout ce temps, j&rsquo;ai aussi besoin d&rsquo;une propriété <span class="inline-code">branchedForward</span> déclarée dans le constructeur du prototype <span class="inline-code">Segment</span>. L&rsquo;argument <span class="inline-code">direction</span> ne sert qu&rsquo;à ajuster l&rsquo;angle du nouveau segment créé. Je crois bien, si j&rsquo;y pense, qu&rsquo;un segment n&rsquo;a pas besoin de savoir s&rsquo;il est à gauche, devant ou à droite de son parent.
+</p>
+<p>
+    Dont je peux préserver la propriété <span class="inline-code">branchingProbability</span> du prototype <span class="inline-code">DNA</span> telle quelle, mais maintenant elle servira dans trois contextes — elle déterminera l&rsquo;embranchement à gauche, devant et à droite.
+</p>
+
+<div class="codebox"><pre><code>Segment<span class="hljs-punctuation">.</span>prototype<span class="hljs-punctuation">.</span>branch<span class="hljs-punctuation"> = </span><span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">direction</span>) </span>{
+    <span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>children<span class="hljs-punctuation">.</span>push(<span class="hljs-keyword">new</span> Segment(<span class="hljs-keyword">this</span>, direction));
+    <span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>energy <span class="hljs-punctuation">-=</span> <span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>dna<span class="hljs-punctuation">.</span>branchingCost;
+    <span class="hljs-keyword">if</span> (direction <span class="hljs-punctuation">==</span> <span class="hljs-string">"left"</span>) {
+        <span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>branchedLeft<span class="hljs-punctuation"> = </span><span class="hljs-literal">true</span>;
+    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (direction <span class="hljs-punctuation">==</span> <span class="hljs-string">"forward"</span>) {
+        <span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>branchedForward<span class="hljs-punctuation"> = </span><span class="hljs-literal">true</span>;
+    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (direction <span class="hljs-punctuation">==</span> <span class="hljs-string">"right"</span>) {
+        <span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>branchedRight<span class="hljs-punctuation"> = </span><span class="hljs-literal">true</span>;
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-built_in">console</span><span class="hljs-punctuation">.</span>error(<span class="hljs-string">"Invalid branching direction."</span>);
+    }
+};</code></pre></div>
+
+<h3>Contexte</h3>
+
+<p class="noindent">
+    <span class="small-caps">Cette note de blog</span> fait partie de mon projet de recherche <span class="italic">Vers un cinéma algorithmique</span>, démarré en avril 2018. Je vous invite à consulter <a href="https://pelletierauger.github.io/fr/blog/2018/4/vers-un-cinema-algorithmique.html">la toute première note du projet</a> pour en apprendre davantage.
+</p>
+
+
+            </article>
+            <div id="footer">Guillaume Pelletier-Auger &mdash; 2016-2018
+    </div>
+    </body>
+    </html>

@@ -4,11 +4,11 @@
         <title>Guillaume Pelletier-Auger - Blog</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=4, user-scalable=yes">
         <link href="../../style/style.css" rel="stylesheet" type="text/css">
-        <link href="../../style/towards-an-algorithmic-cinema.css" rel="stylesheet" type="text/css">
+        <link href="../../style/falling-mountains.css" rel="stylesheet" type="text/css">
         
-        <link href="../../style/truchet.css" rel="stylesheet" type="text/css">
+        <link href="../../style/notes-on-genetic-automata.css" rel="stylesheet" type="text/css">
         
-        <link href="https://fonts.googleapis.com/css?family=Inconsolata|EB+Garamond" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700|EB+Garamond" rel="stylesheet">
         <link href="../../style/code.css" rel="stylesheet" type="text/css">
     <style id="MathJax_CHTML_styles">.mjx-chtml {display: inline-block; line-height: 0; text-indent: 0; text-align: left; text-transform: none; font-style: normal; font-weight: normal; font-size: 100%; font-size-adjust: none; letter-spacing: normal; word-wrap: normal; word-spacing: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0; min-height: 0; border: 0; margin: 0; padding: 1px 0}
 .MJXc-display {display: block; text-align: center; margin: 1em 0; padding: 0}
@@ -140,10 +140,33 @@
     <div class="blog-posts">
             <div class="blog-post">
                 <div class="blog-post-header">
-                    <a href="../blog/2018/5/automates-cellulaires-genetiques.html"><div class="date">9 mai 2018</div>
-                    <div class="blog-title-box"><h2 class="header">Automates cellulaires génétiques</h2></div>
+                    <a href="../blog/2018/6/feuillages.html"><div class="date">16 juin 2018</div>
+                    <div class="blog-title-box"><h2 class="header">Feuillages</h2></div>
                     <div class="description">
-                    Notes éparses à propos d’un système en construction.
+                    
+
+            </div></a>
+                </div>
+                <div class="blog-post-content">
+                    
+
+
+
+<h3>Contexte</h3>
+
+<p class="noindent">
+    <span class="small-caps">Cette note de blog</span> fait partie de mon projet de recherche <span class="italic">Vers un cinéma algorithmique</span>, démarré en avril 2018. Je vous invite à consulter <a href="https://pelletierauger.github.io/fr/blog/2018/4/vers-un-cinema-algorithmique.html">la toute première note du projet</a> pour en apprendre davantage.
+</p>
+
+
+                </div>
+            </div>
+            <div class="blog-post">
+                <div class="blog-post-header">
+                    <a href="../blog/2018/6/scenes-botaniques.html"><div class="date">9 juin 2018</div>
+                    <div class="blog-title-box"><h2 class="header">Scènes botaniques</h2></div>
+                    <div class="description">
+                    
 
             </div></a>
                 </div>
@@ -151,19 +174,121 @@
                     
 
 <p class="noindent">
-    <span class="small-caps">Cet article</span> consiste en une série de notes un peu éparpillées prises alors que je me familiarise avec les <a href="https://fr.wikipedia.org/wiki/Algorithme_g%C3%A9n%C3%A9tique">algorithmes génétiques</a> et, plus particulièrement, leurs applications dans les automates cellulaires. Je ne suis pas certain que ces notes puissent servir à quiconque à part moi, mais elles ont néanmoins leur place dans un journal de travail.
+    <span class="small-caps">Il me faut créer</span> un système de scènes botaniques qui puissent gérer des animations contenant de quantités quasi illimitées d’éléments. Pour cela, il faut séparer le concept du <span class="inline-code">frame</span> d’animation de celui du <span class="inline-code">frameCount</span> de <span class="lnum">p5.js</span>, comme je l’ai fait dans ma machine à automates cellulaires.
 </p>
 
 
                 <div class="languageJump">
-                    <a href="../blog/2018/5/automates-cellulaires-genetiques.html">Continuer à lire…</a>
+                    <a href="../blog/2018/6/scenes-botaniques.html">Continuer à lire…</a>
                 </div>
                
                 </div>
             </div>
             <div class="blog-post">
                 <div class="blog-post-header">
-                    <a href="../blog/2018/5/botanique-evolutive.html"><div class="date">4 mai 2018</div>
+                    <a href="../blog/2018/6/embranchements-deterministes.html"><div class="date">2 juin 2018</div>
+                    <div class="blog-title-box"><h2 class="header">Embranchements déterministes</h2></div>
+                    <div class="description">
+                    En chemin vers un jardin algorithmique.
+
+            </div></a>
+                </div>
+                <div class="blog-post-content">
+                    
+
+<p class="noindent">
+    <span class="small-caps">Je veux créer</span> un système d’embranchements pour mon système de botanique algorithmique qui ne repose pas du tout sur le hasard, de façon à ce que mes algorithmes génétiques puissent déterminer de façon plus efficace quels sont les types d’arbres les plus «&nbsp;performants&nbsp;». En ce moment, tout dépend d’une probabilité, définie dans le prototype <span class="inline-code">DNA</span>&nbsp;:
+</p>
+
+<div class="codebox"><pre><code><span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>branchingProbability<span class="hljs-punctuation"> = </span><span class="hljs-number">0.02</span>;</code></pre></div>
+
+
+                <div class="languageJump">
+                    <a href="../blog/2018/6/embranchements-deterministes.html">Continuer à lire…</a>
+                </div>
+               
+                </div>
+            </div>
+            <div class="blog-post">
+                <div class="blog-post-header">
+                    <a href="../blog/2018/5/un-modele-p5js-pour-l'animation.html"><div class="date">27 mai 2018</div>
+                    <div class="blog-title-box"><h2 class="header">Un modèle <span class="lnum">p5.js</span> pour l’animation
+</h2></div>
+                    <div class="description">
+                    
+
+            </div></a>
+                </div>
+                <div class="blog-post-content">
+                    
+
+
+                </div>
+            </div>
+            <div class="blog-post">
+                <div class="blog-post-header">
+                    <a href="../blog/2018/5/les-montagnes-tombantes.html"><div class="date">26 mai 2018</div>
+                    <div class="blog-title-box"><h2 class="header"><span class="falaise-header">Les montagnes tombantes</span>
+</h2></div>
+                    <div class="description">
+                    Animations non déterministes par automates cellulaires.
+
+            </div></a>
+                </div>
+                <div class="blog-post-content">
+                    
+<img class="inline-image" src="../../../images/falling-mountains/rosy-morning.jpg">
+
+<p class="article-top">
+    <span class="falaise">« Nous ne savions rien de notre itinéraire ni même des motifs abscons de ce voyage. Ça c’était décidé hâtivement, dans la peur. »</span>
+</p>
+
+<p class="article-top">
+    <span class="mountain-drop-caps">L'</span><span class="small-caps">an dernier</span>, j’ai écrit un court programme pour modéliser des lignes dessinées au crayon. Le projet est encore embryonnaire et je veux continuer à le faire avancer sporadiquement. Je commence aujourd’hui par une relecture du code écrit l’an dernier et une synthèse des idées qu’il contient.
+</p>
+
+                <div class="languageJump">
+                    <a href="../blog/2018/5/les-montagnes-tombantes.html">Continuer à lire…</a>
+                </div>
+               
+                </div>
+            </div>
+            <div class="blog-post">
+                <div class="blog-post-header">
+                    <a href="../blog/2018/5/notes-sur-les-automates-genetiques.html"><div class="date">12 mai 2018</div>
+                    <div class="blog-title-box"><h2 class="header">Notes sur les automates génétiques</h2></div>
+                    <div class="description">
+                    Pour un système en construction.
+
+            </div></a>
+                </div>
+                <div class="blog-post-content">
+                    
+
+<p class="noindent">
+    <img class="genetic-drop-caps" src="../../../images/notes-on-genetic-automata/c.jpg"><span class="small-caps">et article</span> contient une série de notes un peu éparpillées prises alors que je me familiarise avec les algorithmes génétiques et, plus particulièrement, leurs applications dans les automates cellulaires. Je ne suis pas certain que ces notes puissent servir à quiconque à part moi, mais elles ont néanmoins leur place dans un journal de travail.
+</p>
+
+<p>
+    Si un système d’automates cellulaires a un «&nbsp;voisinage&nbsp;» de <span id="MathJax-Element-1-Frame" class="mjx-chtml"><span id="MJXc-Node-1303" class="mjx-math"><span id="MJXc-Node-1304" class="mjx-mrow"><span id="MJXc-Node-1305" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">9</span></span></span></span></span> cellules, et que chacune de ces cellules peut avoir un état de <span id="MathJax-Element-2-Frame" class="mjx-chtml"><span id="MJXc-Node-1306" class="mjx-math"><span id="MJXc-Node-1307" class="mjx-mrow"><span id="MJXc-Node-1308" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">0</span></span></span></span></span>, <span id="MathJax-Element-3-Frame" class="mjx-chtml"><span id="MJXc-Node-1309" class="mjx-math"><span id="MJXc-Node-1310" class="mjx-mrow"><span id="MJXc-Node-1311" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">1</span></span></span></span></span> ou <span id="MathJax-Element-4-Frame" class="mjx-chtml"><span id="MJXc-Node-1312" class="mjx-math"><span id="MJXc-Node-1313" class="mjx-mrow"><span id="MJXc-Node-1314" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">2</span></span></span></span></span>, un exemple de voisinage possible pourrait s’écrire&nbsp;: <span class="inline-code">"101022010"</span>. Ça me limiterait cependant à <span id="MathJax-Element-5-Frame" class="mjx-chtml"><span id="MJXc-Node-1315" class="mjx-math"><span id="MJXc-Node-1316" class="mjx-mrow"><span id="MJXc-Node-1317" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">10</span></span></span></span></span> états possibles (de <span id="MathJax-Element-6-Frame" class="mjx-chtml"><span id="MJXc-Node-1318" class="mjx-math"><span id="MJXc-Node-1319" class="mjx-mrow"><span id="MJXc-Node-1320" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">0</span></span></span></span></span> à <span id="MathJax-Element-7-Frame" class="mjx-chtml"><span id="MJXc-Node-1321" class="mjx-math"><span id="MJXc-Node-1322" class="mjx-mrow"><span id="MJXc-Node-1323" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">9</span></span></span></span></span>) pour un système. Une autre façon d’encoder un voisinage serait&nbsp;:
+</p>
+
+<div class="codebox"><pre><code><span class="hljs-keyword">let</span> neighborhood<span class="hljs-punctuation"> = </span>[<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">11</span>, <span class="hljs-number">13</span>, <span class="hljs-number">2</span>, <span class="hljs-number">20</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>];</code></pre></div>
+
+<p class="noindent">
+    Ici, je ne serais pas limité à <span id="MathJax-Element-8-Frame" class="mjx-chtml"><span id="MJXc-Node-1324" class="mjx-math"><span id="MJXc-Node-1325" class="mjx-mrow"><span id="MJXc-Node-1326" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">9</span></span></span></span></span> états possibles. Mais, dans tous les cas, comment ferais-je pour générer chacune des règles d’un système&nbsp;?
+</p>
+
+
+                <div class="languageJump">
+                    <a href="../blog/2018/5/notes-sur-les-automates-genetiques.html">Continuer à lire…</a>
+                </div>
+               
+                </div>
+            </div>
+            <div class="blog-post">
+                <div class="blog-post-header">
+                    <a href="../blog/2018/5/botanique-evolutive.html"><div class="date">5 mai 2018</div>
                     <div class="blog-title-box"><h2 class="header">Botanique évolutive</h2></div>
                     <div class="description">
                     Croisements entre la botanique algorithmique et les algorithmes génétiques.
@@ -218,7 +343,7 @@
             </div>
             <div class="blog-post">
                 <div class="blog-post-header">
-                    <a href="../blog/2018/4/les-tortues-amicales.html"><div class="date">18 avril 2018</div>
+                    <a href="../blog/2018/4/les-tortues-amicales.html"><div class="date">28 avril 2018</div>
                     <div class="blog-title-box"><h2 class="header">Les tortues amicales</h2></div>
                     <div class="description">
                     Formes collectives qui émergent de comportements individuels.
@@ -228,14 +353,20 @@
                 <div class="blog-post-content">
                     
 
-<p class="noindent">
-    <span class="small-caps">L’animation ci-dessus</span> est inspirée des idées derrières <span class="italic">Heroes and Cowards</span>, un modèle à base d’agents créé par William Rand et Uri Wilensky, mais il s’agit d’une altération tout de même très distante de ce modèle.
+<img class="inline-image" src="../../../images/friendly-turtles/second-version-long-640x360.gif">
+
+<p class="article-top">
+    <span class="small-caps">L’animation ci-dessus</span> est inspirée des idées derrières <span class="italic">Heroes and Cowards</span>, un modèle à base d’agents créé par William Rand et Uri Wilensky, mais il s’agit d’une altération tout de même très distante de ce <span class="nobreak">modèle.
+        <label for="second-version" class="margin-toggle sidenote-number">
+        </label></span>
+        <input type="checkbox" id="second-version" class="margin-toggle">
+        <span class="sidenote-left">Le code écrit pour réaliser cette animation est contenu dans la branche <a href=""><span class="inline-code8">second-version</span></a> de l’arborescence Git du projet, qui <a href="">se trouve sur GitHub</a>.</span>
 </p>
 <p>
     Les principes de l’animation sont simples&nbsp;: chaque point noir représente une <span class="italic">tortue</span> qui peut recevoir des instructions et qui possède aussi un certain comportement. Lorsque l’animation démarre, chacune des tortues est associée à deux <span class="italic">amies</span> (deux autres points parmi le groupe). Ensuite, entre chaque nouvelle image de l’animation, chacune des tortues s’approche très légèrement du point équidistant entre ses deux amies.
 </p>
 <p>
-    Toutes les tortues ont donc un comportement individuel identique, mais puisque la position initiale de chacune des tortues est différente, il en résulte un comportement de groupe complexe.
+    Les tortues ont donc toutes un comportement individuel identique, mais puisque la position initiale de chacune d’elles est différente, il en résulte un comportement de groupe complexe&nbsp;: l’ensemble des tortues cherche à ne former qu’une seule boucle. Lorsqu’une nouvelle spirale est ajoutée, elle est «&nbsp;mise en contact&nbsp;» avec les autres tortues et se mêle rapidement au tracé général.
 </p>
 
 
@@ -247,7 +378,7 @@
             </div>
             <div class="blog-post">
                 <div class="blog-post-header">
-                    <a href="../blog/2018/4/meandres-logistiques.html"><div class="date">16 avril 2018</div>
+                    <a href="../blog/2018/4/meandres-logistiques.html"><div class="date">21 avril 2018</div>
                     <div class="blog-title-box"><h2 class="header">Méandres logistiques</h2></div>
                     <div class="description">
                     Quelques explorations vagabondes autour de la suite logistique.
@@ -268,7 +399,7 @@
             </div>
             <div class="blog-post">
                 <div class="blog-post-header">
-                    <a href="../blog/2018/4/la-suite-logistique.html"><div class="date">9 avril 2018</div>
+                    <a href="../blog/2018/4/la-suite-logistique.html"><div class="date">14 avril 2018</div>
                     <div class="blog-title-box"><h2 class="header">La suite logistique</h2></div>
                     <div class="description">
                     Une première plongée dans la complexité et le chaos.
@@ -281,7 +412,7 @@
 <p class="article-top">
     <span class="small-caps">Je lis présentement</span> <span class="italic">Complexity: A Guided Tour</span>, un formidable ouvrage écrit par la scientifique américaine Melanie Mitchell. Je viens d’y apprendre l’existence de la <span class="italic">suite logistique</span>, grâce à laquelle j’ai réalisé l’animation ci-dessus. Il s’agit de la plus célèbre équation dans le champ de la théorie du chaos. La voici&nbsp;:
 </p>
-<div class="math"><span class="mjx-chtml MJXc-display" style="text-align: center;"><span id="MathJax-Element-1-Frame" class="mjx-chtml" style="text-align: center;"><span id="MJXc-Node-1313" class="mjx-math"><span id="MJXc-Node-1314" class="mjx-mrow"><span id="MJXc-Node-1315" class="mjx-msubsup"><span class="mjx-base"><span id="MJXc-Node-1316" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.298em;">x</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-1317" class="mjx-texatom" style=""><span id="MJXc-Node-1318" class="mjx-mrow"><span id="MJXc-Node-1319" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.372em; padding-bottom: 0.298em;">t</span></span><span id="MJXc-Node-1320" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.298em; padding-bottom: 0.446em;">+</span></span><span id="MJXc-Node-1321" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">1</span></span></span></span></span></span><span id="MJXc-Node-1322" class="mjx-mo MJXc-space3"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.077em; padding-bottom: 0.298em;">=</span></span><span id="MJXc-Node-1323" class="mjx-mi MJXc-space3"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.446em; padding-bottom: 0.298em;">R</span></span><span id="MJXc-Node-1324" class="mjx-msubsup"><span class="mjx-base"><span id="MJXc-Node-1325" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.298em;">x</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-1326" class="mjx-mi" style=""><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.372em; padding-bottom: 0.298em;">t</span></span></span></span><span id="MJXc-Node-1327" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.446em; padding-bottom: 0.593em;">(</span></span><span id="MJXc-Node-1328" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">1</span></span><span id="MJXc-Node-1329" class="mjx-mo MJXc-space2"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.298em; padding-bottom: 0.446em;">−</span></span><span id="MJXc-Node-1330" class="mjx-msubsup MJXc-space2"><span class="mjx-base"><span id="MJXc-Node-1331" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.298em;">x</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-1332" class="mjx-mi" style=""><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.372em; padding-bottom: 0.298em;">t</span></span></span></span><span id="MJXc-Node-1333" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.446em; padding-bottom: 0.593em;">)</span></span></span></span></span></span></div>
+<div class="math"><span class="mjx-chtml MJXc-display" style="text-align: center;"><span id="MathJax-Element-9-Frame" class="mjx-chtml" style="text-align: center;"><span id="MJXc-Node-1327" class="mjx-math"><span id="MJXc-Node-1328" class="mjx-mrow"><span id="MJXc-Node-1329" class="mjx-msubsup"><span class="mjx-base"><span id="MJXc-Node-1330" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.298em;">x</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-1331" class="mjx-texatom" style=""><span id="MJXc-Node-1332" class="mjx-mrow"><span id="MJXc-Node-1333" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.372em; padding-bottom: 0.298em;">t</span></span><span id="MJXc-Node-1334" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.298em; padding-bottom: 0.446em;">+</span></span><span id="MJXc-Node-1335" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">1</span></span></span></span></span></span><span id="MJXc-Node-1336" class="mjx-mo MJXc-space3"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.077em; padding-bottom: 0.298em;">=</span></span><span id="MJXc-Node-1337" class="mjx-mi MJXc-space3"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.446em; padding-bottom: 0.298em;">R</span></span><span id="MJXc-Node-1338" class="mjx-msubsup"><span class="mjx-base"><span id="MJXc-Node-1339" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.298em;">x</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-1340" class="mjx-mi" style=""><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.372em; padding-bottom: 0.298em;">t</span></span></span></span><span id="MJXc-Node-1341" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.446em; padding-bottom: 0.593em;">(</span></span><span id="MJXc-Node-1342" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">1</span></span><span id="MJXc-Node-1343" class="mjx-mo MJXc-space2"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.298em; padding-bottom: 0.446em;">−</span></span><span id="MJXc-Node-1344" class="mjx-msubsup MJXc-space2"><span class="mjx-base"><span id="MJXc-Node-1345" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.298em;">x</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-1346" class="mjx-mi" style=""><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.372em; padding-bottom: 0.298em;">t</span></span></span></span><span id="MJXc-Node-1347" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.446em; padding-bottom: 0.593em;">)</span></span></span></span></span></span></div>
 
                 <div class="languageJump">
                     <a href="../blog/2018/4/la-suite-logistique.html">Continuer à lire…</a>
@@ -289,95 +420,12 @@
                
                 </div>
             </div>
-            <div class="blog-post">
-                <div class="blog-post-header">
-                    <a href="../blog/2018/4/vers-un-cinema-algorithmique.html"><div class="date">5 avril 2018</div>
-                    <div class="blog-title-box"><h2 class="header">Vers un cinéma algorithmique</h2></div>
-                    <div class="description">
-                    Début d’un projet de recherche expérimentale sur le cinéma d’animation abstrait.
-
-            </div></a>
-                </div>
-                <div class="blog-post-content">
-                    
-
-<p class="noindent">
-    <img class="drop-caps" src="../../../images/towards-an-algorithmic-cinema/drop-caps-a.png"><span class="small-caps">u cours des douze prochains mois</span>, je serai occupé par un nouveau projet qui me rend très enthousiaste. Grâce au Conseil des Arts et des Lettres du Québec ainsi qu’au <span class="italic">Plan culturel numérique du Québec</span>, j’aurai l’opportunité de faire de la recherche portant sur l’art numérique&nbsp;— et plus spécifiquement, sur le cinéma algorithmique, c’est-à-dire un cinéma d’animation expérimental (et le plus souvent abstrait, mais parfois figuratif), réalisé par l’écriture de code informatique qui génère des images et du mouvement.
-</p>
-<p>
-    Comme ce cinéma est peu connu du grand public et pratiqué par un nombre d’artistes assez restreint, j’espère aider à le démystifier par un journal de travail que je tiendrai tout au long de mon projet. J’y partagerai de courtes animations expérimentales ainsi qu’une part du processus créatif&nbsp;; on y trouvera ainsi un mélange de choses accessibles à tou·te·s et de choses plus pointues et techniques, tel que des morceaux de code informatique et des formules mathématiques. Nous verrons bien à quoi ressemblera ce joyeux agrégat.
-</p>
-
-
-                <div class="languageJump">
-                    <a href="../blog/2018/4/vers-un-cinema-algorithmique.html">Continuer à lire…</a>
-                </div>
-               
-                </div>
-            </div>
-            <div class="blog-post">
-                <div class="blog-post-header">
-                    <a href="../blog/2018/3/rameaux-et-jambages.html"><div class="date">14 mars 2018</div>
-                    <div class="blog-title-box"><h2 class="header">Rameaux et jambages</h2></div>
-                    <div class="description">
-                    Croquis réalisé suite à une consultation du <span class="blog-description-italic">Manuale Tipografico</span> de Giambattista Bodoni.
-
-            </div></a>
-                </div>
-                <div class="blog-post-content">
-                    
-<img class="inline-image" src="../../../images/hand-drawings/bodoni-vegetal.jpg">
-
-                </div>
-            </div>
-            <div class="blog-post">
-                <div class="blog-post-header">
-                    <a href="../blog/2018/2/modelisation-de-lignes-crayonnees.html"><div class="date">3 février 2018</div>
-                    <div class="blog-title-box"><h2 class="header">Modélisation de lignes crayonnées
-</h2></div>
-                    <div class="description">
-                    Premières ébauches de méthodes algorithmiques pour imiter l’apparence du dessin.
-
-            </div></a>
-                </div>
-                <div class="blog-post-content">
-                    
-<img class="inline-image" src="../../../images/pencil/circles.jpg">
-<br>
-<br>
-<p class="noindent">
-    <span class="small-caps">L’an dernier</span>, j’ai écrit un court programme pour modéliser des lignes dessinées au crayon. Le projet est encore embryonnaire et je veux continuer à le faire avancer sporadiquement. Je commence aujourd’hui par une relecture du code écrit l’an dernier et une synthèse des idées qu’il contient.
-</p>
-
-                <div class="languageJump">
-                    <a href="../blog/2018/2/modelisation-de-lignes-crayonnees.html">Continuer à lire…</a>
-                </div>
-               
-                </div>
-            </div>
-            <div class="blog-post">
-                <div class="blog-post-header">
-                    <a href="../blog/2017/10/mouvements-harmoniques-recursifs.html"><div class="date">17 octobre 2017</div>
-                    <div class="blog-title-box"><h2 class="header">Mouvements harmoniques récursifs</h2></div>
-                    <div class="description">
-                    Deux animations réalisées lors d’une exploration de simples exemples de récursivité.
-
-            </div></a>
-                </div>
-                <div class="blog-post-content">
-                    
-<p class="noindent">
-    <span class="small-caps">Ces animations</span> ont été créées avec <span class="lnum"><a href="https://p5js.org/">la bibliothèque p5.js</a></span> et répondent à deux «&nbsp;défis de programmation&nbsp;» (<span class="italic">coding challenges</span>) lancés par Daniel Shiffman sur sa chaîne YouTube <a href="https://www.youtube.com/thecodingtrain"> <span class="italic">The Coding Train</span></a>.
-</p>
-
-                <div class="languageJump">
-                    <a href="../blog/2017/10/mouvements-harmoniques-recursifs.html">Continuer à lire…</a>
-                </div>
-               
-                </div>
-            </div>
         </div>
         <div id="blog-pagination">
+            <a href="./page-2.html">
+            Page suivante
+            </a>
+            
         </div><div id="footer">Guillaume Pelletier-Auger — 2016-2018
     </div>
     

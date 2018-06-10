@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Guillaume Pelletier-Auger - Scènes botaniques</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=4, user-scalable=yes" />
+        <link href="../../../../style/style.css" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=EB+Garamond" rel="stylesheet">
+        
+    </head><body>
+    <nav>
+        <h1><a href="../../../../fr/">Guillaume <span class="nobreak">Pelletier-Auger</span></a></h1>
+        <ul>
+            <li><a href="../../../../fr/">Projets</a></li>
+            <li class = "selected"><a href="../../../../fr/blog/">Blog</a></li>
+            <li><a href="../../../../fr/a-propos.html">À propos</a></li>
+            <li><a href="../../../../en/blog/2018/6/botanical-scenes.html">Fr &#8594; En</a></li>
+        </ul>
+    </nav>
+    
+            <article>
+                <h2 class="with-date">Scènes botaniques</h2><div class="description">
+                    
+
+            </div>
+                <div class="date">9 juin 2018</div>
+                
+
+<p class="noindent">
+    <span class="small-caps">Il me faut créer</span> un système de scènes botaniques qui puissent gérer des animations contenant de quantités quasi illimitées d&rsquo;éléments. Pour cela, il faut séparer le concept du <span class="inline-code">frame</span> d&rsquo;animation de celui du <span class="inline-code">frameCount</span> de <span class="lnum">p5.js</span>, comme je l&rsquo;ai fait dans ma machine à automates cellulaires.
+</p>
+
+<!-- read-more -->
+
+<p>
+    Donc, je peux créer autant d&rsquo;arbres que je veux, et ces arbres-là doivent s&rsquo;ajouter aux objets d&rsquo;une <span class="inline-code">scene</span>.
+</p>
+<p>
+    En même temps, une <span class="inline-code">scene</span> devrait être une opportunité de créer de nouveaux arbres… d&rsquo;interpréter différemment leurs génotypes, etc.
+</p>
+<p>
+    Y aura-t-il plusieurs <span class="italic">sortes</span> de scènes&nbsp;? Qu&rsquo;est-ce qui pourrait séparer le mécanisme d&rsquo;une scène de celui d&rsquo;une autre&nbsp;? Chaque scène doit gérer les images d&rsquo;animation, peu importe la quantité d&rsquo;objets à dessiner qu&rsquo;elles contiennent. Elle doit aussi activer elle-même la croissance des plantes. C&rsquo;est vrai qu&rsquo;au final, j&rsquo;imagine des scènes qui auraient différents niveaux de profondeur, différentes répartitions de ressources naturelles et différentes ressources naturelles. Donc, au final, oui, il y aura des scènes de natures très distinctes. Mais tout ce mécanisme est très compliqué à construire et rien n&rsquo;est échafaudé pour l&rsquo;instant.
+</p>
+<p>
+    Il y a donc une fonctionnalité importante qui est <span class="italic">au-dessus</span> de toutes les scènes imaginables&nbsp;: la possibilité de gérer les images d&rsquo;animation et leurs objets... car au fond, chacune des scènes disparates devra, en fin de compte, envoyer à <span class="italic">quelque chose</span> une série d&rsquo;objets à dessiner, et ce <span class="italic">quelque chose</span> devra gérer le dessin. Même les scènes multi-plans ne feront qu&rsquo;envoyer leurs éléments de décors comme des formes à la machine à dessiner.
+</p>
+<p>
+    Il y a donc une <span class="italic">machine à dessiner</span> à concevoir. Une machine flexible et qui gère la mémoire intelligemment.
+</p>
+
+<h3>La machine paysagiste</h3>
+
+<p class="noindent">
+    <span class="small-caps">Cette machine doit pouvoir</span> recevoir des objets, en faire des listes, séparer cette liste en plus petites listes (à longueurs variables). Les objets qu&rsquo;elle peut recevoir sont&nbsp;: des lignes, des polygones. Ces objets ont des coordonnées cartésiennes et une information de couleur. Cette information de couleur peut être un dégradé.
+</p>
+<p>
+    La machine doit aussi avoir un mode <span class="italic">simple</span> et un mode <span class="italic">pointilliste</span>. Lorsqu&rsquo;elle se fait pointilliste, elle peint chaque forme avec une texture formées avec de tout petits points. Les détails précis de ces informations de textures doivent pouvoir changer.
+        <label for="pointillisme" class="margin-toggle sidenote-number">
+        </label></span>
+        <input type="checkbox" id="pointillisme" class="margin-toggle"/>
+        <span class="sidenote-left">Je pourrais aussi pousser l&rsquo;idée du pointillisme plus loin&nbsp;: je pourrais avoir des masses de très petits points, chose que j&rsquo;ai déjà réalisée, mais je pourrais aussi avoir des masses de gros points, plus proches de Seurat. Et ces gros points pourraient eux-mêmes être constitués de masses de petits points (du grain de film, finalement). Et si je veux pousser les hommages à l&rsquo;impressionnisme plus loin, je pourrais aussi jouer avec le fondu enchaîné, créer des scènes où tout serait en double exposition comme à la Frédéric Back et <span class="italic8">L&rsquo;homme qui plantait des arbres</span>, et comme à la Caroline Leaf.</span>
+</p>
+
+<h3>Contexte</h3>
+
+<p class="noindent">
+    <span class="small-caps">Cette note de blog</span> fait partie de mon projet de recherche <span class="italic">Vers un cinéma algorithmique</span>, démarré en avril 2018. Je vous invite à consulter <a href="https://pelletierauger.github.io/fr/blog/2018/4/vers-un-cinema-algorithmique.html">la toute première note du projet</a> pour en apprendre davantage.
+</p>
+
+
+            </article>
+            <div id="footer">Guillaume Pelletier-Auger &mdash; 2016-2018
+    </div>
+    </body>
+    </html>
