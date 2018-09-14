@@ -1,3 +1,13 @@
+#blog-page-number h2 {
+    font-family: 'EBG12-SC';
+    text-transform: lowercase;
+    font-size: 1.25em;
+    text-align: left;
+    font-weight: normal;
+    margin: 1rem auto 2rem auto;
+    max-width: 650px;
+}
+
 #blog-pagination {
     font-family: 'EBG12-SC';
     text-transform: lowercase;
@@ -102,6 +112,9 @@ article.blog-post-header .date {
 }
 
 @media screen and (min-width: 700px) {
+    #blog-page-number h2 {
+        margin: 1rem auto 1rem auto;
+    }
     .blog-posts {
         padding-top: 2rem;
     }
@@ -157,6 +170,9 @@ article.blog-post-header .date {
 }
 
 @media screen and (min-width: 950px) {
+    #blog-page-number h2 {
+        margin: 1rem auto 0rem auto;
+    }
     .blog-posts {
         padding-top: 3rem;
     }
