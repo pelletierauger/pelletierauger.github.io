@@ -79,7 +79,10 @@ function makeBlog(language) {
         var blogNameLanguage = "";
         if (k > 0) {
             // blogNameLanguage += " - page " + (k + 1);
-            blogNameLanguage = "<h2>Page " + (k + 1) + "</h2>";
+            blogNameLanguage = `
+            <div id="blog-page-number">
+                <h2>Page ${(k + 1)}</h2>
+            </div>`;
         }
         var content = `${blogNameLanguage}`;
         content += `<div class="blog-posts">`;
