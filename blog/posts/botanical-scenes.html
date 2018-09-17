@@ -33,8 +33,75 @@
     <sc>Cette machine doit pouvoir</sc> recevoir des objets, en faire des listes, séparer cette liste en plus petites listes (à longueurs variables). Les objets qu'elle peut recevoir sont : des lignes, des polygones. Ces objets ont des coordonnées cartésiennes et une information de couleur. Cette information de couleur peut être un dégradé.
 </pn>
 <p>
-    La machine doit aussi avoir un mode <i>simple</i> et un mode <i>pointilliste</i>. Lorsqu'elle se fait pointilliste, elle peint chaque forme avec une texture formées avec de tout petits points. Les détails précis de ces informations de textures doivent pouvoir changer.<snl label="pointillisme">Je pourrais aussi pousser l'idée du pointillisme plus loin : je pourrais avoir des masses de très petits points, chose que j'ai déjà réalisée, mais je pourrais aussi avoir des masses de gros points, plus proches de Seurat. Et ces gros points pourraient eux-mêmes être constitués de masses de petits points (du grain de film, finalement). Et si je veux pousser les hommages à l'impressionnisme plus loin, je pourrais aussi jouer avec le fondu enchaîné, créer des scènes où tout serait en double exposition comme à la Frédéric Back et <i8>L'homme qui plantait des arbres</i8>, et comme à la Caroline Leaf.</snl>
+    La machine doit aussi avoir un mode <i>simple</i> et un mode <i>pointilliste</i>. Lorsqu'elle se fait pointilliste, elle peint chaque forme avec une texture formée avec de petits points. Les détails précis de ces informations de textures doivent pouvoir changer (parce qu'il y a beaucoup de choses intéressantes à faire avec divers algorithmes pointillistes).<snl label="pointillisme">Je pourrais aussi pousser plus loin l'idée du pointillisme : je pourrais avoir des masses de très petits points, chose que j'ai déjà réalisée, mais je pourrais aussi avoir des masses de gros points, plus proches de Seurat. Et ces gros points pourraient eux-mêmes être constitués de masses de petits points (du grain de film, finalement). Et si je veux pousser les hommages à l'impressionnisme plus loin, je pourrais aussi jouer avec le fondu enchaîné, créer des scènes où tout serait en double exposition comme à la Frédéric Back et <i8>L'homme qui plantait des arbres</i8>, et comme à la Caroline Leaf.</snl>
 </p>
+
+<h3>Couleurs et niveaux superposés</h3>
+
+<pn>
+    <sc>Comment construirai-je</sc> les niveaux superposés ? Premièrement, je dois avoir un prototype <ic>Hill</ic>, chaque niveau représentant une colline. Une scène doit aussi avoir une propriété <ic>sky</ic>, qui sera une information de dégradé de couleurs.
+</pn>
+<p>
+    Les collines devraient toujours être créées en groupes puisque chaque colline doit répondre aux collines adjacentes. Elles seront créées avec du bruit de Perlin tridimentionnel. Donc, un groupe de collines doit avoir ces propriétés :
+</p>
+<code>
+let Terrain = function() {
+    this.amountOfHills = 5;
+    // A float between 0 and 1, 
+    // 0 being the top of the scene, 1 being the bottom.
+    this.horizon = 0.5;
+    this.width = 300;
+};
+</code>
+<pn>
+    La fréquence et l'amplitude du bruit de Perlin est ici la question la plus intéressante.
+</pn>
+
+<h3>Couleurs</h3>
+
+<pn>
+    Les couleurs devraient aussi pouvoir changer avec le temps ! Ce sera un élément déterminant pour la beauté de la chose.
+</pn>
+<p>
+    Voici comment je définissais les couleurs d'un dégradé d'une scène dans <i>Les joies confuses</i>&nbsp;:
+</p>
+<code>
+this.localValues.gradient = [{
+    offset: 0,
+    r: 255,
+    g: 255,
+    b: 0
+}, {
+    offset: 0.25,
+    r: 55,
+    g: 120,
+    b: 0
+}, {
+    offset: 0.8,
+    r: 255,
+    g: 50,
+    b: 0
+}];
+</code>
+
+<pn>
+    J'étais ainsi limité à des dégradés à trois couleurs. Devrais-je encore me limiter à trois couleurs ? Ce n'est pas bien compliqué d'y aller pour une quantité <im>n</im> de couleurs, mais est-ce utile ? Également, je définissais mes dégradés de manière complètement manuelle, il serait plus intéressant d'y aller cette fois-ci de façon générative, en utilisant mon système de palettes de couleurs.
+</pn>
+
+
+<h3>Perspective atmosphérique</h3>
+<pn>
+    <sc>La définition</sc> de la perspective atmosphérique pourrait aussi être une fonction trigonométrique ! La perspective atmosphérique répond toujours à un nombre réel situé entre <im>0</im> et <im>1</im>, qui représente la distance d'un objet avec la « caméra ». L'axe des <im>z</im> est défini ainsi : le premier plan est toujours à la position <im>0</im>, et chaque plan suivant incrémente l'axe des <im>z</im> de <im>1</im>. Et pour calculer la perspective atmosphérique, on utilise la valeur d'un objet sur son axe des <im>z</im> et on envoie cette valeur à une fonction trigonométrique (une palette de couleur).
+</pn>
+<p>
+    Une plante doit pouvoir être positionnée à diverses hauteurs sur une colline. Et la perspective atmosphérique qui est appliquée sur cette plante doit se faire en fonction de cette hauteur.
+</p>
+
+<h3>Nuages</h3>
+<pn>
+    Oh, ce serait intéressant d'avoir des nuages !
+</pn>
+
 
 <h3>Contexte</h3>
 
