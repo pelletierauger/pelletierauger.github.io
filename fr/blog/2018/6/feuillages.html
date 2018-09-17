@@ -5,8 +5,8 @@
         <title>Guillaume Pelletier-Auger - Feuillages</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=4, user-scalable=yes" />
         <link href="../../../../style/style.css" rel="stylesheet" type="text/css">
-        <link href="https://fonts.googleapis.com/css?family=EB+Garamond" rel="stylesheet">
-        
+        <link href="https://fonts.googleapis.com/css?family=Inconsolata|EB+Garamond" rel="stylesheet">
+        <link href="../../../../style/code.css" rel="stylesheet" type="text/css">
     </head><body>
     <nav>
         <h1><a href="../../../../fr/">Guillaume <span class="nobreak">Pelletier-Auger</span></a></h1>
@@ -26,7 +26,114 @@
                 <div class="date">16 juin 2018</div>
                 
 
+<p class="noindent">
+    Il me faut un prototype <span class="inline-code">Leaf</span>. Je dois pouvoir avoir des feuilles paripennées, imparipennées, bipennées et tripennées. Aussi, des feuilles palmées.
+</p>
+<p>
+    Tout commence avec un pétiole. La pétiole peut être de longueur <span class="inline-code">0</span>, ce qui créerait une feuille <span class="nobreak">sessile.
+        <label for="sessile" class="margin-toggle sidenote-number">
+        </label></span>
+        <input type="checkbox" id="sessile" class="margin-toggle"/>
+        <span class="sidenote-left">Depuis le <a href="https://fr.wiktionary.org/wiki/sessile">Wiktionnaire</a>&nbsp;: Sessile, qui ne possède pas d’attache apparente et semble donc directement fixé au support sans l’intermédiaire d’un pied, d’un stipe, d’un pétiole ou d’un pédicelle.</span> Le pétiole doit être séparé en segments, tout comme les branches de la plante. Au fond, un pétiole partage presque toutes les mêmes caractéristiques que les branches… Pourrais-je imaginer qu&rsquo;un pétiole, ici, serait simplement la branche ou les quelques dernières branches auxquelles sont attachées une feuille&nbsp;?
+</p>
 
+<!-- read-more -->
+<p>
+    Mais ce serait bien qu&rsquo;un pétiole puisse avoir une structure d&rsquo;embranchement différente de celle de la plante à laquelle il est attaché.
+</p>
+<p>
+    Un pétiole est divisé en segments. Ces segments peuvent générer des folioles ou d&rsquo;autres pétioles. Si un pétiole ne génère qu&rsquo;un seul foliole, nous avons une feuille unifoliée.
+</p>
+<p>
+    Le pied du pétiole s&rsquo;appelle le nœud. Il y aussi la stipule qui est connectée au nœud. Les “sous-pétioles” s&rsquo;appellent des pétiolules. Et les segments d&rsquo;un pétiole qui s&rsquo;étendent après la première “division” du pétiole s&rsquo;appelent des rachis. Est-ce que les rachis sont aussi des pétiolules et vice versa&nbsp;?
+</p>
+<p>
+    En partant, le génome doit contenir un gêne qui exprime le niveau de divisions du pétiole. <span class="inline-code">0</span> signifiant que le pétiole ne se divise pas, <span class="inline-code">1</span> qu&rsquo;il se divise une seule fois, et ainsi de suite. Il devrait y avoir une limite, mais je ne sais pas laquelle. Disons <span class="inline-code">3</span>, pour obtenir des feuilles tripennées. Ça semble être la limite selon Wikipedia. Donc, lors que ce gêne est d&rsquo;une valeur de <span class="inline-code">3</span>… Les segments de pétioles doivent contenir une propriété <span class="inline-code">petioluleLevel</span> qui est initialisée à <span class="inline-code">0</span> lorsque le premier segment de pétiole est créé. Ensuite, lorsqu&rsquo;un segment de pétiole crée un embranchement, il crée un nouveau segment de pétiole avec une propriété <span class="inline-code">petioluleIndex</span> de <span class="inline-code">1</span>. C&rsquo;est exactement la même chose que la propriété <span class="inline-code">segmentID</span> que j&rsquo;ai présentement dans mon prototype <span class="inline-code">Tree</span>.
+</p>
+<p>
+    Il y a vraiment beaucoup de concepts qui seront tout simplement copiés de mes structures d&rsquo;embranchement pour le corps de la plante, mais je crois néanmoins qu&rsquo;il est plus pratique de créer un système indépendant pour les feuilles. Notamment parce que, contrairement aux branches, la création des folioles ne semblent pas du tout varier par le hasard. Une feuille paripennée et alterne, par exemple, n&rsquo;omet aucune foliole tout au long de son pétiolule (enfin, je pense bien).
+</p>
+<div class="codebox"><pre><code><span class="hljs-keyword">let</span> DNA<span class="hljs-punctuation"> = </span><span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-comment">// Energy</span>
+    <span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>initialEnergy<span class="hljs-punctuation"> = </span><span class="hljs-number">30</span>;
+    <span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>energyLoss<span class="hljs-punctuation"> = </span><span class="hljs-number">0.9</span>;
+    <span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>branchGrowthCost<span class="hljs-punctuation"> = </span><span class="hljs-number">0.01</span>;
+    <span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>branchingCost<span class="hljs-punctuation"> = </span><span class="hljs-number">0.02</span>;
+
+    <span class="hljs-comment">// Branching struture</span>
+    <span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>branchGrowth<span class="hljs-punctuation"> = </span><span class="hljs-number">0.1</span>;
+    <span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>branchingAngle<span class="hljs-punctuation"> = </span><span class="hljs-built_in">Math</span><span class="hljs-punctuation">.</span>PI<span class="hljs-punctuation"> * </span><span class="hljs-number">0.5</span>;
+    <span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>branchingProbability<span class="hljs-punctuation"> = </span><span class="hljs-number">0.25</span>;
+    <span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>branchingFrequencyLeft<span class="hljs-punctuation"> = </span><span class="hljs-number">9</span>;
+    <span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>branchingFrequencyRight<span class="hljs-punctuation"> = </span><span class="hljs-number">9</span>;
+    <span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>branchingOffsetLeft<span class="hljs-punctuation"> = </span><span class="hljs-number">3</span>;
+    <span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>branchingOffsetRight<span class="hljs-punctuation"> = </span><span class="hljs-number">0</span>;
+
+    <span class="hljs-comment">// Leaf structure</span>
+    <span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>petioleSegmentGrowth<span class="hljs-punctuation"> = </span><span class="hljs-number">0.1</span>;
+    <span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>petioleMaxBranchings<span class="hljs-punctuation"> = </span><span class="hljs-number">3</span>;
+    <span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>petioleMaxSegmentLength<span class="hljs-punctuation"> = </span><span class="hljs-number">10</span>;
+    <span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>petioleSegmentsToLeaflet<span class="hljs-punctuation"> = </span><span class="hljs-number">10</span>;
+    <span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>petioleMaxAngle<span class="hljs-punctuation"> = </span><span class="hljs-built_in">Math</span><span class="hljs-punctuation">.</span>PI<span class="hljs-punctuation"> * </span><span class="hljs-number">0.15</span>;
+    <span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>petioleFrequencyLeft<span class="hljs-punctuation"> = </span><span class="hljs-number">9</span>;
+    <span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>petioleFrequencyRight<span class="hljs-punctuation"> = </span><span class="hljs-number">9</span>;
+    <span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>petioleOffsetLeft<span class="hljs-punctuation"> = </span><span class="hljs-number">3</span>;
+    <span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>petioleOffsetRight<span class="hljs-punctuation"> = </span><span class="hljs-number">0</span>;
+    <span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>petioluleDepth<span class="hljs-punctuation"> = </span><span class="hljs-number">3</span>;
+    <span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>petioleTerminalLeaflet<span class="hljs-punctuation"> = </span><span class="hljs-number">0</span>;
+    <span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>petioleMaxLeafletAmount<span class="hljs-punctuation"> = </span><span class="hljs-number">10</span>;
+};</code></pre></div>
+
+<p class="noindent">
+    Pour l&rsquo;instant, je nomme <span class="inline-code">petioluleDepth</span> le niveau maximal de subdivisions du pétiole. Donc, lorsque <span class="inline-code">petioluleDepth == 2</span>, nous avons une feuille bipennée. La propriété <span class="inline-code">petioleTerminalLeaflet</span>, quant à elle, est une booléenne qui détermine si nous avons une foliole terminale. Lorsque <span class="inline-code">petioluleDepth == 0</span>, <span class="inline-code">petioleTerminalLeaflet</span> doit forcément être <span class="inline-code">true</span>, puisque si ce n&rsquo;était pas le cas, la feuille n&rsquo;aurait tout simplement pas de foliole.
+</p>
+<p>
+    La propriété <span class="inline-code">petioleSegmentsToLeaflet</span> déterminera combien de segments séparent la foliole du “pied” du pétiole.
+</p>
+<p>
+    Les folioles pourraient pousser à des moments différents. Par exemple, le long d&rsquo;un pétiole ou d&rsquo;un pétiolule, les folioles du “bas” pourraient se mettrent à pousser avant même que les folioles suivants existent. Au final, ça n&rsquo;aurait pas une grande conséquence.
+</p>
+<p>
+    Oh, peut-être que la propriété <span class="inline-code">petioleMaxLeafletAmount</span> pourrait rendre la propriété <span class="inline-code">petioleTerminalLeaflet</span> inutile. Si <span class="inline-code">petioleMaxLeafletAmount == 1</span>, nous avons un
+</p>
+
+<p>
+    Les feuilles pennées et les feuilles palmées ne devraient pas être compatibles.
+</p>
+
+
+<h3>La propriété <span class="inline-code">petioleSegmentsToLeaflet</span></h3>
+
+<p class="noindent">
+    La propriété <span class="inline-code">petioleSegmentsToLeaflet</span> est utilisée lorsqu&rsquo;un segment donné a une propriété <span class="inline-code">(this.petioluleIndex == this.dna.petioluleDepth)</span>.
+</p>
+
+<!-- https://fr.wikipedia.org/wiki/Verticille
+
+https://en.wikipedia.org/wiki/Whorl_(botany)
+
+ -->
+<p>
+    Les feuilles seront verticillées si elles sont palmées et que <span class="inline-code">(this.dot.petioleMaxBranchings > 1)</span>. En fait, non.
+</p>
+
+<h3>L&rsquo;algorithme de structuration des feuilles pennées</h3>
+
+<p class="noindent">
+    Il me faut… des propriétés <span class="inline-code">maxKnotsLevel0</span>, <span class="inline-code">maxKnotsLevel1</span>, <span class="inline-code">maxKnotsLevel2</span>, <span class="inline-code">maxKnotsLevel3</span> et <span class="inline-code">maxKnotsLevel4</span>. Un segment de pétiole doit ainsi connaître la quantité de nœuds que lui et ses enfants peuvent encore produire. Lorsqu&rsquo;il y a un embranchement <span class="inline-code">forward</span>, nous ne changeons pas de <span class="inline-code">petioleLevel</span>. Lorsqu&rsquo;il y a un embranchement <span class="inline-code">left</span> ou <span class="inline-code">right</span>, nous incrémentons <span class="inline-code">this.petioleLevel</span> de <span class="inline-code">1</span> et donnons à la propriété <span class="inline-code">this.knots</span> la valeur <span class="inline-code">0</span>. Un <span class="inline-code">petioleSegment</span> est ainsi initialisé avec une propriété <span class="inline-code">knots</span> qui dépend de son embranchement d&rsquo;origine.
+</p>
+<p>
+    Lorsque <span class="inline-code">(this.petioleLevel == this.dna.this.petioluleDepth)</span>, nous avons affaire à un pétiolule qui formera enfin une foliole. Il ne peut plus y avoir d&rsquo;embranchement <span class="inline-code">left</span> ou <span class="inline-code">right</span>.
+</p>
+<p>
+    Lorsque <span class="inline-code">(this.dna.petioleTerminalLeaflet == 1)</span>, le dernier <span class="inline-code">knot</span> qui est permis créera aussi, spécialement, un dernier embranchement <span class="inline-code">forward</span>, qui lui, exceptionnellement, incrémentera la propriété <span class="inline-code">petioluleLevel</span> de 1, de façon à créer une autre foliole vers l&rsquo;avant.
+</p>
+<p>
+    Il me faut aussi des propriétés <span class="inline-code">petioleMaxSegmentLengthLevel0</span>, <span class="inline-code">petioleMaxSegmentLengthLevel1</span>, <span class="inline-code">petioleMaxSegmentLengthLevel2</span>, <span class="inline-code">petioleMaxSegmentLengthLevel3</span> et <span class="inline-code">petioleMaxSegmentLengthLevel4</span>.
+</p>
+<p>
+    Un pétiolule peut se former à gauche ou à droite lorsque… sa propriété <span class="inline-code">this.knots</span> est plus petite que sa propriété <span class="inline-code">knots</span>. Mais comment calculer sa propriété <span class="inline-code">knots</span>?
+</p>
 
 <h3>Contexte</h3>
 
