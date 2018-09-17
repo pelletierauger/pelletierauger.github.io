@@ -193,6 +193,13 @@ function makeBlog(language) {
                 next: "Next page"
             }
         };
+        let paginationLink = "";
+        if (k == 0 || postsToPrint == 0) {
+            paginationLink = "pagination-link-single";
+        } else {
+            paginationLink = "pagination-link";
+        }
+
         if (k > 0) {
             var prevLink;
             if (k == 1) {
@@ -201,15 +208,20 @@ function makeBlog(language) {
                 prevLink = `./page-${k}.html`;
             }
             content += `
-            <a href="${prevLink}">
-            ${pagination[language].prev}
-            </a>`;
+            <div class="${paginationLink}">
+                <a href="${prevLink}">
+                ${pagination[language].prev}
+                </a>
+            </div>
+            `;
         }
         if (postsToPrint > 0) {
             content += `
-            <a href="./page-${k+2}.html">
-            ${pagination[language].next}
-            </a>
+            <div class="${paginationLink}">
+                <a href="./page-${k+2}.html">
+                ${pagination[language].next}
+                </a>
+            </div>
             `;
         }
         content += `
