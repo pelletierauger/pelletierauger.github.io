@@ -1,6 +1,7 @@
 exports.posts = [
     // "ant-colonies",
     // "density-maps",
+    "granular-drawings",
     "perlin-turtles",
     "phenotype-and-genotype",
     "foliages",
