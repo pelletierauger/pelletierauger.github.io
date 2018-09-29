@@ -5,6 +5,72 @@
 <!-- fr-description -->Applications du concept de synthèse granulaire à des dessins
 <!-- fr-content -->
 
+<!-- <img class="full-size-image" src="../../../images/towards-an-algorithmic-cinema/april-at-the-docks-02-small.gif"> -->
+
+<img class="inline-image" src="../../../images/granular-drawings/plant.png">
+
+<h3>Qu'est-ce qu'un dessin ?</h3>
+<pn>
+    <sc>Tout d’abord,</sc> un dessin pourrait se définir par un groupe de points (ou vecteurs).
+</pn>
+
+<code>
+let drawing = {
+    {x: 0, y: 10},
+    {x: 1, y: 10},
+    {x: 2, y: 10},
+    {x: 3, y: 11},
+    {x: 4, y: 11}
+};
+</code>
+<pn>
+    En dessinant une petite ellipse à la position définie par chacun de ces points, on obtiendrait un tracé pointilliste. Est-ce suffisant? J'ai l'impression qu'il me faudrait créer des lignes pour relier les points, et aussi que les dessins devraient plutôt être définis par des ensembles de <i>transformations</i> plutôt que par des ensembles de vecteurs.
+</pn>
+<!-- read-more -->
+<p>
+    Dans l'exemple ci-dessous, chaque élément d'un dessin est un objet dont la valeur <ic>a</ic> représente l'angle d'un pas de tortue géométrique, et <ic>l</ic> sa longueur (ou “length”).
+</p>
+<code>
+let drawing = {
+    {a: 0, l: 0.1},
+    {a: 0.1, l: 0.12},
+    {a: 0.3, l: 0.13},
+    {a: 0.5, l: 0.16},
+    {a: 0.51, l: 0.12}
+};
+</code>
+<pn>
+    Essentiellement, j'obtiens un ensemble de vecteurs polaires, où <im>r</im> représente la magnitude du rayon, et <im>\angle\theta</im> son angle.
+</pn>
+<math>\mathbf{v} =
+\begin{bmatrix}
+   r \\
+   \angle\theta 
+\end{bmatrix}
+</math>
+
+<pn>
+    En définissant un dessin de cette manière, j’aurais beaucoup plus de flexibilité dans le système : une ligne serait &#171;&nbsp;au courant&nbsp;&#187; de l'angle et de la vitesse à laquelle elle est en train de se dessiner, et pourrait faire un genre de <i>fondu enchaîné</i> entre le présent grain qu'elle exprime et le prochain sur la liste.
+</pn>
+<p>
+    Considérer l'épaisseur de la ligne… la durée nécessaire pour se rendre à cette épaisseur (donc, l'attaque !), la chute (<i>decay</i>), l'entretien (<i>sustain</i>) et l'extinction (<i>release</i>)… l'épaisseur d'une ligne peut être considérée comme son enveloppe… Et l'épaisseur (l'amplitude) doit aussi varier selon l'angle.
+</p>
+<p>
+    Et puisque j’anime, la ligne doit vaciller… Je peux la faire vaciller en variant les points à l'encre qui la constituent, mais elle pourrait aussi vaciller dans l'espace comme si elle était placée sur une acétate qui bouge légèrement entre les prises. Les segments pourraient avoir une résistance aux vacillements, résistance qui serait une fonction de leur angle ou de leur longueur, par exemple.
+</p>
+<p>
+    Mais qu’est-ce qu’un <i>grain</i> dans ce scénario? Un seul coup de crayon, un morceau de dessin? Un seul fragment d’un seul coup de crayon? Je dirais que le grain est un morceau de dessin, c’est-à-dire un ensemble de coups de crayons. Cet ensemble de coups de crayons est similaire à un ensemble de notes jouées sur un instrument, et chaque fragment (ou atome?) du grain dessiné est un ensemble de vecteurs polaires, tout comme chaque fragment d’un grain sonore est un échantillon. Il est très important de considérer que cette unité de mesure, le grain, est extrèmement variable et peut fluctuer constamment (ou pas du tout). La <i>durée</i> d'un grain serait donc un nombre de vecteurs.
+</p>
+
+<h3>Un dessin est aussi un réseau</h3>
+
+<pn>
+    <sc>Je veux aussi explorer</sc> l'idée d'un dessin considéré comme un réseau, c'est-à-dire qu'un dessin serait un ensemble de sommets et d'arêtes. Structurer un dessin ainsi permettrait davantage de jeux algorithmiques à l'intérieur d'un système. Les sommets ne seraient plus simplement tous alignés un à la suite de l’autre, ils pourraient avoir entre eux des liens de différentes natures. Chaque sommet pourrait avoir un nombre de connexions <im>n</im> avec d'autres sommets, et ces connexions pourraient permettrent <i>des choses</i>.
+</pn>
+<p>
+    Par exemple, dans le dessin ci-dessous, si l'on considère que tout le dessin n'est constitué que de petits points, il est clair que le point central a une signification particulière. Chacune des six formes fermées est liée à lui. Également, les points situés aux extrémités de chaque courbe d'une forme semblent posséder une signification particulière. Ils représentent, notamment, un changement brusque dans l'angle de la ligne dessinée, tandis que le reste des courbes est constitué de segments dont la valeur <im>\angle\theta</im> est très rapprochée de la valeur <im>\angle\theta</im> des segments voisins. Donc, ces points aux extrémités sont différents et pourraient être traités différemment. Par exemple, ils pourraient représenter des endroits où de nouvelles courbes pourraient naître.
+</p>
+
 <h3>Contexte</h3>
 
 <pn>
