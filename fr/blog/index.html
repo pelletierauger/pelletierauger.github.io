@@ -8,7 +8,7 @@
         
         <link href="../../style/notes-on-genetic-automata.css" rel="stylesheet" type="text/css">
         
-        <link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700|EB+Garamond" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Inconsolata|EB+Garamond" rel="stylesheet">
         <link href="../../style/code.css" rel="stylesheet" type="text/css">
     <style id="MathJax_CHTML_styles">.mjx-chtml {display: inline-block; line-height: 0; text-indent: 0; text-align: left; text-transform: none; font-style: normal; font-weight: normal; font-size: 100%; font-size-adjust: none; letter-spacing: normal; word-wrap: normal; word-spacing: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0; min-height: 0; border: 0; margin: 0; padding: 1px 0}
 .MJXc-display {display: block; text-align: center; margin: 1em 0; padding: 0}
@@ -138,6 +138,44 @@
         </ul>
     </nav>
     <div class="blog-posts">
+            <div class="blog-post">
+                <div class="blog-post-header">
+                    <a href="../blog/2018/7/dessins-granulaires.html"><div class="date">19 juillet 2018</div>
+                    <div class="blog-title-box"><h2 class="header">Dessins granulaires</h2></div>
+                    <div class="description">
+                    Applications du concept de synthèse granulaire à des dessins
+
+            </div></a>
+                </div>
+                <div class="blog-post-content">
+                    
+
+<!-- <img class="full-size-image" src="../../../images/towards-an-algorithmic-cinema/april-at-the-docks-02-small.gif"> -->
+
+<img class="inline-image" src="../../../images/granular-drawings/plant.png">
+
+<h3>Qu’est-ce qu’un dessin&nbsp;?</h3>
+<p class="noindent">
+    <span class="small-caps">Tout d’abord,</span> un dessin pourrait se définir par un groupe de points (ou vecteurs).
+</p>
+
+<div class="codebox"><pre><code><span class="hljs-keyword">let</span> drawing<span class="hljs-punctuation"> = </span>{
+    {<span class="hljs-attr">x</span>: <span class="hljs-number">0</span>, <span class="hljs-attr">y</span>: <span class="hljs-number">10</span>},
+    {<span class="hljs-attr">x</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">y</span>: <span class="hljs-number">10</span>},
+    {<span class="hljs-attr">x</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">y</span>: <span class="hljs-number">10</span>},
+    {<span class="hljs-attr">x</span>: <span class="hljs-number">3</span>, <span class="hljs-attr">y</span>: <span class="hljs-number">11</span>},
+    {<span class="hljs-attr">x</span>: <span class="hljs-number">4</span>, <span class="hljs-attr">y</span>: <span class="hljs-number">11</span>}
+};</code></pre></div>
+<p class="noindent">
+    En dessinant une petite ellipse à la position définie par chacun de ces points, on obtiendrait un tracé pointilliste. Est-ce suffisant&nbsp;? J’ai l’impression qu’il me faudrait créer des lignes pour relier les points, et aussi que les dessins devraient plutôt être définis par des ensembles de <span class="italic">transformations</span> plutôt que par des ensembles de vecteurs.
+</p>
+
+                <div class="languageJump">
+                    <a href="../blog/2018/7/dessins-granulaires.html">Continuer à lire…</a>
+                </div>
+               
+                </div>
+            </div>
             <div class="blog-post">
                 <div class="blog-post-header">
                     <a href="../blog/2018/6/les-tortues-de-perlin.html"><div class="date">23 juin 2018</div>
@@ -327,13 +365,13 @@
 </p>
 
 <p>
-    Si un système d’automates cellulaires a un «&nbsp;voisinage&nbsp;» de <span id="MathJax-Element-1-Frame" class="mjx-chtml"><span id="MJXc-Node-703" class="mjx-math"><span id="MJXc-Node-704" class="mjx-mrow"><span id="MJXc-Node-705" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">9</span></span></span></span></span> cellules, et que chacune de ces cellules peut avoir un état de <span id="MathJax-Element-2-Frame" class="mjx-chtml"><span id="MJXc-Node-706" class="mjx-math"><span id="MJXc-Node-707" class="mjx-mrow"><span id="MJXc-Node-708" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">0</span></span></span></span></span>, <span id="MathJax-Element-3-Frame" class="mjx-chtml"><span id="MJXc-Node-709" class="mjx-math"><span id="MJXc-Node-710" class="mjx-mrow"><span id="MJXc-Node-711" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">1</span></span></span></span></span> ou <span id="MathJax-Element-4-Frame" class="mjx-chtml"><span id="MJXc-Node-712" class="mjx-math"><span id="MJXc-Node-713" class="mjx-mrow"><span id="MJXc-Node-714" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">2</span></span></span></span></span>, un exemple de voisinage possible pourrait s’écrire&nbsp;: <span class="inline-code">"101022010"</span>. Ça me limiterait cependant à <span id="MathJax-Element-5-Frame" class="mjx-chtml"><span id="MJXc-Node-715" class="mjx-math"><span id="MJXc-Node-716" class="mjx-mrow"><span id="MJXc-Node-717" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">10</span></span></span></span></span> états possibles (de <span id="MathJax-Element-6-Frame" class="mjx-chtml"><span id="MJXc-Node-718" class="mjx-math"><span id="MJXc-Node-719" class="mjx-mrow"><span id="MJXc-Node-720" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">0</span></span></span></span></span> à <span id="MathJax-Element-7-Frame" class="mjx-chtml"><span id="MJXc-Node-721" class="mjx-math"><span id="MJXc-Node-722" class="mjx-mrow"><span id="MJXc-Node-723" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">9</span></span></span></span></span>) pour un système. Une autre façon d’encoder un voisinage serait&nbsp;:
+    Si un système d’automates cellulaires a un «&nbsp;voisinage&nbsp;» de <span id="MathJax-Element-1-Frame" class="mjx-chtml"><span id="MJXc-Node-740" class="mjx-math"><span id="MJXc-Node-741" class="mjx-mrow"><span id="MJXc-Node-742" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">9</span></span></span></span></span> cellules, et que chacune de ces cellules peut avoir un état de <span id="MathJax-Element-2-Frame" class="mjx-chtml"><span id="MJXc-Node-743" class="mjx-math"><span id="MJXc-Node-744" class="mjx-mrow"><span id="MJXc-Node-745" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">0</span></span></span></span></span>, <span id="MathJax-Element-3-Frame" class="mjx-chtml"><span id="MJXc-Node-746" class="mjx-math"><span id="MJXc-Node-747" class="mjx-mrow"><span id="MJXc-Node-748" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">1</span></span></span></span></span> ou <span id="MathJax-Element-4-Frame" class="mjx-chtml"><span id="MJXc-Node-749" class="mjx-math"><span id="MJXc-Node-750" class="mjx-mrow"><span id="MJXc-Node-751" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">2</span></span></span></span></span>, un exemple de voisinage possible pourrait s’écrire&nbsp;: <span class="inline-code">"101022010"</span>. Ça me limiterait cependant à <span id="MathJax-Element-5-Frame" class="mjx-chtml"><span id="MJXc-Node-752" class="mjx-math"><span id="MJXc-Node-753" class="mjx-mrow"><span id="MJXc-Node-754" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">10</span></span></span></span></span> états possibles (de <span id="MathJax-Element-6-Frame" class="mjx-chtml"><span id="MJXc-Node-755" class="mjx-math"><span id="MJXc-Node-756" class="mjx-mrow"><span id="MJXc-Node-757" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">0</span></span></span></span></span> à <span id="MathJax-Element-7-Frame" class="mjx-chtml"><span id="MJXc-Node-758" class="mjx-math"><span id="MJXc-Node-759" class="mjx-mrow"><span id="MJXc-Node-760" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">9</span></span></span></span></span>) pour un système. Une autre façon d’encoder un voisinage serait&nbsp;:
 </p>
 
 <div class="codebox"><pre><code><span class="hljs-keyword">let</span> neighborhood<span class="hljs-punctuation"> = </span>[<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">11</span>, <span class="hljs-number">13</span>, <span class="hljs-number">2</span>, <span class="hljs-number">20</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>];</code></pre></div>
 
 <p class="noindent">
-    Ici, je ne serais pas limité à <span id="MathJax-Element-8-Frame" class="mjx-chtml"><span id="MJXc-Node-724" class="mjx-math"><span id="MJXc-Node-725" class="mjx-mrow"><span id="MJXc-Node-726" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">9</span></span></span></span></span> états possibles. Mais, dans tous les cas, comment ferais-je pour générer chacune des règles d’un système&nbsp;?
+    Ici, je ne serais pas limité à <span id="MathJax-Element-8-Frame" class="mjx-chtml"><span id="MJXc-Node-761" class="mjx-math"><span id="MJXc-Node-762" class="mjx-mrow"><span id="MJXc-Node-763" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">9</span></span></span></span></span> états possibles. Mais, dans tous les cas, comment ferais-je pour générer chacune des règles d’un système&nbsp;?
 </p>
 
 
@@ -396,41 +434,6 @@
     Il me faudra aussi un système de rameaux à épaisseurs variables.
 </p>
 
-                </div>
-            </div>
-            <div class="blog-post">
-                <div class="blog-post-header">
-                    <a href="../blog/2018/4/les-tortues-amicales.html"><div class="date">28 avril 2018</div>
-                    <div class="blog-title-box"><h2 class="header">Les tortues amicales</h2></div>
-                    <div class="description">
-                    Formes collectives qui émergent de comportements individuels.
-
-            </div></a>
-                </div>
-                <div class="blog-post-content">
-                    
-
-<img class="inline-image" src="../../../images/friendly-turtles/second-version-long-640x360.gif">
-
-<p class="article-top">
-    <span class="small-caps">L’animation ci-dessus</span> est inspirée des idées derrières <span class="italic">Heroes and Cowards</span>, un modèle à base d’agents créé par William Rand et Uri Wilensky, mais il s’agit d’une altération tout de même très distante de ce <span class="nobreak">modèle.
-        <label for="second-version" class="margin-toggle sidenote-number">
-        </label></span>
-        <input type="checkbox" id="second-version" class="margin-toggle">
-        <span class="sidenote-left">Le code écrit pour réaliser cette animation est contenu dans la branche <a href=""><span class="inline-code8">second-version</span></a> de l’arborescence Git du projet, qui <a href="">se trouve sur GitHub</a>.</span>
-</p>
-<p>
-    Les principes de l’animation sont simples&nbsp;: chaque point noir représente une <span class="italic">tortue</span> qui peut recevoir des instructions et qui possède aussi un certain comportement. Lorsque l’animation démarre, chacune des tortues est associée à deux <span class="italic">amies</span> (deux autres points parmi le groupe). Ensuite, entre chaque nouvelle image de l’animation, chacune des tortues s’approche très légèrement du point équidistant entre ses deux amies.
-</p>
-<p>
-    Les tortues ont donc toutes un comportement individuel identique, mais puisque la position initiale de chacune d’elles est différente, il en résulte un comportement de groupe complexe&nbsp;: l’ensemble des tortues cherche à ne former qu’une seule boucle. Lorsqu’une nouvelle spirale est ajoutée, elle est «&nbsp;mise en contact&nbsp;» avec les autres tortues et se mêle rapidement au tracé général.
-</p>
-
-
-                <div class="languageJump">
-                    <a href="../blog/2018/4/les-tortues-amicales.html">Continuer à lire…</a>
-                </div>
-               
                 </div>
             </div>
         </div>

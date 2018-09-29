@@ -8,7 +8,7 @@
         
         <link href="../../style/truchet.css" rel="stylesheet" type="text/css">
         
-        <link href="https://fonts.googleapis.com/css?family=EB+Garamond" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700|EB+Garamond" rel="stylesheet">
         
     <style id="MathJax_CHTML_styles">.mjx-chtml {display: inline-block; line-height: 0; text-indent: 0; text-align: left; text-transform: none; font-style: normal; font-weight: normal; font-size: 100%; font-size-adjust: none; letter-spacing: normal; word-wrap: normal; word-spacing: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0; min-height: 0; border: 0; margin: 0; padding: 1px 0}
 .MJXc-display {display: block; text-align: center; margin: 1em 0; padding: 0}
@@ -143,6 +143,41 @@
             </div><div class="blog-posts">
             <div class="blog-post">
                 <div class="blog-post-header">
+                    <a href="../blog/2018/4/friendly-turtles.html"><div class="date">April 28, 2018</div>
+                    <div class="blog-title-box"><h2 class="header">Friendly turtles</h2></div>
+                    <div class="description">
+                    Collective shapes emerging from individual behaviours.
+
+            </div></a>
+                </div>
+                <div class="blog-post-content">
+                    
+
+
+
+<img class="inline-image" src="../../../images/friendly-turtles/second-version-long-640x360.gif">
+
+<p class="article-top">
+    <span class="small-caps">The animation above</span> is inspired by the ideas behind <span class="italic">Heroes and Cowards</span>, an agent based model created by William Rand and Uri Wilensky, although it’s a very distant alteration of this <span class="nobreak">model.<label for="second-version" class="margin-toggle sidenote-number"></label></span>
+        <input type="checkbox" id="second-version" class="margin-toggle">
+        <span class="sidenote-left">The code written to generate this animation is contained on the <a href=""><span class="inline-code8">second-version</span></a> branch of the project’s Git repository, which is <a href="">hosted on GitHub</a>.</span>
+</p>
+<p>
+    The animation’s mechanism is simple: each black dot represents a <span class="italic">turtle</span> that can receive instructions and that possesses a certain behaviour. When the animation starts, each turtle is associated with two <span class="italic">friends</span> (two different dots in the group). Then, between each new frame of animation, each turtle walks in the direction of a point that is equally distant between its two friends.
+</p>
+<p>
+    The turtles thus have an identical individual behaviour, but because their initial positions are all different, a complex collective behaviour emerges from the aggregate of their actions: the group of turtles is collectively trying to form a single loop. When a new spiral is added in the scene, those new turtles are rapidly merging with the path of older turtles.
+</p>
+
+
+                <div class="languageJump">
+                    <a href="../blog/2018/4/friendly-turtles.html">Read more…</a>
+                </div>
+               
+                </div>
+            </div>
+            <div class="blog-post">
+                <div class="blog-post-header">
                     <a href="../blog/2018/4/logistic-meanders.html"><div class="date">April 21, 2018</div>
                     <div class="blog-title-box"><h2 class="header">Logistic meanders</h2></div>
                     <div class="description">
@@ -177,7 +212,7 @@
     <span class="small-caps">I’m currently reading</span> <span class="italic">Complexity: A Guided Tour</span>, a wonderful book written by the American scientist Melanie Mitchell. I created the animation shown above using an equation I learned about in the book, the <span class="italic">logistic map</span>, which is the most famous equation in the field of chaos theory. Here it is:
 </p>
 
-<div class="math"><span class="mjx-chtml MJXc-display" style="text-align: center;"><span id="MathJax-Element-1-Frame" class="mjx-chtml" style="text-align: center;"><span id="MJXc-Node-1847" class="mjx-math"><span id="MJXc-Node-1848" class="mjx-mrow"><span id="MJXc-Node-1849" class="mjx-msubsup"><span class="mjx-base"><span id="MJXc-Node-1850" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.298em;">x</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-1851" class="mjx-texatom" style=""><span id="MJXc-Node-1852" class="mjx-mrow"><span id="MJXc-Node-1853" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.372em; padding-bottom: 0.298em;">t</span></span><span id="MJXc-Node-1854" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.298em; padding-bottom: 0.446em;">+</span></span><span id="MJXc-Node-1855" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">1</span></span></span></span></span></span><span id="MJXc-Node-1856" class="mjx-mo MJXc-space3"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.077em; padding-bottom: 0.298em;">=</span></span><span id="MJXc-Node-1857" class="mjx-mi MJXc-space3"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.446em; padding-bottom: 0.298em;">R</span></span><span id="MJXc-Node-1858" class="mjx-msubsup"><span class="mjx-base"><span id="MJXc-Node-1859" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.298em;">x</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-1860" class="mjx-mi" style=""><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.372em; padding-bottom: 0.298em;">t</span></span></span></span><span id="MJXc-Node-1861" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.446em; padding-bottom: 0.593em;">(</span></span><span id="MJXc-Node-1862" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">1</span></span><span id="MJXc-Node-1863" class="mjx-mo MJXc-space2"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.298em; padding-bottom: 0.446em;">−</span></span><span id="MJXc-Node-1864" class="mjx-msubsup MJXc-space2"><span class="mjx-base"><span id="MJXc-Node-1865" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.298em;">x</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-1866" class="mjx-mi" style=""><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.372em; padding-bottom: 0.298em;">t</span></span></span></span><span id="MJXc-Node-1867" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.446em; padding-bottom: 0.593em;">)</span></span></span></span></span></span></div>
+<div class="math"><span class="mjx-chtml MJXc-display" style="text-align: center;"><span id="MathJax-Element-1-Frame" class="mjx-chtml" style="text-align: center;"><span id="MJXc-Node-1884" class="mjx-math"><span id="MJXc-Node-1885" class="mjx-mrow"><span id="MJXc-Node-1886" class="mjx-msubsup"><span class="mjx-base"><span id="MJXc-Node-1887" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.298em;">x</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-1888" class="mjx-texatom" style=""><span id="MJXc-Node-1889" class="mjx-mrow"><span id="MJXc-Node-1890" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.372em; padding-bottom: 0.298em;">t</span></span><span id="MJXc-Node-1891" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.298em; padding-bottom: 0.446em;">+</span></span><span id="MJXc-Node-1892" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">1</span></span></span></span></span></span><span id="MJXc-Node-1893" class="mjx-mo MJXc-space3"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.077em; padding-bottom: 0.298em;">=</span></span><span id="MJXc-Node-1894" class="mjx-mi MJXc-space3"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.446em; padding-bottom: 0.298em;">R</span></span><span id="MJXc-Node-1895" class="mjx-msubsup"><span class="mjx-base"><span id="MJXc-Node-1896" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.298em;">x</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-1897" class="mjx-mi" style=""><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.372em; padding-bottom: 0.298em;">t</span></span></span></span><span id="MJXc-Node-1898" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.446em; padding-bottom: 0.593em;">(</span></span><span id="MJXc-Node-1899" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">1</span></span><span id="MJXc-Node-1900" class="mjx-mo MJXc-space2"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.298em; padding-bottom: 0.446em;">−</span></span><span id="MJXc-Node-1901" class="mjx-msubsup MJXc-space2"><span class="mjx-base"><span id="MJXc-Node-1902" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.298em;">x</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-1903" class="mjx-mi" style=""><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.372em; padding-bottom: 0.298em;">t</span></span></span></span><span id="MJXc-Node-1904" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.446em; padding-bottom: 0.593em;">)</span></span></span></span></span></span></div>
 
 
                 <div class="languageJump">
