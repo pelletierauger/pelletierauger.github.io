@@ -1,6 +1,7 @@
 <!-- year -->2018
 <!-- month -->07
 <!-- day -->19
+<!-- style -->truchet
 <!-- fr-title -->Dessins granulaires
 <!-- fr-description -->Applications du concept de synthèse granulaire à des dessins
 <!-- fr-content -->
@@ -68,8 +69,46 @@ let drawing = {
     <sc>Je veux aussi explorer</sc> l'idée d'un dessin considéré comme un réseau, c'est-à-dire qu'un dessin serait un ensemble de sommets et d'arêtes. Structurer un dessin ainsi permettrait davantage de jeux algorithmiques à l'intérieur d'un système. Les sommets ne seraient plus simplement tous alignés un à la suite de l’autre, ils pourraient avoir entre eux des liens de différentes natures. Chaque sommet pourrait avoir un nombre de connexions <im>n</im> avec d'autres sommets, et ces connexions pourraient permettrent <i>des choses</i>.
 </pn>
 <p>
-    Par exemple, dans le dessin ci-dessous, si l'on considère que tout le dessin n'est constitué que de petits points, il est clair que le point central a une signification particulière. Chacune des six formes fermées est liée à lui. Également, les points situés aux extrémités de chaque courbe d'une forme semblent posséder une signification particulière. Ils représentent, notamment, un changement brusque dans l'angle de la ligne dessinée, tandis que le reste des courbes est constitué de segments dont la valeur <im>\angle\theta</im> est très rapprochée de la valeur <im>\angle\theta</im> des segments voisins. Donc, ces points aux extrémités sont différents et pourraient être traités différemment. Par exemple, ils pourraient représenter des endroits où de nouvelles courbes pourraient naître.
+    Par exemple, dans le dessin ci-dessous, si l'on considère que tout le dessin n'est constitué que de petits points, il est clair que le point central a une signification particulière. Chacune des six formes fermées est liée à lui ; elles semblent en avoir jailli.
 </p>
+<img class="abcd" src="../../../images/granular-drawings/small-plant.png">
+<pn>
+    Également, les points situés aux extrémités de chaque courbe d'une forme semblent posséder une signification particulière. Ils représentent, notamment, un changement brusque dans l'angle de la ligne dessinée, tandis que le reste des courbes est constitué de segments dont la valeur <im>\angle\theta</im> est très rapprochée de la valeur <im>\angle\theta</im> des segments voisins. Donc, ces points aux extrémités sont différents et pourraient être traités différemment. Par exemple, ils pourraient représenter des endroits où de nouvelles courbes pourraient naître. Avec beaucoup d'optimisme et de bonne foi, on pourrait imaginer la fonction suivante :
+</pn>
+<img class="inline-image" src="../../../images/granular-drawings/f-of-plant.png">
+
+<h3>Passer des coordonnées cartésiennes aux coordonnées polaires</h3>
+<pn>
+    <sc>Le premier point</sc> d'un groupe de point ne peut pas avoir un angle ni une longueur (norme), mais comment est-il donc défini? En fait, il me faut faire une distinction entre la <i>suite cartésienne</i> et la <i>suite polaire</i>. Les fonctions <ic>mousePressed()</ic> et <ic>mouseDragged()</ic> de <ic>p5.js</ic> me donnent tout d'abord une suite cartésienne <im>(c_n)_{n \in \mathbb{N}}</im>.
+</pn>
+<math>
+    \angle (\overrightarrow{AB}, \overrightarrow{CD})
+    \\
+    \big(\widehat{\vec{u},\vec{v}}\big)
+</math>
+
+<code>
+let points = [
+    {x: 269, y: 436},
+    {x: 276, y: 434},
+    {x: 283, y: 432},
+    {x: 307, y: 427},
+    {x: 313, y: 425},
+    {x: 320, y: 423},
+    {x: 327, y: 420},
+    {x: 334, y: 417},
+    {x: 343, y: 413},
+    {x: 348, y: 408},
+    {x: 356, y: 403},
+    {x: 363, y: 397},
+    {x: 371, y: 391},
+    {x: 377, y: 383}
+];
+</code>
+
+<pn>
+    Cette suite devra ensuite être transformée en suite polaire, mais cependant, je me dis que peut-être devrait-elle être sauvegardée sous cette forme cartésienne. Et ensuite, ce serait la création des <i>grains</i> qui opérerait cette transformation.
+</pn>
 
 <h3>Contexte</h3>
 
