@@ -1,0 +1,60 @@
+<!-- year -->2018
+<!-- month -->08
+<!-- day -->07
+<!-- fr-title -->Machine à programmation improvisée
+<!-- fr-description -->
+<!-- fr-content -->
+
+<pn>
+    Je dois avoir une machine à laquelle je peux envoyer n'importe quel sketch p5.js. Je ne dois pas utiliser une nouvelle copie de la machine à chaque nouveau sketch, ça n'aurait aucun sens. Ainsi, il me faudrait pouvoir définir un sketch comme étant un ensemble de fichiers JavaScript et SuperCollider. Je définirais ce sketch dans un fichier <sc>json</sc>.
+</pn>
+<code>
+{
+    "root" : "../../Graph-Sequencers/",
+    "javascript-files" : [
+        "libraries/p5.min.js",
+        "libraries/p5.dom.min.js",
+        "libraries/p5.sound.min.js",
+        "libraries/socket.io.js",
+        "frame-export.js",
+        "graph-prototype.js",
+        "vertex-prototype.js",
+        "edge-prototype.js",
+        "walker-prototype.js",
+        "song-prototype.js",
+        "sketch.js"
+    ],
+    "default-javascript-file" : "sketch.js",
+    "supercollider-files" : [
+        "supercollider/pink-noise-synth.scd",
+        "supercollider/triangle-wav-synth.scd",
+        "supercollider/osc-receive.scd"
+    ]
+    "default-supercollider-file" : "supercollider/osc-receive.scd"
+}
+</code>
+<pn>
+    Ensuite, il me suffirait, lorsque je lance le serveur Node.js, de lui envoyer en argument le nom du sketch à servir, comme ceci :
+</pn>
+<code>
+    node server("graph-sequencers").js
+</code>
+<pn>
+    Les valeurs <ic>"default-javascript-file"</ic> et <ic>"default-supercollider-file"</ic> permettront de déterminer quels fichiers textes seront chargés dans les deux zones de CodeMirror. Ces valeurs pourraient aussi être vides.
+</pn>
+
+<h3>Contexte</h3>
+
+<pn>
+    <sc>Cette note de blog</sc> fait partie de mon projet de recherche <i>Vers un cinéma algorithmique</i>, démarré en avril 2018. Je vous invite à consulter <a href="https://pelletierauger.github.io/fr/blog/2018/4/vers-un-cinema-algorithmique.html">la toute première note du projet</a> pour en apprendre davantage.
+</pn>
+
+<!-- en-title -->Live Coding Machine
+<!-- en-description -->
+<!-- en-content -->
+
+<h3>Context</h3>
+
+<pn>
+    <sc>This blog post</sc> is part of my research project <i>Towards an algorithmic cinema</i>, started in April 2018. I invite you to read <a href="https://pelletierauger.github.io/en/blog/2018/4/towards-an-algorithmic-cinema.html">the first blog post of the project</a> to learn more about it.
+</pn>
