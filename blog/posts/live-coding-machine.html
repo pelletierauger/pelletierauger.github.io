@@ -4,10 +4,12 @@
 <!-- fr-title -->Machine à programmation improvisée
 <!-- fr-description -->
 <!-- fr-content -->
-
 <pn>
-    Je dois avoir une machine à laquelle je peux envoyer n'importe quel sketch p5.js. Je ne dois pas utiliser une nouvelle copie de la machine à chaque nouveau sketch, ça n'aurait aucun sens. Ainsi, il me faudrait pouvoir définir un sketch comme étant un ensemble de fichiers JavaScript et SuperCollider. Je définirais ce sketch dans un fichier <sc>json</sc>.
+    <sc>Je suis en train</sc> de fabriquer une application Node.js qui me permettra de faire de la <i>programmation improvisée</i>.<snl label="livecoding-wikipedia">L'expression anglaise “live coding” est plus souvent utilisée. <a href="https://fr.wikipedia.org/wiki/Live_coding">Wikipedia la traduit</a> par &#171;&nbsp;programmation à la volée&nbsp;&#187; ou &#171;&nbsp;programmation juste-à-temps&nbsp;&#187;, deux formules qu'il est difficile d'imaginer devenir très populaires.</snl> Elle contient deux champs de texte CodeMirror, la première qui contrôle un serveur SuperCollider, et la seconde qui controle un sketch p5.js.
 </pn>
+<p>
+    Je dois avoir une machine à laquelle je peux envoyer n'importe quel sketch p5.js. Je ne dois pas utiliser une nouvelle copie de la machine à chaque nouveau sketch, ça n'aurait aucun sens. Ainsi, il me faudrait pouvoir définir un sketch comme étant un ensemble de fichiers JavaScript et SuperCollider. Je définirais ce sketch dans un fichier <sc>json</sc>.
+</p>
 <code>
 {
     "root" : "../../Graph-Sequencers/",
@@ -29,7 +31,7 @@
         "supercollider/pink-noise-synth.scd",
         "supercollider/triangle-wav-synth.scd",
         "supercollider/osc-receive.scd"
-    ]
+    ],
     "default-supercollider-file" : "supercollider/osc-receive.scd"
 }
 </code>
@@ -41,6 +43,12 @@
 </code>
 <pn>
     Les valeurs <ic>"default-javascript-file"</ic> et <ic>"default-supercollider-file"</ic> permettront de déterminer quels fichiers textes seront chargés dans les deux zones de CodeMirror. Ces valeurs pourraient aussi être vides.
+</pn>
+
+<h3>La barre de commandes</h3>
+
+<pn>
+    Le logiciel contiendra une barre de commande à partir de laquelle la gestion des fichiers pourra être faite, entièrement avec des commandes textuelles, qui n'interrompront jamais l'animation en cours ou la musique.
 </pn>
 
 <h3>Contexte</h3>
