@@ -1,7 +1,7 @@
 exports.posts = [
     // "ant-colonies",
     // "density-maps",
-    "live-coding-machine",
+    "a-live-coding-machine",
     "granular-drawings",
     "perlin-turtles",
     "phenotype-and-genotype",
