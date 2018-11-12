@@ -2,7 +2,7 @@
 <!-- month -->08
 <!-- day -->07
 <!-- fr-title -->Machine à programmation improvisée
-<!-- fr-description -->
+<!-- fr-description -->Notes de travail pour une application en chantier.
 <!-- fr-content -->
 <pn>
     <sc>Je suis en train</sc> de fabriquer une application Node.js qui me permettra de faire de la <i>programmation improvisée</i>.<snl label="livecoding-wikipedia">L'expression anglaise “live coding” est plus souvent utilisée. <a href="https://fr.wikipedia.org/wiki/Live_coding">Wikipedia la traduit</a> par &#171;&nbsp;programmation à la volée&nbsp;&#187; ou &#171;&nbsp;programmation juste-à-temps&nbsp;&#187;, deux formules qu'il est difficile d'imaginer devenir très populaires.</snl> Elle contient deux champs de texte CodeMirror, la première qui contrôle un serveur SuperCollider, et la seconde qui controle un sketch p5.js.
@@ -35,12 +35,17 @@
     "default-supercollider-file" : "supercollider/osc-receive.scd"
 }
 </code>
+
+<!-- read-more -->
+
 <pn>
     Ensuite, il me suffirait, lorsque je lance le serveur Node.js, de lui envoyer en argument le nom du sketch à servir, comme ceci :
 </pn>
+
 <code>
     node server("graph-sequencers").js
 </code>
+
 <pn>
     Les valeurs <ic>"default-javascript-file"</ic> et <ic>"default-supercollider-file"</ic> permettront de déterminer quels fichiers textes seront chargés dans les deux zones de CodeMirror. Ces valeurs pourraient aussi être vides.
 </pn>
@@ -51,6 +56,109 @@
     Le logiciel contiendra une barre de commande à partir de laquelle la gestion des fichiers pourra être faite, entièrement avec des commandes textuelles, qui n'interrompront jamais l'animation en cours ou la musique.
 </pn>
 
+<h3>Méthodes de contrôle modulaire</h3>
+
+<pn>
+    <sc>Plusieurs idées intéressantes</sc> pour contrôler les flots d'informations en direct pourraient être pigées dans la boîte à outils de Max/<sc>msp</sc>. Par exemple, si j’ai une variable globale <ic>n = 16</ic> qui est utilisée dans ma boucle <ic>draw()</ic>, je peux évidemment la changer en évaluant une ligne de code telle que <ic>n = 20;</ic>, mais il serait intéressant de pouvoir déclancher différentes fonctions qui feraient des interpolations dans le temps de la variable <ic>n</ic>, dont la valeur pourrait ainsi changer de façon progressive au lieu de changer brusquement, d'un seul coup.
+</pn>
+<p>
+    J'aimerais beaucoup avoir une syntaxe du genre :
+</p>
+
+<code>
+    line(n, 20, 70);
+</code>
+
+<pn>
+    Dans ce cas-ci, la fonction <ic>line()</ic> <snl label="xline">Serait-il aussi intéressant d'avoir une variante de <ic8>Line()</ic8> nommée <ic8>XLine()</ic8>, qui ferait une interpolation exponentielle ? Comment cela fonctionnerait-il ? Quels usages pourrais-je en faire ?</snl>créerait un nouvel objet de la classe <ic>Line</ic>, qui exécuterait l'interpolation. Cet objet <ic>Line</ic> prendrait la variable <ic>n</ic> et lui assignerait la valeur <ic>20</ic> tout au long des prochaines <ic>70</ic> images d'animation.
+</pn>
+<p>
+    Mais ceci est, je crois, plutôt impossible à réaliser. Parce qu'à l'intérieur de la fonction <ic>line()</ic>, <ic>n</ic> n'est plus la variable globale <ic>n</ic> mais bien la <i>valeur</i> de cette variable au moment de l'exécution de <ic>line()</ic>. Je ne crois pas qu'il soit possible d'assigner une variable globale à une fonction de cette façon.
+</p>
+<p>
+    La solution serait peut-être de ne pas utiliser de simples variables pour contrôler le flot de l'information, mais utiliser plutôt un objet construit spécialement pour cet usage. Et cet objet aurait des méthodes particulières, tout comme l'objet <ic>p5.Vector()</ic> contient une panoplie de méthodes qui permet de changer ses valeurs. Par exemple, je pourrais avoir un prototype d'objet nommé <ic>SingleValue</ic>, qui contiendrait une propriété <ic>value</ic> à laquelle des fonctions extérieures comme <ic>draw()</ic> pourraient accéder.
+</p>
+
+<code>
+// Would I need a singleValues array to check on all the instances
+// of SingleValue that are currently modified by inner functions?
+let singleValues = [];
+
+let SingleValue = function(v) {
+    this.value = v;
+    this.currentModifiers = [];
+};
+SingleValue.prototype.line = function() {
+    // Some code here would apply an interpolation line 
+    // to this.value, changing it smoothly over time.
+};
+</code>
+
+<pn>
+    Ainsi, en contexte de programmation improvisée, je pourrais écrire et évaluer ce genre de lignes :
+</pn>
+
+<code>
+// Add an interpolation line, changing the value of n
+// to 20 over the course of 70 animation frames.
+n.addLine(20, 70);
+// Add a cosine fade (a smooth fade that has the shape
+// of the cosine function) to n.
+n.addCosFade(20, 70);
+</code>
+<pn>
+    Et ma fonction <ic>draw()</ic>, elle, pourrait ressembler à ça :
+</pn>
+
+<code>
+// a.v is a reference to the "value" of the a object,
+// which can be changed dynamically with lines,
+// cosine fades, and oscillators.
+p.draw = function(){
+    p.background(255, 255);
+    let v = p.sin(j * 0.1);
+    v = p.map(v, -1, 1, 8, -8);
+    for (var i = 0; i < 1200; i+= 1) {
+        let x = -30 + p.cos(j) * i * a.v + (p.width * 0.5);
+        let y = -30 + p.sin(j) * i * a.v + (p.height * 0.5);
+        p.ellipse(x, y, 4, 4);
+    }
+    j += 0.005;
+}
+</code>
+
+<pn>
+    Dans cet exemple, si <ic>j</ic> était un objet de type <ic>SingleValue</ic> au lieu d'être une simple variable, j'écrirais <ic>j.add(0.005);</ic> au lieu de <ic>j += 0.005;</ic>, exactement comme les méthodes mathématiques du prototype <ic>p5.Vector</ic>. Si la valeur à incrémenter était aussi un objet <ic>SingleValue</ic>, j'aurais une ligne de code semblable à celle-ci :
+</pn>
+
+<code>
+    j.add(increment.v);
+</code>
+
+<h3>Une pile d'oscillateurs</h3>
+
+<pn>
+
+</pn>
+
+<h3>Zone de désactivation des éditeurs</h3>
+
+<pn>
+    <sc>Comme il sera intéressant</sc> de pouvoir contrôler une &oelig;uvre en mouvement avec le clavier (comme il possible et très utile de le faire avec Max/<sc>msp</sc>), j'aurai besoin d'une zone dans l'écran où je peux simplement déplacement le curseur afin de désactiver les éditeurs CodeMirror.
+</pn>
+
+<code>
+let controlZone = document.getElementById("control");
+controlZone.addEventListener("mouseenter", function( event ) {   
+    // Here, we'll disable the input of the CodeMirror instances.
+    console.log("Enter the zone!");
+}, false);
+controlZone.addEventListener("mouseleave", function( event ) {   
+    // Here, we'll reactivate the input of the CodeMirror instances.
+    console.log("Leave the zone!");
+}, false);
+</code>
+
 <h3>Contexte</h3>
 
 <pn>
@@ -58,7 +166,7 @@
 </pn>
 
 <!-- en-title -->Live Coding Machine
-<!-- en-description -->
+<!-- en-description -->Work notes.
 <!-- en-content -->
 
 <h3>Context</h3>
