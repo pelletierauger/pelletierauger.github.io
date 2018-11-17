@@ -8,6 +8,7 @@ module.exports = function(htmlContent, fileName) {
     // var r = /code"[>](.*|\n|[\s\S]*)\<\/div/g;
     var javascript = /(<code>)([\S\s]*?)(<\/code>)/g;
     var glsl = /(<code class="glsl">)([\S\s]*?)(<\/code>)/g;
+    var supercollider = /(<code class="supercollider">)([\S\s]*?)(<\/code>)/g;
     var response;
 
     //If there is code contained within the htmlContent
@@ -270,6 +271,103 @@ module.exports = function(htmlContent, fileName) {
             return one + code.value + three;
         });
     }
+
+
+    if (htmlContent.match(supercollider)) {
+        response = "There is SuperCollider code to be formatted";
+
+        // htmlContent.replace(r, function(match, one, two, three) {
+        //     // if (match) console.log(match);
+        //     if (two) console.log("two : " + two);
+
+        // });
+
+        htmlContent = htmlContent.replace(supercollider, function(match, one, two, three) {
+            two = two.trim();
+            two = two.replace(/^\s+|\s+$|\n+$/g, "");
+            // console.log(two);
+            var code = hljs.highlight("supercollider", two);
+
+
+
+            code.value = code.value.replace(/&amp;nbsp;/g, ``);
+            code.value = code.value.replace(/&amp;rsquo;/g, `'`);
+            code.value = code.value.replace(/%/g, `<span class="hljs-punctuation">%</span>`);
+            code.value = code.value.replace(/([\]>a-zA-ZÀ-ú]\d*)(\.)(\d*[a-zA-ZÀ-ú])/g, function(match, a, b, c) {
+                // console.log(match);
+                return a + '<span class="hljs-punctuation">' + b + '</span>' + c;
+            });
+            code.value = code.value.replace(/ = /g, function(match) {
+                return '<span class="hljs-punctuation">' + match + '</span>';
+            });
+            code.value = code.value.replace(/ \!= /g, function(match) {
+                return '<span class="hljs-punctuation">' + match + '</span>';
+            });
+            code.value = code.value.replace(/\s\|\|\s/g, function(match) {
+                return '<span class="hljs-punctuation">' + match + '</span>';
+            });
+            code.value = code.value.replace(/\s&amp;&amp;\s/g, function(match) {
+                return '<span class="hljs-punctuation">' + match + '</span>';
+            });
+            code.value = code.value.replace(/ [:\?\*\/] /g, function(match) {
+                return '<span class="hljs-punctuation">' + match + '</span>';
+            });
+            code.value = code.value.replace(/ &lt; /g, function(match) {
+                return '<span class="hljs-punctuation">' + match + '</span>';
+            });
+            code.value = code.value.replace(/\s&lt;=\s/g, function(match) {
+                return '<span class="hljs-punctuation">' + match + '</span>';
+            });
+            code.value = code.value.replace(/ &gt; /g, function(match) {
+                return '<span class="hljs-punctuation">' + match + '</span>';
+            });
+            code.value = code.value.replace(/\s&gt;=\s/g, function(match) {
+                return '<span class="hljs-punctuation">' + match + '</span>';
+            });
+            code.value = code.value.replace(/\s===\s/g, function(match) {
+                return '<span class="hljs-punctuation">' + match + '</span>';
+            });
+            code.value = code.value.replace(/\+=|-=|\*=|\/=|==/g, function(match) {
+                return '<span class="hljs-punctuation">' + match + '</span>';
+            });
+            // code.value = code.value.replace(/\s>=\s/g, function(match) {
+            //     return '<span class="hljs-punctuation">' + match + '</span>';
+            // });
+            code.value = code.value.replace(/\+\+/g, function(match) {
+                return '<span class="hljs-punctuation">' + match + '</span>';
+            });
+            code.value = code.value.replace(/ \+ /g, function(match) {
+                return '<span class="hljs-punctuation">' + match + '</span>';
+            });
+            code.value = code.value.replace(/ - /g, function(match) {
+                return '<span class="hljs-punctuation">' + match + '</span>';
+            });
+            code.value = code.value.replace(/\!/g, function(match) {
+                return '<span class="hljs-punctuation">' + match + '</span>';
+            });
+            code.value = code.value.replace(/([ \(>])(-)([a-zA-ZÀ-ú\(])/g, function(match, a, b, c) {
+                return a + '<span class="hljs-punctuation">' + b + '</span>' + c;
+            });
+            for (var i = 0; i < 20; i++) {
+                code.value = code.value.replace(
+                    /(\/\/)([\(\)\[\]&;\{\}:_\?\,'\+\/\*<"=>a-zA-ZÀ-ú\d \u00a0\.\|-]*)(<span class="hljs-punctuation">)(.*?)(<\/span>)/g,
+                    function(match, a, b, c, d, e) {
+                        // console.log(a + b);
+                        return a + b + d;
+                    }
+                );
+            }
+
+            code.value = code.value.replace(/^(?:attribute)+/gm, function(match, a, b, c) {
+                return '<span class="hljs-keyword">attribute</span>';
+            });
+
+            return one + code.value + three;
+        });
+    }
+
+
+
 
     if (!response) {
         response = "No code found.";
