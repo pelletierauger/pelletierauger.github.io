@@ -86,6 +86,10 @@ code {
     color: #C17101;
 }
 
+.supercollider .hljs-built_in {
+    color: #734AC6;
+}
+
 .hljs-built_in,
 .hljs-class .hljs-title {
     /*console.*/
