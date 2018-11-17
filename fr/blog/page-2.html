@@ -4,12 +4,14 @@
         <title>Guillaume Pelletier-Auger - Blog - Page 2</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=4, user-scalable=yes">
         <link href="../../style/style.css" rel="stylesheet" type="text/css">
+        <link href="../../style/notes-on-genetic-automata.css" rel="stylesheet" type="text/css">
+        
         <link href="../../style/towards-an-algorithmic-cinema.css" rel="stylesheet" type="text/css">
         
         <link href="../../style/truchet.css" rel="stylesheet" type="text/css">
         
         <link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700|EB+Garamond" rel="stylesheet">
-        
+        <link href="../../style/code.css" rel="stylesheet" type="text/css">
     <style id="MathJax_CHTML_styles">.mjx-chtml {display: inline-block; line-height: 0; text-indent: 0; text-align: left; text-transform: none; font-style: normal; font-weight: normal; font-size: 100%; font-size-adjust: none; letter-spacing: normal; word-wrap: normal; word-spacing: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0; min-height: 0; border: 0; margin: 0; padding: 1px 0}
 .MJXc-display {display: block; text-align: center; margin: 1em 0; padding: 0}
 .mjx-chtml[tabindex]:focus, body :focus .mjx-chtml[tabindex] {display: inline-table}
@@ -143,6 +145,94 @@
             </div><div class="blog-posts">
             <div class="blog-post">
                 <div class="blog-post-header">
+                    <a href="../blog/2018/5/notes-sur-les-automates-genetiques.html"><div class="date">12 mai 2018</div>
+                    <div class="blog-title-box"><h2 class="header">Notes sur les automates génétiques</h2></div>
+                    <div class="description">
+                    Pour un système en construction.
+
+            </div></a>
+                </div>
+                <div class="blog-post-content">
+                    
+
+<p class="noindent">
+    <img class="genetic-drop-caps" src="../../../images/notes-on-genetic-automata/c.jpg"><span class="small-caps">et article</span> contient une série de notes un peu éparpillées prises alors que je me familiarise avec les algorithmes génétiques et, plus particulièrement, leurs applications dans les automates cellulaires. Je ne suis pas certain que ces notes puissent servir à quiconque à part moi, mais elles ont néanmoins leur place dans un journal de travail.
+</p>
+
+<p>
+    Si un système d’automates cellulaires a un «&nbsp;voisinage&nbsp;» de <span id="MathJax-Element-1-Frame" class="mjx-chtml"><span id="MJXc-Node-1452" class="mjx-math"><span id="MJXc-Node-1453" class="mjx-mrow"><span id="MJXc-Node-1454" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">9</span></span></span></span></span> cellules, et que chacune de ces cellules peut avoir un état de <span id="MathJax-Element-2-Frame" class="mjx-chtml"><span id="MJXc-Node-1455" class="mjx-math"><span id="MJXc-Node-1456" class="mjx-mrow"><span id="MJXc-Node-1457" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">0</span></span></span></span></span>, <span id="MathJax-Element-3-Frame" class="mjx-chtml"><span id="MJXc-Node-1458" class="mjx-math"><span id="MJXc-Node-1459" class="mjx-mrow"><span id="MJXc-Node-1460" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">1</span></span></span></span></span> ou <span id="MathJax-Element-4-Frame" class="mjx-chtml"><span id="MJXc-Node-1461" class="mjx-math"><span id="MJXc-Node-1462" class="mjx-mrow"><span id="MJXc-Node-1463" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">2</span></span></span></span></span>, un exemple de voisinage possible pourrait s’écrire&nbsp;: <span class="inline-code">"101022010"</span>. Ça me limiterait cependant à <span id="MathJax-Element-5-Frame" class="mjx-chtml"><span id="MJXc-Node-1464" class="mjx-math"><span id="MJXc-Node-1465" class="mjx-mrow"><span id="MJXc-Node-1466" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">10</span></span></span></span></span> états possibles (de <span id="MathJax-Element-6-Frame" class="mjx-chtml"><span id="MJXc-Node-1467" class="mjx-math"><span id="MJXc-Node-1468" class="mjx-mrow"><span id="MJXc-Node-1469" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">0</span></span></span></span></span> à <span id="MathJax-Element-7-Frame" class="mjx-chtml"><span id="MJXc-Node-1470" class="mjx-math"><span id="MJXc-Node-1471" class="mjx-mrow"><span id="MJXc-Node-1472" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">9</span></span></span></span></span>) pour un système. Une autre façon d’encoder un voisinage serait&nbsp;:
+</p>
+
+<div class="codebox"><pre><code><span class="hljs-keyword">let</span> neighborhood<span class="hljs-punctuation"> = </span>[<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">11</span>, <span class="hljs-number">13</span>, <span class="hljs-number">2</span>, <span class="hljs-number">20</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>];</code></pre></div>
+
+<p class="noindent">
+    Ici, je ne serais pas limité à <span id="MathJax-Element-8-Frame" class="mjx-chtml"><span id="MJXc-Node-1473" class="mjx-math"><span id="MJXc-Node-1474" class="mjx-mrow"><span id="MJXc-Node-1475" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">9</span></span></span></span></span> états possibles. Mais, dans tous les cas, comment ferais-je pour générer chacune des règles d’un système&nbsp;?
+</p>
+
+
+                <div class="languageJump">
+                    <a href="../blog/2018/5/notes-sur-les-automates-genetiques.html">Continuer à lire…</a>
+                </div>
+               
+                </div>
+            </div>
+            <div class="blog-post">
+                <div class="blog-post-header">
+                    <a href="../blog/2018/5/botanique-evolutive.html"><div class="date">5 mai 2018</div>
+                    <div class="blog-title-box"><h2 class="header">Botanique évolutive</h2></div>
+                    <div class="description">
+                    Croisements entre la botanique algorithmique et les algorithmes génétiques.
+
+            </div></a>
+                </div>
+                <div class="blog-post-content">
+                    
+
+<h3>Le prototype <span class="inline-code">Tree</span></h3>
+<p class="noindent">
+    Il me faut tout d’abord un objet <span class="inline-code">Tree</span>.
+</p>
+<p>
+    Je veux pouvoir enregistrer des formes dans une liste de formes, et ensuite, je pourrai déterminer combien de formes je veux dessiner par image d’animation.
+</p>
+
+<h3>L’objet <span class="inline-code">Segment</span></h3>
+
+<p class="noindent">
+    Comment pourrait être défini un segment&nbsp;? Un segment ne devrait pas avoir de coordonnées <span class="inline-code">x</span> et <span class="inline-code">y</span> mais plutôt des propriétés <span class="inline-code">l</span> pour sa longueur et <span class="inline-code">w</span> pour sa largeur. Et une propriété <span class="inline-code">parent</span>, bien entendu. Les seules coordonnées <span class="inline-code">x</span> et <span class="inline-code">y</span> qui doivent exister dans un arbre seront assignées au point initial de l’arbre.
+</p>
+<p>
+    Et si un segment ne recevait en arguments que <span class="inline-code">parent</span> et <span class="inline-code">dna</span> et qu’il devait tout construire seulement avec cela&nbsp;? Puisqu’il connaît son parent, il peut «&nbsp;réagir&nbsp;» à lui. Un segment devient une sorte d’automate cellulaire dont le «&nbsp;voisin&nbsp;» est son parent, et dont les règles sont toutes encodées dans sa propriété <span class="inline-code">dna</span>. Ça me semble être un bon système.
+</p>
+
+<div class="codebox"><pre><code><span class="hljs-keyword">let</span> Segment<span class="hljs-punctuation"> = </span><span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">parent, dna</span>) </span>{
+    <span class="hljs-comment">// ???</span>
+};</code></pre></div>
+
+<h3>L’âge de l’arbre</h3>
+
+<p class="noindent">
+    L’âge de l’arbre devrait pouvoir influencer l’expression de ses gênes. Par exemple, l’angle dans lesquel s’étend un nouvel embranchement doit pouvoir dépendre de l’âge de l’arbre. Un arbre plus vieux pourrait être en mesure de créer des embranchements à angles plus grands ou plus courts. Donc, un objet <span class="inline-code">Segment</span> doit connaître l’âge de l’arbre à tout moment. Ou alors n’aurait-il qu’à connaître l’âge de son <span class="inline-code">parent</span>&nbsp;? Ça serait peut-être mieux ainsi. Tout <span class="inline-code">Segment</span> ne connaîtrait ainsi que l’âge de son parent, et prendrait des «&nbsp;décisions&nbsp;» en conséquence.
+</p>
+
+<h3>Les embranchements</h3>
+
+<p class="noindent">
+    <span class="small-caps">Les embranchements constituent</span> un des plus compliqués aspects du système. Il doit y avoir trois sortes d’embranchements&nbsp;: à gauche, tout droit et à droite. Il me semble clair qu’un embranchement «&nbsp;tout droit&nbsp;» ne doit pouvoir se faire qu’une seule fois puisqu’il représente, d’une certaine, l’extension naturelle du rameau&nbsp;; mais les embranchements à gauche et à droite sont nettement plus compliqués.
+</p>
+<p>
+    Les embranchements «&nbsp;tout droit&nbsp;» serviront tout d’abord à créer des branches croches, et aussi à laisser des embranchements pousser «&nbsp;le long&nbsp;» d’une branche&nbsp;: un embranchement ne signifiera pas nécessairement la fin apparente d’un segment.
+</p>
+
+<h3>L’épaisseur des rameaux</h3>
+<p class="noindent">
+    Il me faudra aussi un système de rameaux à épaisseurs variables.
+</p>
+
+                </div>
+            </div>
+            <div class="blog-post">
+                <div class="blog-post-header">
                     <a href="../blog/2018/4/les-tortues-amicales.html"><div class="date">28 avril 2018</div>
                     <div class="blog-title-box"><h2 class="header">Les tortues amicales</h2></div>
                     <div class="description">
@@ -212,7 +302,7 @@
 <p class="article-top">
     <span class="small-caps">Je lis présentement</span> <span class="italic">Complexity: A Guided Tour</span>, un formidable ouvrage écrit par la scientifique américaine Melanie Mitchell. Je viens d’y apprendre l’existence de la <span class="italic">suite logistique</span>, grâce à laquelle j’ai réalisé l’animation ci-dessus. Il s’agit de la plus célèbre équation dans le champ de la théorie du chaos. La voici&nbsp;:
 </p>
-<div class="math"><span class="mjx-chtml MJXc-display" style="text-align: center;"><span id="MathJax-Element-1-Frame" class="mjx-chtml" style="text-align: center;"><span id="MJXc-Node-1422" class="mjx-math"><span id="MJXc-Node-1423" class="mjx-mrow"><span id="MJXc-Node-1424" class="mjx-msubsup"><span class="mjx-base"><span id="MJXc-Node-1425" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.298em;">x</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-1426" class="mjx-texatom" style=""><span id="MJXc-Node-1427" class="mjx-mrow"><span id="MJXc-Node-1428" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.372em; padding-bottom: 0.298em;">t</span></span><span id="MJXc-Node-1429" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.298em; padding-bottom: 0.446em;">+</span></span><span id="MJXc-Node-1430" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">1</span></span></span></span></span></span><span id="MJXc-Node-1431" class="mjx-mo MJXc-space3"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.077em; padding-bottom: 0.298em;">=</span></span><span id="MJXc-Node-1432" class="mjx-mi MJXc-space3"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.446em; padding-bottom: 0.298em;">R</span></span><span id="MJXc-Node-1433" class="mjx-msubsup"><span class="mjx-base"><span id="MJXc-Node-1434" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.298em;">x</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-1435" class="mjx-mi" style=""><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.372em; padding-bottom: 0.298em;">t</span></span></span></span><span id="MJXc-Node-1436" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.446em; padding-bottom: 0.593em;">(</span></span><span id="MJXc-Node-1437" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">1</span></span><span id="MJXc-Node-1438" class="mjx-mo MJXc-space2"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.298em; padding-bottom: 0.446em;">−</span></span><span id="MJXc-Node-1439" class="mjx-msubsup MJXc-space2"><span class="mjx-base"><span id="MJXc-Node-1440" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.298em;">x</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-1441" class="mjx-mi" style=""><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.372em; padding-bottom: 0.298em;">t</span></span></span></span><span id="MJXc-Node-1442" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.446em; padding-bottom: 0.593em;">)</span></span></span></span></span></span></div>
+<div class="math"><span class="mjx-chtml MJXc-display" style="text-align: center;"><span id="MathJax-Element-9-Frame" class="mjx-chtml" style="text-align: center;"><span id="MJXc-Node-1476" class="mjx-math"><span id="MJXc-Node-1477" class="mjx-mrow"><span id="MJXc-Node-1478" class="mjx-msubsup"><span class="mjx-base"><span id="MJXc-Node-1479" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.298em;">x</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-1480" class="mjx-texatom" style=""><span id="MJXc-Node-1481" class="mjx-mrow"><span id="MJXc-Node-1482" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.372em; padding-bottom: 0.298em;">t</span></span><span id="MJXc-Node-1483" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.298em; padding-bottom: 0.446em;">+</span></span><span id="MJXc-Node-1484" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">1</span></span></span></span></span></span><span id="MJXc-Node-1485" class="mjx-mo MJXc-space3"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.077em; padding-bottom: 0.298em;">=</span></span><span id="MJXc-Node-1486" class="mjx-mi MJXc-space3"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.446em; padding-bottom: 0.298em;">R</span></span><span id="MJXc-Node-1487" class="mjx-msubsup"><span class="mjx-base"><span id="MJXc-Node-1488" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.298em;">x</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-1489" class="mjx-mi" style=""><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.372em; padding-bottom: 0.298em;">t</span></span></span></span><span id="MJXc-Node-1490" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.446em; padding-bottom: 0.593em;">(</span></span><span id="MJXc-Node-1491" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">1</span></span><span id="MJXc-Node-1492" class="mjx-mo MJXc-space2"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.298em; padding-bottom: 0.446em;">−</span></span><span id="MJXc-Node-1493" class="mjx-msubsup MJXc-space2"><span class="mjx-base"><span id="MJXc-Node-1494" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.298em;">x</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-1495" class="mjx-mi" style=""><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.372em; padding-bottom: 0.298em;">t</span></span></span></span><span id="MJXc-Node-1496" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.446em; padding-bottom: 0.593em;">)</span></span></span></span></span></span></div>
 
                 <div class="languageJump">
                     <a href="../blog/2018/4/la-suite-logistique.html">Continuer à lire…</a>

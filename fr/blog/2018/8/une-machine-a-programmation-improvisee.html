@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Guillaume Pelletier-Auger - Une machine à programmation improvisée</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=4, user-scalable=yes" />
+        <link href="../../../../style/style.css" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700|EB+Garamond" rel="stylesheet">
+        <link href="../../../../style/code.css" rel="stylesheet" type="text/css">
+    </head><body>
+    <nav>
+        <h1><a href="../../../../fr/">Guillaume <span class="nobreak">Pelletier-Auger</span></a></h1>
+        <ul>
+            <li><a href="../../../../fr/">Projets</a></li>
+            <li class = "selected"><a href="../../../../fr/blog/">Blog</a></li>
+            <li><a href="../../../../fr/a-propos.html">À propos</a></li>
+            <li><a href="../../../../en/blog/2018/8/a-live-coding-machine.html">Fr &#8594; En</a></li>
+        </ul>
+    </nav>
+    
+            <article>
+                <h2 class="with-date">Une machine à programmation improvisée</h2><div class="description">
+                    Notes de travail pour une application en chantier.
+
+            </div>
+                <div class="date">7 août 2018</div>
+                
+<p class="noindent">
+    <span class="small-caps">Je suis en train</span> de fabriquer une application Node.js qui me permettra de faire de la <span class="italic">programmation improvisée</span>.
+        <label for="livecoding-wikipedia" class="margin-toggle sidenote-number">
+        </label></span>
+        <input type="checkbox" id="livecoding-wikipedia" class="margin-toggle"/>
+        <span class="sidenote-left">L&rsquo;expression anglaise “live coding” est plus souvent utilisée. <a href="https://fr.wikipedia.org/wiki/Live_coding">Wikipedia la traduit</a> par &#171;&nbsp;programmation à la volée&nbsp;&#187; ou &#171;&nbsp;programmation juste-à-temps&nbsp;&#187;, deux formules qu&rsquo;il est difficile d&rsquo;imaginer devenir très populaires.</span> Elle contient deux champs de texte CodeMirror, la première qui contrôle un serveur SuperCollider, et la seconde qui controle un sketch p5.js.
+</p>
+<p>
+    Pour créer cette machine, j&rsquo;ai utilisé une bonne quantité de code écrit pour <a href="https://github.com/prynth/prynth">Prynth</a><span class="cleardescenders">,</span> un logiciel créé par <a href="https://ivanfranco.wordpress.com/">Ivan Franco</a><span class="cleardescenders">,</span> Harish Venkatesan, Ajin Tom et Antoine Maiorca. Prynth est distribué avec une licence Creative Commons <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><span class="small-caps">Cc By-Nc-Sa 4.0</span></a>. Sous-bois reprend également une bonne quantité de code écrit par <a href="https://ojack.github.io/">Olivia Jack</a> pour <a href="https://github.com/ojack/hydra">Hydra</a><span class="cleardescenders">,</span> qui est distribué avec une licence <span class="small-caps">Gnu</span> Affero <span class="small-caps">Gpl</span> v3.0.
+</p>
+<p>
+    Je dois avoir une machine à laquelle je peux envoyer n&rsquo;importe quel sketch p5.js. Je ne dois pas utiliser une nouvelle copie de la machine à chaque nouveau sketch, ça n&rsquo;aurait aucun sens. Ainsi, il me faudrait pouvoir définir un sketch comme étant un ensemble de fichiers JavaScript et SuperCollider. Je définirais ce sketch dans un fichier <span class="small-caps">json</span>.
+</p>
+<div class="codebox"><pre><code>{
+    <span class="hljs-string">"root"</span>: <span class="hljs-string">"../../Graph-Sequencers/"</span>,
+    <span class="hljs-string">"javascript-files"</span>: [
+        <span class="hljs-string">"libraries/p5<span class="hljs-punctuation">.</span>min<span class="hljs-punctuation">.</span>js"</span>,
+        <span class="hljs-string">"libraries/p5<span class="hljs-punctuation">.</span>dom<span class="hljs-punctuation">.</span>min<span class="hljs-punctuation">.</span>js"</span>,
+        <span class="hljs-string">"libraries/p5<span class="hljs-punctuation">.</span>sound<span class="hljs-punctuation">.</span>min<span class="hljs-punctuation">.</span>js"</span>,
+        <span class="hljs-string">"libraries/socket<span class="hljs-punctuation">.</span>io<span class="hljs-punctuation">.</span>js"</span>,
+        <span class="hljs-string">"frame-export<span class="hljs-punctuation">.</span>js"</span>,
+        <span class="hljs-string">"graph-prototype<span class="hljs-punctuation">.</span>js"</span>,
+        <span class="hljs-string">"vertex-prototype<span class="hljs-punctuation">.</span>js"</span>,
+        <span class="hljs-string">"edge-prototype<span class="hljs-punctuation">.</span>js"</span>,
+        <span class="hljs-string">"walker-prototype<span class="hljs-punctuation">.</span>js"</span>,
+        <span class="hljs-string">"song-prototype<span class="hljs-punctuation">.</span>js"</span>,
+        <span class="hljs-string">"sketch<span class="hljs-punctuation">.</span>js"</span>
+    ],
+    <span class="hljs-string">"default-javascript-file"</span>: <span class="hljs-string">"sketch<span class="hljs-punctuation">.</span>js"</span>,
+    <span class="hljs-string">"supercollider-files"</span>: [
+        <span class="hljs-string">"supercollider/pink-noise-synth<span class="hljs-punctuation">.</span>scd"</span>,
+        <span class="hljs-string">"supercollider/triangle-wav-synth<span class="hljs-punctuation">.</span>scd"</span>,
+        <span class="hljs-string">"supercollider/osc-receive<span class="hljs-punctuation">.</span>scd"</span>
+    ],
+    <span class="hljs-string">"default-supercollider-file"</span>: <span class="hljs-string">"supercollider/osc-receive<span class="hljs-punctuation">.</span>scd"</span>
+}</code></pre></div>
+
+<!-- read-more -->
+
+<p class="noindent">
+    Ensuite, il me suffirait, lorsque je lance le serveur Node.js, de lui envoyer en argument le nom du sketch à servir, comme ceci&nbsp;:
+</p>
+
+<div class="codebox"><pre><code>node server(<span class="hljs-string">"graph-sequencers"</span>).js</code></pre></div>
+
+<p class="noindent">
+    Les valeurs <span class="inline-code">"default-javascript-file"</span> et <span class="inline-code">"default-supercollider-file"</span> permettront de déterminer quels fichiers textes seront chargés dans les deux zones de CodeMirror. Ces valeurs pourraient aussi être vides.
+</p>
+
+<h3>La barre de commandes</h3>
+
+<p class="noindent">
+    Le logiciel contiendra une barre de commande à partir de laquelle la gestion des fichiers pourra être faite, entièrement avec des commandes textuelles, qui n&rsquo;interrompront jamais l&rsquo;animation en cours ou la musique.
+</p>
+
+<h3>Méthodes de contrôle modulaire</h3>
+
+<p class="noindent">
+    <span class="small-caps">Plusieurs idées intéressantes</span> pour contrôler les flots d&rsquo;informations en direct pourraient être pigées dans la boîte à outils de Max/<span class="small-caps">msp</span>. Par exemple, si j’ai une variable globale <span class="inline-code">n = 16</span> qui est utilisée dans ma boucle <span class="inline-code">draw()</span>, je peux évidemment la changer en évaluant une ligne de code telle que <span class="inline-code">n = 20;</span>, mais il serait intéressant de pouvoir déclancher différentes fonctions qui feraient des interpolations dans le temps de la variable <span class="inline-code">n</span>, dont la valeur pourrait ainsi changer de façon progressive au lieu de changer brusquement, d&rsquo;un seul coup.
+</p>
+<p>
+    J&rsquo;aimerais beaucoup avoir une syntaxe du genre&nbsp;:
+</p>
+
+<div class="codebox"><pre><code>line(n, <span class="hljs-number">20</span>, <span class="hljs-number">70</span>);</code></pre></div>
+
+<p class="noindent">
+    Dans ce cas-ci, la fonction <span class="inline-code">line()</span> 
+        <label for="xline" class="margin-toggle sidenote-number">
+        </label></span>
+        <input type="checkbox" id="xline" class="margin-toggle"/>
+        <span class="sidenote-left">Serait-il aussi intéressant d&rsquo;avoir une variante de <span class="inline-code8">Line()</span> nommée <span class="inline-code8">XLine()</span>, qui ferait une interpolation exponentielle&nbsp;? Comment cela fonctionnerait-il&nbsp;? Quels usages pourrais-je en faire&nbsp;?</span>créerait un nouvel objet de la classe <span class="inline-code">Line</span>, qui exécuterait l&rsquo;interpolation. Cet objet <span class="inline-code">Line</span> prendrait la variable <span class="inline-code">n</span> et lui assignerait la valeur <span class="inline-code">20</span> tout au long des prochaines <span class="inline-code">70</span> images d&rsquo;animation.
+</p>
+<p>
+    Mais ceci est, je crois, plutôt impossible à réaliser. Parce qu&rsquo;à l&rsquo;intérieur de la fonction <span class="inline-code">line()</span>, <span class="inline-code">n</span> n&rsquo;est plus la variable globale <span class="inline-code">n</span> mais bien la <span class="italic">valeur</span> de cette variable au moment de l&rsquo;exécution de <span class="inline-code">line()</span>. Je ne crois pas qu&rsquo;il soit possible d&rsquo;assigner une variable globale à une fonction de cette façon.
+</p>
+<p>
+    La solution serait peut-être de ne pas utiliser de simples variables pour contrôler le flot de l&rsquo;information, mais utiliser plutôt un objet construit spécialement pour cet usage. Et cet objet aurait des méthodes particulières, tout comme l&rsquo;objet <span class="inline-code">p5.Vector()</span> contient une panoplie de méthodes qui permet de changer ses valeurs. Par exemple, je pourrais avoir un prototype d&rsquo;objet nommé <span class="inline-code">SingleValue</span>, qui contiendrait une propriété <span class="inline-code">value</span> à laquelle des fonctions extérieures comme <span class="inline-code">draw()</span> pourraient accéder.
+</p>
+
+<div class="codebox"><pre><code><span class="hljs-comment">// Would I need a singleValues array to check on all the instances</span>
+<span class="hljs-comment">// of SingleValue that are currently modified by inner functions?</span>
+<span class="hljs-keyword">let</span> singleValues<span class="hljs-punctuation"> = </span>[];
+
+<span class="hljs-keyword">let</span> SingleValue<span class="hljs-punctuation"> = </span><span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">v</span>) </span>{
+    <span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>value<span class="hljs-punctuation"> = </span>v;
+    <span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>currentModifiers<span class="hljs-punctuation"> = </span>[];
+};
+SingleValue<span class="hljs-punctuation">.</span>prototype<span class="hljs-punctuation">.</span>line<span class="hljs-punctuation"> = </span><span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-comment">// Some code here would apply an interpolation line </span>
+    <span class="hljs-comment">// to this.value, changing it smoothly over time.</span>
+};</code></pre></div>
+
+<p class="noindent">
+    Ainsi, en contexte de programmation improvisée, je pourrais écrire et évaluer ce genre de lignes&nbsp;:
+</p>
+
+<div class="codebox"><pre><code><span class="hljs-comment">// Add an interpolation line, changing the value of n</span>
+<span class="hljs-comment">// to 20 over the course of 70 animation frames.</span>
+n<span class="hljs-punctuation">.</span>addLine(<span class="hljs-number">20</span>, <span class="hljs-number">70</span>);
+<span class="hljs-comment">// Add a cosine fade (a smooth fade that has the shape</span>
+<span class="hljs-comment">// of the cosine function) to n.</span>
+n<span class="hljs-punctuation">.</span>addCosFade(<span class="hljs-number">20</span>, <span class="hljs-number">70</span>);</code></pre></div>
+
+<p class="noindent">
+    Et ma fonction <span class="inline-code">draw()</span> pourrait alors ressembler à ceci&nbsp;:
+</p>
+
+<div class="codebox"><pre><code><span class="hljs-comment">// a.v is a reference to the "value" of the a object,</span>
+<span class="hljs-comment">// which can be changed dynamically with lines,</span>
+<span class="hljs-comment">// cosine fades, and oscillators.</span>
+p<span class="hljs-punctuation">.</span>draw<span class="hljs-punctuation"> = </span><span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    p<span class="hljs-punctuation">.</span>background(<span class="hljs-number">255</span>, <span class="hljs-number">255</span>);
+    <span class="hljs-keyword">let</span> v<span class="hljs-punctuation"> = </span>p<span class="hljs-punctuation">.</span>sin(j<span class="hljs-punctuation"> * </span><span class="hljs-number">0.1</span>);
+    v<span class="hljs-punctuation"> = </span>p<span class="hljs-punctuation">.</span>map(v, <span class="hljs-number">-1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">8</span>, <span class="hljs-number">-8</span>);
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i<span class="hljs-punctuation"> = </span><span class="hljs-number">0</span>; i<span class="hljs-punctuation"> &lt; </span><span class="hljs-number">1200</span>; i<span class="hljs-punctuation">+=</span> <span class="hljs-number">1</span>) {
+        <span class="hljs-keyword">let</span> x<span class="hljs-punctuation"> = </span><span class="hljs-number">-30</span><span class="hljs-punctuation"> + </span>p<span class="hljs-punctuation">.</span>cos(j)<span class="hljs-punctuation"> * </span>i<span class="hljs-punctuation"> * </span>a<span class="hljs-punctuation">.</span>v<span class="hljs-punctuation"> + </span>(p<span class="hljs-punctuation">.</span>width<span class="hljs-punctuation"> * </span><span class="hljs-number">0.5</span>);
+        <span class="hljs-keyword">let</span> y<span class="hljs-punctuation"> = </span><span class="hljs-number">-30</span><span class="hljs-punctuation"> + </span>p<span class="hljs-punctuation">.</span>sin(j)<span class="hljs-punctuation"> * </span>i<span class="hljs-punctuation"> * </span>a<span class="hljs-punctuation">.</span>v<span class="hljs-punctuation"> + </span>(p<span class="hljs-punctuation">.</span>height<span class="hljs-punctuation"> * </span><span class="hljs-number">0.5</span>);
+        p<span class="hljs-punctuation">.</span>ellipse(x, y, <span class="hljs-number">4</span>, <span class="hljs-number">4</span>);
+    }
+    j <span class="hljs-punctuation">+=</span> <span class="hljs-number">0.005</span>;
+}</code></pre></div>
+
+<p class="noindent">
+    Dans cet exemple, si <span class="inline-code">j</span> était un objet de type <span class="inline-code">SingleValue</span> au lieu d&rsquo;être une simple variable, j&rsquo;écrirais <span class="inline-code">j.add(0.005);</span> au lieu de <span class="inline-code">j += 0.005;</span>, exactement comme les méthodes mathématiques du prototype <span class="inline-code">p5.Vector</span>. Si la valeur à incrémenter était aussi un objet <span class="inline-code">SingleValue</span>, j&rsquo;aurais une ligne de code semblable à celle-ci&nbsp;:
+        <label for="transparent-code" class="margin-toggle sidenote-number">
+        </label></span>
+        <input type="checkbox" id="transparent-code" class="margin-toggle"/>
+        <span class="sidenote-left">Cette ligne de code est malheureusement bien moins limpide et transparente que la ligne qu&rsquo;elle remplace. Mais bien entendu que des structures logiques plus complexes font disparaître une part de simplicité.</span>
+</p>
+
+<div class="codebox"><pre><code>j<span class="hljs-punctuation">.</span>add(increment<span class="hljs-punctuation">.</span>v);</code></pre></div>
+
+<p class="noindent">
+    Il serait aussi très intéressant de pouvoir créer des lignes à multiples segments comme on en trouve dans SuperCollider.
+        <label for="repeating-lines" class="margin-toggle sidenote-number">
+        </label></span>
+        <input type="checkbox" id="repeating-lines" class="margin-toggle"/>
+        <span class="sidenote">Serait-il aussi intéressant de pouvoir créer des lignes qui se répéteraient une certaine quantité de fois (ou même une quantité infinie de fois) ? Rendu là, une ligne deviendrait aussi une sorte d&rsquo;oscillateur, par exemple une ligne pourrait devenir un signal triangulaire ou un signal en dents de scie. Je ne sais pas. Il faudrait réfléchir à la chose et surtout, en essayer des applications. Si une ligne devenait infinie, il deviendrait intéressant de la traiter comme un oscillateur, donc de l&rsquo;appliquer avec une enveloppe. On verra.</span>
+</p>
+
+<div class="codebox"><pre><code><span class="hljs-comment">// The first array is a group of values to reach,</span>
+<span class="hljs-comment">// the second array is the number of animation frames</span>
+<span class="hljs-comment">// it takes to reach those values.</span>
+n<span class="hljs-punctuation">.</span>addLine([<span class="hljs-number">10</span>, <span class="hljs-number">20</span>, <span class="hljs-number">30</span>, <span class="hljs-number">10</span>], [<span class="hljs-number">30</span>, <span class="hljs-number">60</span>, <span class="hljs-number">30</span>]);</code></pre></div>
+
+<h3>Une pile d&rsquo;oscillateurs</h3>
+
+<p class="noindent">
+    <span class="small-caps">Une autre façon très versatile</span> de contrôler des flots d&rsquo;informations serait de pouvoir faire <span class="italic">osciller</span> des valeurs. Je pourrais ainsi avoir la méthode suivante dans le prototype <span class="inline-code">SingleValue</span>&nbsp;:
+</p>
+
+<div class="codebox"><pre><code><span class="hljs-comment">// The first two values are the minimum and maximum delta,</span>
+<span class="hljs-comment">// the third value is the frequency of the oscillator,</span>
+<span class="hljs-comment">// or how many frames a full cycle takes.</span>
+
+<span class="hljs-comment">// An optional fourth value could be the attack</span>
+<span class="hljs-comment">// envelope of the oscillator: how many frames does</span>
+<span class="hljs-comment">// it takes for the oscillator to reach full amplitude.</span>
+
+n<span class="hljs-punctuation">.</span>addOscillator(<span class="hljs-number">-0.1</span>, <span class="hljs-number">0.1</span>, <span class="hljs-number">60</span>, <span class="hljs-number">120</span>);</code></pre></div>
+
+<p class="noindent">
+    Cette méthode ajouterait un oscillateur à la valeur <span class="inline-code">value</span> de l&rsquo;objet <span class="inline-code">n</span>. C&rsquo;est-à-dire que <span class="inline-code">value</span> serait recalculé à chaque image d&rsquo;animation&nbsp;: on y additionnerait ou soustrairait une certaine quantité déterminée par une fonction sinusoïdale. L&rsquo;ajout d&rsquo;un nouvel oscillateur pourrait même être fait de façon douce, c&rsquo;est-à-dire qu&rsquo;il s&rsquo;appliquerait progressivement jusqu&rsquo;à ce qu&rsquo;il soit exprimé au complet (on parlerait ici de l&rsquo;<span class="italic">amplitude</span> de l&rsquo;oscillateur).
+</p>
+<p>
+    Ensuite, une méthode <span class="inline-code">releaseOscillator</span> permettrait de diminuer progressivement l&rsquo;amplitude d&rsquo;un oscillateur et d&rsquo;ensuite le &#171;&nbsp;détacher&nbsp;&#187; de l&rsquo;objet <span class="inline-code">n</span> sur lequel il était appliqué.
+</p>
+
+<div class="codebox"><pre><code><span class="hljs-comment">// The first argument is the index of the oscillator</span>
+<span class="hljs-comment">// to release, the second argument is the release time.</span>
+n<span class="hljs-punctuation">.</span>releaseOscillator(<span class="hljs-number">0</span>, <span class="hljs-number">120</span>);</code></pre></div>
+
+<h3>Zone de désactivation des éditeurs</h3>
+
+<p class="noindent">
+    <span class="small-caps">Comme il sera intéressant</span> de pouvoir contrôler une &oelig;uvre en mouvement avec le clavier (comme il possible et très utile de le faire avec Max/<span class="small-caps">msp</span>), j&rsquo;aurai besoin d&rsquo;une zone dans l&rsquo;écran où je peux simplement déplacer le curseur afin de désactiver les éditeurs CodeMirror.
+</p>
+
+<div class="codebox"><pre><code><span class="hljs-keyword">let</span> controlZone<span class="hljs-punctuation"> = </span><span class="hljs-built_in">document</span><span class="hljs-punctuation">.</span>getElementById(<span class="hljs-string">"control"</span>);
+controlZone<span class="hljs-punctuation">.</span>addEventListener(<span class="hljs-string">"mouseenter"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"> event </span>) </span>{   
+    <span class="hljs-comment">// Here, we'll disable the input of the CodeMirror instances.</span>
+    <span class="hljs-built_in">console</span><span class="hljs-punctuation">.</span>log(<span class="hljs-string">"Enter the zone<span class="hljs-punctuation">!</span>"</span>);
+}, <span class="hljs-literal">false</span>);
+controlZone<span class="hljs-punctuation">.</span>addEventListener(<span class="hljs-string">"mouseleave"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"> event </span>) </span>{   
+    <span class="hljs-comment">// Here, we'll reactivate the input of the CodeMirror instances.</span>
+    <span class="hljs-built_in">console</span><span class="hljs-punctuation">.</span>log(<span class="hljs-string">"Leave the zone<span class="hljs-punctuation">!</span>"</span>);
+}, <span class="hljs-literal">false</span>);</code></pre></div>
+
+<h3>Écriture improvisée de &ldquo;shaders&rdquo; <span class="small-caps">Glsl</span></h3>
+
+<p class="noindent">
+    <span class="small-caps">Beaucoup de complexité</span> s&rsquo;ajoutera lorsque je voudrai pouvoir écrire des &ldquo;shaders&rdquo; improvisés dans ma machine. Je dois commencer par regarder le travail de Patricio Gonzalez Vivo pour son <a href="https://github.com/tangrams/GLSL-live-editor"><span class="small-caps">Glsl</span> live editor</a> (licence <span class="small-caps">Mit</span>) et Rémi Papillié pour <a href="https://github.com/wsmind/epita-raymarching-2018/blob/master/live.html">sa machine à coder du raymarching</a> (aussi en licence <span class="small-caps">Mit</span>).
+</p>
+
+<h3>Contexte</h3>
+
+<p class="noindent">
+    <span class="small-caps">Cette note de blog</span> fait partie de mon projet de recherche <span class="italic">Vers un cinéma algorithmique</span>, démarré en avril 2018. Je vous invite à consulter <a href="https://pelletierauger.github.io/fr/blog/2018/4/vers-un-cinema-algorithmique.html">la toute première note du projet</a> pour en apprendre davantage.
+</p>
+
+
+            </article>
+            <div id="footer">Guillaume Pelletier-Auger &mdash; 2016-2018
+    </div>
+    </body>
+    </html>
