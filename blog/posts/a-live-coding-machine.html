@@ -8,6 +8,9 @@
     <sc>Je suis en train</sc> de fabriquer une application Node.js qui me permettra de faire de la <i>programmation improvisée</i>.<snl label="livecoding-wikipedia">L'expression anglaise “live coding” est plus souvent utilisée. <a href="https://fr.wikipedia.org/wiki/Live_coding">Wikipedia la traduit</a> par &#171;&nbsp;programmation à la volée&nbsp;&#187; ou &#171;&nbsp;programmation juste-à-temps&nbsp;&#187;, deux formules qu'il est difficile d'imaginer devenir très populaires.</snl> Elle contient deux champs de texte CodeMirror, la première qui contrôle un serveur SuperCollider, et la seconde qui controle un sketch p5.js.
 </pn>
 <p>
+    Pour créer cette machine, j'ai utilisé une bonne quantité de code écrit pour <a href="https://github.com/prynth/prynth">Prynth</a>, un logiciel créé par <a href="https://ivanfranco.wordpress.com/">Ivan Franco</a>, Harish Venkatesan, Ajin Tom et Antoine Maiorca. Prynth est distribué avec une licence Creative Commons <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><sc>Cc By-Nc-Sa 4.0</sc></a>. Sous-bois reprend également une bonne quantité de code écrit par <a href="https://ojack.github.io/">Olivia Jack</a> pour <a href="https://github.com/ojack/hydra">Hydra</a>, qui est distribué avec une licence <sc>Gnu</sc> Affero <sc>Gpl</sc> v3.0.
+</p>
+<p>
     Je dois avoir une machine à laquelle je peux envoyer n'importe quel sketch p5.js. Je ne dois pas utiliser une nouvelle copie de la machine à chaque nouveau sketch, ça n'aurait aucun sens. Ainsi, il me faudrait pouvoir définir un sketch comme étant un ensemble de fichiers JavaScript et SuperCollider. Je définirais ce sketch dans un fichier <sc>json</sc>.
 </p>
 <code>
@@ -106,15 +109,16 @@ n.addLine(20, 70);
 // of the cosine function) to n.
 n.addCosFade(20, 70);
 </code>
+
 <pn>
-    Et ma fonction <ic>draw()</ic>, elle, pourrait ressembler à ça :
+    Et ma fonction <ic>draw()</ic> pourrait alors ressembler à ceci :
 </pn>
 
 <code>
 // a.v is a reference to the "value" of the a object,
 // which can be changed dynamically with lines,
 // cosine fades, and oscillators.
-p.draw = function(){
+p.draw = function() {
     p.background(255, 255);
     let v = p.sin(j * 0.1);
     v = p.map(v, -1, 1, 8, -8);
@@ -128,23 +132,59 @@ p.draw = function(){
 </code>
 
 <pn>
-    Dans cet exemple, si <ic>j</ic> était un objet de type <ic>SingleValue</ic> au lieu d'être une simple variable, j'écrirais <ic>j.add(0.005);</ic> au lieu de <ic>j += 0.005;</ic>, exactement comme les méthodes mathématiques du prototype <ic>p5.Vector</ic>. Si la valeur à incrémenter était aussi un objet <ic>SingleValue</ic>, j'aurais une ligne de code semblable à celle-ci :
+    Dans cet exemple, si <ic>j</ic> était un objet de type <ic>SingleValue</ic> au lieu d'être une simple variable, j'écrirais <ic>j.add(0.005);</ic> au lieu de <ic>j += 0.005;</ic>, exactement comme les méthodes mathématiques du prototype <ic>p5.Vector</ic>. Si la valeur à incrémenter était aussi un objet <ic>SingleValue</ic>, j'aurais une ligne de code semblable à celle-ci :<snl label="transparent-code">Cette ligne de code est malheureusement bien moins limpide et transparente que la ligne qu'elle remplace. Mais bien entendu que des structures logiques plus complexes font disparaître une part de simplicité.</snl>
 </pn>
 
 <code>
-    j.add(increment.v);
+j.add(increment.v);
+</code>
+
+<pn>
+    Il serait aussi très intéressant de pouvoir créer des lignes à multiples segments comme on en trouve dans SuperCollider.<snr label="repeating-lines">Serait-il aussi intéressant de pouvoir créer des lignes qui se répéteraient une certaine quantité de fois (ou même une quantité infinie de fois) ? Rendu là, une ligne deviendrait aussi une sorte d'oscillateur, par exemple une ligne pourrait devenir un signal triangulaire ou un signal en dents de scie. Je ne sais pas. Il faudrait réfléchir à la chose et surtout, en essayer des applications. Si une ligne devenait infinie, il deviendrait intéressant de la traiter comme un oscillateur, donc de l'appliquer avec une enveloppe. On verra.</snr>
+</pn>
+
+<code>
+// The first array is a group of values to reach,
+// the second array is the number of animation frames
+// it takes to reach those values.
+n.addLine([10, 20, 30, 10], [30, 60, 30]);
 </code>
 
 <h3>Une pile d'oscillateurs</h3>
 
 <pn>
-
+    <sc>Une autre façon très versatile</sc> de contrôler des flots d'informations serait de pouvoir faire <i>osciller</i> des valeurs. Je pourrais ainsi avoir la méthode suivante dans le prototype <ic>SingleValue</ic>&nbsp;:
 </pn>
+
+<code>
+// The first two values are the minimum and maximum delta,
+// the third value is the frequency of the oscillator,
+// or how many frames a full cycle takes.
+
+// An optional fourth value could be the attack
+// envelope of the oscillator: how many frames does
+// it takes for the oscillator to reach full amplitude.
+
+n.addOscillator(-0.1, 0.1, 60, 120);
+</code>
+
+<pn>
+    Cette méthode ajouterait un oscillateur à la valeur <ic>value</ic> de l'objet <ic>n</ic>. C'est-à-dire que <ic>value</ic> serait recalculé à chaque image d'animation : on y additionnerait ou soustrairait une certaine quantité déterminée par une fonction sinusoïdale. L'ajout d'un nouvel oscillateur pourrait même être fait de façon douce, c'est-à-dire qu'il s'appliquerait progressivement jusqu'à ce qu'il soit exprimé au complet (on parlerait ici de l&rsquo;<i>amplitude</i> de l'oscillateur).
+</pn>
+<p>
+    Ensuite, une méthode <ic>releaseOscillator</ic> permettrait de diminuer progressivement l'amplitude d'un oscillateur et d'ensuite le &#171;&nbsp;détacher&nbsp;&#187; de l'objet <ic>n</ic> sur lequel il était appliqué.
+</p>
+
+<code>
+// The first argument is the index of the oscillator
+// to release, the second argument is the release time.
+n.releaseOscillator(0, 120);
+</code>
 
 <h3>Zone de désactivation des éditeurs</h3>
 
 <pn>
-    <sc>Comme il sera intéressant</sc> de pouvoir contrôler une &oelig;uvre en mouvement avec le clavier (comme il possible et très utile de le faire avec Max/<sc>msp</sc>), j'aurai besoin d'une zone dans l'écran où je peux simplement déplacement le curseur afin de désactiver les éditeurs CodeMirror.
+    <sc>Comme il sera intéressant</sc> de pouvoir contrôler une &oelig;uvre en mouvement avec le clavier (comme il possible et très utile de le faire avec Max/<sc>msp</sc>), j'aurai besoin d'une zone dans l'écran où je peux simplement déplacer le curseur afin de désactiver les éditeurs CodeMirror.
 </pn>
 
 <code>
@@ -158,6 +198,12 @@ controlZone.addEventListener("mouseleave", function( event ) {
     console.log("Leave the zone!");
 }, false);
 </code>
+
+<h3>Écriture improvisée de &ldquo;shaders&rdquo; <span class="small-caps">Glsl</span></h3>
+
+<pn>
+    <sc>Beaucoup de complexité</sc> s'ajoutera lorsque je voudrai pouvoir écrire des &ldquo;shaders&rdquo; improvisés dans ma machine. Je dois commencer par regarder le travail de Patricio Gonzalez Vivo pour son <a href="https://github.com/tangrams/GLSL-live-editor"><sc>Glsl</sc> live editor</a> (licence <sc>Mit</sc>) et Rémi Papillié pour <a href="https://github.com/wsmind/epita-raymarching-2018/blob/master/live.html">sa machine à coder du raymarching</a> (aussi en licence <sc>Mit</sc>).
+</pn>
 
 <h3>Contexte</h3>
 
