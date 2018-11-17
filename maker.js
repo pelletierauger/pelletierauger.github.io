@@ -761,6 +761,15 @@ function parseHTMLTemplate(s) {
 
     page.fr.content = page.fr.content.replace(/<code>/g, `<pre><code>`);
     page.fr.content = page.fr.content.replace(/<\/code>/g, `</code></pre>`);
+
+
+    page.fr.content = page.fr.content.replace(/<glsl>/g, `<pre><code class="glsl">`);
+    page.fr.content = page.fr.content.replace(/<\/glsl>/g, `</code></pre>`);
+
+    page.fr.content = page.fr.content.replace(/<supercollider>/g, `<pre><code class="supercollider">`);
+    page.fr.content = page.fr.content.replace(/<\/supercollider>/g, `</code></pre>`);
+
+
     page.fr.content = page.fr.content.replace(/<pre>/g, `<div class="codebox"><pre>`);
     page.fr.content = page.fr.content.replace(/<\/pre>/g, `</pre></div>`);
     page.fr.content = page.fr.content.replace(/<ic>/g, `<span class="inline-code">`);
