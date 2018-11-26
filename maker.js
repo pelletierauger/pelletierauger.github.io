@@ -762,6 +762,8 @@ function parseHTMLTemplate(s) {
     page.fr.content = page.fr.content.replace(/<code>/g, `<pre><code>`);
     page.fr.content = page.fr.content.replace(/<\/code>/g, `</code></pre>`);
 
+    page.fr.content = page.fr.content.replace(/<javascript>/g, `<pre><code>`);
+    page.fr.content = page.fr.content.replace(/<\/javascript>/g, `</code></pre>`);
 
     page.fr.content = page.fr.content.replace(/<glsl>/g, `<pre><code class="glsl">`);
     page.fr.content = page.fr.content.replace(/<\/glsl>/g, `</code></pre>`);
