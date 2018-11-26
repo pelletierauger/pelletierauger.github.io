@@ -22,6 +22,85 @@
 
 <!-- read-more -->
 
+<h3>Starting with <ic>frame-export.js</ic></h3>
+
+<pn>
+    <sc>After importing</sc> p5.js and Socket.io in the file <ic>index.html</ic>, the template imports <ic>frame-export.js</ic>. This file has two purposes. Firstly, it establishes whether or not we need to start exporting frames, and secondly, it contains the global function <ic>frameExport()</ic>, which sends the canvas to <ic>server.js</ic>. Here is <ic>frame-export.js</ic> in its entirety:
+</pn>
+
+<javascript>
+let GET = {};
+let query = window.location.search.substring(1).split("&");
+
+for (let i = 0; i < query.length; i++) {
+    if (query[i] === "") // check for trailing & with no param
+        continue;
+    var param = query[i].split("=");
+    GET[param[0]] = param[1];
+}
+
+let exporting = (GET["exporting"] && GET["exporting"] == "true") ? true : false;
+
+function frameExport() {
+    var formattedFrameCount = "" + frameCount;
+    while (formattedFrameCount.length < 5) {
+        formattedFrameCount = "0" + formattedFrameCount;
+    }
+    var dataUrl = canvasDOM.toDataURL();
+    var data = {
+        dataUrl: dataUrl,
+        name: fileName + "-" + formattedFrameCount
+    }
+    socket.emit('image', data);
+}
+</javascript>
+
+<pn>
+    The <ic>exporting</ic> boolean will establish whether or not the user intends to export the frames from the sketch. We use <sc>Url</sc> query strings to set this variable. If the user loads the address <ic>http://localhost:8080/</ic>, <ic>exporting</ic> will default to <ic>false</ic>. To load the sketch with the intent of exporting frames, the user needs to load another address: <ic>http://localhost:8080/?exporting=true</ic>.
+</pn>
+<p>
+    The goal here is to prevent accidental exportation of frames, which can happen <i>quite often</i> if you keep changing and reloading the same p5.js sketch while only <i>sometimes</i> wanting to export frames. Accidental exportations can create large amounts of unwanted files on your hard drive, and can even erase older files with identical names.
+</p>
+<p>
+    Another good side effect of this approach is being able to load a sketch only to see it in the browser, and to load it later to export its frames, all without changing any code in the JavaScript files.
+</p>
+
+<h3>The real magic: exporting frames from the terminal</h3>
+
+<pn>
+    <sc>The best part</sc> of this template is the ability to export frames from the terminal using Puppeteer. Puppeteer is a Node.js application which creates a &ldquo;headless browser&rdquo;, which is a browser that you can control from the command line.
+</pn>
+<p>
+    The code below is what you will find inside <ic>headless.js</ic>. It's not a JavaScript file that needs to be linked in <ic>index.html</ic>, it's a tiny Node.js application. The only thing that it does is load the address <ic>http://localhost:8080/?exporting=true</ic> inside Puppeteer's headless browser, which means that it'll load your p5.js sketch and trigger the exportation of frames.
+</p>
+
+<javascript>
+const puppeteer = require('puppeteer');
+
+(async() => {
+    const browser = await puppeteer.launch();
+    // await console.log("Puppeteer launched");
+    const page = await browser.newPage();
+    await page.setViewport({
+        width: 2560 / 2,
+        height: 1600 / 2,
+        deviceScaleFactor: 2
+    });
+    // await console.log(page.viewport());
+    await page.goto('http://localhost:8080/?exporting=true');
+    // await page.screenshot({ path: 'example.png' });
+    // await browser.close();
+})();
+</javascript>
+
+<pn>
+    The beauty of exporting frames from the terminal is that you do not need to look at your p5.js sketch as it is exporting (browsers deactivate the p5.js sketch when the page is not displayed). This means that you can start looking at the frames as they appear on your hard drive, and for long sequences, you can do whatever else you want with your computer. No need to wait.
+</pn>
+<p>
+    Do note that <ic>headless.js</ic> contains hard-coded numbers for the width and height of the screen (in the <ic>page.setViewport</ic> call). This is the size of my screen, so just change these numbers to fit yours.
+</p>
+
+
 <h3>Global variables in <ic>sketch.js</ic></h3>
 
 <code>
