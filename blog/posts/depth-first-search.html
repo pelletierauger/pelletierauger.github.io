@@ -2,7 +2,7 @@
 <!-- month -->08
 <!-- day -->21
 <!-- fr-title -->Algorithme de parcours en profondeur
-<!-- fr-description -->
+<!-- fr-description -->Explorations déterministes et objectifs non définis.
 <!-- fr-content -->
 
 <pn>
@@ -14,8 +14,9 @@
 <pn>
     <sc>Une question importante</sc> qui n’est pas nécessairement soulevée par l'algorithme de parcours en profondeur, c'est l'ordre dans lequel sont sélectionnés les voisins à visiter. Et pour cause : ça n'a normalement pas &nbsn;d'importance.<snl label="visiting-order">Enfin… je ne crois pas.</snl> Répondre à la question &#171;&nbsp;y a-t-il un chemin entre ces deux sommets ?&nbsp;&#187; n'implique pas de choisir ces sommets à visiter dans un ordre particulier. Mais dans mon cas, comme je m'intéresse aux formes que j'obtiendrai en appliquant cet algorithme, et comme je cherche une solution déterministe, l'ordre de sélection sera important.
 </pn>
+<!-- read-more -->
 <p>
-    Ma première idée, ce serait de visiter les voisins dans le sens des aiguilles d'une &nbsn;montre.<snr label="geometric-graph">J'ai trouvé intéressant d'apprendre que ces solutions <i8>géométriques</i8> n'ont déjà plus aucun rapport avec la théorie générale des graphes, théorie qui ne se préoccupe pas, je crois, de choses comme les angles et les longueurs des arêtes. J'ai trouvé un article Wikipedia intéressant sur la &#171;&nbsp;<a href="https://en.wikipedia.org/wiki/Geometric_graph_theory">théorie des graphes géométriques</a>&nbsp;&#187; qui serait &#171;&nbsp;un sous-champ large et amorphe de la théorie des graphes&nbsp;&#187;. L'article n'existe pas en traduction française.</snr>En considérant que chaque arête s'élance d'un sommet à un angle <im>\alpha</im>, je pourrais trier ces arêtes selon l'angle qu'elles forment, commençant par <im>0</im> et finissant par <im>2\pi</im>.
+    Ma première idée, ce serait de visiter les voisins dans le sens des aiguilles d'une &nbsn;montre.<snr label="geometric-graph">J'ai trouvé intéressant d'apprendre que ces solutions <i8>géométriques</i8> n'ont déjà plus aucun rapport avec la théorie générale des graphes, théorie qui ne se préoccupe pas, je crois, de choses comme les angles et les longueurs des arêtes. J'ai trouvé un article Wikipedia intéressant sur la &#171;&nbsp;<a href="https://en.wikipedia.org/wiki/Geometric_graph_theory">théorie des graphes géométriques</a>&nbsp;&#187; qui serait &#171;&nbsp;un sous-champ large et amorphe de la théorie des graphes&nbsp;&#187;. L'article n'existe pas en français.</snr>En considérant que chaque arête s'élance d'un sommet à un angle <im>\alpha</im>, je pourrais trier ces arêtes selon l'angle qu'elles forment, commençant par <im>0</im> et finissant par <im>2\pi</im>.
 </p>
 <p>
     Pour l'instant, dans mon prototype <ic>Vertex</ic>, la méthode <ic>addEdge</ic> est définie ainsi :
@@ -47,6 +48,13 @@ Vertex.prototype.addEdge = function(e) {
 <p>
     Ce pourrait être intéressant pour plusieurs autres raisons d'avoir cette définition plus compliquée d'une arête. Par exemple, une arête pourrait contenir le moment précis où elle a été créée (la valeur <ic>frameCount</ic>), et un algorithme d'exploration différent pourrait choisir les arêtes à emprunter en fonction de cette valeur.
 </p>
+<p>
+    Le calcul de l'angle lui-même se fera avec la <a href="https://fr.wikipedia.org/wiki/Atan2">fonction <ic>atan2</ic></a>&nbsp;:
+</p>
+
+<javascript>
+var angle = atan2(vec2.y - vec1.y, vec2.x - vec1.x);
+</javascript>
 
 <h3>Contexte</h3>
 
