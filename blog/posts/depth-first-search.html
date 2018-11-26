@@ -1,0 +1,65 @@
+<!-- year -->2018
+<!-- month -->08
+<!-- day -->21
+<!-- fr-title -->Algorithme de parcours en profondeur
+<!-- fr-description -->
+<!-- fr-content -->
+
+<pn>
+    <sc>Je veux implémenter</sc> l'algorithme de parcours en profondeur dans mes systèmes de séquenceurs en forme de graphe. Je verrai de quelles façons je peux me servir de cet algorithme pour créer des formes visuelles et des séquences musicales intéressantes. Je ne sais pas vraiment comment je pourrais utiliser cet algorithme pour son usage habituel (parcourir un graphe afin de déterminer s'il existe un chemin d'un sommet à un autre), mais pour l'instant, j'imagine qu'il pourrait me servir à créer des motifs déterministes à l'intérieurs de mes graphes. D'une façon générale, j'aimerais voir comment je pourrais traverser mes graphes de façons déterministes, puisque mes premières expérimentations ne sont que des parcours stochastiques.
+</pn>
+
+<h3>Ordre de sélection des voisins à visiter</h3>
+
+<pn>
+    <sc>Une question importante</sc> qui n’est pas nécessairement soulevée par l'algorithme de parcours en profondeur, c'est l'ordre dans lequel sont sélectionnés les voisins à visiter. Et pour cause : ça n'a normalement pas &nbsn;d'importance.<snl label="visiting-order">Enfin… je ne crois pas.</snl> Répondre à la question &#171;&nbsp;y a-t-il un chemin entre ces deux sommets ?&nbsp;&#187; n'implique pas de choisir ces sommets à visiter dans un ordre particulier. Mais dans mon cas, comme je m'intéresse aux formes que j'obtiendrai en appliquant cet algorithme, et comme je cherche une solution déterministe, l'ordre de sélection sera important.
+</pn>
+<p>
+    Ma première idée, ce serait de visiter les voisins dans le sens des aiguilles d'une &nbsn;montre.<snr label="geometric-graph">J'ai trouvé intéressant d'apprendre que ces solutions <i8>géométriques</i8> n'ont déjà plus aucun rapport avec la théorie générale des graphes, théorie qui ne se préoccupe pas, je crois, de choses comme les angles et les longueurs des arêtes. J'ai trouvé un article Wikipedia intéressant sur la &#171;&nbsp;<a href="https://en.wikipedia.org/wiki/Geometric_graph_theory">théorie des graphes géométriques</a>&nbsp;&#187; qui serait &#171;&nbsp;un sous-champ large et amorphe de la théorie des graphes&nbsp;&#187;. L'article n'existe pas en traduction française.</snr>En considérant que chaque arête s'élance d'un sommet à un angle <im>\alpha</im>, je pourrais trier ces arêtes selon l'angle qu'elles forment, commençant par <im>0</im> et finissant par <im>2\pi</im>.
+</p>
+<p>
+    Pour l'instant, dans mon prototype <ic>Vertex</ic>, la méthode <ic>addEdge</ic> est définie ainsi :
+</p>
+
+<javascript>
+Vertex.prototype.addEdge = function(e) {
+    this.edges.push(e);
+};
+</javascript>
+
+<pn>
+    Donc, <ic>this.edges</ic> n'est qu'un simple <ic>Array</ic> qui contient des objets de type <ic>Edge</ic>. Ce qu'il me faudrait probablement, c'est créer plutôt un objet littéral et envoyer celui-ci dans <ic>this.edges</ic>&nbsp;:
+</pn>
+
+<javascript>
+Vertex.prototype.addEdge = function(e) {
+    let edge = {
+        e: e,
+        angle: this.calculateAngle(e)
+    };
+    this.edges.push(edge);
+};
+</javascript>
+
+<pn>
+    À noter qu'il serait aussi peut-être nécessaire de recalculer ces angles à chaque image d'animation puisque j'aurai souvent des animations dans lesquelles les sommets se déplacent dans l'espace cartésien. Ça complique les choses.
+</pn>
+<p>
+    Ce pourrait être intéressant pour plusieurs autres raisons d'avoir cette définition plus compliquée d'une arête. Par exemple, une arête pourrait contenir le moment précis où elle a été créée (la valeur <ic>frameCount</ic>), et un algorithme d'exploration différent pourrait choisir les arêtes à emprunter en fonction de cette valeur.
+</p>
+
+<h3>Contexte</h3>
+
+<pn>
+    <sc>Cette note de blog</sc> fait partie de mon projet de recherche <i>Vers un cinéma algorithmique</i>, démarré en avril 2018. Je vous invite à consulter <a href="https://pelletierauger.github.io/fr/blog/2018/4/vers-un-cinema-algorithmique.html">la toute première note du projet</a> pour en apprendre davantage.
+</pn>
+
+<!-- en-title -->Depth First Search
+<!-- en-description -->
+<!-- en-content -->
+
+<h3>Context</h3>
+
+<pn>
+    <sc>This blog post</sc> is part of my research project <i>Towards an algorithmic cinema</i>, started in April 2018. I invite you to read <a href="https://pelletierauger.github.io/en/blog/2018/4/towards-an-algorithmic-cinema.html">the first blog post of the project</a> to learn more about it.
+</pn>
