@@ -882,6 +882,16 @@ function parseHTMLTemplate(s) {
 
     page.en.content = page.en.content.replace(/<code>/g, `<pre><code>`);
     page.en.content = page.en.content.replace(/<\/code>/g, `</code></pre>`);
+
+    page.en.content = page.en.content.replace(/<javascript>/g, `<pre><code>`);
+    page.en.content = page.en.content.replace(/<\/javascript>/g, `</code></pre>`);
+
+    page.en.content = page.en.content.replace(/<glsl>/g, `<pre><code class="glsl">`);
+    page.en.content = page.en.content.replace(/<\/glsl>/g, `</code></pre>`);
+
+    page.en.content = page.en.content.replace(/<supercollider>/g, `<pre><code class="supercollider">`);
+    page.en.content = page.en.content.replace(/<\/supercollider>/g, `</code></pre>`);
+
     page.en.content = page.en.content.replace(/<pre>/g, `<div class="codebox"><pre>`);
     page.en.content = page.en.content.replace(/<\/pre>/g, `</pre></div>`);
     page.en.content = page.en.content.replace(/<ic>/g, `<span class="inline-code">`);
