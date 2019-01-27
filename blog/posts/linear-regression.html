@@ -1,0 +1,52 @@
+<!-- year -->2019
+<!-- month -->01
+<!-- day -->26
+<!-- fr-title -->Régression linéaire
+<!-- fr-description -->Quelques pas vers l'apprentissage automatique.
+<!-- fr-content -->
+
+
+<pn>
+    Une droite est traditionnellement représentée par cette équation, dans laquelle <im>m</im> représente la pente et <im>b</im> l'ordonnée à l'origine :
+</pn>
+<math>
+    y = mx + b
+</math>
+<pn>
+    Dans le cas de la régression linéaire (ou <a href="https://fr.wikipedia.org/wiki/M%C3%A9thode_des_moindres_carr%C3%A9s_ordinaire">méthode des moindres carrés ordinaire</a>), nous allons calculer la valeur <im>m</im> avec la formule ci-dessous. Nous pouvons considérer que le numérateur de cette fraction représente la corrélation entre la croissance de la valeur <im>x</im> et celle de la valeur <im>y</im> (qui détermine la pente de notre droite).
+</pn>
+<math>
+m = \frac{\sum\limits_{i=0}^n(x_i-\bar{x})(y_i-\bar{y})}{\sum\limits_{i=0}^n(x_i-\bar{x})^2}
+</math>
+
+<pn>
+    Ici, <im>\bar{x}</im> représente la moyenne de toutes les valeurs <im>x</im>, donc la somme de tous les <im>x</im> divisée par la quantité <im>n</im> de ces valeurs.
+</pn>
+
+<math>
+\bar{x} = \frac{\sum\limits_{i=0}^n x_i}{n}
+</math>
+
+<pn>
+    Quant à <im>b</im>, l'ordonnée à l'origine, nous la calculerons ainsi :
+</pn>
+<math>
+    b = \bar{y} - m\bar{x}
+</math>
+
+
+<h3>Contexte</h3>
+
+<pn>
+    <sc>Cette note de blog</sc> fait partie de mon projet de recherche <i>Vers un cinéma algorithmique</i>, démarré en avril 2018. Je vous invite à consulter <a href="https://pelletierauger.github.io/fr/blog/2018/4/vers-un-cinema-algorithmique.html">la toute première note du projet</a> pour en apprendre davantage.
+</pn>
+
+<!-- en-title -->Linear regression
+<!-- en-description -->Small steps towards machine learning.
+<!-- en-content -->
+
+<h3>Context</h3>
+
+<pn>
+    <sc>This blog post</sc> is part of my research project <i>Towards an algorithmic cinema</i>, started in April 2018. I invite you to read <a href="https://pelletierauger.github.io/en/blog/2018/4/towards-an-algorithmic-cinema.html">the first blog post of the project</a> to learn more about it.
+</pn>
