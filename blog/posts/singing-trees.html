@@ -1,0 +1,102 @@
+<!-- year -->2019
+<!-- month -->01
+<!-- day -->12
+<!-- fr-title -->Arbres chantants
+<!-- fr-description -->Graphes animés.
+<!-- fr-content -->
+<pn>
+    <sc>Mes séquenceurs en forme de graphe</sc> pourraient également générer leur propre accompagnement musical lorsqu'ils croissent.
+</pn>
+
+<h3>Structure et composition</h3>
+
+<pn>
+    <sc>Comment ces arbres</sc> produiront-ils de la musique? Comment cette musique sera-t-elle définie à l'intérieur de l'arbre? Par exemple, un arbre pourrait être doté d'une tonique et d'une armature.
+</pn>
+<p>
+    La notion de &#171;&nbsp;marcheur&nbsp;&#187; est aussi très importante. Ce devrait être le marcheur qui &#171;&nbsp;consulte&nbsp;&#187; l'arbre et produit la musique. De cette façon, puisque l'on voit le marcheur se promener, le lien visuel entre son mouvement et la musique est plus intéressant que si la musique provenait inexplicablement de l'arbre seul. Enfin, la musique sans marcheur pourrait aussi être intéressante, mais je vais commencer par les marcheurs.
+</p>
+<p>
+    Un marcheur pourrait commencer au tronc de l'arbre en produisant la tonique. Lorsqu'il arrive à un embranchement, il pourra créer un nouveau marcheur. Ces marcheurs pourront ensuite s'engager dans les branches de l'arbre, et générer des sons simultanément.
+</p>
+<p>
+    Les notes pourraient être générées par les embranchements ou par les branches elles-mêmes. La longueur d'une note pourrait être déterminée par la longueur du segment sur lequel le marcheur se trouve&nbsp;—&nbsp;cependant, ces longueurs pourraient changer pendant que le marcheur avance, ce qui créerait des sons atonaux.
+</p>
+<p>
+    Pour l'instant, les notes seront représentées par les embranchements. Ça me semble une façon naturelle de commencer l'expérience. Donc, les objets <ic>Segment</ic> dont la propriété <ic>children</ic> est plus grande que <ic>1</ic> représentent un embranchement. Ce serait plus simple qu'un marcheur &#171;&nbsp;s'endorme&nbsp;&#187; lorsqu'il atteint un embranchement. Avant de s'endormir, il crée de nouveaux marcheurs (un pour chaque <ic>children</ic> du <nb><ic>Segment</ic>)</nb> et leur lègue sa mémoire. Ou alors il ne s'endort pas et s'engage toujours dans la première branche de la liste <ic>children</ic>. De toute façon, un marcheur et les marcheurs qu'il a généré doivent être absolument égaux, il n'y aura pas de hiérarchie chez ces marcheurs.
+</p>
+<javascript>
+
+// All the walkers would refer to a single instance of Song.
+// Then, when a walker modulates the song, it will be modulated
+// for all walkers.
+let mixo = new Song({
+    scale: "E mixolydian",
+    currentChord: 1
+});
+// Define the music inside the Walker itself?
+// The melody notes should represent degrees on the scale,
+// starting at 1 being the tonic,
+// not semitones with zero-based numbering.
+
+//branchingModulo
+let walker = new Walker({
+    scale: "E mixolydian",
+    melodies: [[1, 4, 6, 7],
+               [1, 5, 8, 9]],
+    currentMelodyIndex: [0, 2],
+    speed: 3,
+    branchingModulo: 4,
+    walkingDepth: 0,
+    song: mixo
+});
+
+// A walker could then have any number of methods
+// that would define and alter its behaviour.
+
+walker.branch = function(s) {
+    // What happens when the Walker meets a branching Segment
+    // s.children
+    this.makeNote();
+    this.currentSegment = s.children[0];
+};
+
+walker.sing = function() {
+    // What happens when the Walker meets a branching Segment
+    this.sing();
+};
+
+</javascript>
+
+<h3>L'avancée d'un marcheur</h3>
+
+<pn>
+    Le niveau d'avancée d'un marcheur sur son segment doit être une valeur entre 0 et 1. Donc, sa vitesse est aussi un nombre entre 0 et 1. Sa vitesse est ajoutée à son niveau d'avancée à chaque pas (niveau qui plafonne à 1). La position du marcheur est ensuite calculée par interpolation linéaire entre les deux extrémités du segment.
+</pn>
+
+<h3>Librairies musicales</h3>
+<pn>
+    <sc>Afin de soutenir ces liens</sc> entre la structure mathématique (et spatiale) de mes arbres et les accompagnements musicaux qu'ils généreront, je vais utiliser deux librairies JavaScript à vocation musicale: <a href="https://github.com/danigb/tonal">Tonal</a> et <a href="https://github.com/saebekassebil/teoria">Teoria</a>. Ces outils devraient me permettre de manipuler des notions de théorie musicale plus aisément.
+</pn>
+<p>
+    Une note à moi-même : afin d'utiliser l'extension Tonal.Key de Tonal.js dans un fureteur (plutôt que sur un serveur Node.js), j'ai dû utiliser Browserify en l'invoquant de cette manière :
+</p>
+<code>
+    node ./node_modules/.bin/browserify main.js -o bundle.js
+</code>
+
+<h3>Contexte</h3>
+
+<pn>
+    <sc>Cette note de blog</sc> fait partie de mon projet de recherche <i>Vers un cinéma algorithmique</i>, démarré en avril 2018. Je vous invite à consulter <a href="https://pelletierauger.github.io/fr/blog/2018/4/vers-un-cinema-algorithmique.html">la toute première note du projet</a> pour en apprendre davantage.
+</pn>
+
+<!-- en-title -->Singing trees
+<!-- en-description -->Animated graphs.
+<!-- en-content -->
+
+<h3>Context</h3>
+
+<pn>
+    <sc>This blog post</sc> is part of my research project <i>Towards an algorithmic cinema</i>, started in April 2018. I invite you to read <a href="https://pelletierauger.github.io/en/blog/2018/4/towards-an-algorithmic-cinema.html">the first blog post of the project</a> to learn more about it.
+</pn>
