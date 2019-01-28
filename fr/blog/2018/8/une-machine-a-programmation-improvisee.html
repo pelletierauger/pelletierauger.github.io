@@ -33,9 +33,15 @@
         <span class="sidenote-left">L&rsquo;expression anglaise “live coding” est plus souvent utilisée. <a href="https://fr.wikipedia.org/wiki/Live_coding">Wikipedia la traduit</a> par &#171;&nbsp;programmation à la volée&nbsp;&#187; ou &#171;&nbsp;programmation juste-à-temps&nbsp;&#187;, deux formules qu&rsquo;il est difficile d&rsquo;imaginer devenir très populaires.</span> Elle contient deux champs de texte CodeMirror, la première qui contrôle un serveur SuperCollider, et la seconde qui controle un sketch p5.js.
 </p>
 <p>
-    Pour créer cette machine, j&rsquo;ai utilisé une bonne quantité de code écrit pour <a href="https://github.com/prynth/prynth">Prynth</a><span class="cleardescenders">,</span> un logiciel créé par <a href="https://ivanfranco.wordpress.com/">Ivan Franco</a><span class="cleardescenders">,</span> Harish Venkatesan, Ajin Tom et Antoine Maiorca. Prynth est distribué avec une licence Creative Commons <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><span class="small-caps">Cc By-Nc-Sa 4.0</span></a>. Sous-bois reprend également une bonne quantité de code écrit par <a href="https://ojack.github.io/">Olivia Jack</a> pour <a href="https://github.com/ojack/hydra">Hydra</a><span class="cleardescenders">,</span> qui est distribué avec une licence <span class="small-caps">Gnu</span> Affero <span class="small-caps">Gpl</span> v3.0.
+    Pour créer cette machine, j&rsquo;ai utilisé une bonne quantité de code écrit pour <a href="https://github.com/prynth/prynth">Prynth</a><span class="cleardescenders">,</span> un logiciel créé par <a href="https://ivanfranco.wordpress.com/">Ivan Franco</a><span class="cleardescenders">,</span> Harish Venkatesan, Ajin Tom et Antoine Maiorca. Prynth est distribué avec une licence Creative Commons <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><span class="small-caps">Cc By-Nc-Sa 4.0</span></a>. J&rsquo;ai également repris un peu de code écrit par <a href="https://ojack.github.io/">Olivia Jack</a> pour son logiciel <a href="https://github.com/ojack/hydra">Hydra</a><span class="cleardescenders">,</span> qui est distribué avec une licence <span class="small-caps">Gnu</span> Affero <span class="small-caps">Gpl</span> v3.0.
 </p>
 <p>
+    Mon application s&rsquo;appelle <span class="italic">Les environs</span>. Elle peut être <a href="https://github.com/pelletierauger/Les-environs">téléchargée sur GitHub</a>.
+</p>
+
+<h3>Fonctionnement général</h3>
+
+<p class="noindent">
     Je dois avoir une machine à laquelle je peux envoyer n&rsquo;importe quel sketch p5.js. Je ne dois pas utiliser une nouvelle copie de la machine à chaque nouveau sketch, ça n&rsquo;aurait aucun sens. Ainsi, il me faudrait pouvoir définir un sketch comme étant un ensemble de fichiers JavaScript et SuperCollider. Je définirais ce sketch dans un fichier <span class="small-caps">json</span>.
 </p>
 <div class="codebox"><pre><code>{

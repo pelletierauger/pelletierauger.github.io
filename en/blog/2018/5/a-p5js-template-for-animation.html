@@ -38,6 +38,81 @@
 
 <!-- read-more -->
 
+<h3>Starting with <span class="inline-code">frame-export.js</span></h3>
+
+<p class="noindent">
+    <span class="small-caps">After importing</span> p5.js and Socket.io in the file <span class="inline-code">index.html</span>, the template imports <span class="inline-code">frame-export.js</span>. This file has two purposes. Firstly, it establishes whether or not we need to start exporting frames, and secondly, it contains the global function <span class="inline-code">frameExport()</span>, which sends the canvas to <span class="inline-code">server.js</span>. Here is <span class="inline-code">frame-export.js</span> in its entirety:
+</p>
+
+<div class="codebox"><pre><code><span class="hljs-keyword">let</span> GET<span class="hljs-punctuation"> = </span>{};
+<span class="hljs-keyword">let</span> query<span class="hljs-punctuation"> = </span><span class="hljs-built_in">window</span><span class="hljs-punctuation">.</span>location<span class="hljs-punctuation">.</span>search<span class="hljs-punctuation">.</span>substring(<span class="hljs-number">1</span>).split(<span class="hljs-string">"&amp;"</span>);
+
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i<span class="hljs-punctuation"> = </span><span class="hljs-number">0</span>; i<span class="hljs-punctuation"> &lt; </span>query<span class="hljs-punctuation">.</span>length; i<span class="hljs-punctuation">++</span>) {
+    <span class="hljs-keyword">if</span> (query[i]<span class="hljs-punctuation"> <span class="hljs-punctuation">==</span>= </span><span class="hljs-string">""</span>) <span class="hljs-comment">// check for trailing &amp; with no param</span>
+        <span class="hljs-keyword">continue</span>;
+    <span class="hljs-keyword">var</span> param<span class="hljs-punctuation"> = </span>query[i]<span class="hljs-punctuation">.</span>split(<span class="hljs-string">"="</span>);
+    GET[param[<span class="hljs-number">0</span>]]<span class="hljs-punctuation"> = </span>param[<span class="hljs-number">1</span>];
+}
+
+<span class="hljs-keyword">let</span> exporting<span class="hljs-punctuation"> = </span>(GET[<span class="hljs-string">"exporting"</span>]<span class="hljs-punctuation"> &amp;&amp; </span>GET[<span class="hljs-string">"exporting"</span>] <span class="hljs-punctuation">==</span> <span class="hljs-string">"true"</span>)<span class="hljs-punctuation"> ? </span><span class="hljs-literal">true</span><span class="hljs-punctuation"> : </span><span class="hljs-literal">false</span>;
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">frameExport</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">var</span> formattedFrameCount<span class="hljs-punctuation"> = </span><span class="hljs-string">""</span><span class="hljs-punctuation"> + </span>frameCount;
+    <span class="hljs-keyword">while</span> (formattedFrameCount<span class="hljs-punctuation">.</span>length<span class="hljs-punctuation"> &lt; </span><span class="hljs-number">5</span>) {
+        formattedFrameCount<span class="hljs-punctuation"> = </span><span class="hljs-string">"0"</span><span class="hljs-punctuation"> + </span>formattedFrameCount;
+    }
+    <span class="hljs-keyword">var</span> dataUrl<span class="hljs-punctuation"> = </span>canvasDOM<span class="hljs-punctuation">.</span>toDataURL();
+    <span class="hljs-keyword">var</span> data<span class="hljs-punctuation"> = </span>{
+        <span class="hljs-attr">dataUrl</span>: dataUrl,
+        <span class="hljs-attr">name</span>: fileName<span class="hljs-punctuation"> + </span><span class="hljs-string">"-"</span><span class="hljs-punctuation"> + </span>formattedFrameCount
+    }
+    socket<span class="hljs-punctuation">.</span>emit(<span class="hljs-string">'image'</span>, data);
+}</code></pre></div>
+
+<p class="noindent">
+    The <span class="inline-code">exporting</span> boolean will establish whether or not the user intends to export the frames from the sketch. We use <span class="small-caps">Url</span> query strings to set this variable. If the user loads the address <span class="inline-code">http://localhost:8080/</span>, <span class="inline-code">exporting</span> will default to <span class="inline-code">false</span>. To load the sketch with the intent of exporting frames, the user needs to load another address: <span class="inline-code">http://localhost:8080/?exporting=true</span>.
+</p>
+<p>
+    The goal here is to prevent accidental exportation of frames, which can happen <span class="italic">quite often</span> if you keep changing and reloading the same p5.js sketch while only <span class="italic">sometimes</span> wanting to export frames. Accidental exportations can create large amounts of unwanted files on your hard drive, and can even erase older files with identical names.
+</p>
+<p>
+    Another good side effect of this approach is being able to load a sketch only to see it in the browser, and to load it later to export its frames, all without changing any code in the JavaScript files.
+</p>
+
+<h3>The real magic: exporting frames from the terminal</h3>
+
+<p class="noindent">
+    <span class="small-caps">The best part</span> of this template is the ability to export frames from the terminal using Puppeteer. Puppeteer is a Node.js application which creates a &ldquo;headless browser&rdquo;, which is a browser that you can control from the command line.
+</p>
+<p>
+    The code below is what you will find inside <span class="inline-code">headless.js</span>. It&rsquo;s not a JavaScript file that needs to be linked in <span class="inline-code">index.html</span>, it&rsquo;s a tiny Node.js application. The only thing that it does is load the address <span class="inline-code">http://localhost:8080/?exporting=true</span> inside Puppeteer&rsquo;s headless browser, which means that it&rsquo;ll load your p5.js sketch and trigger the exportation of frames.
+</p>
+
+<div class="codebox"><pre><code><span class="hljs-keyword">const</span> puppeteer<span class="hljs-punctuation"> = </span><span class="hljs-built_in">require</span>(<span class="hljs-string">'puppeteer'</span>);
+
+<span class="hljs-function">(<span class="hljs-params"><span class="hljs-keyword">async</span>(</span>) =&gt;</span> {
+    <span class="hljs-keyword">const</span> browser<span class="hljs-punctuation"> = </span><span class="hljs-keyword">await</span> puppeteer<span class="hljs-punctuation">.</span>launch();
+    <span class="hljs-comment">// await console.log("Puppeteer launched");</span>
+    <span class="hljs-keyword">const</span> page<span class="hljs-punctuation"> = </span><span class="hljs-keyword">await</span> browser<span class="hljs-punctuation">.</span>newPage();
+    <span class="hljs-keyword">await</span> page<span class="hljs-punctuation">.</span>setViewport({
+        <span class="hljs-attr">width</span>: <span class="hljs-number">2560</span><span class="hljs-punctuation"> / </span><span class="hljs-number">2</span>,
+        <span class="hljs-attr">height</span>: <span class="hljs-number">1600</span><span class="hljs-punctuation"> / </span><span class="hljs-number">2</span>,
+        <span class="hljs-attr">deviceScaleFactor</span>: <span class="hljs-number">2</span>
+    });
+    <span class="hljs-comment">// await console.log(page.viewport());</span>
+    <span class="hljs-keyword">await</span> page<span class="hljs-punctuation">.</span>goto(<span class="hljs-string">'http://localhost:8080/?exporting=true'</span>);
+    <span class="hljs-comment">// await page.screenshot({ path: 'example.png' });</span>
+    <span class="hljs-comment">// await browser.close();</span>
+})();</code></pre></div>
+
+<p class="noindent">
+    The beauty of exporting frames from the terminal is that you do not need to look at your p5.js sketch as it is exporting (browsers deactivate the p5.js sketch when the page is not displayed). This means that you can start looking at the frames as they appear on your hard drive, and for long sequences, you can do whatever else you want with your computer. No need to wait.
+</p>
+<p>
+    Do note that <span class="inline-code">headless.js</span> contains hard-coded numbers for the width and height of the screen (in the <span class="inline-code">page.setViewport</span> call). This is the size of my screen, so just change these numbers to fit yours.
+</p>
+
+
 <h3>Global variables in <span class="inline-code">sketch.js</span></h3>
 
 <div class="codebox"><pre><code><span class="hljs-keyword">let</span> looping<span class="hljs-punctuation"> = </span><span class="hljs-literal">true</span>;

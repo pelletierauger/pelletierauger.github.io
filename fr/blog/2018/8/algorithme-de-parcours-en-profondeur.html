@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html><head>
         <meta charset="UTF-8">
-        <title>Guillaume Pelletier-Auger - Scènes botaniques</title>
+        <title>Guillaume Pelletier-Auger - Algorithme de parcours en profondeur</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=4, user-scalable=yes">
         <link href="../../../../style/style.css" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Inconsolata|EB+Garamond" rel="stylesheet">
@@ -130,115 +130,70 @@
             <li><a href="../../../../fr/">Projets</a></li>
             <li class="selected"><a href="../../../../fr/blog/">Blog</a></li>
             <li><a href="../../../../fr/a-propos.html">À propos</a></li>
-            <li><a href="../../../../en/blog/2018/6/botanical-scenes.html">Fr → En</a></li>
+            <li><a href="../../../../en/blog/2018/8/depth-first-search.html">Fr → En</a></li>
         </ul>
     </nav>
     
             <article>
-                <h2 class="with-date">Scènes botaniques</h2><div class="description">
-                    
+                <h2 class="with-date">Algorithme de parcours en profondeur</h2><div class="description">
+                    Explorations déterministes et objectifs non définis.
 
             </div>
-                <div class="date">9 juin 2018</div>
+                <div class="date">21 août 2018</div>
                 
 
 <p class="noindent">
-    <span class="small-caps">Il me faut créer</span> un système de scènes botaniques qui puissent gérer des animations contenant de quantités quasi illimitées d’éléments. Pour cela, il faut séparer le concept du <span class="inline-code">frame</span> d’animation de celui du <span class="inline-code">frameCount</span> de <span class="lnum">p5.js</span>, comme je l’ai fait dans ma machine à automates cellulaires.
+    <span class="small-caps">Je veux implémenter</span> l’algorithme de parcours en profondeur dans mes systèmes de séquenceurs en forme de graphe. Je verrai de quelles façons je peux me servir de cet algorithme pour créer des formes visuelles et des séquences musicales intéressantes. Je ne sais pas vraiment comment je pourrais utiliser cet algorithme pour son usage habituel (parcourir un graphe afin de déterminer s’il existe un chemin d’un sommet à un autre), mais pour l’instant, j’imagine qu’il pourrait me servir à créer des motifs déterministes à l’intérieurs de mes graphes. D’une façon générale, j’aimerais voir comment je pourrais traverser mes graphes de façons déterministes, puisque mes premières expérimentations ne sont que des parcours stochastiques.
 </p>
 
+<h3>Ordre de sélection des voisins à visiter</h3>
+
+<p class="noindent">
+    <span class="small-caps">Une question importante</span> qui n’est pas nécessairement soulevée par l’algorithme de parcours en profondeur, c’est l’ordre dans lequel sont sélectionnés les voisins à visiter. Et pour cause&nbsp;: ça n’a normalement pas <span class="nobreak">d’importance.
+        <label for="visiting-order" class="margin-toggle sidenote-number">
+        </label></span>
+        <input type="checkbox" id="visiting-order" class="margin-toggle">
+        <span class="sidenote-left">Enfin… je ne crois pas.</span> Répondre à la question «&nbsp;y a-t-il un chemin entre ces deux sommets&nbsp;?&nbsp;» n’implique pas de choisir ces sommets à visiter dans un ordre particulier. Mais dans mon cas, comme je m’intéresse aux formes que j’obtiendrai en appliquant cet algorithme, et comme je cherche une solution déterministe, l’ordre de sélection sera important.
+</p>
 <!-- read-more -->
-
 <p>
-    Donc, je peux créer autant d’arbres que je veux, et ces arbres-là doivent s’ajouter aux objets d’une <span class="inline-code">scene</span>.
+    Ma première idée, ce serait de visiter les voisins dans le sens des aiguilles d’une <span class="nobreak">montre.
+        <label for="geometric-graph" class="margin-toggle sidenote-number">
+        </label></span>
+        <input type="checkbox" id="geometric-graph" class="margin-toggle">
+        <span class="sidenote">J’ai trouvé intéressant d’apprendre que ces solutions <span class="italic8">géométriques</span> n’ont déjà plus aucun rapport avec la théorie générale des graphes, théorie qui ne se préoccupe pas, je crois, de choses comme les angles et les longueurs des arêtes. J’ai trouvé un article Wikipedia intéressant sur la «&nbsp;<a href="https://en.wikipedia.org/wiki/Geometric_graph_theory">théorie des graphes géométriques</a>&nbsp;» qui serait «&nbsp;un sous-champ large et amorphe de la théorie des graphes&nbsp;». L’article n’existe pas en français.</span>En considérant que chaque arête s’élance d’un sommet à un angle <span id="MathJax-Element-1-Frame" class="mjx-chtml"><span id="MJXc-Node-1271" class="mjx-math"><span id="MJXc-Node-1272" class="mjx-mrow"><span id="MJXc-Node-1273" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.298em;">α</span></span></span></span></span>, je pourrais trier ces arêtes selon l’angle qu’elles forment, commençant par <span id="MathJax-Element-2-Frame" class="mjx-chtml"><span id="MJXc-Node-1274" class="mjx-math"><span id="MJXc-Node-1275" class="mjx-mrow"><span id="MJXc-Node-1276" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">0</span></span></span></span></span> et finissant par <span id="MathJax-Element-3-Frame" class="mjx-chtml"><span id="MJXc-Node-1277" class="mjx-math"><span id="MJXc-Node-1278" class="mjx-mrow"><span id="MJXc-Node-1279" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">2</span></span><span id="MJXc-Node-1280" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.298em; padding-right: 0.003em;">π</span></span></span></span></span>.
 </p>
 <p>
-    En même temps, une <span class="inline-code">scene</span> devrait être une opportunité de créer de nouveaux arbres… d’interpréter différemment leurs génotypes, etc.
-</p>
-<p>
-    Y aura-t-il plusieurs <span class="italic">sortes</span> de scènes&nbsp;? Qu’est-ce qui pourrait séparer le mécanisme d’une scène de celui d’une autre&nbsp;? Chaque scène doit gérer les images d’animation, peu importe la quantité d’objets à dessiner qu’elles contiennent. Elle doit aussi activer elle-même la croissance des plantes. C’est vrai qu’au final, j’imagine des scènes qui auraient différents niveaux de profondeur, différentes répartitions de ressources naturelles et différentes ressources naturelles. Donc, au final, oui, il y aura des scènes de natures très distinctes. Mais tout ce mécanisme est très compliqué à construire et rien n’est échafaudé pour l’instant.
-</p>
-<p>
-    Il y a donc une fonctionnalité importante qui est <span class="italic">au-dessus</span> de toutes les scènes imaginables&nbsp;: la possibilité de gérer les images d’animation et leurs objets... car au fond, chacune des scènes disparates devra, en fin de compte, envoyer à <span class="italic">quelque chose</span> une série d’objets à dessiner, et ce <span class="italic">quelque chose</span> devra gérer le dessin. Même les scènes multi-plans ne feront qu’envoyer leurs éléments de décors comme des formes à la machine à dessiner.
-</p>
-<p>
-    Il y a donc une <span class="italic">machine à dessiner</span> à concevoir. Une machine flexible et qui gère la mémoire intelligemment.
+    Pour l’instant, dans mon prototype <span class="inline-code">Vertex</span>, la méthode <span class="inline-code">addEdge</span> est définie ainsi&nbsp;:
 </p>
 
-<h3>La machine paysagiste</h3>
-
-<p class="noindent">
-    <span class="small-caps">Cette machine doit pouvoir</span> recevoir des objets, en faire des listes, séparer cette liste en plus petites listes (à longueurs variables). Les objets qu’elle peut recevoir sont&nbsp;: des lignes, des polygones. Ces objets ont des coordonnées cartésiennes et une information de couleur. Cette information de couleur peut être un dégradé.
-</p>
-<p>
-    La machine doit aussi avoir un mode <span class="italic">simple</span> et un mode <span class="italic">pointilliste</span>. Lorsqu’elle se fait pointilliste, elle peint chaque forme avec une texture formée avec de petits points. Les détails précis de ces informations de textures doivent pouvoir changer (parce qu’il y a beaucoup de choses intéressantes à faire avec divers algorithmes pointillistes).
-        <label for="pointillisme" class="margin-toggle sidenote-number">
-        </label>
-        <input type="checkbox" id="pointillisme" class="margin-toggle">
-        <span class="sidenote-left">Je pourrais aussi pousser plus loin l’idée du pointillisme&nbsp;: je pourrais avoir des masses de très petits points, chose que j’ai déjà réalisée, mais je pourrais aussi avoir des masses de gros points, plus proches de Seurat. Et ces gros points pourraient eux-mêmes être constitués de masses de petits points (du grain de film, finalement). Et si je veux pousser les hommages à l’impressionnisme plus loin, je pourrais aussi jouer avec le fondu enchaîné, créer des scènes où tout serait en double exposition comme à la Frédéric Back et <span class="italic8">L’homme qui plantait des arbres</span>, et comme à la Caroline Leaf.</span>
-</p>
-
-<h3>Couleurs et niveaux superposés</h3>
-
-<p class="noindent">
-    <span class="small-caps">Comment construirai-je</span> les niveaux superposés&nbsp;? Premièrement, je dois avoir un prototype <span class="inline-code">Hill</span>, chaque niveau représentant une colline. Une scène doit aussi avoir une propriété <span class="inline-code">sky</span>, qui sera une information de dégradé de couleurs.
-</p>
-<p>
-    Les collines devraient toujours être créées en groupes puisque chaque colline doit répondre aux collines adjacentes. Elles seront créées avec du bruit de Perlin tridimentionnel. Donc, un groupe de collines doit avoir ces propriétés&nbsp;:
-</p>
-<div class="codebox"><pre><code><span class="hljs-keyword">let</span> Terrain<span class="hljs-punctuation"> = </span><span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
-    <span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>amountOfHills<span class="hljs-punctuation"> = </span><span class="hljs-number">5</span>;
-    <span class="hljs-comment">// A float between 0 and 1, </span>
-    <span class="hljs-comment">// 0 being the top of the scene, 1 being the bottom.</span>
-    <span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>horizon<span class="hljs-punctuation"> = </span><span class="hljs-number">0.5</span>;
-    <span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>width<span class="hljs-punctuation"> = </span><span class="hljs-number">300</span>;
+<div class="codebox"><pre><code>Vertex<span class="hljs-punctuation">.</span>prototype<span class="hljs-punctuation">.</span>addEdge<span class="hljs-punctuation"> = </span><span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) </span>{
+    <span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>edges<span class="hljs-punctuation">.</span>push(e);
 };</code></pre></div>
+
 <p class="noindent">
-    La fréquence et l’amplitude du bruit de Perlin est ici la question la plus intéressante.
+    Donc, <span class="inline-code">this.edges</span> n’est qu’un simple <span class="inline-code">Array</span> qui contient des objets de type <span class="inline-code">Edge</span>. Ce qu’il me faudrait probablement, c’est créer plutôt un objet littéral et envoyer celui-ci dans <span class="inline-code">this.edges</span>&nbsp;:
 </p>
 
-<h3>Couleurs</h3>
+<div class="codebox"><pre><code>Vertex<span class="hljs-punctuation">.</span>prototype<span class="hljs-punctuation">.</span>addEdge<span class="hljs-punctuation"> = </span><span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) </span>{
+    <span class="hljs-keyword">let</span> edge<span class="hljs-punctuation"> = </span>{
+        <span class="hljs-attr">e</span>: e,
+        <span class="hljs-attr">angle</span>: <span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>calculateAngle(e)
+    };
+    <span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>edges<span class="hljs-punctuation">.</span>push(edge);
+};</code></pre></div>
 
 <p class="noindent">
-    Les couleurs devraient aussi pouvoir changer avec le temps&nbsp;! Ce sera un élément déterminant pour la beauté de la chose.
+    À noter qu’il serait aussi peut-être nécessaire de recalculer ces angles à chaque image d’animation puisque j’aurai souvent des animations dans lesquelles les sommets se déplacent dans l’espace cartésien. Ça complique les choses.
 </p>
 <p>
-    Voici comment je définissais les couleurs d’un dégradé d’une scène dans <span class="italic">Les joies confuses</span>&nbsp;:
-</p>
-<div class="codebox"><pre><code><span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>localValues<span class="hljs-punctuation">.</span>gradient<span class="hljs-punctuation"> = </span>[{
-    <span class="hljs-attr">offset</span>: <span class="hljs-number">0</span>,
-    <span class="hljs-attr">r</span>: <span class="hljs-number">255</span>,
-    <span class="hljs-attr">g</span>: <span class="hljs-number">255</span>,
-    <span class="hljs-attr">b</span>: <span class="hljs-number">0</span>
-}, {
-    <span class="hljs-attr">offset</span>: <span class="hljs-number">0.25</span>,
-    <span class="hljs-attr">r</span>: <span class="hljs-number">55</span>,
-    <span class="hljs-attr">g</span>: <span class="hljs-number">120</span>,
-    <span class="hljs-attr">b</span>: <span class="hljs-number">0</span>
-}, {
-    <span class="hljs-attr">offset</span>: <span class="hljs-number">0.8</span>,
-    <span class="hljs-attr">r</span>: <span class="hljs-number">255</span>,
-    <span class="hljs-attr">g</span>: <span class="hljs-number">50</span>,
-    <span class="hljs-attr">b</span>: <span class="hljs-number">0</span>
-}];</code></pre></div>
-
-<p class="noindent">
-    J’étais ainsi limité à des dégradés à trois couleurs. Devrais-je encore me limiter à trois couleurs&nbsp;? Ce n’est pas bien compliqué d’y aller pour une quantité <span id="MathJax-Element-1-Frame" class="mjx-chtml"><span id="MJXc-Node-1720" class="mjx-math"><span id="MJXc-Node-1721" class="mjx-mrow"><span id="MJXc-Node-1722" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.298em;">n</span></span></span></span></span> de couleurs, mais est-ce utile&nbsp;? Également, je définissais mes dégradés de manière complètement manuelle, il serait plus intéressant d’y aller cette fois-ci de façon générative, en utilisant mon système de palettes de couleurs.
-</p>
-
-
-<h3>Perspective atmosphérique</h3>
-<p class="noindent">
-    <span class="small-caps">La définition</span> de la perspective atmosphérique pourrait aussi être une fonction trigonométrique&nbsp;! La perspective atmosphérique répond toujours à un nombre réel situé entre <span id="MathJax-Element-2-Frame" class="mjx-chtml"><span id="MJXc-Node-1723" class="mjx-math"><span id="MJXc-Node-1724" class="mjx-mrow"><span id="MJXc-Node-1725" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">0</span></span></span></span></span> et <span id="MathJax-Element-3-Frame" class="mjx-chtml"><span id="MJXc-Node-1726" class="mjx-math"><span id="MJXc-Node-1727" class="mjx-mrow"><span id="MJXc-Node-1728" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">1</span></span></span></span></span>, qui représente la distance d’un objet avec la «&nbsp;caméra&nbsp;». L’axe des <span id="MathJax-Element-4-Frame" class="mjx-chtml"><span id="MJXc-Node-1729" class="mjx-math"><span id="MJXc-Node-1730" class="mjx-mrow"><span id="MJXc-Node-1731" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.298em; padding-right: 0.003em;">z</span></span></span></span></span> est défini ainsi&nbsp;: le premier plan est toujours à la position <span id="MathJax-Element-5-Frame" class="mjx-chtml"><span id="MJXc-Node-1732" class="mjx-math"><span id="MJXc-Node-1733" class="mjx-mrow"><span id="MJXc-Node-1734" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">0</span></span></span></span></span>, et chaque plan suivant incrémente l’axe des <span id="MathJax-Element-6-Frame" class="mjx-chtml"><span id="MJXc-Node-1735" class="mjx-math"><span id="MJXc-Node-1736" class="mjx-mrow"><span id="MJXc-Node-1737" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.298em; padding-right: 0.003em;">z</span></span></span></span></span> de <span id="MathJax-Element-7-Frame" class="mjx-chtml"><span id="MJXc-Node-1738" class="mjx-math"><span id="MJXc-Node-1739" class="mjx-mrow"><span id="MJXc-Node-1740" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">1</span></span></span></span></span>. Et pour calculer la perspective atmosphérique, on utilise la valeur d’un objet sur son axe des <span id="MathJax-Element-8-Frame" class="mjx-chtml"><span id="MJXc-Node-1741" class="mjx-math"><span id="MJXc-Node-1742" class="mjx-mrow"><span id="MJXc-Node-1743" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.298em; padding-right: 0.003em;">z</span></span></span></span></span> et on envoie cette valeur à une fonction trigonométrique (une palette de couleur).
+    Ce pourrait être intéressant pour plusieurs autres raisons d’avoir cette définition plus compliquée d’une arête. Par exemple, une arête pourrait contenir le moment précis où elle a été créée (la valeur <span class="inline-code">frameCount</span>), et un algorithme d’exploration différent pourrait choisir les arêtes à emprunter en fonction de cette valeur.
 </p>
 <p>
-    Une plante doit pouvoir être positionnée à diverses hauteurs sur une colline. Et la perspective atmosphérique qui est appliquée sur cette plante doit se faire en fonction de cette hauteur.
+    Le calcul de l’angle lui-même se fera avec la <a href="https://fr.wikipedia.org/wiki/Atan2">fonction <span class="inline-code">atan2</span></a>&nbsp;:
 </p>
 
-<h3>Nuages</h3>
-<p class="noindent">
-    Oh, ce serait intéressant d’avoir des nuages&nbsp;!
-</p>
-
+<div class="codebox"><pre><code><span class="hljs-keyword">var</span> angle<span class="hljs-punctuation"> = </span>atan2(vec2<span class="hljs-punctuation">.</span>y<span class="hljs-punctuation"> - </span>vec1<span class="hljs-punctuation">.</span>y, vec2<span class="hljs-punctuation">.</span>x<span class="hljs-punctuation"> - </span>vec1<span class="hljs-punctuation">.</span>x);</code></pre></div>
 
 <h3>Contexte</h3>
 

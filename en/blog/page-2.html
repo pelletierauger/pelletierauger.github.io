@@ -4,11 +4,9 @@
         <title>Guillaume Pelletier-Auger - Blog - Page 2</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=4, user-scalable=yes">
         <link href="../../style/style.css" rel="stylesheet" type="text/css">
+        <link href="../../style/falling-mountains.css" rel="stylesheet" type="text/css">
+        
         <link href="../../style/notes-on-genetic-automata.css" rel="stylesheet" type="text/css">
-        
-        <link href="../../style/towards-an-algorithmic-cinema.css" rel="stylesheet" type="text/css">
-        
-        <link href="../../style/truchet.css" rel="stylesheet" type="text/css">
         
         <link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700|EB+Garamond" rel="stylesheet">
         
@@ -145,6 +143,118 @@
             </div><div class="blog-posts">
             <div class="blog-post">
                 <div class="blog-post-header">
+                    <a href="../blog/2018/6/foliages.html"><div class="date">June 16, 2018</div>
+                    <div class="blog-title-box"><h2 class="header">Foliages</h2></div>
+                    <div class="description">
+                    
+
+            </div></a>
+                </div>
+                <div class="blog-post-content">
+                    
+
+
+
+<h3>Context</h3>
+
+<p class="noindent">
+    <span class="small-caps">This blog post</span> is part of my research project <span class="italic">Towards an algorithmic cinema</span>, started in April 2018. I invite you to read <a href="https://pelletierauger.github.io/en/blog/2018/4/towards-an-algorithmic-cinema.html">the first blog post of the project</a> to learn more about it.
+</p>
+                </div>
+            </div>
+            <div class="blog-post">
+                <div class="blog-post-header">
+                    <a href="../blog/2018/6/botanical-scenes.html"><div class="date">June 9, 2018</div>
+                    <div class="blog-title-box"><h2 class="header">Botanical Scenes</h2></div>
+                    <div class="description">
+                    
+
+            </div></a>
+                </div>
+                <div class="blog-post-content">
+                    
+
+<h3>Context</h3>
+
+<p class="noindent">
+    <span class="small-caps">This blog post</span> is part of my research project <span class="italic">Towards an algorithmic cinema</span>, started in April 2018. I invite you to read <a href="https://pelletierauger.github.io/en/blog/2018/4/towards-an-algorithmic-cinema.html">the first blog post of the project</a> to learn more about it.
+</p>
+                </div>
+            </div>
+            <div class="blog-post">
+                <div class="blog-post-header">
+                    <a href="../blog/2018/6/deterministic-branching.html"><div class="date">June 2, 2018</div>
+                    <div class="blog-title-box"><h2 class="header">Deterministic branching</h2></div>
+                    <div class="description">
+                    En route to an algorithmic garden.
+
+            </div></a>
+                </div>
+                <div class="blog-post-content">
+                    
+
+<h3>Context</h3>
+
+<p class="noindent">
+    <span class="small-caps">This blog post</span> is part of my research project <span class="italic">Towards an algorithmic cinema</span>, started in April 2018. I invite you to read <a href="https://pelletierauger.github.io/en/blog/2018/4/towards-an-algorithmic-cinema.html">the first blog post of the project</a> to learn more about it.
+</p>
+                </div>
+            </div>
+            <div class="blog-post">
+                <div class="blog-post-header">
+                    <a href="../blog/2018/5/a-p5js-template-for-animation.html"><div class="date">May 27, 2018</div>
+                    <div class="blog-title-box"><h2 class="header">A <span class="lnum">p5.js</span> template for animation
+</h2></div>
+                    <div class="description">
+                    
+
+            </div></a>
+                </div>
+                <div class="blog-post-content">
+                    
+<p class="noindent">
+    <span class="small-caps">While doing a lot of animation</span> with <span class="lnum">p5.js</span> over the last few months, I’ve slowly developed a template that I now use to start all my projects. It’s designed for my own use but perhaps it could also be useful (in part or as a whole) for other people. So I’m <a href="">sharing it on GitHub</a> and documenting it below. There’s always ample room for improvement, so if you have any ideas don’t hesite to <a href="">get in touch</a>.
+</p>
+<p>
+    The main feature of this template is a convenient system to export frames to create videos and gifs. This is accomplished with a small Node.js server, named <span class="inline-code">server.js</span>, that communicates with the <span class="lnum">p5.js</span> sketch via Socket.io. To export frames, the sketch gets a reference to the web canvas and sends it to <span class="inline-code">server.js</span>, which saves it to disk. The best part is that the exportation can all happen behind the scene, in the command line, using the Node module Puppeteer. Then, when all the frames are exported, they can be turned into videos and gifs using <span class="small-caps">ffmpeg</span>.
+</p>
+<p>
+    I’ll now look at all the template’s pieces in details.
+</p>
+
+
+                <div class="languageJump">
+                    <a href="../blog/2018/5/a-p5js-template-for-animation.html">Read more…</a>
+                </div>
+               
+                </div>
+            </div>
+            <div class="blog-post">
+                <div class="blog-post-header">
+                    <a href="../blog/2018/5/falling-mountains.html"><div class="date">May 26, 2018</div>
+                    <div class="blog-title-box"><h2 class="header"><span class="falaise-header">Falling Mountains</span>
+</h2></div>
+                    <div class="description">
+                    Non-deterministic animations from cellular automata.
+
+            </div></a>
+                </div>
+                <div class="blog-post-content">
+                    
+<img class="inline-image" src="../../../images/falling-mountains/rosy-morning.jpg">
+
+<p class="article-top">
+    <span class="mountain-drop-caps">L</span><span class="small-caps">ast year</span>, j’ai écrit un court programme pour modéliser des lignes dessinées au crayon. Le projet est encore embryonnaire et je veux continuer à le faire avancer sporadiquement. Je commence aujourd’hui par une relecture du code écrit l’an dernier et une synthèse des idées qu’il contient.
+</p>
+
+                <div class="languageJump">
+                    <a href="../blog/2018/5/falling-mountains.html">Read more…</a>
+                </div>
+               
+                </div>
+            </div>
+            <div class="blog-post">
+                <div class="blog-post-header">
                     <a href="../blog/2018/5/notes-on-genetic-automata.html"><div class="date">May 12, 2018</div>
                     <div class="blog-title-box"><h2 class="header">Notes on Genetic Automata</h2></div>
                     <div class="description">
@@ -246,7 +356,7 @@
     <span class="small-caps">I’m currently reading</span> <span class="italic">Complexity: A Guided Tour</span>, a wonderful book written by the American scientist Melanie Mitchell. I created the animation shown above using an equation I learned about in the book, the <span class="italic">logistic map</span>, which is the most famous equation in the field of chaos theory. Here it is:
 </p>
 
-<div class="math"><span class="mjx-chtml MJXc-display" style="text-align: center;"><span id="MathJax-Element-1-Frame" class="mjx-chtml" style="text-align: center;"><span id="MJXc-Node-1938" class="mjx-math"><span id="MJXc-Node-1939" class="mjx-mrow"><span id="MJXc-Node-1940" class="mjx-msubsup"><span class="mjx-base"><span id="MJXc-Node-1941" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.298em;">x</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-1942" class="mjx-texatom" style=""><span id="MJXc-Node-1943" class="mjx-mrow"><span id="MJXc-Node-1944" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.372em; padding-bottom: 0.298em;">t</span></span><span id="MJXc-Node-1945" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.298em; padding-bottom: 0.446em;">+</span></span><span id="MJXc-Node-1946" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">1</span></span></span></span></span></span><span id="MJXc-Node-1947" class="mjx-mo MJXc-space3"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.077em; padding-bottom: 0.298em;">=</span></span><span id="MJXc-Node-1948" class="mjx-mi MJXc-space3"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.446em; padding-bottom: 0.298em;">R</span></span><span id="MJXc-Node-1949" class="mjx-msubsup"><span class="mjx-base"><span id="MJXc-Node-1950" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.298em;">x</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-1951" class="mjx-mi" style=""><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.372em; padding-bottom: 0.298em;">t</span></span></span></span><span id="MJXc-Node-1952" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.446em; padding-bottom: 0.593em;">(</span></span><span id="MJXc-Node-1953" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">1</span></span><span id="MJXc-Node-1954" class="mjx-mo MJXc-space2"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.298em; padding-bottom: 0.446em;">−</span></span><span id="MJXc-Node-1955" class="mjx-msubsup MJXc-space2"><span class="mjx-base"><span id="MJXc-Node-1956" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.298em;">x</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-1957" class="mjx-mi" style=""><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.372em; padding-bottom: 0.298em;">t</span></span></span></span><span id="MJXc-Node-1958" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.446em; padding-bottom: 0.593em;">)</span></span></span></span></span></span></div>
+<div class="math"><span class="mjx-chtml MJXc-display" style="text-align: center;"><span id="MathJax-Element-1-Frame" class="mjx-chtml" style="text-align: center;"><span id="MJXc-Node-3087" class="mjx-math"><span id="MJXc-Node-3088" class="mjx-mrow"><span id="MJXc-Node-3089" class="mjx-msubsup"><span class="mjx-base"><span id="MJXc-Node-3090" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.298em;">x</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-3091" class="mjx-texatom" style=""><span id="MJXc-Node-3092" class="mjx-mrow"><span id="MJXc-Node-3093" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.372em; padding-bottom: 0.298em;">t</span></span><span id="MJXc-Node-3094" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.298em; padding-bottom: 0.446em;">+</span></span><span id="MJXc-Node-3095" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">1</span></span></span></span></span></span><span id="MJXc-Node-3096" class="mjx-mo MJXc-space3"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.077em; padding-bottom: 0.298em;">=</span></span><span id="MJXc-Node-3097" class="mjx-mi MJXc-space3"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.446em; padding-bottom: 0.298em;">R</span></span><span id="MJXc-Node-3098" class="mjx-msubsup"><span class="mjx-base"><span id="MJXc-Node-3099" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.298em;">x</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-3100" class="mjx-mi" style=""><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.372em; padding-bottom: 0.298em;">t</span></span></span></span><span id="MJXc-Node-3101" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.446em; padding-bottom: 0.593em;">(</span></span><span id="MJXc-Node-3102" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">1</span></span><span id="MJXc-Node-3103" class="mjx-mo MJXc-space2"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.298em; padding-bottom: 0.446em;">−</span></span><span id="MJXc-Node-3104" class="mjx-msubsup MJXc-space2"><span class="mjx-base"><span id="MJXc-Node-3105" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.298em;">x</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-3106" class="mjx-mi" style=""><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.372em; padding-bottom: 0.298em;">t</span></span></span></span><span id="MJXc-Node-3107" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.446em; padding-bottom: 0.593em;">)</span></span></span></span></span></span></div>
 
 
                 <div class="languageJump">
@@ -255,97 +365,17 @@
                
                 </div>
             </div>
-            <div class="blog-post">
-                <div class="blog-post-header">
-                    <a href="../blog/2018/4/towards-an-algorithmic-cinema.html"><div class="date">April 7, 2018</div>
-                    <div class="blog-title-box"><h2 class="header">Towards an algorithmic cinema</h2></div>
-                    <div class="description">
-                    The beginning of an experimental research project about abstract animation film.
-
-            </div></a>
-                </div>
-                <div class="blog-post-content">
-                    
-
-<p class="noindent">
-    <img class="drop-caps" src="../../../images/towards-an-algorithmic-cinema/drop-caps-a.png"><span class="small-caps">new project</span> that I find very exciting will occupy me throughout the next twelve months. Thanks to the Conseil des Arts et des Lettres du Québec and the <span class="italic">Plan culturel numérique du Québec</span>, I will have the opportunity to do research about digital <span class="nobreak">art—and</span> more specifically, about algorithmic cinema: an experimental animation cinema (most often abstract, but not necessarily so), that is created by writing code to generates images and movement.
-</p>
-<p>
-    Because this cinema is somewhat unknown to the general public and practiced by relatively few artists around the world, I hope to help in demystifying it by maintening a journal of my work during this project. The journal will contain short experimental animations and parts of the creative process—so, a mixture of things that are accessible to all and other things that are more technical or “arcane”, like blocks of code and mathematical formulas. We’ll see how this joyous aggregate ends up looking.
-</p>
-
-
-                <div class="languageJump">
-                    <a href="../blog/2018/4/towards-an-algorithmic-cinema.html">Read more…</a>
-                </div>
-               
-                </div>
-            </div>
-            <div class="blog-post">
-                <div class="blog-post-header">
-                    <a href="../blog/2018/3/branches-and-stems.html"><div class="date">March 14, 2018</div>
-                    <div class="blog-title-box"><h2 class="header">Branches and stems</h2></div>
-                    <div class="description">
-                    Sketch made after a browsing of <span class="blog-description-italic">Manuale Tipografico</span> by Giambattista Bodoni.
-
-            </div></a>
-                </div>
-                <div class="blog-post-content">
-                    
-<img class="inline-image" src="../../../images/hand-drawings/bodoni-vegetal.jpg">
-                </div>
-            </div>
-            <div class="blog-post">
-                <div class="blog-post-header">
-                    <a href="../blog/2018/2/modeling-pencil-strokes.html"><div class="date">February 3, 2018</div>
-                    <div class="blog-title-box"><h2 class="header">Modeling <span class="nobreak">pencil strokes</span>
-</h2></div>
-                    <div class="description">
-                    A first foray into methods of algorithmically imitating the look of hand drawings.
-
-            </div></a>
-                </div>
-                <div class="blog-post-content">
-                    
-<img class="inline-image" src="../../../images/pencil/circles.jpg">
-<br>
-<br>
-<p class="noindent">
-    <span class="small-caps">About a year ago</span>, I wrote a short program to model pencil strokes. The project is still in its embryonic stages and I plan to keep working on it sporadically. I will begin now by revisiting the code written last year to extract its concepts.
-</p>
-
-                <div class="languageJump">
-                    <a href="../blog/2018/2/modeling-pencil-strokes.html">Read more…</a>
-                </div>
-               
-                </div>
-            </div>
-            <div class="blog-post">
-                <div class="blog-post-header">
-                    <a href="../blog/2017/10/recursive-harmonic-motion.html"><div class="date">October 17, 2017</div>
-                    <div class="blog-title-box"><h2 class="header">Recursive harmonic motion</h2></div>
-                    <div class="description">
-                    Two animations made while experimenting with simple examples of recursion.
-
-            </div></a>
-                </div>
-                <div class="blog-post-content">
-                    
-<p class="noindent">
-    <span class="small-caps">These animations</span> were created with the <span class="lnum"><a href="https://p5js.org/">p5.js library</a></span>, in response to two <span class="italic">coding challenges</span> presented by Daniel Shiffman on his YouTube channel <a href="https://www.youtube.com/thecodingtrain"><span class="italic">The Coding Train</span></a>.
-</p>
-
-                <div class="languageJump">
-                    <a href="../blog/2017/10/recursive-harmonic-motion.html">Read more…</a>
-                </div>
-               
-                </div>
-            </div>
         </div>
         <div id="blog-pagination">
-            <div class="pagination-link-single">
+            <div class="pagination-link">
                 <a href="./">
                 Previous page
+                </a>
+            </div>
+            
+            <div class="pagination-link">
+                <a href="./page-3.html">
+                Next page
                 </a>
             </div>
             

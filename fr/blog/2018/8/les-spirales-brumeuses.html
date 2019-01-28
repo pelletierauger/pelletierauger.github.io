@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Guillaume Pelletier-Auger - Les spirales brumeuses</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=4, user-scalable=yes" />
+        <link href="../../../../style/style.css" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Inconsolata|EB+Garamond" rel="stylesheet">
+        <link href="../../../../style/code.css" rel="stylesheet" type="text/css">
+    </head><body>
+    <nav>
+        <h1><a href="../../../../fr/">Guillaume <span class="nobreak">Pelletier-Auger</span></a></h1>
+        <ul>
+            <li><a href="../../../../fr/">Projets</a></li>
+            <li class = "selected"><a href="../../../../fr/blog/">Blog</a></li>
+            <li><a href="../../../../fr/a-propos.html">À propos</a></li>
+            <li><a href="../../../../en/blog/2018/8/blurry-spirals.html">Fr &#8594; En</a></li>
+        </ul>
+    </nav>
+    
+            <article>
+                <h2 class="with-date">Les spirales brumeuses</h2><div class="description">
+                    Premiers pas avec WebGl et les &ldquo;shaders&rdquo;
+
+            </div>
+                <div class="date">14 août 2018</div>
+                
+
+<p class="noindent">
+    Voici du code SuperCollider&nbsp;:
+</p>
+
+<div class="codebox"><pre><code class="supercollider">(
+<span class="hljs-built_in">SynthDef</span><span class="hljs-punctuation">.</span>new(\pink, {
+    <span class="hljs-keyword">arg</span> freq<span class="hljs-punctuation"> = </span><span class="hljs-number">220</span>;
+    <span class="hljs-keyword">var</span> sig1, sig2, lfo, lfo2, env;
+    env<span class="hljs-punctuation"> = </span><span class="hljs-built_in">XLine</span><span class="hljs-punctuation">.</span>kr(<span class="hljs-number">0.15</span>, <span class="hljs-number">0.001</span>, <span class="hljs-number">3</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">2</span>);
+    lfo<span class="hljs-punctuation"> = </span><span class="hljs-built_in">SinOsc</span><span class="hljs-punctuation">.</span>kr(<span class="hljs-number">3</span>);
+    lfo2<span class="hljs-punctuation"> = </span><span class="hljs-built_in">SinOsc</span><span class="hljs-punctuation">.</span>kr(<span class="hljs-built_in">ExpRand</span>(<span class="hljs-number">20</span>, <span class="hljs-number">800</span>), mul: <span class="hljs-number">0.75</span>, add:<span class="hljs-number">1</span>);
+    env<span class="hljs-punctuation"> = </span>env<span class="hljs-punctuation"> * </span>lfo;
+    sig1<span class="hljs-punctuation"> = </span><span class="hljs-built_in">PinkNoise</span><span class="hljs-punctuation">.</span>ar(mul: <span class="hljs-number">0.2</span>);
+    sig2<span class="hljs-punctuation"> = </span><span class="hljs-built_in">PinkNoise</span><span class="hljs-punctuation">.</span>ar(mul: <span class="hljs-number">0.2</span>);
+    sig1<span class="hljs-punctuation"> = </span><span class="hljs-built_in">Ringz</span><span class="hljs-punctuation">.</span>ar(sig1, freq, <span class="hljs-number">15</span>, <span class="hljs-number">0.2</span>)<span class="hljs-punctuation"> * </span>env;
+    sig2<span class="hljs-punctuation"> = </span><span class="hljs-built_in">Ringz</span><span class="hljs-punctuation">.</span>ar(sig2, freq<span class="hljs-punctuation"> + </span><span class="hljs-number">1</span>, <span class="hljs-number">15</span>, <span class="hljs-number">0.2</span>)<span class="hljs-punctuation"> * </span>env;
+    <span class="hljs-built_in">Out</span><span class="hljs-punctuation">.</span>ar(<span class="hljs-number">0</span>, sig1);
+    <span class="hljs-built_in">Out</span><span class="hljs-punctuation">.</span>ar(<span class="hljs-number">1</span>, sig2);
+}).add;
+)</code></pre></div>
+
+<p class="noindent">
+    Voici du code <span class="small-caps">Glsl</span>&nbsp;:
+</p>
+
+<div class="codebox"><pre><code class="glsl"><span class="hljs-comment">// What about now</span>
+<span class="hljs-keyword">attribute</span> <span class="hljs-type">vec3</span> coordinates;
+<span class="hljs-comment">// attribute vec4 coordinates;</span>
+<span class="hljs-keyword">uniform</span> <span class="hljs-type">float</span> time;
+<span class="hljs-keyword">varying</span> <span class="hljs-type">vec2</span> myposition;
+<span class="hljs-keyword">varying</span> <span class="hljs-type">vec2</span> center;
+
+<span class="hljs-type">float</span> plot(<span class="hljs-type">vec2</span> s, <span class="hljs-type">float</span> p) {
+    <span class="hljs-type">float</span> largeur<span class="hljs-punctuation"> = </span><span class="hljs-built_in">abs</span>(<span class="hljs-built_in">sin</span>(time<span class="hljs-punctuation"> * </span><span class="hljs-number">0.01</span>))<span class="hljs-punctuation"> * </span><span class="hljs-number">0.1</span><span class="hljs-punctuation"> + </span><span class="hljs-number">0.1</span>;
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">smoothstep</span>(p<span class="hljs-punctuation"> - </span>largeur, p, s<span class="hljs-punctuation">.</span>y)<span class="hljs-punctuation"> - </span><span class="hljs-built_in">smoothstep</span>(p, p<span class="hljs-punctuation"> + </span>largeur, s<span class="hljs-punctuation">.</span>y);
+}
+
+<span class="hljs-type">void</span> main(<span class="hljs-type">void</span>) {
+    <span class="hljs-built_in">gl_Position</span><span class="hljs-punctuation"> = </span><span class="hljs-type">vec4</span>(coordinates, <span class="hljs-number">1.0</span>);
+    center<span class="hljs-punctuation"> = </span><span class="hljs-type">vec2</span>(<span class="hljs-built_in">gl_Position</span><span class="hljs-punctuation">.</span>x, <span class="hljs-built_in">gl_Position</span><span class="hljs-punctuation">.</span>y);
+    center<span class="hljs-punctuation"> = </span><span class="hljs-number">512.0</span><span class="hljs-punctuation"> + </span>center<span class="hljs-punctuation"> * </span><span class="hljs-number">512.0</span>;
+    <span class="hljs-keyword">if</span> (center<span class="hljs-punctuation"> &gt; </span><span class="hljs-number">0.1</span>) {
+        center<span class="hljs-punctuation"> = </span><span class="hljs-number">10.0</span>;
+    }
+    myposition<span class="hljs-punctuation"> = </span><span class="hljs-type">vec2</span>(<span class="hljs-built_in">gl_Position</span><span class="hljs-punctuation">.</span>x, <span class="hljs-built_in">gl_Position</span><span class="hljs-punctuation">.</span>y);
+    <span class="hljs-comment">// This is but an humble test.</span>
+    <span class="hljs-built_in">gl_PointSize</span><span class="hljs-punctuation"> = </span><span class="hljs-number">50.0</span>;
+}</code></pre></div>
+
+
+<p class="noindent">
+    Voici du code JavaScript&nbsp;:
+</p>
+<div class="codebox"><pre><code><span class="hljs-comment">// shader() sets the active shader with our shader</span>
+<span class="hljs-comment">// shader(shaderProgram);</span>
+<span class="hljs-comment">// texcoordShader.setUniform('time', frameCount);</span>
+<span class="hljs-comment">// rect gives us some geometry on the screen</span>
+<span class="hljs-comment">// rect(0, 0, width, height);</span>
+<span class="hljs-comment">// console.log("Drawing!");</span>
+vertices<span class="hljs-punctuation"> = </span>[];
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i<span class="hljs-punctuation"> = </span><span class="hljs-number">0</span>; i<span class="hljs-punctuation"> &lt; </span><span class="hljs-number">1000</span>; i <span class="hljs-punctuation">+=</span> <span class="hljs-number">1</span>) {
+    <span class="hljs-keyword">let</span> x<span class="hljs-punctuation"> = </span>cos(i<span class="hljs-punctuation"> * </span>(frameCount<span class="hljs-punctuation"> + </span><span class="hljs-number">3000</span>)<span class="hljs-punctuation"> * </span><span class="hljs-number">0.0001</span>)<span class="hljs-punctuation"> * </span>cos(i<span class="hljs-punctuation"> * </span><span class="hljs-number">0.01</span>)<span class="hljs-punctuation"> * </span>i<span class="hljs-punctuation"> * </span><span class="hljs-number">0.001125</span><span class="hljs-punctuation"> * </span>(<span class="hljs-number">9</span><span class="hljs-punctuation"> / </span><span class="hljs-number">14</span>);
+    x <span class="hljs-punctuation">+=</span> (<span class="hljs-built_in">Math</span><span class="hljs-punctuation">.</span>random()<span class="hljs-punctuation"> - </span><span class="hljs-number">0.5</span>)<span class="hljs-punctuation"> * </span><span class="hljs-number">0.01</span>;
+    <span class="hljs-keyword">let</span> y<span class="hljs-punctuation"> = </span>sin(i<span class="hljs-punctuation"> * </span>(frameCount<span class="hljs-punctuation"> + </span><span class="hljs-number">3000</span>)<span class="hljs-punctuation"> * </span><span class="hljs-number">0.0001</span>)<span class="hljs-punctuation"> * </span>i<span class="hljs-punctuation"> * </span><span class="hljs-number">0.001125</span>;
+    y <span class="hljs-punctuation">+=</span> (<span class="hljs-built_in">Math</span><span class="hljs-punctuation">.</span>random()<span class="hljs-punctuation"> - </span><span class="hljs-number">0.5</span>)<span class="hljs-punctuation"> * </span><span class="hljs-number">0.01</span>;
+    vertices<span class="hljs-punctuation">.</span>push(x, y, <span class="hljs-number">0.0</span>);
+}
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">letItBe</span>(<span class="hljs-params">test, choses</span>) </span>{
+    just<span class="hljs-punctuation">.</span>singIt();
+}
+<span class="hljs-comment">// Create an empty buffer object to store the vertex buffer</span>
+<span class="hljs-keyword">var</span> vertex_buffer<span class="hljs-punctuation"> = </span>gl<span class="hljs-punctuation">.</span>createBuffer();
+
+<span class="hljs-comment">//</span></code></pre></div>
+
+
+<h3>Contexte</h3>
+
+<p class="noindent">
+    <span class="small-caps">Cette note de blog</span> fait partie de mon projet de recherche <span class="italic">Vers un cinéma algorithmique</span>, démarré en avril 2018. Je vous invite à consulter <a href="https://pelletierauger.github.io/fr/blog/2018/4/vers-un-cinema-algorithmique.html">la toute première note du projet</a> pour en apprendre davantage.
+</p>
+
+
+            </article>
+            <div id="footer">Guillaume Pelletier-Auger &mdash; 2016-2018
+    </div>
+    </body>
+    </html>
