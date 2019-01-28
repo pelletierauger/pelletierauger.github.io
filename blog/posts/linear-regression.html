@@ -13,11 +13,13 @@
     y = mx + b
 </math>
 <pn>
-    Dans le cas de la régression linéaire (ou <a href="https://fr.wikipedia.org/wiki/M%C3%A9thode_des_moindres_carr%C3%A9s_ordinaire">méthode des moindres carrés ordinaire</a>), nous allons calculer la valeur <im>m</im> avec la formule ci-dessous. Nous pouvons considérer que le numérateur de cette fraction représente la corrélation entre la croissance de la valeur <im>x</im> et celle de la valeur <im>y</im> (qui détermine la pente de notre droite).
+    Dans le cas de la régression linéaire (ou <a href="https://fr.wikipedia.org/wiki/M%C3%A9thode_des_moindres_carr%C3%A9s_ordinaire">méthode des moindres carrés ordinaire</a>), nous allons calculer la valeur <im>m</im> avec la formule &nbsn;ci-dessous.<snl label="linear-video">Cette formule est tirée de <a href="https://www.youtube.com/watch?v=szXbuO3bVRk">cette vidéo</a> réalisée par Daniel Shiffman dans le cadre de son cours <i8>Intelligence et apprentissage</i8>.</snl> Nous pouvons considérer que le numérateur de cette fraction représente la corrélation entre la croissance de la valeur <im>x</im> et celle de la valeur <im>y</im> (qui détermine la pente de notre droite).
 </pn>
-<math>
+<div class="mathbox-clear-left">
+    <math>
 m = \frac{\sum\limits_{i=0}^n(x_i-\bar{x})(y_i-\bar{y})}{\sum\limits_{i=0}^n(x_i-\bar{x})^2}
 </math>
+</div>
 
 <pn>
     Ici, <im>\bar{x}</im> représente la moyenne de toutes les valeurs <im>x</im>, donc la somme de tous les <im>x</im> divisée par la quantité <im>n</im> de ces valeurs.
