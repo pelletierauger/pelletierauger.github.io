@@ -1,0 +1,104 @@
+<!-- year -->2018
+<!-- month -->08
+<!-- day -->14
+<!-- fr-title -->Les spirales brumeuses
+<!-- fr-description -->Premiers pas avec WebGl et les &ldquo;shaders&rdquo;
+<!-- fr-content -->
+
+<pn>
+    Voici du code SuperCollider :
+</pn>
+
+<supercollider>
+(
+SynthDef.new(\pink, {
+    arg freq = 220;
+    var sig1, sig2, lfo, lfo2, env;
+    env = XLine.kr(0.15, 0.001, 3, 1, 0, 2);
+    lfo = SinOsc.kr(3);
+    lfo2 = SinOsc.kr(ExpRand(20, 800), mul: 0.75, add:1);
+    env = env * lfo;
+    sig1 = PinkNoise.ar(mul: 0.2);
+    sig2 = PinkNoise.ar(mul: 0.2);
+    sig1 = Ringz.ar(sig1, freq, 15, 0.2) * env;
+    sig2 = Ringz.ar(sig2, freq + 1, 15, 0.2) * env;
+    Out.ar(0, sig1);
+    Out.ar(1, sig2);
+}).add;
+)
+</supercollider>
+
+<pn>
+    Voici du code <sc>Glsl</sc>&nbsp;:
+</pn>
+
+<glsl>
+// What about now
+attribute vec3 coordinates;
+// attribute vec4 coordinates;
+uniform float time;
+varying vec2 myposition;
+varying vec2 center;
+
+float plot(vec2 s, float p) {
+    float largeur = abs(sin(time * 0.01)) * 0.1 + 0.1;
+    return smoothstep(p - largeur, p, s.y) - smoothstep(p, p + largeur, s.y);
+}
+
+void main(void) {
+    gl_Position = vec4(coordinates, 1.0);
+    center = vec2(gl_Position.x, gl_Position.y);
+    center = 512.0 + center * 512.0;
+    if (center > 0.1) {
+        center = 10.0;
+    }
+    myposition = vec2(gl_Position.x, gl_Position.y);
+    // This is but an humble test.
+    gl_PointSize = 50.0;
+}
+</glsl>
+
+
+<pn>
+    Voici du code JavaScript :
+</pn>
+<code>
+// shader() sets the active shader with our shader
+// shader(shaderProgram);
+// texcoordShader.setUniform('time', frameCount);
+// rect gives us some geometry on the screen
+// rect(0, 0, width, height);
+// console.log("Drawing!");
+vertices = [];
+for (let i = 0; i < 1000; i += 1) {
+    let x = cos(i * (frameCount + 3000) * 0.0001) * cos(i * 0.01) * i * 0.001125 * (9 / 14);
+    x += (Math.random() - 0.5) * 0.01;
+    let y = sin(i * (frameCount + 3000) * 0.0001) * i * 0.001125;
+    y += (Math.random() - 0.5) * 0.01;
+    vertices.push(x, y, 0.0);
+}
+function letItBe(test, choses) {
+    just.singIt();
+}
+// Create an empty buffer object to store the vertex buffer
+var vertex_buffer = gl.createBuffer();
+
+//
+</code>
+
+
+<h3>Contexte</h3>
+
+<pn>
+    <sc>Cette note de blog</sc> fait partie de mon projet de recherche <i>Vers un cinéma algorithmique</i>, démarré en avril 2018. Je vous invite à consulter <a href="https://pelletierauger.github.io/fr/blog/2018/4/vers-un-cinema-algorithmique.html">la toute première note du projet</a> pour en apprendre davantage.
+</pn>
+
+<!-- en-title -->Blurry spirals
+<!-- en-description -->First steps with <span class="small-caps">Glsl</span> shaders
+<!-- en-content -->
+
+<h3>Context</h3>
+
+<pn>
+    <sc>This blog post</sc> is part of my research project <i>Towards an algorithmic cinema</i>, started in April 2018. I invite you to read <a href="https://pelletierauger.github.io/en/blog/2018/4/towards-an-algorithmic-cinema.html">the first blog post of the project</a> to learn more about it.
+</pn>
