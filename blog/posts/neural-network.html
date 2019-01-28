@@ -1,19 +1,21 @@
 <!-- year -->2019
 <!-- month -->01
 <!-- day -->27
+<!-- style -->neural-network
 <!-- fr-title -->Petit réseau neuronal
-<!-- fr-description -->
+<!-- fr-description -->Construction d'un réseau neuronal très simple.
 <!-- fr-content -->
 
-
+<h3>Algorithme de propagation avant</h3>
+<img class="perceptron" src="../../../images/neural-network/perceptrons.png">
 <pn>
-    Le calcul réalisé par une des couches du réseau, qui se fait en considérant ses &#171;&nbsp;poids synaptiques&nbsp;&#187; (en anglais, &ldquo;weights&rdquo;), peut se résumer par l'équation ci-dessous, dans laquelle <im>h</im> représente une des couches intermédiaires du réseau, <im>x</im> représente les données d'entrées (&ldquo;inputs&rdquo;), et <im>w</im> représente les poids :
+    <sc>Le calcul réalisé</sc> par une des couches du réseau, qui se fait en considérant ses &#171;&nbsp;poids synaptiques&nbsp;&#187; (en anglais, &ldquo;weights&rdquo;), peut se résumer par le produit matriciel ci-dessous, dans lequel <im>h</im> représente une des couches intermédiaires (ou &#171;&nbsp;couches cachées&nbsp;&#187;) du réseau, <im>w</im> représente les poids et <im>x</im> représente les n&oelig;uds d'entrées (&ldquo;inputs&rdquo;)&nbsp;. Dans cette notation inversée, <im>\vec{w}_{ij}</im> indique le poids de <im>j</im> vers <im>i</im>.
 </pn>
-
+<!-- 
 <math>
     \begin{bmatrix}h_1\\h_2\end{bmatrix}=
-    \begin{bmatrix}x_1\\x_2\end{bmatrix}\times
-    \begin{bmatrix}w_{11} & w_{21}\\w_{12} & w_{22}\end{bmatrix}
+    \begin{bmatrix}w_{11} & w_{21}\\w_{12} & w_{22}\end{bmatrix}\times
+    \begin{bmatrix}x_1\\x_2\end{bmatrix}
 </math>
 
 <pn>
@@ -22,10 +24,135 @@
 
 <math>
 \begin{align*}
-    h_1 &= x_1 \times w_{11} + x_2 \times w_{21}\\
-    h_2 &= x_1 \times w_{12} + x_2 \times w_{22}
+    h_1 &= w_{11} \times x_1 + w_{21} \times x_2\\
+    h_2 &= w_{12} \times x_1 + w_{22} \times x_2
 \end{align*}
 </math>
+ -->
+
+<math>
+    \begin{bmatrix}
+    h_1\\
+    h_2
+    \end{bmatrix}
+
+    =
+
+    \begin{bmatrix}
+    w_{11} & w_{12} & w_{13}\\
+    w_{21} & w_{22} & w_{23}
+    \end{bmatrix}
+    
+    \cdot
+
+   \begin{bmatrix}
+    x_1\\
+    x_2\\
+    x_3
+    \end{bmatrix}
+</math>
+
+<pn>
+    Ce produit peut aussi se représenter ainsi :
+</pn>
+
+<math>
+\begin{align*}
+    h_1 &= (w_{11} \times x_1) + (w_{12} \times x_2) + (w_{13} \times x_3)\\
+    h_2 &= (w_{21} \times x_1) + (w_{22} \times x_2) + (w_{23} \times x_3)
+\end{align*}
+</math>
+<!-- read-more -->
+<pn>
+    Il est aussi possible de le simplifier davantage :
+</pn>
+
+<math>
+    H_i = W_{ij} \cdot X_i
+</math>
+
+<pn>
+    Il faut aussi ajouter un biais <im>B</im>, dont la valeur est de <im>1</im>.
+</pn>
+<img class="perceptron" src="../../../images/neural-network/feedforward1.png">
+<math>
+\begin{align*}
+    \begin{bmatrix}
+    h_1\\
+    h_2
+    \end{bmatrix}
+
+    &=
+
+    \begin{bmatrix}
+    w_{11} & w_{12} & w_{13} & b_1\\
+    w_{21} & w_{22} & w_{23} & b_2
+    \end{bmatrix}
+    
+    \cdot
+
+   \begin{bmatrix}
+    x_1\\
+    x_2\\
+    x_3\\
+    1
+    \end{bmatrix}\\
+\\
+    h_1 &= (w_{11} \times x_1) + (w_{12} \times x_2) + (w_{13} \times x_3) + b_1\\
+    h_2 &= (w_{21} \times x_1) + (w_{22} \times x_2) + (w_{23} \times x_3) + b_2\\
+\\
+    H_i &= \sigma(W_{ij}^{IH} \cdot X_i + B_i^H)
+\end{align*}
+</math>
+
+<pn>
+    La <a href="https://fr.wikipedia.org/wiki/Sigmo%C3%AFde_(math%C3%A9matiques)">fonction sigmoïde</a> servira de <i>fonction d'activation</i> :
+</pn>
+<math>
+    \sigma(x) = \frac{1}{1 + e^{-x}}
+</math>
+<pn>
+    Le calcul du n&oelig;ud de sortie <im>Y</im> se fera finalement de cette façon :
+</pn>
+<math>
+    Y = \sigma(W_{ij}^{HO} \times H_i + B_i^Y)
+</math>
+
+<h3>Rétropropagation du gradient</h3>
+<pn>
+    <sc>Une fois la propagation avant</sc> terminée, nous sommes en mesure de calculer l'erreur <im>e</im>, qui doit ensuite être envoyée du n&oelig;ud de sortie vers les couches précédentes, par rétropropagation. Ici, <im>\vec{w}_{ij}</im> représente le poids <im>w</im> entre le n&oelig;ud de sortie <im>j</im> et la couche cachée <im>i</im>.
+</pn>
+<img class="perceptron" src="../../../images/neural-network/backpropagation.png">
+<math>
+\begin{align*}
+    e_{h_1} &= \left(\frac{w_{11}}{w_{11} + w_{12}} \times e_1\right) + \left(\frac{w_{21}}{w_{21} + w_{22}} \times e_2\right)\\
+    \\
+    e_{h_2} &= \left(\frac{w_{12}}{w_{11} + w_{12}} \times e_1\right) + \left(\frac{w_{22}}{w_{21} + w_{22}} \times e_2\right)\\
+\end{align*}
+</math>
+
+
+<h3>Autres ressources</h3>
+<ul class="dash">
+    <li>
+        <i>Make your own neural network</i>, de Tariq Rashid.
+    </li>
+    <li>
+        <i><a href="https://www.youtube.com/watch?v=fNk_zzaMoSs&list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab">Essence de l'algèbre linéaire</a></i>, une série de vidéos de la chaîne YouTube 3Blue1Brown.
+    </li>
+    <li>
+        <i><a href="https://www.youtube.com/watch?v=aircAruvnKk&list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi">Les réseaux neuronaux</a></i>, une autre série de 3Blue1Brown.
+    </li>
+    <li>
+        <i><a href="https://www.youtube.com/watch?v=WUvTyaaNkzM&list=PLZHQObOWTQDMsr9K-rj53DwVRMYO3t5Yr">Essence du calcul différentiel et intégral</a></i>, une autre série de 3Blue1Brown. &ldquo;Chain rule, product rule&rdquo;.
+    </li>
+    <li>
+        <i><a href="http://www.neuralnetworksanddeeplearning.com">Neural Networks and Deep Learning</a></i>.
+    </li>
+    <li>
+        <i><a href="https://www.edx.org/course/essential-math-for-machine-learning-python-edition">Essential Math for Machine Learning</a></i>, un cours de Graeme Malcolm sur edX.
+    </li>
+</ul>
 
 <h3>Contexte</h3>
 
