@@ -1,0 +1,38 @@
+@font-face {
+    font-family: "Falaise";
+    src: url('./fonts/falaise.ttf') format('truetype'),
+    url('./fonts/falaise.woff') format('woff');
+}
+
+article span.falaise-header {
+    font-family: 'Falaise';
+    font-size: 1.25em;
+    line-height: 1em;
+}
+
+.falaise {
+    font-family: 'Falaise';
+    font-size: 0.9em;
+}
+
+.falaise-paragraph {
+    font-family: 'Falaise';
+    font-size: 1.5em;
+    line-height: 1.35em;
+}
+
+.mountain-drop-caps {
+    font-family: 'Falaise';
+    font-size: 4.35em;
+    /*line-height: 1em;*/
+    /*width: 80%;*/
+    /*padding: 10%;*/
+    margin: 0 auto;
+    padding-right: 5px;
+    float: left;
+    line-height: 1.25;
+    margin-bottom: -0.5em;
+    /*padding-left: -0.1em;*/
+    /*margin-left: -0.04em;*/
+    text-indent: 0;
+}
