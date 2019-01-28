@@ -1,6 +1,11 @@
 exports.posts = [
     // "ant-colonies",
     // "density-maps",
+    "neural-network",
+    "linear-regression",
+    "singing-trees",
+    "depth-first-search",
+    "blurry-spirals",
     "a-live-coding-machine",
     "graph-sequencers",
     "granular-drawings",
