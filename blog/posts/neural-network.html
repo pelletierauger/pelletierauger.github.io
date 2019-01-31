@@ -131,9 +131,70 @@
 \end{align*}
 </math>
 
+<pn>
+    Nous allons cependant simplifier ce calcul en ne normalisant pas les poids avant de les multiplier avec l'erreur :
+</pn>
+
+<math>
+\begin{align*}
+    e_{h_1} &= w_{11} \times e_1 + w_{21} \times e_2\\
+    e_{h_2} &= w_{12} \times e_1 + w_{22} \times e_2
+\end{align*}
+</math>
+
+<pn>
+    Ce qui équivaut à ce produit matriciel :
+</pn>
+
+<math>
+    \begin{bmatrix}
+    e_{h_1}\\
+    e_{h_2}
+    \end{bmatrix}
+
+    =
+
+    \begin{bmatrix}
+    w_{11} & w_{21}\\
+    w_{12} & w_{22}
+    \end{bmatrix}
+    
+    \cdot
+
+   \begin{bmatrix}
+    e_1\\
+    e_2
+    \end{bmatrix}
+</math>
+
+<pn>
+    À noter que la matrice des poids qui était utilisée lors de la propagation avant a été transposée pour être utilisée lors de la rétropropagation.
+</pn>
+
+<math>
+\begin{align*}
+    W &=
+    \begin{bmatrix}
+        w_{11} & w_{12}\\
+        w_{21} & w_{22}
+    \end{bmatrix}\\
+    \\
+    W^T &=
+    \begin{bmatrix}
+        w_{11} & w_{21}\\
+        w_{12} & w_{22}
+    \end{bmatrix}
+\end{align*}
+</math>
 
 <h3>Autres ressources</h3>
 <ul class="dash">
+    <li>
+        <a href="https://github.com/yining1023/machine-learning-for-the-web"><i>Machine Learning for the Web</i></a>, un cours de Yining Shi donné à <sc>Itp</sc> (<sc>Nyu</sc>).
+    </li>
+    <li>
+        <a href="https://beta.observablehq.com/@nsthorat/how-to-build-a-teachable-machine-with-tensorflow-js"><i>How to build a Teachable Machine with TensorFlow.js</i></a>, un tutoriel de Nikhil Thorat (un des développeurs de TensorFlow).
+    </li>
     <li>
         <i>Make your own neural network</i>, de Tariq Rashid.
     </li>
