@@ -771,6 +771,8 @@ function parseHTMLTemplate(s) {
     page.fr.content = page.fr.content.replace(/<supercollider>/g, `<pre><code class="supercollider">`);
     page.fr.content = page.fr.content.replace(/<\/supercollider>/g, `</code></pre>`);
 
+    page.fr.content = page.fr.content.replace(/<nosyntax>/g, `<pre><code class="nosyntax">`);
+    page.fr.content = page.fr.content.replace(/<\/nosyntax>/g, `</code></pre>`);
 
     page.fr.content = page.fr.content.replace(/<pre>/g, `<div class="codebox"><pre>`);
     page.fr.content = page.fr.content.replace(/<\/pre>/g, `</pre></div>`);
@@ -891,6 +893,9 @@ function parseHTMLTemplate(s) {
 
     page.en.content = page.en.content.replace(/<supercollider>/g, `<pre><code class="supercollider">`);
     page.en.content = page.en.content.replace(/<\/supercollider>/g, `</code></pre>`);
+
+    page.en.content = page.en.content.replace(/<nosyntax>/g, `<pre><code class="nosyntax">`);
+    page.en.content = page.en.content.replace(/<\/nosyntax>/g, `</code></pre>`);
 
     page.en.content = page.en.content.replace(/<pre>/g, `<div class="codebox"><pre>`);
     page.en.content = page.en.content.replace(/<\/pre>/g, `</pre></div>`);
