@@ -219,8 +219,16 @@
     The main feature of this template is a convenient system to export frames to create videos and gifs. This is accomplished with a small Node.js server, named <span class="inline-code">server.js</span>, that communicates with the <span class="lnum">p5.js</span> sketch via Socket.io. To export frames, the sketch gets a reference to the web canvas and sends it to <span class="inline-code">server.js</span>, which saves it to disk. The best part is that the exportation can all happen behind the scene, in the command line, using the Node module Puppeteer. Then, when all the frames are exported, they can be turned into videos and gifs using <span class="small-caps">ffmpeg</span>.
 </p>
 <p>
-    I’ll now look at all the template’s pieces in details.
+    Below are all the files included in the template. I will now go through how all the pieces fit together.
 </p>
+<div class="codebox"><pre><code class="nosyntax">frame-export.js
+frames
+headless.js
+index.html
+libraries
+server.js
+sketch.js
+style.css</code></pre></div>
 
 
                 <div class="languageJump">
