@@ -3,7 +3,7 @@
 <!-- day -->27
 <!-- style -->neural-network
 <!-- fr-title -->Petit réseau neuronal
-<!-- fr-description -->Construction d'un réseau neuronal très simple.
+<!-- fr-description -->Notes prises lors de la construction d'un réseau neuronal très simple.
 <!-- fr-content -->
 
 <h3>Algorithme de propagation avant</h3>
@@ -222,8 +222,201 @@
 </pn>
 
 <!-- en-title -->Small neural network
-<!-- en-description -->
+<!-- en-description -->Notes taken while learning how to build a neural network for artistic purposes.
 <!-- en-content -->
+
+<h3>Feedforward algorithm</h3>
+
+<img class="perceptron" src="../../../images/neural-network/perceptrons.png">
+<pn>
+    <sc>The calculations made</sc> by one the network's layers, which takes into account its synaptic &ldquo;weights&rdquo;, can be represented by the matrix product written down below, in which <im>h</im> represents an intermediary layer (or &ldquo;hidden layer&rdquo;) of the network, <im>w</im> represents the weights and <im>x</im> represents the inputs. In this inverted notation, <im>\vec{w}_{ij}</im> indicates the weight from <im>j</im> to <im>i</im>.
+</pn>
+
+<math>
+    \begin{bmatrix}
+    h_1\\
+    h_2
+    \end{bmatrix}
+
+    =
+
+    \begin{bmatrix}
+    w_{11} & w_{12} & w_{13}\\
+    w_{21} & w_{22} & w_{23}
+    \end{bmatrix}
+    
+    \cdot
+
+   \begin{bmatrix}
+    x_1\\
+    x_2\\
+    x_3
+    \end{bmatrix}
+</math>
+
+<pn>
+    This product can also be represented thusly:
+</pn>
+
+<math>
+\begin{align*}
+    h_1 &= (w_{11} \times x_1) + (w_{12} \times x_2) + (w_{13} \times x_3)\\
+    h_2 &= (w_{21} \times x_1) + (w_{22} \times x_2) + (w_{23} \times x_3)
+\end{align*}
+</math>
+<!-- read-more -->
+<pn>
+    And it's also possible to simplify even more:
+</pn>
+
+<math>
+    H_i = W_{ij} \cdot X_i
+</math>
+
+<pn>
+    We must also add the bias <im>B</im>, whose value is <im>1</im>.
+</pn>
+<img class="perceptron" src="../../../images/neural-network/feedforward1.png">
+<math>
+\begin{align*}
+    \begin{bmatrix}
+    h_1\\
+    h_2
+    \end{bmatrix}
+
+    &=
+
+    \begin{bmatrix}
+    w_{11} & w_{12} & w_{13} & b_1\\
+    w_{21} & w_{22} & w_{23} & b_2
+    \end{bmatrix}
+    
+    \cdot
+
+   \begin{bmatrix}
+    x_1\\
+    x_2\\
+    x_3\\
+    1
+    \end{bmatrix}\\
+\\
+    h_1 &= (w_{11} \times x_1) + (w_{12} \times x_2) + (w_{13} \times x_3) + b_1\\
+    h_2 &= (w_{21} \times x_1) + (w_{22} \times x_2) + (w_{23} \times x_3) + b_2\\
+\\
+    H_i &= \sigma(W_{ij}^{IH} \cdot X_i + B_i^H)
+\end{align*}
+</math>
+
+<pn>
+    The <a href="https://en.wikipedia.org/wiki/Sigmoid_function">sigmoid function</a> will be used as the <i>activation function</i>:
+</pn>
+<math>
+    \sigma(x) = \frac{1}{1 + e^{-x}}
+</math>
+<pn>
+    The calculation of the output layer <im>Y</im> will finally be done this way:
+</pn>
+<math>
+    Y = \sigma(W_{ij}^{HO} \times H_i + B_i^Y)
+</math>
+
+<h3>Backpropagation</h3>
+<pn>
+    <sc>Once the feedforward</sc> is done, we are able to calculater the error <im>e</im>, which must then be sent from the output layer to the preceding layers, by backpropagation. Here, <im>\vec{w}_{ij}</im> represents the weight <im>w</im> between the output layer <im>j</im> and the hidden layer <im>i</im>.
+</pn>
+<img class="perceptron" src="../../../images/neural-network/backpropagation.png">
+<math>
+\begin{align*}
+    e_{h_1} &= \left(\frac{w_{11}}{w_{11} + w_{12}} \times e_1\right) + \left(\frac{w_{21}}{w_{21} + w_{22}} \times e_2\right)\\
+    \\
+    e_{h_2} &= \left(\frac{w_{12}}{w_{11} + w_{12}} \times e_1\right) + \left(\frac{w_{22}}{w_{21} + w_{22}} \times e_2\right)\\
+\end{align*}
+</math>
+
+<pn>
+    We will also simplify this calculation by not normalizing the weights before multiplying them with the error:
+</pn>
+
+<math>
+\begin{align*}
+    e_{h_1} &= w_{11} \times e_1 + w_{21} \times e_2\\
+    e_{h_2} &= w_{12} \times e_1 + w_{22} \times e_2
+\end{align*}
+</math>
+
+<pn>
+    Which is equal to this matrix product:
+</pn>
+
+<math>
+    \begin{bmatrix}
+    e_{h_1}\\
+    e_{h_2}
+    \end{bmatrix}
+
+    =
+
+    \begin{bmatrix}
+    w_{11} & w_{21}\\
+    w_{12} & w_{22}
+    \end{bmatrix}
+    
+    \cdot
+
+   \begin{bmatrix}
+    e_1\\
+    e_2
+    \end{bmatrix}
+</math>
+
+<pn>
+    It should be noted that the weights matrix that was used during the feedforward was transposed to be used for the backpropagation.
+</pn>
+
+<math>
+\begin{align*}
+    W &=
+    \begin{bmatrix}
+        w_{11} & w_{12}\\
+        w_{21} & w_{22}
+    \end{bmatrix}\\
+    \\
+    W^T &=
+    \begin{bmatrix}
+        w_{11} & w_{21}\\
+        w_{12} & w_{22}
+    \end{bmatrix}
+\end{align*}
+</math>
+
+<h3>Other resources</h3>
+
+<ul class="dash">
+    <li>
+        <a href="https://github.com/yining1023/machine-learning-for-the-web"><i>Machine Learning for the Web</i></a>, a course by Yining Shi at <sc>Itp</sc> (<sc>Nyu</sc>).
+    </li>
+    <li>
+        <a href="https://beta.observablehq.com/@nsthorat/how-to-build-a-teachable-machine-with-tensorflow-js"><i>How to build a Teachable Machine with TensorFlow.js</i></a>, a tutorial by Nikhil Thorat (one of the developers of TensorFlow.js).
+    </li>
+    <li>
+        <i>Make your own neural network</i>, by Tariq Rashid.
+    </li>
+    <li>
+        <i><a href="https://www.youtube.com/watch?v=fNk_zzaMoSs&list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab">Essence of Linear Algebra</a></i>, a video series on the 3Blue1Brown YouTube channel.
+    </li>
+    <li>
+        <i><a href="https://www.youtube.com/watch?v=aircAruvnKk&list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi">Neural Networks</a></i>, another series by 3Blue1Brown.
+    </li>
+    <li>
+        <i><a href="https://www.youtube.com/watch?v=WUvTyaaNkzM&list=PLZHQObOWTQDMsr9K-rj53DwVRMYO3t5Yr">Essence of calculus</a></i>, another series by 3Blue1Brown. (Chain rule, product rule.)
+    </li>
+    <li>
+        <i><a href="http://www.neuralnetworksanddeeplearning.com">Neural Networks and Deep Learning</a></i>.
+    </li>
+    <li>
+        <i><a href="https://www.edx.org/course/essential-math-for-machine-learning-python-edition">Essential Math for Machine Learning</a></i>, a course by Graeme Malcolm on edX.
+    </li>
+</ul>
 
 <h3>Context</h3>
 
