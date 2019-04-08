@@ -7,7 +7,7 @@
 
 
 <pn>
-    Une droite est traditionnellement représentée par cette équation, dans laquelle <im>m</im> représente la pente et <im>b</im> l'ordonnée à l'origine :
+    <sc>Une droite</sc> est traditionnellement représentée par cette équation, dans laquelle <im>m</im> représente la pente et <im>b</im> l'ordonnée à l'origine :
 </pn>
 <math>
     y = mx + b
@@ -20,7 +20,7 @@
 m = \frac{\sum\limits_{i=0}^n(x_i-\bar{x})(y_i-\bar{y})}{\sum\limits_{i=0}^n(x_i-\bar{x})^2}
 </math>
 </div>
-
+<!-- read-more -->
 <pn>
     Ici, <im>\bar{x}</im> représente la moyenne de toutes les valeurs <im>x</im>, donc la somme de tous les <im>x</im> divisée par la quantité <im>n</im> de ces valeurs.
 </pn>
@@ -47,8 +47,37 @@ m = \frac{\sum\limits_{i=0}^n(x_i-\bar{x})(y_i-\bar{y})}{\sum\limits_{i=0}^n(x_i
 <!-- en-description -->Small steps towards machine learning.
 <!-- en-content -->
 
-<h3>Context</h3>
+<pn>
+    <sc>A line</sc> is traditionally represented by this equation, in which <im>m</im> represents the slope and <im>b</im> the <im>y</im> intercept at the origin:
+</pn>
+<math>
+    y = mx + b
+</math>
+<pn>
+    In the case of linear regression (or <a href="https://en.wikipedia.org/wiki/Ordinary_least_squares"> the ordinary least squares method</a>), we will calculate the <im>m</im> value with the formula &nbsn;below.<snl label="linear-video">This formula is taken from <a href="https://www.youtube.com/watch?v=szXbuO3bVRk">this video</a> made by Daniel Shiffman for his <i8>Intelligence and Learning</i8> course.</snl> We will consider that the numerator of this fraction represents the correlation between the growth of the value <im>x</im> and the growth of the value <im>y</im> (which determines the slope of the line).
+</pn>
+<div class="mathbox-clear-left">
+    <math>
+m = \frac{\sum\limits_{i=0}^n(x_i-\bar{x})(y_i-\bar{y})}{\sum\limits_{i=0}^n(x_i-\bar{x})^2}
+</math>
+</div>
+<!-- read-more -->
+<pn>
+    Here, <im>\bar{x}</im> represents the average of all the <im>x</im> values, which is the sum of all the <im>x</im> divided by the amount <im>n</im> of those values.
+</pn>
 
+<math>
+\bar{x} = \frac{\sum\limits_{i=0}^n x_i}{n}
+</math>
+
+<pn>
+    As for <im>b</im>, the <im>y</im> intercept, we will calculate it thusly:
+</pn>
+<math>
+    b = \bar{y} - m\bar{x}
+</math>
+
+<h3>Context</h3>
 <pn>
     <sc>This blog post</sc> is part of my research project <i>Towards an algorithmic cinema</i>, started in April 2018. I invite you to read <a href="https://pelletierauger.github.io/en/blog/2018/4/towards-an-algorithmic-cinema.html">the first blog post of the project</a> to learn more about it.
 </pn>
