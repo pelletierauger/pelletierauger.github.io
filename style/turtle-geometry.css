@@ -28,7 +28,7 @@ article span.supernarrow {
 }
 
 .drop-caps {
-    font-size: 4.5em;
+    /*font-size: 4.5em;
     font-family: 'ATT4425';
     padding-right: 5px;
     float: left;
@@ -36,7 +36,7 @@ article span.supernarrow {
     padding-top: 0.1em;
     padding-left: -0.1em;
     margin-left: -0.04em;
-    text-indent: 0;
+    text-indent: 0;*/
 }
 
 #att-i {
@@ -49,5 +49,5 @@ article h2 {
 }
 
 .date {
-    margin-bottom: 4em;
+    /*margin-bottom: 4em;*/
 }
