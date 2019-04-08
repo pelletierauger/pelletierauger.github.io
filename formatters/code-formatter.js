@@ -9,6 +9,7 @@ module.exports = function(htmlContent, fileName) {
     var javascript = /(<code>)([\S\s]*?)(<\/code>)/g;
     var glsl = /(<code class="glsl">)([\S\s]*?)(<\/code>)/g;
     var supercollider = /(<code class="supercollider">)([\S\s]*?)(<\/code>)/g;
+    var nosyntax = /(<code class="nosyntax">)([\S\s]*?)(<\/code>)/g;
     var response;
 
     //If there is code contained within the htmlContent
@@ -366,8 +367,13 @@ module.exports = function(htmlContent, fileName) {
         });
     }
 
-
-
+    if (htmlContent.match(nosyntax)) {
+        htmlContent = htmlContent.replace(nosyntax, function(match, one, two, three) {
+            two = two.trim();
+            two = two.replace(/^\s+|\s+$|\n+$/g, "");
+            return one + two + three;
+        });
+    }
 
     if (!response) {
         response = "No code found.";
