@@ -1,0 +1,127 @@
+<!-- year -->2019
+<!-- month -->04
+<!-- day -->08
+<!-- fr-title -->Synthèse à tables d'ondes
+<!-- fr-html-title -->Synthèse à tables d&rsquo;ondes
+<!-- fr-description -->Balbutiements avec SuperCollider.
+<!-- fr-content -->
+
+<pn>
+    <sc>Je suis présentement</sc> en train d'apprendre les rudiments de la synthèse à tables d'ondes (&ldquo;wavetable synthesis&rdquo;) avec SuperCollider, et je vais rassembler ci-dessous mes notes de travail et mes premières esquisses &nbsn;musicales.<snl label="eli">J'ai commencé mon apprentissage grâce à <a href="https://www.youtube.com/watch?v=q1VQAZKh6_8">cette excellente vidéo</a> de Eli Fieldsteel, qui lui-même prend une part de son matériel dans la <a href="http://doc.sccode.org/Classes/Shaper.html">documentation de la classe Shaper</a>.</snl>
+</pn>
+<p>
+    Tout commence par la création d'une table d'ondes :
+</p>
+<supercollider>
+~sig = Signal.newClear(513);
+(
+~sig.waveFill({
+    arg x, y, i;
+    // i.linlin(0, 512, -1, 1);
+    // sin(x);
+    sin(x.cubed * 20);
+}, 0, 1);
+~sig.plot;
+~w = ~sig.asWavetableNoWrap;
+~b = Buffer.loadCollection(s, ~w);
+)
+</supercollider>
+
+<pn>
+    On crée tout d'abord un <ic>Signal</ic>, on le remplit avec la méthode <ic>waveFill</ic>, puis on le transforme en <ic>Wavetable</ic>, puis en <ic>Buffer</ic>. L'expression <ic>sin(x.cubed * 20)</ic> qui remplit le <ic>Signal</ic> a été écrite arbitrairement après plusieurs essais, et j'aime beaucoup le son qu'elle produit.
+</pn>
+<!-- read-more -->
+<h3>Altérations et interpolations</h3>
+
+<supercollider>
+(
+~sigB = Signal.fill(256, {
+    |i|
+    var t = i / 255.0;
+    t + (0.1 * (max(t, 0.1) - 0.1) * sin(2pi * t * 80 + sin(2pi * 25.6 * t)));
+});
+)
+(
+~sigA.waveFill({
+    arg x, y, i;
+    // i.linlin(0, 512, -1, 1);
+    // sin(x);
+    sin(x.cubed * 20);
+}, 0, 1);
+)
+~w = ~sigB.asWavetableNoWrap;
+~sigA = Signal.newClear(513);
+~sigB = Signal.newClear(513);
+~sigC = Signal.newClear(513);
+~sigB.size;
+~sigC = (~sigA * 0.75) + (~sigB * 0.25);
+~sigC = (~sigA * 0.9) * (~sigB * 0.1);
+
+~sigC = (~sigA * 1) * (~sigB * 0.15);
+~sigC = ~sigA * ~newSig;
+~sigC.overDub(~sigB);
+~sigA.plot;
+~sigB.plot;
+~sigC.plot;
+~sigB;
+~sigC = ~sigA.blend(~sigB, 2);
+(~sigB + (~sigA * 0.1)).plot;
+~sigC = (~sigB + (~sigA * 0.1));
+(
+~sigB = Signal.fill(513, { |i|
+    var t = i/512.0;
+    t + (0.1 * (max(t, 0.1) - 0.1) * sin(2pi * t * 80 + sin(2pi * 25.6 * t)))
+});
+)
+
+~newSig = Array.interpolation(513, 0, 1);
+~newSig.fill(Array.interpolation(513, 0, 1));
+~newSig = Signal.newClear(513);
+~newSig;
+
+Signal[1, 2, 3, 4].blend(Signal[5, 5, 5, 0], 2);
+
+
+~sigArr = {|i| ~sigA.blend(~sigB, i.linlin(0, 16, 1, 1.5));}!16;
+~sigArr = {|i| (~sigB + (~sigA * i.linlin(0, 16, 0.1, 1)));}!16;
+~sigArr[15].plot;
+
+~wvArr = {|i| ~sigArr[i].asWavetableNoWrap;}!~sigArr.size;
+~bArr = {|i| Buffer.loadCollection(s, ~wvArr[i]);}!~wvArr.size;
+
+~b.bufnum;
+</supercollider>
+
+<h3>Collections de signaux</h3>
+
+<pn>
+    Création de seize signaux différents qui représentent seize différentes interpolations entre deux signaux originaux :
+</pn>
+
+<supercollider>
+// We create an array filled with 16 instances of Signal.
+// Each instance is a different blend between ~sigA and ~sigB.
+~sigArr = {|i| ~sigA.blend(~sigB, i.linlin(0, 16, 1, 1.5));}!16;
+
+// We create an array with all those signals stored as Wavetables.
+~wavArr = {|i| ~sigArr[i].asWavetableNoWrap;}!~sigArr.size;
+
+// One last array, with those wavetables stored as buffers.
+~bufArr = {|i| Buffer.loadCollection(s, ~wavArr[i]);}!~wavArr.size;
+</supercollider>
+
+<pn>
+    La transformation de <ic>~sigArr</ic> vers <ic>~bufArr</ic> pourrait aussi être faite avec une étape en moins :
+</pn>
+<supercollider>
+(
+~bufArr = {
+    |i| 
+    Buffer.loadCollection(s, ~sigArr[i].asWavetableNoWrap);
+}!~sigArr.size;
+)
+</supercollider>
+
+<!-- en-title -->Wavetable synthesis
+<!-- en-description -->Early experiments with SuperCollider.
+<!-- en-content -->
