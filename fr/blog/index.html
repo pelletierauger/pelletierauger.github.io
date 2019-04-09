@@ -140,6 +140,52 @@
     <div class="blog-posts">
             <div class="blog-post">
                 <div class="blog-post-header">
+                    <a href="../blog/2019/4/synthese-a-tables-d'ondes.html"><div class="date">8 avril 2019</div>
+                    <div class="blog-title-box"><h2 class="header">Synthèse à tables d’ondes
+</h2></div>
+                    <div class="description">
+                    Balbutiements avec SuperCollider.
+
+            </div></a>
+                </div>
+                <div class="blog-post-content">
+                    
+
+<p class="noindent">
+    <span class="small-caps">Je suis présentement</span> en train d’apprendre les rudiments de la synthèse à tables d’ondes (“wavetable synthesis”) avec SuperCollider, et je vais rassembler ci-dessous mes notes de travail et mes premières esquisses <span class="nobreak">musicales.
+        <label for="eli" class="margin-toggle sidenote-number">
+        </label></span>
+        <input type="checkbox" id="eli" class="margin-toggle">
+        <span class="sidenote-left">J’ai commencé mon apprentissage grâce à <a href="https://www.youtube.com/watch&nbsp;?v=q1VQAZKh6_8">cette excellente vidéo</a> de Eli Fieldsteel, qui lui-même prend une part de son matériel dans la <a href="http://doc.sccode.org/Classes/Shaper.html">documentation de la classe Shaper</a>.</span>
+</p>
+<p>
+    Tout commence par la création d’une table d’ondes&nbsp;:
+</p>
+<div class="codebox"><pre><code class="supercollider">~sig<span class="hljs-punctuation"> = </span><span class="hljs-built_in">Signal</span><span class="hljs-punctuation">.</span>newClear(<span class="hljs-number">513</span>);
+(
+~sig<span class="hljs-punctuation">.</span>waveFill({
+    <span class="hljs-keyword">arg</span> x, y, i;
+    <span class="hljs-comment">// i.linlin(0, 512, -1, 1);</span>
+    <span class="hljs-comment">// sin(x);</span>
+    sin(x<span class="hljs-punctuation">.</span>cubed<span class="hljs-punctuation"> * </span><span class="hljs-number">20</span>);
+}, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>);
+~sig<span class="hljs-punctuation">.</span>plot;
+~w<span class="hljs-punctuation"> = </span>~sig<span class="hljs-punctuation">.</span>asWavetableNoWrap;
+~b<span class="hljs-punctuation"> = </span><span class="hljs-built_in">Buffer</span><span class="hljs-punctuation">.</span>loadCollection(s, ~w);
+)</code></pre></div>
+
+<p class="noindent">
+    On crée tout d’abord un <span class="inline-code">Signal</span>, on le remplit avec la méthode <span class="inline-code">waveFill</span>, puis on le transforme en <span class="inline-code">Wavetable</span>, puis en <span class="inline-code">Buffer</span>. L’expression <span class="inline-code">sin(x.cubed * 20)</span> qui remplit le <span class="inline-code">Signal</span> a été écrite arbitrairement après plusieurs essais, et j’aime beaucoup le son qu’elle produit.
+</p>
+
+                <div class="languageJump">
+                    <a href="../blog/2019/4/synthese-a-tables-d'ondes.html">Continuer à lire…</a>
+                </div>
+               
+                </div>
+            </div>
+            <div class="blog-post">
+                <div class="blog-post-header">
                     <a href="../blog/2019/1/petit-reseau-neuronal.html"><div class="date">27 janvier 2019</div>
                     <div class="blog-title-box"><h2 class="header">Petit réseau neuronal</h2></div>
                     <div class="description">
@@ -587,32 +633,6 @@ vertices<span class="hljs-punctuation"> = </span>[];
 
                 <div class="languageJump">
                     <a href="../blog/2018/6/les-tortues-de-perlin.html">Continuer à lire…</a>
-                </div>
-               
-                </div>
-            </div>
-            <div class="blog-post">
-                <div class="blog-post-header">
-                    <a href="../blog/2018/6/phenotype-et-genotype.html"><div class="date">23 juin 2018</div>
-                    <div class="blog-title-box"><h2 class="header">Phénotype et génotype</h2></div>
-                    <div class="description">
-                    
-
-            </div></a>
-                </div>
-                <div class="blog-post-content">
-                    
-
-<p class="noindent">
-    Il me faut construire un phénotype complet&nbsp;; pour l’instant, je n’en ai qu’un prototype. Il me faut tout d’abord séparer la définition du phénotype et son interprétation. Son interprétation doit être séparée, elle ne doit pas être une méthode du prototype <span class="inline-code">DNA</span>.
-</p>
-<p>
-    Une chose un peu complexe&nbsp;: je veux avoir plusieurs types d’<span class="small-caps">adn</span>, mais également plusieurs façons d’exprimer un type d’<span class="small-caps">adn</span>.
-</p>
-
-
-                <div class="languageJump">
-                    <a href="../blog/2018/6/phenotype-et-genotype.html">Continuer à lire…</a>
                 </div>
                
                 </div>
