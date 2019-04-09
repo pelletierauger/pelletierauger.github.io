@@ -363,6 +363,10 @@ module.exports = function(htmlContent, fileName) {
                 return '<span class="hljs-keyword">attribute</span>';
             });
 
+            code.value = code.value.replace(/(<span class="hljs-number">)([-.0-9]+)(<\/span>)([a-zA-ZÀ-ú])/g, function(match, a, b, c, d) {
+                return b + d;
+            });
+
             return one + code.value + three;
         });
     }
