@@ -31,7 +31,7 @@
     /*background-color: red;*/
 }
 
-.sidenote a, .sidenote-left a {
+.sidenote a, .sidenote-left a, .marginnote a, .marginnote-left a {
     box-shadow: inset 0 -0.09rem 0 0 #fff, inset 0 -0.15rem 0 0 #000;
 }
 
