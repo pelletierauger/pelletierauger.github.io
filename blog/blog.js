@@ -5,6 +5,7 @@ exports.posts = [
     "neural-network",
     "linear-regression",
     "singing-trees",
+    "blurry-quadrilaterals",
     "depth-first-search",
     "blurry-spirals",
     "a-live-coding-machine",
