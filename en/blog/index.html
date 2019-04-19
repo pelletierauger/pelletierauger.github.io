@@ -8,8 +8,8 @@
         
         <link href="../../style/truchet.css" rel="stylesheet" type="text/css">
         
-        <link href="https://fonts.googleapis.com/css?family=EB+Garamond" rel="stylesheet">
-        
+        <link href="https://fonts.googleapis.com/css?family=Inconsolata|EB+Garamond" rel="stylesheet">
+        <link href="../../style/code.css" rel="stylesheet" type="text/css">
     <style id="MathJax_CHTML_styles">.mjx-chtml {display: inline-block; line-height: 0; text-indent: 0; text-align: left; text-transform: none; font-style: normal; font-weight: normal; font-size: 100%; font-size-adjust: none; letter-spacing: normal; word-wrap: normal; word-spacing: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0; min-height: 0; border: 0; margin: 0; padding: 1px 0}
 .MJXc-display {display: block; text-align: center; margin: 1em 0; padding: 0}
 .mjx-chtml[tabindex]:focus, body :focus .mjx-chtml[tabindex] {display: inline-table}
@@ -149,6 +149,37 @@
                 </div>
                 <div class="blog-post-content">
                     
+
+
+<p class="noindent">
+    <span class="small-caps">I’m currently</span> learning the basics of wavetable synthesis with SuperCollider, and I will gather my notes and my first musical sketches <span class="nobreak">below.<label for="eli" class="margin-toggle sidenote-number"></label></span>
+        <input type="checkbox" id="eli" class="margin-toggle">
+        <span class="sidenote-left">I started to learn with <a href="https://www.youtube.com/watch?v=q1VQAZKh6_8">this excellent video</a> by Eli Fieldsteel, who takes part of his material in the <a href="http://doc.sccode.org/Classes/Shaper.html">documentation of the Shaper class</a>.</span>
+</p>
+<p>
+    It all begins by the creation of a wavetable:
+</p>
+<div class="codebox"><pre><code class="supercollider">~sig<span class="hljs-punctuation"> = </span><span class="hljs-built_in">Signal</span><span class="hljs-punctuation">.</span>newClear(<span class="hljs-number">513</span>);
+(
+~sig<span class="hljs-punctuation">.</span>waveFill({
+    <span class="hljs-keyword">arg</span> x, y, i;
+    <span class="hljs-comment">// i.linlin(0, 512, -1, 1);</span>
+    <span class="hljs-comment">// sin(x);</span>
+    sin(x<span class="hljs-punctuation">.</span>cubed<span class="hljs-punctuation"> * </span><span class="hljs-number">20</span>);
+}, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>);
+~sig<span class="hljs-punctuation">.</span>plot;
+~w<span class="hljs-punctuation"> = </span>~sig<span class="hljs-punctuation">.</span>asWavetableNoWrap;
+~b<span class="hljs-punctuation"> = </span><span class="hljs-built_in">Buffer</span><span class="hljs-punctuation">.</span>loadCollection(s, ~w);
+)</code></pre></div>
+
+<p class="noindent">
+    We create an instance of <span class="inline-code">Signal</span>, we fill it with the <span class="inline-code">waveFill</span> method, we transform it into an instance of <span class="inline-code">Wavetable</span>, and then load it into a <span class="inline-code">Buffer</span>. The expression <span class="inline-code">sin(x.cubed * 20)</span> used to fill the <span class="inline-code">Signal</span> was written arbitrarily and I really love the sound that it produces.
+</p>
+
+                <div class="languageJump">
+                    <a href="../blog/2019/4/wavetable-synthesis.html">Read more…</a>
+                </div>
+               
                 </div>
             </div>
             <div class="blog-post">
@@ -221,6 +252,25 @@
                     <div class="blog-title-box"><h2 class="header">Singing trees</h2></div>
                     <div class="description">
                     Animated graphs.
+
+            </div></a>
+                </div>
+                <div class="blog-post-content">
+                    
+
+<h3>Context</h3>
+
+<p class="noindent">
+    <span class="small-caps">This blog post</span> is part of my research project <span class="italic">Towards an algorithmic cinema</span>, started in April 2018. I invite you to read <a href="https://pelletierauger.github.io/en/blog/2018/4/towards-an-algorithmic-cinema.html">the first blog post of the project</a> to learn more about it.
+</p>
+                </div>
+            </div>
+            <div class="blog-post">
+                <div class="blog-post-header">
+                    <a href="../blog/2018/12/blurry-quadrilaterals.html"><div class="date">December 17, 2018</div>
+                    <div class="blog-title-box"><h2 class="header">Blurry quadrilaterals</h2></div>
+                    <div class="description">
+                    Geometric studies with WebGL.
 
             </div></a>
                 </div>
@@ -327,26 +377,6 @@
 <p class="noindent">
     <span class="small-caps">This blog post</span> is part of my research project <span class="italic">Towards an algorithmic cinema</span>, started in April 2018. I invite you to read <a href="https://pelletierauger.github.io/en/blog/2018/4/towards-an-algorithmic-cinema.html">the first blog post of the project</a> to learn more about it.
 </p>
-                </div>
-            </div>
-            <div class="blog-post">
-                <div class="blog-post-header">
-                    <a href="../blog/2018/6/the-turtles-of-perlin.html"><div class="date">June 23, 2018</div>
-                    <div class="blog-title-box"><h2 class="header">The turtles of Perlin</h2></div>
-                    <div class="description">
-                    Various mergers between Papert’s turtles and Perlin noise.
-
-            </div></a>
-                </div>
-                <div class="blog-post-content">
-                    
-<img class="inline-image" src="../../../images/perlin-turtles/perlin-turtle-001.png">
-
-
-                <div class="languageJump">
-                    <a href="../blog/2018/6/the-turtles-of-perlin.html">Read more…</a>
-                </div>
-               
                 </div>
             </div>
         </div>

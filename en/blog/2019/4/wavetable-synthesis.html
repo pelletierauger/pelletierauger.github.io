@@ -5,8 +5,8 @@
         <title>Guillaume Pelletier-Auger - Wavetable synthesis</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=4, user-scalable=yes" />
         <link href="../../../../style/style.css" rel="stylesheet" type="text/css">
-        <link href="https://fonts.googleapis.com/css?family=EB+Garamond" rel="stylesheet">
-        
+        <link href="https://fonts.googleapis.com/css?family=Inconsolata|EB+Garamond" rel="stylesheet">
+        <link href="../../../../style/code.css" rel="stylesheet" type="text/css">
     </head><body>
     <nav>
         <h1><a href="../../../../">Guillaume <span class="nobreak">Pelletier-Auger</span></a></h1>
@@ -25,6 +25,117 @@
             </div>
                 <div class="date">April 8, 2019</div>
                 
+
+
+<p class="noindent">
+    <span class="small-caps">I&rsquo;m currently</span> learning the basics of wavetable synthesis with SuperCollider, and I will gather my notes and my first musical sketches <span class="nobreak">below.<label for="eli" class="margin-toggle sidenote-number"></label></span>
+        <input type="checkbox" id="eli" class="margin-toggle"/>
+        <span class="sidenote-left">I started to learn with <a href="https://www.youtube.com/watch?v=q1VQAZKh6_8">this excellent video</a> by Eli Fieldsteel, who takes part of his material in the <a href="http://doc.sccode.org/Classes/Shaper.html">documentation of the Shaper class</a>.</span>
+</p>
+<p>
+    It all begins by the creation of a wavetable:
+</p>
+<div class="codebox"><pre><code class="supercollider">~sig<span class="hljs-punctuation"> = </span><span class="hljs-built_in">Signal</span><span class="hljs-punctuation">.</span>newClear(<span class="hljs-number">513</span>);
+(
+~sig<span class="hljs-punctuation">.</span>waveFill({
+    <span class="hljs-keyword">arg</span> x, y, i;
+    <span class="hljs-comment">// i.linlin(0, 512, -1, 1);</span>
+    <span class="hljs-comment">// sin(x);</span>
+    sin(x<span class="hljs-punctuation">.</span>cubed<span class="hljs-punctuation"> * </span><span class="hljs-number">20</span>);
+}, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>);
+~sig<span class="hljs-punctuation">.</span>plot;
+~w<span class="hljs-punctuation"> = </span>~sig<span class="hljs-punctuation">.</span>asWavetableNoWrap;
+~b<span class="hljs-punctuation"> = </span><span class="hljs-built_in">Buffer</span><span class="hljs-punctuation">.</span>loadCollection(s, ~w);
+)</code></pre></div>
+
+<p class="noindent">
+    We create an instance of <span class="inline-code">Signal</span>, we fill it with the <span class="inline-code">waveFill</span> method, we transform it into an instance of <span class="inline-code">Wavetable</span>, and then load it into a <span class="inline-code">Buffer</span>. The expression <span class="inline-code">sin(x.cubed * 20)</span> used to fill the <span class="inline-code">Signal</span> was written arbitrarily and I really love the sound that it produces.
+</p>
+<!-- read-more -->
+<h3>Alterations and interpolations</h3>
+
+<div class="codebox"><pre><code class="supercollider">(
+~sigB<span class="hljs-punctuation"> = </span><span class="hljs-built_in">Signal</span><span class="hljs-punctuation">.</span>fill(<span class="hljs-number">256</span>, {
+    |i|
+    <span class="hljs-keyword">var</span> t<span class="hljs-punctuation"> = </span>i<span class="hljs-punctuation"> / </span><span class="hljs-number">255.0</span>;
+    t<span class="hljs-punctuation"> + </span>(<span class="hljs-number">0.1</span><span class="hljs-punctuation"> * </span>(max(t, <span class="hljs-number">0.1</span>)<span class="hljs-punctuation"> - </span><span class="hljs-number">0.1</span>)<span class="hljs-punctuation"> * </span>sin(2pi<span class="hljs-punctuation"> * </span>t<span class="hljs-punctuation"> * </span><span class="hljs-number">80</span><span class="hljs-punctuation"> + </span>sin(2pi<span class="hljs-punctuation"> * </span><span class="hljs-number">25.6</span><span class="hljs-punctuation"> * </span>t)));
+});
+)
+(
+~sigA<span class="hljs-punctuation">.</span>waveFill({
+    <span class="hljs-keyword">arg</span> x, y, i;
+    <span class="hljs-comment">// i.linlin(0, 512, -1, 1);</span>
+    <span class="hljs-comment">// sin(x);</span>
+    sin(x<span class="hljs-punctuation">.</span>cubed<span class="hljs-punctuation"> * </span><span class="hljs-number">20</span>);
+}, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>);
+)
+~w<span class="hljs-punctuation"> = </span>~sigB<span class="hljs-punctuation">.</span>asWavetableNoWrap;
+~sigA<span class="hljs-punctuation"> = </span><span class="hljs-built_in">Signal</span><span class="hljs-punctuation">.</span>newClear(<span class="hljs-number">513</span>);
+~sigB<span class="hljs-punctuation"> = </span><span class="hljs-built_in">Signal</span><span class="hljs-punctuation">.</span>newClear(<span class="hljs-number">513</span>);
+~sigC<span class="hljs-punctuation"> = </span><span class="hljs-built_in">Signal</span><span class="hljs-punctuation">.</span>newClear(<span class="hljs-number">513</span>);
+~sigB<span class="hljs-punctuation">.</span>size;
+~sigC<span class="hljs-punctuation"> = </span>(~sigA<span class="hljs-punctuation"> * </span><span class="hljs-number">0.75</span>)<span class="hljs-punctuation"> + </span>(~sigB<span class="hljs-punctuation"> * </span><span class="hljs-number">0.25</span>);
+~sigC<span class="hljs-punctuation"> = </span>(~sigA<span class="hljs-punctuation"> * </span><span class="hljs-number">0.9</span>)<span class="hljs-punctuation"> * </span>(~sigB<span class="hljs-punctuation"> * </span><span class="hljs-number">0.1</span>);
+
+~sigC<span class="hljs-punctuation"> = </span>(~sigA<span class="hljs-punctuation"> * </span><span class="hljs-number">1</span>)<span class="hljs-punctuation"> * </span>(~sigB<span class="hljs-punctuation"> * </span><span class="hljs-number">0.15</span>);
+~sigC<span class="hljs-punctuation"> = </span>~sigA<span class="hljs-punctuation"> * </span>~newSig;
+~sigC<span class="hljs-punctuation">.</span>overDub(~sigB);
+~sigA<span class="hljs-punctuation">.</span>plot;
+~sigB<span class="hljs-punctuation">.</span>plot;
+~sigC<span class="hljs-punctuation">.</span>plot;
+~sigB;
+~sigC<span class="hljs-punctuation"> = </span>~sigA<span class="hljs-punctuation">.</span>blend(~sigB, <span class="hljs-number">2</span>);
+(~sigB<span class="hljs-punctuation"> + </span>(~sigA<span class="hljs-punctuation"> * </span><span class="hljs-number">0.1</span>)).plot;
+~sigC<span class="hljs-punctuation"> = </span>(~sigB<span class="hljs-punctuation"> + </span>(~sigA<span class="hljs-punctuation"> * </span><span class="hljs-number">0.1</span>));
+(
+~sigB<span class="hljs-punctuation"> = </span><span class="hljs-built_in">Signal</span><span class="hljs-punctuation">.</span>fill(<span class="hljs-number">513</span>, { |i|
+    <span class="hljs-keyword">var</span> t<span class="hljs-punctuation"> = </span>i/<span class="hljs-number">512.0</span>;
+    t<span class="hljs-punctuation"> + </span>(<span class="hljs-number">0.1</span><span class="hljs-punctuation"> * </span>(max(t, <span class="hljs-number">0.1</span>)<span class="hljs-punctuation"> - </span><span class="hljs-number">0.1</span>)<span class="hljs-punctuation"> * </span>sin(2pi<span class="hljs-punctuation"> * </span>t<span class="hljs-punctuation"> * </span><span class="hljs-number">80</span><span class="hljs-punctuation"> + </span>sin(2pi<span class="hljs-punctuation"> * </span><span class="hljs-number">25.6</span><span class="hljs-punctuation"> * </span>t)))
+});
+)
+
+~newSig<span class="hljs-punctuation"> = </span><span class="hljs-built_in">Array</span><span class="hljs-punctuation">.</span>interpolation(<span class="hljs-number">513</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>);
+~newSig<span class="hljs-punctuation">.</span>fill(<span class="hljs-built_in">Array</span><span class="hljs-punctuation">.</span>interpolation(<span class="hljs-number">513</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>));
+~newSig<span class="hljs-punctuation"> = </span><span class="hljs-built_in">Signal</span><span class="hljs-punctuation">.</span>newClear(<span class="hljs-number">513</span>);
+~newSig;
+
+<span class="hljs-built_in">Signal</span>[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>]<span class="hljs-punctuation">.</span>blend(<span class="hljs-built_in">Signal</span>[<span class="hljs-number">5</span>, <span class="hljs-number">5</span>, <span class="hljs-number">5</span>, <span class="hljs-number">0</span>], <span class="hljs-number">2</span>);
+
+
+~sigArr<span class="hljs-punctuation"> = </span>{|i| ~sigA<span class="hljs-punctuation">.</span>blend(~sigB, i<span class="hljs-punctuation">.</span>linlin(<span class="hljs-number">0</span>, <span class="hljs-number">16</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1.5</span>));}<span class="hljs-punctuation">!</span><span class="hljs-number">16</span>;
+~sigArr<span class="hljs-punctuation"> = </span>{|i| (~sigB<span class="hljs-punctuation"> + </span>(~sigA<span class="hljs-punctuation"> * </span>i<span class="hljs-punctuation">.</span>linlin(<span class="hljs-number">0</span>, <span class="hljs-number">16</span>, <span class="hljs-number">0.1</span>, <span class="hljs-number">1</span>)));}<span class="hljs-punctuation">!</span><span class="hljs-number">16</span>;
+~sigArr[<span class="hljs-number">15</span>]<span class="hljs-punctuation">.</span>plot;
+
+~wvArr<span class="hljs-punctuation"> = </span>{|i| ~sigArr[i]<span class="hljs-punctuation">.</span>asWavetableNoWrap;}<span class="hljs-punctuation">!</span>~sigArr<span class="hljs-punctuation">.</span>size;
+~bArr<span class="hljs-punctuation"> = </span>{|i| <span class="hljs-built_in">Buffer</span><span class="hljs-punctuation">.</span>loadCollection(s, ~wvArr[i]);}<span class="hljs-punctuation">!</span>~wvArr<span class="hljs-punctuation">.</span>size;
+
+~b<span class="hljs-punctuation">.</span>bufnum;</code></pre></div>
+
+<h3>Collections of signals</h3>
+
+<p class="noindent">
+    Creation of sixteen different signals by making sixteen different interpolations between two original signals:
+</p>
+
+<div class="codebox"><pre><code class="supercollider"><span class="hljs-comment">// We create an array filled with 16 instances of Signal.</span>
+<span class="hljs-comment">// Each instance is a different blend between ~sigA and ~sigB.</span>
+~sigArr<span class="hljs-punctuation"> = </span>{|i| ~sigA<span class="hljs-punctuation">.</span>blend(~sigB, i<span class="hljs-punctuation">.</span>linlin(<span class="hljs-number">0</span>, <span class="hljs-number">16</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1.5</span>));}<span class="hljs-punctuation">!</span><span class="hljs-number">16</span>;
+
+<span class="hljs-comment">// We create an array with all those signals stored as Wavetables.</span>
+~wavArr<span class="hljs-punctuation"> = </span>{|i| ~sigArr[i]<span class="hljs-punctuation">.</span>asWavetableNoWrap;}<span class="hljs-punctuation">!</span>~sigArr<span class="hljs-punctuation">.</span>size;
+
+<span class="hljs-comment">// One last array, with those wavetables stored as buffers.</span>
+~bufArr<span class="hljs-punctuation"> = </span>{|i| <span class="hljs-built_in">Buffer</span><span class="hljs-punctuation">.</span>loadCollection(s, ~wavArr[i]);}<span class="hljs-punctuation">!</span>~wavArr<span class="hljs-punctuation">.</span>size;</code></pre></div>
+
+<p class="noindent">
+    The transformation from <span class="inline-code">~sigArr</span> to <span class="inline-code">~bufArr</span> could also be made by skipping one step:
+</p>
+<div class="codebox"><pre><code class="supercollider">(
+~bufArr<span class="hljs-punctuation"> = </span>{
+    |i| 
+    <span class="hljs-built_in">Buffer</span><span class="hljs-punctuation">.</span>loadCollection(s, ~sigArr[i]<span class="hljs-punctuation">.</span>asWavetableNoWrap);
+}<span class="hljs-punctuation">!</span>~sigArr<span class="hljs-punctuation">.</span>size;
+)</code></pre></div>
             </article>
             <div id="footer">Guillaume Pelletier-Auger &mdash; 2016-2019
     </div>
