@@ -2,6 +2,7 @@ exports.posts = [
     // "ant-colonies",
     // "density-maps",
     "wavetable-synthesis",
+    "swaying-loops",
     "neural-network",
     "linear-regression",
     "singing-trees",
