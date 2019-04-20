@@ -352,7 +352,7 @@ function makeHeader(page, language, stepsFromRoot, sketches) {
     var codeCSS = "";
     var codeFont = "";
     if (page && page[language].content) {
-        var r = /(<code>|<code class="supercollider">|<code class="glsl">)([\S\s]*?)(<\/code>)/g;
+        var r = /(<code>|<code class="supercollider">|<code class="glsl">|<code class="nosyntax">)([\S\s]*?)(<\/code>)/g;
         var inlineCodeTest = /(<span class="inline-code8">)([\S\s]*?)(<\/span>)/g;
         if (page[language].content.match(inlineCodeTest)) {
             codeFont = "Inconsolata:400,700|";
