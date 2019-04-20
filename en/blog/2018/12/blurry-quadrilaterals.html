@@ -5,8 +5,8 @@
         <title>Guillaume Pelletier-Auger - Blurry quadrilaterals</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=4, user-scalable=yes" />
         <link href="../../../../style/style.css" rel="stylesheet" type="text/css">
-        <link href="https://fonts.googleapis.com/css?family=EB+Garamond" rel="stylesheet">
-        
+        <link href="https://fonts.googleapis.com/css?family=Inconsolata|EB+Garamond" rel="stylesheet">
+        <link href="../../../../style/code.css" rel="stylesheet" type="text/css">
     </head><body>
     <nav>
         <h1><a href="../../../../">Guillaume <span class="nobreak">Pelletier-Auger</span></a></h1>
@@ -25,6 +25,67 @@
             </div>
                 <div class="date">December 17, 2018</div>
                 
+
+
+<img src="../../../../images/blurry-quadrilaterals/sketch-00243.png">
+
+<p class="article-top">
+    <span class="small-caps">Dessiner des formes floues</span> avec WebGL n&rsquo;est pas simple. Par défaut, toutes les formes créées sont très précises et leurs contours bien définis. Comme je cherche à créer des animations aux ambiances brumeuses et incertaines, je suis en train de créer quelques premiers outils pour me permettre de <span class="italic">dessiner du flou</span> avec WebGL.
+</p>
+<p>
+    Dessiner des cercles flous ne s&rsquo;est pas avéré trop compliqué, puisqu&rsquo;une simple fonction de distance par rapport au centre du cercle peut être calculée aisément par le <span class="small-caps">gpu</span>. Le dessin de formes plus complexes me demande cependant d&rsquo;en apprendre beaucoup plus sur WebGL, une technologie que je connais encore peu.
+</p>
+<p>
+    J&rsquo;ai commencé par les quadrilatères. J&rsquo;ai créé un système avec lequel je peux définir un rectangle principal, qui sera formé par les triangles <span class="small-caps">a</span> et <span class="small-caps">b</span> que l&rsquo;on voit dans le diagramme en haut à gauche de mes notes crayonnées.
+</p>
+
+<img class="inline-image" src="../../../../images/blurry-quadrilaterals/drawings.png">
+
+<h3>Résultats</h3>
+
+<p class="noindent">
+    <span class="small-caps">Au final,</span> je trouve que mon système fonctionne bien lorsque je l&rsquo;utilise pour faire des lignes relativement minces, mais il est peu convainquant lorsqu&rsquo;il produit des formes géométriques plus grandes. Comme on le voit dans l&rsquo;image ci-dessous, les formes ont des coins pointus au lieu d&rsquo;avoir les coins arrondis que je souhaiterais voir.
+</p>
+
+<img class="full-size-image" src="../../../../images/blurry-quadrilaterals/sketch-00050.png">
+
+<img class="full-size-image" src="../../../../images/blurry-quadrilaterals/sketch-01359.png">
+
+<h3>Les lignes chantantes</h3>
+
+<p class="noindent">
+    <span class="small-caps">Je me suis servi</span> de ces quadrilatères flous dans un morceau de programmation <span class="italic">in vivo</span> intitulé <span class="italic">Les framboisiers sous la neige</span>. Le morceau <a href="">se trouve sur YouTube</a>. En voici quelques images fixes :
+</p>
+
+<img class="full-size-image" src="../../../../images/blurry-quadrilaterals/singing-lines-01.png">
+<img class="full-size-image" src="../../../../images/blurry-quadrilaterals/singing-lines-02.png">
+<img class="full-size-image" src="../../../../images/blurry-quadrilaterals/singing-lines-03.png">
+
+<p class="noindent">
+    Le code écrit pour réaliser ce morceau <span class="italic">in vivo</span> peut être <a href="https://github.com/pelletierauger/Singing-Lines">consulté sur GitHub</a>. La version la plus avancée de ce projet se trouve sur <span class="nobreak"><a href="https://github.com/pelletierauger/Singing-Lines/tree/pcd-set-b">la branche pcd-set-b</a>.<label for="environs" class="margin-toggle sidenote-number"></label></span>
+        <input type="checkbox" id="environs" class="margin-toggle"/>
+        <span class="sidenote">À noter que pour fonctionner pleinement, ce projet doit être démarré avec mon application <span class="italic8">Les environs</span>, qui permet la programmation <span class="italic8">in vivo</span> et prend en charge le serveur SuperCollider nécessaire à produire la musique. Cette application <a href="https://github.com/pelletierauger/Les-environs">se trouve ici</a>.</span>
+</p>
+<p>
+    Comme l&rsquo;ordinateur que j&rsquo;utilise pour faire ma programmation <span class="italic">in vivo</span> n&rsquo;est pas très puissant, je tente toujours d&rsquo;optimiser mon code. Dans ce cas-ci, comme ce projet n&rsquo;affichait que des lignes totalement verticales, il m&rsquo;était possible d&rsquo;écrire une version plus performante de ma fonction <span class="inline-code">makeLine()</span>, que j&rsquo;ai nommée <span class="inline-code">makeOrthoLine()</span>. Cette version ne nécessite aucun calcul trigonométrique. <span class="inline-code">makeOrthoLine()</span> dépend aussi de <span class="inline-code">makeOrthoQuad()</span>, une version simplifiée de <span class="nobreak"><span class="inline-code">makeQuad()</span>.<label for="ortho" class="margin-toggle sidenote-number"></label></span>
+        <input type="checkbox" id="ortho" class="margin-toggle"/>
+        <span class="sidenote-left">Le code complet de ces fonctions se trouve <a href="https://github.com/pelletierauger/Singing-Lines/blob/pcd-set-b/make-quad.js">dans ce fichier</a>.</span>
+</p>
+<div class="codebox"><pre><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">makeOrthoLine</span>(<span class="hljs-params">x0, y0, x1, y1</span>) </span>{
+    <span class="hljs-keyword">let</span> halfW<span class="hljs-punctuation"> = </span>lineOptions<span class="hljs-punctuation">.</span>weight<span class="hljs-punctuation"> * </span><span class="hljs-number">0.5</span>;
+    <span class="hljs-keyword">let</span> rectangle<span class="hljs-punctuation"> = </span>makeOrthoQuad({
+        <span class="hljs-attr">c</span>: [lineOptions<span class="hljs-punctuation">.</span>r, lineOptions<span class="hljs-punctuation">.</span>g, lineOptions<span class="hljs-punctuation">.</span>b, lineOptions<span class="hljs-punctuation">.</span>a],
+        <span class="hljs-attr">v</span>: [
+            [x0<span class="hljs-punctuation"> - </span>halfW, y0],
+            [x0<span class="hljs-punctuation"> + </span>halfW, y0],
+            [x1<span class="hljs-punctuation"> - </span>halfW, y1],
+            [x1<span class="hljs-punctuation"> + </span>halfW, y1]
+        ],
+        <span class="hljs-attr">blurFactor</span>: lineOptions<span class="hljs-punctuation">.</span>blurFactor
+    });
+    addRectangleToBuffers(rectangle);
+}</code></pre></div>
+
 
 <h3>Context</h3>
 

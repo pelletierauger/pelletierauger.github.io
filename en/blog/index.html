@@ -6,8 +6,6 @@
         <link href="../../style/style.css" rel="stylesheet" type="text/css">
         <link href="../../style/neural-network.css" rel="stylesheet" type="text/css">
         
-        <link href="../../style/truchet.css" rel="stylesheet" type="text/css">
-        
         <link href="https://fonts.googleapis.com/css?family=Inconsolata|EB+Garamond" rel="stylesheet">
         <link href="../../style/code.css" rel="stylesheet" type="text/css">
     <style id="MathJax_CHTML_styles">.mjx-chtml {display: inline-block; line-height: 0; text-indent: 0; text-align: left; text-transform: none; font-style: normal; font-weight: normal; font-size: 100%; font-size-adjust: none; letter-spacing: normal; word-wrap: normal; word-spacing: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0; min-height: 0; border: 0; margin: 0; padding: 1px 0}
@@ -184,6 +182,28 @@
             </div>
             <div class="blog-post">
                 <div class="blog-post-header">
+                    <a href="../blog/2019/3/swaying-loops.html"><div class="date">March 6, 2019</div>
+                    <div class="blog-title-box"><h2 class="header">Swaying loops</h2></div>
+                    <div class="description">
+                    Using 4D OpenSimplex noise in the context of algorithmic botany.
+
+            </div></a>
+                </div>
+                <div class="blog-post-content">
+                    
+<img class="inline-image" src="../../../images/swaying-loops/noise-loop-006-offset-04-lossy50.gif">
+<p class="noindent">
+    <span class="small-caps">The code written</span> to make the animation above and the one below can be found on <a href="https://github.com/pelletierauger/Evolutionary-Botany/tree/noise-loops">the noise-loops branch</a> of the <a href="https://github.com/pelletierauger/Evolutionary-Botany">Evolutionary Botany</a> GitHub repository. The OpenSimplex noise implementation that I’m using is called <a href="https://github.com/blindman67/SimplexNoiseJS">SimplexNoiseJS</a> and was written by Mark Spronck.
+</p>
+
+                <div class="languageJump">
+                    <a href="../blog/2019/3/swaying-loops.html">Read more…</a>
+                </div>
+               
+                </div>
+            </div>
+            <div class="blog-post">
+                <div class="blog-post-header">
                     <a href="../blog/2019/1/small-neural-network.html"><div class="date">January 27, 2019</div>
                     <div class="blog-title-box"><h2 class="header">Small neural network</h2></div>
                     <div class="description">
@@ -277,11 +297,24 @@
                 <div class="blog-post-content">
                     
 
-<h3>Context</h3>
-
-<p class="noindent">
-    <span class="small-caps">This blog post</span> is part of my research project <span class="italic">Towards an algorithmic cinema</span>, started in April 2018. I invite you to read <a href="https://pelletierauger.github.io/en/blog/2018/4/towards-an-algorithmic-cinema.html">the first blog post of the project</a> to learn more about it.
+<img class="inline-image" src="../../../images/blurry-quadrilaterals/sketch-00243.png">
+<p class="article-top">
+    <span class="small-caps">Drawing blurry shapes</span> with WebGL is not easy. By default, all the shapes it creates are very precise, with well-defined (and often poorly aliased) contours. Because I want to create animations that are foggy, atmospheric, and uncertain, I’m slowly building a set of tools to draw blurry geometry with WebGL.
 </p>
+<p>
+    Drawing blurry circles is not so hard because the distance from the center of the circle can be used to draw a gradient, and then this gradient can be adjusted with the <ic>smoothstep()</ic> function. It’s all easy calculations for the <span class="small-caps">gpu</span>. Drawing more complex shapes requires me to learn a lot more about WebGL, a technology that I do not know a lot about.
+</p>
+<p>
+    I started with quadrilaterals. I created a system where I only need to specify the position and blurriness of a quadrilateral, and all the triangles necessary to interpolate the color of the shape are created automatically. In the upper left part of the diagram below, asking for a rectangle whose area is equal to the area of triangles <span class="small-caps">a</span> and <span class="small-caps">b</span> will generate the triangles <span class="small-caps">a, b, c, d, e, f, g, h, i,</span> and <span class="small-caps">j</span>.
+</p>
+
+<img class="inline-image" src="../../../images/blurry-quadrilaterals/drawings.png">
+
+
+                <div class="languageJump">
+                    <a href="../blog/2018/12/blurry-quadrilaterals.html">Read more…</a>
+                </div>
+               
                 </div>
             </div>
             <div class="blog-post">
@@ -347,25 +380,6 @@
                     <div class="blog-title-box"><h2 class="header">Graph-shaped sequencers</h2></div>
                     <div class="description">
                     
-
-            </div></a>
-                </div>
-                <div class="blog-post-content">
-                    
-
-<h3>Context</h3>
-
-<p class="noindent">
-    <span class="small-caps">This blog post</span> is part of my research project <span class="italic">Towards an algorithmic cinema</span>, started in April 2018. I invite you to read <a href="https://pelletierauger.github.io/en/blog/2018/4/towards-an-algorithmic-cinema.html">the first blog post of the project</a> to learn more about it.
-</p>
-                </div>
-            </div>
-            <div class="blog-post">
-                <div class="blog-post-header">
-                    <a href="../blog/2018/7/granular-drawings.html"><div class="date">July 19, 2018</div>
-                    <div class="blog-title-box"><h2 class="header">Granular Drawings</h2></div>
-                    <div class="description">
-                    Trying to apply the concepts of granular synthesis on line drawings
 
             </div></a>
                 </div>
