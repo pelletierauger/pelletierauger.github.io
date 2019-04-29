@@ -1,4 +1,5 @@
 exports.list = [
+    "raspberries",
     "truchet",
     "dunes",
     "growing_wreath"
@@ -43,5 +44,17 @@ exports.pages = {
             description: "Small algorithms applied on various graphs."
         },
         link: "http://www.vimeo.com/pelletierauger"
+    },
+
+    raspberries: {
+        fr: {
+            title: "Les framboisiers sous la neige",
+            description: 'Animation et musique en programmation <span class="italic">in vivo</span>.'
+        },
+        en: {
+            title: 'Raspberries <span class="nobreak"><span class="italic8"><span class="small-title">in the</span></span></span> Snow',
+            description: "A set of live coded music and animation."
+        },
+        link: "https://www.youtube.com/watch?v=6QXGw4NHXzE"
     }
 };
