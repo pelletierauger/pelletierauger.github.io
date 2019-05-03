@@ -11,6 +11,7 @@ exports.posts = [
     "depth-first-search",
     "blurry-spirals",
     "a-live-coding-machine",
+    "a-recaman-spiral",
     "graph-sequencers",
     "granular-drawings",
     "perlin-turtles",
