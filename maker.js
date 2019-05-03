@@ -237,7 +237,7 @@ function makeBlog(language) {
             },
             style: styles
         };
-        var header = makeHeader(page, language, stepsFromRoot, null);
+        var header = makeHeader(page, language, stepsFromRoot, scripts);
         var footer = makeFooter(page, language);
         var fileName = (k == 0) ? "index" : "page-" + (k + 1);
         makeFile(language, parent + fileName, header + navigation + content + footer);
@@ -390,9 +390,9 @@ function makeHeader(page, language, stepsFromRoot, sketches) {
     var scripts = ``;
     if (sketches && sketches.length > 0) {
         scripts += `
-        <script src="${prefix}libraries/p5.js" type="text/javascript"></script>
+        <script src="${prefix}libraries/p5.min.js" type="text/javascript"></script>
         `;
-        scripts += `<script src="${prefix}libraries/p5.dom.js" type="text/javascript"></script>
+        scripts += `<script src="${prefix}libraries/p5.dom.min.js" type="text/javascript"></script>
         `;
         for (let i = 0; i < sketches.length; i++) {
             scripts += `<script src="${prefix}sketches`;
