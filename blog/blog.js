@@ -3,6 +3,7 @@ exports.posts = [
     // "density-maps",
     "wavetable-synthesis",
     "swaying-loops",
+    "tangent-lines",
     "neural-network",
     "linear-regression",
     "singing-trees",
