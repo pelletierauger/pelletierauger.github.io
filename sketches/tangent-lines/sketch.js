@@ -5,9 +5,9 @@ var sketch = new p5(function(p) {
         p.canvasContainer = p.select("#tangent-lines");
         p.cnvs = p.createCanvas(650, 650);
         p.cnvs.parent("#tangent-lines");
-        p.canvasContainer.style("width", "650px");
+        p.canvasContainer.style("max-width", "650px");
         p.canvasContainer.style("margin", "2em auto");
-        p.canvasContainer.style("margin-bottom", "1em");
+        // p.canvasContainer.style("margin-bottom", "2em");
         p.canvasContainer.style("padding", "0 0");
         p.frameRate(30);
         p.ctx = p.cnvs.drawingContext;
