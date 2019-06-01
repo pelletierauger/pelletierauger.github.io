@@ -24,11 +24,23 @@
 <h3>Génétique et mutations</h3>
 
 <pn>
-    <sc>Dans ce film</sc>, chacune des scènes est formée par un algorithme différent, qui est défini par une simple séquence de chiffres qui constitue, d'une certaine façon, son <sc>adn</sc>. Par exemple, l'image ci-dessous provient d'une scène du film qui est définie par cette séquence : <ic>"0111100010000001"</ic>.
+    <sc>Chacune des scènes</sc> de ce film est formée par un algorithme différent, qui est défini par une simple séquence de chiffres. Cette séquence constitue, d'une certaine façon, l&rsquo;<sc>adn</sc> de la scène. Par exemple, l'image ci-dessous provient d'une scène du film qui est définie par cette séquence : <ic>"0111100010000001"</ic>.
 </pn>
 <p>
     Définir un algorithme d'une façon aussi simple et optimisée permet beaucoup de choses. Premièrement, cela permet de générer aisément une immense quantité d'algorithmes semblables (mais tous différents), mais surtout, cela permet d'appliquer des mutations et des croisements entre divers algorithmes. Par exemple, la séquence <ic>"0111100010000000"</ic> peut être considérée comme une mutation de la séquence <ic>"0111100010000001"</ic>, puisqu'un seul chiffre a été changé pour passer de l'une à l'autre.
 </p>
+<p>
+    Le système sur lequel est basé ce film peut donc produire <im>65,536</im> différentes scènes (ou <im>2^{16}</im>). Cet ensemble de tous les résultats potentiels s'appelle <i>l'espace des possibilités</i> (&ldquo;possibility space&rdquo; en anglais), et c'est le moyen par lequel on se déplace dans cet espace immense qui constitue la plus épineuse des questions.
+</p>
+<p>
+    Dans mon cas, la première idée qui m'est venue en tête était de me déplacer dans cet espace en fonction de la beauté subjective que j'accordais à chacune des scènes animées. Et après avoir passé beaucoup de temps à me déplacer dans l'espace des possibilité de cette manière, et après m'avoir beaucoup gratté la tête en imaginant des moyens de déplacement plus sophistiqués et intéressants, je n'ai rien trouvé de mieux.
+</p>
+
+<h3>Code</h3>
+
+<pn>
+    <sc>Le code écrit</sc> pour réaliser ce court métrage <a href="https://github.com/pelletierauger/Game-of-Life">se trouve ici sur GitHub</a>, sur les branches <a href="https://github.com/pelletierauger/Game-of-Life/tree/genetic"><ic>genetic</ic></a> et <a href="https://github.com/pelletierauger/Game-of-Life/tree/with-creategraphics"><ic>with-creategraphics</ic></a> du projet Git. L'objet <ic>geneticScene05</ic> que l'on trouve dans le fichier <ic>scenes-genetic-01.js</ic> a servi à créer la totalité du film.
+</pn>
 
 <h3>Contexte</h3>
 
