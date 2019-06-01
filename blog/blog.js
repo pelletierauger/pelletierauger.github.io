@@ -13,6 +13,7 @@ exports.posts = [
     "a-live-coding-machine",
     "a-recaman-spiral",
     "graph-sequencers",
+    "study-for-ca-no2",
     "study-for-ca-no1",
     "granular-drawings",
     "perlin-turtles",
