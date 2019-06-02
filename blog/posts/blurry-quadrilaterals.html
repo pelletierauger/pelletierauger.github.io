@@ -3,24 +3,7 @@
 <!-- day -->17
 <!-- fr-title -->Quadrilatères flous
 <!-- fr-description -->Études géométriques avec WebGL.
-
-<!-- fr-excerpt -->
-
-<img class="inline-image" src="../../../images/blurry-quadrilaterals/sketch-00243.png">
-<p class="article-top">
-    <span class="small-caps">Dessiner des formes floues</span> avec WebGL n'est pas simple. Par défaut, toutes les formes créées sont très précises et leurs contours bien définis. Comme je cherche à créer des animations aux ambiances brumeuses et incertaines, je suis en train de créer quelques premiers outils pour me permettre de <span class="italic">dessiner du flou</span> avec WebGL.
-</p>
-<p>
-    Dessiner des cercles flous ne s'est pas avéré trop compliqué, puisqu'une simple fonction de distance par rapport au centre du cercle peut être calculée aisément par le <span class="small-caps">gpu</span>. Le dessin de formes plus complexes me demande cependant d'en apprendre beaucoup plus sur WebGL, une technologie que je connais encore peu.
-</p>
-<p>
-    J'ai commencé par les quadrilatères. J'ai créé un système avec lequel je peux définir un rectangle principal, qui sera formé par les triangles <span class="small-caps">a</span> et <span class="small-caps">b</span> que l'on voit dans le diagramme en haut à gauche de mes notes crayonnées.
-</p>
-
-<img class="inline-image" src="../../../images/blurry-quadrilaterals/drawings.png">
-
 <!-- fr-content -->
-
 
 <img src="../../../images/blurry-quadrilaterals/sketch-00243.png">
 
@@ -35,6 +18,8 @@
 </p>
 
 <img class="inline-image" src="../../../images/blurry-quadrilaterals/drawings.png">
+
+<!-- read-more -->
 
 <h3>Résultats</h3>
 
@@ -89,37 +74,22 @@ function makeOrthoLine(x0, y0, x1, y1) {
 
 <!-- en-title -->Blurry quadrilaterals
 <!-- en-description -->Geometric studies with WebGL.
-<!-- en-excerpt -->
-
-<img class="inline-image" src="../../../images/blurry-quadrilaterals/sketch-00243.png">
-<p class="article-top">
-    <span class="small-caps">Drawing blurry shapes</span> with WebGL is not easy. By default, all the shapes it creates are very precise, with well-defined (and often poorly aliased) contours. Because I want to create animations that are foggy, atmospheric, and uncertain, I'm slowly building a set of tools to draw blurry geometry with WebGL.
-</p>
-<p>
-    Drawing blurry circles is not so hard because the distance from the center of the circle can be used to draw a gradient, and then this gradient can be adjusted with the <ic>smoothstep()</ic> function. It's all easy calculations for the <span class="small-caps">gpu</span>. Drawing more complex shapes requires me to learn a lot more about WebGL, a technology that I do not know a lot about.
-</p>
-<p>
-    I started with quadrilaterals. I created a system where I only need to specify the position and blurriness of a quadrilateral, and all the triangles necessary to interpolate the color of the shape are created automatically. In the upper left part of the diagram below, asking for a rectangle whose area is equal to the area of triangles <span class="small-caps">a</span> and <span class="small-caps">b</span> will generate the triangles <span class="small-caps">a, b, c, d, e, f, g, h, i,</span> and <span class="small-caps">j</span>.
-</p>
-
-<img class="inline-image" src="../../../images/blurry-quadrilaterals/drawings.png">
-
 <!-- en-content -->
-
-
 <img src="../../../images/blurry-quadrilaterals/sketch-00243.png">
 
 <p class="article-top">
-    <sc>Dessiner des formes floues</sc> avec WebGL n'est pas simple. Par défaut, toutes les formes créées sont très précises et leurs contours bien définis. Comme je cherche à créer des animations aux ambiances brumeuses et incertaines, je suis en train de créer quelques premiers outils pour me permettre de <i>dessiner du flou</i> avec WebGL.
+    <sc>Drawing blurry shapes</sc> with WebGL is not easy. By default, all the shapes it creates are very precise, with well-defined (and often poorly aliased) contours. Because I want to create animations that are foggy, atmospheric, and uncertain, I'm slowly building a set of tools to draw blurry geometry with WebGL.
 </p>
 <p>
-    Dessiner des cercles flous ne s'est pas avéré trop compliqué, puisqu'une simple fonction de distance par rapport au centre du cercle peut être calculée aisément par le <sc>gpu</sc>. Le dessin de formes plus complexes me demande cependant d'en apprendre beaucoup plus sur WebGL, une technologie que je connais encore peu.
+    Drawing blurry circles is not so hard because the distance from the center of the circle can be used to draw a gradient, and then this gradient can be adjusted with the <ic>smoothstep()</ic> function. It's all easy calculations for the <sc>gpu</sc>. Drawing more complex shapes requires me to learn a lot more about WebGL, a technology that I do not know a lot about.
 </p>
 <p>
-    J'ai commencé par les quadrilatères. J'ai créé un système avec lequel je peux définir un rectangle principal, qui sera formé par les triangles <sc>a</sc> et <sc>b</sc> que l'on voit dans le diagramme en haut à gauche de mes notes crayonnées.
+    I started with quadrilaterals. I created a system where I only need to specify the position and blurriness of a quadrilateral, and all the triangles necessary to interpolate the color of the shape are created automatically. In the upper left part of the diagram below, asking for a rectangle whose area is equal to the area of triangles <sc>a</sc> and <sc>b</sc> will generate the triangles <sc>a, b, c, d, e, f, g, h, i,</sc> and <sc>j</sc>.
 </p>
 
 <img class="inline-image" src="../../../images/blurry-quadrilaterals/drawings.png">
+
+<!-- read-more -->
 
 <h3>Résultats</h3>
 
