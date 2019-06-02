@@ -49,7 +49,7 @@ exports.pages = {
     raspberries: {
         fr: {
             title: "Les framboisiers sous la neige",
-            description: 'Animation et musique en programmation <span class="italic">in vivo</span>.'
+            description: 'Animation et musique en programmation <span class="italic">à la volée</span>.'
         },
         en: {
             title: 'Raspberries <span class="nobreak"><span class="italic8"><span class="small-title">in the</span></span></span> Snow',
