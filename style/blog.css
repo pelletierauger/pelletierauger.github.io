@@ -1,6 +1,7 @@
 #blog-page-number h2 {
-    font-family: 'EBG12-SC';
-    text-transform: lowercase;
+    /*font-family: 'EBG12-SC';*/
+    /*text-transform: lowercase;*/
+    font-family: 'Inconsolata';
     font-size: 1.25em;
     text-align: left;
     font-weight: normal;
@@ -87,9 +88,10 @@
 .blog-post-header h2, .blog-post-header .date {
     text-align: left;
     /*padding-bottom: 0.25em;*/
-    font-family: 'EBG12-Sc';
+    /*font-family: 'EBG12-Sc';*/
+    font-family: 'Inconsolata';
     /*font-size: 1em;*/
-    font-size: 1.3em;
+    font-size: 1.2em;
     font-weight: normal;
     /*max-width: 700px;*/
     line-height: 1.15em;
@@ -162,9 +164,11 @@ article.blog-post-header .date {
     }
 }
 
-.blog-post-header h2 {
+.blog-post-header h2, .blog-post-header .date {
     display: inline;
     /*text-align: left;*/
+    /*display: inline-block;*/
+    line-height: 2rem;
 }
 
 .blog-title-box {
@@ -188,7 +192,8 @@ article.blog-post-header .date {
 
 .blog-post-header a:hover h2 {
     /*border-bottom: 3px solid black;*/
-    box-shadow: inset 0px -1px white, inset 0px -2px black, inset 0px -3px white, inset 0px -4px black;
+    box-shadow: inset 0px 0px white, inset 0px -1.5px black;
+    /*box-shadow: inset 0px -1px white, inset 0px -2px black, inset 0px -3px white, inset 0px -4px black;*/
 }
 
 @media screen and (min-width: 950px) {

@@ -191,8 +191,9 @@ h1 {
 
 article h2, .portfolio-description h2 {
     font-weight: normal;
-    font-family: 'EBG12-SC';
-    font-size: 2em;
+    /*font-family: 'EBG12-SC';*/
+    font-family: 'Inconsolata';
+    font-size: 1.37em;
     line-height: 3rem;
     /*display: inline-block;*/
     /*vertical-align: middle;*/
@@ -221,9 +222,10 @@ h2 a {
 h3 {
     /*clear: both;*/
     /*font-family: 'EBG12-It';*/
-    font-size: 1.5em;
+    font-size: 1.25em;
     line-height: 2.5rem;
     font-weight: normal;
+    font-family: 'Inconsolata';
     /*vertical-align: middle;*/
     text-align: left;
     margin: 0 auto;
@@ -288,6 +290,10 @@ p {
 
 article img {
     width: 100%;
+}
+
+.blog-post img {
+    max-width: 100%;
 }
 
 article ul.dash {

@@ -41,17 +41,19 @@
     display: block;
     float: left;
     margin: 0;
-    padding: 2rem;
+    padding: 2rem 3rem;
     /*border-bottom: 5px solid black;*/
 }
 
 .portfolio-banner h2 {
     /*background-color: green;*/
     font-style: normal;
-    font-family: 'EBG12-SC';
-    font-size: 2em;
+    /*font-family: 'EBG12-SC';*/
+    font-family: 'Inconsolata';
+    font-size: 1.75em;
     padding: 0;
     margin: 0;
+    margin-bottom: 0.5rem;
     line-height: 3rem;
 }
 

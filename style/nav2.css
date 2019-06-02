@@ -2,10 +2,11 @@ nav {
     padding: 1rem 0rem 1rem 0rem;
     margin: 0;
     height: 4rem;
-    font-size: 1.3em;
-    font-family: 'EBG12-SC';
+    font-size: 1.2em;
+    /*font-family: 'EBG12-SC';*/
+    font-family: 'Inconsolata';
     /*font-family: "EBG12-It";*/
-    text-transform: lowercase;
+    /*text-transform: lowercase;*/
 }
 
 nav a {
@@ -30,5 +31,9 @@ nav ul li {
 
 li.selected a, nav a:hover {
     /*border-bottom: 3px solid black;*/
-    box-shadow: inset 0px -2px white, inset 0px -3px black, inset 0px -4px white, inset 0px -5px black;
+    /*line-height: 4rem;*/
+    display: inline-block;
+    line-height: 2rem;
+    /*background: yellow;*/
+    box-shadow: inset 0px 0px white, inset 0px -1.5px black;
 }

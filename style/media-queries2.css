@@ -107,6 +107,9 @@
         margin: 0 auto;
         text-align: center;
     }
+    .portfolio-banner h2 {
+        margin-bottom: 1rem;
+    }
     .portfolio-item {
         height: 565px;
         overflow: hidden;
