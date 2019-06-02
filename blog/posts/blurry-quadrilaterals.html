@@ -34,7 +34,7 @@
 <h3>Les lignes chantantes</h3>
 
 <pn>
-    <sc>Je me suis servi</sc> de ces quadrilatères flous dans un morceau de programmation <i>in vivo</i> intitulé <i>Les framboisiers sous la neige</i>. Le morceau <a href="">se trouve sur YouTube</a>. En voici quelques images fixes :
+    <sc>Je me suis servi</sc> de ces quadrilatères flous dans un morceau de programmation <i>à la volée</i> intitulé <i>Les framboisiers sous la neige</i>. Le morceau <a href="">se trouve sur YouTube</a>. En voici quelques images fixes :
 </pn>
 
 <img class="full-size-image" src="../../../images/blurry-quadrilaterals/singing-lines-01.png">
@@ -42,7 +42,7 @@
 <img class="full-size-image" src="../../../images/blurry-quadrilaterals/singing-lines-03.png">
 
 <pn>
-    Le code écrit pour réaliser ce morceau <i>in vivo</i> peut être <a href="https://github.com/pelletierauger/Singing-Lines">consulté sur GitHub</a>. La version la plus avancée de ce projet se trouve sur &nbsn;<a href="https://github.com/pelletierauger/Singing-Lines/tree/pcd-set-b">la branche pcd-set-b</a>.<snr label="environs">À noter que pour fonctionner pleinement, ce projet doit être démarré avec mon application <i8>Les environs</i8>, qui permet la programmation <i8>in vivo</i8> et prend en charge le serveur SuperCollider nécessaire à produire la musique. Cette application <a href="https://github.com/pelletierauger/Les-environs">se trouve ici</a>.</snr>
+    Le code écrit pour réaliser ce morceau <i>à la volée</i> peut être <a href="https://github.com/pelletierauger/Singing-Lines">consulté sur GitHub</a>. La version la plus avancée de ce projet se trouve sur &nbsn;<a href="https://github.com/pelletierauger/Singing-Lines/tree/pcd-set-b">la branche pcd-set-b</a>.<snr label="environs">À noter que pour fonctionner pleinement, ce projet doit être démarré avec mon application <i8>Les environs</i8>, qui permet la programmation <i8>in vivo</i8> et prend en charge le serveur SuperCollider nécessaire à produire la musique. Cette application <a href="https://github.com/pelletierauger/Les-environs">se trouve ici</a>.</snr>
 </pn>
 <p>
     Comme l'ordinateur que j'utilise pour faire ma programmation <i>in vivo</i> n'est pas très puissant, je tente toujours d'optimiser mon code. Dans ce cas-ci, comme ce projet n'affichait que des lignes totalement verticales, il m'était possible d'écrire une version plus performante de ma fonction <ic>makeLine()</ic>, que j'ai nommée <ic>makeOrthoLine()</ic>. Cette version ne nécessite aucun calcul trigonométrique. <ic>makeOrthoLine()</ic> dépend aussi de <ic>makeOrthoQuad()</ic>, une version simplifiée de &nbsn;<ic>makeQuad()</ic>.<snl label="ortho">Le code complet de ces fonctions se trouve <a href="https://github.com/pelletierauger/Singing-Lines/blob/pcd-set-b/make-quad.js">dans ce fichier</a>.</snl>
@@ -78,13 +78,13 @@ function makeOrthoLine(x0, y0, x1, y1) {
 <img src="../../../images/blurry-quadrilaterals/sketch-00243.png">
 
 <p class="article-top">
-    <sc>Drawing blurry shapes</sc> with WebGL is not easy. By default, all the shapes it creates are very precise, with well-defined (and often poorly aliased) contours. Because I want to create animations that are foggy, atmospheric, and uncertain, I'm slowly building a set of tools to draw blurry geometry with WebGL.
+    <sc>Drawing blurry shapes</sc> with WebGL can be quite complicated. All the basic shapes it creates are very precise, with well-defined (and often poorly aliased) contours. Because I want to create animations that are foggy, atmospheric, and uncertain, I'm slowly building a set of tools to draw blurry geometry with WebGL.
 </p>
 <p>
-    Drawing blurry circles is not so hard because the distance from the center of the circle can be used to draw a gradient, and then this gradient can be adjusted with the <ic>smoothstep()</ic> function. It's all easy calculations for the <sc>gpu</sc>. Drawing more complex shapes requires me to learn a lot more about WebGL, a technology that I do not know a lot about.
+    Drawing blurry circles is not so hard because the distance from the center of a circle can be used to draw a gradient, and then this gradient can be adjusted with the <ic>smoothstep()</ic> function—it's all fast calculations for the <sc>gpu</sc>. Drawing more complex shapes requires me to learn a lot more about WebGL, a technology that I do not know a lot about.
 </p>
 <p>
-    I started with quadrilaterals. I created a system where I only need to specify the position and blurriness of a quadrilateral, and all the triangles necessary to interpolate the color of the shape are created automatically. In the upper left part of the diagram below, asking for a rectangle whose area is equal to the area of triangles <sc>a</sc> and <sc>b</sc> will generate the triangles <sc>a, b, c, d, e, f, g, h, i,</sc> and <sc>j</sc>.
+    I started with quadrilaterals. I created a system where I only need to specify the position and blurriness of a quadrilateral, and all the triangles necessary to interpolate the colour of the shape are created automatically. In the upper left part of the diagram below, asking for a rectangle whose area is equal to the area of triangles <sc>a</sc> and <sc>b</sc> will generate the triangles <sc>a, b, c, d, e, f, g, h, i,</sc> and <sc>j</sc>.
 </p>
 
 <img class="inline-image" src="../../../images/blurry-quadrilaterals/drawings.png">
