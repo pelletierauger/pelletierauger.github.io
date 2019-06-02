@@ -146,7 +146,7 @@
                     <div class="blog-title-box"><h2 class="header">Synthèse à tables d’ondes
 </h2></div>
                     <div class="description">
-                    
+                    Esquisses musicales et notes éparses.
 
             </div></a>
                 </div>
@@ -182,6 +182,31 @@
 
                 <div class="languageJump">
                     <a href="../blog/2019/4/synthese-a-tables-d'ondes.html">Continuer à lire…</a>
+                </div>
+               
+                </div>
+            </div>
+            <div class="blog-post">
+                <div class="blog-post-header">
+                    <a href="../blog/2019/3/le-printemps-sur-phobos.html"><div class="date">29 mars 2019</div>
+                    <div class="blog-title-box"><h2 class="header">Le printemps sur Phobos</h2></div>
+                    <div class="description">
+                    Programmation <span class="blog-description-italic">à la volée</span> avec WebGL et SuperCollider.
+
+            </div></a>
+                </div>
+                <div class="blog-post-content">
+                    
+
+<img src="../../../images/spring-on-phobos/spring-on-phobos-still-01.jpg">
+
+<p class="article-top">
+    <span class="small-caps">Je continue</span> à apprendre la programmation <span class="italic">à la volée</span>.
+</p>
+
+
+                <div class="languageJump">
+                    <a href="../blog/2019/3/le-printemps-sur-phobos.html">Continuer à lire…</a>
                 </div>
                
                 </div>
@@ -426,13 +451,13 @@ walker<span class="hljs-punctuation">.</span>sing<span class="hljs-punctuation">
                     <div class="description">
                     Études géométriques avec WebGL.
 
-
             </div></a>
                 </div>
                 <div class="blog-post-content">
                     
 
-<img class="inline-image" src="../../../images/blurry-quadrilaterals/sketch-00243.png">
+<img src="../../../images/blurry-quadrilaterals/sketch-00243.png">
+
 <p class="article-top">
     <span class="small-caps">Dessiner des formes floues</span> avec WebGL n’est pas simple. Par défaut, toutes les formes créées sont très précises et leurs contours bien définis. Comme je cherche à créer des animations aux ambiances brumeuses et incertaines, je suis en train de créer quelques premiers outils pour me permettre de <span class="italic">dessiner du flou</span> avec WebGL.
 </p>
@@ -579,67 +604,6 @@ vertices<span class="hljs-punctuation"> = </span>[];
 </p>
 
 
-                </div>
-            </div>
-            <div class="blog-post">
-                <div class="blog-post-header">
-                    <a href="../blog/2018/8/une-machine-a-programmation-improvisee.html"><div class="date">7 août 2018</div>
-                    <div class="blog-title-box"><h2 class="header">Une machine à programmation improvisée</h2></div>
-                    <div class="description">
-                    Notes de travail pour une application en chantier.
-
-            </div></a>
-                </div>
-                <div class="blog-post-content">
-                    
-<p class="noindent">
-    <span class="small-caps">Je suis en train</span> de fabriquer une application Node.js qui me permettra de faire de la <span class="italic">programmation improvisée</span>.
-        <label for="livecoding-wikipedia" class="margin-toggle sidenote-number">
-        </label>
-        <input type="checkbox" id="livecoding-wikipedia" class="margin-toggle">
-        <span class="sidenote-left">L’expression anglaise “live coding” est plus souvent utilisée. <a href="https://fr.wikipedia.org/wiki/Live_coding">Wikipedia la traduit</a> par «&nbsp;programmation à la volée&nbsp;» ou «&nbsp;programmation juste-à-temps&nbsp;», deux formules qu’il est difficile d’imaginer devenir très populaires.</span> Elle contient deux champs de texte CodeMirror, la première qui contrôle un serveur SuperCollider, et la seconde qui controle un sketch p5.js.
-</p>
-<p>
-    Pour créer cette machine, j’ai utilisé une bonne quantité de code écrit pour <a href="https://github.com/prynth/prynth">Prynth</a><span class="cleardescenders">,</span> un logiciel créé par <a href="https://ivanfranco.wordpress.com/">Ivan Franco</a><span class="cleardescenders">,</span> Harish Venkatesan, Ajin Tom et Antoine Maiorca. Prynth est distribué avec une licence Creative Commons <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><span class="small-caps">Cc By-Nc-Sa 4.0</span></a>. J’ai également repris un peu de code écrit par <a href="https://ojack.github.io/">Olivia Jack</a> pour son logiciel <a href="https://github.com/ojack/hydra">Hydra</a><span class="cleardescenders">,</span> qui est distribué avec une licence <span class="small-caps">Gnu</span> Affero <span class="small-caps">Gpl</span> v3.0.
-</p>
-<p>
-    Mon application s’appelle <span class="italic">Les environs</span>. Elle peut être <a href="https://github.com/pelletierauger/Les-environs">téléchargée sur GitHub</a>.
-</p>
-
-<h3>Fonctionnement général</h3>
-
-<p class="noindent">
-    Je dois avoir une machine à laquelle je peux envoyer n’importe quel sketch p5.js. Je ne dois pas utiliser une nouvelle copie de la machine à chaque nouveau sketch, ça n’aurait aucun sens. Ainsi, il me faudrait pouvoir définir un sketch comme étant un ensemble de fichiers JavaScript et SuperCollider. Je définirais ce sketch dans un fichier <span class="small-caps">json</span>.
-</p>
-<div class="codebox"><pre><code>{
-    <span class="hljs-string">"root"</span>: <span class="hljs-string">"../../Graph-Sequencers/"</span>,
-    <span class="hljs-string">"javascript-files"</span>: [
-        <span class="hljs-string">"libraries/p5<span class="hljs-punctuation">.</span>min<span class="hljs-punctuation">.</span>js"</span>,
-        <span class="hljs-string">"libraries/p5<span class="hljs-punctuation">.</span>dom<span class="hljs-punctuation">.</span>min<span class="hljs-punctuation">.</span>js"</span>,
-        <span class="hljs-string">"libraries/p5<span class="hljs-punctuation">.</span>sound<span class="hljs-punctuation">.</span>min<span class="hljs-punctuation">.</span>js"</span>,
-        <span class="hljs-string">"libraries/socket<span class="hljs-punctuation">.</span>io<span class="hljs-punctuation">.</span>js"</span>,
-        <span class="hljs-string">"frame-export<span class="hljs-punctuation">.</span>js"</span>,
-        <span class="hljs-string">"graph-prototype<span class="hljs-punctuation">.</span>js"</span>,
-        <span class="hljs-string">"vertex-prototype<span class="hljs-punctuation">.</span>js"</span>,
-        <span class="hljs-string">"edge-prototype<span class="hljs-punctuation">.</span>js"</span>,
-        <span class="hljs-string">"walker-prototype<span class="hljs-punctuation">.</span>js"</span>,
-        <span class="hljs-string">"song-prototype<span class="hljs-punctuation">.</span>js"</span>,
-        <span class="hljs-string">"sketch<span class="hljs-punctuation">.</span>js"</span>
-    ],
-    <span class="hljs-string">"default-javascript-file"</span>: <span class="hljs-string">"sketch<span class="hljs-punctuation">.</span>js"</span>,
-    <span class="hljs-string">"supercollider-files"</span>: [
-        <span class="hljs-string">"supercollider/pink-noise-synth<span class="hljs-punctuation">.</span>scd"</span>,
-        <span class="hljs-string">"supercollider/triangle-wav-synth<span class="hljs-punctuation">.</span>scd"</span>,
-        <span class="hljs-string">"supercollider/osc-receive<span class="hljs-punctuation">.</span>scd"</span>
-    ],
-    <span class="hljs-string">"default-supercollider-file"</span>: <span class="hljs-string">"supercollider/osc-receive<span class="hljs-punctuation">.</span>scd"</span>
-}</code></pre></div>
-
-
-                <div class="languageJump">
-                    <a href="../blog/2018/8/une-machine-a-programmation-improvisee.html">Continuer à lire…</a>
-                </div>
-               
                 </div>
             </div>
         </div>

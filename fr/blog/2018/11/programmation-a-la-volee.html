@@ -2,7 +2,7 @@
     <html>
     <head>
         <meta charset="UTF-8">
-        <title>Guillaume Pelletier-Auger - Une machine à programmation improvisée</title>
+        <title>Guillaume Pelletier-Auger - Programmation à la volée</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=4, user-scalable=yes" />
         <link href="../../../../style/style.css" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700|EB+Garamond" rel="stylesheet">
@@ -14,30 +14,32 @@
             <li><a href="../../../../fr/">Projets</a></li>
             <li class = "selected"><a href="../../../../fr/blog/">Blog</a></li>
             <li><a href="../../../../fr/a-propos.html">À propos</a></li>
-            <li><a href="../../../../en/blog/2018/8/a-live-coding-machine.html">Fr &#8594; En</a></li>
+            <li><a href="../../../../en/blog/2018/11/a-live-coding-machine.html">Fr &#8594; En</a></li>
         </ul>
     </nav>
     
             <article>
-                <h2 class="with-date">Une machine à programmation improvisée</h2><div class="description">
+                <h2 class="with-date">Programmation à la volée</h2><div class="description">
                     Notes de travail pour une application en chantier.
 
             </div>
-                <div class="date">7 août 2018</div>
+                <div class="date">17 novembre 2018</div>
                 
 <p class="noindent">
     <span class="small-caps">Je suis en train</span> de fabriquer une application Node.js qui me permettra de faire de la <span class="italic">programmation improvisée</span>.
         <label for="livecoding-wikipedia" class="margin-toggle sidenote-number">
         </label></span>
         <input type="checkbox" id="livecoding-wikipedia" class="margin-toggle"/>
-        <span class="sidenote-left">L&rsquo;expression anglaise “live coding” est plus souvent utilisée. <a href="https://fr.wikipedia.org/wiki/Live_coding">Wikipedia la traduit</a> par &#171;&nbsp;programmation à la volée&nbsp;&#187; ou &#171;&nbsp;programmation juste-à-temps&nbsp;&#187;, deux formules qu&rsquo;il est difficile d&rsquo;imaginer devenir très populaires.</span> Elle contient deux champs de texte CodeMirror, la première qui contrôle un serveur SuperCollider, et la seconde qui controle un sketch p5.js.
+        <span class="sidenote-left">L&rsquo;expression anglaise “live coding” est plus souvent utilisée. <a href="https://fr.wikipedia.org/wiki/Live_coding">Wikipedia la traduit</a> par &#171;&nbsp;programmation à la volée&nbsp;&#187; ou &#171;&nbsp;programmation juste-à-temps&nbsp;&#187;.</span> Elle contient deux champs de texte CodeMirror, la première qui contrôle un serveur SuperCollider, et la seconde qui controle un sketch p5.js.
 </p>
 <p>
-    Pour créer cette machine, j&rsquo;ai utilisé une bonne quantité de code écrit pour <a href="https://github.com/prynth/prynth">Prynth</a><span class="cleardescenders">,</span> un logiciel créé par <a href="https://ivanfranco.wordpress.com/">Ivan Franco</a><span class="cleardescenders">,</span> Harish Venkatesan, Ajin Tom et Antoine Maiorca. Prynth est distribué avec une licence Creative Commons <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><span class="small-caps">Cc By-Nc-Sa 4.0</span></a>. J&rsquo;ai également repris un peu de code écrit par <a href="https://ojack.github.io/">Olivia Jack</a> pour son logiciel <a href="https://github.com/ojack/hydra">Hydra</a><span class="cleardescenders">,</span> qui est distribué avec une licence <span class="small-caps">Gnu</span> Affero <span class="small-caps">Gpl</span> v3.0.
+    Pour créer cette application, j&rsquo;ai utilisé une bonne quantité de code écrit pour <a href="https://github.com/prynth/prynth">Prynth</a><span class="cleardescenders">,</span> un logiciel créé par <a href="https://ivanfranco.wordpress.com/">Ivan Franco</a><span class="cleardescenders">,</span> Harish Venkatesan, Ajin Tom et Antoine Maiorca. Prynth est distribué avec une licence Creative Commons <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><span class="small-caps">Cc By-Nc-Sa 4.0</span></a>. J&rsquo;ai également repris un peu de code écrit par <a href="https://ojack.github.io/">Olivia Jack</a> pour son logiciel <a href="https://github.com/ojack/hydra">Hydra</a><span class="cleardescenders">,</span> qui est distribué avec une licence <span class="small-caps">Gnu</span> Affero <span class="small-caps">Gpl</span> v3.0.
 </p>
 <p>
     Mon application s&rsquo;appelle <span class="italic">Les environs</span>. Elle peut être <a href="https://github.com/pelletierauger/Les-environs">téléchargée sur GitHub</a>.
 </p>
+
+<!-- read-more -->
 
 <h3>Fonctionnement général</h3>
 
@@ -67,8 +69,6 @@
     ],
     <span class="hljs-string">"default-supercollider-file"</span>: <span class="hljs-string">"supercollider/osc-receive<span class="hljs-punctuation">.</span>scd"</span>
 }</code></pre></div>
-
-<!-- read-more -->
 
 <p class="noindent">
     Ensuite, il me suffirait, lorsque je lance le serveur Node.js, de lui envoyer en argument le nom du sketch à servir, comme ceci&nbsp;:
