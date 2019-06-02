@@ -2,6 +2,7 @@ exports.posts = [
     // "ant-colonies",
     // "density-maps",
     "wavetable-synthesis",
+    "spring-on-phobos",
     "swaying-loops",
     "tangent-lines",
     "neural-network",
@@ -10,8 +11,10 @@ exports.posts = [
     "blurry-quadrilaterals",
     "depth-first-search",
     "blurry-spirals",
-    "a-live-coding-machine",
+    "singing-boids", // 12 décembre 2018
+    "a-live-coding-machine", // 17 novembre 2018
     "graph-sequencers", // 17 octobre 2018
+    "ravines", // 19 septembre 2018
     "perlin-turtles", // 20 août 2018
     "a-recaman-spiral", // 30 juillet 2018
     "study-for-ca-no2", // 26 juillet 2018
