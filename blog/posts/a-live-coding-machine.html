@@ -1,18 +1,20 @@
 <!-- year -->2018
-<!-- month -->08
-<!-- day -->07
-<!-- fr-title -->Une machine à programmation improvisée
+<!-- month -->11
+<!-- day -->17
+<!-- fr-title -->Programmation à la volée
 <!-- fr-description -->Notes de travail pour une application en chantier.
 <!-- fr-content -->
 <pn>
-    <sc>Je suis en train</sc> de fabriquer une application Node.js qui me permettra de faire de la <i>programmation improvisée</i>.<snl label="livecoding-wikipedia">L'expression anglaise “live coding” est plus souvent utilisée. <a href="https://fr.wikipedia.org/wiki/Live_coding">Wikipedia la traduit</a> par &#171;&nbsp;programmation à la volée&nbsp;&#187; ou &#171;&nbsp;programmation juste-à-temps&nbsp;&#187;, deux formules qu'il est difficile d'imaginer devenir très populaires.</snl> Elle contient deux champs de texte CodeMirror, la première qui contrôle un serveur SuperCollider, et la seconde qui controle un sketch p5.js.
+    <sc>Je suis en train</sc> de fabriquer une application Node.js qui me permettra de faire de la <i>programmation improvisée</i>.<snl label="livecoding-wikipedia">L'expression anglaise “live coding” est plus souvent utilisée. <a href="https://fr.wikipedia.org/wiki/Live_coding">Wikipedia la traduit</a> par &#171;&nbsp;programmation à la volée&nbsp;&#187; ou &#171;&nbsp;programmation juste-à-temps&nbsp;&#187;.</snl> Elle contient deux champs de texte CodeMirror, la première qui contrôle un serveur SuperCollider, et la seconde qui controle un sketch p5.js.
 </pn>
 <p>
-    Pour créer cette machine, j'ai utilisé une bonne quantité de code écrit pour <a href="https://github.com/prynth/prynth">Prynth</a>, un logiciel créé par <a href="https://ivanfranco.wordpress.com/">Ivan Franco</a>, Harish Venkatesan, Ajin Tom et Antoine Maiorca. Prynth est distribué avec une licence Creative Commons <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><sc>Cc By-Nc-Sa 4.0</sc></a>. J'ai également repris un peu de code écrit par <a href="https://ojack.github.io/">Olivia Jack</a> pour son logiciel <a href="https://github.com/ojack/hydra">Hydra</a>, qui est distribué avec une licence <sc>Gnu</sc> Affero <sc>Gpl</sc> v3.0.
+    Pour créer cette application, j'ai utilisé une bonne quantité de code écrit pour <a href="https://github.com/prynth/prynth">Prynth</a>, un logiciel créé par <a href="https://ivanfranco.wordpress.com/">Ivan Franco</a>, Harish Venkatesan, Ajin Tom et Antoine Maiorca. Prynth est distribué avec une licence Creative Commons <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><sc>Cc By-Nc-Sa 4.0</sc></a>. J'ai également repris un peu de code écrit par <a href="https://ojack.github.io/">Olivia Jack</a> pour son logiciel <a href="https://github.com/ojack/hydra">Hydra</a>, qui est distribué avec une licence <sc>Gnu</sc> Affero <sc>Gpl</sc> v3.0.
 </p>
 <p>
     Mon application s'appelle <i>Les environs</i>. Elle peut être <a href="https://github.com/pelletierauger/Les-environs">téléchargée sur GitHub</a>.
 </p>
+
+<!-- read-more -->
 
 <h3>Fonctionnement général</h3>
 
@@ -44,8 +46,6 @@
     "default-supercollider-file" : "supercollider/osc-receive.scd"
 }
 </code>
-
-<!-- read-more -->
 
 <pn>
     Ensuite, il me suffirait, lorsque je lance le serveur Node.js, de lui envoyer en argument le nom du sketch à servir, comme ceci :
