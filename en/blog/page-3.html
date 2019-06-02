@@ -3,11 +3,6 @@
         <meta charset="UTF-8">
         <title>Guillaume Pelletier-Auger - Blog - Page 3</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=4, user-scalable=yes">
-        <script src="../../libraries/p5.min.js" type="text/javascript"></script>
-        <script src="../../libraries/p5.dom.min.js" type="text/javascript"></script>
-        <script src="../../sketches/recursive-harmonic-motion/sketch.js" type="text/javascript"></script>
-        <script src="../../sketches/recursive-harmonic-motion/sketch2.js" type="text/javascript"></script>
-        
         <link href="../../style/style.css" rel="stylesheet" type="text/css">
         <link href="../../style/notes-on-genetic-automata.css" rel="stylesheet" type="text/css">
         
@@ -16,7 +11,7 @@
         <link href="../../style/truchet.css" rel="stylesheet" type="text/css">
         
         <link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700|EB+Garamond" rel="stylesheet">
-        
+        <link href="../../style/code.css" rel="stylesheet" type="text/css">
     <style id="MathJax_CHTML_styles">.mjx-chtml {display: inline-block; line-height: 0; text-indent: 0; text-align: left; text-transform: none; font-style: normal; font-weight: normal; font-size: 100%; font-size-adjust: none; letter-spacing: normal; word-wrap: normal; word-spacing: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0; min-height: 0; border: 0; margin: 0; padding: 1px 0}
 .MJXc-display {display: block; text-align: center; margin: 1em 0; padding: 0}
 .mjx-chtml[tabindex]:focus, body :focus .mjx-chtml[tabindex] {display: inline-table}
@@ -150,6 +145,62 @@
             </div><div class="blog-posts">
             <div class="blog-post">
                 <div class="blog-post-header">
+                    <a href="../blog/2018/6/deterministic-branching.html"><div class="date">June 2, 2018</div>
+                    <div class="blog-title-box"><h2 class="header">Deterministic branching</h2></div>
+                    <div class="description">
+                    En route to an algorithmic garden.
+
+            </div></a>
+                </div>
+                <div class="blog-post-content">
+                    
+
+<h3>Context</h3>
+
+<p class="noindent">
+    <span class="small-caps">This blog post</span> is part of my research project <span class="italic">Towards an algorithmic cinema</span>, started in April 2018. I invite you to read <a href="https://pelletierauger.github.io/en/blog/2018/4/towards-an-algorithmic-cinema.html">the first blog post of the project</a> to learn more about it.
+</p>
+                </div>
+            </div>
+            <div class="blog-post">
+                <div class="blog-post-header">
+                    <a href="../blog/2018/5/a-p5js-template-for-animation.html"><div class="date">May 27, 2018</div>
+                    <div class="blog-title-box"><h2 class="header">A <span class="lnum">p5.js</span> template for animation
+</h2></div>
+                    <div class="description">
+                    
+
+            </div></a>
+                </div>
+                <div class="blog-post-content">
+                    
+<p class="noindent">
+    <span class="small-caps">While doing a lot of animation</span> with <span class="lnum">p5.js</span> over the last few months, I’ve slowly developed a template that I now use to start all my projects. It’s designed for my own use but perhaps it could also be useful (in part or as a whole) for other people. So I’m <a href="">sharing it on GitHub</a> and documenting it below. There’s always ample room for improvement, so if you have any ideas don’t hesite to <a href="">get in touch</a>.
+</p>
+<p>
+    The main feature of this template is a convenient system to export frames to create videos and gifs. This is accomplished with a small Node.js server, named <span class="inline-code">server.js</span>, that communicates with the <span class="lnum">p5.js</span> sketch via Socket.io. To export frames, the sketch gets a reference to the web canvas and sends it to <span class="inline-code">server.js</span>, which saves it to disk. The best part is that the exportation can all happen behind the scene, in the command line, using the Node module Puppeteer. Then, when all the frames are exported, they can be turned into videos and gifs using <span class="small-caps">ffmpeg</span>.
+</p>
+<p>
+    Below are all the files included in the template. I will now go through how all the pieces fit together.
+</p>
+<div class="codebox"><pre><code class="nosyntax">frame-export.js
+frames
+headless.js
+index.html
+libraries
+server.js
+sketch.js
+style.css</code></pre></div>
+
+
+                <div class="languageJump">
+                    <a href="../blog/2018/5/a-p5js-template-for-animation.html">Read more…</a>
+                </div>
+               
+                </div>
+            </div>
+            <div class="blog-post">
+                <div class="blog-post-header">
                     <a href="../blog/2018/5/notes-on-genetic-automata.html"><div class="date">May 12, 2018</div>
                     <div class="blog-title-box"><h2 class="header">Notes on Genetic Automata</h2></div>
                     <div class="description">
@@ -251,7 +302,7 @@
     <span class="small-caps">I’m currently reading</span> <span class="italic">Complexity: A Guided Tour</span>, a wonderful book written by the American scientist Melanie Mitchell. I created the animation shown above using an equation I learned about in the book, the <span class="italic">logistic map</span>, which is the most famous equation in the field of chaos theory. Here it is:
 </p>
 
-<div class="math"><span class="mjx-chtml MJXc-display" style="text-align: center;"><span id="MathJax-Element-1-Frame" class="mjx-chtml" style="text-align: center;"><span id="MJXc-Node-4673" class="mjx-math"><span id="MJXc-Node-4674" class="mjx-mrow"><span id="MJXc-Node-4675" class="mjx-msubsup"><span class="mjx-base"><span id="MJXc-Node-4676" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.298em;">x</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-4677" class="mjx-texatom" style=""><span id="MJXc-Node-4678" class="mjx-mrow"><span id="MJXc-Node-4679" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.372em; padding-bottom: 0.298em;">t</span></span><span id="MJXc-Node-4680" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.298em; padding-bottom: 0.446em;">+</span></span><span id="MJXc-Node-4681" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">1</span></span></span></span></span></span><span id="MJXc-Node-4682" class="mjx-mo MJXc-space3"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.077em; padding-bottom: 0.298em;">=</span></span><span id="MJXc-Node-4683" class="mjx-mi MJXc-space3"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.446em; padding-bottom: 0.298em;">R</span></span><span id="MJXc-Node-4684" class="mjx-msubsup"><span class="mjx-base"><span id="MJXc-Node-4685" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.298em;">x</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-4686" class="mjx-mi" style=""><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.372em; padding-bottom: 0.298em;">t</span></span></span></span><span id="MJXc-Node-4687" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.446em; padding-bottom: 0.593em;">(</span></span><span id="MJXc-Node-4688" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">1</span></span><span id="MJXc-Node-4689" class="mjx-mo MJXc-space2"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.298em; padding-bottom: 0.446em;">−</span></span><span id="MJXc-Node-4690" class="mjx-msubsup MJXc-space2"><span class="mjx-base"><span id="MJXc-Node-4691" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.298em;">x</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-4692" class="mjx-mi" style=""><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.372em; padding-bottom: 0.298em;">t</span></span></span></span><span id="MJXc-Node-4693" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.446em; padding-bottom: 0.593em;">)</span></span></span></span></span></span></div>
+<div class="math"><span class="mjx-chtml MJXc-display" style="text-align: center;"><span id="MathJax-Element-1-Frame" class="mjx-chtml" style="text-align: center;"><span id="MJXc-Node-4719" class="mjx-math"><span id="MJXc-Node-4720" class="mjx-mrow"><span id="MJXc-Node-4721" class="mjx-msubsup"><span class="mjx-base"><span id="MJXc-Node-4722" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.298em;">x</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-4723" class="mjx-texatom" style=""><span id="MJXc-Node-4724" class="mjx-mrow"><span id="MJXc-Node-4725" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.372em; padding-bottom: 0.298em;">t</span></span><span id="MJXc-Node-4726" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.298em; padding-bottom: 0.446em;">+</span></span><span id="MJXc-Node-4727" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">1</span></span></span></span></span></span><span id="MJXc-Node-4728" class="mjx-mo MJXc-space3"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.077em; padding-bottom: 0.298em;">=</span></span><span id="MJXc-Node-4729" class="mjx-mi MJXc-space3"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.446em; padding-bottom: 0.298em;">R</span></span><span id="MJXc-Node-4730" class="mjx-msubsup"><span class="mjx-base"><span id="MJXc-Node-4731" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.298em;">x</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-4732" class="mjx-mi" style=""><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.372em; padding-bottom: 0.298em;">t</span></span></span></span><span id="MJXc-Node-4733" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.446em; padding-bottom: 0.593em;">(</span></span><span id="MJXc-Node-4734" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">1</span></span><span id="MJXc-Node-4735" class="mjx-mo MJXc-space2"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.298em; padding-bottom: 0.446em;">−</span></span><span id="MJXc-Node-4736" class="mjx-msubsup MJXc-space2"><span class="mjx-base"><span id="MJXc-Node-4737" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.298em;">x</span></span></span><span class="mjx-sub" style="font-size: 70.7%; vertical-align: -0.212em; padding-right: 0.071em;"><span id="MJXc-Node-4738" class="mjx-mi" style=""><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.372em; padding-bottom: 0.298em;">t</span></span></span></span><span id="MJXc-Node-4739" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.446em; padding-bottom: 0.593em;">)</span></span></span></span></span></span></div>
 
 
                 <div class="languageJump">
@@ -325,32 +376,17 @@
                
                 </div>
             </div>
-            <div class="blog-post">
-                <div class="blog-post-header">
-                    <a href="../blog/2017/10/recursive-harmonic-motion.html"><div class="date">October 17, 2017</div>
-                    <div class="blog-title-box"><h2 class="header">Recursive harmonic motion</h2></div>
-                    <div class="description">
-                    Two animations made while experimenting with simple examples of recursion.
-
-            </div></a>
-                </div>
-                <div class="blog-post-content">
-                    
-<p class="noindent">
-    <span class="small-caps">These animations</span> were created with the <span class="lnum"><a href="https://p5js.org/">p5.js library</a></span>, in response to two <span class="italic">coding challenges</span> presented by Daniel Shiffman on his YouTube channel <a href="https://www.youtube.com/thecodingtrain"><span class="italic">The Coding Train</span></a>.
-</p>
-
-                <div class="languageJump">
-                    <a href="../blog/2017/10/recursive-harmonic-motion.html">Read more…</a>
-                </div>
-               
-                </div>
-            </div>
         </div>
         <div id="blog-pagination">
-            <div class="pagination-link-single">
+            <div class="pagination-link">
                 <a href="./page-2.html">
                 Previous page
+                </a>
+            </div>
+            
+            <div class="pagination-link">
+                <a href="./page-4.html">
+                Next page
                 </a>
             </div>
             

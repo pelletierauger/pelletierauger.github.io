@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html><head>
         <meta charset="UTF-8">
-        <title>Guillaume Pelletier-Auger - Scènes botaniques</title>
+        <title>Guillaume Pelletier-Auger - Etude pour automates cellulaires no 1</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=4, user-scalable=yes">
         <link href="../../../../style/style.css" rel="stylesheet" type="text/css">
-        <link href="https://fonts.googleapis.com/css?family=Inconsolata|EB+Garamond" rel="stylesheet">
-        <link href="../../../../style/code.css" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=EB+Garamond" rel="stylesheet">
+        
     <style id="MathJax_CHTML_styles">.mjx-chtml {display: inline-block; line-height: 0; text-indent: 0; text-align: left; text-transform: none; font-style: normal; font-weight: normal; font-size: 100%; font-size-adjust: none; letter-spacing: normal; word-wrap: normal; word-spacing: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0; min-height: 0; border: 0; margin: 0; padding: 1px 0}
 .MJXc-display {display: block; text-align: center; margin: 1em 0; padding: 0}
 .mjx-chtml[tabindex]:focus, body :focus .mjx-chtml[tabindex] {display: inline-table}
@@ -130,115 +130,46 @@
             <li><a href="../../../../fr/">Projets</a></li>
             <li class="selected"><a href="../../../../fr/blog/">Blog</a></li>
             <li><a href="../../../../fr/a-propos.html">À propos</a></li>
-            <li><a href="../../../../en/blog/2018/6/botanical-scenes.html">Fr → En</a></li>
+            <li><a href="../../../../en/blog/2018/7/study-for-cellular-automata-no-1.html">Fr → En</a></li>
         </ul>
     </nav>
     
             <article>
-                <h2 class="with-date">Scènes botaniques</h2><div class="description">
+                <h2 class="with-date">Étude pour automates cellulaires nº 1
+</h2><div class="description">
                     
 
             </div>
-                <div class="date">9 juin 2018</div>
+                <div class="date">26 juillet 2018</div>
                 
+<img src="../../../../images/study-for-ca-no1/still-01.jpg">
+<p class="article-top">
+    <span class="small-caps">Le brillant livre</span> de Melanie Mitchell <span class="italic">Complexity: A Guided Tour</span> contient une explication assez exhaustive des algorithmes génétiques, c’est-à-dire des algorithmes qui sont conçus pour pouvoir évoluer en fonction de forces extérieures qui sont appliquées sur eux. Mitchell se sert des automates cellulaires pour construire un exemple de ces algorithmes génétiques. Lors de ma lecture de ce livre, j’ai programmé un système me permettant d’appliquer cette matière fascinante et d’en faire des courts métrages d’animation.
+</p>
+<p>
+    <span class="italic">Étude pour automates cellulaires nº 1</span> est un premier exemple de film d’animation réalisé avec ces méthodes, et il peut être <a href="https://www.youtube.com/watch&nbsp;?v=2QywbLDit2I">visionné sur YouTube.</a> L’image ci-dessus est tirée de ce film.
+</p>
+
+<h3>Génétique et mutations</h3>
 
 <p class="noindent">
-    <span class="small-caps">Il me faut créer</span> un système de scènes botaniques qui puissent gérer des animations contenant de quantités quasi illimitées d’éléments. Pour cela, il faut séparer le concept du <span class="inline-code">frame</span> d’animation de celui du <span class="inline-code">frameCount</span> de <span class="lnum">p5.js</span>, comme je l’ai fait dans ma machine à automates cellulaires.
+    <span class="small-caps">Chacune des scènes</span> de ce film est formée par un algorithme différent, qui est défini par une simple séquence de chiffres. Cette séquence constitue, d’une certaine façon, l’<span class="small-caps">adn</span> de la scène. Par exemple, l’image ci-dessous provient d’une scène du film qui est définie par cette séquence&nbsp;: <span class="inline-code">"0111100010000001"</span>.
+</p>
+<p>
+    Définir un algorithme d’une façon aussi simple et optimisée permet beaucoup de choses. Premièrement, cela permet de générer aisément une immense quantité d’algorithmes semblables (mais tous différents), mais surtout, cela permet d’appliquer des mutations et des croisements entre divers algorithmes. Par exemple, la séquence <span class="inline-code">"0111100010000000"</span> peut être considérée comme une mutation de la séquence <span class="inline-code">"0111100010000001"</span>, puisqu’un seul chiffre a été changé pour passer de l’une à l’autre.
+</p>
+<p>
+    Le système sur lequel est basé ce film peut donc produire <span id="MathJax-Element-1-Frame" class="mjx-chtml"><span id="MJXc-Node-1845" class="mjx-math"><span id="MJXc-Node-1846" class="mjx-mrow"><span id="MJXc-Node-1847" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">65</span></span><span id="MJXc-Node-1848" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="margin-top: -0.144em; padding-bottom: 0.519em;">,</span></span><span id="MJXc-Node-1849" class="mjx-mn MJXc-space1"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">536</span></span></span></span></span> différentes scènes (ou <span id="MathJax-Element-2-Frame" class="mjx-chtml"><span id="MJXc-Node-1850" class="mjx-math"><span id="MJXc-Node-1851" class="mjx-mrow"><span id="MJXc-Node-1852" class="mjx-msubsup"><span class="mjx-base"><span id="MJXc-Node-1853" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">2</span></span></span><span class="mjx-sup" style="font-size: 70.7%; vertical-align: 0.591em; padding-left: 0px; padding-right: 0.071em;"><span id="MJXc-Node-1854" class="mjx-texatom" style=""><span id="MJXc-Node-1855" class="mjx-mrow"><span id="MJXc-Node-1856" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">16</span></span></span></span></span></span></span></span></span>). Cet ensemble de tous les résultats potentiels s’appelle <span class="italic">l’espace des possibilités</span> (“possibility space” en anglais), et c’est le moyen par lequel on se déplace dans cet espace immense qui constitue la plus épineuse des questions.
+</p>
+<p>
+    Dans mon cas, la première idée qui m’est venue en tête était de me déplacer dans cet espace en fonction de la beauté subjective que j’accordais à chacune des scènes animées. Et après avoir passé beaucoup de temps à me déplacer dans l’espace des possibilité de cette manière, et après m’avoir beaucoup gratté la tête en imaginant des moyens de déplacement plus sophistiqués et intéressants, je n’ai rien trouvé de mieux.
 </p>
 
-<!-- read-more -->
-
-<p>
-    Donc, je peux créer autant d’arbres que je veux, et ces arbres-là doivent s’ajouter aux objets d’une <span class="inline-code">scene</span>.
-</p>
-<p>
-    En même temps, une <span class="inline-code">scene</span> devrait être une opportunité de créer de nouveaux arbres… d’interpréter différemment leurs génotypes, etc.
-</p>
-<p>
-    Y aura-t-il plusieurs <span class="italic">sortes</span> de scènes&nbsp;? Qu’est-ce qui pourrait séparer le mécanisme d’une scène de celui d’une autre&nbsp;? Chaque scène doit gérer les images d’animation, peu importe la quantité d’objets à dessiner qu’elles contiennent. Elle doit aussi activer elle-même la croissance des plantes. C’est vrai qu’au final, j’imagine des scènes qui auraient différents niveaux de profondeur, différentes répartitions de ressources naturelles et différentes ressources naturelles. Donc, au final, oui, il y aura des scènes de natures très distinctes. Mais tout ce mécanisme est très compliqué à construire et rien n’est échafaudé pour l’instant.
-</p>
-<p>
-    Il y a donc une fonctionnalité importante qui est <span class="italic">au-dessus</span> de toutes les scènes imaginables&nbsp;: la possibilité de gérer les images d’animation et leurs objets... car au fond, chacune des scènes disparates devra, en fin de compte, envoyer à <span class="italic">quelque chose</span> une série d’objets à dessiner, et ce <span class="italic">quelque chose</span> devra gérer le dessin. Même les scènes multi-plans ne feront qu’envoyer leurs éléments de décors comme des formes à la machine à dessiner.
-</p>
-<p>
-    Il y a donc une <span class="italic">machine à dessiner</span> à concevoir. Une machine flexible et qui gère la mémoire intelligemment.
-</p>
-
-<h3>La machine paysagiste</h3>
+<h3>Code</h3>
 
 <p class="noindent">
-    <span class="small-caps">Cette machine doit pouvoir</span> recevoir des objets, en faire des listes, séparer cette liste en plus petites listes (à longueurs variables). Les objets qu’elle peut recevoir sont&nbsp;: des lignes, des polygones. Ces objets ont des coordonnées cartésiennes et une information de couleur. Cette information de couleur peut être un dégradé.
+    <span class="small-caps">Le code écrit</span> pour réaliser ce court métrage <a href="https://github.com/pelletierauger/Game-of-Life">se trouve ici sur GitHub</a><span class="cleardescenders">,</span> sur les branches <a href="https://github.com/pelletierauger/Game-of-Life/tree/genetic"><span class="inline-code">genetic</span></a> et <a href="https://github.com/pelletierauger/Game-of-Life/tree/with-creategraphics"><span class="inline-code">with-creategraphics</span></a> du projet Git. L’objet <span class="inline-code">geneticScene05</span> que l’on trouve dans le fichier <span class="inline-code">scenes-genetic-01.js</span> a servi à créer la totalité du film.
 </p>
-<p>
-    La machine doit aussi avoir un mode <span class="italic">simple</span> et un mode <span class="italic">pointilliste</span>. Lorsqu’elle se fait pointilliste, elle peint chaque forme avec une texture formée avec de petits points. Les détails précis de ces informations de textures doivent pouvoir changer (parce qu’il y a beaucoup de choses intéressantes à faire avec divers algorithmes pointillistes).
-        <label for="pointillisme" class="margin-toggle sidenote-number">
-        </label>
-        <input type="checkbox" id="pointillisme" class="margin-toggle">
-        <span class="sidenote-left">Je pourrais aussi pousser plus loin l’idée du pointillisme&nbsp;: je pourrais avoir des masses de très petits points, chose que j’ai déjà réalisée, mais je pourrais aussi avoir des masses de gros points, plus proches de Seurat. Et ces gros points pourraient eux-mêmes être constitués de masses de petits points (du grain de film, finalement). Et si je veux pousser les hommages à l’impressionnisme plus loin, je pourrais aussi jouer avec le fondu enchaîné, créer des scènes où tout serait en double exposition comme à la Frédéric Back et <span class="italic8">L’homme qui plantait des arbres</span>, et comme à la Caroline Leaf.</span>
-</p>
-
-<h3>Couleurs et niveaux superposés</h3>
-
-<p class="noindent">
-    <span class="small-caps">Comment construirai-je</span> les niveaux superposés&nbsp;? Premièrement, je dois avoir un prototype <span class="inline-code">Hill</span>, chaque niveau représentant une colline. Une scène doit aussi avoir une propriété <span class="inline-code">sky</span>, qui sera une information de dégradé de couleurs.
-</p>
-<p>
-    Les collines devraient toujours être créées en groupes puisque chaque colline doit répondre aux collines adjacentes. Elles seront créées avec du bruit de Perlin tridimentionnel. Donc, un groupe de collines doit avoir ces propriétés&nbsp;:
-</p>
-<div class="codebox"><pre><code><span class="hljs-keyword">let</span> Terrain<span class="hljs-punctuation"> = </span><span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
-    <span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>amountOfHills<span class="hljs-punctuation"> = </span><span class="hljs-number">5</span>;
-    <span class="hljs-comment">// A float between 0 and 1, </span>
-    <span class="hljs-comment">// 0 being the top of the scene, 1 being the bottom.</span>
-    <span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>horizon<span class="hljs-punctuation"> = </span><span class="hljs-number">0.5</span>;
-    <span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>width<span class="hljs-punctuation"> = </span><span class="hljs-number">300</span>;
-};</code></pre></div>
-<p class="noindent">
-    La fréquence et l’amplitude du bruit de Perlin est ici la question la plus intéressante.
-</p>
-
-<h3>Couleurs</h3>
-
-<p class="noindent">
-    Les couleurs devraient aussi pouvoir changer avec le temps&nbsp;! Ce sera un élément déterminant pour la beauté de la chose.
-</p>
-<p>
-    Voici comment je définissais les couleurs d’un dégradé d’une scène dans <span class="italic">Les joies confuses</span>&nbsp;:
-</p>
-<div class="codebox"><pre><code><span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>localValues<span class="hljs-punctuation">.</span>gradient<span class="hljs-punctuation"> = </span>[{
-    <span class="hljs-attr">offset</span>: <span class="hljs-number">0</span>,
-    <span class="hljs-attr">r</span>: <span class="hljs-number">255</span>,
-    <span class="hljs-attr">g</span>: <span class="hljs-number">255</span>,
-    <span class="hljs-attr">b</span>: <span class="hljs-number">0</span>
-}, {
-    <span class="hljs-attr">offset</span>: <span class="hljs-number">0.25</span>,
-    <span class="hljs-attr">r</span>: <span class="hljs-number">55</span>,
-    <span class="hljs-attr">g</span>: <span class="hljs-number">120</span>,
-    <span class="hljs-attr">b</span>: <span class="hljs-number">0</span>
-}, {
-    <span class="hljs-attr">offset</span>: <span class="hljs-number">0.8</span>,
-    <span class="hljs-attr">r</span>: <span class="hljs-number">255</span>,
-    <span class="hljs-attr">g</span>: <span class="hljs-number">50</span>,
-    <span class="hljs-attr">b</span>: <span class="hljs-number">0</span>
-}];</code></pre></div>
-
-<p class="noindent">
-    J’étais ainsi limité à des dégradés à trois couleurs. Devrais-je encore me limiter à trois couleurs&nbsp;? Ce n’est pas bien compliqué d’y aller pour une quantité <span id="MathJax-Element-1-Frame" class="mjx-chtml"><span id="MJXc-Node-1948" class="mjx-math"><span id="MJXc-Node-1949" class="mjx-mrow"><span id="MJXc-Node-1950" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.298em;">n</span></span></span></span></span> de couleurs, mais est-ce utile&nbsp;? Également, je définissais mes dégradés de manière complètement manuelle, il serait plus intéressant d’y aller cette fois-ci de façon générative, en utilisant mon système de palettes de couleurs.
-</p>
-
-
-<h3>Perspective atmosphérique</h3>
-<p class="noindent">
-    <span class="small-caps">La définition</span> de la perspective atmosphérique pourrait aussi être une fonction trigonométrique&nbsp;! La perspective atmosphérique répond toujours à un nombre réel situé entre <span id="MathJax-Element-2-Frame" class="mjx-chtml"><span id="MJXc-Node-1951" class="mjx-math"><span id="MJXc-Node-1952" class="mjx-mrow"><span id="MJXc-Node-1953" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">0</span></span></span></span></span> et <span id="MathJax-Element-3-Frame" class="mjx-chtml"><span id="MJXc-Node-1954" class="mjx-math"><span id="MJXc-Node-1955" class="mjx-mrow"><span id="MJXc-Node-1956" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">1</span></span></span></span></span>, qui représente la distance d’un objet avec la «&nbsp;caméra&nbsp;». L’axe des <span id="MathJax-Element-4-Frame" class="mjx-chtml"><span id="MJXc-Node-1957" class="mjx-math"><span id="MJXc-Node-1958" class="mjx-mrow"><span id="MJXc-Node-1959" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.298em; padding-right: 0.003em;">z</span></span></span></span></span> est défini ainsi&nbsp;: le premier plan est toujours à la position <span id="MathJax-Element-5-Frame" class="mjx-chtml"><span id="MJXc-Node-1960" class="mjx-math"><span id="MJXc-Node-1961" class="mjx-mrow"><span id="MJXc-Node-1962" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">0</span></span></span></span></span>, et chaque plan suivant incrémente l’axe des <span id="MathJax-Element-6-Frame" class="mjx-chtml"><span id="MJXc-Node-1963" class="mjx-math"><span id="MJXc-Node-1964" class="mjx-mrow"><span id="MJXc-Node-1965" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.298em; padding-right: 0.003em;">z</span></span></span></span></span> de <span id="MathJax-Element-7-Frame" class="mjx-chtml"><span id="MJXc-Node-1966" class="mjx-math"><span id="MJXc-Node-1967" class="mjx-mrow"><span id="MJXc-Node-1968" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">1</span></span></span></span></span>. Et pour calculer la perspective atmosphérique, on utilise la valeur d’un objet sur son axe des <span id="MathJax-Element-8-Frame" class="mjx-chtml"><span id="MJXc-Node-1969" class="mjx-math"><span id="MJXc-Node-1970" class="mjx-mrow"><span id="MJXc-Node-1971" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.298em; padding-right: 0.003em;">z</span></span></span></span></span> et on envoie cette valeur à une fonction trigonométrique (une palette de couleur).
-</p>
-<p>
-    Une plante doit pouvoir être positionnée à diverses hauteurs sur une colline. Et la perspective atmosphérique qui est appliquée sur cette plante doit se faire en fonction de cette hauteur.
-</p>
-
-<h3>Nuages</h3>
-<p class="noindent">
-    Oh, ce serait intéressant d’avoir des nuages&nbsp;!
-</p>
-
 
 <h3>Contexte</h3>
 
