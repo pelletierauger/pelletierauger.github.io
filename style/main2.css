@@ -290,6 +290,10 @@ article img {
     width: 100%;
 }
 
+.blog-post img {
+    max-width: 100%;
+}
+
 article ul.dash {
     display: block;
     margin: 0 auto;
