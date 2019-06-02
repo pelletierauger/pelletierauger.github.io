@@ -11,18 +11,18 @@ exports.posts = [
     "depth-first-search",
     "blurry-spirals",
     "a-live-coding-machine",
-    "a-recaman-spiral",
-    "graph-sequencers",
-    "study-for-ca-no2",
-    "study-for-ca-no1",
+    "graph-sequencers", // 17 octobre 2018
+    "perlin-turtles", // 20 août 2018
+    "a-recaman-spiral", // 30 juillet 2018
+    "study-for-ca-no2", // 26 juillet 2018
+    "study-for-ca-no1", // 26 juillet 2018
+    "growing-mountains", // 10 juillet 2018
     "granular-drawings",
-    "perlin-turtles",
     "phenotype-and-genotype",
     "foliages",
     "botanical-scenes",
     "deterministic-branching",
     "a-p5js-template-for-animation",
-    "falling-mountains",
     "notes-on-genetic-automata",
     "evolutionary-botany",
     "friendly-turtles",
