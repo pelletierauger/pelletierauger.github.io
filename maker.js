@@ -310,16 +310,13 @@ function makeMosaic(pages, language, stepsFromRoot) {
         var link = (page[language].link || page.link || innerLink + filename + ".html");
 
         var itemDiv = `
-        <div class = "portfolio-item">
+        <div class="portfolio-item">
             <a href="${link}">
-            <div class = "thumbnail">
+            <div class="thumbnail">
                 <img src="${navPrefix}images/thumbnails/${thumbnailName}.jpg">
             </div>
-            <div class = "portfolio-banner">
-                <div class = "portfolio-logo">
-                    <img src="${navPrefix}style/ornaments/logo-${thumbnailName}.png">
-                </div>
-                <div class = "portfolio-description">
+            <div class="portfolio-banner">
+                <div class="portfolio-description">
                     <h2>${title}</h2> 
                     ${description}
                 </div>
