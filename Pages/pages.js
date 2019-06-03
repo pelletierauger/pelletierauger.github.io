@@ -52,7 +52,7 @@ exports.pages = {
             description: 'Animation et musique en programmation <span class="italic">à la volée</span>.'
         },
         en: {
-            title: 'Raspberries <span class="nobreak"><span class="italic8"><span class="small-title">in the</span></span></span> Snow',
+            title: 'Raspberry Plants <span class="nobreak"><span class="italic8"><span class="small-title">in the</span></span></span> Snow',
             description: "A set of live coded music and animation."
         },
         link: "https://www.youtube.com/watch?v=6QXGw4NHXzE"
