@@ -3,14 +3,21 @@
 <!-- day -->28
 <!-- style -->truchet
 <!-- fr-title -->Dessins granulaires
-<!-- fr-description -->Applications du concept de synthèse granulaire à des dessins
+<!-- fr-description -->Applications du concept de synthèse granulaire à des dessins.
 <!-- fr-content -->
 
 <!-- <img class="full-size-image" src="../../../images/towards-an-algorithmic-cinema/april-at-the-docks-02-small.gif"> -->
 
 <img class="inline-image" src="../../../images/granular-drawings/plant.jpg">
 
+<p class="article-top">
+    <sc>Je suis récemment tombé</sc> par hasard sur une chose dont la beauté me foudroie : la <a href="https://fr.wikipedia.org/wiki/Synth%C3%A8se_granulaire">synthèse granulaire</a>. Il s'agit d'une méthode qui sert à transformer des sons en les découpant en très petits segments (nommés <i>grains</i>). En faisant des premières expériences de synthèse granulaire, je n'ai pas pu m'empêcher d'imaginer comment ce principe pourrait être utilisé en arts visuels et en cinéma. J'ai fait en partant de cette idée quelques expériences qui se sont avérées très peu concluantes, mais dont je partage tout de même les notes ci-dessous.
+</p>
+
+<!-- read-more -->
+
 <h3>Qu'est-ce qu'un dessin ?</h3>
+
 <pn>
     <sc>Tout d’abord,</sc> un dessin pourrait se définir par un groupe de points (ou vecteurs).
 </pn>
@@ -27,18 +34,18 @@ let drawing = [
 <pn>
     En dessinant une petite ellipse à la position définie par chacun de ces points, on obtiendrait un tracé pointilliste. Est-ce suffisant? J'ai l'impression qu'il me faudrait créer des lignes pour relier les points, et aussi que les dessins devraient plutôt être définis par des ensembles de <i>transformations</i> plutôt que par des ensembles de vecteurs.
 </pn>
-<!-- read-more -->
+
 <p>
     Dans l'exemple ci-dessous, chaque élément d'un dessin est un objet dont la valeur <ic>a</ic> représente l'angle d'un pas de tortue géométrique, et <ic>l</ic> sa longueur (ou “length”).
 </p>
 <code>
-let drawing = {
+let drawing = [
     {a: 0, l: 0.1},
     {a: 0.1, l: 0.12},
     {a: 0.3, l: 0.13},
     {a: 0.5, l: 0.16},
     {a: 0.51, l: 0.12}
-};
+];
 </code>
 <pn>
     Essentiellement, j'obtiens un ensemble de vecteurs polaires, où <im>r</im> représente la magnitude du rayon, et <im>\angle\theta</im> son angle.
@@ -110,6 +117,12 @@ let points = [
     Cette suite devra ensuite être transformée en suite polaire, mais cependant, je me dis que peut-être devrait-elle être sauvegardée sous cette forme cartésienne. Et ensuite, ce serait la création des <i>grains</i> qui opérerait cette transformation.
 </pn>
 
+<h3>Code source</h3>
+
+<pn>
+    <sc>Le code écrit</sc> pour réaliser ce projet <a href="https://github.com/pelletierauger/Granular-Drawings">se trouve sur GitHub</a>.
+</pn>
+
 <h3>Contexte</h3>
 
 <pn>
@@ -117,7 +130,7 @@ let points = [
 </pn>
 
 <!-- en-title -->Granular Drawings
-<!-- en-description -->Trying to apply the concepts of granular synthesis on line drawings
+<!-- en-description -->Trying to apply the concepts of granular synthesis on line drawings.
 <!-- en-content -->
 
 <h3>Context</h3>
