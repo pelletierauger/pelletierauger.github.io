@@ -8,10 +8,9 @@ exports.posts = [
     "neural-network",
     "linear-regression",
     "singing-trees",
-    "blurry-quadrilaterals",
-    "depth-first-search",
-
+    "blurry-quadrilaterals", // 17 décembre 2018
     "singing-boids", // 12 décembre 2018
+    "depth-first-search", // 25 novembre 2018
     "a-live-coding-machine", // 17 novembre 2018
     "blurry-spirals", // 4 novembre 2018
     "graph-sequencers", // 17 octobre 2018
