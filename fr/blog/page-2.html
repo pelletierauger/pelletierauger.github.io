@@ -5,12 +5,12 @@
         <title>Guillaume Pelletier-Auger - Blog - Page 2</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=4, user-scalable=yes" />
         <link href="../../style/style.css" rel="stylesheet" type="text/css">
-        <link href="../../style/growing-mountains.css" rel="stylesheet" type="text/css">
-        
         <link href="../../style/truchet.css" rel="stylesheet" type="text/css">
         
-        <link href="https://fonts.googleapis.com/css?family=Inconsolata|EB+Garamond" rel="stylesheet">
-        <link href="../../style/code.css" rel="stylesheet" type="text/css">
+        <link href="../../style/growing-mountains.css" rel="stylesheet" type="text/css">
+        
+        <link href="https://fonts.googleapis.com/css?family=EB+Garamond" rel="stylesheet">
+        
     </head><body>
     <nav>
         <h1><a href="../../fr/">Guillaume <span class="nobreak">Pelletier-Auger</span></a></h1>
@@ -31,7 +31,7 @@
                     <div class="blog-title-box"><h2 class="header">Volées d&rsquo;oiseaux artificiels
 </h2></div>
                     <div class="description">
-                    
+                    Se saucer un premier orteil dans la programmation <span class="blog-description-italic">à la volée</span>.
 
             </div></a>
                 </div>
@@ -41,16 +41,20 @@
 <img src="../../../images/singing-boids/singing-boids-still-01.jpg">
 
 <p class="article-top">
-    <a href="https://twitter.com/PelletierAuger/status/1072925392011452418">Sur Twitter</a> et <a href="https://www.youtube.com/watch&nbsp;?v=COeC7UdIBn8">sur YouTube</a>.
+    <span class="small-caps">Ce projet constitue</span> ma toute première expérience de programmation <span class="italic">à la volée</span>, c&rsquo;est-à-dire que le programme a été conçu pour être modifié en temps réel. L&rsquo;animation de ce programme est réalisée avec <span class="lnum">p5.js</span> et WebGL, et la musique est produite avec SuperCollider. La musique utilise également des <a href="https://freesound.org/people/Samulis/packs/21055/">échantillons de piano distribués librement</a>.
+</p>
+<p>
+    Le principe sur lequel cette animation repose est la <a href="https://fr.wikipedia.org/wiki/Boids">simulation du comportement d&rsquo;une volée d&rsquo;oiseaux</a><span class="cleardescenders">,</span> ces oiseaux artificiels que l&rsquo;on appelle <span class="italic">boids</span> en anglais. J&rsquo;ai d&rsquo;abord appris l&rsquo;existence de ces simulations grâce aux vidéos de Daniel Shiffman. Shiffman a traité à plusieurs reprises de ce sujet, mais <a href="https://www.youtube.com/watch&nbsp;?v=mhjuuHl6qHM">cette vidéo en particulier</a> m&rsquo;a inspiré cette animation.
+</p>
+<p>
+    Le projet peut être <a href="https://www.youtube.com/watch&nbsp;?v=COeC7UdIBn8">visionné sur YouTube</a> et une version plus courte (qui contient, à mon avis, la meilleure partie de la vidéo) est <a href="https://twitter.com/PelletierAuger/status/1072925392011452418">présente sur mon fil Twitter</a>.
 </p>
 
-<h3>Contexte</h3>
 
-<p class="noindent">
-    <span class="small-caps">Cette note de blog</span> fait partie de mon projet de recherche <span class="italic">Vers un cinéma algorithmique</span>, démarré en avril 2018. Je vous invite à consulter <a href="https://pelletierauger.github.io/fr/blog/2018/4/vers-un-cinema-algorithmique.html">la toute première note du projet</a> pour en apprendre davantage.
-</p>
-
-
+                <div class="languageJump">
+                    <a href="../blog/2018/12/volees-d-oiseaux-artificiels.html">Continuer à lire…</a>
+                </div>
+               
                 </div>
             </div>
             <div class="blog-post">
@@ -69,7 +73,7 @@
         <label for="livecoding-wikipedia" class="margin-toggle sidenote-number">
         </label></span>
         <input type="checkbox" id="livecoding-wikipedia" class="margin-toggle"/>
-        <span class="sidenote-left">L&rsquo;expression anglaise “live coding” est plus souvent utilisée. <a href="https://fr.wikipedia.org/wiki/Live_coding">Wikipedia la traduit</a> par &#171;&nbsp;programmation à la volée&nbsp;&#187; ou &#171;&nbsp;programmation juste-à-temps&nbsp;&#187;.</span> Elle contient deux champs de texte CodeMirror, la première qui contrôle un serveur SuperCollider, et la seconde qui controle un sketch p5.js.
+        <span class="sidenote-left">L&rsquo;expression anglaise “live coding” est plus souvent utilisée. <a href="https://fr.wikipedia.org/wiki/Live_coding">Wikipedia la traduit</a> par &#171;&nbsp;programmation à la volée&nbsp;&#187; ou &#171;&nbsp;programmation juste-à-temps&nbsp;&#187;. Je ne suis pas enchanté par ces traductions mais faute de mieux, <span class="italic8">ça fera.</span></span> Elle contient deux champs de texte CodeMirror, la première qui contrôle un serveur SuperCollider, et la seconde qui controle un sketch p5.js.
 </p>
 <p>
     Pour créer cette application, j&rsquo;ai utilisé une bonne quantité de code écrit pour <a href="https://github.com/prynth/prynth">Prynth</a><span class="cleardescenders">,</span> un logiciel créé par <a href="https://ivanfranco.wordpress.com/">Ivan Franco</a><span class="cleardescenders">,</span> Harish Venkatesan, Ajin Tom et Antoine Maiorca. Prynth est distribué avec une licence Creative Commons <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><span class="small-caps">Cc By-Nc-Sa 4.0</span></a>. J&rsquo;ai également repris un peu de code écrit par <a href="https://ojack.github.io/">Olivia Jack</a> pour son logiciel <a href="https://github.com/ojack/hydra">Hydra</a><span class="cleardescenders">,</span> qui est distribué avec une licence <span class="small-caps">Gnu</span> Affero <span class="small-caps">Gpl</span> v3.0.
@@ -90,19 +94,48 @@
                     <a href="../blog/2018/10/sequenceurs-en-forme-de-graphe.html"><div class="date">17 octobre 2018</div>
                     <div class="blog-title-box"><h2 class="header">Séquenceurs en forme de graphe</h2></div>
                     <div class="description">
-                    
-
+                    Imaginer différentes manières de lier image et musique.
 
             </div></a>
                 </div>
                 <div class="blog-post-content">
                     
-<img class="inline-image" src="../../../images/graph-sequencers/square.png">
+<img src="../../../images/graph-sequencers/sketch-01097.png">
 
+<p class="article-top">
+    <span class="small-caps">En apprenant</span> à travailler avec les graphes, il m&rsquo;est venu l&rsquo;idée de m&rsquo;en servir pour créer des animations qui combineraient du mouvement visuel et du mouvement sonore. L&rsquo;idée m&rsquo;est aussi venue en voyant le <a href="https://www.youtube.com/watch&nbsp;?v=C1p_xI6b4NA">séquenceur circulaire</a> dont Sam Tarakajian parle sur sa chaîne YouTube consacrée à Max/<span class="small-caps">Msp</span>. Une démonstration vidéo de ce projet <a href="https://twitter.com/PelletierAuger/status/1052635567232602113">se trouve sur mon fil Twitter</a>.
+</p>
 
 
                 <div class="languageJump">
                     <a href="../blog/2018/10/sequenceurs-en-forme-de-graphe.html">Continuer à lire…</a>
+                </div>
+               
+                </div>
+            </div>
+            <div class="blog-post">
+                <div class="blog-post-header">
+                    <a href="../blog/2018/9/dessins-granulaires.html"><div class="date">28 septembre 2018</div>
+                    <div class="blog-title-box"><h2 class="header">Dessins granulaires</h2></div>
+                    <div class="description">
+                    Applications du concept de synthèse granulaire à des dessins.
+
+            </div></a>
+                </div>
+                <div class="blog-post-content">
+                    
+
+<!-- <img class="full-size-image" src="../../../images/towards-an-algorithmic-cinema/april-at-the-docks-02-small.gif"> -->
+
+<img class="inline-image" src="../../../images/granular-drawings/plant.jpg">
+
+<p class="article-top">
+    <span class="small-caps">Je suis récemment tombé</span> par hasard sur une chose dont la beauté me foudroie&nbsp;: la <a href="https://fr.wikipedia.org/wiki/Synth%C3%A8se_granulaire">synthèse granulaire</a>. Il s&rsquo;agit d&rsquo;une méthode qui sert à transformer des sons en les découpant en très petits segments (nommés <span class="italic">grains</span>). En faisant des premières expériences de synthèse granulaire, je n&rsquo;ai pas pu m&rsquo;empêcher d&rsquo;imaginer comment ce principe pourrait être utilisé en arts visuels et en cinéma. J&rsquo;ai fait en partant de cette idée quelques expériences qui se sont avérées très peu concluantes, mais dont je partage tout de même les notes ci-dessous.
+</p>
+
+
+                <div class="languageJump">
+                    <a href="../blog/2018/9/dessins-granulaires.html">Continuer à lire…</a>
                 </div>
                
                 </div>
@@ -265,44 +298,6 @@
 
                 <div class="languageJump">
                     <a href="../blog/2018/7/les-montagnes-croissantes.html">Continuer à lire…</a>
-                </div>
-               
-                </div>
-            </div>
-            <div class="blog-post">
-                <div class="blog-post-header">
-                    <a href="../blog/2018/7/dessins-granulaires.html"><div class="date">19 juillet 2018</div>
-                    <div class="blog-title-box"><h2 class="header">Dessins granulaires</h2></div>
-                    <div class="description">
-                    Applications du concept de synthèse granulaire à des dessins
-
-            </div></a>
-                </div>
-                <div class="blog-post-content">
-                    
-
-<!-- <img class="full-size-image" src="../../../images/towards-an-algorithmic-cinema/april-at-the-docks-02-small.gif"> -->
-
-<img class="inline-image" src="../../../images/granular-drawings/plant.jpg">
-
-<h3>Qu&rsquo;est-ce qu&rsquo;un dessin&nbsp;?</h3>
-<p class="noindent">
-    <span class="small-caps">Tout d’abord,</span> un dessin pourrait se définir par un groupe de points (ou vecteurs).
-</p>
-
-<div class="codebox"><pre><code><span class="hljs-keyword">let</span> drawing<span class="hljs-punctuation"> = </span>[
-    {<span class="hljs-attr">x</span>: <span class="hljs-number">0</span>, <span class="hljs-attr">y</span>: <span class="hljs-number">10</span>},
-    {<span class="hljs-attr">x</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">y</span>: <span class="hljs-number">10</span>},
-    {<span class="hljs-attr">x</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">y</span>: <span class="hljs-number">10</span>},
-    {<span class="hljs-attr">x</span>: <span class="hljs-number">3</span>, <span class="hljs-attr">y</span>: <span class="hljs-number">11</span>},
-    {<span class="hljs-attr">x</span>: <span class="hljs-number">4</span>, <span class="hljs-attr">y</span>: <span class="hljs-number">11</span>}
-];</code></pre></div>
-<p class="noindent">
-    En dessinant une petite ellipse à la position définie par chacun de ces points, on obtiendrait un tracé pointilliste. Est-ce suffisant&nbsp;? J&rsquo;ai l&rsquo;impression qu&rsquo;il me faudrait créer des lignes pour relier les points, et aussi que les dessins devraient plutôt être définis par des ensembles de <span class="italic">transformations</span> plutôt que par des ensembles de vecteurs.
-</p>
-
-                <div class="languageJump">
-                    <a href="../blog/2018/7/dessins-granulaires.html">Continuer à lire…</a>
                 </div>
                
                 </div>
