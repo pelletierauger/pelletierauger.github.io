@@ -10,9 +10,10 @@ exports.posts = [
     "singing-trees",
     "blurry-quadrilaterals",
     "depth-first-search",
-    "blurry-spirals",
+
     "singing-boids", // 12 décembre 2018
     "a-live-coding-machine", // 17 novembre 2018
+    "blurry-spirals", // 4 novembre 2018
     "graph-sequencers", // 17 octobre 2018
     "granular-drawings", //28 septembre 2018
     "ravines", // 19 septembre 2018
