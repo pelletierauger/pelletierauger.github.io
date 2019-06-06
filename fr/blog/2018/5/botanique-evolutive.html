@@ -26,18 +26,37 @@
                 <div class="date">5 mai 2018</div>
                 
 
-<h3>Le prototype <span class="inline-code">Tree</span></h3>
-<p class="noindent">
-    Il me faut tout d&rsquo;abord un objet <span class="inline-code">Tree</span>.
+<img class="inline-image" src="../../../../images/evolutionary-botany/first-animation.png">
+
+<p class="article-top">
+    <span class="small-caps">La botanique algorithmique</span> est un très beau champ d&rsquo;étude dans les sciences informatiques. Le botaniste hongrois Aristid Lindenmayer en est un des pionniers, et le livre <span class="italic">The Algorithmic Beauty of Plants</span> qu&rsquo;il a co-signé avec l&rsquo;informaticien Przemys&#322;aw Prusinkiewicz est la plus riche et exhaustive référence le <span class="nobreak">sujet.
+        <label for="algo-beauty" class="margin-toggle sidenote-number">
+        </label></span>
+        <input type="checkbox" id="algo-beauty" class="margin-toggle"/>
+        <span class="sidenote-left">Le livre est <a href="http://algorithmicbotany.org/papers/#abop">disponible gratuitement</a><span class="cleardescenders">,</span> en entier, sur <a href="http://algorithmicbotany.org/">un site Web hébergé par l&rsquo;Université de Calgary</a><span class="cleardescenders">,</span> où Prof. Prusinkiewicz enseigne. Il s&rsquo;agit d&rsquo;un site Web formidable qui contient une foule de documents intéressants concernant la botanique algorithmique.</span>
 </p>
 <p>
-    Je veux pouvoir enregistrer des formes dans une liste de formes, et ensuite, je pourrai déterminer combien de formes je veux dessiner par image d&rsquo;animation.
+    J&rsquo;ai fait plusieurs expériences pour apprendre appliquer différents aspects de la botanique algorithmique afin d&rsquo;en faire des animations. La première animation que j&rsquo;ai réalisée (et dont l&rsquo;image ci-dessus est extraite) se trouve <a href="https://twitter.com/PelletierAuger/status/993542270208167936">sur mon fil Twitter</a>. J&rsquo;ai rassemblé ci-dessous quelques notes de travail prises lors de la réalisation de cette animation et des autres qui suivront.
+</p>
+
+<!-- read-more -->
+
+<h3>Code source</h3>
+
+<p class="noindent">
+    <span class="small-caps">Le code écrit</span> lors de la réalisation de ces expérimentations <a href="https://github.com/pelletierauger/Evolutionary-Botany">se trouve sur GitHub</a>. Il s&rsquo;agit d&rsquo;un projet assez gros et le travail est réparti sur plusieurs branches de l&rsquo;arborescence Git.
+</p>
+
+<h3>Notes de travail</h3>
+
+<p class="noindent">
+    <span class="small-caps">Il me faut</span> tout d&rsquo;abord un prototype d&rsquo;objet <span class="inline-code">Tree</span>. Je veux pouvoir enregistrer des formes dans une liste de formes, et ensuite, je pourrai déterminer combien de formes je veux dessiner par image d&rsquo;animation.
 </p>
 
 <h3>L&rsquo;objet <span class="inline-code">Segment</span></h3>
 
 <p class="noindent">
-    Comment pourrait être défini un segment&nbsp;? Un segment ne devrait pas avoir de coordonnées <span class="inline-code">x</span> et <span class="inline-code">y</span> mais plutôt des propriétés <span class="inline-code">l</span> pour sa longueur et <span class="inline-code">w</span> pour sa largeur. Et une propriété <span class="inline-code">parent</span>, bien entendu. Les seules coordonnées <span class="inline-code">x</span> et <span class="inline-code">y</span> qui doivent exister dans un arbre seront assignées au point initial de l&rsquo;arbre.
+    <span class="small-caps">Comment pourrait être</span> défini un segment&nbsp;? Un segment ne devrait pas avoir de coordonnées <span class="inline-code">x</span> et <span class="inline-code">y</span> mais plutôt des propriétés <span class="inline-code">l</span> pour sa longueur et <span class="inline-code">w</span> pour sa largeur. Et une propriété <span class="inline-code">parent</span>, bien entendu. Les seules coordonnées <span class="inline-code">x</span> et <span class="inline-code">y</span> qui doivent exister dans un arbre seront assignées au point initial de l&rsquo;arbre.
 </p>
 <p>
     Et si un segment ne recevait en arguments que <span class="inline-code">parent</span> et <span class="inline-code">dna</span> et qu&rsquo;il devait tout construire seulement avec cela&nbsp;? Puisqu&rsquo;il connaît son parent, il peut «&nbsp;réagir&nbsp;» à lui. Un segment devient une sorte d&rsquo;automate cellulaire dont le «&nbsp;voisin&nbsp;» est son parent, et dont les règles sont toutes encodées dans sa propriété <span class="inline-code">dna</span>. Ça me semble être un bon système.
@@ -50,7 +69,7 @@
 <h3>L&rsquo;âge de l&rsquo;arbre</h3>
 
 <p class="noindent">
-    L&rsquo;âge de l&rsquo;arbre devrait pouvoir influencer l&rsquo;expression de ses gênes. Par exemple, l&rsquo;angle dans lesquel s&rsquo;étend un nouvel embranchement doit pouvoir dépendre de l&rsquo;âge de l&rsquo;arbre. Un arbre plus vieux pourrait être en mesure de créer des embranchements à angles plus grands ou plus courts. Donc, un objet <span class="inline-code">Segment</span> doit connaître l&rsquo;âge de l&rsquo;arbre à tout moment. Ou alors n&rsquo;aurait-il qu&rsquo;à connaître l&rsquo;âge de son <span class="inline-code">parent</span>&nbsp;? Ça serait peut-être mieux ainsi. Tout <span class="inline-code">Segment</span> ne connaîtrait ainsi que l&rsquo;âge de son parent, et prendrait des «&nbsp;décisions&nbsp;» en conséquence.
+    <span class="small-caps">L&rsquo;âge de l&rsquo;arbre</span> devrait pouvoir influencer l&rsquo;expression de ses gênes. Par exemple, l&rsquo;angle dans lesquel s&rsquo;étend un nouvel embranchement doit pouvoir dépendre de l&rsquo;âge de l&rsquo;arbre. Un arbre plus vieux pourrait être en mesure de créer des embranchements à angles plus grands ou plus courts. Donc, un objet <span class="inline-code">Segment</span> doit connaître l&rsquo;âge de l&rsquo;arbre à tout moment. Ou alors n&rsquo;aurait-il qu&rsquo;à connaître l&rsquo;âge de son <span class="inline-code">parent</span>&nbsp;? Ça serait peut-être mieux ainsi. Tout <span class="inline-code">Segment</span> ne connaîtrait ainsi que l&rsquo;âge de son parent, et prendrait des «&nbsp;décisions&nbsp;» en conséquence.
 </p>
 
 <h3>Les embranchements</h3>
@@ -63,9 +82,17 @@
 </p>
 
 <h3>L&rsquo;épaisseur des rameaux</h3>
+
 <p class="noindent">
     Il me faudra aussi un système de rameaux à épaisseurs variables.
 </p>
+
+<h3>Contexte</h3>
+
+<p class="noindent">
+    <span class="small-caps">Cette note de blog</span> fait partie de mon projet de recherche <span class="italic">Vers un cinéma algorithmique</span>, démarré en avril 2018. Je vous invite à consulter <a href="https://pelletierauger.github.io/fr/blog/2018/4/vers-un-cinema-algorithmique.html">la toute première note du projet</a> pour en apprendre davantage.
+</p>
+
 
             </article>
             <div id="footer">Guillaume Pelletier-Auger &mdash; 2016-2019

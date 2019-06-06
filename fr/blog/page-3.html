@@ -336,47 +336,24 @@
                 <div class="blog-post-content">
                     
 
-<h3>Le prototype <span class="inline-code">Tree</span></h3>
-<p class="noindent">
-    Il me faut tout d’abord un objet <span class="inline-code">Tree</span>.
+<img class="inline-image" src="../../../images/evolutionary-botany/first-animation.png">
+
+<p class="article-top">
+    <span class="small-caps">La botanique algorithmique</span> est un très beau champ d’étude dans les sciences informatiques. Le botaniste hongrois Aristid Lindenmayer en est un des pionniers, et le livre <span class="italic">The Algorithmic Beauty of Plants</span> qu’il a co-signé avec l’informaticien Przemysław Prusinkiewicz est la plus riche et exhaustive référence le <span class="nobreak">sujet.
+        <label for="algo-beauty" class="margin-toggle sidenote-number">
+        </label></span>
+        <input type="checkbox" id="algo-beauty" class="margin-toggle">
+        <span class="sidenote-left">Le livre est <a href="http://algorithmicbotany.org/papers/#abop">disponible gratuitement</a><span class="cleardescenders">,</span> en entier, sur <a href="http://algorithmicbotany.org/">un site Web hébergé par l’Université de Calgary</a><span class="cleardescenders">,</span> où Prof. Prusinkiewicz enseigne. Il s’agit d’un site Web formidable qui contient une foule de documents intéressants concernant la botanique algorithmique.</span>
 </p>
 <p>
-    Je veux pouvoir enregistrer des formes dans une liste de formes, et ensuite, je pourrai déterminer combien de formes je veux dessiner par image d’animation.
+    J’ai fait plusieurs expériences pour apprendre appliquer différents aspects de la botanique algorithmique afin d’en faire des animations. La première animation que j’ai réalisée (et dont l’image ci-dessus est extraite) se trouve <a href="https://twitter.com/PelletierAuger/status/993542270208167936">sur mon fil Twitter</a>. J’ai rassemblé ci-dessous quelques notes de travail prises lors de la réalisation de cette animation et des autres qui suivront.
 </p>
 
-<h3>L’objet <span class="inline-code">Segment</span></h3>
 
-<p class="noindent">
-    Comment pourrait être défini un segment&nbsp;? Un segment ne devrait pas avoir de coordonnées <span class="inline-code">x</span> et <span class="inline-code">y</span> mais plutôt des propriétés <span class="inline-code">l</span> pour sa longueur et <span class="inline-code">w</span> pour sa largeur. Et une propriété <span class="inline-code">parent</span>, bien entendu. Les seules coordonnées <span class="inline-code">x</span> et <span class="inline-code">y</span> qui doivent exister dans un arbre seront assignées au point initial de l’arbre.
-</p>
-<p>
-    Et si un segment ne recevait en arguments que <span class="inline-code">parent</span> et <span class="inline-code">dna</span> et qu’il devait tout construire seulement avec cela&nbsp;? Puisqu’il connaît son parent, il peut «&nbsp;réagir&nbsp;» à lui. Un segment devient une sorte d’automate cellulaire dont le «&nbsp;voisin&nbsp;» est son parent, et dont les règles sont toutes encodées dans sa propriété <span class="inline-code">dna</span>. Ça me semble être un bon système.
-</p>
-
-<div class="codebox"><pre><code><span class="hljs-keyword">let</span> Segment<span class="hljs-punctuation"> = </span><span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">parent, dna</span>) </span>{
-    <span class="hljs-comment">// ???</span>
-};</code></pre></div>
-
-<h3>L’âge de l’arbre</h3>
-
-<p class="noindent">
-    L’âge de l’arbre devrait pouvoir influencer l’expression de ses gênes. Par exemple, l’angle dans lesquel s’étend un nouvel embranchement doit pouvoir dépendre de l’âge de l’arbre. Un arbre plus vieux pourrait être en mesure de créer des embranchements à angles plus grands ou plus courts. Donc, un objet <span class="inline-code">Segment</span> doit connaître l’âge de l’arbre à tout moment. Ou alors n’aurait-il qu’à connaître l’âge de son <span class="inline-code">parent</span>&nbsp;? Ça serait peut-être mieux ainsi. Tout <span class="inline-code">Segment</span> ne connaîtrait ainsi que l’âge de son parent, et prendrait des «&nbsp;décisions&nbsp;» en conséquence.
-</p>
-
-<h3>Les embranchements</h3>
-
-<p class="noindent">
-    <span class="small-caps">Les embranchements constituent</span> un des plus compliqués aspects du système. Il doit y avoir trois sortes d’embranchements&nbsp;: à gauche, tout droit et à droite. Il me semble clair qu’un embranchement «&nbsp;tout droit&nbsp;» ne doit pouvoir se faire qu’une seule fois puisqu’il représente, d’une certaine, l’extension naturelle du rameau&nbsp;; mais les embranchements à gauche et à droite sont nettement plus compliqués.
-</p>
-<p>
-    Les embranchements «&nbsp;tout droit&nbsp;» serviront tout d’abord à créer des branches croches, et aussi à laisser des embranchements pousser «&nbsp;le long&nbsp;» d’une branche&nbsp;: un embranchement ne signifiera pas nécessairement la fin apparente d’un segment.
-</p>
-
-<h3>L’épaisseur des rameaux</h3>
-<p class="noindent">
-    Il me faudra aussi un système de rameaux à épaisseurs variables.
-</p>
-
+                <div class="languageJump">
+                    <a href="../blog/2018/5/botanique-evolutive.html">Continuer à lire…</a>
+                </div>
+               
                 </div>
             </div>
             <div class="blog-post">
