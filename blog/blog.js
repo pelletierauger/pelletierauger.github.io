@@ -22,9 +22,10 @@ exports.posts = [
     "study-for-ca-no1", // 26 juillet 2018
     "growing-mountains", // 10 juillet 2018
     "phenotype-and-genotype",
-    "foliages",
-    "botanical-scenes",
-    "deterministic-branching",
+    "foliages", // 16 juin 2018
+    "botanical-scenes", // 9 juin 2018
+    "walking-cosine", // 6 juin 2018
+    "deterministic-branching", //2 juin 2018
     "a-p5js-template-for-animation",
     "notes-on-genetic-automata",
     "evolutionary-botany",
