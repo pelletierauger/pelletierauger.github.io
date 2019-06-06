@@ -1,0 +1,29 @@
+img.turtle-drop-caps {
+    /*display: inline-block;*/
+    width: 5em;
+    /*max-width: 10em;*/
+    /*margin: 0 auto;*/
+    /*margin-right: 0.5rem;*/
+    margin: 1.25rem 1.0rem 0.5rem 1.0rem;
+    /*margin-bottom: 1rem;*/
+    display: inline-block;
+    float: left;
+}
+
+
+
+
+
+
+
+
+
+/*
+@media screen and (max-width: 450px) {
+    img.turtle-drop-caps {
+
+        width: 80%;
+        padding: 10%;
+        margin: 0 auto;
+    }
+}*/
