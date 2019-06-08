@@ -2,8 +2,21 @@
 <!-- month -->06
 <!-- day -->16
 <!-- fr-title -->Feuillages
-<!-- fr-description -->
+<!-- fr-description -->Notes de travail plutôt absconses.
 <!-- fr-content -->
+
+<img src="../../../images/foliages/notes.jpg">
+
+<p class="article-top">
+    <sc>Un jardin sans feuillage</sc> serait d'une tristesse accablante. Je suis donc en train de construire un système avec lequel je pourrai affubler mes branches artificielles de différents types de feuillage. Ce faisant, j'ai pris beaucoup de notes très techniques et qui ne seront pas nécessairement digestes pour quiconque, mais je les partage tout de même ci-dessous, afin de documenter mon processus.
+</p>
+<p>
+    Les croquis ci-dessus proviennent des mêmes recherches. Ce travail a aussi mené à la création d'une première animation, partagée <a href="https://twitter.com/PelletierAuger/status/1009853191117254658">sur mon fil Twitter</a>.
+</p>
+
+<!-- read-more -->
+
+<h3>Physiologie d'une feuille</h3>
 
 <pn>
     Il me faut un prototype <ic>Leaf</ic>. Je dois pouvoir avoir des feuilles paripennées, imparipennées, bipennées et tripennées. Aussi, des feuilles palmées.
@@ -12,7 +25,6 @@
     Tout commence avec un pétiole. La pétiole peut être de longueur <ic>0</ic>, ce qui créerait une feuille &nbsn;sessile.<snl label="sessile">Depuis le <a href="https://fr.wiktionary.org/wiki/sessile">Wiktionnaire</a>&nbsp;: Sessile, qui ne possède pas d’attache apparente et semble donc directement fixé au support sans l’intermédiaire d’un pied, d’un stipe, d’un pétiole ou d’un pédicelle.</snl> Le pétiole doit être séparé en segments, tout comme les branches de la plante. Au fond, un pétiole partage presque toutes les mêmes caractéristiques que les branches… Pourrais-je imaginer qu'un pétiole, ici, serait simplement la branche ou les quelques dernières branches auxquelles sont attachées une feuille ?
 </p>
 
-<!-- read-more -->
 <p>
     Mais ce serait bien qu'un pétiole puisse avoir une structure d'embranchement différente de celle de la plante à laquelle il est attaché.
 </p>
@@ -94,7 +106,7 @@ https://en.wikipedia.org/wiki/Whorl_(botany)
     Les feuilles seront verticillées si elles sont palmées et que <ic>(this.dot.petioleMaxBranchings > 1)</ic>. En fait, non.
 </p>
 
-<h3>L'algorithme de structuration des feuilles pennées</h3>
+<h3>Algorithme de structuration des feuilles pennées</h3>
 
 <pn>
     Il me faut… des propriétés <ic>maxKnotsLevel0</ic>, <ic>maxKnotsLevel1</ic>, <ic>maxKnotsLevel2</ic>, <ic>maxKnotsLevel3</ic> et <ic>maxKnotsLevel4</ic>. Un segment de pétiole doit ainsi connaître la quantité de nœuds que lui et ses enfants peuvent encore produire. Lorsqu'il y a un embranchement <ic>forward</ic>, nous ne changeons pas de <ic>petioleLevel</ic>. Lorsqu'il y a un embranchement <ic>left</ic> ou <ic>right</ic>, nous incrémentons <ic>this.petioleLevel</ic> de <ic>1</ic> et donnons à la propriété <ic>this.knots</ic> la valeur <ic>0</ic>. Un <ic>petioleSegment</ic> est ainsi initialisé avec une propriété <ic>knots</ic> qui dépend de son embranchement d'origine.
@@ -119,7 +131,7 @@ https://en.wikipedia.org/wiki/Whorl_(botany)
 </pn>
 
 <!-- en-title -->Foliages
-<!-- en-description -->
+<!-- en-description -->Barely readable work notes.
 <!-- en-content -->
 
 
