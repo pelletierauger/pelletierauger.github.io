@@ -8,14 +8,27 @@
 <!-- <img src="../../../images/deterministic-branching/notes-cosine-branching.jpg"> -->
 
 <p class="article-top">
-    <sc>Je veux créer</sc> un système d'embranchements pour mon système de botanique algorithmique qui ne repose pas du tout sur le hasard, de façon à ce que mes algorithmes génétiques puissent déterminer de façon plus efficace quels sont les types d'arbres les plus « performants ». En ce moment, tout dépend d'une probabilité, définie dans le prototype <ic>DNA</ic> :
+    <sc>Je veux créer</sc> un système d'embranchements pour mon système de botanique algorithmique qui ne repose pas sur le hasard, de façon à ce que mes algorithmes génétiques puissent déterminer quels sont les types d'arbres les plus « performants » (je ne sais toujours pas comment ces performances pourront être évaluées).
 </p>
+<p>
+    Mon système d'embranchement m'a permis de créer une grande quantité d'arbres différents ; chaque arbre possède clairement une apparence, ou un caractère visuel, qui lui est propre. On peut voir un montage de plusieurs de ces arbres en croissance <a href="https://twitter.com/PelletierAuger/status/1006226540043137024">sur mon fil Twitter</a>.
+</p>
+<p>
+    J'ai rassemblé ci-dessous beaucoup de notes techniques prises lors de ce travail.
+</p>
+
+
+<!-- read-more -->
+
+<h3>Notes de travail</h3>
+
+<pn>
+    <sc>En ce moment</sc>, tout dépend d'une probabilité, définie dans le prototype <ic>DNA</ic> :
+</pn>
 
 <code>
 this.branchingProbability = 0.02;
 </code>
-
-<!-- read-more -->
 
 <pn>
     Et ensuite, dans la méthode <ic>grow</ic> d'un objet <ic>Segment</ic>, un simple test permet de déterminer si un embranchement doit se faire :
@@ -144,6 +157,12 @@ Segment.prototype.branch = function(direction) {
     }
 };
 </code>
+
+<h3>Notes éparses</h3>
+
+<pn>
+    <sc>J'aimerais bien</sc> aussi explorer <a href="https://en.wikipedia.org/wiki/Rapidly-exploring_random_tree">ce type d'arbre</a>.
+</pn>
 
 <h3>Contexte</h3>
 
