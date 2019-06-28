@@ -175,7 +175,7 @@ n.addOscillator(-0.1, 0.1, 60, 120);
 </code>
 
 <pn>
-    Cette méthode ajouterait un oscillateur à la valeur <ic>value</ic> de l'objet <ic>n</ic>. C'est-à-dire que <ic>value</ic> serait recalculé à chaque image d'animation : on y additionnerait ou soustrairait une certaine quantité déterminée par une fonction sinusoïdale. L'ajout d'un nouvel oscillateur pourrait même être fait de façon douce, c'est-à-dire qu'il s'appliquerait progressivement jusqu'à ce qu'il soit exprimé au complet (on parlerait ici de l&rsquo;<i>amplitude</i> de l'oscillateur).
+    Cette méthode ajouterait un oscillateur à la valeur <ic>value</ic> de l'objet <ic>n</ic>. C'est-à-dire que <ic>value</ic> serait recalculé à chaque image d'animation : on y additionnerait ou &nbsn;soustrairait<snl label="osc-mult">Il serait aussi intéressant de pouvoir créer des oscillateurs qui multiplieraient leurs valeurs avec celle du nombre initial, au lieu d'additionner et de soustraire. Ce serait un peu comme improviser l'écriture de polynômes.</snl> une certaine quantité déterminée par une fonction sinusoïdale. L'ajout d'un nouvel oscillateur pourrait même être fait de façon douce, c'est-à-dire qu'il s'appliquerait progressivement jusqu'à ce qu'il soit exprimé au complet (on parlerait ici de l&rsquo;<i>amplitude</i> de l'oscillateur).
 </pn>
 <p>
     Ensuite, une méthode <ic>releaseOscillator</ic> permettrait de diminuer progressivement l'amplitude d'un oscillateur et d'ensuite le &#171;&nbsp;détacher&nbsp;&#187; de l'objet <ic>n</ic> sur lequel il était appliqué.
@@ -186,6 +186,15 @@ n.addOscillator(-0.1, 0.1, 60, 120);
 // to release, the second argument is the release time.
 n.releaseOscillator(0, 120);
 </code>
+
+<h3>L'écriture de graphes</h3>
+
+<pn>
+    <sc>Ces amas de nombres</sc> se modifiant les uns les autres peuvent être imaginés comme étant des graphes, tout comme les graphes d'opérations qui sont à la base de Max/<sc>Msp</sc> et SuperCollider. Par exemple, un objet <ic>N</ic> pourrait contenir une référence à un autre objet <ic>N</ic>. Ça devient rapidement tout un casse-tête.
+</pn>
+<p>
+    Il serait aussi tout à fait possible d'avoir un système servant à visualiser ces graphes dans l'application. Ces visualisations pourraient servir lors de la programmation <i>à la volée</i> mais aussi lors de l'écriture et du débogage du système.
+</p>
 
 <h3>Zone de désactivation des éditeurs</h3>
 
