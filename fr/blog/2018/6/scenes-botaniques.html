@@ -136,18 +136,27 @@
     
             <article>
                 <h2 class="with-date">Scènes botaniques</h2><div class="description">
-                    
+                    Encore des notes de travail d’un regrettable ésotérisme.
 
             </div>
                 <div class="date">9 juin 2018</div>
                 
 
 <p class="noindent">
-    <span class="small-caps">Il me faut créer</span> un système de scènes botaniques qui puissent gérer des animations contenant de quantités quasi illimitées d’éléments. Pour cela, il faut séparer le concept du <span class="inline-code">frame</span> d’animation de celui du <span class="inline-code">frameCount</span> de <span class="lnum">p5.js</span>, comme je l’ai fait dans ma machine à automates cellulaires.
+    <span class="small-caps">Le rêve</span> vers lequel tendent mes recherches sur la botanique algorithmique est de créer des scènes botaniques complètes, avec couleurs, feuillages, perspective atmosphérique, mouvements venteux dans les branches, <span class="nobreak">etc.
+        <label for="rousseau" class="margin-toggle sidenote-number">
+        </label></span>
+        <input type="checkbox" id="rousseau" class="margin-toggle">
+        <span class="sidenote-left">Pour tout dire, ça ne déplairait pas de devenir le Henri Rousseau de l’art algorithmique…</span> Je suis loin d’en être là, mais j’y travaille. J’ai rassemblé ci-dessous plusieurs notes prises lors de l’élaboration d’un système qui me permettrait de gérer des scènes avec de multiples végétaux distribués dans un tableau.
 </p>
 
 <!-- read-more -->
 
+<h3>Réflexions initiales</h3>
+
+<p class="noindent">
+    <span class="small-caps">Il me faut créer</span> un système de scènes botaniques qui puissent gérer des animations contenant de quantités quasi illimitées d’éléments. Pour cela, il faut séparer le concept du <span class="inline-code">frame</span> d’animation de celui du <span class="inline-code">frameCount</span> de <span class="lnum">p5.js</span>, comme je l’ai fait dans ma machine à automates cellulaires.
+</p>
 <p>
     Donc, je peux créer autant d’arbres que je veux, et ces arbres-là doivent s’ajouter aux objets d’une <span class="inline-code">scene</span>.
 </p>

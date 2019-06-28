@@ -172,22 +172,20 @@
                     <a href="../blog/2018/6/feuillages.html"><div class="date">16 juin 2018</div>
                     <div class="blog-title-box"><h2 class="header">Feuillages</h2></div>
                     <div class="description">
-                    
+                    Notes de travail plutôt absconses.
 
             </div></a>
                 </div>
                 <div class="blog-post-content">
                     
 
-<p class="noindent">
-    Il me faut un prototype <span class="inline-code">Leaf</span>. Je dois pouvoir avoir des feuilles paripennées, imparipennées, bipennées et tripennées. Aussi, des feuilles palmées.
+<img src="../../../images/foliages/notes.jpg">
+
+<p class="article-top">
+    <span class="small-caps">Un jardin sans feuillage</span> serait d’une tristesse accablante. Je suis donc en train de construire un système avec lequel je pourrai affubler mes branches artificielles de différents types de feuillage. Ce faisant, j’ai pris beaucoup de notes très techniques et qui ne seront pas nécessairement digestes pour quiconque, mais je les partage tout de même ci-dessous, afin de documenter mon processus.
 </p>
 <p>
-    Tout commence avec un pétiole. La pétiole peut être de longueur <span class="inline-code">0</span>, ce qui créerait une feuille <span class="nobreak">sessile.
-        <label for="sessile" class="margin-toggle sidenote-number">
-        </label></span>
-        <input type="checkbox" id="sessile" class="margin-toggle">
-        <span class="sidenote-left">Depuis le <a href="https://fr.wiktionary.org/wiki/sessile">Wiktionnaire</a>&nbsp;: Sessile, qui ne possède pas d’attache apparente et semble donc directement fixé au support sans l’intermédiaire d’un pied, d’un stipe, d’un pétiole ou d’un pédicelle.</span> Le pétiole doit être séparé en segments, tout comme les branches de la plante. Au fond, un pétiole partage presque toutes les mêmes caractéristiques que les branches… Pourrais-je imaginer qu’un pétiole, ici, serait simplement la branche ou les quelques dernières branches auxquelles sont attachées une feuille&nbsp;?
+    Les croquis ci-dessus proviennent des mêmes recherches. Ce travail a aussi mené à la création d’une première animation, partagée <a href="https://twitter.com/PelletierAuger/status/1009853191117254658">sur mon fil Twitter</a>.
 </p>
 
 
@@ -202,7 +200,7 @@
                     <a href="../blog/2018/6/scenes-botaniques.html"><div class="date">9 juin 2018</div>
                     <div class="blog-title-box"><h2 class="header">Scènes botaniques</h2></div>
                     <div class="description">
-                    
+                    Encore des notes de travail d’un regrettable ésotérisme.
 
             </div></a>
                 </div>
@@ -210,7 +208,11 @@
                     
 
 <p class="noindent">
-    <span class="small-caps">Il me faut créer</span> un système de scènes botaniques qui puissent gérer des animations contenant de quantités quasi illimitées d’éléments. Pour cela, il faut séparer le concept du <span class="inline-code">frame</span> d’animation de celui du <span class="inline-code">frameCount</span> de <span class="lnum">p5.js</span>, comme je l’ai fait dans ma machine à automates cellulaires.
+    <span class="small-caps">Le rêve</span> vers lequel tendent mes recherches sur la botanique algorithmique est de créer des scènes botaniques complètes, avec couleurs, feuillages, perspective atmosphérique, mouvements venteux dans les branches, <span class="nobreak">etc.
+        <label for="rousseau" class="margin-toggle sidenote-number">
+        </label></span>
+        <input type="checkbox" id="rousseau" class="margin-toggle">
+        <span class="sidenote-left">Pour tout dire, ça ne déplairait pas de devenir le Henri Rousseau de l’art algorithmique…</span> Je suis loin d’en être là, mais j’y travaille. J’ai rassemblé ci-dessous plusieurs notes prises lors de l’élaboration d’un système qui me permettrait de gérer des scènes avec de multiples végétaux distribués dans un tableau.
 </p>
 
 
@@ -263,10 +265,15 @@
 <!-- <img src="../../../images/deterministic-branching/notes-cosine-branching.jpg"> -->
 
 <p class="article-top">
-    <span class="small-caps">Je veux créer</span> un système d’embranchements pour mon système de botanique algorithmique qui ne repose pas du tout sur le hasard, de façon à ce que mes algorithmes génétiques puissent déterminer de façon plus efficace quels sont les types d’arbres les plus «&nbsp;performants&nbsp;». En ce moment, tout dépend d’une probabilité, définie dans le prototype <span class="inline-code">DNA</span>&nbsp;:
+    <span class="small-caps">Je veux créer</span> un système d’embranchements pour mon système de botanique algorithmique qui ne repose pas sur le hasard, de façon à ce que mes algorithmes génétiques puissent déterminer quels sont les types d’arbres les plus «&nbsp;performants&nbsp;» (je ne sais toujours pas comment ces performances pourront être évaluées).
+</p>
+<p>
+    Mon système d’embranchement m’a permis de créer une grande quantité d’arbres différents&nbsp;; chaque arbre possède clairement une apparence, ou un caractère visuel, qui lui est propre. On peut voir un montage de plusieurs de ces arbres en croissance <a href="https://twitter.com/PelletierAuger/status/1006226540043137024">sur mon fil Twitter</a>.
+</p>
+<p>
+    J’ai rassemblé ci-dessous beaucoup de notes techniques prises lors de ce travail.
 </p>
 
-<div class="codebox"><pre><code><span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>branchingProbability<span class="hljs-punctuation"> = </span><span class="hljs-number">0.02</span>;</code></pre></div>
 
 
                 <div class="languageJump">

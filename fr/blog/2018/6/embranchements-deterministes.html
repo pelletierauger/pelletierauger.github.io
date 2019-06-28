@@ -29,12 +29,25 @@
 <!-- <img src="../../../../images/deterministic-branching/notes-cosine-branching.jpg"> -->
 
 <p class="article-top">
-    <span class="small-caps">Je veux créer</span> un système d&rsquo;embranchements pour mon système de botanique algorithmique qui ne repose pas du tout sur le hasard, de façon à ce que mes algorithmes génétiques puissent déterminer de façon plus efficace quels sont les types d&rsquo;arbres les plus «&nbsp;performants&nbsp;». En ce moment, tout dépend d&rsquo;une probabilité, définie dans le prototype <span class="inline-code">DNA</span>&nbsp;:
+    <span class="small-caps">Je veux créer</span> un système d&rsquo;embranchements pour mon système de botanique algorithmique qui ne repose pas sur le hasard, de façon à ce que mes algorithmes génétiques puissent déterminer quels sont les types d&rsquo;arbres les plus «&nbsp;performants&nbsp;» (je ne sais toujours pas comment ces performances pourront être évaluées).
+</p>
+<p>
+    Mon système d&rsquo;embranchement m&rsquo;a permis de créer une grande quantité d&rsquo;arbres différents&nbsp;; chaque arbre possède clairement une apparence, ou un caractère visuel, qui lui est propre. On peut voir un montage de plusieurs de ces arbres en croissance <a href="https://twitter.com/PelletierAuger/status/1006226540043137024">sur mon fil Twitter</a>.
+</p>
+<p>
+    J&rsquo;ai rassemblé ci-dessous beaucoup de notes techniques prises lors de ce travail.
+</p>
+
+
+<!-- read-more -->
+
+<h3>Notes de travail</h3>
+
+<p class="noindent">
+    <span class="small-caps">En ce moment</span>, tout dépend d&rsquo;une probabilité, définie dans le prototype <span class="inline-code">DNA</span>&nbsp;:
 </p>
 
 <div class="codebox"><pre><code><span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>branchingProbability<span class="hljs-punctuation"> = </span><span class="hljs-number">0.02</span>;</code></pre></div>
-
-<!-- read-more -->
 
 <p class="noindent">
     Et ensuite, dans la méthode <span class="inline-code">grow</span> d&rsquo;un objet <span class="inline-code">Segment</span>, un simple test permet de déterminer si un embranchement doit se faire&nbsp;:
@@ -149,6 +162,12 @@
         <span class="hljs-built_in">console</span><span class="hljs-punctuation">.</span>error(<span class="hljs-string">"Invalid branching direction."</span>);
     }
 };</code></pre></div>
+
+<h3>Notes éparses</h3>
+
+<p class="noindent">
+    <span class="small-caps">J&rsquo;aimerais bien</span> aussi explorer <a href="https://en.wikipedia.org/wiki/Rapidly-exploring_random_tree">ce type d&rsquo;arbre</a>.
+</p>
 
 <h3>Contexte</h3>
 

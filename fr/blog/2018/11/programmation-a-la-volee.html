@@ -194,7 +194,11 @@ n<span class="hljs-punctuation">.</span>addLine([<span class="hljs-number">10</s
 n<span class="hljs-punctuation">.</span>addOscillator(<span class="hljs-number">-0.1</span>, <span class="hljs-number">0.1</span>, <span class="hljs-number">60</span>, <span class="hljs-number">120</span>);</code></pre></div>
 
 <p class="noindent">
-    Cette méthode ajouterait un oscillateur à la valeur <span class="inline-code">value</span> de l&rsquo;objet <span class="inline-code">n</span>. C&rsquo;est-à-dire que <span class="inline-code">value</span> serait recalculé à chaque image d&rsquo;animation&nbsp;: on y additionnerait ou soustrairait une certaine quantité déterminée par une fonction sinusoïdale. L&rsquo;ajout d&rsquo;un nouvel oscillateur pourrait même être fait de façon douce, c&rsquo;est-à-dire qu&rsquo;il s&rsquo;appliquerait progressivement jusqu&rsquo;à ce qu&rsquo;il soit exprimé au complet (on parlerait ici de l&rsquo;<span class="italic">amplitude</span> de l&rsquo;oscillateur).
+    Cette méthode ajouterait un oscillateur à la valeur <span class="inline-code">value</span> de l&rsquo;objet <span class="inline-code">n</span>. C&rsquo;est-à-dire que <span class="inline-code">value</span> serait recalculé à chaque image d&rsquo;animation&nbsp;: on y additionnerait ou <span class="nobreak">soustrairait
+        <label for="osc-mult" class="margin-toggle sidenote-number">
+        </label></span>
+        <input type="checkbox" id="osc-mult" class="margin-toggle"/>
+        <span class="sidenote-left">Il serait aussi intéressant de pouvoir créer des oscillateurs qui multiplieraient leurs valeurs avec celle du nombre initial, au lieu d&rsquo;additionner et de soustraire. Ce serait un peu comme improviser l&rsquo;écriture de polynômes.</span> une certaine quantité déterminée par une fonction sinusoïdale. L&rsquo;ajout d&rsquo;un nouvel oscillateur pourrait même être fait de façon douce, c&rsquo;est-à-dire qu&rsquo;il s&rsquo;appliquerait progressivement jusqu&rsquo;à ce qu&rsquo;il soit exprimé au complet (on parlerait ici de l&rsquo;<span class="italic">amplitude</span> de l&rsquo;oscillateur).
 </p>
 <p>
     Ensuite, une méthode <span class="inline-code">releaseOscillator</span> permettrait de diminuer progressivement l&rsquo;amplitude d&rsquo;un oscillateur et d&rsquo;ensuite le &#171;&nbsp;détacher&nbsp;&#187; de l&rsquo;objet <span class="inline-code">n</span> sur lequel il était appliqué.
@@ -203,6 +207,15 @@ n<span class="hljs-punctuation">.</span>addOscillator(<span class="hljs-number">
 <div class="codebox"><pre><code><span class="hljs-comment">// The first argument is the index of the oscillator</span>
 <span class="hljs-comment">// to release, the second argument is the release time.</span>
 n<span class="hljs-punctuation">.</span>releaseOscillator(<span class="hljs-number">0</span>, <span class="hljs-number">120</span>);</code></pre></div>
+
+<h3>L&rsquo;écriture de graphes</h3>
+
+<p class="noindent">
+    <span class="small-caps">Ces amas de nombres</span> se modifiant les uns les autres peuvent être imaginés comme étant des graphes, tout comme les graphes d&rsquo;opérations qui sont à la base de Max/<span class="small-caps">Msp</span> et SuperCollider. Par exemple, un objet <span class="inline-code">N</span> pourrait contenir une référence à un autre objet <span class="inline-code">N</span>. Ça devient rapidement tout un casse-tête.
+</p>
+<p>
+    Il serait aussi tout à fait possible d&rsquo;avoir un système servant à visualiser ces graphes dans l&rsquo;application. Ces visualisations pourraient servir lors de la programmation <span class="italic">à la volée</span> mais aussi lors de l&rsquo;écriture et du débogage du système.
+</p>
 
 <h3>Zone de désactivation des éditeurs</h3>
 
