@@ -1,6 +1,7 @@
 exports.posts = [
     // "ant-colonies",
     // "density-maps",
+    "colourful-ravines",
     "wavetable-synthesis",
     "spring-on-phobos",
     "swaying-loops",
