@@ -7,8 +7,6 @@
         <link href="../../style/style.css" rel="stylesheet" type="text/css">
         <link href="../../style/truchet.css" rel="stylesheet" type="text/css">
         
-        <link href="../../style/growing-mountains.css" rel="stylesheet" type="text/css">
-        
         <link href="https://fonts.googleapis.com/css?family=EB+Garamond" rel="stylesheet">
         
     </head><body>
@@ -25,6 +23,38 @@
             <div id="blog-page-number">
                 <h2>Page 2</h2>
             </div><div class="blog-posts">
+            <div class="blog-post">
+                <div class="blog-post-header">
+                    <a href="../blog/2018/11/parcours-de-graphes.html"><div class="date">25 novembre 2018</div>
+                    <div class="blog-title-box"><h2 class="header">Parcours de graphes</h2></div>
+                    <div class="description">
+                    Explorations déterministes et objectifs non définis.
+
+            </div></a>
+                </div>
+                <div class="blog-post-content">
+                    
+
+<p class="noindent">
+    <span class="small-caps">Je veux implémenter</span> l&rsquo;algorithme de parcours en profondeur dans mes systèmes de séquenceurs en forme de graphe. Je verrai de quelles façons je peux me servir de cet algorithme pour créer des formes visuelles et des séquences musicales intéressantes. Je ne sais pas vraiment comment je pourrais utiliser cet algorithme pour son usage habituel (parcourir un graphe afin de déterminer s&rsquo;il existe un chemin d&rsquo;un sommet à un autre), mais pour l&rsquo;instant, j&rsquo;imagine qu&rsquo;il pourrait me servir à créer des motifs déterministes à l&rsquo;intérieurs de mes graphes. D&rsquo;une façon générale, j&rsquo;aimerais voir comment je pourrais traverser mes graphes de façons déterministes, puisque mes premières expérimentations ne sont que des parcours stochastiques.
+</p>
+
+<h3>Ordre de sélection des voisins à visiter</h3>
+
+<p class="noindent">
+    <span class="small-caps">Une question importante</span> qui n’est pas nécessairement soulevée par l&rsquo;algorithme de parcours en profondeur, c&rsquo;est l&rsquo;ordre dans lequel sont sélectionnés les voisins à visiter. Et pour cause&nbsp;: ça n&rsquo;a normalement pas <span class="nobreak">d&rsquo;importance.
+        <label for="visiting-order" class="margin-toggle sidenote-number">
+        </label></span>
+        <input type="checkbox" id="visiting-order" class="margin-toggle"/>
+        <span class="sidenote-left">Enfin… je ne crois pas.</span> Répondre à la question &#171;&nbsp;y a-t-il un chemin entre ces deux sommets&nbsp;?&nbsp;&#187; n&rsquo;implique pas de choisir ces sommets à visiter dans un ordre particulier. Mais dans mon cas, comme je m&rsquo;intéresse aux formes que j&rsquo;obtiendrai en appliquant cet algorithme, et comme je cherche une solution déterministe, l&rsquo;ordre de sélection sera important.
+</p>
+
+                <div class="languageJump">
+                    <a href="../blog/2018/11/parcours-de-graphes.html">Continuer à lire…</a>
+                </div>
+               
+                </div>
+            </div>
             <div class="blog-post">
                 <div class="blog-post-header">
                     <a href="../blog/2018/11/programmation-a-la-volee.html"><div class="date">17 novembre 2018</div>
@@ -257,43 +287,6 @@
 
                 <div class="languageJump">
                     <a href="../blog/2018/7/etude-pour-automates-cellulaires-no-1.html">Continuer à lire…</a>
-                </div>
-               
-                </div>
-            </div>
-            <div class="blog-post">
-                <div class="blog-post-header">
-                    <a href="../blog/2018/7/les-montagnes-croissantes.html"><div class="date">10 juillet 2018</div>
-                    <div class="blog-title-box"><h2 class="header">Les montagnes croissantes</h2></div>
-                    <div class="description">
-                    Animations non déterministes par automates cellulaires.
-
-            </div></a>
-                </div>
-                <div class="blog-post-content">
-                    
-
-<img src="../../../images/growing-mountains/rosy-morning-3.jpg">
-
-<p class="article-top">
-    <!--     <span class="falaise-paragraph">«&nbsp;Nous ne savions rien de notre itinéraire ni même des motifs abscons de ce voyage. Ça c&rsquo;était décidé hâtivement, dans la peur de la fixité.&nbsp;»</span> -->
-    <span class="falaise-paragraph">Ce malheur qui nous asphyxiait nous avait d&rsquo;abord semblé doux comme un matin rose en terrain familier.</span>
-</p>
-
-<p class="article-top">
-    <span class="mountain-drop-caps">L'</span><span class="small-caps">image ci-dessus</span> est tirée d&rsquo;une <span class="nobreak">animation
-        <label for="animtwitter" class="margin-toggle sidenote-number">
-        </label></span>
-        <input type="checkbox" id="animtwitter" class="margin-toggle"/>
-        <span class="sidenote">Une version basse résolution de cette animation <a href="https://twitter.com/PelletierAuger/status/1016743429685030916">se trouve sur mon fil Twitter</a>.</span> générée par un programme que je suis en train d&rsquo;écrire. L&rsquo;image a été formée par des automates cellulaires, c&rsquo;est-à-dire que chacune des cases colorées que l&rsquo;on voit répond à un ensemble de règles qui modifient ses propriétés.
-</p>
-<p>
-    Je compte rassembler une collection de ces animations afin d&rsquo;en faire un court métrage ainsi qu&rsquo;une bande dessinée composée d&rsquo;images fixes. J&rsquo;ai publié une esquisse du projet de bande dessinée dans le premier numéro de <a href="https://revuecolere.wordpress.com/">la revue Colère</a><span class="cleardescenders">,</span> un journal de création qui contient aussi des merveilleux travaux d&rsquo;Alexa Perchemal, de Mirion Malle, de Sophie Bédard et de Saturnome. Les pages ont <a href="http://www.procjam.com/seeds/issues/3/nos.txt.html">également été publiées</a> dans <a href="http://www.procjam.com/seeds/issues/3/">le troisième numéro</a> du zine <a href="http://www.procjam.com/seeds/">Seeds</a><span class="cleardescenders">,</span> une publication annuelle dédiée à l&rsquo;art procédural et éditée par Jupiter Hadley et Dann Sullivan.
-</p>
-
-
-                <div class="languageJump">
-                    <a href="../blog/2018/7/les-montagnes-croissantes.html">Continuer à lire…</a>
                 </div>
                
                 </div>

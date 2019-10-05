@@ -4,6 +4,8 @@
         <title>Guillaume Pelletier-Auger - Blog - Page 3</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=4, user-scalable=yes">
         <link href="../../style/style.css" rel="stylesheet" type="text/css">
+        <link href="../../style/growing-mountains.css" rel="stylesheet" type="text/css">
+        
         <link href="../../style/walking-cosine.css" rel="stylesheet" type="text/css">
         
         <link href="../../style/notes-on-genetic-automata.css" rel="stylesheet" type="text/css">
@@ -141,6 +143,43 @@
             <div id="blog-page-number">
                 <h2>Page 3</h2>
             </div><div class="blog-posts">
+            <div class="blog-post">
+                <div class="blog-post-header">
+                    <a href="../blog/2018/7/les-montagnes-croissantes.html"><div class="date">10 juillet 2018</div>
+                    <div class="blog-title-box"><h2 class="header">Les montagnes croissantes</h2></div>
+                    <div class="description">
+                    Animations non déterministes par automates cellulaires.
+
+            </div></a>
+                </div>
+                <div class="blog-post-content">
+                    
+
+<img src="../../../images/growing-mountains/rosy-morning-3.jpg">
+
+<p class="article-top">
+    <!--     <span class="falaise-paragraph">«&nbsp;Nous ne savions rien de notre itinéraire ni même des motifs abscons de ce voyage. Ça c&rsquo;était décidé hâtivement, dans la peur de la fixité.&nbsp;»</span> -->
+    <span class="falaise-paragraph">Ce malheur qui nous asphyxiait nous avait d’abord semblé doux comme un matin rose en terrain familier.</span>
+</p>
+
+<p class="article-top">
+    <span class="mountain-drop-caps">L'</span><span class="small-caps">image ci-dessus</span> est tirée d’une <span class="nobreak">animation
+        <label for="animtwitter" class="margin-toggle sidenote-number">
+        </label></span>
+        <input type="checkbox" id="animtwitter" class="margin-toggle">
+        <span class="sidenote">Une version basse résolution de cette animation <a href="https://twitter.com/PelletierAuger/status/1016743429685030916">se trouve sur mon fil Twitter</a>.</span> générée par un programme que je suis en train d’écrire. L’image a été formée par des automates cellulaires, c’est-à-dire que chacune des cases colorées que l’on voit répond à un ensemble de règles qui modifient ses propriétés.
+</p>
+<p>
+    Je compte rassembler une collection de ces animations afin d’en faire un court métrage ainsi qu’une bande dessinée composée d’images fixes. J’ai publié une esquisse du projet de bande dessinée dans le premier numéro de <a href="https://revuecolere.wordpress.com/">la revue Colère</a><span class="cleardescenders">,</span> un journal de création qui contient aussi des merveilleux travaux d’Alexa Perchemal, de Mirion Malle, de Sophie Bédard et de Saturnome. Les pages ont <a href="http://www.procjam.com/seeds/issues/3/nos.txt.html">également été publiées</a> dans <a href="http://www.procjam.com/seeds/issues/3/">le troisième numéro</a> du zine <a href="http://www.procjam.com/seeds/">Seeds</a><span class="cleardescenders">,</span> une publication annuelle dédiée à l’art procédural et éditée par Jupiter Hadley et Dann Sullivan.
+</p>
+
+
+                <div class="languageJump">
+                    <a href="../blog/2018/7/les-montagnes-croissantes.html">Continuer à lire…</a>
+                </div>
+               
+                </div>
+            </div>
             <div class="blog-post">
                 <div class="blog-post-header">
                     <a href="../blog/2018/6/phenotype-et-genotype.html"><div class="date">23 juin 2018</div>
@@ -315,13 +354,13 @@
 </p>
 
 <p>
-    Si un système d’automates cellulaires a un «&nbsp;voisinage&nbsp;» de <span id="MathJax-Element-1-Frame" class="mjx-chtml"><span id="MJXc-Node-2427" class="mjx-math"><span id="MJXc-Node-2428" class="mjx-mrow"><span id="MJXc-Node-2429" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">9</span></span></span></span></span> cellules, et que chacune de ces cellules peut avoir un état de <span id="MathJax-Element-2-Frame" class="mjx-chtml"><span id="MJXc-Node-2430" class="mjx-math"><span id="MJXc-Node-2431" class="mjx-mrow"><span id="MJXc-Node-2432" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">0</span></span></span></span></span>, <span id="MathJax-Element-3-Frame" class="mjx-chtml"><span id="MJXc-Node-2433" class="mjx-math"><span id="MJXc-Node-2434" class="mjx-mrow"><span id="MJXc-Node-2435" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">1</span></span></span></span></span> ou <span id="MathJax-Element-4-Frame" class="mjx-chtml"><span id="MJXc-Node-2436" class="mjx-math"><span id="MJXc-Node-2437" class="mjx-mrow"><span id="MJXc-Node-2438" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">2</span></span></span></span></span>, un exemple de voisinage possible pourrait s’écrire&nbsp;: <span class="inline-code">"101022010"</span>. Ça me limiterait cependant à <span id="MathJax-Element-5-Frame" class="mjx-chtml"><span id="MJXc-Node-2439" class="mjx-math"><span id="MJXc-Node-2440" class="mjx-mrow"><span id="MJXc-Node-2441" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">10</span></span></span></span></span> états possibles (de <span id="MathJax-Element-6-Frame" class="mjx-chtml"><span id="MJXc-Node-2442" class="mjx-math"><span id="MJXc-Node-2443" class="mjx-mrow"><span id="MJXc-Node-2444" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">0</span></span></span></span></span> à <span id="MathJax-Element-7-Frame" class="mjx-chtml"><span id="MJXc-Node-2445" class="mjx-math"><span id="MJXc-Node-2446" class="mjx-mrow"><span id="MJXc-Node-2447" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">9</span></span></span></span></span>) pour un système. Une autre façon d’encoder un voisinage serait&nbsp;:
+    Si un système d’automates cellulaires a un «&nbsp;voisinage&nbsp;» de <span id="MathJax-Element-1-Frame" class="mjx-chtml"><span id="MJXc-Node-2208" class="mjx-math"><span id="MJXc-Node-2209" class="mjx-mrow"><span id="MJXc-Node-2210" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">9</span></span></span></span></span> cellules, et que chacune de ces cellules peut avoir un état de <span id="MathJax-Element-2-Frame" class="mjx-chtml"><span id="MJXc-Node-2211" class="mjx-math"><span id="MJXc-Node-2212" class="mjx-mrow"><span id="MJXc-Node-2213" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">0</span></span></span></span></span>, <span id="MathJax-Element-3-Frame" class="mjx-chtml"><span id="MJXc-Node-2214" class="mjx-math"><span id="MJXc-Node-2215" class="mjx-mrow"><span id="MJXc-Node-2216" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">1</span></span></span></span></span> ou <span id="MathJax-Element-4-Frame" class="mjx-chtml"><span id="MJXc-Node-2217" class="mjx-math"><span id="MJXc-Node-2218" class="mjx-mrow"><span id="MJXc-Node-2219" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">2</span></span></span></span></span>, un exemple de voisinage possible pourrait s’écrire&nbsp;: <span class="inline-code">"101022010"</span>. Ça me limiterait cependant à <span id="MathJax-Element-5-Frame" class="mjx-chtml"><span id="MJXc-Node-2220" class="mjx-math"><span id="MJXc-Node-2221" class="mjx-mrow"><span id="MJXc-Node-2222" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">10</span></span></span></span></span> états possibles (de <span id="MathJax-Element-6-Frame" class="mjx-chtml"><span id="MJXc-Node-2223" class="mjx-math"><span id="MJXc-Node-2224" class="mjx-mrow"><span id="MJXc-Node-2225" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">0</span></span></span></span></span> à <span id="MathJax-Element-7-Frame" class="mjx-chtml"><span id="MJXc-Node-2226" class="mjx-math"><span id="MJXc-Node-2227" class="mjx-mrow"><span id="MJXc-Node-2228" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">9</span></span></span></span></span>) pour un système. Une autre façon d’encoder un voisinage serait&nbsp;:
 </p>
 
 <div class="codebox"><pre><code><span class="hljs-keyword">let</span> neighborhood<span class="hljs-punctuation"> = </span>[<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">11</span>, <span class="hljs-number">13</span>, <span class="hljs-number">2</span>, <span class="hljs-number">20</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>];</code></pre></div>
 
 <p class="noindent">
-    Ici, je ne serais pas limité à <span id="MathJax-Element-8-Frame" class="mjx-chtml"><span id="MJXc-Node-2448" class="mjx-math"><span id="MJXc-Node-2449" class="mjx-mrow"><span id="MJXc-Node-2450" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">9</span></span></span></span></span> états possibles. Mais, dans tous les cas, comment ferais-je pour générer chacune des règles d’un système&nbsp;?
+    Ici, je ne serais pas limité à <span id="MathJax-Element-8-Frame" class="mjx-chtml"><span id="MJXc-Node-2229" class="mjx-math"><span id="MJXc-Node-2230" class="mjx-mrow"><span id="MJXc-Node-2231" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">9</span></span></span></span></span> états possibles. Mais, dans tous les cas, comment ferais-je pour générer chacune des règles d’un système&nbsp;?
 </p>
 
 
@@ -394,27 +433,6 @@
 
                 <div class="languageJump">
                     <a href="../blog/2018/4/les-tortues-amicales.html">Continuer à lire…</a>
-                </div>
-               
-                </div>
-            </div>
-            <div class="blog-post">
-                <div class="blog-post-header">
-                    <a href="../blog/2018/4/meandres-logistiques.html"><div class="date">21 avril 2018</div>
-                    <div class="blog-title-box"><h2 class="header">Méandres logistiques</h2></div>
-                    <div class="description">
-                    Quelques explorations vagabondes autour de la suite logistique.
-
-            </div></a>
-                </div>
-                <div class="blog-post-content">
-                    
-<p class="noindent">
-    <span class="small-caps">La semaine dernière,</span> j’apprenais l’existence de la <span class="italic">suite logistique</span> et cherchais à en comprendre le fonctionnement. Depuis, j’ai visualisé le champ de cette fonction de diverses manières, afin de mieux voir ses propriétés et ses potentielles applications artistiques. Le code écrit pour réaliser le matériel ci-dessous peut-être lu et téléchargé <a href="https://github.com/pelletierauger/Logistic-Map">sur GitHub</a>.
-</p>
-
-                <div class="languageJump">
-                    <a href="../blog/2018/4/meandres-logistiques.html">Continuer à lire…</a>
                 </div>
                
                 </div>
