@@ -604,6 +604,11 @@ function seekPage(name, folder) {
 
     if (folder == './blog/posts/') {
         // We are seeking a blog post
+        // All blog posts are defined with the HTML template
+        if (fs.existsSync(folder + name + ".html")) {
+            page = parseHTMLTemplate(folder + name + ".html");
+            return page;
+        }
     }
 
     //First, we test if the page is not simply defined in the pages.js file.
