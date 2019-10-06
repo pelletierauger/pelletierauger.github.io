@@ -853,7 +853,8 @@ function parseHTMLTemplate(s) {
     // });
     page.en.content = page.en.content.replace(/(<sn)([lr])( label=")([0-9a-zA-ZÀ-ú\-]*)(">)/g, function(a, b, c, d, e) {
         let typeOfSidenote = (c == "l") ? "sidenote-left" : "sidenote";
-        let response = `<label for="${e}" class="margin-toggle sidenote-number"></label></span>
+        let response = `
+        <label for="${e}" class="margin-toggle sidenote-number"></label></span>
         <input type="checkbox" id="${e}" class="margin-toggle"/>
         <span class="${typeOfSidenote}">`;
         return response;
