@@ -48,11 +48,17 @@
 .portfolio-banner h2 {
     /*background-color: green;*/
     font-style: normal;
-    font-family: 'EBG12-SC';
+    /*font-family: 'EBG12-SC';*/
+    font-family: 'W-Droge';
+    font-family: 'Infini';
     font-size: 2em;
     padding: 0;
     margin: 0;
+    padding-bottom: 0.5rem;
     line-height: 3rem;
+    /*font-size: 1em;*/
+    /*font-size: 1.3em;*/
+    font-weight: normal;
 }
 
 .portfolio-banner p {

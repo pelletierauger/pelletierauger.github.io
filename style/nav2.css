@@ -3,9 +3,13 @@ nav {
     margin: 0;
     height: 4rem;
     font-size: 1.3em;
-    font-family: 'EBG12-SC';
+    /*font-family: 'fluxisch else';*/
+    /*font-weight: bold;*/
+    font-family: 'Infini';
+    /*font-size: 1em;*/
+    /*font-size: 1.4em;*/
     /*font-family: "EBG12-It";*/
-    text-transform: lowercase;
+    /*text-transform: lowercase;*/
 }
 
 nav a {
@@ -30,5 +34,5 @@ nav ul li {
 
 li.selected a, nav a:hover {
     /*border-bottom: 3px solid black;*/
-    box-shadow: inset 0px -2px white, inset 0px -3px black, inset 0px -4px white, inset 0px -5px black;
+    box-shadow: inset 0px -0px white, inset 0px -1px black, inset 0px -2px black;
 }

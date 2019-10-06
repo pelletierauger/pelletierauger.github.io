@@ -192,6 +192,7 @@ h1 {
 article h2, .portfolio-description h2 {
     font-weight: normal;
     font-family: 'EBG12-SC';
+    font-family: 'Infini';
     font-size: 2em;
     line-height: 3rem;
     /*display: inline-block;*/

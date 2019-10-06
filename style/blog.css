@@ -1,6 +1,7 @@
 #blog-page-number h2 {
     font-family: 'EBG12-SC';
-    text-transform: lowercase;
+    font-family: 'Infini';
+    /*text-transform: lowercase;*/
     font-size: 1.25em;
     text-align: left;
     font-weight: normal;
@@ -87,7 +88,8 @@
 .blog-post-header h2, .blog-post-header .date {
     text-align: left;
     /*padding-bottom: 0.25em;*/
-    font-family: 'EBG12-Sc';
+    /*font-family: 'EBG12-Sc';*/
+    font-family: 'Infini';
     /*font-size: 1em;*/
     font-size: 1.3em;
     font-weight: normal;
@@ -196,7 +198,7 @@ article.blog-post-header .date {
         margin: 1rem auto 0rem auto;
     }
     .blog-posts {
-        padding-top: 3rem;
+        padding-top: 1.5rem;
     }
 }
 
