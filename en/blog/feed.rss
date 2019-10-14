@@ -1,9 +1,10 @@
-<rss version="2.0">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Guillaume Pelletier-Auger</title>
     <link>https://pelletierauger.github.io/en/blog/</link>
     <description>Art and music made with code.</description>
     <language>en-us</language>
+    <atom:link href="https://pelletierauger.github.io/en/blog/feed.rss" rel="self" type="application/rss+xml" />
         <item>
             <title>Colourful ravines</title>
             <description>Adapting a short film into a live coding set.
