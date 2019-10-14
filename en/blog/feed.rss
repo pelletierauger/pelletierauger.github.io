@@ -34,7 +34,7 @@
         </item>
         <item>
             <title>Swaying loops</title>
-            <description>Using <span class="lnum">4D</span> OpenSimplex noise in the context of algorithmic botany.
+            <description>Using 4D OpenSimplex noise in the context of algorithmic botany.
 </description>
             <pubDate>Wed, 6 Mar 2019 23:59:59 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2019/3/swaying-loops.html</link>
@@ -115,7 +115,7 @@
         </item>
         <item>
             <title>Blurry spirals</title>
-            <description>First steps with <span class="small-caps">Glsl</span> shaders.
+            <description>First steps with Glsl shaders.
 </description>
             <pubDate>Sun, 4 Nov 2018 23:59:59 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2018/11/blurry-spirals.html</link>
@@ -304,7 +304,7 @@
         </item>
         <item>
             <title>Branches and stems</title>
-            <description>Sketch made after a browsing of <span class="blog-description-italic">Manuale Tipografico</span> by Giambattista Bodoni.
+            <description>Sketch made after a browsing of Manuale Tipografico by Giambattista Bodoni.
 </description>
             <pubDate>Wed, 14 Mar 2018 23:59:59 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2018/3/branches-and-stems.html</link>
