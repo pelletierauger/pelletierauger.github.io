@@ -9,7 +9,7 @@
             <title>Colourful ravines</title>
             <description>Adapting a short film into a live coding set.
 </description>
-            <pubDate>Sun, 4 Nov 2019 00:00:00 EST</pubDate>
+            <pubDate>Thu, 4 Oct 2019 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2019/10/colourful-ravines.html</link>
             <guid isPermaLink="true">https://pelletierauger.github.io/en/blog/2019/10/colourful-ravines.html</guid>
             <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
@@ -18,7 +18,7 @@
             <title>Wavetable synthesis</title>
             <description>Musical sketches and scattered notes.
 </description>
-            <pubDate>Tue, 8 May 2019 00:00:00 EST</pubDate>
+            <pubDate>Sun, 8 Apr 2019 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2019/4/wavetable-synthesis.html</link>
             <guid isPermaLink="true">https://pelletierauger.github.io/en/blog/2019/4/wavetable-synthesis.html</guid>
             <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
@@ -27,7 +27,7 @@
             <title>Spring on Phobos</title>
             <description>A live coding set using WebGL and SuperCollider.
 </description>
-            <pubDate>Sun, 29 Apr 2019 00:00:00 EST</pubDate>
+            <pubDate>Thu, 29 Mar 2019 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2019/3/spring-on-phobos.html</link>
             <guid isPermaLink="true">https://pelletierauger.github.io/en/blog/2019/3/spring-on-phobos.html</guid>
             <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
@@ -36,7 +36,7 @@
             <title>Swaying loops</title>
             <description>Using <span class="lnum">4D</span> OpenSimplex noise in the context of algorithmic botany.
 </description>
-            <pubDate>Fri, 6 Apr 2019 00:00:00 EST</pubDate>
+            <pubDate>Tue, 6 Mar 2019 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2019/3/swaying-loops.html</link>
             <guid isPermaLink="true">https://pelletierauger.github.io/en/blog/2019/3/swaying-loops.html</guid>
             <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
@@ -45,7 +45,7 @@
             <title>Tangent lines</title>
             <description>Tiptoeing into calculus.
 </description>
-            <pubDate>Thu, 15 Mar 2019 00:00:00 EST</pubDate>
+            <pubDate>Thu, 15 Feb 2019 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2019/2/tangent-lines.html</link>
             <guid isPermaLink="true">https://pelletierauger.github.io/en/blog/2019/2/tangent-lines.html</guid>
             <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
@@ -54,7 +54,7 @@
             <title>Small neural network</title>
             <description>Notes taken while learning how to build a neural network for artistic purposes.
 </description>
-            <pubDate>Tue, 27 Feb 2019 00:00:00 EST</pubDate>
+            <pubDate>Sat, 27 Jan 2019 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2019/1/small-neural-network.html</link>
             <guid isPermaLink="true">https://pelletierauger.github.io/en/blog/2019/1/small-neural-network.html</guid>
             <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
@@ -63,7 +63,7 @@
             <title>Linear regression</title>
             <description>Small steps towards machine learning.
 </description>
-            <pubDate>Mon, 26 Feb 2019 00:00:00 EST</pubDate>
+            <pubDate>Fri, 26 Jan 2019 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2019/1/linear-regression.html</link>
             <guid isPermaLink="true">https://pelletierauger.github.io/en/blog/2019/1/linear-regression.html</guid>
             <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
@@ -72,7 +72,7 @@
             <title>Singing trees</title>
             <description>Animated graphs.
 </description>
-            <pubDate>Mon, 12 Feb 2019 00:00:00 EST</pubDate>
+            <pubDate>Fri, 12 Jan 2019 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2019/1/singing-trees.html</link>
             <guid isPermaLink="true">https://pelletierauger.github.io/en/blog/2019/1/singing-trees.html</guid>
             <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
@@ -81,7 +81,7 @@
             <title>Blurry quadrilaterals</title>
             <description>Geometric studies with WebGL.
 </description>
-            <pubDate>Wed, 17 Jan 2018 00:00:00 EST</pubDate>
+            <pubDate>Sun, 17 Dec 2018 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2018/12/blurry-quadrilaterals.html</link>
             <guid isPermaLink="true">https://pelletierauger.github.io/en/blog/2018/12/blurry-quadrilaterals.html</guid>
             <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
@@ -90,7 +90,7 @@
             <title>A flock of singing boids</title>
             <description>Starting to learn live coding.
 </description>
-            <pubDate>Fri, 12 Jan 2018 00:00:00 EST</pubDate>
+            <pubDate>Tue, 12 Dec 2018 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2018/12/a-flock-of-singing-boids.html</link>
             <guid isPermaLink="true">https://pelletierauger.github.io/en/blog/2018/12/a-flock-of-singing-boids.html</guid>
             <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
@@ -99,7 +99,7 @@
             <title>Depth First Search</title>
             <description>
 </description>
-            <pubDate>Mon, 25 Dec 2018 00:00:00 EST</pubDate>
+            <pubDate>Sat, 25 Nov 2018 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2018/11/depth-first-search.html</link>
             <guid isPermaLink="true">https://pelletierauger.github.io/en/blog/2018/11/depth-first-search.html</guid>
             <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
@@ -108,7 +108,7 @@
             <title>A Live Coding Machine</title>
             <description>Work notes.
 </description>
-            <pubDate>Sun, 17 Dec 2018 00:00:00 EST</pubDate>
+            <pubDate>Fri, 17 Nov 2018 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2018/11/a-live-coding-machine.html</link>
             <guid isPermaLink="true">https://pelletierauger.github.io/en/blog/2018/11/a-live-coding-machine.html</guid>
             <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
@@ -117,7 +117,7 @@
             <title>Blurry spirals</title>
             <description>First steps with <span class="small-caps">Glsl</span> shaders.
 </description>
-            <pubDate>Mon, 4 Dec 2018 00:00:00 EST</pubDate>
+            <pubDate>Sat, 4 Nov 2018 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2018/11/blurry-spirals.html</link>
             <guid isPermaLink="true">https://pelletierauger.github.io/en/blog/2018/11/blurry-spirals.html</guid>
             <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
@@ -126,7 +126,7 @@
             <title>Graph-shaped sequencers</title>
             <description>Imagining different ways to connect sounds and images.
 </description>
-            <pubDate>Fri, 17 Nov 2018 00:00:00 EST</pubDate>
+            <pubDate>Tue, 17 Oct 2018 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2018/10/graph-shaped-sequencers.html</link>
             <guid isPermaLink="true">https://pelletierauger.github.io/en/blog/2018/10/graph-shaped-sequencers.html</guid>
             <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
@@ -135,7 +135,7 @@
             <title>Granular Drawings</title>
             <description>Trying to apply the concepts of granular synthesis on line drawings.
 </description>
-            <pubDate>Sat, 28 Oct 2018 00:00:00 EST</pubDate>
+            <pubDate>Thu, 28 Sep 2018 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2018/9/granular-drawings.html</link>
             <guid isPermaLink="true">https://pelletierauger.github.io/en/blog/2018/9/granular-drawings.html</guid>
             <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
@@ -144,7 +144,7 @@
             <title>Ravines</title>
             <description>A short animation film made with Turtle geometry and Perlin noise.
 </description>
-            <pubDate>Thu, 19 Oct 2018 00:00:00 EST</pubDate>
+            <pubDate>Tue, 19 Sep 2018 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2018/9/ravines.html</link>
             <guid isPermaLink="true">https://pelletierauger.github.io/en/blog/2018/9/ravines.html</guid>
             <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
@@ -153,7 +153,7 @@
             <title>The turtles of Perlin</title>
             <description>Various mergers between Papert’s turtles and Perlin noise.
 </description>
-            <pubDate>Wed, 20 Sep 2018 00:00:00 EST</pubDate>
+            <pubDate>Sun, 20 Aug 2018 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2018/8/the-turtles-of-perlin.html</link>
             <guid isPermaLink="true">https://pelletierauger.github.io/en/blog/2018/8/the-turtles-of-perlin.html</guid>
             <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
@@ -162,7 +162,7 @@
             <title>A Recaman Spiral</title>
             <description>Visualizing a number sequence.
 </description>
-            <pubDate>Wed, 30 Aug 2018 00:00:00 EST</pubDate>
+            <pubDate>Sun, 30 Jul 2018 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2018/7/a-recaman-spiral.html</link>
             <guid isPermaLink="true">https://pelletierauger.github.io/en/blog/2018/7/a-recaman-spiral.html</guid>
             <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
@@ -171,7 +171,7 @@
             <title>Study for cellular automata no 2</title>
             <description>
 </description>
-            <pubDate>Sat, 26 Aug 2018 00:00:00 EST</pubDate>
+            <pubDate>Wed, 26 Jul 2018 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2018/7/study-for-cellular-automata-no-2.html</link>
             <guid isPermaLink="true">https://pelletierauger.github.io/en/blog/2018/7/study-for-cellular-automata-no-2.html</guid>
             <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
@@ -180,7 +180,7 @@
             <title>Study for cellular automata no 1</title>
             <description>
 </description>
-            <pubDate>Sat, 26 Aug 2018 00:00:00 EST</pubDate>
+            <pubDate>Wed, 26 Jul 2018 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2018/7/study-for-cellular-automata-no-1.html</link>
             <guid isPermaLink="true">https://pelletierauger.github.io/en/blog/2018/7/study-for-cellular-automata-no-1.html</guid>
             <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
@@ -189,7 +189,7 @@
             <title>Growing Mountains</title>
             <description>Non-deterministic animations from cellular automata.
 </description>
-            <pubDate>Thu, 10 Aug 2018 00:00:00 EST</pubDate>
+            <pubDate>Mon, 10 Jul 2018 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2018/7/growing-mountains.html</link>
             <guid isPermaLink="true">https://pelletierauger.github.io/en/blog/2018/7/growing-mountains.html</guid>
             <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
@@ -198,7 +198,7 @@
             <title>Phenotype et genotype</title>
             <description>
 </description>
-            <pubDate>Sun, 23 Jul 2018 00:00:00 EST</pubDate>
+            <pubDate>Fri, 23 Jun 2018 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2018/6/phenotype-et-genotype.html</link>
             <guid isPermaLink="true">https://pelletierauger.github.io/en/blog/2018/6/phenotype-et-genotype.html</guid>
             <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
@@ -207,7 +207,7 @@
             <title>Foliages</title>
             <description>Barely readable work notes.
 </description>
-            <pubDate>Sun, 16 Jul 2018 00:00:00 EST</pubDate>
+            <pubDate>Fri, 16 Jun 2018 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2018/6/foliages.html</link>
             <guid isPermaLink="true">https://pelletierauger.github.io/en/blog/2018/6/foliages.html</guid>
             <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
@@ -216,7 +216,7 @@
             <title>Botanical Scenes</title>
             <description>
 </description>
-            <pubDate>Sun, 9 Jul 2018 00:00:00 EST</pubDate>
+            <pubDate>Fri, 9 Jun 2018 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2018/6/botanical-scenes.html</link>
             <guid isPermaLink="true">https://pelletierauger.github.io/en/blog/2018/6/botanical-scenes.html</guid>
             <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
@@ -225,7 +225,7 @@
             <title>Walking with the cosine function</title>
             <description>
 </description>
-            <pubDate>Thu, 6 Jul 2018 00:00:00 EST</pubDate>
+            <pubDate>Tue, 6 Jun 2018 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2018/6/walking-with-the-cosine-function.html</link>
             <guid isPermaLink="true">https://pelletierauger.github.io/en/blog/2018/6/walking-with-the-cosine-function.html</guid>
             <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
@@ -234,7 +234,7 @@
             <title>Deterministic branching</title>
             <description>En route to an algorithmic garden.
 </description>
-            <pubDate>Sun, 2 Jul 2018 00:00:00 EST</pubDate>
+            <pubDate>Fri, 2 Jun 2018 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2018/6/deterministic-branching.html</link>
             <guid isPermaLink="true">https://pelletierauger.github.io/en/blog/2018/6/deterministic-branching.html</guid>
             <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
@@ -243,7 +243,7 @@
             <title>A p5.js template for animation</title>
             <description>
 </description>
-            <pubDate>Tue, 27 Jun 2018 00:00:00 EST</pubDate>
+            <pubDate>Sat, 27 May 2018 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2018/5/a-p5js-template-for-animation.html</link>
             <guid isPermaLink="true">https://pelletierauger.github.io/en/blog/2018/5/a-p5js-template-for-animation.html</guid>
             <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
@@ -252,7 +252,7 @@
             <title>Notes on Genetic Automata</title>
             <description>
 </description>
-            <pubDate>Mon, 12 Jun 2018 00:00:00 EST</pubDate>
+            <pubDate>Fri, 12 May 2018 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2018/5/notes-on-genetic-automata.html</link>
             <guid isPermaLink="true">https://pelletierauger.github.io/en/blog/2018/5/notes-on-genetic-automata.html</guid>
             <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
@@ -261,7 +261,7 @@
             <title>Evolutionary botany</title>
             <description>Mergers between algorithmic botany and genetic algorithms.
 </description>
-            <pubDate>Mon, 5 Jun 2018 00:00:00 EST</pubDate>
+            <pubDate>Fri, 5 May 2018 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2018/5/evolutionary-botany.html</link>
             <guid isPermaLink="true">https://pelletierauger.github.io/en/blog/2018/5/evolutionary-botany.html</guid>
             <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
@@ -270,7 +270,7 @@
             <title>Friendly turtles</title>
             <description>Collective shapes emerging from individual behaviours.
 </description>
-            <pubDate>Sun, 28 May 2018 00:00:00 EST</pubDate>
+            <pubDate>Fri, 28 Apr 2018 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2018/4/friendly-turtles.html</link>
             <guid isPermaLink="true">https://pelletierauger.github.io/en/blog/2018/4/friendly-turtles.html</guid>
             <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
@@ -279,7 +279,7 @@
             <title>Logistic meanders</title>
             <description>A few experiments with the logistic map.
 </description>
-            <pubDate>Sun, 21 May 2018 00:00:00 EST</pubDate>
+            <pubDate>Fri, 21 Apr 2018 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2018/4/logistic-meanders.html</link>
             <guid isPermaLink="true">https://pelletierauger.github.io/en/blog/2018/4/logistic-meanders.html</guid>
             <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
@@ -288,7 +288,7 @@
             <title>The logistic map</title>
             <description>A first dive into complexity and chaos.
 </description>
-            <pubDate>Sun, 14 May 2018 00:00:00 EST</pubDate>
+            <pubDate>Fri, 14 Apr 2018 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2018/4/the-logistic-map.html</link>
             <guid isPermaLink="true">https://pelletierauger.github.io/en/blog/2018/4/the-logistic-map.html</guid>
             <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
@@ -297,7 +297,7 @@
             <title>Towards an algorithmic cinema</title>
             <description>The beginning of an experimental research project about abstract animation film.
 </description>
-            <pubDate>Sun, 7 May 2018 00:00:00 EST</pubDate>
+            <pubDate>Fri, 7 Apr 2018 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2018/4/towards-an-algorithmic-cinema.html</link>
             <guid isPermaLink="true">https://pelletierauger.github.io/en/blog/2018/4/towards-an-algorithmic-cinema.html</guid>
             <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
@@ -306,7 +306,7 @@
             <title>Branches and stems</title>
             <description>Sketch made after a browsing of <span class="blog-description-italic">Manuale Tipografico</span> by Giambattista Bodoni.
 </description>
-            <pubDate>Fri, 14 Apr 2018 00:00:00 EST</pubDate>
+            <pubDate>Tue, 14 Mar 2018 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2018/3/branches-and-stems.html</link>
             <guid isPermaLink="true">https://pelletierauger.github.io/en/blog/2018/3/branches-and-stems.html</guid>
             <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
@@ -315,7 +315,7 @@
             <title>Modeling pencil strokes</title>
             <description>A first foray into methods of algorithmically imitating the look of hand drawings.
 </description>
-            <pubDate>Fri, 3 Mar 2018 00:00:00 EST</pubDate>
+            <pubDate>Fri, 3 Feb 2018 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2018/2/modeling-pencil-strokes.html</link>
             <guid isPermaLink="true">https://pelletierauger.github.io/en/blog/2018/2/modeling-pencil-strokes.html</guid>
             <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
@@ -324,7 +324,7 @@
             <title>Recursive harmonic motion</title>
             <description>Two animations made while experimenting with simple examples of recursion.
 </description>
-            <pubDate>Thu, 17 Nov 2017 00:00:00 EST</pubDate>
+            <pubDate>Mon, 17 Oct 2017 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2017/10/recursive-harmonic-motion.html</link>
             <guid isPermaLink="true">https://pelletierauger.github.io/en/blog/2017/10/recursive-harmonic-motion.html</guid>
             <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
