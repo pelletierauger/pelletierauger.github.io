@@ -10,7 +10,7 @@
 </description>
             <pubDate>Sun, 4 Nov 2019 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2019/10/colourful-ravines.html</link>
-            <source url="https://pelletierauger.github.io/en/blog/feed.rss</source>
+            <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
         </item>
         <item>
             <title>Wavetable synthesis</title>
@@ -18,7 +18,7 @@
 </description>
             <pubDate>Tue, 8 May 2019 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2019/4/wavetable-synthesis.html</link>
-            <source url="https://pelletierauger.github.io/en/blog/feed.rss</source>
+            <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
         </item>
         <item>
             <title>Spring on Phobos</title>
@@ -26,7 +26,7 @@
 </description>
             <pubDate>Sun, 29 Apr 2019 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2019/3/spring-on-phobos.html</link>
-            <source url="https://pelletierauger.github.io/en/blog/feed.rss</source>
+            <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
         </item>
         <item>
             <title>Swaying loops</title>
@@ -34,7 +34,7 @@
 </description>
             <pubDate>Fri, 6 Apr 2019 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2019/3/swaying-loops.html</link>
-            <source url="https://pelletierauger.github.io/en/blog/feed.rss</source>
+            <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
         </item>
         <item>
             <title>Tangent lines</title>
@@ -42,7 +42,7 @@
 </description>
             <pubDate>Thu, 15 Mar 2019 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2019/2/tangent-lines.html</link>
-            <source url="https://pelletierauger.github.io/en/blog/feed.rss</source>
+            <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
         </item>
         <item>
             <title>Small neural network</title>
@@ -50,7 +50,7 @@
 </description>
             <pubDate>Tue, 27 Feb 2019 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2019/1/small-neural-network.html</link>
-            <source url="https://pelletierauger.github.io/en/blog/feed.rss</source>
+            <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
         </item>
         <item>
             <title>Linear regression</title>
@@ -58,7 +58,7 @@
 </description>
             <pubDate>Mon, 26 Feb 2019 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2019/1/linear-regression.html</link>
-            <source url="https://pelletierauger.github.io/en/blog/feed.rss</source>
+            <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
         </item>
         <item>
             <title>Singing trees</title>
@@ -66,7 +66,7 @@
 </description>
             <pubDate>Mon, 12 Feb 2019 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2019/1/singing-trees.html</link>
-            <source url="https://pelletierauger.github.io/en/blog/feed.rss</source>
+            <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
         </item>
         <item>
             <title>Blurry quadrilaterals</title>
@@ -74,7 +74,7 @@
 </description>
             <pubDate>Wed, 17 Jan 2018 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2018/12/blurry-quadrilaterals.html</link>
-            <source url="https://pelletierauger.github.io/en/blog/feed.rss</source>
+            <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
         </item>
         <item>
             <title>A flock of singing boids</title>
@@ -82,7 +82,7 @@
 </description>
             <pubDate>Fri, 12 Jan 2018 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2018/12/a-flock-of-singing-boids.html</link>
-            <source url="https://pelletierauger.github.io/en/blog/feed.rss</source>
+            <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
         </item>
         <item>
             <title>Depth First Search</title>
@@ -90,7 +90,7 @@
 </description>
             <pubDate>Mon, 25 Dec 2018 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2018/11/depth-first-search.html</link>
-            <source url="https://pelletierauger.github.io/en/blog/feed.rss</source>
+            <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
         </item>
         <item>
             <title>A Live Coding Machine</title>
@@ -98,7 +98,7 @@
 </description>
             <pubDate>Sun, 17 Dec 2018 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2018/11/a-live-coding-machine.html</link>
-            <source url="https://pelletierauger.github.io/en/blog/feed.rss</source>
+            <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
         </item>
         <item>
             <title>Blurry spirals</title>
@@ -106,7 +106,7 @@
 </description>
             <pubDate>Mon, 4 Dec 2018 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2018/11/blurry-spirals.html</link>
-            <source url="https://pelletierauger.github.io/en/blog/feed.rss</source>
+            <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
         </item>
         <item>
             <title>Graph-shaped sequencers</title>
@@ -114,7 +114,7 @@
 </description>
             <pubDate>Fri, 17 Nov 2018 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2018/10/graph-shaped-sequencers.html</link>
-            <source url="https://pelletierauger.github.io/en/blog/feed.rss</source>
+            <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
         </item>
         <item>
             <title>Granular Drawings</title>
@@ -122,7 +122,7 @@
 </description>
             <pubDate>Sat, 28 Oct 2018 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2018/9/granular-drawings.html</link>
-            <source url="https://pelletierauger.github.io/en/blog/feed.rss</source>
+            <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
         </item>
         <item>
             <title>Ravines</title>
@@ -130,7 +130,7 @@
 </description>
             <pubDate>Thu, 19 Oct 2018 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2018/9/ravines.html</link>
-            <source url="https://pelletierauger.github.io/en/blog/feed.rss</source>
+            <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
         </item>
         <item>
             <title>The turtles of Perlin</title>
@@ -138,7 +138,7 @@
 </description>
             <pubDate>Wed, 20 Sep 2018 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2018/8/the-turtles-of-perlin.html</link>
-            <source url="https://pelletierauger.github.io/en/blog/feed.rss</source>
+            <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
         </item>
         <item>
             <title>A Recaman Spiral</title>
@@ -146,7 +146,7 @@
 </description>
             <pubDate>Wed, 30 Aug 2018 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2018/7/a-recaman-spiral.html</link>
-            <source url="https://pelletierauger.github.io/en/blog/feed.rss</source>
+            <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
         </item>
         <item>
             <title>Study for cellular automata no 2</title>
@@ -154,7 +154,7 @@
 </description>
             <pubDate>Sat, 26 Aug 2018 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2018/7/study-for-cellular-automata-no-2.html</link>
-            <source url="https://pelletierauger.github.io/en/blog/feed.rss</source>
+            <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
         </item>
         <item>
             <title>Study for cellular automata no 1</title>
@@ -162,7 +162,7 @@
 </description>
             <pubDate>Sat, 26 Aug 2018 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2018/7/study-for-cellular-automata-no-1.html</link>
-            <source url="https://pelletierauger.github.io/en/blog/feed.rss</source>
+            <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
         </item>
         <item>
             <title>Growing Mountains</title>
@@ -170,7 +170,7 @@
 </description>
             <pubDate>Thu, 10 Aug 2018 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2018/7/growing-mountains.html</link>
-            <source url="https://pelletierauger.github.io/en/blog/feed.rss</source>
+            <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
         </item>
         <item>
             <title>Phenotype et genotype</title>
@@ -178,7 +178,7 @@
 </description>
             <pubDate>Sun, 23 Jul 2018 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2018/6/phenotype-et-genotype.html</link>
-            <source url="https://pelletierauger.github.io/en/blog/feed.rss</source>
+            <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
         </item>
         <item>
             <title>Foliages</title>
@@ -186,7 +186,7 @@
 </description>
             <pubDate>Sun, 16 Jul 2018 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2018/6/foliages.html</link>
-            <source url="https://pelletierauger.github.io/en/blog/feed.rss</source>
+            <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
         </item>
         <item>
             <title>Botanical Scenes</title>
@@ -194,7 +194,7 @@
 </description>
             <pubDate>Sun, 9 Jul 2018 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2018/6/botanical-scenes.html</link>
-            <source url="https://pelletierauger.github.io/en/blog/feed.rss</source>
+            <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
         </item>
         <item>
             <title>Walking with the cosine function</title>
@@ -202,7 +202,7 @@
 </description>
             <pubDate>Thu, 6 Jul 2018 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2018/6/walking-with-the-cosine-function.html</link>
-            <source url="https://pelletierauger.github.io/en/blog/feed.rss</source>
+            <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
         </item>
         <item>
             <title>Deterministic branching</title>
@@ -210,7 +210,7 @@
 </description>
             <pubDate>Sun, 2 Jul 2018 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2018/6/deterministic-branching.html</link>
-            <source url="https://pelletierauger.github.io/en/blog/feed.rss</source>
+            <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
         </item>
         <item>
             <title>A p5.js template for animation</title>
@@ -218,7 +218,7 @@
 </description>
             <pubDate>Tue, 27 Jun 2018 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2018/5/a-p5js-template-for-animation.html</link>
-            <source url="https://pelletierauger.github.io/en/blog/feed.rss</source>
+            <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
         </item>
         <item>
             <title>Notes on Genetic Automata</title>
@@ -226,7 +226,7 @@
 </description>
             <pubDate>Mon, 12 Jun 2018 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2018/5/notes-on-genetic-automata.html</link>
-            <source url="https://pelletierauger.github.io/en/blog/feed.rss</source>
+            <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
         </item>
         <item>
             <title>Evolutionary botany</title>
@@ -234,7 +234,7 @@
 </description>
             <pubDate>Mon, 5 Jun 2018 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2018/5/evolutionary-botany.html</link>
-            <source url="https://pelletierauger.github.io/en/blog/feed.rss</source>
+            <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
         </item>
         <item>
             <title>Friendly turtles</title>
@@ -242,7 +242,7 @@
 </description>
             <pubDate>Sun, 28 May 2018 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2018/4/friendly-turtles.html</link>
-            <source url="https://pelletierauger.github.io/en/blog/feed.rss</source>
+            <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
         </item>
         <item>
             <title>Logistic meanders</title>
@@ -250,7 +250,7 @@
 </description>
             <pubDate>Sun, 21 May 2018 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2018/4/logistic-meanders.html</link>
-            <source url="https://pelletierauger.github.io/en/blog/feed.rss</source>
+            <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
         </item>
         <item>
             <title>The logistic map</title>
@@ -258,7 +258,7 @@
 </description>
             <pubDate>Sun, 14 May 2018 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2018/4/the-logistic-map.html</link>
-            <source url="https://pelletierauger.github.io/en/blog/feed.rss</source>
+            <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
         </item>
         <item>
             <title>Towards an algorithmic cinema</title>
@@ -266,7 +266,7 @@
 </description>
             <pubDate>Sun, 7 May 2018 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2018/4/towards-an-algorithmic-cinema.html</link>
-            <source url="https://pelletierauger.github.io/en/blog/feed.rss</source>
+            <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
         </item>
         <item>
             <title>Branches and stems</title>
@@ -274,7 +274,7 @@
 </description>
             <pubDate>Fri, 14 Apr 2018 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2018/3/branches-and-stems.html</link>
-            <source url="https://pelletierauger.github.io/en/blog/feed.rss</source>
+            <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
         </item>
         <item>
             <title>Modeling pencil strokes</title>
@@ -282,7 +282,7 @@
 </description>
             <pubDate>Fri, 3 Mar 2018 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2018/2/modeling-pencil-strokes.html</link>
-            <source url="https://pelletierauger.github.io/en/blog/feed.rss</source>
+            <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
         </item>
         <item>
             <title>Recursive harmonic motion</title>
@@ -290,7 +290,7 @@
 </description>
             <pubDate>Thu, 17 Nov 2017 00:00:00 EST</pubDate>
             <link>https://pelletierauger.github.io/en/blog/2017/10/recursive-harmonic-motion.html</link>
-            <source url="https://pelletierauger.github.io/en/blog/feed.rss</source>
+            <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
         </item>
     </channel>
 </rss>
