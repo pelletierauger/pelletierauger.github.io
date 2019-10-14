@@ -1,53 +1,56 @@
 var fs = require("fs");
 var filenameFormatter = require('./formatters/filename-formatter.js');
+let blog = require('./blog/blog.js');
 var verbose = true;
 
-let head = `<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+function makeFeed(language) {
+    let feedName = (language == "en") ? "feed" : "flux";
+    let head = `<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Guillaume Pelletier-Auger</title>
-    <link>https://pelletierauger.github.io/en/blog/</link>
+    <link>https://pelletierauger.github.io/${language}/blog/</link>
     <description>Art and music made with code.</description>
     <language>en-us</language>
-    <atom:link href="https://pelletierauger.github.io/en/blog/feed.rss" rel="self" type="application/rss+xml" />`;
-let footer = `
+    <atom:link href="https://pelletierauger.github.io/${language}/blog/${feedName}.rss" rel="self" type="application/rss+xml" />`;
+    let footer = `
     </channel>
 </rss>`;
-
-let blog = require('./blog/blog.js');
-
-let feed = ``;
-for (let i = 0; i < blog.posts.length; i++) {
-    let post = seekPage(blog.posts[i], './blog/posts/');
-    var date = new Date(Date.UTC(post.date.year, post.date.month - 1, post.date.day, 23, 59, 59));
-    console.log(date);
-    var day = date.toLocaleString('en-US', { weekday: 'long' });
-    day = day[0] + day[1] + day[2];
-    console.log(day);
-    var monthName = date.toLocaleString('en-US', { month: 'long' });
-    monthName = monthName[0] + monthName[1] + monthName[2];
-    var blogPrefix = post.date.year + "/" + post.date.month + "/";
-    var filenameIndividual = filenameFormatter(post.en.title);
-    var linkIndividual = blogPrefix + filenameIndividual;
-    let item = `
+    let feed = ``;
+    for (let i = 0; i < blog.posts.length; i++) {
+        let post = seekPage(blog.posts[i], './blog/posts/');
+        var date = new Date(Date.UTC(post.date.year, post.date.month - 1, post.date.day, 23, 59, 59));
+        console.log(date);
+        var day = date.toLocaleString('en-US', { weekday: 'long' });
+        day = day[0] + day[1] + day[2];
+        console.log(day);
+        var monthName = date.toLocaleString('en-US', { month: 'long' });
+        monthName = monthName[0] + monthName[1] + monthName[2];
+        var blogPrefix = post.date.year + "/" + post.date.month + "/";
+        var filenameIndividual = filenameFormatter(post[language].title);
+        var linkIndividual = blogPrefix + filenameIndividual;
+        let item = `
         <item>
-            <title>${post.en.title}</title>
-            <description>${post.en.description.replace(/<[^>]*>?/gm, '')}</description>
+            <title>${post[language].title}</title>
+            <description>${post[language].description.replace(/<[^>]*>?/gm, '')}</description>
             <pubDate>${day}, ${post.date.day} ${monthName} ${post.date.year} 23:59:59 EST</pubDate>
-            <link>https://pelletierauger.github.io/en/blog/${linkIndividual}.html</link>
-            <guid isPermaLink="true">https://pelletierauger.github.io/en/blog/${linkIndividual}.html</guid>
-            <source url="https://pelletierauger.github.io/en/blog/feed.rss">Guillaume Pelletier-Auger - Blog</source>
+            <link>https://pelletierauger.github.io/${language}/blog/${linkIndividual}.html</link>
+            <guid isPermaLink="true">https://pelletierauger.github.io/${language}/blog/${linkIndividual}.html</guid>
+            <source url="https://pelletierauger.github.io/${language}/blog/${feedName}.rss">Guillaume Pelletier-Auger - Blog</source>
         </item>`;
-    feed += item;
-}
-console.log(head + feed + footer);
-
-fs.writeFile('./en/blog/feed.rss', head + feed + end, function(err) {
-    if (err) {
-        return console.error(err);
-    } else {
-        verbalize('./en/blog/feed.rss written successfully.');
+        feed += item;
     }
-});
+    console.log(head + feed + footer);
+
+    fs.writeFile(`./${language}/blog/${feedName}.rss`, head + feed + footer, function(err) {
+        if (err) {
+            return console.error(err);
+        } else {
+            verbalize(`./${language}/blog/${feedName}.rss written successfully.`);
+        }
+    });
+}
+makeFeed("en");
+makeFeed("fr");
 
 function seekPage(name, folder) {
     let page;
