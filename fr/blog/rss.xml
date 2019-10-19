@@ -1,0 +1,333 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Guillaume Pelletier-Auger</title>
+    <link>https://pelletierauger.com/fr/blog/</link>
+    <description>Art and music made with code.</description>
+    <language>en-us</language>
+    <atom:link href="https://pelletierauger.com/fr/blog/rss.xml" rel="self" type="application/rss+xml" />
+        <item>
+            <title>Ravines colorées</title>
+            <description>Adaptation d&rsquo;un court métrage en pièce audiovisuelle.
+</description>
+            <pubDate>Fri, 4 Oct 2019 23:59:59 EST</pubDate>
+            <link>https://pelletierauger.com/fr/blog/2019/10/ravines-colorees.html</link>
+            <guid isPermaLink="true">https://pelletierauger.com/fr/blog/2019/10/ravines-colorees.html</guid>
+            <source url="https://pelletierauger.com/fr/blog/rss.xml">Guillaume Pelletier-Auger - Blog</source>
+        </item>
+        <item>
+            <title>Synthèse à tables d'ondes</title>
+            <description>Esquisses musicales et notes éparses.
+</description>
+            <pubDate>Mon, 8 Apr 2019 23:59:59 EST</pubDate>
+            <link>https://pelletierauger.com/fr/blog/2019/4/synthese-a-tables-d'ondes.html</link>
+            <guid isPermaLink="true">https://pelletierauger.com/fr/blog/2019/4/synthese-a-tables-d'ondes.html</guid>
+            <source url="https://pelletierauger.com/fr/blog/rss.xml">Guillaume Pelletier-Auger - Blog</source>
+        </item>
+        <item>
+            <title>Le printemps sur Phobos</title>
+            <description>Programmation à la volée avec WebGL et SuperCollider.
+</description>
+            <pubDate>Fri, 29 Mar 2019 23:59:59 EST</pubDate>
+            <link>https://pelletierauger.com/fr/blog/2019/3/le-printemps-sur-phobos.html</link>
+            <guid isPermaLink="true">https://pelletierauger.com/fr/blog/2019/3/le-printemps-sur-phobos.html</guid>
+            <source url="https://pelletierauger.com/fr/blog/rss.xml">Guillaume Pelletier-Auger - Blog</source>
+        </item>
+        <item>
+            <title>Balancements en boucle</title>
+            <description>Le bruit OpenSimplex quadridimensionnel à l&rsquo;usage de la botanique algorithmique.
+</description>
+            <pubDate>Wed, 6 Mar 2019 23:59:59 EST</pubDate>
+            <link>https://pelletierauger.com/fr/blog/2019/3/balancements-en-boucle.html</link>
+            <guid isPermaLink="true">https://pelletierauger.com/fr/blog/2019/3/balancements-en-boucle.html</guid>
+            <source url="https://pelletierauger.com/fr/blog/rss.xml">Guillaume Pelletier-Auger - Blog</source>
+        </item>
+        <item>
+            <title>Lignes tangentes</title>
+            <description>Le calcul intégral sur la pointe des pieds.
+</description>
+            <pubDate>Fri, 15 Feb 2019 23:59:59 EST</pubDate>
+            <link>https://pelletierauger.com/fr/blog/2019/2/lignes-tangentes.html</link>
+            <guid isPermaLink="true">https://pelletierauger.com/fr/blog/2019/2/lignes-tangentes.html</guid>
+            <source url="https://pelletierauger.com/fr/blog/rss.xml">Guillaume Pelletier-Auger - Blog</source>
+        </item>
+        <item>
+            <title>Petit réseau neuronal</title>
+            <description>Notes prises lors de la construction d&rsquo;un réseau neuronal très simple.
+</description>
+            <pubDate>Sun, 27 Jan 2019 23:59:59 EST</pubDate>
+            <link>https://pelletierauger.com/fr/blog/2019/1/petit-reseau-neuronal.html</link>
+            <guid isPermaLink="true">https://pelletierauger.com/fr/blog/2019/1/petit-reseau-neuronal.html</guid>
+            <source url="https://pelletierauger.com/fr/blog/rss.xml">Guillaume Pelletier-Auger - Blog</source>
+        </item>
+        <item>
+            <title>Régression linéaire</title>
+            <description>Quelques pas vers l&rsquo;apprentissage automatique.
+</description>
+            <pubDate>Sat, 26 Jan 2019 23:59:59 EST</pubDate>
+            <link>https://pelletierauger.com/fr/blog/2019/1/regression-lineaire.html</link>
+            <guid isPermaLink="true">https://pelletierauger.com/fr/blog/2019/1/regression-lineaire.html</guid>
+            <source url="https://pelletierauger.com/fr/blog/rss.xml">Guillaume Pelletier-Auger - Blog</source>
+        </item>
+        <item>
+            <title>Arbres chantants</title>
+            <description>Graphes animés.
+</description>
+            <pubDate>Sat, 12 Jan 2019 23:59:59 EST</pubDate>
+            <link>https://pelletierauger.com/fr/blog/2019/1/arbres-chantants.html</link>
+            <guid isPermaLink="true">https://pelletierauger.com/fr/blog/2019/1/arbres-chantants.html</guid>
+            <source url="https://pelletierauger.com/fr/blog/rss.xml">Guillaume Pelletier-Auger - Blog</source>
+        </item>
+        <item>
+            <title>Quadrilatères flous</title>
+            <description>Études géométriques avec WebGL.
+</description>
+            <pubDate>Mon, 17 Dec 2018 23:59:59 EST</pubDate>
+            <link>https://pelletierauger.com/fr/blog/2018/12/quadrilateres-flous.html</link>
+            <guid isPermaLink="true">https://pelletierauger.com/fr/blog/2018/12/quadrilateres-flous.html</guid>
+            <source url="https://pelletierauger.com/fr/blog/rss.xml">Guillaume Pelletier-Auger - Blog</source>
+        </item>
+        <item>
+            <title>Volées d oiseaux artificiels</title>
+            <description>Une première plongée dans la programmation à la volée.
+</description>
+            <pubDate>Wed, 12 Dec 2018 23:59:59 EST</pubDate>
+            <link>https://pelletierauger.com/fr/blog/2018/12/volees-d-oiseaux-artificiels.html</link>
+            <guid isPermaLink="true">https://pelletierauger.com/fr/blog/2018/12/volees-d-oiseaux-artificiels.html</guid>
+            <source url="https://pelletierauger.com/fr/blog/rss.xml">Guillaume Pelletier-Auger - Blog</source>
+        </item>
+        <item>
+            <title>Parcours de graphes</title>
+            <description>Explorations déterministes et objectifs non définis.
+</description>
+            <pubDate>Sun, 25 Nov 2018 23:59:59 EST</pubDate>
+            <link>https://pelletierauger.com/fr/blog/2018/11/parcours-de-graphes.html</link>
+            <guid isPermaLink="true">https://pelletierauger.com/fr/blog/2018/11/parcours-de-graphes.html</guid>
+            <source url="https://pelletierauger.com/fr/blog/rss.xml">Guillaume Pelletier-Auger - Blog</source>
+        </item>
+        <item>
+            <title>Programmation à la volée</title>
+            <description>Notes de travail pour une application en chantier.
+</description>
+            <pubDate>Sat, 17 Nov 2018 23:59:59 EST</pubDate>
+            <link>https://pelletierauger.com/fr/blog/2018/11/programmation-a-la-volee.html</link>
+            <guid isPermaLink="true">https://pelletierauger.com/fr/blog/2018/11/programmation-a-la-volee.html</guid>
+            <source url="https://pelletierauger.com/fr/blog/rss.xml">Guillaume Pelletier-Auger - Blog</source>
+        </item>
+        <item>
+            <title>Les spirales brumeuses</title>
+            <description>Premiers pas avec WebGl et les &ldquo;shaders&rdquo;.
+</description>
+            <pubDate>Sun, 4 Nov 2018 23:59:59 EST</pubDate>
+            <link>https://pelletierauger.com/fr/blog/2018/11/les-spirales-brumeuses.html</link>
+            <guid isPermaLink="true">https://pelletierauger.com/fr/blog/2018/11/les-spirales-brumeuses.html</guid>
+            <source url="https://pelletierauger.com/fr/blog/rss.xml">Guillaume Pelletier-Auger - Blog</source>
+        </item>
+        <item>
+            <title>Séquenceurs en forme de graphe</title>
+            <description>Imaginer différentes manières de lier image et musique.
+</description>
+            <pubDate>Wed, 17 Oct 2018 23:59:59 EST</pubDate>
+            <link>https://pelletierauger.com/fr/blog/2018/10/sequenceurs-en-forme-de-graphe.html</link>
+            <guid isPermaLink="true">https://pelletierauger.com/fr/blog/2018/10/sequenceurs-en-forme-de-graphe.html</guid>
+            <source url="https://pelletierauger.com/fr/blog/rss.xml">Guillaume Pelletier-Auger - Blog</source>
+        </item>
+        <item>
+            <title>Dessins granulaires</title>
+            <description>Applications du concept de synthèse granulaire à des dessins.
+</description>
+            <pubDate>Fri, 28 Sep 2018 23:59:59 EST</pubDate>
+            <link>https://pelletierauger.com/fr/blog/2018/9/dessins-granulaires.html</link>
+            <guid isPermaLink="true">https://pelletierauger.com/fr/blog/2018/9/dessins-granulaires.html</guid>
+            <source url="https://pelletierauger.com/fr/blog/rss.xml">Guillaume Pelletier-Auger - Blog</source>
+        </item>
+        <item>
+            <title>Ravines</title>
+            <description>Un court métrage d&rsquo;animation fait avec la géométrie des tortues et du bruit de Perlin.
+</description>
+            <pubDate>Wed, 19 Sep 2018 23:59:59 EST</pubDate>
+            <link>https://pelletierauger.com/fr/blog/2018/9/ravines.html</link>
+            <guid isPermaLink="true">https://pelletierauger.com/fr/blog/2018/9/ravines.html</guid>
+            <source url="https://pelletierauger.com/fr/blog/rss.xml">Guillaume Pelletier-Auger - Blog</source>
+        </item>
+        <item>
+            <title>Les tortues de Perlin</title>
+            <description>Croisements divers entre les tortues géométriques de Papert et le bruit de Perlin.
+</description>
+            <pubDate>Mon, 20 Aug 2018 23:59:59 EST</pubDate>
+            <link>https://pelletierauger.com/fr/blog/2018/8/les-tortues-de-perlin.html</link>
+            <guid isPermaLink="true">https://pelletierauger.com/fr/blog/2018/8/les-tortues-de-perlin.html</guid>
+            <source url="https://pelletierauger.com/fr/blog/rss.xml">Guillaume Pelletier-Auger - Blog</source>
+        </item>
+        <item>
+            <title>Une spirale de Recaman</title>
+            <description>Visualisation d&rsquo;une suite mathématique.
+</description>
+            <pubDate>Mon, 30 Jul 2018 23:59:59 EST</pubDate>
+            <link>https://pelletierauger.com/fr/blog/2018/7/une-spirale-de-recaman.html</link>
+            <guid isPermaLink="true">https://pelletierauger.com/fr/blog/2018/7/une-spirale-de-recaman.html</guid>
+            <source url="https://pelletierauger.com/fr/blog/rss.xml">Guillaume Pelletier-Auger - Blog</source>
+        </item>
+        <item>
+            <title>Etude pour automates cellulaires no 2</title>
+            <description>
+</description>
+            <pubDate>Thu, 26 Jul 2018 23:59:59 EST</pubDate>
+            <link>https://pelletierauger.com/fr/blog/2018/7/etude-pour-automates-cellulaires-no-2.html</link>
+            <guid isPermaLink="true">https://pelletierauger.com/fr/blog/2018/7/etude-pour-automates-cellulaires-no-2.html</guid>
+            <source url="https://pelletierauger.com/fr/blog/rss.xml">Guillaume Pelletier-Auger - Blog</source>
+        </item>
+        <item>
+            <title>Etude pour automates cellulaires no 1</title>
+            <description>
+</description>
+            <pubDate>Thu, 26 Jul 2018 23:59:59 EST</pubDate>
+            <link>https://pelletierauger.com/fr/blog/2018/7/etude-pour-automates-cellulaires-no-1.html</link>
+            <guid isPermaLink="true">https://pelletierauger.com/fr/blog/2018/7/etude-pour-automates-cellulaires-no-1.html</guid>
+            <source url="https://pelletierauger.com/fr/blog/rss.xml">Guillaume Pelletier-Auger - Blog</source>
+        </item>
+        <item>
+            <title>Les montagnes croissantes</title>
+            <description>Animations non déterministes par automates cellulaires.
+</description>
+            <pubDate>Tue, 10 Jul 2018 23:59:59 EST</pubDate>
+            <link>https://pelletierauger.com/fr/blog/2018/7/les-montagnes-croissantes.html</link>
+            <guid isPermaLink="true">https://pelletierauger.com/fr/blog/2018/7/les-montagnes-croissantes.html</guid>
+            <source url="https://pelletierauger.com/fr/blog/rss.xml">Guillaume Pelletier-Auger - Blog</source>
+        </item>
+        <item>
+            <title>Phénotype et génotype</title>
+            <description>
+</description>
+            <pubDate>Sat, 23 Jun 2018 23:59:59 EST</pubDate>
+            <link>https://pelletierauger.com/fr/blog/2018/6/phenotype-et-genotype.html</link>
+            <guid isPermaLink="true">https://pelletierauger.com/fr/blog/2018/6/phenotype-et-genotype.html</guid>
+            <source url="https://pelletierauger.com/fr/blog/rss.xml">Guillaume Pelletier-Auger - Blog</source>
+        </item>
+        <item>
+            <title>Feuillages</title>
+            <description>Notes de travail plutôt absconses.
+</description>
+            <pubDate>Sat, 16 Jun 2018 23:59:59 EST</pubDate>
+            <link>https://pelletierauger.com/fr/blog/2018/6/feuillages.html</link>
+            <guid isPermaLink="true">https://pelletierauger.com/fr/blog/2018/6/feuillages.html</guid>
+            <source url="https://pelletierauger.com/fr/blog/rss.xml">Guillaume Pelletier-Auger - Blog</source>
+        </item>
+        <item>
+            <title>Scènes botaniques</title>
+            <description>Encore des notes de travail d&rsquo;un regrettable ésotérisme.
+</description>
+            <pubDate>Sat, 9 Jun 2018 23:59:59 EST</pubDate>
+            <link>https://pelletierauger.com/fr/blog/2018/6/scenes-botaniques.html</link>
+            <guid isPermaLink="true">https://pelletierauger.com/fr/blog/2018/6/scenes-botaniques.html</guid>
+            <source url="https://pelletierauger.com/fr/blog/rss.xml">Guillaume Pelletier-Auger - Blog</source>
+        </item>
+        <item>
+            <title>Avancer avec le cosinus</title>
+            <description>
+</description>
+            <pubDate>Wed, 6 Jun 2018 23:59:59 EST</pubDate>
+            <link>https://pelletierauger.com/fr/blog/2018/6/avancer-avec-le-cosinus.html</link>
+            <guid isPermaLink="true">https://pelletierauger.com/fr/blog/2018/6/avancer-avec-le-cosinus.html</guid>
+            <source url="https://pelletierauger.com/fr/blog/rss.xml">Guillaume Pelletier-Auger - Blog</source>
+        </item>
+        <item>
+            <title>Embranchements déterministes</title>
+            <description>En chemin vers un jardin algorithmique.
+</description>
+            <pubDate>Sat, 2 Jun 2018 23:59:59 EST</pubDate>
+            <link>https://pelletierauger.com/fr/blog/2018/6/embranchements-deterministes.html</link>
+            <guid isPermaLink="true">https://pelletierauger.com/fr/blog/2018/6/embranchements-deterministes.html</guid>
+            <source url="https://pelletierauger.com/fr/blog/rss.xml">Guillaume Pelletier-Auger - Blog</source>
+        </item>
+        <item>
+            <title>Un modèle p5.js pour l'animation</title>
+            <description>
+</description>
+            <pubDate>Sun, 27 May 2018 23:59:59 EST</pubDate>
+            <link>https://pelletierauger.com/fr/blog/2018/5/un-modele-p5js-pour-l'animation.html</link>
+            <guid isPermaLink="true">https://pelletierauger.com/fr/blog/2018/5/un-modele-p5js-pour-l'animation.html</guid>
+            <source url="https://pelletierauger.com/fr/blog/rss.xml">Guillaume Pelletier-Auger - Blog</source>
+        </item>
+        <item>
+            <title>Notes sur les automates génétiques</title>
+            <description>Pour un système en construction.
+</description>
+            <pubDate>Sat, 12 May 2018 23:59:59 EST</pubDate>
+            <link>https://pelletierauger.com/fr/blog/2018/5/notes-sur-les-automates-genetiques.html</link>
+            <guid isPermaLink="true">https://pelletierauger.com/fr/blog/2018/5/notes-sur-les-automates-genetiques.html</guid>
+            <source url="https://pelletierauger.com/fr/blog/rss.xml">Guillaume Pelletier-Auger - Blog</source>
+        </item>
+        <item>
+            <title>Botanique évolutive</title>
+            <description>Croisements entre la botanique algorithmique et les algorithmes génétiques.
+</description>
+            <pubDate>Sat, 5 May 2018 23:59:59 EST</pubDate>
+            <link>https://pelletierauger.com/fr/blog/2018/5/botanique-evolutive.html</link>
+            <guid isPermaLink="true">https://pelletierauger.com/fr/blog/2018/5/botanique-evolutive.html</guid>
+            <source url="https://pelletierauger.com/fr/blog/rss.xml">Guillaume Pelletier-Auger - Blog</source>
+        </item>
+        <item>
+            <title>Les tortues amicales</title>
+            <description>Formes collectives qui émergent de comportements individuels.
+</description>
+            <pubDate>Sat, 28 Apr 2018 23:59:59 EST</pubDate>
+            <link>https://pelletierauger.com/fr/blog/2018/4/les-tortues-amicales.html</link>
+            <guid isPermaLink="true">https://pelletierauger.com/fr/blog/2018/4/les-tortues-amicales.html</guid>
+            <source url="https://pelletierauger.com/fr/blog/rss.xml">Guillaume Pelletier-Auger - Blog</source>
+        </item>
+        <item>
+            <title>Méandres logistiques</title>
+            <description>Quelques explorations vagabondes autour de la suite logistique.
+</description>
+            <pubDate>Sat, 21 Apr 2018 23:59:59 EST</pubDate>
+            <link>https://pelletierauger.com/fr/blog/2018/4/meandres-logistiques.html</link>
+            <guid isPermaLink="true">https://pelletierauger.com/fr/blog/2018/4/meandres-logistiques.html</guid>
+            <source url="https://pelletierauger.com/fr/blog/rss.xml">Guillaume Pelletier-Auger - Blog</source>
+        </item>
+        <item>
+            <title>La suite logistique</title>
+            <description>Une première plongée dans la complexité et le chaos.
+</description>
+            <pubDate>Sat, 14 Apr 2018 23:59:59 EST</pubDate>
+            <link>https://pelletierauger.com/fr/blog/2018/4/la-suite-logistique.html</link>
+            <guid isPermaLink="true">https://pelletierauger.com/fr/blog/2018/4/la-suite-logistique.html</guid>
+            <source url="https://pelletierauger.com/fr/blog/rss.xml">Guillaume Pelletier-Auger - Blog</source>
+        </item>
+        <item>
+            <title>Vers un cinéma algorithmique</title>
+            <description>Début d&rsquo;un projet de recherche expérimentale sur le cinéma d&rsquo;animation abstrait.
+</description>
+            <pubDate>Sat, 7 Apr 2018 23:59:59 EST</pubDate>
+            <link>https://pelletierauger.com/fr/blog/2018/4/vers-un-cinema-algorithmique.html</link>
+            <guid isPermaLink="true">https://pelletierauger.com/fr/blog/2018/4/vers-un-cinema-algorithmique.html</guid>
+            <source url="https://pelletierauger.com/fr/blog/rss.xml">Guillaume Pelletier-Auger - Blog</source>
+        </item>
+        <item>
+            <title>Rameaux et jambages</title>
+            <description>Croquis réalisé suite à une consultation du Manuale Tipografico de Giambattista Bodoni.
+</description>
+            <pubDate>Wed, 14 Mar 2018 23:59:59 EST</pubDate>
+            <link>https://pelletierauger.com/fr/blog/2018/3/rameaux-et-jambages.html</link>
+            <guid isPermaLink="true">https://pelletierauger.com/fr/blog/2018/3/rameaux-et-jambages.html</guid>
+            <source url="https://pelletierauger.com/fr/blog/rss.xml">Guillaume Pelletier-Auger - Blog</source>
+        </item>
+        <item>
+            <title>Modélisation de lignes crayonnées</title>
+            <description>Premières ébauches de méthodes algorithmiques pour imiter l&rsquo;apparence du dessin.
+</description>
+            <pubDate>Sat, 3 Feb 2018 23:59:59 EST</pubDate>
+            <link>https://pelletierauger.com/fr/blog/2018/2/modelisation-de-lignes-crayonnees.html</link>
+            <guid isPermaLink="true">https://pelletierauger.com/fr/blog/2018/2/modelisation-de-lignes-crayonnees.html</guid>
+            <source url="https://pelletierauger.com/fr/blog/rss.xml">Guillaume Pelletier-Auger - Blog</source>
+        </item>
+        <item>
+            <title>Mouvements harmoniques récursifs</title>
+            <description>Deux animations réalisées lors d&rsquo;une exploration de simples exemples de récursivité.
+</description>
+            <pubDate>Tue, 17 Oct 2017 23:59:59 EST</pubDate>
+            <link>https://pelletierauger.com/fr/blog/2017/10/mouvements-harmoniques-recursifs.html</link>
+            <guid isPermaLink="true">https://pelletierauger.com/fr/blog/2017/10/mouvements-harmoniques-recursifs.html</guid>
+            <source url="https://pelletierauger.com/fr/blog/rss.xml">Guillaume Pelletier-Auger - Blog</source>
+        </item>
+    </channel>
+</rss>
