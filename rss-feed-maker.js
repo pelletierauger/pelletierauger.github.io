@@ -4,14 +4,14 @@ let blog = require('./blog/blog.js');
 var verbose = true;
 
 function makeFeed(language) {
-    let feedName = (language == "en") ? "feed" : "flux";
+    // let feedName = (language == "en") ? "feed" : "flux";
     let head = `<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Guillaume Pelletier-Auger</title>
-    <link>https://pelletierauger.github.io/${language}/blog/</link>
+    <link>https://pelletierauger.com/${language}/blog/</link>
     <description>Art and music made with code.</description>
     <language>en-us</language>
-    <atom:link href="https://pelletierauger.github.io/${language}/blog/${feedName}.rss" rel="self" type="application/rss+xml" />`;
+    <atom:link href="https://pelletierauger.com/${language}/blog/rss.xml" rel="self" type="application/rss+xml" />`;
     let footer = `
     </channel>
 </rss>`;
@@ -33,19 +33,19 @@ function makeFeed(language) {
             <title>${post[language].title}</title>
             <description>${post[language].description.replace(/<[^>]*>?/gm, '')}</description>
             <pubDate>${day}, ${post.date.day} ${monthName} ${post.date.year} 23:59:59 EST</pubDate>
-            <link>https://pelletierauger.github.io/${language}/blog/${linkIndividual}.html</link>
-            <guid isPermaLink="true">https://pelletierauger.github.io/${language}/blog/${linkIndividual}.html</guid>
-            <source url="https://pelletierauger.github.io/${language}/blog/${feedName}.rss">Guillaume Pelletier-Auger - Blog</source>
+            <link>https://pelletierauger.com/${language}/blog/${linkIndividual}.html</link>
+            <guid isPermaLink="true">https://pelletierauger.com/${language}/blog/${linkIndividual}.html</guid>
+            <source url="https://pelletierauger.com/${language}/blog/rss.xml">Guillaume Pelletier-Auger - Blog</source>
         </item>`;
         feed += item;
     }
     console.log(head + feed + footer);
 
-    fs.writeFile(`./${language}/blog/${feedName}.rss`, head + feed + footer, function(err) {
+    fs.writeFile(`./${language}/blog/rss.xml`, head + feed + footer, function(err) {
         if (err) {
             return console.error(err);
         } else {
-            verbalize(`./${language}/blog/${feedName}.rss written successfully.`);
+            verbalize(`./${language}/blog/rss.xml written successfully.`);
         }
     });
 }
@@ -123,21 +123,26 @@ function parseHTMLTemplate(s) {
     if (frDescription) {
         page.fr.description = frDescription[2];
         page.fr.description = page.fr.description.replace(/([a-zA-ZÀ-ú])(\')([a-zA-ZÀ-ú])/g, function(a, b, c, d) {
-            return "" + b + "&rsquo;" + d;
+            return "" + b + "&#x2019;" + d;
         });
+        // page.fr.description = page.fr.description.replace(/([a-zA-ZÀ-ú])(\&rdquo\;)([a-zA-ZÀ-ú])/g, function(a, b, c, d) {
+        //     return "" + b + "&#x201d;" + d;
+        // });
+        page.fr.description = page.fr.description.replace(/&ldquo;/g, `&#x201c;`);
+        page.fr.description = page.fr.description.replace(/&rdquo;/g, `&#x2019;`);
     }
 
     let frExcerpt = data.match(/(<!-- fr-excerpt -->)([\S\s]*?)(<!--)/);
     if (frExcerpt) {
         page.fr.excerpt = frExcerpt[2];
         page.fr.excerpt = page.fr.excerpt.replace(/([a-zA-ZÀ-ú])(\')([a-zA-ZÀ-ú])/g, function(a, b, c, d) {
-            return "" + b + "&rsquo;" + d;
+            return "" + b + "&#x2019;" + d;
         });
     }
 
     page.fr.content = data.match(/(<!-- fr-content -->)([\S\s]*?)(<!-- en-)/)[2];
     page.fr.content = page.fr.content.replace(/([a-zA-ZÀ-ú])(\')([a-zA-ZÀ-ú])/g, function(a, b, c, d) {
-        return "" + b + "&rsquo;" + d;
+        return "" + b + "&#x2019;" + d;
     });
 
     // Add a non-breaking space after French opening quotes and before French closing quotes.
@@ -255,13 +260,13 @@ function parseHTMLTemplate(s) {
     page.en.title = page.en.title.replace(/(?:\r\n|\r|\n)/g, "");
     // page.en.description = data.match(/(<!-- en-description -->)([\S\s]*?)(<!--)/)[2];
     // page.en.description = page.en.description.replace(/([a-zA-ZÀ-ú])(\')([a-zA-ZÀ-ú])/g, function(a, b, c, d) {
-    //     return "" + b + "&rsquo;" + d
+    //     return "" + b + "&#x2019;" + d
     // });
     let enDescription = data.match(/(<!-- en-description -->)([\S\s]*?)(<!--)/);
     if (enDescription) {
         page.en.description = enDescription[2];
         page.en.description = page.en.description.replace(/([a-zA-ZÀ-ú])(\')([a-zA-ZÀ-ú])/g, function(a, b, c, d) {
-            return "" + b + "&rsquo;" + d
+            return "" + b + "&#x2019;" + d
         });
     }
 
@@ -269,13 +274,13 @@ function parseHTMLTemplate(s) {
     if (enExcerpt) {
         page.en.excerpt = enExcerpt[2];
         page.en.excerpt = page.en.excerpt.replace(/([a-zA-ZÀ-ú])(\')([a-zA-ZÀ-ú])/g, function(a, b, c, d) {
-            return "" + b + "&rsquo;" + d;
+            return "" + b + "&#x2019;" + d;
         });
     }
 
     page.en.content = data.match(/(<!-- en-content -->)([\S\s]*)/)[2];
     page.en.content = page.en.content.replace(/([a-zA-ZÀ-ú])(\')([a-zA-ZÀ-ú])/g, function(a, b, c, d) {
-        return "" + b + "&rsquo;" + d
+        return "" + b + "&#x2019;" + d
     });
     page.en.content = page.en.content.replace(/<i>/g, `<span class="italic">`);
     page.en.content = page.en.content.replace(/<\/i>/g, `</span>`);
