@@ -1,0 +1,28 @@
+<!-- year -->2019
+<!-- month -->12
+<!-- day -->18
+<!-- style -->understanding-the-dx7
+<!-- fr-title -->Comprendre le DX7
+<!-- fr-html-title -->Comprendre le <span class="lcd-text-title">DX7</span>
+<!-- fr-description -->
+<!-- fr-content -->
+<!-- en-title -->Understanding the DX7
+<!-- en-html-title -->Understanding the <span class="lcd-text-title">DX7</span>
+<!-- en-description -->Nostalgia of a very technical kind.
+<!-- en-content -->
+<pn>
+    <sc>A few months ago</sc>, I stumbled on a fascinating project by electronic engineer and musician <a href="https://www.egegonul.com/">Aziz Ege G&#246;n&#252;l</a>: a faithful <a href="https://github.com/everythingwillbetakenaway/DX7-Supercollider">SuperCollider recreation</a> of the original <span class="lcd-text">DX7</span> synthesizer from 1983. The <span class="lcd-text">DX7</span> was the first commercially available synthesizer based on frequency modulation (<sc>fm</sc> for short), a type of synthesis discovered in 1967 by researcher and musician John Chowning. <sc>fm</sc> was a big deal when it first arrived on the scene, and it isn't hyperbole when people say that the <span class="lcd-text">DX7</span> defined the sound of the 1980s.
+</pn>
+<p>
+    I've been using <sc>fm</sc> synthesis for a few years, thanks the Operator synthesizer found in Ableton &nbsn;Live.<snr label="operator">Operator makes a lot of overt references to the <span class="lcd-text">DX7</span> in its design and terminology (the word <i8>operator</i8> itself is a reference to the oscillators of the <span class="lcd-text">DX7</span> which are called operators), so when I started to learn about the <span class="lcd-text">DX7</span>, there was a lot about it that felt instantly familiar.</snr>The soundtrack of <a href="https://www.youtube.com/watch?v=f6wJo1TIbaE">my short film <i>Ravines</i></a>, for example, is made almost entirely with Operator, along with some classical guitar parts that I recorded.
+</p>
+<p>
+    G&#246;n&#252;l's project is fascinating for many reasons. First of all, the entire code for the project is surprisingly not that &nbsn;long.<snl label="fm7">The code is brief in part because the synthesis itself depends on <sc8>fm</sc8><lnum>7</lnum>, a SuperCollider Unit Generator written by sound engineer <a href="http://declaredvolatile.org/">Stefan Kersten</a>, which is a sort of recreation of the <span class="lcd-text">DX7</span> synthesis engine, but which offers a lot more versatility, because SuperCollider is above and beyond what was possible with 1983 technology.</snl> It’s <lnum>703</lnum> lines long, including some very helpful commenting. So while first looking at the code still made me feel completely confused, it felt doable to go through it and understand it. Secondly, the project contains <lnum>16,384</lnum> different <span class="lcd-text">DX7</span> patches (or <i>voices</i>, or <i>presets</i>) gathered from various places on the internet (sharing custom <span class="lcd-text">DX7</span> patches has been a common practice ever since the instrument came out). And thirdly, G&#246;n&#252;l's work is distributed as <sc>free software</sc>, which is the only reason why any of this exploration is possible.
+</p>
+<h3>Taking the code apart</h3>
+<pn>
+    <sc>So I’m currently</sc> taking the code apart to try to understand it. My ultimate goal is to use this <span class="lcd-text">DX7</span> clone as a research tool&mdash;a way to get a better understanding of <sc>fm</sc> synthesis by observing what has been done before. What design choices did the creators of the <span class="lcd-text">DX7</span> make? What did they ultimately considered important and effective when creating voices with <sc>fm</sc>? What can I learn from examining the wealth of voices that the community has created over the years?
+</pn>
+<p>
+    While taking the code apart, I decided to create a heavily commented version of the original file. My understanding of SuperCollider is still somewhat shallow, so going through the code and taking a lot of detailed (and often obvious) notes helps me a lot. I thought that this commented code might help someone else who's also trying to understand this, and so I'm sharing my commented code <a href="">on GitHub</a> and below.
+</p>
