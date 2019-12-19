@@ -1,0 +1,122 @@
+<!-- year -->2019
+<!-- month -->11
+<!-- day -->19
+<!-- style -->fluid-numbers
+<!-- fr-title -->Les nombres fluides
+<!-- fr-description -->
+<!-- fr-content -->
+<!-- en-title -->Live coding with fluid numbers
+<!-- en-description -->
+<!-- en-content -->
+
+<pn>
+    <sc>Below are</sc> some musings and ideas that I currently have about live coding for visual art and animation. I feel very inspired by a lot of ideas that I have encountered while learning to program with SuperCollider and Max/<sc>Msp</sc>, and a lot of those ideas related to sound and signal processing feel like they would have potentially interesting applications for live coding visuals and animation. I'm still unsure about any of this, though, and I thought that writing my ideas down (in a public space, why not) would help me to sort this out.
+</pn>
+
+<p>
+    So let's say I have a rectangle on screen, getting drawn each frame.
+</p>
+<javascript>
+draw = function() {
+    rect(0, 0, 400, 400);
+};
+</javascript>
+
+<pn>
+    And now, I want to change the size of this rectangle, but I don't want it to just change in one flash. I want it to smoothly go from one size to another. I want to think about the size of the rectangle as a musician thinks about the loudness of one particular sound in a piece of music that they are currently playing. I want to think about the size of the rectangle as a <i>signal</i> on which I can apply transformations.
+</pn>
+
+<javascript>
+// The line below was evaluated when the program started.
+// The variable size was given an initial value.
+let size = 400;
+
+// The block below can be evaluated at will.
+draw = function() {
+    rect(0, 0, size, size);
+};
+
+// The line below sets size to a new value.
+size = 200;
+</javascript>
+
+<pn>
+    In the scenario above, <ic>size</ic> can only change in value in a flash, whenever the last line is evaluated.
+</pn>
+<p>
+    Let’s say I now create an object.
+</p>
+<javascript>
+size = new fN(200);
+draw = function() {
+    rect(0, 0, size.v, size.v);
+    runFluidNumbers();
+};
+</javascript>
+
+<pn>
+    The size of the rectangle is now determined by the <ic>v</ic> property of an object of type <ic>fN</ic> (short for <ic>fluidNumber</ic>). I also have a call to the <ic>runFluidNumbers()</ic> function, which updates the value of all instances of <ic>fN</ic> that currently exist in my sketch.
+</pn>
+<p>
+    At this point, updating the value of <ic>size</ic> doesn't make any difference. I can already think of <ic>size</ic> as a signal (or more precisely, as an object that generates a signal, which is accessible via <ic>size.v</ic>), but the signal is flat. It is constant. It doesn’t change because the object was initiated with an instance of <ic>Number</ic>.
+</p>
+<p>
+    But still, now I can evaluate a line like this one:
+</p>
+
+<javascript>
+size.line(100);
+</javascript>
+
+<pn>
+    I'm asking the <ic>size</ic> object to linearly fade its <ic>v</ic> property to a new value, <ic>100</ic>. But over how much time? Maybe fluid numbers have a default time duration for linear transformations. Maybe it's one second, or five. And maybe I can simply set the duration thusly:
+</pn>
+
+<javascript>
+size.line(100, 50);
+</javascript>
+
+<pn>
+    The first parameter is the new value that I want for <ic>size.v</ic>, and the second parameter is how much time in seconds (or is it in frames?) that I want this transformation to take.
+</pn>
+<p>
+    So far, all of this is straightforward and easy to conceptualize, but now what happens if I evaluate these two lines of code in quick succession?
+</p>
+
+<javascript>
+size.line(100, 35);
+size.line(700, 15);
+</javascript>
+
+<pn>
+    There are a few ways to interpret the operator's intent here. Setting a new line when a line is currently running might imply that the first line doesn’t matter anymore, that what matters is the current value of <ic>size.v</ic>. So if the original value was <ic>400</ic> and a quick transformation towards <ic>100</ic> was started, and it was planned to take <ic>35</ic> seconds, now, at the moment when the second line is interpreted, let’s say that <ic>size.v</ic> is set to <ic>292</ic>, the new assumed goal of the operator is to embark on a new linear transformation, one from <ic>292</ic> to <ic>700</ic>, over <ic>15</ic> seconds.
+</pn>
+<p>
+    Another way to interpret the commands would be to wait for the first <ic>line()</ic> method to complete its course until the second one can start. These two interpretations seem to both have interesting applications, and perhaps there could be a way to set this preference on a per-object basis.
+</p>
+<javascript>
+size.lineType("override");
+size.lineType("queue");
+</javascript>
+
+<pn>
+    A third way to imagine how to deal with this quick succesion of two lines would be to create a third line by interpolating the values between the first and the second. This third line happens to be curved.
+</pn>
+
+<img class="two-fluid-lines" src="../../../images/fluid-numbers/two-fluid-lines.gif">
+
+<pn>
+    In the diagram above, the <im>x</im> axis represents time and the <im>y</im> axis represents the size of the rectangle. The line that stretches from <ic>a</ic> to <ic>d</ic> is the first line that was evaluated, and it represents a desire to take the size of the rectangle from <ic>400</ic> to <ic>100</ic>. But then, when the size of the rectangle was <ic>250</ic> (at time <ic>b</ic>), a new line was evaluated, asking for a rectangle of size <ic>200</ic>. So a new line, stretching from <ic>b</ic> to <ic>c</ic> was added to the list of operations.
+</pn>
+<p>
+    So when there are two ongoing lines, the <im>y</im> value of both lines are interpolated to obtain a third value, the one that travels on a curved path. In the diagram below you can clearly see the interpolation at play. The third value travels on the red line. When the two black lines are ongoing, the red dot simply travels from the bottom to the top of the red line, linearly. But of course, the red line itself is changing in size as the animation is going, and so the trajectory of the red dot is curved.
+</p>
+
+<img class="two-fluid-lines" src="../../../images/fluid-numbers/two-fluid-lines-red.gif">
+
+<pn>
+    This way of thinking about the interactions of lines is akin to considering that a line is a <i>force</i> that acts upon the signal (in this case, the size of the rectangle). Even as a new line is added, the original line still weighs on the result&mdash;it is still an active participant in the ongoing process.
+</pn>
+<p>
+    But then what happens when there are more than two lines currently weighing on the result? And what happens when one line finishes its course before the other one? In my example above, the two lines are conveniently over at the exact same time. The <im>x</im> (time) components of <ic>c</ic> and <ic>d</ic> is equal.
+</p>
