@@ -13,6 +13,11 @@ var sketch = new p5(function(p) {
         p.ctx = p.cnvs.drawingContext;
         p.stroke(0);
         p.strokeWeight(1);
+        let canvasDOM = document.querySelector('#tangent-lines canvas');
+        canvasDOM.style.maxWidth = "650px";
+        canvasDOM.style.maxHeight = "650px";
+        canvasDOM.style.width = "100%";
+        canvasDOM.style.height = "100%";
     }
     p.draw = function() {
         p.background(255);
