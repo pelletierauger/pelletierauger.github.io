@@ -53,6 +53,13 @@ function makeBlog(language) {
     //Determine the amount of pages that needs to be created...
     var pagesToCreate = Math.ceil(blog.posts.length / blog.config.itemsPerPage);
 
+    var rssFeedName = (language == "fr") ? "Flux RSS" : "RSS Feed";
+    var rssFeedLink = `
+    <div id="rss-link">
+        <a href="https://pelletierauger.com/${language}/blog/rss.xml">${rssFeedName}</a>
+    </div>
+    `;
+
     for (var k = 0; k < pagesToCreate; k++) {
         var root;
         var suffix;
@@ -168,6 +175,7 @@ function makeBlog(language) {
                 ${post[language].content}
             </article>
             `;
+            individualContent += rssFeedLink;
             individualContent += makeFooter(post, language);
 
             //Change the image links for the individual blog page
@@ -226,6 +234,7 @@ function makeBlog(language) {
         }
         content += `
         </div>`;
+        content += rssFeedLink;
         page = {
             fr: {
                 title: blog.config.fr.title + suffix,
@@ -529,7 +538,7 @@ function makeContent(page, language) {
 }
 
 function makeFooter(language) {
-    return `<div id="footer">Guillaume Pelletier-Auger &mdash; 2016-2019
+    return `<div id="footer">Guillaume Pelletier-Auger &mdash; 2016-2020
     </div>
     </body>
     </html>`;
