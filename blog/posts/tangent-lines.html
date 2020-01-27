@@ -32,10 +32,10 @@
 <!-- en-content -->
 
 <pn>
-    <sc>While getting to know</sc> the basics of machine learning, I encountered (unsurprisingly) some notions of calculus. I'm very unfamiliar with calculus but I would very much love to understand it. I have been thinking for a while about devising some small experiments that would allow me to familiarize myself with mathematical concepts in an intuitive way. So this sudden need to understand a bit of calculus seemed like a good opportunity to delve into this.
+    <sc>While getting to know</sc> the basics of machine learning, I stumbled on some notions of calculus, something that I'm very unfamiliar with but that I would love to understand. I have been thinking for a while about devising some small experiments that would allow me to familiarize myself with mathematical concepts in an intuitive way. So this sudden need to understand a bit of calculus seemed like a good opportunity to delve into this.
 </pn>
 <p>
-    The animation below is one of those experiments. It helped me to familiarize myself with the notions of <i>limits</i> and &nbsn;<i>tangents</i>.<snr label="limits">A line is tangent to a circle when its slope is identical to the slope of the circle at the point where they meet. This slope is calculated by taking two different points on the circle, and by then diminishing almost infinitely the distance between those two points. This is what I have done while writing the code for this animation.</snr> I was interested in what kinds of shapes I would obtain by playing with these notions, and I ended up with this dense mesh of tangent lines evenly distributed around a circle. And then, why not make the circle morph to see what movements would the mesh end up making?
+    The animation below is one of those experiments. It helped me to familiarize myself with the notions of <i>limits</i> and &nbsn;<i>tangents</i>.<snr label="limits">A line is tangent to a circle when its slope is identical to the slope of the circle at the point where they meet. This slope is calculated by taking two different points on the circle, and by then diminishing almost infinitely the distance between those two points. This is what I have done while writing the code for this animation.</snr> I was interested in what kinds of shapes I would obtain by playing with these notions, and I ended up with a dense mesh of tangent lines evenly distributed around a circle. I then got curious about how the mesh would &ldquo;react&rdquo; if I morphed the shape of the circle, and this animation was the result.
 </p>
 
 <div id="tangent-lines"></div>
@@ -44,6 +44,17 @@
 
 <pn>
     The code written to make this animation <a href="https://github.com/pelletierauger/Derivatives">can be found on GitHub</a>. I also created a few variations of the animation using the <lnum>p5.js</lnum> web editor. You can find some variations <a href="https://editor.p5js.org/guillaume/sketches/wh4X4LZ6u">here</a>, <a href="https://editor.p5js.org/guillaume/sketches/7p3T5tegQ">here</a>, and <a href="https://editor.p5js.org/guillaume/sketches/GCjt6_lXC">here</a>.
+</pn>
+<p>
+    After making this experiment, I watched <a href="https://www.youtube.com/watch?v=9vKqVkMQHKk&list=PLZHQObOWTQDMsr9K-rj53DwVRMYO3t5Yr&index=2">a video on calculus by <lnum>3blue1brown</lnum></a> in which I learned that &ldquo;the derivative of a function is equal to the slope of a line tangent to the graph at a single point&rdquo;, and is calculated thusly:
+</p>
+
+<math>
+    \frac{ds}{dt}(t) = \underbrace{\frac{s(t + dt) - s(t)}{dt}}_{\Large{dt\;\rightarrow\;0}}
+</math>
+
+<pn>
+    Where <im>dt</im> is the difference in time as it approaches <im>0</im> (this would typically be the <im>x</im> axis on a graph), <im>ds</im> is the difference is speed (the <im>y</im> axis), and <im>t</im> is time. Also, in this equation, it's important to notice that a term like <im>s(t + dt)</im> is not a multiplication ; it's a function and should be read as &ldquo;<im>s</im> of <im>(t + dt)</im>&rdquo;.
 </pn>
 
 <h3>Context</h3>
