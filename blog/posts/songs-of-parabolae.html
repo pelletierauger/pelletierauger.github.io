@@ -1,0 +1,66 @@
+<!-- year -->2020
+<!-- month -->01
+<!-- day -->14
+<!-- style -->songs-of-parabolae
+<!-- fr-title -->Le chant des paraboles
+<!-- fr-html-title -->Le chant <span class="italic8"><span class="small-title">des</span></span> paraboles
+<!-- fr-description -->
+<!-- fr-content -->
+<!-- en-title -->Songs of Parabolae
+<!-- en-html-title -->Songs <span class="italic8"><span class="small-title">of</span></span> Parabol&aelig;
+<!-- en-description -->Directionless experiments in geometry and sound synthesis.
+<!-- en-content -->
+<p class="noindent">
+    <img class="m-parabolic-drop-caps" src="../../../images/songs-of-parabolae/m.png"><sc>y knowledge of mathematics</sc> leave a lot to be desired, and I'm always on the lookout for interesting experiments that I can conduct to get more acquainted with different areas of mathematics in a way that feels free and creative. A few weeks ago I watched a <a href="https://www.youtube.com/watch?v=x0dTbsfWFIQ">YouTube video</a> by physics and mathematics educator Toby Hendy in which she explains parabol&aelig; using a metaphor inspired by popular <sc>tv</sc> host Bob Ross, of <i>Joy of Painting</i> fame.
+</p>
+<p>
+    In Hendy's metaphor, we are painting a landscape which contains a horizon, a mountain, and a mushroom situated near the top of said mountain. She explains that the only information we need to draw the entire contour of the mountain is the position of the mushroom and the horizon. She proceeds to draw the mountain by projecting straight lines between the horizon and the mushroom, and a parabola appears seemingly out of nowhere. I couldn't quite understand how this was possible, so I decided to recreate this experiment in code using <lnum>p5.js</lnum>.
+</p>
+<p>
+    Here is how it turned &nbsn;out:<snl label="p5editor1">You can find the code for this animation in the <lnum>p5.js</lnum> web editor <a href="https://editor.p5js.org/guillaume/sketches/pysVOtNtv">here</a>.</snl>
+</p>
+<img class="parabolic-animation-1" src="../../../images/songs-of-parabolae/parabola-animation-lossy-50.gif">
+
+<pn>
+    We can see in this animation that by knowing only the positions of points <im>A</im> and <im>B</im>, we are able to construct this whole triangle which turns out to travel on the path of the parabola. Another important assumption is that the line <im>c</im> is always completely vertical.
+</pn>
+
+<img class="parabolic-animation-1" src="../../../images/songs-of-parabolae/parabola-animation-info.png">
+
+<h3>Onward to the realm of sounds</h3>
+
+<pn>
+    <sc>One of the first things</sc> that came to my mind after I drew a single parabola was that I could now create thousands of copies of it and turn it into a signal, a <i>parabolic wave</i>.
+</pn>
+<div class="div-clear">
+    <img class="inline-image" src="../../../images/songs-of-parabolae/parabolic-wave.png">
+</div>
+<pn>
+    I got really curious about how this would sound. So I rewrote my JavaScript code into SuperCollider code, and I got the signal shown &nbsn;above.<snr label="sc-signal">I did this in SuperCollider by creating an instance of <ic8>Signal</ic8> and then transforming it into an instance of <ic8>Buffer</ic8> to hear the results. You can <a href="">read the code here</a>.</snr> I (na&iuml;vely perhaps) imagined that it would sound something halfway between a sine wave and a triangle wave, because it visually seems to have characteristics of both (a smooth curve and a sharp &nbsn;corner).<snl label="absolute-of-sine">The parabolic wave also looks very similar to the absolute value of a sine wave, but it is a little bit different <a href="https://codepen.io/tim_heap/details/jPWZrL">as shown here.</a></snl> It turns out to sound completely different than what I expected.
+</pn>
+<p>
+    Below you can hear a sound file containing three notes: an A at 220 Hz played with a sinewave, then a parabolic wave, and then a triangle wave. You'll hear that the parabolic wave in the middle doesn't sound at all like it is halfway between the sine wave and the triangle wave.
+</p>
+
+<audiobox url="sine-parabola-triangle.mp3">
+    A sine wave, a parabolic wave, and a triangle wave.
+</audiobox>
+
+<img class="inline-image" src="../../../images/songs-of-parabolae/spectra.png">
+
+<h3>In the mysterious presence of a hidden triangle wave</h3>
+
+<pn>
+    <sc>After hearing</sc> the sound of the parabolic wave, I searched the internet to see if I could find any information about it, and I found <a href="http://msp.ucsd.edu/techniques/latest/book-html/node187.html">a section of an online book by Miller Puckette</a> (the creator of Pure Data and Max/M<sc>sp</sc>) where he talks about parabolic waveforms.
+</pn>
+<p>
+    Puckette uses a formula to calculate the parabolic waveform over a period from <im>0</im> to <im>N</im> which is dramatically simpler than my &nbsn;method.<snl label="puckette-formula">Puckette's formula is based on the fact that a parabola can simply be drawned with the equation <im>y = x^2</im>. All the trigonometry I did above was certainly not necessary to quickly draw a parabola, it was more about understanding its properties. Puckette also scales his parabolic wave between <im>1/12</im> and <im>-1/12</im> presumably to set it a level comfortable for the ear.</snl>
+</p>
+<div class="mathbox-clear-right">
+    <math>
+    p[n] = \frac{1}{2}\bigg(\frac{n}{N} - \frac{1}{2}\bigg)^2 - \frac{1}{24}
+</math>
+</div>
+<pn>
+    One thing from Puckette's explanations that I found absolutely fascinating was that <i>the midpoint between two parabolic waves of inverted signs and inverted phase is a triangle wave</i>. He visualized this in his book, but I felt that an animated visualization would help me to understand more satisfyingly. So I made another <lnum>p5.js</lnum> sketch.
+</pn>
