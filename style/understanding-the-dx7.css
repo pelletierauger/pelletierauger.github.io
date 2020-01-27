@@ -61,3 +61,19 @@
     /*top: 8px;*/
     /*left: 5px;*/
 }
+
+.dx7-drop-caps {
+    font-family: '5x8 LCD', serif;
+    font-size: 5.25em;
+    /*line-height: 1em;*/
+    /*width: 80%;*/
+    /*padding: 10%;*/
+    margin: 0 auto;
+    padding-right: 5px;
+    float: left;
+    line-height: 0.9;
+    /*margin-bottom: -0.5em;*/
+    /*padding-left: -0.1em;*/
+    /*margin-left: -0.04em;*/
+    text-indent: 0;
+}
