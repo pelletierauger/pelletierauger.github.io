@@ -138,10 +138,10 @@ Event.addEventType(\pianoEvent, {
     <sc>In the winter of 2019</sc>, I started to work on an acoustic piano multi-sampler for SuperCollider. The earliest versions had many issues, and my budding programming skills in <ic>sclang</ic> did not allow me to fix them. But I've used the instrument a lot since then, and I've improved the code along the way. I plan to keep working on the instrument as I keep using it, but I'm thinking that it could already be useful for other people if they are interested. So here it is.
 </pn>
 <p>
-    The instrument uses <a href="https://freesound.org/people/Samulis/packs/21055/">a public domain sample &nbsn;pack</a><snl label="etude">I used this same sample pack for a piece of music that I wrote for my short film <a href="https://www.youtube.com/watch?v=sOEmaJY6h6M"><i8>Étude for Cellular Automata no 2</i8></a>. I composed this piece with Ableton Live because I didn't know about SuperCollider at the time. The piece uses only one or two samples in the pack, as I had found that building a good multi-sampler with Ableton Live was mostly a nightmare. I also used the piano samples in <a href="https://www.youtube.com/watch?v=COeC7UdIBn8">this live coding experiment</a> which was one of my first SuperCollider projects.</snl>that you can download from &nbsn;<a href="https://freesound.org/">freesound.org</a>.<snr label="versilian">The sample pack is created by <a href="https://vis.versilstudios.com/">Versilian Studios</a>, a company that distributes <a href="https://freesound.org/people/Samulis/">a lot of free sample packs</a> on freesound.org.</snr> You'll need to create an account to download it, but it's free to join, and free to download, and I highly recommend this website.
+    The instrument uses <a href="https://freesound.org/people/Samulis/packs/21055/">a public domain sample &nbsn;pack</a><snl label="etude">I used this same sample pack for a piece of music that I wrote for my short film <a href="https://www.youtube.com/watch?v=sOEmaJY6h6M"><i8>Étude for Cellular Automata no 2</i8></a>. I composed this piece with Ableton Live because I didn't know about SuperCollider at the time. The piece uses only one or two samples in the pack, as I had found that building a good multi-sampler with Ableton Live was mostly a nightmare. I also used the piano samples in <a href="https://www.youtube.com/watch?v=COeC7UdIBn8">this live coding experiment</a> which was one of my first SuperCollider projects.</snl>that you can download from <a href="https://freesound.org/">freesound.org</a>. You'll need to create an account to download it, but it's free to join, and free to download, and I highly recommend this website.
 </p>
 <p>
-    Below is the entirety of the code for the sampler, along with some <ic>Pbind</ic> examples to try it out. It is <sc>free software</sc> distributed under an <a href="http://www.apache.org/licenses/LICENSE-2.0.txt">Apache <lnum>2.0</lnum> licence</a>.
+    Below is the entirety of the code for the sampler, along with some <ic>Pbind</ic> examples to try it out. It is <sc>free software</sc> distributed under an <a href="http://www.apache.org/licenses/LICENSE-2.0.txt">Apache <lnum>2.0</lnum> licence</a>. You can also <a href="">find this code on GitHub</a>.
 </p>
 
 <supercollider>
@@ -242,8 +242,9 @@ var notes = key + [2, -5, 0, -2];
 <h3>How to use the sampler</h3>
 
 <pn>
-    <sc>Using the instrument</sc> will probably be very straightforward for most users of SuperCollider, but I thought that writing down some instructions could still be useful, particularly for beginners. And it's also an opportunity to talk about the design decisions that went into creating the instrument, and the ways in which it could potentially be improved.
+    <sc>Using the instrument</sc> will probably be very straightforward for most users of SuperCollider, but I thought that writing down some instructions could still be useful, particularly for beginners. It's also an opportunity to talk about the design decisions that went into creating the instrument, and the ways in which it could potentially be improved.
 </pn>
+<!-- read-more -->
 <p>
     My main goal for this project was to use the piano with instances of <ic>Pbind</ic> that would be as uncluttered as possible. Here is a <ic>Pbind</ic> that uses all features of the instrument:
 </p>
@@ -272,22 +273,22 @@ var notes = key + ([0, 3, 7, 10] ++ [-5, 2, 3, 9]);
     Each note in the sample pack exists in three different levels of loudness (or dynamics) from quiet, to medium, to loud. The dynamic of the note that will be played is defined by the <ic>\dyn</ic> key in the <ic>Pbind</ic>. <ic>\dyn</ic> can either be <ic>0</ic>, <ic>1</ic>, or <ic>2</ic>. The safety measures will floor this <ic>\dyn</ic> value, so a loudness of <ic>0.9</ic> will return <ic>0</ic>. A loudness above <ic>2</ic> will return <ic>2</ic>, and negative values will return <ic>0</ic>. A <ic>Pbind</ic> that does not include a <ic>\dyn</ic> key will default to a value of <ic>0</ic>.
 </p>
 <p>
-    The <ic>\amp</ic> key in the <ic>Pbind</ic> simply scales the amplitude of the note. It has no effect on which level of dynamics is played. The instrument also has optional <ic>sus</ic> and <ic>dec</ic> arguments, for sustain and decay. These are useful mainly because the noise floor in the samples is quite high, so you may want to limit the duration over which a note is played, to reduce the noise.
+    The <ic>\amp</ic> key in the <ic>Pbind</ic> simply scales the amplitude of the note. It has no effect on which level of dynamics is played. The instrument also has optional <ic>atk</ic>, <ic>sus</ic>, and <ic>dec</ic> arguments, for attack, sustain, and decay. These are useful mainly because the noise floor in the samples is quite high, so you may want to limit the duration over which a note is played, to reduce the noise.
 </p>
 
 <h3>Keeping it quiet</h3>
 
 <pn>
-    <sc>If you look</sc> at the code for the instrument, you'll see near the top a line that goes: <ic>quiet = false</ic>. If you change this to <ic>true</ic> before you evaluate the code, it will prevent the loud samples from being loaded. I wrote this option because I personally never use the loud samples. I tend to write quiet music and I don't have much use for loud sounds, so loading them is a waste of memory (perhaps a very small waste, but a waste &nbsn;nonetheless).<snr label="bossa">What I'm saying is that this instrument is <i8>optimized for bossa nova</i8>.</snr> In this quiet mode, a <ic>\dyn</ic> value above <ic>1</ic> in the <ic>Pbind</ic> will return <ic>1</ic>, because the samples with a dynamic of <ic>2</ic> will not be loaded.
+    <sc>You can see</sc> near the top of the code a line that goes: <ic>quiet = false</ic>. If you change this to <ic>true</ic> before you evaluate the code, it will prevent the loud samples from being loaded. I wrote this option because I personally never use the loud samples. I tend to write quiet music and I don't have much use for loud sounds, so loading them is a waste of memory (perhaps a very small waste, but a waste nonetheless). In this quiet mode, a <ic>\dyn</ic> value above <ic>1</ic> in the <ic>Pbind</ic> will return <ic>1</ic>, because the samples with a dynamic of <ic>2</ic> will not be loaded.
 </pn>
 
 <h3>How it works</h3>
 
 <pn>
-    <sc>The sample pack contains</sc> three samples per octave: C#, F, and A. The basic functioning of the sampler is to take a note that you want to play and look for the closest note that it can find in the pack. And then, if the closest note is not the exact one that you asked for, the sampler has to play this closest note at a different pitch to produce the desired note. So if you want a C, it will play the recorded C# note at a pitch ratio of <im>\big(2^{1/12}\big)^{-1}</im> because the desired note is <im>-1</im> note away from the closest note. Any distance <im>n</im> between the desired note and the available note will similarly result in the available note being played at a ratio of <im>\big(2^{1/12}\big)^{n}</im> to obtain the desired note. This bit of mathematics is how the <a href="https://en.wikipedia.org/wiki/Equal_temperament">twelve-tone equal temperament</a> is built.
+    <sc>The sample pack contains</sc> three samples per octave: C#, F, and A. The basic <i>modus operandi</i> of the sampler is to take a note that you want to play and look for the closest note that it can find in the pack. And then, if the closest note is not the exact one that you asked for, the sampler has to play this closest note at a different pitch to produce the desired note. So if you want a C, it will play the recorded C# note at a pitch ratio of <span class="constrain-line"><im>\big(2^{1/12}\big)^{-1}</im></span> because the desired note is <im>-1</im> note away from the closest &nbsn;note.<snl label="temperament"> This bit of mathematics is how the <a href="https://en.wikipedia.org/wiki/Equal_temperament">twelve-tone equal temperament</a> is built.</snl> Any distance <im>n</im> between the desired note and the available note will similarly result in the available note being played at a ratio of <span class="constrain-line"><im>\big(2^{1/12}\big)^{n}</im></span> to obtain the desired note.
 </pn>
 <p>
-    On the line below you can see how each octave is built, starting on the note C. For each degree of the octave, we define which sample will be used in the <ic>sampledNote</ic> variable: C# is <ic>1</ic>, F is <ic>2</ic>, and A is <ic>3</ic>. And in the <ic>noteDeltas</ic> variable, we define the distance (or interval) between the note that we want, and the closest available note. So it follows that for C#, F, and A, the value in <ic>noteDeltas</ic> is <ic>0</ic>. And since <im>\big(2^{1/12}\big)^{0} = 1</im>, these notes will be played at a pitch ratio of <ic>1</ic>.
+    In the code box below you can see how each octave is built, starting on the note C. For each degree of the octave, we define which sample will be used in the <ic>sampledNote</ic> variable: C# is <ic>1</ic>, F is <ic>2</ic>, and A is <ic>3</ic>. In the <ic>noteDeltas</ic> variable, we define the distance (or interval) between the note that we want, and the closest available note. So it follows that for C#, F, and A, the value in <ic>noteDeltas</ic> is <ic>0</ic>. And since <span class="constrain-line"><im>\big(2^{1/12}\big)^{0} = 1</im></span>, these notes will be played at a pitch ratio of <ic>1</ic>.
 </p>
 
 <supercollider>
@@ -296,7 +297,7 @@ var noteDeltas = [-1, 0,  1,  2, -1,  0,  1, -2, -1,  0,  1,  2];
 </supercollider>
 
 <pn>
-    These two lines of code are found in the <ic>makeLookUp</ic> function, which is used to create a lookup table that will then be used when the instrument is played. The lines below are used to build two lookup tables, one for the index of the needed buffer in the list of buffers, and one for the pitch ratio at which the note will be played. You can see two nested loops here: one loop over the <ic>dynAmnt</ic> value, which is the amount of different dynamics that will be available, and the other loop over an <ic>Array</ic> that goes from <ic>20</ic> to <ic>110</ic>, which is a list of all available notes.
+    These two lines of code are found in the <ic>makeLookUp()</ic> function, which is used to create two lookup tables that will then be used when the instrument is &nbsn;played.<snr label="lookup">The purpose of a lookup table is to prepare data that will be used frequently instead of running an algorithm that generates the same data every time. In this case, the calculations are really simple and fast, but I thought that lookup tables were still an interesting way to organize the program and make it theoretically even faster (but mostly I just wanted to experiment with lookup tables).</snr> The lines below is where we run this <ic>makeLookUp()</ic> function and build the two lookup tables, one for the indices of the available closest buffers and one for the pitch ratios at which the notes will be played. You can see two nested loops here: one loop over the <ic>dynAmnt</ic> value, which is the amount of different dynamics that will be available, and the other loop over an <ic>Array</ic> that goes from <ic>20</ic> to <ic>110</ic>, which is a list of all available notes.
 </pn>
 
 <supercollider>
@@ -305,7 +306,7 @@ pitches = dynAmnt.collect({|j| (20..110).collect({|i| makeLookUp.(i, j + 1)[1]})
 </supercollider>
 
 <pn>
-    The <ic>\pianoEvent</ic> event type is where the lookup tables are used. It's also where the numbers defined in a <ic>Pbind</ic> are sanitized (you can see the <ic>~num</ic> and <ic>~dyn</ic> variables being constrained with <ic>min()</ic> and <ic>max()</ic> operators), and where the microtonality is made possible.
+    The <ic>\pianoEvent</ic> event type is where the lookup tables are used. It's also where the numbers defined in a <ic>Pbind</ic> are sanitized (you can see the <ic>~num</ic> and <ic>~dyn</ic> variables being constrained with <ic>min()</ic> and <ic>max()</ic> &nbsn;operators),<snl label="envir">It's confusing but the keys that were defined in the <ic8>Pbind</ic8>, like <ic8>\num</ic8> and <ic8>\dyn</ic8>, they are referred to as <ic8>~num</ic8> and <ic8>~dyn</ic8> within the <ic8>Event</ic8> that the <ic8>Pbind</ic8> activates. The <ic8>~</ic8> before the variable names means that they are environment variables, the environment being the <ic8>Event</ic8> itself.</snl> and where the microtonality is made possible.
 </pn>
 
 <supercollider>
@@ -323,9 +324,11 @@ Event.addEventType(\pianoEvent, {
 </supercollider>
 
 <pn>
-    By taking the fractional value of <ic>~num</ic> and by adding it to the &ldquo;note delta&rdquo; that was previously computed in the creation of the lookup table, we obtain the final distance between the desired note and the available note, and we pass this distance to the <ic>midiratio</ic> operator, which is doing the same formula as above: <im>\big(2^{1/12}\big)^{n}</im> where <ic>n</ic> is the input.
+    The microtonality is calculated on the line where the variable <ic>~rate</ic> is defined. By taking the fractional value of <ic>~num</ic> and by adding it to the &ldquo;note delta&rdquo; that was previously computed in the creation of the lookup table, we obtain the final distance between the desired note and the available note, and we pass this distance to the <ic>midiratio</ic> operator, which is doing the same calculation as above: <span class="constrain-line"><im>\big(2^{1/12}\big)^{n}</im></span> where <im>n</im> is the input. This fractional value is only present when the notes you ask for are not integers&mdash;when you are playing with microtonality.
 </pn>
 
-<supercollider>
-~rate = (pitches[index] + frac(~num)).midiratio;
-</supercollider>
+<h3>Final thoughts</h3>
+
+<pn>
+    <sc>I really enjoyed</sc> putting this project together and it made me appreciate the strange and often confusing beauty of <ic>sclang</ic> even more. If you end up using the sampler, I'd love to have feedback on it or hear what you make with it. Don't hesitate to <a href="https://pelletierauger.com/en/about.html#contact">contact me</a> with comments or questions.
+</pn>
