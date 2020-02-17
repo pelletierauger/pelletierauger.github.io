@@ -253,6 +253,7 @@ module.exports = function(hljs) {
             hljs.C_LINE_COMMENT_MODE,
             hljs.C_BLOCK_COMMENT_MODE,
             hljs.C_NUMBER_MODE,
+            hljs.QUOTE_STRING_MODE,
             {
                 className: 'meta',
                 begin: '#',
