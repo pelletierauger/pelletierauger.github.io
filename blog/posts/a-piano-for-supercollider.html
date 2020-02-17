@@ -1,0 +1,331 @@
+<!-- year -->2020
+<!-- month -->02
+<!-- day -->17
+<!-- fr-title -->Un piano pour SuperCollider
+<!-- fr-description -->Écrire un échantillonneur pour un piano acoustique.
+<!-- fr-content -->
+
+<pn>
+    So this is the entirety of the code for the sampler:
+</pn>
+
+<supercollider>
+(
+var pianoSamples, pianoFolder, makeLookUp, indices, pitches;
+
+pianoSamples = Array.new;
+pianoFolder = PathName.new("/21055__samulis__vsco-2-ce-keys-upright-piano/");
+pianoFolder.entries.do({
+    |path|
+    pianoSamples = pianoSamples.add(Buffer.read(s, path.fullPath));
+});
+
+makeLookUp = {
+    |note, dynamic|
+    var octave = floor(note / 12) - 1;
+    var degree = note - 24 % 12;
+    var noteDeltas = [-1, 0,  1,  2, -1,  0,  1, -2, -1,  0,  1,  2];
+    var pitch = noteDeltas[degree].midiratio;
+    var sampledNote = [1,  1,  1,  1,  2,  2,  2,  3,  3,  3,  3,  3];
+    var sampleToGet = (octave - 1) * 3 + sampledNote[degree];
+    var dynamicOffset = dynamic - 1 * 23;
+    sampleToGet = sampleToGet + dynamicOffset;
+    [sampleToGet, pitch];
+};
+indices = 3.collect({|j| (20..110).collect({|i| makeLookUp.(i, j + 1)[0]})}).flat;
+pitches = 3.collect({|j| (20..110).collect({|i| makeLookUp.(i, j + 1)[1]})}).flat;
+
+Event.addEventType(\pianoEvent, {
+    var index;
+    if (~num.isNil, {~num = 60}, {~num = floor(min(max(20, ~num), 110))});
+    if (~dyn.isNil, {~dyn = 0}, {~dyn = floor(min(max(0, ~dyn), 2))});
+    index = ~num - 20 + (~dyn * 91);
+    ~buf = pianoSamples[indices[index]];
+    ~rate = pitches[index];
+    ~instrument = \pianoSynth;
+    ~type = \note;
+    currentEnvironment.play;
+});
+)
+</supercollider>
+
+<pn>
+    Here is two instances of <ic>PBind</ic> that give an example of how the piano sampler can be used, using the custom <ic>Event</ic> named <ic>\pianoEvent</ic>. I recommend running both patterns at the same, they are made to complement each other.
+</pn>
+
+<supercollider>
+(
+var key = 62;
+var notes = key + ([0, 3, 7, 10] ++ [-5, 2, 3, 9]);
+~pianoRiff.stop;
+~pianoRiff = Pbind(
+    \type, \pianoEvent,
+    \dur, Pseq(0.5!1 ++ (0.25!3), inf),
+    \num, Pseq(notes, inf),
+    \dyn, Pseq([1, 0, 0, 1], inf),
+    \amp, Pseq([0.5, 2, 2, 0.5], inf),
+    \pan, Pwhite(-0.75, 0.75, inf),
+    \rel, 4
+).play(quant: [2]);
+)
+
+(
+var key = 62 + 36;
+var notes = key + [2, -5, 0, -2];
+~pianoRiff2.stop;
+~pianoRiff2 = Pbind(
+    \type, \pianoEvent,
+    \dur, Pseq([0.25, 1.75], inf),
+    \num, Pseq(notes, inf),
+    \dyn, Pseq([1, 1, 1, 1], inf),
+    \amp, Pseq([0.5, 1, 1, 0.5], inf),
+    \pan, Pwhite(-0.75, 0.75, inf),
+    \rel, 4
+).play(quant: [2]);
+)
+</supercollider>
+
+<pn>
+    And below is a variant which doesn't load the samples at the highest dynamic, because I personally almost never use them. I tend to write quiet music so I don't have much use for loud samples, so loading them is a waste of memory.
+</pn>
+<supercollider>
+(
+var pianoSamples, pianoFolder, makeLookUp, indices, pitches;
+
+pianoSamples = Array.new;
+pianoFolder = PathName.new("/21055__samulis__vsco-2-ce-keys-upright-piano/");
+pianoFolder.entries.do({
+    |path, i|
+    if (i < 46, {
+        pianoSamples = pianoSamples.add(Buffer.read(s, path.fullPath));
+    });
+});
+
+makeLookUp = {
+    |note, dynamic|
+    var octave = floor(note / 12) - 1;
+    var degree = note - 24 % 12;
+    var noteDeltas = [-1, 0,  1,  2, -1,  0,  1, -2, -1,  0,  1,  2];
+    var pitch = noteDeltas[degree].midiratio;
+    var sampledNote = [1,  1,  1,  1,  2,  2,  2,  3,  3,  3,  3,  3];
+    var sampleToGet = (octave - 1) * 3 + sampledNote[degree];
+    var dynamicOffset = dynamic - 1 * 23;
+    sampleToGet = sampleToGet + dynamicOffset;
+    [sampleToGet, pitch];
+};
+indices = 2.collect({|j| (20..110).collect({|i| makeLookUp.(i, j + 1)[0]})}).flat;
+pitches = 2.collect({|j| (20..110).collect({|i| makeLookUp.(i, j + 1)[1]})}).flat;
+
+Event.addEventType(\pianoEvent, {
+    var index;
+    if (~num.isNil, {~num = 60}, {~num = floor(min(max(20, ~num), 110))});
+    if (~dyn.isNil, {~dyn = 0}, {~dyn = floor(min(max(0, ~dyn), 1))});
+    index = ~num - 20 + (~dyn * 91);
+    ~buf = pianoSamples[indices[index]];
+    ~rate = pitches[index];
+    ~instrument = \pianoSynth;
+    ~type = \note;
+    currentEnvironment.play;
+});
+
+</supercollider>
+
+<!-- en-title -->A piano for SuperCollider
+<!-- en-description -->Writing an acoustic piano multi-sampler.
+<!-- en-content -->
+
+<pn>
+    <sc>In the winter of 2019</sc>, I started to work on an acoustic piano multi-sampler for SuperCollider. The earliest versions had many issues, and my budding programming skills in <ic>sclang</ic> did not allow me to fix them. But I've used the instrument a lot since then, and I've improved the code along the way. I plan to keep working on the instrument as I keep using it, but I'm thinking that it could already be useful for other people if they are interested. So here it is.
+</pn>
+<p>
+    The instrument uses <a href="https://freesound.org/people/Samulis/packs/21055/">a public domain sample &nbsn;pack</a><snl label="etude">I used this same sample pack for a piece of music that I wrote for my short film <a href="https://www.youtube.com/watch?v=sOEmaJY6h6M"><i8>Étude for Cellular Automata no 2</i8></a>. I composed this piece with Ableton Live because I didn't know about SuperCollider at the time. The piece uses only one or two samples in the pack, as I had found that building a good multi-sampler with Ableton Live was mostly a nightmare. I also used the piano samples in <a href="https://www.youtube.com/watch?v=COeC7UdIBn8">this live coding experiment</a> which was one of my first SuperCollider projects.</snl>that you can download from &nbsn;<a href="https://freesound.org/">freesound.org</a>.<snr label="versilian">The sample pack is created by <a href="https://vis.versilstudios.com/">Versilian Studios</a>, a company that distributes <a href="https://freesound.org/people/Samulis/">a lot of free sample packs</a> on freesound.org.</snr> You'll need to create an account to download it, but it's free to join, and free to download, and I highly recommend this website.
+</p>
+<p>
+    Below is the entirety of the code for the sampler, along with some <ic>Pbind</ic> examples to try it out. It is <sc>free software</sc> distributed under an <a href="http://www.apache.org/licenses/LICENSE-2.0.txt">Apache <lnum>2.0</lnum> licence</a>.
+</p>
+
+<supercollider>
+// Run this block of code once the server is booted.
+// You also need to make sure that the packLocation variable
+// is set to the actual location of the downloaded sample pack.
+
+(
+var pianoSamples, pianoFolder, makeLookUp, indices, pitches, dynAmnt, maxDyn, maxNote,
+packLocation = "/21055__samulis__vsco-2-ce-keys-upright-piano/",
+quiet = false;
+
+dynAmnt = if (quiet, {2}, {3});
+maxDyn = if (quiet, {1}, {2});
+maxNote = if (quiet, {46}, {1e2});
+pianoSamples = Array.new;
+pianoFolder = PathName.new(packLocation);
+pianoFolder.entries.do({
+    |path, i|
+    if (i < maxNote, {
+        pianoSamples = pianoSamples.add(Buffer.read(s, path.fullPath));
+    });
+});
+
+makeLookUp = {
+    |note, dynamic|
+    var octave = floor(note / 12) - 1;
+    var degree = note - 24 % 12;
+    var noteDeltas = [-1, 0,  1,  2, -1,  0,  1, -2, -1,  0,  1,  2];
+    var sampledNote = [1,  1,  1,  1,  2,  2,  2,  3,  3,  3,  3,  3];
+    var sampleToGet = (octave - 1) * 3 + sampledNote[degree];
+    var dynamicOffset = dynamic - 1 * 23;
+    var pitch = noteDeltas[degree];
+    sampleToGet = sampleToGet + dynamicOffset;
+    [sampleToGet, pitch];
+};
+indices = dynAmnt.collect({|j| (20..110).collect({|i| makeLookUp.(i, j + 1)[0]})}).flat;
+pitches = dynAmnt.collect({|j| (20..110).collect({|i| makeLookUp.(i, j + 1)[1]})}).flat;
+
+Event.addEventType(\pianoEvent, {
+    var index;
+    if (~num.isNil, {~num = 60}, {~num = min(max(20, ~num), 110)});
+    if (~dyn.isNil, {~dyn = 0}, {~dyn = floor(min(max(0, ~dyn), maxDyn))});
+    index = floor(~num) - 20 + (~dyn * 91);
+    ~buf = pianoSamples[indices[index]];
+    ~rate = (pitches[index] + frac(~num)).midiratio;
+    ~instrument = \pianoSynth;
+    ~type = \note;
+    currentEnvironment.play;
+});
+
+SynthDef(\pianoSynth, {
+    arg buf = pianoSamples[0], rate = 1, spos = 0, pan = 0, amp = 1, out = 0, atk = 0, sus = 0, rel = 8;
+    var sig, env;
+    env = EnvGen.kr(Env.new([0, 1, 1, 0], [atk, sus, rel]), doneAction: 2);
+    sig = PlayBuf.ar(2, buf, rate * BufRateScale.ir(buf), startPos: spos, doneAction: 2);
+    sig = sig * amp * 18 * env;
+    sig = Balance2.ar(sig[0], sig[1], pan, 1);
+    Out.ar(out, sig);
+}).add;
+)
+
+// Below are examples of patterns that show how to use the instrument.
+// I recommend running both patterns at the same time,
+// they are made to complement each other.
+
+(
+var key = 62;
+var notes = key + ([0, 3, 7, 10] ++ [-5, 2, 3, 9]);
+~pianoRiff.stop;
+~pianoRiff = Pbind(
+    \type, \pianoEvent,
+    \dur, Pseq(0.5!1 ++ (0.25!3), inf),
+    \num, Pseq(notes, inf),
+    \dyn, Pseq([1, 0, 0, 1], inf),
+    \amp, Pseq([0.5, 2, 2, 0.5], inf),
+    \pan, Pwhite(-0.75, 0.75, inf),
+    \rel, 4
+).play(quant: [2]);
+)
+
+(
+var key = 62 + 36;
+var notes = key + [2, -5, 0, -2];
+~pianoRiff2.stop;
+~pianoRiff2 = Pbind(
+    \type, \pianoEvent,
+    \dur, Pseq([0.25, 1.75], inf),
+    \num, Pseq(notes, inf),
+    \dyn, Pseq([1, 1, 1, 1], inf),
+    \amp, Pseq([0.5, 1, 1, 0.5], inf),
+    \pan, Pwhite(-0.75, 0.75, inf),
+    \rel, 4
+).play(quant: [2]);
+)
+</supercollider>
+
+<h3>How to use the sampler</h3>
+
+<pn>
+    <sc>Using the instrument</sc> will probably be very straightforward for most users of SuperCollider, but I thought that writing down some instructions could still be useful, particularly for beginners. And it's also an opportunity to talk about the design decisions that went into creating the instrument, and the ways in which it could potentially be improved.
+</pn>
+<p>
+    My main goal for this project was to use the piano with instances of <ic>Pbind</ic> that would be as uncluttered as possible. Here is a <ic>Pbind</ic> that uses all features of the instrument:
+</p>
+
+<supercollider>
+(
+var key = 62;
+var notes = key + ([0, 3, 7, 10] ++ [-5, 2, 3, 9]);
+~pianoRiff.stop;
+~pianoRiff = Pbind(
+    \type, \pianoEvent,
+    \dur, Pseq(0.5!1 ++ (0.25!3), inf),
+    \num, Pseq(notes, inf),
+    \dyn, Pseq([1, 0, 0, 1], inf),
+    \amp, Pseq([0.5, 2, 2, 0.5], inf),
+    \pan, Pwhite(-0.75, 0.75, inf),
+    \rel, 4
+).play(quant: [2]);
+)
+</supercollider>
+
+<pn>
+    The instrument is played by using a custom event type named <ic>\pianoEvent</ic>. This event type computes all the logic behind the instrument and leaves all of that out of the <ic>Pbind</ic>. The notes that you want to play must be defined with the <ic>\num</ic> &nbsn;key.<snl label="num">I wanted to use the <ic8>\note</ic8> key but <ic8>Pbind</ic8> seems to have some internal functionality for this key.</snl> The notes can be between <ic>20</ic> and <ic>110</ic>. These are standard <sc>midi</sc> note values, <ic>20</ic> being a G#-1 and <ic>110</ic> being a D8. There are &ldquo;safety measures&rdquo; in the instrument, so if you ask for notes below <ic>20</ic> or above <ic>110</ic> it'll give you the closest available note (so <ic>20</ic> or <ic>110</ic>). Negative notes will return <ic>20</ic>. Notably, if you ask for a non-integer note like <ic>50.5</ic>, it will give you a note between <ic>50</ic> and <ic>51</ic>. Any non-integer values work, which makes this instrument usable for microtonal music.
+</pn>
+<p>
+    Each note in the sample pack exists in three different levels of loudness (or dynamics) from quiet, to medium, to loud. The dynamic of the note that will be played is defined by the <ic>\dyn</ic> key in the <ic>Pbind</ic>. <ic>\dyn</ic> can either be <ic>0</ic>, <ic>1</ic>, or <ic>2</ic>. The safety measures will floor this <ic>\dyn</ic> value, so a loudness of <ic>0.9</ic> will return <ic>0</ic>. A loudness above <ic>2</ic> will return <ic>2</ic>, and negative values will return <ic>0</ic>. A <ic>Pbind</ic> that does not include a <ic>\dyn</ic> key will default to a value of <ic>0</ic>.
+</p>
+<p>
+    The <ic>\amp</ic> key in the <ic>Pbind</ic> simply scales the amplitude of the note. It has no effect on which level of dynamics is played. The instrument also has optional <ic>sus</ic> and <ic>dec</ic> arguments, for sustain and decay. These are useful mainly because the noise floor in the samples is quite high, so you may want to limit the duration over which a note is played, to reduce the noise.
+</p>
+
+<h3>Keeping it quiet</h3>
+
+<pn>
+    <sc>If you look</sc> at the code for the instrument, you'll see near the top a line that goes: <ic>quiet = false</ic>. If you change this to <ic>true</ic> before you evaluate the code, it will prevent the loud samples from being loaded. I wrote this option because I personally never use the loud samples. I tend to write quiet music and I don't have much use for loud sounds, so loading them is a waste of memory (perhaps a very small waste, but a waste &nbsn;nonetheless).<snr label="bossa">What I'm saying is that this instrument is <i8>optimized for bossa nova</i8>.</snr> In this quiet mode, a <ic>\dyn</ic> value above <ic>1</ic> in the <ic>Pbind</ic> will return <ic>1</ic>, because the samples with a dynamic of <ic>2</ic> will not be loaded.
+</pn>
+
+<h3>How it works</h3>
+
+<pn>
+    <sc>The sample pack contains</sc> three samples per octave: C#, F, and A. The basic functioning of the sampler is to take a note that you want to play and look for the closest note that it can find in the pack. And then, if the closest note is not the exact one that you asked for, the sampler has to play this closest note at a different pitch to produce the desired note. So if you want a C, it will play the recorded C# note at a pitch ratio of <im>\big(2^{1/12}\big)^{-1}</im> because the desired note is <im>-1</im> note away from the closest note. Any distance <im>n</im> between the desired note and the available note will similarly result in the available note being played at a ratio of <im>\big(2^{1/12}\big)^{n}</im> to obtain the desired note. This bit of mathematics is how the <a href="https://en.wikipedia.org/wiki/Equal_temperament">twelve-tone equal temperament</a> is built.
+</pn>
+<p>
+    On the line below you can see how each octave is built, starting on the note C. For each degree of the octave, we define which sample will be used in the <ic>sampledNote</ic> variable: C# is <ic>1</ic>, F is <ic>2</ic>, and A is <ic>3</ic>. And in the <ic>noteDeltas</ic> variable, we define the distance (or interval) between the note that we want, and the closest available note. So it follows that for C#, F, and A, the value in <ic>noteDeltas</ic> is <ic>0</ic>. And since <im>\big(2^{1/12}\big)^{0} = 1</im>, these notes will be played at a pitch ratio of <ic>1</ic>.
+</p>
+
+<supercollider>
+var sampledNote = [1,  1,  1,  1,  2,  2,  2,  3,  3,  3,  3,  3];
+var noteDeltas = [-1, 0,  1,  2, -1,  0,  1, -2, -1,  0,  1,  2];
+</supercollider>
+
+<pn>
+    These two lines of code are found in the <ic>makeLookUp</ic> function, which is used to create a lookup table that will then be used when the instrument is played. The lines below are used to build two lookup tables, one for the index of the needed buffer in the list of buffers, and one for the pitch ratio at which the note will be played. You can see two nested loops here: one loop over the <ic>dynAmnt</ic> value, which is the amount of different dynamics that will be available, and the other loop over an <ic>Array</ic> that goes from <ic>20</ic> to <ic>110</ic>, which is a list of all available notes.
+</pn>
+
+<supercollider>
+indices = dynAmnt.collect({|j| (20..110).collect({|i| makeLookUp.(i, j + 1)[0]})}).flat;
+pitches = dynAmnt.collect({|j| (20..110).collect({|i| makeLookUp.(i, j + 1)[1]})}).flat;
+</supercollider>
+
+<pn>
+    The <ic>\pianoEvent</ic> event type is where the lookup tables are used. It's also where the numbers defined in a <ic>Pbind</ic> are sanitized (you can see the <ic>~num</ic> and <ic>~dyn</ic> variables being constrained with <ic>min()</ic> and <ic>max()</ic> operators), and where the microtonality is made possible.
+</pn>
+
+<supercollider>
+Event.addEventType(\pianoEvent, {
+    var index;
+    if (~num.isNil, {~num = 60}, {~num = min(max(20, ~num), 110)});
+    if (~dyn.isNil, {~dyn = 0}, {~dyn = floor(min(max(0, ~dyn), maxDyn))});
+    index = floor(~num) - 20 + (~dyn * 91);
+    ~buf = pianoSamples[indices[index]];
+    ~rate = (pitches[index] + frac(~num)).midiratio;
+    ~instrument = \pianoSynth;
+    ~type = \note;
+    currentEnvironment.play;
+});
+</supercollider>
+
+<pn>
+    By taking the fractional value of <ic>~num</ic> and by adding it to the &ldquo;note delta&rdquo; that was previously computed in the creation of the lookup table, we obtain the final distance between the desired note and the available note, and we pass this distance to the <ic>midiratio</ic> operator, which is doing the same formula as above: <im>\big(2^{1/12}\big)^{n}</im> where <ic>n</ic> is the input.
+</pn>
+
+<supercollider>
+~rate = (pitches[index] + frac(~num)).midiratio;
+</supercollider>
