@@ -168,18 +168,17 @@ pianoFolder.entries.do({
 
 makeLookUp = {
     |note, dynamic|
-    var octave = floor(note / 12) - 1;
-    var degree = note - 24 % 12;
-    var noteDeltas = [-1, 0,  1,  2, -1,  0,  1, -2, -1,  0,  1,  2];
+    var octave = floor(note / 12) - 2;
+    var degree = note % 12;
     var sampledNote = [1,  1,  1,  1,  2,  2,  2,  3,  3,  3,  3,  3];
-    var sampleToGet = (octave - 1) * 3 + sampledNote[degree];
-    var dynamicOffset = dynamic - 1 * 23;
+    var noteDeltas = [-1, 0,  1,  2, -1,  0,  1, -2, -1,  0,  1,  2];
+    var dynamicOffset = dynamic * 23;
+    var sampleToGet = octave * 3 + sampledNote[degree] + dynamicOffset;
     var pitch = noteDeltas[degree];
-    sampleToGet = sampleToGet + dynamicOffset;
     [sampleToGet, pitch];
 };
-indices = dynAmnt.collect({|j| (20..110).collect({|i| makeLookUp.(i, j + 1)[0]})}).flat;
-pitches = dynAmnt.collect({|j| (20..110).collect({|i| makeLookUp.(i, j + 1)[1]})}).flat;
+indices = dynAmnt.collect({|j| (20..110).collect({|i| makeLookUp.(i, j)[0]})}).flat;
+pitches = dynAmnt.collect({|j| (20..110).collect({|i| makeLookUp.(i, j)[1]})}).flat;
 
 Event.addEventType(\pianoEvent, {
     var index;
@@ -237,6 +236,11 @@ var notes = key + [2, -5, 0, -2];
     \rel, 4
 ).play(quant: [2]);
 )
+
+(
+~pianoRiff.stop;
+~pianoRiff2.stop;
+)
 </supercollider>
 
 <h3>How to use the sampler</h3>
@@ -276,13 +280,13 @@ var notes = key + ([0, 3, 7, 10] ++ [-5, 2, 3, 9]);
     The <ic>\amp</ic> key in the <ic>Pbind</ic> simply scales the amplitude of the note. It has no effect on which level of dynamics is played. The instrument also has optional <ic>atk</ic>, <ic>sus</ic>, and <ic>dec</ic> arguments, for attack, sustain, and decay. These are useful mainly because the noise floor in the samples is quite high, so you may want to limit the duration over which a note is played, to reduce the noise.
 </p>
 
-<h3>Keeping it quiet</h3>
+<h3>The <ic>quiet</ic> mode</h3>
 
 <pn>
     <sc>You can see</sc> near the top of the code a line that goes: <ic>quiet = false</ic>. If you change this to <ic>true</ic> before you evaluate the code, it will prevent the loud samples from being loaded. I wrote this option because I personally never use the loud samples. I tend to write quiet music and I don't have much use for loud sounds, so loading them is a waste of memory (perhaps a very small waste, but a waste nonetheless). In this quiet mode, a <ic>\dyn</ic> value above <ic>1</ic> in the <ic>Pbind</ic> will return <ic>1</ic>, because the samples with a dynamic of <ic>2</ic> will not be loaded.
 </pn>
 
-<h3>How it works</h3>
+<h3>How it all works</h3>
 
 <pn>
     <sc>The sample pack contains</sc> three samples per octave: C#, F, and A. The basic <i>modus operandi</i> of the sampler is to take a note that you want to play and look for the closest note that it can find in the pack. And then, if the closest note is not the exact one that you asked for, the sampler has to play this closest note at a different pitch to produce the desired note. So if you want a C, it will play the recorded C# note at a pitch ratio of <span class="constrain-line"><im>\big(2^{1/12}\big)^{-1}</im></span> because the desired note is <im>-1</im> note away from the closest &nbsn;note.<snl label="temperament"> This bit of mathematics is how the <a href="https://en.wikipedia.org/wiki/Equal_temperament">twelve-tone equal temperament</a> is built.</snl> Any distance <im>n</im> between the desired note and the available note will similarly result in the available note being played at a ratio of <span class="constrain-line"><im>\big(2^{1/12}\big)^{n}</im></span> to obtain the desired note.
@@ -301,8 +305,8 @@ var noteDeltas = [-1, 0,  1,  2, -1,  0,  1, -2, -1,  0,  1,  2];
 </pn>
 
 <supercollider>
-indices = dynAmnt.collect({|j| (20..110).collect({|i| makeLookUp.(i, j + 1)[0]})}).flat;
-pitches = dynAmnt.collect({|j| (20..110).collect({|i| makeLookUp.(i, j + 1)[1]})}).flat;
+indices = dynAmnt.collect({|j| (20..110).collect({|i| makeLookUp.(i, j)[0]})}).flat;
+pitches = dynAmnt.collect({|j| (20..110).collect({|i| makeLookUp.(i, j)[1]})}).flat;
 </supercollider>
 
 <pn>
