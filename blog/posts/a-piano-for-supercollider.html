@@ -182,7 +182,7 @@ pitches = dynAmnt.collect({|j| (20..110).collect({|i| makeLookUp.(i, j)[1]})}).f
 </supercollider>
 
 <pn>
-    C'est dans l'évènement <ic>\pianoEvent</ic> que les tables de correspondance sont ensuite utilisées. C'est aussi là que les valeurs définies dans un <ic>Pbind</ic> sont testées et remplacées au besoin par des valeurs différentes (vous pouvez voir que l'étendue des variables <ic>~num</ic> et <ic>~dyn</ic> est limitée par les opérateurs <ic>min()</ic> et &nbsn;<ic>max()</ic>).<snl label="envir">C'est assez mêlant tout ça, mais les valeurs qui sont définies dans un <ic8>Pbind</ic8>, comme <ic8>\num</ic8> and <ic8>\dyn</ic8>, elles deviennent les variables <ic8>~num</ic8> et <ic8>~dyn</ic8> à l'intérieur de l'évènement que le <ic8>Pbind</ic8> active. Le tilde (<ic8>~</ic8>) qui précède le nom de ces variables signifie qu'elles sont des &ldquo;variables d'environnement&rdquo; (<i8>environment variables</i8>), cet environnement étant l'évènement <ic8>\pianoEvent</ic8>.</snl>
+    C'est dans l'évènement <ic>\pianoEvent</ic> que les tables de correspondance sont ensuite utilisées. C'est aussi là que les valeurs définies dans un <ic>Pbind</ic> sont testées et remplacées au besoin par des valeurs différentes (l'étendue des variables <ic>~num</ic> et <ic>~dyn</ic> est limitée par les opérateurs <ic>min()</ic> et &nbsn;<ic>max()</ic>).<snl label="envir">C'est assez mêlant tout ça, mais les valeurs qui sont définies dans un <ic8>Pbind</ic8>, comme <ic8>\num</ic8> and <ic8>\dyn</ic8>, elles deviennent les variables <ic8>~num</ic8> et <ic8>~dyn</ic8> à l'intérieur de l'évènement que le <ic8>Pbind</ic8> active. Le tilde (<ic8>~</ic8>) qui précède le nom de ces variables signifie qu'elles sont des &ldquo;variables d'environnement&rdquo; (<i8>environment variables</i8>), cet environnement étant l'évènement <ic8>\pianoEvent</ic8>.</snl>
 </pn>
 
 <supercollider>
@@ -203,11 +203,92 @@ Event.addEventType(\pianoEvent, {
     La microtonalité est aussi calculée dans <ic>\pianoEvent</ic>, à la ligne où est définie la valeur <ic>~rate</ic>. En calculant la valeur fractionnelle de la valeur <ic>~num</ic> (avec l'opérateur <ic>frac()</ic>), et en l'additionnant à la distance entre la note voulue et la note enregistrée (une distance calculée précédemment lors de la création des tables de correspondance), on obtient la distance finale exacte entre la note voulue et la note disponible. On envoie ensuite cette distance dans l'opérateur <ic>midiratio</ic>, qui fait le même calcul mentionné plus haut : <span class="constrain-line"><im>\big(2^{1/12}\big)^{n}</im></span> où <im>n</im> est la valeur de départ.
 </pn>
 
+<h3>
+    Différentes façons de gérer les dynamiques
+</h3>
+
+<pn>
+    <sc>Un des moyens</sc> par lesquels cet instrument pourrait être amélioré consisterait à créer un meilleur système pour gérer les dynamiques. The current system of manually selecting which of the three samples (quiet, medium, or loud) is used, is somewhat clunky. What happens if you want to gradually increase the dynamics of a pattern, or if you just want a note between quiet and medium? It's definitely possible, but you have to carefully think about which sample will be played at which amplitude, and create all the necessary lists to express your idea. Here is one example of a pattern that gets repeated at gradually increasing dynamics:
+</pn>
+
+<supercollider>
+(
+var n = 20;
+var r = -1 / n;
+var decrease = Pseries(1, r, n).asStream.nextN(n);
+var increase = decrease.reverse * 0.75;
+var amplitudes = [decrease, increase].lace(n * 2);
+~crescendoRiff.stop;
+~crescendoRiff = Pbind(
+    \type, \pianoEvent,
+    \dur, Pseq([1, 1, 2, 3, 1].stutter(2) * 0.25 * 0.35, inf)
+    * Pseq([0, 1], inf),
+    \num, 62 
+    + Pseq(([0, 7, 4, 11, 9] ++ [-3, 4, 2, 9, 4]).stutter(2), inf)
+    + Pseq([0, -5].stutter(n * 4), inf),
+    \dyn, Pseq([0, 1], inf) + Pseq([0, 1].stutter(n * 2), inf),
+    \amp, Pseq(amplitudes ++ (amplitudes * 0.75), inf) * 0.5,
+    \rel, 2
+).play();
+)  
+</supercollider>
+
+<pn>
+    We start by creating two lists, one of decreasing values (for the amplitudes of the quiet samples) and one of increasing values (for the amplitudes of the medium samples). We then lace these two lists, creating a single list that will interlace the two streams of quiet and medium notes. And then, in the <ic>\dur</ic> key of the <ic>Pbind</ic>, we multiply our list of durations by <ic>Pseq([0, 1], inf)</ic>, which means that the first note of every pair will have a duration of <ic>0</ic>, which means that two notes will always play simultaneously for each duration set by the first <ic>Pseq</ic> within <ic>\dur</ic>. We then list the notes that we want to play in <ic>\num</ic>, making sure to <ic>stutter()</ic> the list by <ic>2</ic> because each note will be played simultaneously twice.
+</pn>
+<p>
+    And then, in <ic>\dyn</ic>, we create a repeating stream of <ic>[0, 1]</ic>, <ic>0</ic> being the quiet sample and <ic>1</ic> being the medium sample. After <ic>n * 2</ic> times, so after the full gradient of increases and decreases is complete, we add <ic>1</ic> to this pattern with the second <ic>Pseq</ic>. So we end up with a repeating stream of <ic>[1, 2]</ic>, because now we interpolate between the medium sample and the loud sample.
+</p>
+<p>
+    This way of creating a smooth gradient of dynamics is laborious, but there are some reasons for which it isn't necessarily a bad system. The ideal system would simply take a floating point between <ic>0</ic> and <ic>1</ic> for the <ic>\dyn</ic> key, and automatically play two samples at varying amplitudes, creating the interpolated dynamics. <ic>0</ic> would be the quietest and <ic>1</ic> the loudest. But this ideal system is difficult to build without creating unintended problems. First of all, playing two samples simultaneously, particularly when you let them ring for a long time, can create subtle phasing effects. These may be acceptable or not depending on the context. And also, there are some irregularities in the sample pack, certain notes were recorded at slightly different dynamics or slightly different &nbsn;amplitudes.<snr label="exceptions">A careful list of &ldquo;exceptions&rdquo; could be created to manually change the amplitude of certain samples and bring them all to a more unified level, but this is beginning to feel like the work that I would do if I end up using this instrument with this specific sample pack for years and years.</snr> So when I create patterns, I enjoy the possibility of manually defining which sample will play at which amplitude. It's the more complicated way of doing things, but also the way that offers the most control.
+</p>
+<p>
+    So I decided not to create a system of floating point dynamics for now. Maybe I'll do it at some point, or maybe <i>you will</i>.
+</p>
+
 <h3>En conclusion</h3>
 
 <pn>
     <sc>J'ai eu beaucoup de plaisir</sc> à créer ce projet et il m'a permis d'apprécier plus profondément l'étrange et confondante beauté de <ic>sclang</ic>. Si vous utilisez l'échantillonneur, il me ferait plaisir d'en recevoir des échos et aussi d'entendre vos compositions. N'hésitez pas à <a href="https://pelletierauger.com/fr/a-propos.html#contact">me contacter</a> pour des commentaires ou des questions.
 </pn>
+<p>
+    Je vous laisse avec un dernier <ic>Pbind</ic>, qui est une variante de celui plus haut qui servait à démontrer une technique pour obtenir une montée graduelle des dynamiques. Merci de votre lecture !
+</p>
+
+<supercollider>
+(
+var n = 40;
+var r = -1 / n;
+var decrease = Pseries(1, r, n).asStream.nextN(n);
+var increase = decrease.reverse * 0.75;
+var amplitudes = [decrease, increase].lace(n * 2);
+~crescendoRiff.stop;
+~crescendoRiff = Pbind(
+    \type, \pianoEvent,
+    \dur, Pseq([2, 1, 2, 3, 1].stutter(2) * 0.25 * 0.1, inf)
+    * Pseq([0, 1], inf),
+    \num, 72
+    + Pseq(([0, 7, 4, 11, 9] ++ [-3, 4, 2, 9, 4]).stutter(2).reverse, inf)
+    + Pseq([0, -5].stutter(n * 8), inf)
+    + Pseq(
+        ((0!(n * 1 - 1) ++ (19!1)) ++ (0!(n * 1 - 1) ++ (21!1))).stutter(2).wrapExtend(n * 8) ++
+        ((0!(n * 1 - 1) ++ (28!1)) ++ (0!(n * 1 - 1) ++ (26!1))).stutter(2).wrapExtend(n * 8)
+    , inf)
+    - Pseq(
+        ([36 - 5] ++ (0!(n * 2 - 1))).stutter(2).wrapExtend(n * 4) ++
+        ([36 - 3] ++ (0!(n * 2 - 1))).stutter(2).wrapExtend(n * 4) ++
+        ([36 - 0] ++ (0!(n * 2 - 1))).stutter(2).wrapExtend(n * 4) ++
+        ([36 + 4] ++ (0!(n * 2 - 1))).stutter(2).wrapExtend(n * 4)
+    , inf),
+    \dyn, Pseq([0, 1], inf) + Pseq([0].stutter(n * 2), inf)
+    + Pseq((0!(n * 2 - 1) ++ (0!1)).stutter(2), inf)
+    + Pseq(([1] ++ (0!(n * 2 - 1))).stutter(2), inf),
+    \amp, Pseq(amplitudes ++ (amplitudes * 0.75), inf) * 0.5
+    * Pseq(1!(n * 2 - 1) ++ (2!1), inf),
+    \rel, 4 * Pseq((1!(n * 2 - 1) ++ (2!1)).stutter(2), inf)
+).play();
+)
+</supercollider>
 
 <!-- en-title -->A Piano for SuperCollider
 <!-- en-html-title -->A Piano <span class="italic8"><span class="small-title">for</span></span> SuperCollider
@@ -351,7 +432,7 @@ var notes = key + ([0, 3, 7, 10] ++ [-5, 2, 3, 9]);
 </supercollider>
 
 <pn>
-    The instrument is played by using a custom event type named <ic>\pianoEvent</ic>. This event type computes all the logic behind the instrument and leaves all of that out of the <ic>Pbind</ic>. The notes that you want to play must be defined with the <ic>\num</ic> &nbsn;key.<snl label="num">I wanted to use the <ic8>\note</ic8> key but <ic8>Pbind</ic8> seems to have some internal functionality for this key.</snl> The notes can be between <ic>20</ic> and <ic>110</ic>. These are standard <sc>midi</sc> note values, <ic>20</ic> being a G#-1 and <ic>110</ic> being a D8. There are &ldquo;safety measures&rdquo; in the instrument, so if you ask for notes below <ic>20</ic> or above <ic>110</ic> it'll give you the closest available note (so <ic>20</ic> or <ic>110</ic>). Negative notes will return <ic>20</ic>. Notably, if you ask for a non-integer note like <ic>50.5</ic>, it will give you a note between <ic>50</ic> and <ic>51</ic>. Any non-integer values work, which makes this instrument usable for microtonal music.
+    The instrument is played by using a custom event type named <ic>\pianoEvent</ic>. This event type computes all the logic behind the instrument and leaves all of that out of the <ic>Pbind</ic>. The notes that you want to play must be defined with the <ic>\num</ic> &nbsn;key.<snr label="num">I wanted to use the <ic8>\note</ic8> key but <ic8>Pbind</ic8> seems to have some internal functionality for this key.</snr> The notes can be between <ic>20</ic> and <ic>110</ic>. These are standard <sc>midi</sc> note values, <ic>20</ic> being a G#-1 and <ic>110</ic> being a D8. There are &ldquo;safety measures&rdquo; in the instrument, so if you ask for notes below <ic>20</ic> or above <ic>110</ic> it'll give you the closest available note (so <ic>20</ic> or <ic>110</ic>). Negative notes will return <ic>20</ic>. Notably, if you ask for a non-integer note like <ic>50.5</ic>, it will give you a note between <ic>50</ic> and <ic>51</ic>. Any non-integer values work, which makes this instrument usable for microtonal music.
 </pn>
 <p>
     Each note in the sample pack exists in three different levels of loudness (or dynamics) from quiet, to medium, to loud. The dynamics of a note is defined by the <ic>\dyn</ic> key in the <ic>Pbind</ic>. <ic>\dyn</ic> can either be <ic>0</ic>, <ic>1</ic>, or <ic>2</ic>. The safety measures will floor this <ic>\dyn</ic> value, so a loudness of <ic>0.9</ic> will return <ic>0</ic>. A loudness above <ic>2</ic> will return <ic>2</ic>, and negative values will return <ic>0</ic>. A <ic>Pbind</ic> that does not include a <ic>\dyn</ic> key will default to a value of <ic>0</ic>.
@@ -459,3 +540,40 @@ var amplitudes = [decrease, increase].lace(n * 2);
 <pn>
     <sc>I really enjoyed</sc> putting this project together and it made me appreciate the strange and often confusing beauty of <ic>sclang</ic> even more. If you end up using the sampler, I'd love to have feedback on it or hear what you make with it. Don't hesitate to <a href="https://pelletierauger.com/en/about.html#contact">contact me</a> with comments or questions.
 </pn>
+<p>
+    I will leave you with one last <ic>Pbind</ic>, a variation on the one above where I demonstrated the ascending gradient of dynamics. Thanks for reading!
+</p>
+<supercollider>
+(
+var n = 40;
+var r = -1 / n;
+var decrease = Pseries(1, r, n).asStream.nextN(n);
+var increase = decrease.reverse * 0.75;
+var amplitudes = [decrease, increase].lace(n * 2);
+~crescendoRiff.stop;
+~crescendoRiff = Pbind(
+    \type, \pianoEvent,
+    \dur, Pseq([2, 1, 2, 3, 1].stutter(2) * 0.25 * 0.1, inf)
+    * Pseq([0, 1], inf),
+    \num, 72
+    + Pseq(([0, 7, 4, 11, 9] ++ [-3, 4, 2, 9, 4]).stutter(2).reverse, inf)
+    + Pseq([0, -5].stutter(n * 8), inf)
+    + Pseq(
+        ((0!(n * 1 - 1) ++ (19!1)) ++ (0!(n * 1 - 1) ++ (21!1))).stutter(2).wrapExtend(n * 8) ++
+        ((0!(n * 1 - 1) ++ (28!1)) ++ (0!(n * 1 - 1) ++ (26!1))).stutter(2).wrapExtend(n * 8)
+    , inf)
+    - Pseq(
+        ([36 - 5] ++ (0!(n * 2 - 1))).stutter(2).wrapExtend(n * 4) ++
+        ([36 - 3] ++ (0!(n * 2 - 1))).stutter(2).wrapExtend(n * 4) ++
+        ([36 - 0] ++ (0!(n * 2 - 1))).stutter(2).wrapExtend(n * 4) ++
+        ([36 + 4] ++ (0!(n * 2 - 1))).stutter(2).wrapExtend(n * 4)
+    , inf),
+    \dyn, Pseq([0, 1], inf) + Pseq([0].stutter(n * 2), inf)
+    + Pseq((0!(n * 2 - 1) ++ (0!1)).stutter(2), inf)
+    + Pseq(([1] ++ (0!(n * 2 - 1))).stutter(2), inf),
+    \amp, Pseq(amplitudes ++ (amplitudes * 0.75), inf) * 0.5
+    * Pseq(1!(n * 2 - 1) ++ (2!1), inf),
+    \rel, 4 * Pseq((1!(n * 2 - 1) ++ (2!1)).stutter(2), inf)
+).play();
+)
+</supercollider>
