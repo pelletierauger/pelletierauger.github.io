@@ -9,6 +9,41 @@ var dateFormatter = require("./formatters/date-formatter.js");
 mathFormatter.start();
 var verbose = (process.argv[2] == "-v") ? true : false;
 
+var audioBoxTemplate = [
+    `<div class="audio-container"><div class="audio-box">
+    <audio>
+        <source src="`,
+    `">
+    </audio>
+    <div class="middle">
+        <div class="play-button-zone">
+            <div class="play-button">
+                <div class="btn">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="info-and-controls">
+        <div class="info">
+        `,
+    `</div>
+        <div class="controls">
+            <div class="progress-bar">
+            </div>
+            <div class="progress-bar-overlay">
+            </div>
+            <div class="progress-bar-bottom">
+            </div>
+            <div class="current-progress-text">0:00
+            </div>
+            <div class="track-duration-text">9:00
+            </div>
+        </div>
+    </div>
+</div>
+</div>`
+];
+
 //-------Function Calls-----------------------------------------------------------------------------//
 
 removeDirectory("./en");
@@ -404,6 +439,18 @@ function makeHeader(page, language, stepsFromRoot, sketches) {
             scripts += `<script src="${prefix}sketches`;
             scripts += sketches[i];
             scripts += `" type="text/javascript"></script>
+        `;
+        }
+    }
+
+    if (page !== null) {
+        let audioBoxes = page[language].content.match(/<div class="audio-box">/);
+        if (audioBoxes) {
+            console.log("Audio boxes were detected!");
+            style += `
+        <link href="${prefix}style/audio-box.css" rel="stylesheet" type="text/css">
+        `;
+            scripts += `<script src="${prefix}audio-boxes/audio-boxes.js" type="text/javascript"></script>
         `;
         }
     }
@@ -931,6 +978,20 @@ function parseHTMLTemplate(s) {
     page.en.content = page.en.content.replace(/(<code>)(\s)([a-zA-ZÀ-ú\d])/g,
         function(m, a, b, c) {
             return (a + c);
+        });
+
+    page.fr.content = page.fr.content.replace(/(<audiobox url=")([0-9a-zA-ZÀ-ú\-\.\/\:\%]*)(">)([\S\s]*?)(<\/audiobox>)/g,
+        function(a, b, c, d, e) {
+            console.log(c + e);
+            let au = audioBoxTemplate;
+            return au[0] + c + au[1] + e + au[2];
+        });
+
+    page.en.content = page.en.content.replace(/(<audiobox url=")([0-9a-zA-ZÀ-ú\-\.\/\:\%]*)(">)([\S\s]*?)(<\/audiobox>)/g,
+        function(a, b, c, d, e) {
+            console.log(c + e);
+            let au = audioBoxTemplate;
+            return au[0] + c + au[1] + e + au[2];
         });
     return page;
 }
