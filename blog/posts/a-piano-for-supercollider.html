@@ -9,9 +9,14 @@
 <pn>
     <sc>L'hiver dernier</sc>, j'ai commencé à construire un échantillonneur de piano acoustique dans SuperCollider. Les premières versions du projet avaient plusieurs problèmes de fonctionnement et ma connaissance limitée de <ic>sclang</ic> me rendait la tâche assez ardue. J'ai depuis beaucoup joué avec l'échantillonneur et j'en ai amélioré le code au fil du temps. Je compte encore y travailler sporadiquement mais je me suis dit qu'il était déjà dans un état <i>présentable</i> et qu'il pourrait peut-être servir aux intéressé&middot;e&middot;s. Alors le voici.
 </pn>
-<p>
+
+<audiobox url="https://dl.dropboxusercontent.com/s/t0tp18kbabzi3nn/En%20La%2C%20loin%206.mp3">
+    Une très simple démonstration de l'échantillonneur avec deux motifs créés avec <ic>Pbind</ic>.
+</audiobox>
+
+<pn>
     L'instrument utilise <a href="https://freesound.org/people/Samulis/packs/21055/">une collection &nbsn;d'échantillons</a><snl label="etude">J'avais utilisé ces mêmes échantillons pour la trame sonore de mon court métrage <a href="https://www.youtube.com/watch?v=sOEmaJY6h6M"><i8>Étude pour automates cellulaires no. 2</i8></a>. J'avais composé ce morceau avec Ableton Live parce que je ne connaissais pas SuperCollider à ce moment-là. Le morceau n'utilise d'ailleurs qu'un ou deux échantillons différents parce que j'avais constaté que la construction d'un bon échantillonneur avec Ableton Live était <i8>grosso modo</i8> un cauchemar. J'ai plus tard réutilisé ces échantillons de piano dans <a href="https://www.youtube.com/watch?v=COeC7UdIBn8">cette expérience de programmation en direct</a> qui est un de mes premiers projets réalisés avec SuperCollider.</snl>qui est dans le domaine public et que vous pouvez télécharger sur <a href="https://freesound.org/">freesound.org</a>. Il vous faudra vous créer un compte pour faire le téléchargement, mais la création d'un compte ainsi que les téléchargements sont gratuits. Il s'agit d'un excellent site Web que je recommande fortement.
-</p>
+</pn>
 <p>
     Vous trouverez ci-dessous la totalité du code de l'échantillonneur ainsi que deux exemples de <ic>Pbind</ic> servant à faire une courte démonstration de l'instrument. Il s'agit d'un <sc>logiciel libre</sc> distribué avec une <a href="http://www.apache.org/licenses/LICENSE-2.0.txt">licence Apache <lnum>2.0</lnum></a>. Vous pouvez aussi <a href="">consulter ce code sur GitHub</a>.
 </p>
@@ -298,9 +303,14 @@ var amplitudes = [decrease, increase].lace(n * 2);
 <pn>
     <sc>Last winter</sc>, I started to work on an acoustic piano multi-sampler for SuperCollider. The earliest versions had many issues, and my budding programming skills in <ic>sclang</ic> did not allow me to fix them. But I've used the instrument a lot since then, and I've improved the code along the way. I plan to keep working on the instrument as I keep using it, but I'm thinking that it could already be useful for other people if they are interested. So here it is.
 </pn>
-<p>
+
+<audiobox url="https://dl.dropboxusercontent.com/s/t0tp18kbabzi3nn/En%20La%2C%20loin%206.mp3">
+    A very simple demonstration of the sampler using two patterns created with <ic>Pbind</ic>.
+</audiobox>
+
+<pn>
     The instrument uses <a href="https://freesound.org/people/Samulis/packs/21055/">a public domain sample &nbsn;pack</a><snl label="etude">I used this same sample pack for a piece of music that I wrote for my short film <a href="https://www.youtube.com/watch?v=sOEmaJY6h6M"><i8>Étude for Cellular Automata no 2</i8></a>. I composed this piece with Ableton Live because I didn't know about SuperCollider at the time. The piece uses only one or two samples in the pack, as I had found that building a good multi-sampler with Ableton Live was mostly a nightmare. I also used the piano samples in <a href="https://www.youtube.com/watch?v=COeC7UdIBn8">this live coding experiment</a> which was one of my first SuperCollider projects.</snl>that you can download from <a href="https://freesound.org/">freesound.org</a>. You'll need to create an account to download it, but it's free to join, and free to download, and I highly recommend this website.
-</p>
+</pn>
 <p>
     Below is the entirety of the code for the sampler, along with some <ic>Pbind</ic> examples to try it out. It is <sc>free software</sc> distributed under an <a href="http://www.apache.org/licenses/LICENSE-2.0.txt">Apache <lnum>2.0</lnum> licence</a>. You can also <a href="">find this code on GitHub</a>.
 </p>
@@ -500,7 +510,8 @@ Event.addEventType(\pianoEvent, {
     <sc>One of the ways</sc> I can think of improving this instrument is creating a better system to handle dynamics. The current system of manually selecting which of the three samples (quiet, medium, or loud) is used, is somewhat clunky. What happens if you want to gradually increase the dynamics of a pattern, or if you just want a note between quiet and medium? It's definitely possible, but you have to carefully think about which sample will be played at which amplitude, and create all the necessary lists to express your idea. Here is one example of a pattern that gets repeated at gradually increasing dynamics:
 </pn>
 
-<supercollider>
+<div class="nomarginbottom">
+    <supercollider>
 (
 var n = 20;
 var r = -1 / n;
@@ -521,6 +532,11 @@ var amplitudes = [decrease, increase].lace(n * 2);
 ).play();
 )  
 </supercollider>
+</div>
+
+<audiobox url="https://dl.dropboxusercontent.com/s/t0tp18kbabzi3nn/En%20La%2C%20loin%206.mp3">
+    Arpeggios with gradually increasing dynamics.
+</audiobox>
 
 <pn>
     We start by creating two lists, one of decreasing values (for the amplitudes of the quiet samples) and one of increasing values (for the amplitudes of the medium samples). We then lace these two lists, creating a single list that will interlace the two streams of quiet and medium notes. And then, in the <ic>\dur</ic> key of the <ic>Pbind</ic>, we multiply our list of durations by <ic>Pseq([0, 1], inf)</ic>, which means that the first note of every pair will have a duration of <ic>0</ic>, which means that two notes will always play simultaneously for each duration set by the first <ic>Pseq</ic> within <ic>\dur</ic>. We then list the notes that we want to play in <ic>\num</ic>, making sure to <ic>stutter()</ic> the list by <ic>2</ic> because each note will be played simultaneously twice.
@@ -543,7 +559,9 @@ var amplitudes = [decrease, increase].lace(n * 2);
 <p>
     I will leave you with one last <ic>Pbind</ic>, a variation on the one above where I demonstrated the ascending gradient of dynamics. Thanks for reading!
 </p>
-<supercollider>
+
+<div class="nomarginbottom">
+    <supercollider>
 (
 var n = 40;
 var r = -1 / n;
@@ -577,3 +595,8 @@ var amplitudes = [decrease, increase].lace(n * 2);
 ).play();
 )
 </supercollider>
+</div>
+
+<audiobox url="https://dl.dropboxusercontent.com/s/t0tp18kbabzi3nn/En%20La%2C%20loin%206.mp3">
+    Variation on arpeggios with gradually increasing dynamics.
+</audiobox>
