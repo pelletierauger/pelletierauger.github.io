@@ -722,8 +722,13 @@ function parseHTMLTemplate(s) {
 
     // Put a non-breaking space between any letter followed immediately by an exclamation point
     // or an interrogation mark. (There can also be a space between the letter and the punctuation.)
-    page.fr.content = page.fr.content.replace(/([a-zA-ZÀ-ú])(\s?)([\?\!])/g, function(a, b, c, d) {
-        return "" + b + "&nbsp;" + d;
+    page.fr.content = page.fr.content.replace(/([a-zA-ZÀ-ú]+)(\s?)([\?\!])/g, function(a, b, c, d) {
+        // console.log(b);
+        if (b == "watch") {
+            return b + c + d;
+        } else {
+            return "" + b + "&nbsp;" + d;
+        }
     });
     // page.fr.content = page.fr.content.replace(/([a-zA-ZÀ-ú])(\s)([:;])/g, function(a, b, c, d) {
     //     return "" + b + "&nbsp;" + d;
