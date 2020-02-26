@@ -1,0 +1,152 @@
+.audio-container {
+    width: 100%;
+    margin: 0 auto;
+    max-width: 650px;
+}
+
+.audio-box {
+    float: left;
+    width: 100%;
+    max-width: 650px;
+    min-height: 110px;
+    border: 1px solid #D7D7D7;
+    margin: 2rem auto;
+    box-sizing: border-box;
+    position: relative;
+    /*opacity: 0.5;*/
+    height: 100%;
+    -webkit-user-select: none;
+    /* Safari */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* IE10+/Edge */
+    user-select: none;
+    /* Standard */
+    font-size: 0.75em;
+    text-align: left;
+}
+
+.play-button-zone {
+    float: left;
+    /*display: inline-block;*/
+    width: 100px;
+    /*height: 100px;*/
+    height: 100%;
+    /*background-color: red;*/
+    opacity: 1;
+}
+
+.middle {
+    width: 100px;
+    height: 100px;
+    overflow: auto;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    float: left;
+}
+
+.play-button {
+    float: left;
+    width: 100px;
+    height: 100px;
+    opacity: 1;
+}
+
+.btn {
+    display: block;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    border: 1px solid #000;
+    background-color: #000;
+    margin: 19px 0 19px 28px;
+}
+
+.btn img {
+    width: 35px;
+    height: 35px;
+    margin: 13px 10px 10px 15px;
+}
+
+.info-and-controls {
+    float: left;
+    padding-left: 100px;
+    width: calc(100% - 100px);
+}
+
+.info {
+    float: left;
+    width: 100%;
+    padding: 1em 1em 1em 15px;
+    box-sizing: border-box;
+    min-height: 50px;
+    font-size: 1.3em;
+    line-height: 1.3em;
+}
+
+.controls {
+    float: left;
+    width: calc(100% - 2em);
+    display: inline-block;
+    box-sizing: border-box;
+    position: relative;
+    padding: 0 0 3em 0;
+    margin: 0 1em;
+    font-family: "EBG08-Re";
+}
+
+.progress-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 15px;
+    border: 1px solid #000;
+    opacity: 1;
+    box-sizing: border-box;
+    z-index: 3;
+}
+
+.progress-bar-bottom {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 15px;
+    background-color: #EAEAEA;
+    opacity: 1;
+    box-sizing: border-box;
+    z-index: 1;
+}
+
+.progress-bar-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 15px;
+    background-color: #000;
+    opacity: 1;
+    box-sizing: border-box;
+    z-index: 2;
+}
+
+.current-progress-text {
+    height: 15px;
+    width: 100%;
+    position: absolute;
+    top: 20px;
+    left: 0;
+}
+
+.track-duration-text {
+    height: 15px;
+    width: 100%;
+    text-align: right;
+    position: absolute;
+    top: 20px;
+    left: 0;
+}
