@@ -6,6 +6,15 @@
     <language>en-us</language>
     <atom:link href="https://pelletierauger.com/fr/blog/rss.xml" rel="self" type="application/rss+xml" />
         <item>
+            <title>Un piano pour SuperCollider</title>
+            <description>Code complet du projet et documentation.
+</description>
+            <pubDate>Wed, 26 Feb 2020 23:59:59 EST</pubDate>
+            <link>https://pelletierauger.com/fr/blog/2020/2/un-piano-pour-supercollider.html</link>
+            <guid isPermaLink="true">https://pelletierauger.com/fr/blog/2020/2/un-piano-pour-supercollider.html</guid>
+            <source url="https://pelletierauger.com/fr/blog/rss.xml">Guillaume Pelletier-Auger - Blog</source>
+        </item>
+        <item>
             <title>Ravines colorées</title>
             <description>Adaptation d&#x2019;un court métrage en pièce audiovisuelle.
 </description>
