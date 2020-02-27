@@ -12,6 +12,7 @@ function initAudioBoxes() {
         };
         box.totalDuration = b.querySelector(".track-duration-text");
         box.song = b.querySelector("audio");
+        box.song.load();
         box.playButton = b.querySelector(".btn");
         box.playButton.style.cursor = "pointer";
         box.loadIcon = new Image();
