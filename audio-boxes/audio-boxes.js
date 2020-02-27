@@ -16,7 +16,7 @@ function initAudioBoxes() {
         box.playButton = b.querySelector(".btn");
         box.playButton.style.cursor = "pointer";
         box.loadIcon = new Image();
-        box.loadIcon.src = "https://pelletierauger.com/style/audio-icons/load-icon.png";
+        box.loadIcon.src = "https://pelletierauger.com/style/audio-icons/loading-2.gif";
         box.playIcon = new Image();
         box.playIcon.src = "https://pelletierauger.com/style/audio-icons/play-icon.png";
         box.pauseIcon = new Image();
