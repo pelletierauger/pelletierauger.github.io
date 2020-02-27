@@ -273,6 +273,10 @@ article .date {
     text-indent: 0em;
 }
 
+.constrain-line * {
+    margin: -1em 0;
+}
+
 p {
     /*    -ms-word-break: break-all;
     word-break: break-all;
@@ -294,7 +298,7 @@ article img {
     max-width: 100%;
 }
 
-article ul.dash {
+article ul.dash, .blog-post ul.dash {
     display: block;
     margin: 0 auto;
     max-width: 650px;
@@ -306,10 +310,11 @@ article ul.dash {
     list-style-type: none;
     font-family: 'EBG12-Re', Garamond, Georgia, serif;
     box-sizing: border-box;
+    text-align: left;
     /*background-color: rgba(255, 0, 0, 0.1);*/
 }
 
-article ul.dash>li {
+article ul.dash>li, .blog-post ul.dash>li {
     padding-left: 0.75rem;
     /*display: block;*/
     /*background-color: rgba(0, 0, 255, 0.2);*/
@@ -367,6 +372,22 @@ canvas {
     text-align: center;
 }
 
+#rss-link {
+    /*font-family: 'EBG08-Re';*/
+    font-family: 'EBG12-SC';
+    font-size: 1.25em;
+    float: left;
+    display: inline-block;
+    vertical-align: middle;
+    height: 1rem;
+    line-height: 1rem;
+    width: 100%;
+    margin-top: 4rem;
+    /*font-size: 0.8em;*/
+    text-align: center;
+    text-transform: lowercase;
+}
+
 .swash {
     -moz-font-feature-settings: 'swsh';
     -webkit-font-feature-settings: 'swsh';
@@ -394,6 +415,14 @@ canvas {
     text-align: left;
 }
 
+.mathbox-clear-right {
+    /*display: block;*/
+    clear: right;
+    /*float: left;*/
+    max-width: 650px;
+    margin: 0 auto 0 auto;
+    text-align: left;
+}
 .Silentype {
     font-family: "Silentype", 'EBG12-Re';
     font-size: 0.9em;
@@ -456,4 +485,8 @@ img.full-size-image {
 .mjx-mfrac .mjx-charbox {
     font-family: "EBG08-Re";
     /*color: red;*/
+}
+
+.nomarginbottom pre {
+    margin: 2rem auto 0.5rem auto;
 }
