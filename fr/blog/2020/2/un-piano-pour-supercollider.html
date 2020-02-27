@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html><head>
+        <meta charset="UTF-8">
+        <title>Guillaume Pelletier-Auger - Un piano pour SuperCollider</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=4, user-scalable=yes"><script src="../../../../../audio-boxes/audio-boxes.js" type="text/javascript"></script>
+        
+        <link href="../../../../style/style.css" rel="stylesheet" type="text/css">
+        <link href="../../../../style/audio-box.css" rel="stylesheet" type="text/css">
+        
+        <link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700|EB+Garamond" rel="stylesheet">
+        <link href="../../../../style/code.css" rel="stylesheet" type="text/css">
+    <style id="MathJax_CHTML_styles">.mjx-chtml {display: inline-block; line-height: 0; text-indent: 0; text-align: left; text-transform: none; font-style: normal; font-weight: normal; font-size: 100%; font-size-adjust: none; letter-spacing: normal; word-wrap: normal; word-spacing: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0; min-height: 0; border: 0; margin: 0; padding: 1px 0}
+.MJXc-display {display: block; text-align: center; margin: 1em 0; padding: 0}
+.mjx-chtml[tabindex]:focus, body :focus .mjx-chtml[tabindex] {display: inline-table}
+.mjx-full-width {text-align: center; display: table-cell!important; width: 10000em}
+.mjx-math {display: inline-block; border-collapse: separate; border-spacing: 0}
+.mjx-math * {display: inline-block; -webkit-box-sizing: content-box!important; -moz-box-sizing: content-box!important; box-sizing: content-box!important; text-align: left}
+.mjx-numerator {display: block; text-align: center}
+.mjx-denominator {display: block; text-align: center}
+.MJXc-stacked {height: 0; position: relative}
+.MJXc-stacked > * {position: absolute}
+.MJXc-bevelled > * {display: inline-block}
+.mjx-stack {display: inline-block}
+.mjx-op {display: block}
+.mjx-under {display: table-cell}
+.mjx-over {display: block}
+.mjx-over > * {padding-left: 0px!important; padding-right: 0px!important}
+.mjx-under > * {padding-left: 0px!important; padding-right: 0px!important}
+.mjx-stack > .mjx-sup {display: block}
+.mjx-stack > .mjx-sub {display: block}
+.mjx-prestack > .mjx-presup {display: block}
+.mjx-prestack > .mjx-presub {display: block}
+.mjx-delim-h > .mjx-char {display: inline-block}
+.mjx-surd {vertical-align: top}
+.mjx-mphantom * {visibility: hidden}
+.mjx-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 2px 3px; font-style: normal; font-size: 90%}
+.mjx-annotation-xml {line-height: normal}
+.mjx-menclose > svg {fill: none; stroke: currentColor}
+.mjx-mtr {display: table-row}
+.mjx-mlabeledtr {display: table-row}
+.mjx-mtd {display: table-cell; text-align: center}
+.mjx-label {display: table-row}
+.mjx-box {display: inline-block}
+.mjx-block {display: block}
+.mjx-span {display: inline}
+.mjx-char {display: block; white-space: pre}
+.mjx-itable {display: inline-table; width: auto}
+.mjx-row {display: table-row}
+.mjx-cell {display: table-cell}
+.mjx-table {display: table; width: 100%}
+.mjx-line {display: block; height: 0}
+.mjx-strut {width: 0; padding-top: 1em}
+.mjx-vsize {width: 0}
+.MJXc-space1 {margin-left: .167em}
+.MJXc-space2 {margin-left: .222em}
+.MJXc-space3 {margin-left: .278em}
+.mjx-ex-box-test {position: absolute; width: 1px; height: 60ex}
+.mjx-line-box-test {display: table!important}
+.mjx-line-box-test span {display: table-cell!important; width: 10000em!important; min-width: 0; max-width: none; padding: 0; border: 0; margin: 0}
+.MJXc-TeX-unknown-R {font-family: monospace; font-style: normal; font-weight: normal}
+.MJXc-TeX-unknown-I {font-family: monospace; font-style: italic; font-weight: normal}
+.MJXc-TeX-unknown-B {font-family: monospace; font-style: normal; font-weight: bold}
+.MJXc-TeX-unknown-BI {font-family: monospace; font-style: italic; font-weight: bold}
+.MJXc-TeX-ams-R {font-family: MJXc-TeX-ams-R,MJXc-TeX-ams-Rw}
+.MJXc-TeX-cal-B {font-family: MJXc-TeX-cal-B,MJXc-TeX-cal-Bx,MJXc-TeX-cal-Bw}
+.MJXc-TeX-frak-R {font-family: MJXc-TeX-frak-R,MJXc-TeX-frak-Rw}
+.MJXc-TeX-frak-B {font-family: MJXc-TeX-frak-B,MJXc-TeX-frak-Bx,MJXc-TeX-frak-Bw}
+.MJXc-TeX-math-BI {font-family: MJXc-TeX-math-BI,MJXc-TeX-math-BIx,MJXc-TeX-math-BIw}
+.MJXc-TeX-sans-R {font-family: MJXc-TeX-sans-R,MJXc-TeX-sans-Rw}
+.MJXc-TeX-sans-B {font-family: MJXc-TeX-sans-B,MJXc-TeX-sans-Bx,MJXc-TeX-sans-Bw}
+.MJXc-TeX-sans-I {font-family: MJXc-TeX-sans-I,MJXc-TeX-sans-Ix,MJXc-TeX-sans-Iw}
+.MJXc-TeX-script-R {font-family: MJXc-TeX-script-R,MJXc-TeX-script-Rw}
+.MJXc-TeX-type-R {font-family: MJXc-TeX-type-R,MJXc-TeX-type-Rw}
+.MJXc-TeX-cal-R {font-family: MJXc-TeX-cal-R,MJXc-TeX-cal-Rw}
+.MJXc-TeX-main-B {font-family: MJXc-TeX-main-B,MJXc-TeX-main-Bx,MJXc-TeX-main-Bw}
+.MJXc-TeX-main-I {font-family: MJXc-TeX-main-I,MJXc-TeX-main-Ix,MJXc-TeX-main-Iw}
+.MJXc-TeX-main-R {font-family: MJXc-TeX-main-R,MJXc-TeX-main-Rw}
+.MJXc-TeX-math-I {font-family: MJXc-TeX-math-I,MJXc-TeX-math-Ix,MJXc-TeX-math-Iw}
+.MJXc-TeX-size1-R {font-family: MJXc-TeX-size1-R,MJXc-TeX-size1-Rw}
+.MJXc-TeX-size2-R {font-family: MJXc-TeX-size2-R,MJXc-TeX-size2-Rw}
+.MJXc-TeX-size3-R {font-family: MJXc-TeX-size3-R,MJXc-TeX-size3-Rw}
+.MJXc-TeX-size4-R {font-family: MJXc-TeX-size4-R,MJXc-TeX-size4-Rw}
+@font-face {font-family: MJXc-TeX-ams-R; src: local('MathJax_AMS'), local('MathJax_AMS-Regular')}
+@font-face {font-family: MJXc-TeX-ams-Rw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_AMS-Regular.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_AMS-Regular.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_AMS-Regular.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-cal-B; src: local('MathJax_Caligraphic Bold'), local('MathJax_Caligraphic-Bold')}
+@font-face {font-family: MJXc-TeX-cal-Bx; src: local('MathJax_Caligraphic'); font-weight: bold}
+@font-face {font-family: MJXc-TeX-cal-Bw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Caligraphic-Bold.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Caligraphic-Bold.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Caligraphic-Bold.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-frak-R; src: local('MathJax_Fraktur'), local('MathJax_Fraktur-Regular')}
+@font-face {font-family: MJXc-TeX-frak-Rw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Fraktur-Regular.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Fraktur-Regular.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Fraktur-Regular.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-frak-B; src: local('MathJax_Fraktur Bold'), local('MathJax_Fraktur-Bold')}
+@font-face {font-family: MJXc-TeX-frak-Bx; src: local('MathJax_Fraktur'); font-weight: bold}
+@font-face {font-family: MJXc-TeX-frak-Bw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Fraktur-Bold.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Fraktur-Bold.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Fraktur-Bold.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-math-BI; src: local('MathJax_Math BoldItalic'), local('MathJax_Math-BoldItalic')}
+@font-face {font-family: MJXc-TeX-math-BIx; src: local('MathJax_Math'); font-weight: bold; font-style: italic}
+@font-face {font-family: MJXc-TeX-math-BIw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Math-BoldItalic.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Math-BoldItalic.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Math-BoldItalic.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-sans-R; src: local('MathJax_SansSerif'), local('MathJax_SansSerif-Regular')}
+@font-face {font-family: MJXc-TeX-sans-Rw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_SansSerif-Regular.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_SansSerif-Regular.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_SansSerif-Regular.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-sans-B; src: local('MathJax_SansSerif Bold'), local('MathJax_SansSerif-Bold')}
+@font-face {font-family: MJXc-TeX-sans-Bx; src: local('MathJax_SansSerif'); font-weight: bold}
+@font-face {font-family: MJXc-TeX-sans-Bw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_SansSerif-Bold.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_SansSerif-Bold.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_SansSerif-Bold.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-sans-I; src: local('MathJax_SansSerif Italic'), local('MathJax_SansSerif-Italic')}
+@font-face {font-family: MJXc-TeX-sans-Ix; src: local('MathJax_SansSerif'); font-style: italic}
+@font-face {font-family: MJXc-TeX-sans-Iw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_SansSerif-Italic.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_SansSerif-Italic.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_SansSerif-Italic.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-script-R; src: local('MathJax_Script'), local('MathJax_Script-Regular')}
+@font-face {font-family: MJXc-TeX-script-Rw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Script-Regular.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Script-Regular.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Script-Regular.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-type-R; src: local('MathJax_Typewriter'), local('MathJax_Typewriter-Regular')}
+@font-face {font-family: MJXc-TeX-type-Rw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Typewriter-Regular.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Typewriter-Regular.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Typewriter-Regular.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-cal-R; src: local('MathJax_Caligraphic'), local('MathJax_Caligraphic-Regular')}
+@font-face {font-family: MJXc-TeX-cal-Rw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Caligraphic-Regular.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Caligraphic-Regular.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Caligraphic-Regular.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-main-B; src: local('MathJax_Main Bold'), local('MathJax_Main-Bold')}
+@font-face {font-family: MJXc-TeX-main-Bx; src: local('MathJax_Main'); font-weight: bold}
+@font-face {font-family: MJXc-TeX-main-Bw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Main-Bold.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Main-Bold.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Main-Bold.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-main-I; src: local('MathJax_Main Italic'), local('MathJax_Main-Italic')}
+@font-face {font-family: MJXc-TeX-main-Ix; src: local('MathJax_Main'); font-style: italic}
+@font-face {font-family: MJXc-TeX-main-Iw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Main-Italic.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Main-Italic.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Main-Italic.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-main-R; src: local('MathJax_Main'), local('MathJax_Main-Regular')}
+@font-face {font-family: MJXc-TeX-main-Rw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Main-Regular.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Main-Regular.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Main-Regular.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-math-I; src: local('MathJax_Math Italic'), local('MathJax_Math-Italic')}
+@font-face {font-family: MJXc-TeX-math-Ix; src: local('MathJax_Math'); font-style: italic}
+@font-face {font-family: MJXc-TeX-math-Iw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Math-Italic.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Math-Italic.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Math-Italic.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-size1-R; src: local('MathJax_Size1'), local('MathJax_Size1-Regular')}
+@font-face {font-family: MJXc-TeX-size1-Rw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Size1-Regular.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Size1-Regular.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Size1-Regular.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-size2-R; src: local('MathJax_Size2'), local('MathJax_Size2-Regular')}
+@font-face {font-family: MJXc-TeX-size2-Rw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Size2-Regular.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Size2-Regular.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Size2-Regular.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-size3-R; src: local('MathJax_Size3'), local('MathJax_Size3-Regular')}
+@font-face {font-family: MJXc-TeX-size3-Rw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Size3-Regular.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Size3-Regular.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Size3-Regular.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-size4-R; src: local('MathJax_Size4'), local('MathJax_Size4-Regular')}
+@font-face {font-family: MJXc-TeX-size4-Rw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Size4-Regular.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Size4-Regular.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Size4-Regular.otf') format('opentype')}
+</style></head><body>
+    <nav>
+        <h1><a href="../../../../fr/">Guillaume <span class="nobreak">Pelletier-Auger</span></a></h1>
+        <ul>
+            <li><a href="../../../../fr/">Projets</a></li>
+            <li class="selected"><a href="../../../../fr/blog/">Blog</a></li>
+            <li><a href="../../../../fr/a-propos.html">À propos</a></li>
+            <li><a href="../../../../en/blog/2020/2/a-piano-for-supercollider.html">Fr → En</a></li>
+        </ul>
+    </nav>
+    
+            <article>
+                <h2 class="with-date">Un piano <span class="italic8"><span class="small-title">pour</span></span> SuperCollider
+</h2><div class="description">
+                    Code complet du projet et documentation.
+
+            </div>
+                <div class="date">26 février 2020</div>
+                
+
+<p class="noindent">
+    <span class="small-caps">L’hiver dernier</span>, j’ai commencé à construire un échantillonneur de piano acoustique dans SuperCollider. Les premières versions du projet avaient plusieurs problèmes de fonctionnement et ma connaissance limitée de <span class="inline-code">sclang</span> me rendait la tâche assez ardue. J’ai depuis beaucoup joué avec l’échantillonneur et j’en ai amélioré le code au fil du temps. Je compte encore y travailler sporadiquement mais je me suis dit qu’il était déjà dans un état <span class="italic">présentable</span> et qu’il pourrait peut-être servir aux intéressé·e·s. Alors le voici.
+</p>
+
+<div class="audio-container"><div class="audio-box">
+    <audio>
+        <source src="https://dl.dropboxusercontent.com/s/r0dgzkneillu7hm/simple-piano-pattern.mp3">
+    </audio>
+    <div class="middle">
+        <div class="play-button-zone">
+            <div class="play-button">
+                <div class="btn">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="info-and-controls">
+        <div class="info">
+        
+    Une très simple démonstration de l’échantillonneur avec deux motifs créés avec <span class="inline-code">Pbind</span>.
+</div>
+        <div class="controls">
+            <div class="progress-bar">
+            </div>
+            <div class="progress-bar-overlay">
+            </div>
+            <div class="progress-bar-bottom">
+            </div>
+            <div class="current-progress-text">0:00
+            </div>
+            <div class="track-duration-text">9:00
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<p class="noindent">
+    L’instrument utilise <a href="https://freesound.org/people/Samulis/packs/21055/">une collection <span class="nobreak">d’échantillons</span></a>
+        <label for="etude" class="margin-toggle sidenote-number">
+        </label>
+        <input type="checkbox" id="etude" class="margin-toggle">
+        <span class="sidenote-left">J’avais utilisé ces mêmes échantillons pour la trame sonore de mon court métrage <a href="https://www.youtube.com/watch?v=sOEmaJY6h6M"><span class="italic8">Étude pour automates cellulaires no. 2</span></a>. J’avais composé ce morceau avec Ableton Live parce que je ne connaissais pas SuperCollider à ce moment-là. Le morceau n’utilise d’ailleurs qu’un ou deux échantillons différents parce que j’avais constaté que la construction d’un bon échantillonneur avec Ableton Live était <span class="italic8">grosso modo</span> un cauchemar. J’ai plus tard réutilisé ces échantillons de piano dans <a href="https://www.youtube.com/watch?v=COeC7UdIBn8">cette expérience de programmation en direct</a> qui est un de mes premiers projets réalisés avec SuperCollider.</span>qui est dans le domaine public et que vous pouvez télécharger sur <a href="https://freesound.org/">freesound.org</a>. Il vous faudra vous créer un compte pour faire le téléchargement, mais la création d’un compte ainsi que les téléchargements sont gratuits. Il s’agit d’un excellent site Web que je recommande fortement.
+</p>
+<p>
+    Vous trouverez ci-dessous la totalité du code de l’échantillonneur ainsi que deux exemples de <span class="inline-code">Pbind</span> servant à faire une courte démonstration de l’instrument. Il s’agit d’un <span class="small-caps">logiciel libre</span> distribué avec une <a href="http://www.apache.org/licenses/LICENSE-2.0.txt">licence Apache <span class="lnum">2.0</span></a>. Vous pouvez aussi <a href="https://github.com/pelletierauger/SuperCollider-Piano">consulter ce code sur GitHub</a>.
+</p>
+
+<div class="codebox"><pre><code class="supercollider"><span class="hljs-comment">// Run this block of code once the server is booted.</span>
+<span class="hljs-comment">//&nbsp;You also need to make sure that the packLocation variable</span>
+<span class="hljs-comment">// is set to the actual location of the downloaded sample pack.</span>
+
+(
+<span class="hljs-keyword">var</span> pianoSamples, pianoFolder, makeLookUp, indices, pitches, dynAmnt, maxDyn, maxNote,
+packLocation<span class="hljs-punctuation"> = </span><span class="hljs-string">"/21055__samulis__vsco-2-ce-keys-upright-piano/"</span>,
+quiet<span class="hljs-punctuation"> = </span><span class="hljs-literal">false</span>;
+
+dynAmnt<span class="hljs-punctuation"> = </span>if (quiet, {<span class="hljs-number">2</span>}, {<span class="hljs-number">3</span>});
+maxDyn<span class="hljs-punctuation"> = </span>if (quiet, {<span class="hljs-number">1</span>}, {<span class="hljs-number">2</span>});
+maxNote<span class="hljs-punctuation"> = </span>if (quiet, {<span class="hljs-number">46</span>}, {<span class="hljs-number">1e2</span>});
+pianoSamples<span class="hljs-punctuation"> = </span><span class="hljs-built_in">Array</span><span class="hljs-punctuation">.</span>new;
+pianoFolder<span class="hljs-punctuation"> = </span><span class="hljs-built_in">PathName</span><span class="hljs-punctuation">.</span>new(packLocation);
+pianoFolder<span class="hljs-punctuation">.</span>entries<span class="hljs-punctuation">.</span>do({
+    |path, i|
+    if (i<span class="hljs-punctuation"> &lt; </span>maxNote, {
+        pianoSamples<span class="hljs-punctuation"> = </span>pianoSamples<span class="hljs-punctuation">.</span>add(<span class="hljs-built_in">Buffer</span><span class="hljs-punctuation">.</span>read(s, path<span class="hljs-punctuation">.</span>fullPath));
+    });
+});
+
+makeLookUp<span class="hljs-punctuation"> = </span>{
+    |note, dynamic|
+    <span class="hljs-keyword">var</span> octave<span class="hljs-punctuation"> = </span>floor(note<span class="hljs-punctuation"> / </span><span class="hljs-number">12</span>)<span class="hljs-punctuation"> - </span><span class="hljs-number">2</span>;
+    <span class="hljs-keyword">var</span> degree<span class="hljs-punctuation"> = </span>note <span class="hljs-punctuation">%</span> <span class="hljs-number">12</span>;
+    <span class="hljs-keyword">var</span> sampledNote<span class="hljs-punctuation"> = </span>[<span class="hljs-number">1</span>,  <span class="hljs-number">1</span>,  <span class="hljs-number">1</span>,  <span class="hljs-number">1</span>,  <span class="hljs-number">2</span>,  <span class="hljs-number">2</span>,  <span class="hljs-number">2</span>,  <span class="hljs-number">3</span>,  <span class="hljs-number">3</span>,  <span class="hljs-number">3</span>,  <span class="hljs-number">3</span>,  <span class="hljs-number">3</span>];
+    <span class="hljs-keyword">var</span> noteDeltas<span class="hljs-punctuation"> = </span>[<span class="hljs-number">-1</span>, <span class="hljs-number">0</span>,  <span class="hljs-number">1</span>,  <span class="hljs-number">2</span>, <span class="hljs-number">-1</span>,  <span class="hljs-number">0</span>,  <span class="hljs-number">1</span>, <span class="hljs-number">-2</span>, <span class="hljs-number">-1</span>,  <span class="hljs-number">0</span>,  <span class="hljs-number">1</span>,  <span class="hljs-number">2</span>];
+    <span class="hljs-keyword">var</span> dynamicOffset<span class="hljs-punctuation"> = </span>dynamic<span class="hljs-punctuation"> * </span><span class="hljs-number">23</span>;
+    <span class="hljs-keyword">var</span> sampleToGet<span class="hljs-punctuation"> = </span>octave<span class="hljs-punctuation"> * </span><span class="hljs-number">3</span><span class="hljs-punctuation"> + </span>sampledNote[degree]<span class="hljs-punctuation"> + </span>dynamicOffset;
+    <span class="hljs-keyword">var</span> pitch<span class="hljs-punctuation"> = </span>noteDeltas[degree];
+    [sampleToGet, pitch];
+};
+indices<span class="hljs-punctuation"> = </span>dynAmnt<span class="hljs-punctuation">.</span>collect({|j| (<span class="hljs-number">20.</span><span class="hljs-number">.110</span>).collect({|i| makeLookUp.(i, j)[<span class="hljs-number">0</span>]})}).flat;
+pitches<span class="hljs-punctuation"> = </span>dynAmnt<span class="hljs-punctuation">.</span>collect({|j| (<span class="hljs-number">20.</span><span class="hljs-number">.110</span>).collect({|i| makeLookUp.(i, j)[<span class="hljs-number">1</span>]})}).flat;
+
+<span class="hljs-built_in">Event</span><span class="hljs-punctuation">.</span>addEventType(\pianoEvent, {
+    <span class="hljs-keyword">var</span> index;
+    if (~num<span class="hljs-punctuation">.</span>isNil, {~num<span class="hljs-punctuation"> = </span><span class="hljs-number">60</span>}, {~num<span class="hljs-punctuation"> = </span>min(max(<span class="hljs-number">20</span>, ~num), <span class="hljs-number">110</span>)});
+    if (~dyn<span class="hljs-punctuation">.</span>isNil, {~dyn<span class="hljs-punctuation"> = </span><span class="hljs-number">0</span>}, {~dyn<span class="hljs-punctuation"> = </span>floor(min(max(<span class="hljs-number">0</span>, ~dyn), maxDyn))});
+    index<span class="hljs-punctuation"> = </span>floor(~num)<span class="hljs-punctuation"> - </span><span class="hljs-number">20</span><span class="hljs-punctuation"> + </span>(~dyn<span class="hljs-punctuation"> * </span><span class="hljs-number">91</span>);
+    ~buf<span class="hljs-punctuation"> = </span>pianoSamples[indices[index]];
+    ~rate<span class="hljs-punctuation"> = </span>(pitches[index]<span class="hljs-punctuation"> + </span>frac(~num)).midiratio;
+    ~instrument<span class="hljs-punctuation"> = </span>\pianoSynth;
+    ~type<span class="hljs-punctuation"> = </span>\note;
+    currentEnvironment<span class="hljs-punctuation">.</span>play;
+});
+
+<span class="hljs-built_in">SynthDef</span>(\pianoSynth, {
+    <span class="hljs-keyword">arg</span> buf<span class="hljs-punctuation"> = </span>pianoSamples[<span class="hljs-number">0</span>], rate<span class="hljs-punctuation"> = </span><span class="hljs-number">1</span>, spos<span class="hljs-punctuation"> = </span><span class="hljs-number">0</span>, pan<span class="hljs-punctuation"> = </span><span class="hljs-number">0</span>, amp<span class="hljs-punctuation"> = </span><span class="hljs-number">1</span>, out<span class="hljs-punctuation"> = </span><span class="hljs-number">0</span>, atk<span class="hljs-punctuation"> = </span><span class="hljs-number">0</span>, sus<span class="hljs-punctuation"> = </span><span class="hljs-number">0</span>, rel<span class="hljs-punctuation"> = </span><span class="hljs-number">8</span>;
+    <span class="hljs-keyword">var</span> sig, env;
+    env<span class="hljs-punctuation"> = </span><span class="hljs-built_in">EnvGen</span><span class="hljs-punctuation">.</span>kr(<span class="hljs-built_in">Env</span><span class="hljs-punctuation">.</span>new([<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>], [atk, sus, rel]), doneAction: <span class="hljs-number">2</span>);
+    sig<span class="hljs-punctuation"> = </span><span class="hljs-built_in">PlayBuf</span><span class="hljs-punctuation">.</span>ar(<span class="hljs-number">2</span>, buf, rate<span class="hljs-punctuation"> * </span><span class="hljs-built_in">BufRateScale</span><span class="hljs-punctuation">.</span>ir(buf), startPos: spos, doneAction: <span class="hljs-number">2</span>);
+    sig<span class="hljs-punctuation"> = </span>sig<span class="hljs-punctuation"> * </span>amp<span class="hljs-punctuation"> * </span><span class="hljs-number">18</span><span class="hljs-punctuation"> * </span>env;
+    sig<span class="hljs-punctuation"> = </span><span class="hljs-built_in">Balance2</span><span class="hljs-punctuation">.</span>ar(sig[<span class="hljs-number">0</span>], sig[<span class="hljs-number">1</span>], pan, <span class="hljs-number">1</span>);
+    <span class="hljs-built_in">Out</span><span class="hljs-punctuation">.</span>ar(out, sig);
+}).add;
+)
+
+<span class="hljs-comment">// Below are examples of patterns that show how to use the instrument.</span>
+<span class="hljs-comment">// I recommend running both patterns at the same time,</span>
+<span class="hljs-comment">// they are made to complement each other.</span>
+
+(
+<span class="hljs-keyword">var</span> key<span class="hljs-punctuation"> = </span><span class="hljs-number">62</span>;
+<span class="hljs-keyword">var</span> notes<span class="hljs-punctuation"> = </span>key<span class="hljs-punctuation"> + </span>([<span class="hljs-number">0</span>, <span class="hljs-number">3</span>, <span class="hljs-number">7</span>, <span class="hljs-number">10</span>] <span class="hljs-punctuation">++</span> [<span class="hljs-number">-5</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">9</span>]);
+~pianoRiff<span class="hljs-punctuation">.</span>stop;
+~pianoRiff<span class="hljs-punctuation"> = </span><span class="hljs-built_in">Pbind</span>(
+    \type, \pianoEvent,
+    \dur, <span class="hljs-built_in">Pseq</span>(<span class="hljs-number">0.5</span><span class="hljs-punctuation">!</span><span class="hljs-number">1</span> <span class="hljs-punctuation">++</span> (<span class="hljs-number">0.25</span><span class="hljs-punctuation">!</span><span class="hljs-number">3</span>), inf),
+    \num, <span class="hljs-built_in">Pseq</span>(notes, inf),
+    \dyn, <span class="hljs-built_in">Pseq</span>([<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>], inf),
+    \amp, <span class="hljs-built_in">Pseq</span>([<span class="hljs-number">0.5</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">0.5</span>], inf),
+    \pan, <span class="hljs-built_in">Pwhite</span>(<span class="hljs-number">-0.75</span>, <span class="hljs-number">0.75</span>, inf),
+    \rel, <span class="hljs-number">4</span>
+).play(quant: [<span class="hljs-number">2</span>]);
+)
+
+(
+<span class="hljs-keyword">var</span> key<span class="hljs-punctuation"> = </span><span class="hljs-number">62</span><span class="hljs-punctuation"> + </span><span class="hljs-number">36</span>;
+<span class="hljs-keyword">var</span> notes<span class="hljs-punctuation"> = </span>key<span class="hljs-punctuation"> + </span>[<span class="hljs-number">2</span>, <span class="hljs-number">-5</span>, <span class="hljs-number">0</span>, <span class="hljs-number">-2</span>];
+~pianoRiff2<span class="hljs-punctuation">.</span>stop;
+~pianoRiff2<span class="hljs-punctuation"> = </span><span class="hljs-built_in">Pbind</span>(
+    \type, \pianoEvent,
+    \dur, <span class="hljs-built_in">Pseq</span>([<span class="hljs-number">0.25</span>, <span class="hljs-number">1.75</span>], inf),
+    \num, <span class="hljs-built_in">Pseq</span>(notes, inf),
+    \dyn, <span class="hljs-built_in">Pseq</span>([<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>], inf),
+    \amp, <span class="hljs-built_in">Pseq</span>([<span class="hljs-number">0.5</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0.5</span>], inf),
+    \pan, <span class="hljs-built_in">Pwhite</span>(<span class="hljs-number">-0.75</span>, <span class="hljs-number">0.75</span>, inf),
+    \rel, <span class="hljs-number">4</span>
+).play(quant: [<span class="hljs-number">2</span>]);
+)
+
+(
+~pianoRiff<span class="hljs-punctuation">.</span>stop;
+~pianoRiff2<span class="hljs-punctuation">.</span>stop;
+)</code></pre></div>
+
+<h3>Utilisation de l’échantillonneur</h3>
+
+<p class="noindent">
+    <span class="small-caps">La plupart des utilisateurs</span> de SuperCollider pourront probablement faire usage de l’échantillonneur sans difficulté, mais j’ai pensé qu’il pourrait tout de même être utile de rédiger quelques instructions, particulièrement pour les débutants à qui les projets bien documentés peuvent beaucoup servir. Il s’agit aussi d’une opportunité de parler des multiples décisions prises lors de la création de l’instrument, et des divers moyens par lesquels il pourrait encore être amélioré.
+</p>
+<!-- read-more -->
+<p>
+    Mon but premier avec ce projet était de jouer du piano avec des séquences générées avec <span class="inline-code">Pbind</span>, et de pouvoir écrire ces séquences avec une syntaxe qui ne soit pas obstruée par le mécanisme interne de l’instrument. Voici un <span class="inline-code">Pbind</span> qui utilise toutes les fonctionnalités de l’échantillonneur&nbsp;:
+</p>
+
+<div class="codebox"><pre><code class="supercollider">(
+<span class="hljs-keyword">var</span> key<span class="hljs-punctuation"> = </span><span class="hljs-number">62</span>;
+<span class="hljs-keyword">var</span> notes<span class="hljs-punctuation"> = </span>key<span class="hljs-punctuation"> + </span>([<span class="hljs-number">0</span>, <span class="hljs-number">3</span>, <span class="hljs-number">7</span>, <span class="hljs-number">10</span>] <span class="hljs-punctuation">++</span> [<span class="hljs-number">-5</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">9</span>]);
+~pianoRiff<span class="hljs-punctuation">.</span>stop;
+~pianoRiff<span class="hljs-punctuation"> = </span><span class="hljs-built_in">Pbind</span>(
+    \type, \pianoEvent,
+    \dur, <span class="hljs-built_in">Pseq</span>(<span class="hljs-number">0.5</span><span class="hljs-punctuation">!</span><span class="hljs-number">1</span> <span class="hljs-punctuation">++</span> (<span class="hljs-number">0.25</span><span class="hljs-punctuation">!</span><span class="hljs-number">3</span>), inf),
+    \num, <span class="hljs-built_in">Pseq</span>(notes, inf),
+    \dyn, <span class="hljs-built_in">Pseq</span>([<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>], inf),
+    \amp, <span class="hljs-built_in">Pseq</span>([<span class="hljs-number">0.5</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">0.5</span>], inf),
+    \pan, <span class="hljs-built_in">Pwhite</span>(<span class="hljs-number">-0.75</span>, <span class="hljs-number">0.75</span>, inf),
+    \rel, <span class="hljs-number">4</span>
+).play(quant: [<span class="hljs-number">2</span>]);
+)</code></pre></div>
+
+<p class="noindent">
+    L’instrument se joue à l’aide d’un type d’évènement nommé <span class="inline-code">\pianoEvent</span>. Cet évènement gère toute les opérations logiques nécessaires à l’instrument et garde tout cela hors du <span class="inline-code">Pbind</span>. Les notes que vous voulez jouer doivent être définies avec la valeur <span class="nobreak"><span class="inline-code">\num</span>.
+        <label for="num" class="margin-toggle sidenote-number">
+        </label></span>
+        <input type="checkbox" id="num" class="margin-toggle">
+        <span class="sidenote">Je voulais utiliser la valeur <span class="inline-code8">\note</span>, pour que la nomenclature soit plus claire, mais <span class="inline-code8">Pbind</span> semble avoir une fonctionnalité interne particulière pour cette valeur.</span> Les notes peuvent aller de <span class="inline-code">20</span> à <span class="inline-code">110</span>. Il s’agit de valeurs <span class="small-caps">midi</span> standards, <span class="inline-code">20</span> étant un <span class="lnum">sol#-1</span> et <span class="inline-code">110</span> étant un ré8. L’instrument possède aussi quelques “mesures de sécurité”, ainsi si vous demandez une note inférieure à <span class="inline-code">20</span> ou supérieure à <span class="inline-code">110</span>, la note disponible la plus près sera plutôt jouée (donc <span class="inline-code">20</span> ou <span class="inline-code">110</span>). Les notes négatives seront transformées en la note <span class="inline-code">20</span>. Détail intéressant, si vous demandez une note qui n’est pas un nombre entier, tel que <span class="inline-code">50.5</span>, l’instrument jouera une note entre <span class="inline-code">50</span> et <span class="inline-code">51</span>. Toute valeur fractionnelle fonctionne, ce qui permet d’utiliser cet instrument pour faire de la musique microtonale.
+</p>
+<p>
+    Chaque note dans la collection d’échantillons existe en trois différents niveaux de dynamique&nbsp;: doux, moyen et fort. La dynamique d’une note est définie par la valeur <span class="inline-code">\dyn</span> dans le <span class="inline-code">Pbind</span>. <span class="inline-code">\dyn</span> peut être <span class="inline-code">0</span>, <span class="inline-code">1</span> ou <span class="inline-code">2</span>. Les mesures de sécurité arrondissent la valeur <span class="inline-code">\dyn</span> au nombre entier le plus bas, ainsi une valeur de <span class="inline-code">0.9</span> devient <span class="inline-code">0</span>. Une valeur supérieure à <span class="inline-code">2</span> devient <span class="inline-code">2</span>, et une valeur négative devient <span class="inline-code">0</span>. Un <span class="inline-code">Pbind</span> qui n’inclut aucune définition pour la valeur <span class="inline-code">\dyn</span> jouera des notes avec une dynamique de <span class="inline-code">0</span>.
+</p>
+<p>
+    La valeur <span class="inline-code">\amp</span> dans le <span class="inline-code">Pbind</span> est simplement multipliée à l’amplitude des notes jouées. Elle n’a aucun effet sur la dynamique des notes. L’instrument a aussi d’autres valeurs optionnelles&nbsp;: <span class="inline-code">atk</span>, <span class="inline-code">sus</span> et <span class="inline-code">rel</span>, pour <span class="italic">attack</span>, <span class="italic">sustain</span> et <span class="italic">release</span>. Ces valeurs peuvent être utiles surtout parce que les échantillons ont une quantité non négligeable de bruit de fond, alors il peut être intéressant de diminuer la durée de jeu des notes afin de diminuer la quantité de bruit de fond qui s’accumule rapidement lorsque beaucoup de notes sont jouées simultanément.
+</p>
+
+<h3>Le mode <span class="inline-code">quiet</span></h3>
+
+<p class="noindent">
+    <span class="small-caps">Dans les premières lignes</span> du code de l’instrument, on peut lire ceci&nbsp;: <span class="inline-code">quiet = false</span>. Si vous changez cette valeur pour <span class="inline-code">true</span> avant d’évaluer le code, les échantillons les plus forts ne seront pas mis en mémoire et ne seront donc pas disponibles. J’ai écrit cette option parce que je n’utilise personnellement jamais ces échantillons. J’écris surtout de la musique assez calme et je ne me sers jamais de sons très lourds ou intenses, alors charger ces échantillons serait pour moi un gaspillage de mémoire (un gaspillage assez petit, mais un gaspillage tout de même). Dans ce mode <span class="inline-code">quiet</span>, une valeur <span class="inline-code">\dyn</span> au-dessus de <span class="inline-code">1</span> dans un <span class="inline-code">Pbind</span> sera transformée en <span class="inline-code">1</span>, parce que les échantillons avec une dynamique de <span class="inline-code">2</span> ne seront pas disponibles.
+</p>
+
+<h3>Fonctionnement du programme</h3>
+
+<p class="noindent">
+    <span class="small-caps">La collection d’échantillons</span> contient trois notes enregistrées pour chaque octave&nbsp;: do#, fa et la. Le <span class="italic">modus operandi</span> du programme consiste à prendre la note qu’on lui demande de jouer et à trouver l’enregistrement qui en est le plus près. Ensuite, si l’enregistrement trouvé par le programme n’est pas la note exacte dont l’utilisateur a fait la demande, le programme devra jouer cet enregistrement à une vitesse différente afin de produire la note voulue. Par exemple, si vous demandez un do, le programme jouera l’enregistremnt du do# à une vitesse de <span class="constrain-line"><span id="MathJax-Element-1-Frame" class="mjx-chtml"><span id="MJXc-Node-443" class="mjx-math"><span id="MJXc-Node-444" class="mjx-mrow"><span id="MJXc-Node-445" class="mjx-texatom"><span id="MJXc-Node-446" class="mjx-mrow"><span id="MJXc-Node-447" class="mjx-mo"><span class="mjx-char MJXc-TeX-size1-R" style="padding-top: 0.593em; padding-bottom: 0.593em;">(</span></span></span></span><span id="MJXc-Node-448" class="mjx-msubsup"><span class="mjx-base"><span id="MJXc-Node-449" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">2</span></span></span><span class="mjx-sup" style="font-size: 70.7%; vertical-align: 0.591em; padding-left: 0px; padding-right: 0.071em;"><span id="MJXc-Node-450" class="mjx-texatom" style=""><span id="MJXc-Node-451" class="mjx-mrow"><span id="MJXc-Node-452" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">1</span></span><span id="MJXc-Node-453" class="mjx-texatom"><span id="MJXc-Node-454" class="mjx-mrow"><span id="MJXc-Node-455" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.446em; padding-bottom: 0.593em;">/</span></span></span></span><span id="MJXc-Node-456" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">12</span></span></span></span></span></span><span id="MJXc-Node-457" class="mjx-msubsup"><span class="mjx-base"><span id="MJXc-Node-458" class="mjx-texatom"><span id="MJXc-Node-459" class="mjx-mrow"><span id="MJXc-Node-460" class="mjx-mo"><span class="mjx-char MJXc-TeX-size1-R" style="padding-top: 0.593em; padding-bottom: 0.593em;">)</span></span></span></span></span><span class="mjx-sup" style="font-size: 70.7%; vertical-align: 0.851em; padding-left: 0px; padding-right: 0.071em;"><span id="MJXc-Node-461" class="mjx-texatom" style=""><span id="MJXc-Node-462" class="mjx-mrow"><span id="MJXc-Node-463" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.298em; padding-bottom: 0.446em;">−</span></span><span id="MJXc-Node-464" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">1</span></span></span></span></span></span></span></span></span></span> puisque la note voulue est à une distance de <span id="MathJax-Element-2-Frame" class="mjx-chtml"><span id="MJXc-Node-465" class="mjx-math"><span id="MJXc-Node-466" class="mjx-mrow"><span id="MJXc-Node-467" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.298em; padding-bottom: 0.446em;">−</span></span><span id="MJXc-Node-468" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">1</span></span></span></span></span> de la note <span class="nobreak">enregistrée.
+        <label for="temperament" class="margin-toggle sidenote-number">
+        </label></span>
+        <input type="checkbox" id="temperament" class="margin-toggle">
+        <span class="sidenote-left"> Ce bout de mathématique provient de la construction de la <a href="https://fr.wikipedia.org/wiki/Gamme_temp%C3%A9r%C3%A9e">gamme tempérée</a>.</span> Similairement, toute distance <span id="MathJax-Element-3-Frame" class="mjx-chtml"><span id="MJXc-Node-469" class="mjx-math"><span id="MJXc-Node-470" class="mjx-mrow"><span id="MJXc-Node-471" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.298em;">n</span></span></span></span></span> entre la note voulue et la note enregistrée qui en est le plus près résultera en un jeu de la note enregistrée à une vitesse de <span class="constrain-line"><span id="MathJax-Element-4-Frame" class="mjx-chtml"><span id="MJXc-Node-472" class="mjx-math"><span id="MJXc-Node-473" class="mjx-mrow"><span id="MJXc-Node-474" class="mjx-texatom"><span id="MJXc-Node-475" class="mjx-mrow"><span id="MJXc-Node-476" class="mjx-mo"><span class="mjx-char MJXc-TeX-size1-R" style="padding-top: 0.593em; padding-bottom: 0.593em;">(</span></span></span></span><span id="MJXc-Node-477" class="mjx-msubsup"><span class="mjx-base"><span id="MJXc-Node-478" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">2</span></span></span><span class="mjx-sup" style="font-size: 70.7%; vertical-align: 0.591em; padding-left: 0px; padding-right: 0.071em;"><span id="MJXc-Node-479" class="mjx-texatom" style=""><span id="MJXc-Node-480" class="mjx-mrow"><span id="MJXc-Node-481" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">1</span></span><span id="MJXc-Node-482" class="mjx-texatom"><span id="MJXc-Node-483" class="mjx-mrow"><span id="MJXc-Node-484" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.446em; padding-bottom: 0.593em;">/</span></span></span></span><span id="MJXc-Node-485" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">12</span></span></span></span></span></span><span id="MJXc-Node-486" class="mjx-msubsup"><span class="mjx-base"><span id="MJXc-Node-487" class="mjx-texatom"><span id="MJXc-Node-488" class="mjx-mrow"><span id="MJXc-Node-489" class="mjx-mo"><span class="mjx-char MJXc-TeX-size1-R" style="padding-top: 0.593em; padding-bottom: 0.593em;">)</span></span></span></span></span><span class="mjx-sup" style="font-size: 70.7%; vertical-align: 0.851em; padding-left: 0px; padding-right: 0.071em;"><span id="MJXc-Node-490" class="mjx-texatom" style=""><span id="MJXc-Node-491" class="mjx-mrow"><span id="MJXc-Node-492" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.298em;">n</span></span></span></span></span></span></span></span></span></span>.
+</p>
+<p>
+    Dans le bout de code ci-dessous, on peut voir comment chaque octave est construit, en partant de la note do. Dans la variable <span class="inline-code">sampledNote</span>, nous définissons quel échantillon sera utilisé pour chaque degrée de l’octave&nbsp;: do# est représenté par le nombre <span class="inline-code">1</span>, fa par le nombre <span class="inline-code">2</span> et la par le nombre <span class="inline-code">3</span>. Dans la variable <span class="inline-code">noteDeltas</span>, nous définissions la distance (ou l’intervalle) entre la note voulue et la note enregistrée qui est en le plus près. Il est donc logique d’observer que pour les notes do#, fa et la, la valeur associée dans <span class="inline-code">noteDeltas</span> est <span class="inline-code">0</span>. Et puisque <span class="constrain-line"><span id="MathJax-Element-5-Frame" class="mjx-chtml"><span id="MJXc-Node-493" class="mjx-math"><span id="MJXc-Node-494" class="mjx-mrow"><span id="MJXc-Node-495" class="mjx-texatom"><span id="MJXc-Node-496" class="mjx-mrow"><span id="MJXc-Node-497" class="mjx-mo"><span class="mjx-char MJXc-TeX-size1-R" style="padding-top: 0.593em; padding-bottom: 0.593em;">(</span></span></span></span><span id="MJXc-Node-498" class="mjx-msubsup"><span class="mjx-base"><span id="MJXc-Node-499" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">2</span></span></span><span class="mjx-sup" style="font-size: 70.7%; vertical-align: 0.591em; padding-left: 0px; padding-right: 0.071em;"><span id="MJXc-Node-500" class="mjx-texatom" style=""><span id="MJXc-Node-501" class="mjx-mrow"><span id="MJXc-Node-502" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">1</span></span><span id="MJXc-Node-503" class="mjx-texatom"><span id="MJXc-Node-504" class="mjx-mrow"><span id="MJXc-Node-505" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.446em; padding-bottom: 0.593em;">/</span></span></span></span><span id="MJXc-Node-506" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">12</span></span></span></span></span></span><span id="MJXc-Node-507" class="mjx-msubsup"><span class="mjx-base"><span id="MJXc-Node-508" class="mjx-texatom"><span id="MJXc-Node-509" class="mjx-mrow"><span id="MJXc-Node-510" class="mjx-mo"><span class="mjx-char MJXc-TeX-size1-R" style="padding-top: 0.593em; padding-bottom: 0.593em;">)</span></span></span></span></span><span class="mjx-sup" style="font-size: 70.7%; vertical-align: 0.851em; padding-left: 0px; padding-right: 0.071em;"><span id="MJXc-Node-511" class="mjx-texatom" style=""><span id="MJXc-Node-512" class="mjx-mrow"><span id="MJXc-Node-513" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">0</span></span></span></span></span></span><span id="MJXc-Node-514" class="mjx-mo MJXc-space3"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.077em; padding-bottom: 0.298em;">=</span></span><span id="MJXc-Node-515" class="mjx-mn MJXc-space3"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">1</span></span></span></span></span></span>, ces notes seront jouées à une vitesse de <span class="inline-code">1</span>.
+</p>
+
+<div class="codebox"><pre><code class="supercollider"><span class="hljs-keyword">var</span> sampledNote<span class="hljs-punctuation"> = </span>[<span class="hljs-number">1</span>,  <span class="hljs-number">1</span>,  <span class="hljs-number">1</span>,  <span class="hljs-number">1</span>,  <span class="hljs-number">2</span>,  <span class="hljs-number">2</span>,  <span class="hljs-number">2</span>,  <span class="hljs-number">3</span>,  <span class="hljs-number">3</span>,  <span class="hljs-number">3</span>,  <span class="hljs-number">3</span>,  <span class="hljs-number">3</span>];
+<span class="hljs-keyword">var</span> noteDeltas<span class="hljs-punctuation"> = </span>[<span class="hljs-number">-1</span>, <span class="hljs-number">0</span>,  <span class="hljs-number">1</span>,  <span class="hljs-number">2</span>, <span class="hljs-number">-1</span>,  <span class="hljs-number">0</span>,  <span class="hljs-number">1</span>, <span class="hljs-number">-2</span>, <span class="hljs-number">-1</span>,  <span class="hljs-number">0</span>,  <span class="hljs-number">1</span>,  <span class="hljs-number">2</span>];</code></pre></div>
+
+<p class="noindent">
+    Ces deux lignes de code se trouvent dans la fonction <span class="inline-code">makeLookUp()</span>, qui est utilisée pour créer deux tables de correspondance dont l’instrument se <span class="nobreak">servira.
+        <label for="lookup" class="margin-toggle sidenote-number">
+        </label></span>
+        <input type="checkbox" id="lookup" class="margin-toggle">
+        <span class="sidenote">Une table de correspondance sert à préparer de l’information qui sera fréquemment utilisée, ce qui est plus optimal qu’utiliser à répétition un algorithme qui renvoit à chaque fois la même information. Dans le cas présent, les calculs que l’instrument doit faire pour chaque note sont très simples et rapides, mais j’ai tout de même trouvé qu’il était intéressant de structurer le programme avec des tables de correspondance, et de le rendre théoriquement plus optimisé, même si le gain de performance n’est vraiment pas observable (mais bon, ce que je voulais c’était surtout apprendre à faire des tables de correspondance et m’amuser avec ça).</span> Dans les lignes ci-dessous, cette fonction <span class="inline-code">makeLookUp()</span> est finalement utilisée pour créer deux tables de correspondance&nbsp;: la première qui associe chaque note à l’échantillon enregistré qui sera utilisé, et la seconde qui associe chaque note à la vitesse à laquelle cet échantillon sera joué. Vous pouvez voir deux boucles imbriquées&nbsp;: la boucle extérieure qui se fait avec la valeur <span class="inline-code">dynAmnt</span>, qui représente la quantité de dynamiques disponibles, et la boucle intérieure qui se fait avec une liste (<span class="inline-code">Array</span>) qui va de <span class="inline-code">20</span> jusqu’à <span class="inline-code">110</span>, ce qui représente toutes les notes jouables.
+</p>
+
+<div class="codebox"><pre><code class="supercollider">indices<span class="hljs-punctuation"> = </span>dynAmnt<span class="hljs-punctuation">.</span>collect({|j| (<span class="hljs-number">20.</span><span class="hljs-number">.110</span>).collect({|i| makeLookUp.(i, j)[<span class="hljs-number">0</span>]})}).flat;
+pitches<span class="hljs-punctuation"> = </span>dynAmnt<span class="hljs-punctuation">.</span>collect({|j| (<span class="hljs-number">20.</span><span class="hljs-number">.110</span>).collect({|i| makeLookUp.(i, j)[<span class="hljs-number">1</span>]})}).flat;</code></pre></div>
+
+<p class="noindent">
+    C’est dans l’évènement <span class="inline-code">\pianoEvent</span> que les tables de correspondance sont ensuite utilisées. C’est aussi là que les valeurs définies dans un <span class="inline-code">Pbind</span> sont testées et remplacées au besoin par des valeurs différentes (l’étendue des variables <span class="inline-code">~num</span> et <span class="inline-code">~dyn</span> est limitée par les opérateurs <span class="inline-code">min()</span> et <span class="nobreak"><span class="inline-code">max()</span>).
+        <label for="envir" class="margin-toggle sidenote-number">
+        </label></span>
+        <input type="checkbox" id="envir" class="margin-toggle">
+        <span class="sidenote-left">C’est assez mêlant tout ça, mais les valeurs qui sont définies dans un <span class="inline-code8">Pbind</span>, comme <span class="inline-code8">\num</span> and <span class="inline-code8">\dyn</span>, elles deviennent les variables <span class="inline-code8">~num</span> et <span class="inline-code8">~dyn</span> à l’intérieur de l’évènement que le <span class="inline-code8">Pbind</span> active. Le tilde (<span class="inline-code8">~</span>) qui précède le nom de ces variables signifie qu’elles sont des “variables d’environnement” (<span class="italic8">environment variables</span>), cet environnement étant l’évènement <span class="inline-code8">\pianoEvent</span>.</span>
+</p>
+
+<div class="codebox"><pre><code class="supercollider"><span class="hljs-built_in">Event</span><span class="hljs-punctuation">.</span>addEventType(\pianoEvent, {
+    <span class="hljs-keyword">var</span> index;
+    if (~num<span class="hljs-punctuation">.</span>isNil, {~num<span class="hljs-punctuation"> = </span><span class="hljs-number">60</span>}, {~num<span class="hljs-punctuation"> = </span>min(max(<span class="hljs-number">20</span>, ~num), <span class="hljs-number">110</span>)});
+    if (~dyn<span class="hljs-punctuation">.</span>isNil, {~dyn<span class="hljs-punctuation"> = </span><span class="hljs-number">0</span>}, {~dyn<span class="hljs-punctuation"> = </span>floor(min(max(<span class="hljs-number">0</span>, ~dyn), maxDyn))});
+    index<span class="hljs-punctuation"> = </span>floor(~num)<span class="hljs-punctuation"> - </span><span class="hljs-number">20</span><span class="hljs-punctuation"> + </span>(~dyn<span class="hljs-punctuation"> * </span><span class="hljs-number">91</span>);
+    ~buf<span class="hljs-punctuation"> = </span>pianoSamples[indices[index]];
+    ~rate<span class="hljs-punctuation"> = </span>(pitches[index]<span class="hljs-punctuation"> + </span>frac(~num)).midiratio;
+    ~instrument<span class="hljs-punctuation"> = </span>\pianoSynth;
+    ~type<span class="hljs-punctuation"> = </span>\note;
+    currentEnvironment<span class="hljs-punctuation">.</span>play;
+});</code></pre></div>
+
+<p class="noindent">
+    La microtonalité est aussi calculée dans <span class="inline-code">\pianoEvent</span>, à la ligne où est définie la valeur <span class="inline-code">~rate</span>. En calculant la valeur fractionnelle de la valeur <span class="inline-code">~num</span> (avec l’opérateur <span class="inline-code">frac()</span>), et en l’additionnant à la distance entre la note voulue et la note enregistrée (distance calculée précédemment lors de la création des tables de correspondance), on obtient la distance finale exacte entre la note voulue et la note disponible. On envoie ensuite cette distance dans l’opérateur <span class="inline-code">midiratio</span>, qui fait le même calcul mentionné plus haut&nbsp;: <span class="constrain-line"><span id="MathJax-Element-6-Frame" class="mjx-chtml"><span id="MJXc-Node-516" class="mjx-math"><span id="MJXc-Node-517" class="mjx-mrow"><span id="MJXc-Node-518" class="mjx-texatom"><span id="MJXc-Node-519" class="mjx-mrow"><span id="MJXc-Node-520" class="mjx-mo"><span class="mjx-char MJXc-TeX-size1-R" style="padding-top: 0.593em; padding-bottom: 0.593em;">(</span></span></span></span><span id="MJXc-Node-521" class="mjx-msubsup"><span class="mjx-base"><span id="MJXc-Node-522" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">2</span></span></span><span class="mjx-sup" style="font-size: 70.7%; vertical-align: 0.591em; padding-left: 0px; padding-right: 0.071em;"><span id="MJXc-Node-523" class="mjx-texatom" style=""><span id="MJXc-Node-524" class="mjx-mrow"><span id="MJXc-Node-525" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">1</span></span><span id="MJXc-Node-526" class="mjx-texatom"><span id="MJXc-Node-527" class="mjx-mrow"><span id="MJXc-Node-528" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.446em; padding-bottom: 0.593em;">/</span></span></span></span><span id="MJXc-Node-529" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">12</span></span></span></span></span></span><span id="MJXc-Node-530" class="mjx-msubsup"><span class="mjx-base"><span id="MJXc-Node-531" class="mjx-texatom"><span id="MJXc-Node-532" class="mjx-mrow"><span id="MJXc-Node-533" class="mjx-mo"><span class="mjx-char MJXc-TeX-size1-R" style="padding-top: 0.593em; padding-bottom: 0.593em;">)</span></span></span></span></span><span class="mjx-sup" style="font-size: 70.7%; vertical-align: 0.851em; padding-left: 0px; padding-right: 0.071em;"><span id="MJXc-Node-534" class="mjx-texatom" style=""><span id="MJXc-Node-535" class="mjx-mrow"><span id="MJXc-Node-536" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.298em;">n</span></span></span></span></span></span></span></span></span></span> où <span id="MathJax-Element-7-Frame" class="mjx-chtml"><span id="MJXc-Node-537" class="mjx-math"><span id="MJXc-Node-538" class="mjx-mrow"><span id="MJXc-Node-539" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.225em; padding-bottom: 0.298em;">n</span></span></span></span></span> est la valeur de départ.
+</p>
+
+<h3>
+    Différentes façons de gérer les dynamiques
+</h3>
+
+<p class="noindent">
+    <span class="small-caps">Créer un meilleur système</span> pour gérer les dynamiques serait un des moyens par lesquels cet instrument pourrait être amélioré. Le système présent, qui demande de sélectionner manuellement parmi les trois échantillons disponibles pour chaque note (les échantillons doux, moyens, et forts), est plutôt malcommode. Que faire lorsqu’on veut créer un motif avec une montée graduelle des dynamiques&nbsp;? Ou lorsqu’on veut une note dont la force est à mi-chemin entre le doux et le moyen&nbsp;? Tout ça est bel et bien possible avec le système présent, mais les solutions sont un peu compliquées. Il faut réfléchir attentivement à l’amplitude à laquelle chaque note sera jouée, et créer plusieurs listes desquelles pourra émerger le motif voulu. Voici un exemple de motif avec une montée graduelle des dynamiques&nbsp;:
+</p>
+
+<div class="nomarginbottom">
+    <div class="codebox"><pre><code class="supercollider">(
+<span class="hljs-keyword">var</span> n<span class="hljs-punctuation"> = </span><span class="hljs-number">20</span>;
+<span class="hljs-keyword">var</span> r<span class="hljs-punctuation"> = </span><span class="hljs-number">-1</span><span class="hljs-punctuation"> / </span>n;
+<span class="hljs-keyword">var</span> decrease<span class="hljs-punctuation"> = </span><span class="hljs-built_in">Pseries</span>(<span class="hljs-number">1</span>, r, n).asStream<span class="hljs-punctuation">.</span>nextN(n);
+<span class="hljs-keyword">var</span> increase<span class="hljs-punctuation"> = </span>decrease<span class="hljs-punctuation">.</span>reverse<span class="hljs-punctuation"> * </span><span class="hljs-number">0.75</span>;
+<span class="hljs-keyword">var</span> amplitudes<span class="hljs-punctuation"> = </span>[decrease, increase]<span class="hljs-punctuation">.</span>lace(n<span class="hljs-punctuation"> * </span><span class="hljs-number">2</span>);
+~crescendoRiff<span class="hljs-punctuation">.</span>stop;
+~crescendoRiff<span class="hljs-punctuation"> = </span><span class="hljs-built_in">Pbind</span>(
+    \type, \pianoEvent,
+    \dur, <span class="hljs-built_in">Pseq</span>([<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">1</span>]<span class="hljs-punctuation">.</span>stutter(<span class="hljs-number">2</span>)<span class="hljs-punctuation"> * </span><span class="hljs-number">0.25</span><span class="hljs-punctuation"> * </span><span class="hljs-number">0.35</span>, inf)
+   <span class="hljs-punctuation"> * </span><span class="hljs-built_in">Pseq</span>([<span class="hljs-number">0</span>, <span class="hljs-number">1</span>], inf),
+    \num, <span class="hljs-number">62</span> 
+   <span class="hljs-punctuation"> + </span><span class="hljs-built_in">Pseq</span>(([<span class="hljs-number">0</span>, <span class="hljs-number">7</span>, <span class="hljs-number">4</span>, <span class="hljs-number">11</span>, <span class="hljs-number">9</span>] <span class="hljs-punctuation">++</span> [<span class="hljs-number">-3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">2</span>, <span class="hljs-number">9</span>, <span class="hljs-number">4</span>]).stutter(<span class="hljs-number">2</span>), inf)
+   <span class="hljs-punctuation"> + </span><span class="hljs-built_in">Pseq</span>([<span class="hljs-number">0</span>, <span class="hljs-number">-5</span>]<span class="hljs-punctuation">.</span>stutter(n<span class="hljs-punctuation"> * </span><span class="hljs-number">4</span>), inf),
+    \dyn, <span class="hljs-built_in">Pseq</span>([<span class="hljs-number">0</span>, <span class="hljs-number">1</span>], inf)<span class="hljs-punctuation"> + </span><span class="hljs-built_in">Pseq</span>([<span class="hljs-number">0</span>, <span class="hljs-number">1</span>]<span class="hljs-punctuation">.</span>stutter(n<span class="hljs-punctuation"> * </span><span class="hljs-number">2</span>), inf),
+    \amp, <span class="hljs-built_in">Pseq</span>(amplitudes <span class="hljs-punctuation">++</span> (amplitudes<span class="hljs-punctuation"> * </span><span class="hljs-number">0.75</span>), inf)<span class="hljs-punctuation"> * </span><span class="hljs-number">0.5</span>,
+    \rel, <span class="hljs-number">2</span>
+).play();
+)</code></pre></div>
+</div>
+
+<div class="audio-container"><div class="audio-box">
+    <audio>
+        <source src="https://dl.dropboxusercontent.com/s/3y29q9jhs0m6jf2/crescendo.mp3">
+    </audio>
+    <div class="middle">
+        <div class="play-button-zone">
+            <div class="play-button">
+                <div class="btn">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="info-and-controls">
+        <div class="info">
+        
+    Un motif avec une montée graduelle des dynamiques.
+</div>
+        <div class="controls">
+            <div class="progress-bar">
+            </div>
+            <div class="progress-bar-overlay">
+            </div>
+            <div class="progress-bar-bottom">
+            </div>
+            <div class="current-progress-text">0:00
+            </div>
+            <div class="track-duration-text">9:00
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<p class="noindent">
+    Nous commençons par créer deux listes, une première pour des valeurs décroissantes (les amplitudes des notes douces) et une autre pour des valeurs croissantes (les amplitudes des notes moyennes). Une fois ces deux listes créées, elles sont entrelacées avec l’opérateur <span class="inline-code">lace()</span>, ce qui génère une seule liste qui servira pour toutes les notes, autant les douces que les moyennes. Ensuite, dans la valeur <span class="inline-code">\dur</span> du <span class="inline-code">Pbind</span>, nous multiplions notre liste de durées par <span class="inline-code">Pseq([0, 1], inf)</span>, ce qui signifie que chaque première note de toutes les paires de notes aura une durée de <span class="inline-code">0</span>, ce qui signifie que deux notes seront jouées simultanément pour toutes les durées définies dans le premier <span class="inline-code">Pseq</span> utilisé dans <span class="inline-code">\dur</span>. Nous créons ensuite une liste de notes dans <span class="inline-code">\num</span>, et appliquons l’opérateur <span class="inline-code">stutter(2)</span> à cette liste parce que chaque note devra être jouée deux fois, simultanément.
+</p>
+<p>
+    Ensuite, dans <span class="inline-code">\dyn</span>, nous créons la liste <span class="inline-code">[0, 1]</span> qui se répétera infiniment, <span class="inline-code">0</span> étant l’échantillon doux et <span class="inline-code">1</span> l’échantillon moyen. Après que <span class="inline-code">n * 2</span> notes aient été jouées, donc une fois que la liste complète des valeurs décroissantes et croissantes ait été jouée, nous additionnons <span class="inline-code">1</span> à la liste <span class="inline-code">[0, 1]</span> avec un second <span class="inline-code">Pseq</span>. Nous obtenons donc la liste <span class="inline-code">[1, 2]</span> qui se répétera aussi, ce qui signifie que nous sommes maintenant en train d’entrelacer les notes moyennes avec les notes fortes.
+</p>
+<p>
+    Cette façon de créer une montée graduelle des dynamiques est laborieuse, mais ça n’en fait pas nécessairement un mauvais système. Le système idéal aurait simplement besoin d’une valeur fractionnelle entre <span class="inline-code">0</span> et <span class="inline-code">1</span> pour la valeur <span class="inline-code">\dyn</span>, et jouerait automatiquement deux échantillons à des amplitudes variées, créant une dynamique précisément ajustée. <span class="inline-code">0</span> serait la note la plus douce et <span class="inline-code">1</span> la plus forte. Mais ce système aurait aussi ses désavantages. Premièrement, jouer deux notes simultanément ne produit pas exactement le même effet qu’une note seule — les notes simultanées produisent parfois un subtil effet de déphasage, particulièrement lorsqu’elles résonnent longtemps. L’effet peut être acceptable ou non selon les goûts et le contexte. Mais aussi, la collection d’échantillons contient quelques irrégularités&nbsp;: certaines notes sont jouées légèrement plus fort que <span class="nobreak">d’autres.
+        <label for="exceptions" class="margin-toggle sidenote-number">
+        </label></span>
+        <input type="checkbox" id="exceptions" class="margin-toggle">
+        <span class="sidenote">Il serait possible de créer une “liste d’exceptions” qui servirait à ajuster légèrement l’amplitude de certains enregistrements, mais ça commence à ressembler au genre de travail que je ferai si je me retrouve à utiliser cet échantillonneur sur un plus long laps de temps.</span> Par conséquent, lorsque je crée des motifs musicaux, je trouve intéressant d’avoir le plein contrôle sur le choix des échantillons joués, au lieu d’utiliser un instrument qui fait tout à ma place.
+</p>
+<p>
+    Alors j’ai décidé pour l’instant de ne pas créer de système qui automatise le calcul des dynamiques fractionnelles. Peut-être que je le créerai un jour.
+</p>
+
+<h3>En conclusion</h3>
+
+<p class="noindent">
+    <span class="small-caps">J’ai eu beaucoup de plaisir</span> à créer ce projet et il m’a permis d’apprécier plus profondément l’étrange et confondante beauté de <span class="inline-code">sclang</span>. Si vous utilisez l’échantillonneur, il me ferait plaisir d’en recevoir des échos et aussi d’entendre vos compositions. N’hésitez pas à <a href="https://pelletierauger.com/fr/a-propos.html#contact">me contacter</a> pour des commentaires ou des questions. Merci de votre lecture&nbsp;!
+</p>
+
+
+            </article>
+            
+    <div id="rss-link">
+        <a href="https://pelletierauger.com/fr/blog/rss.xml">Flux RSS</a>
+    </div>
+    <div id="footer">Guillaume Pelletier-Auger — 2016-2020
+    </div>
+    
+    </body></html>
