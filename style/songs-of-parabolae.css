@@ -10,9 +10,42 @@ img.m-parabolic-drop-caps {
     float: left;
 }
 
+img.w-parabolic-drop-caps {
+    /*display: inline-block;*/
+    width: 11.9em;
+    /*max-width: 10em;*/
+    /*margin: 0 auto;*/
+    /*margin-right: 0.5rem;*/
+    margin: 0.4rem 0.9rem 0rem 0.0rem;
+    /*margin-bottom: 1rem;*/
+    display: inline-block;
+    float: left;
+}
+
 img.parabolic-animation-1 {
     width: 100%;
     max-width: 450px;
+    /*margin: 0 auto;*/
+    margin: 2em auto;
+}
+
+img.parabolic-animation-2 {
+    width: 100%;
+    max-width: 520px;
+    /*margin: 0 auto;*/
+    margin: 2em auto;
+}
+
+img.waves-mult {
+    width: 100%;
+    max-width: 650px;
+    /*margin: 0 auto;*/
+    margin: 2em auto;
+}
+
+img.tilted-wave {
+    width: 100%;
+    max-width: 650px;
     /*margin: 0 auto;*/
     margin: 2em auto;
 }
