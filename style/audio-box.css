@@ -2,6 +2,7 @@
     width: 100%;
     margin: 0 auto;
     max-width: 650px;
+    overflow: hidden;
 }
 
 .audio-box {
@@ -80,11 +81,15 @@
 .info {
     float: left;
     width: 100%;
-    padding: 1em 1em 1em 15px;
+    padding: 1em 17px 1em 15px;
     box-sizing: border-box;
     min-height: 50px;
     font-size: 1.3em;
     line-height: 1.3em;
+}
+
+.info img {
+    /*border: 1px solid red;*/
 }
 
 .controls {
