@@ -27,26 +27,42 @@
 
 <img class="parabolic-animation-1" src="../../../images/songs-of-parabolae/parabola-animation-info.png">
 
+<!-- read-more -->
+
 <h3>Onward to the realm of sounds</h3>
 
 <pn>
-    <sc>One of the first things</sc> that came to my mind after I drew a single parabola was that I could now create thousands of copies of it and turn it into a signal, a <i>parabolic wave</i>.
+    <sc>One of the first things</sc> that came to my mind after I drew a single parabola was that I could now create endless copies of it and turn them into a signal, a <i>parabolic wave</i>.
 </pn>
 <div class="div-clear">
-    <img class="inline-image" src="../../../images/songs-of-parabolae/parabolic-wave.png">
+    <img class="inline-image" src="../../../images/songs-of-parabolae/parabolic-wave-2.png">
 </div>
 <pn>
     I got really curious about how this would sound. So I rewrote my JavaScript code into SuperCollider code, and I got the signal shown &nbsn;above.<snr label="sc-signal">I did this in SuperCollider by creating an instance of <ic8>Signal</ic8> and then transforming it into an instance of <ic8>Buffer</ic8> to hear the results. You can <a href="">read the code here</a>.</snr> I (na&iuml;vely perhaps) imagined that it would sound something halfway between a sine wave and a triangle wave, because it visually seems to have characteristics of both (a smooth curve and a sharp &nbsn;corner).<snl label="absolute-of-sine">The parabolic wave also looks very similar to the absolute value of a sine wave, but it is a little bit different <a href="https://codepen.io/tim_heap/details/jPWZrL">as shown here.</a></snl> It turns out to sound completely different than what I expected.
 </pn>
 <p>
-    Below you can hear a sound file containing three notes: an A at 220 Hz played with a sinewave, then a parabolic wave, and then a triangle wave. You'll hear that the parabolic wave in the middle doesn't sound at all like it is halfway between the sine wave and the triangle wave.
+    Below you can hear a sound file containing three notes: an A at 220 Hz played with a sine wave, then a parabolic wave, and then a triangle wave. You'll hear that the parabolic wave in the middle doesn't sound at all like it is halfway between the sine wave and the triangle wave.
 </p>
 
-<audiobox url="sine-parabola-triangle.mp3">
+<!-- <div class="nomarginbottom"> -->
+<audiobox url="https://dl.dropboxusercontent.com/s/5wc2l6edyckhup2/sine-parabola-triangle-2.mp3">
     A sine wave, a parabolic wave, and a triangle wave.
+    <img class="audio-caption" src="../../../images/songs-of-parabolae/spectra7.png">
 </audiobox>
+<!-- </div> -->
 
-<img class="inline-image" src="../../../images/songs-of-parabolae/spectra.png">
+<pn>
+    Below is the SuperCollider code with which I got the parabolic wave. You don't need to understand this code to understand what it is doing. It's very simple: it defines an <ic>x</ic> component that linearly ramps between <ic>-1</ic> and <ic>1</ic>, and then a <ic>y</ic> value that is equal to <ic>x</ic> squared, which is just the simplest way to express a parabola: <im>y = x^2</im>.
+</pn>
+<supercollider>
+(
+{
+    var x, y, f = 1;
+    x = Phaser.ar(f * 0.5, 0) - 0.5 * 2;
+    y = x * x - 0.5 * 2;
+}.plot(2);
+)
+</supercollider>
 
 <h3>In the mysterious presence of a hidden triangle wave</h3>
 
@@ -64,3 +80,53 @@
 <pn>
     One thing from Puckette's explanations that I found absolutely fascinating was that <i>the midpoint between two parabolic waves of inverted signs and inverted phase is a triangle wave</i>. He visualized this in his book, but I felt that an animated visualization would help me to understand more satisfyingly. So I made another <lnum>p5.js</lnum> sketch.
 </pn>
+
+<img class="parabolic-animation-2" src="../../../images/songs-of-parabolae/parabola-equidistant-lossy-50.gif">
+
+<pn>
+    I was confused enough by this phenomenon that I created another version of this animation, where the whole system can be said to be <i>stabilized on the red path</i>, meaning that the red path was transformed to a straight line by dividing all of its values by themselves, and then the two black paths went through the same transformation&mdash;they were also divided by the original value of the red path. To make the transformation very clear, here is an animation where we interpolate smoothly between both states of the system.
+</pn>
+
+<img class="parabolic-animation-2" src="../../../images/songs-of-parabolae/parabola-transition-lossy-50.gif">
+
+<pn>
+    And here is the system once the transformation is fully applied&mdash;once it is <i>stabilized on the red path</i>.
+</pn>
+
+<img class="parabolic-animation-2" src="../../../images/songs-of-parabolae/parabola-c-stable2-lossy-50.gif">
+
+<pn>
+    It's interesting to see that now that the two black paths went through the same transformation, they are now perfectly &nbsn;symmetrical.<snr label="lemniscate">Also, the two black paths now resemble a <a href="https://en.wikipedia.org/wiki/Lemniscate">lemniscate</a>, but I'm not sure if it fits the precise definition.</snr>Does that imply that they were already symmetrical in some sense <i>before</i> the transformation, but that the symmetry was not yet apparent? In any case, it it now very obvious that the two black paths are always equidistant to the red path.
+</pn>
+
+<h3>More waves, please</h3>
+
+<pn>
+    <img class="w-parabolic-drop-caps" src="../../../images/songs-of-parabolae/w.png"><sc>hen i saw</sc> the &ldquo;stabilized&rdquo; system, I notice that it could be interpreted in two different ways: there are either two black lines each on one side of the red line, or there are two black lines that both cross the red line in the horizontal middle. These two crossing black lines each form a wave that somewhat resembles a slightly &ldquo;tilted&rdquo; sine wave. I got curious about hearing this wave. I obtained it in SuperCollider by multiply the values of the first wave with the values of a square wave. Below, you can see that the value of the square wave <im>b</im> is either <im>-1</im> or <im>1</im>, so it just mirrors half of the first wave <im>a</im>.
+</pn>
+
+<img class="waves-mult" src="../../../images/songs-of-parabolae/waves-multiplied.png">
+
+<pn>
+    We can then make copies of this <im>a \cdot b</im> wave and we end up with the <i>tilted</i> sine wave.
+</pn>
+
+<img class="tilted-wave" src="../../../images/songs-of-parabolae/tilted-wave.png">
+
+<pn>
+    Below is the SuperCollider code with which I got this wave. All it does is what I just explained visually.
+</pn>
+<supercollider>
+(
+{
+    var x1, x2, y1, y2, y3, ph, f = 1;
+    x1 = Phaser.ar(f * 0.5, 0) - 0.5 * 2;
+    y1 = x1 * x1 - 0.5 * 2;
+    x2 = Phaser.ar(f * 0.25, 1) - 0.5 * 2;
+    y2 = x2 * x2 - 0.5 * -2;
+    y3 = y1 + (0.5 * (y2 - y1));
+    ph = Phaser.ar(f * 0.5, 0).round -1 * 2 + 1;
+    y2 * y3 * ph - ph;
+}.plot(2);
+)
+</supercollider>
