@@ -2,9 +2,9 @@
 <!-- fr-title -->Ce que ressentent les murs
 <!-- fr-html-title -->Ce <span class="italic8"><span class="small-title">que</span></span> ressentent <span class="italic8"><span class="small-title">les</span></span> murs
 <!-- fr-date -->Hiver 2020
-<!-- fr-description -->Un film de commande pour le compositeur Frank Horvat.
+<!-- fr-description -->Un vidéoclip pour le compositeur Frank Horvat.
 <!-- fr-content -->
-<img src="../../../images/what-the-walls-feel/torn-2k.png">
+<img src="../../../images/what-the-walls-feel/plants-softer.png">
 <p class="article-top">
     <sc>Ce que vous voyez ci-dessus</sc> est une animation générée par un algorithme. Cette animation fait partie d'un vidéo-clip réalisé pour une pièce de musique du compositeur <a href="http://frankhorvat.com/">Frank Horvat</a>. 152 algorithmes ont été écrits pendant la réalisation de ce vidéo-clip.
 </p>
@@ -14,15 +14,27 @@
 <!-- en-title -->What the Walls Feel
 <!-- en-html-title -->What <span class="italic8"><span class="small-title">the</span></span> Walls Feel
 <!-- en-date -->Winter 2020
-<!-- en-description -->A commission film for composer Frank Horvat.
+<!-- en-description -->A music video for composer Frank Horvat.
 <!-- en-content -->
 
-<img src="../../../images/what-the-walls-feel/torn-2k.png">
+<img src="../../../images/what-the-walls-feel/plants-softer.png">
 <p class="article-top">
-    <sc>A few months ago</sc>, I was contacted by <a href="http://frankhorvat.com/">Frank Horvat</a>, a composer and pianist from Toronto. He was about to launch a new &nbsn;album,<snl label="around">The album is titled <i8>What Goes Around</i8> and you can <a href="http://frankhorvat.com/discography/what-goes-around/">you can stream the whole thing for free</a>. Do check it out, it is wonderful music.</snl> and wanted me to make a music video for one of the tracks. The track is titled <i>What the Walls Feel as they Stare at Rob Ford Sitting in His &nbsn;Office,</i><snr label="programme-notes">You can read brief <a href="http://frankhorvat.com/composition/what-walls-feel-as-they-stare-at-rob-ford-sitting-in-his-office/">programme notes</a> about the reasoning behind this most unusual title.</snr> and it features six different clarinet parts, all of which are played by <a href="https://www.peterstoll.ca/">Peter Stoll</a>, a clarinetist from Toronto.
+    <sc>In the fall of 2019</sc>, when Toronto composer <a href="http://frankhorvat.com/">Frank Horvat</a> published a new album of minimalist chamber &nbsn;music,<snl label="around">The album is titled <i8>What Goes Around</i8> and you can <a href="http://frankhorvat.com/discography/what-goes-around/">you can stream it</a>, on his website. Do check it out, it is wonderful music.</snl> he decided to hire filmmakers to transform each of his tracks into short experimental films—including fellow Montrealers <a href="https://moiajp.net/">Moïa Jobin-Paré</a> and <a href="http://www.sunnystanila.com/">Sunny Stanila</a>.
 </p>
 <p>
-    Frank's new album is very much is the style of musical minimalism&mdash;think Steve Reich, Ann Southam, Julius Eastman, Henryk G&#243;recki, etc. And consequently, the task of creating a visual accompaniment to his music was a very interesting challenge, for two main reasons:
+    The track that I found most inspiring for my own film was a chamber piece for six clarinets, titled <i>What the Walls Feel as they Stare at Rob Ford Sitting in his Office</i>. In his <a href="http://frankhorvat.com/composition/what-walls-feel-as-they-stare-at-rob-ford-sitting-in-his-office/">programme notes</a> for the piece, Frank explains the inspiration behind its unusual title:
+</p>
+<p class="blockquote">
+    “In November 2013, the city I live in was completely captivated by the madness caused by our crack-smoking mayor who also had aggressive alcoholic outbursts and criminal acquaintances. Observing media coverage of the circus that ensued, I couldn’t help but wonder what was deep in this man’s heart. Does he have regret? Does he wish he could have handled things differently? Often, only the walls in a person’s office can observe their most private moments of reflection. What if those walls expressed their feelings? What would they say? This piece attempts to paraphrase the walls as they try to understand what lies deep in the heart of this larger-than-life person.”
+</p>
+<pn>
+    It seemed like a perfect pitch for an abstract and geometric film. Walls often feature repetitive geometric patterns, and I immediately got excited thinking about how I could make patterns that respond to the music.
+</pn>
+
+<h3>Visualizing musical minimalism</h3>
+
+<p>
+    Frank's album is in the style of musical minimalism&mdash;think Steve Reich, Meredith Monk, Julius Eastman, Henryk G&#243;recki, etc. And consequently, the task of creating a visual accompaniment to his music was a very interesting challenge, for two main reasons:
 </p>
 <ul class="dash">
     <li>
@@ -42,7 +54,7 @@
     But on another level, of course, I knew that algorithmic animation was the perfect tool for the job&mdash;the cover album for the original 1978 recording of Steve Reich's <a href="https://en.wikipedia.org/wiki/Music_for_18_Musicians"><i>Music for 18 Musicians</i></a> demonstrates well how intricate and geometric patterns are a great way to visualize minimalist music.
 </pn>
 
-<h3>Searching for ideas</h3>
+<h3>Searching for the right visual system</h3>
 
 <pn>
     <sc>It's my second time</sc> doing commission animation work using algorithmic art. The first time was for a <a href="https://www.youtube.com/watch?v=PFufr93KNoQ">music video</a> directed by <a href="https://pascalinelefebvre.tumblr.com/">Pascaline Lefebvre</a>, an illustrator, author, and filmmaker from Montréal. Most of the animation in the video was made by Pascaline, but she hired me to animate the flocks of birds that you can see during a few moments in the &nbsn;video.<snl label="flocks">The flocking algorithms that I used for this video were inspired by Daniel Shiffman's videos on the subject. All the code written for this project <a href="https://github.com/pelletierauger/Oiseaux">can be found on GitHub</a>. The work done for each scene of the video is on its own Git branch.</snl>
@@ -61,29 +73,56 @@
     The wall was a good visual anchor for the whole thing considering the title of the musical piece. Even if the dots are moving in smooth oscillations, it's very clear that they are ultimately laid out in a strict grid. I enjoy the tension between those two phenomena, and thought it was a good visual metaphor for the music. The walls are ruminating, contorting themselves into worried thoughts.
 </pn>
 
-<h3>The system</h3>
-<!--  for <i>What the Walls Feel&hellip;</i> -->
+<h3>Building the software</h3>
+
 <pn>
-    <sc>I will now try</sc> to explain how the system behind the music video works. It all starts with a two-dimensional grid of dots, with an <im>x</im> horizontal axis and a <im>y</im> vertical axis. Each dot occupies one spot within the grid. For example, the dot at the top left has a position of <im>x = 0, y = 0</im>.
+    <sc>The film</sc> was made entirely by writing custom-made software. The film is itself a program—when this program runs, it either plays the film or renders it to disk. It is distributed as free, open source software, so you can find <a href="https://github.com/pelletierauger/what-the-walls-feel">all the code for it here</a>, and you are free to run it, modify it, and distribute modified versions.
+</pn>
+<p>
+    To write the film, I used another software that I’m currently writing, called Les environs (French for&nbsn;<i>The Surroundings</i>).<snl label="environs">Les environs is also distributed as free software and you can <a href="https://github.com/pelletierauger/Les-environs">download it on GitHub</a>.</snl> Les environs is a live coding environment—it allows to write and modify a program while it is running. So the film is made to run inside this environment.
+</p>
+<p>
+    p5.js... the reasons behind free software, etc.
+</p>
+<p>
+    Live coding is primarily a form of performative art, and as such Les environs was first designed for the live performance of animation and music. I used it in a few group concerts in Montréal in 2019. Adapting this performative tool for the needs of a film production was a really interesting challenge... building various modules editor, x-sheet, renderer. It allowed me to, for example, have my film play in real time while I was working on it, and being able to swap effects and change the timing of scenes while there were running was infinitely more pleasing than what I was previously able to do with After Effects, where all animations needed to "preview to RAM" before they could play. Because my software prepares everything to be calculated by the graphics card, it is a lot faster.
+</p>
+
+<h3>Coloration research</h3>
+
+<pn>
+    My system allowed me to make a lot of coloration research. Below are some examples of this research. My research tended to lead me towards bright and joyous colours because I enjoy them a lot, but they did not fit the tone of the piece of music at all. The music needed a quieter, somber, sadder palette.
+</pn>
+<p>
+    I also experimented a lot with colour transitions from scene to scene, but that did not work either. The musical colour of Frank’s piece is so steady and finds so much of its force and its character in this unchanging, unrelenting stubbornness, that introducing a new colour palette at any point in the film felt completely unearned—it felt like the image simply drifted away from the music, exactly the opposite of what I wanted. It also felt like I was simply trying to cram more pretty colours in the film, which is indeed what was happening.
+</p>
+
+<img class="full-size-image" src="../../../images/what-the-walls-feel/spicy-lemon-a.png">
+<img class="full-size-image" src="../../../images/what-the-walls-feel/spicy-lemon-b.png">
+<img class="full-size-image" src="../../../images/what-the-walls-feel/mustard-muscles.png">
+
+<h3>The mathematics behind the film</h3>
+
+<pn>
+    <sc>The system</sc> on which the whole film is built is a two-dimensional grid of dots, with an <im>x</im> horizontal axis and a <im>y</im> vertical axis. Each dot occupies one cell within the grid. For example, the dot at the top left has a position of <im>x = 0, y = 0</im>.
 </pn>
 
 <img class="inline-image" src="../../../images/what-the-walls-feel/grid.png">
 
 <pn>
-    Each dot in this grid is able to move in space. Its initial position in space is defined by the <im>x</im> and <im>y</im> values of the cell in which it is contained. But then, the dot's final position <im>d</im> is calculated by the mathematical equation below.
+    Each dot in this grid is able to move in space. Its initial position in space is defined by the <im>x</im> and <im>y</im> values of the cell in which it is contained. But then, the dot's final position <im>p</im> is calculated by applying a mathematical transformation, which is usually a parametric equation. As an example, here is the transformation that was applied on the animation seen above in this article.
 </pn>
 
 <math>
 \begin{align*}
-    m   &= x \cdot y \cdot 0.001 + t\\
-    d_x &= x + \cos(m)\\
-    d_y &= y + \sin(m)
+    m   &= x \cdot y \cdot 10^{-3} + t\\
+    p_x &= x + \cos(m)\\
+    p_y &= y + \sin(m)
 \end{align*}
 </math>
 
-<!-- read-more -->
 <pn>
-    An identical copy of this equation is sent to all the dots, but the result that it gives for each dot is different, because all dots have different <im>x</im> and <im>y</im> values. So this equation has three inputs: <im>x</im>, <im>y</im>, and <im>t</im>. The <im>x</im> and <im>y</im> values are the position of the dot in the two-dimensional grid. The third value, <im>t</im>, is the <i>moment in time</i>. It is a value that starts at <im>0</im> when the animation begins and it is simply incremented on each frame of animation. In this case, it is incremented by <im>\pi / 60</im>, an arbitrary number that I chose after trying different numbers and figuring how at which speed the animation was the most interesting to &nbsn;watch.<snl label="arbitrary">I find it interesting to point out the amount of arbitrary decisions that are taken in the design of such systems, because I remember when I was starting out a few years ago, looking at other people's code, I was often under the impression that all parameters of any given system were chosen for some mystical reasons that were out of my grasp, while really, most of this is trying out a ton of different values and slowly approaching what <i8>looks the nicest to you</i8>. In this case, <im>\pi / 60</im> also means that this function will start repeating itself every <im>120</im> frames, since the sine and cosine functions repeat themselves over <im>2\pi</im>.</snl> The <im>t</im> value is identical for each dot&mdash;time goes forward at the same speed for all dots.
+    An identical copy of this equation is sent to all the dots, but because each dot has a different <im>x</im> and <im>y</im> value within the grid, the result of the equation is different for each dot. So this equation has three inputs: <im>x</im>, <im>y</im>, and <im>t</im>. The <im>x</im> and <im>y</im> values are the position of the dot within the two-dimensional grid. The third value, <im>t</im>, is the <i>moment in time</i>. It is a value that starts at <im>0</im> when the animation begins and it is simply incremented on each frame of animation. In this case, it is incremented by <im>\pi / 60</im>, an arbitrary number that I chose after trying different numbers and figuring how at which speed the animation was the most interesting to &nbsn;watch.<snl label="arbitrary">I find it interesting to point out the amount of arbitrary decisions that are taken in the design of such systems, because I remember when I was starting out a few years ago, looking at other people's code, I was often under the impression that all parameters of any given system were chosen for some mystical reasons that were out of my grasp, while really, most of this is trying out a ton of different values and slowly approaching what <i8>looks the nicest to you</i8>. In this case, <im>\pi / 60</im> also means that this function will start repeating itself every <im>120</im> frames, since the sine and cosine functions repeat themselves over <im>2\pi</im>.</snl> The <im>t</im> value is identical for each dot&mdash;time goes forward at the same speed for all dots.
 </pn>
 <p>
     So once this formula is calculated for each dot, the <im>d_x</im> and <im>d_y</im> values of each dot will determine its exact position in space. Note that any dot can fly <i>outside</i> of its origin cell&mdash;the cell's purpose is to give its dot an initial position, not to constrain the dots&rsquo; movements within bounds.
@@ -105,7 +144,7 @@
 <math>
 \begin{align*}
     m   &= x \cdot y \cdot 200.5\\
-    d_x &= x + m \cdot \cos\bigg(\frac{y}{2} + \frac{t}{40}\bigg)^{700}\\
-    d_y &= y + m \cdot \sin\bigg(\frac{x}{2} + \frac{t}{40}\bigg)^{700}
+    p_x &= x + m \cdot \cos\bigg(\frac{y}{2} + \frac{t}{40}\bigg)^{700}\\
+    p_y &= y + m \cdot \sin\bigg(\frac{x}{2} + \frac{t}{40}\bigg)^{700}
 \end{align*}
 </math>
