@@ -1,8 +1,8 @@
 <!-- sketch -->/what-the-walls-feel/sketch.js
 <!-- fr-title -->Ce que ressentent les murs
-<!-- fr-html-title -->Ce <span class="italic8"><span class="small-title">que</span></span> ressentent <span class="italic8"><span class="small-title">les</span></span> murs
+<!-- fr-html-title -->Ce <span class="italic8"><span class="small-title">que</span></span> ressentent <span class="italic8"><span class="small-title">les</span></span>&nbsp;murs
 <!-- fr-date -->Hiver 2020
-<!-- fr-description -->Un vidéoclip pour le compositeur Frank Horvat.
+<!-- fr-description -->Un vidéoclip pour le compositeur Frank&nbsp;Horvat.
 <!-- fr-content -->
 <img src="../../../images/what-the-walls-feel/plants-softer.png">
 <p class="article-top">
@@ -13,7 +13,7 @@
 </p>
 <!-- en-title -->What the Walls Feel
 <!-- en-html-title -->What <span class="italic8"><span class="small-title">the</span></span> Walls Feel
-<!-- en-date -->Winter 2020
+<!-- en-date -->Summer 2020
 <!-- en-description -->A music video for composer Frank Horvat.
 <!-- en-content -->
 
@@ -22,21 +22,25 @@
     <sc>In the fall of 2019</sc>, Toronto composer <a href="http://frankhorvat.com/">Frank Horvat</a> published an album of minimalist chamber &nbsn;music<snl label="around">The album is titled <i8>What Goes Around</i8> and <a href="http://frankhorvat.com/discography/what-goes-around/">you can stream it</a> on his website. Do check it out, it is wonderful music.</snl> and decided to hire filmmakers to transform each album track into a short experimental video. This ongoing project now features the work of fellow Montreal animators <a href="https://moiajp.net/">Moïa Jobin-Paré</a> and <a href="http://www.sunnystanila.com/">Sunny Stanila</a>, Toronto artist <a href="http://www.matthewmaaskant.com/">Matthew Maaskant</a>, and me.
 </p>
 <p>
-    The track I found most inspiring for my video was a melancholy piece for six clarinets titled <i>What the Walls Feel as they Stare at Rob Ford Sitting in his Office</i>. In his <a href="http://frankhorvat.com/composition/what-walls-feel-as-they-stare-at-rob-ford-sitting-in-his-office/">programme notes</a> for the piece, Frank explains the inspiration behind its unusual title:
-</p>
-<p class="blockquote">
-    “In November 2013, the city I live in was completely captivated by the madness caused by our crack-smoking mayor who also had aggressive alcoholic outbursts and criminal acquaintances. Observing media coverage of the circus that ensued, I couldn’t help but wonder what was deep in this man’s heart. Does he have regret? Does he wish he could have handled things differently? Often, only the walls in a person’s office can observe their most private moments of reflection. What if those walls expressed their feelings? What would they say? This piece attempts to paraphrase the walls as they try to understand what lies deep in the heart of this larger-than-life person.”
+    You can <a href="https://www.youtube.com/user/frankhorvatofficial/">watch my video</a> on Frank’s YouTube channel. It is made entirely using free, open source, and custom-made software, and all the code written to create the video is also distributed as free software. You can <a href="https://github.com/pelletierauger/what-the-walls-feel">find the code here</a>.
 </p>
 
 <h3>Visualizing musical minimalism</h3>
 
-<pn>
+<!-- <pn>
     <sc>This sorrowful piece</sc> and its evocative title seemed perfectly suited for an abstract, geometric film. In my mind, witnessing the <i>feelings of walls</i> must be a puzzling experience similar to trying to decipher messages emerging out of the waters of Stanisław Lem’s Solaris. It must be an encounter with a different <i>kind</i> of feelings—one for which we do not have references or clear pathways of understanding. Frank Horvat’s intricate musical phrases trace the contours of what the walls feel but they never reveal what those feelings are. The intricate sequencing of fluctuating geometric patterns. these walls without a of Walls often feature repetitive geometric patterns, and I immediately got excited thinking about how I could make patterns that respond to the music.
+</pn> -->
+<pn>
+    <sc>The album track</sc> I found most inspiring for my video was a melancholy piece for six clarinets titled <i>What the Walls Feel as they Stare at Rob Ford Sitting in his &nbsn;Office</i>.<snr label="programme">In his <a href="http://frankhorvat.com/composition/what-walls-feel-as-they-stare-at-rob-ford-sitting-in-his-office/">programme notes</a> for the piece, Frank explains the inspiration behind this peculiar title.</snr> It’s in the style of musical minimalism, so it’s built on the slow transformation of repeated patterns&mdash;introducing new variations within carefully restricted bounds. Like most minimalist pieces, it also doesn’t feature a lot of dynamics (contrasts between quiet and loud parts), and instead immerses the listener in a rich sequence of microscopic changes.
 </pn>
 <p>
-    Frank's album is in the style of musical minimalism&mdash;think Steve Reich, Meredith Monk, Julius Eastman, Henryk G&#243;recki, etc. And consequently, the task of creating a visual accompaniment to his music was a very interesting challenge, for two main reasons:
+    I’m a lover of musical minimalism, having listened to some of its luminaries like Steve Reich, Meredith Monk, and Julius Eastman, for countless hours, so the task of responding to this music with images was an exciting one. It was also clear that geometric and algorithmic animation was the perfect tool to visually recreate the idea of tiny variations within restricted bounds. Minimalist music is strongly connected to <a href="https://en.wikipedia.org/wiki/Process_music">process music</a>, which Steve Reich defines as &ldquo;pieces of music that are, literally, processes&rdquo;. In the domain of algorithmic art, everything is a process&mdash;algorithms are simply sets of instructions that define processes. Algorithmic art is thus often refered to as <i>procedural art</i>, and the software Processing is one of the most important tool in the field.
+    <!-- My work for this project uses <lnum><a href="https://p5js.org/">p5.js</a></lnum>, a JavaScript reimagining of Processing. -->
 </p>
-<ul class="dash">
+<p>
+    The cover art for some important minimalist albums like Steve Reich’s <a href="https://en.wikipedia.org/wiki/Music_for_18_Musicians"><i>Music for 18 Musicians</i></a> and <i>Drumming</i>, and Jon Gibson’s <i>Two Solo Pieces</i>, which all feature dense geometric patterns, also exemplify this connection.
+</p>
+<!-- <ul class="dash">
     <li>
         The sheer lenght of the piece. It's 9 minutes and 2 seconds long, by far the longest abstract film that I ever worked on. Since repetition is one of minimalism's core techniques, it tends to work best when it is considerably stretched over time.
     </li>
@@ -46,28 +50,31 @@
 </ul>
 <pn>
     So I got very curious about how this could be achieved; how would I sustain interest over a long period of time without relying on fireworks. The answer, of course, is in minimalism itself: tiny, intricate changes within a restricted system of boundaries.
-</pn>
+</pn> -->
 <!-- <pn>
     One of the challenges that I forsaw with this project was the sheer lenght of the musical piece&mdash;it's 9 minutes and 2 seconds long, by far the longest abstract film that I ever worked on. And also, over the course of whole piece, there is a very strong homogeneity in the musical material. The colour, tonality and timbre of the whole piece remains very homogenous throught its duration. There is a subtle build up of the emotion of the piece as it goes, but the build up is subtle. So I knew that I coudn't rely on dramatic changes in the visuals to sustain interest. I knew that following this minimalist piece of music would require similar minimalist means in the image: intricate variations on similar elements.
 </pn> -->
 <!-- <p>
     So I knew that I had to produce a <i>lot</i> of material, and that this material needed to resemble itself&mdash;with &nbsn;variations.<snr label="reich">But on another level, of course, I knew that algorithmic animation was the perfect tool for the job&mdash;the cover album for the original 1978 recording of Steve Reich's <a href="https://en.wikipedia.org/wiki/Music_for_18_Musicians"><i8>Music for 18 Musicians</i8></a> demonstrates well how intricate and geometric patterns are a great way to visualize minimalist music.</snr>
 </p> -->
-<pn>
+<!-- <p>
     But on another level, of course, I knew that algorithmic animation was the perfect tool for the job&mdash;the cover album for the original 1978 recording of Steve Reich's <a href="https://en.wikipedia.org/wiki/Music_for_18_Musicians"><i>Music for 18 Musicians</i></a> demonstrates well how intricate and geometric patterns are a great way to visualize minimalist music.
-</pn>
+</p> -->
 
-<h3>Searching for the right visual system</h3>
+<h3>Searching for a visual system</h3>
 
 <pn>
-    <sc>It's my second time</sc> doing commission animation work using algorithmic art. The first time was for a <a href="https://www.youtube.com/watch?v=PFufr93KNoQ">music video</a> directed by <a href="https://pascalinelefebvre.tumblr.com/">Pascaline Lefebvre</a>, an illustrator, author, and filmmaker from Montréal. Most of the animation in the video was made by Pascaline, but she hired me to animate the flocks of birds that you can see during a few moments in the &nbsn;video.<snl label="flocks">The flocking algorithms that I used for this video were inspired by Daniel Shiffman's videos on the subject. All the code I wrote for this project <a href="https://github.com/pelletierauger/Oiseaux">can be found on GitHub</a>.</snl>
+    <sc>It's my second time</sc> doing commission animation work using algorithmic art. The first time was for a <a href="https://www.youtube.com/watch?v=PFufr93KNoQ">music video</a> directed by <a href="https://pascalinelefebvre.tumblr.com/">Pascaline Lefebvre</a>, an illustrator, author, and filmmaker from Montréal. Most of the animation in the video was hand-drawn by Pascaline, and I contributed by animating the flocks of birds that you can see during a few moments in the &nbsn;video.<snl label="flocks">The flocking algorithms that I used for this video were inspired by Daniel Shiffman's videos on the subject. All the code I wrote for this project <a href="https://github.com/pelletierauger/Oiseaux">can be found on GitHub</a>.</snl>
 </pn>
 
 
 <!--     I got this idea that the main process that creates the movements in the film should be simple mathematical formulas. I generally find that simple mathematical formulas are a great way to generate a large amount of variations&mdash;something that I find perhaps more challenging when a very complicated algorithm is in charge of the animation (but of the course the boundaries between any &ldquo;domains&rdquo; of algorithmic animation are very blurry, as a complicated algorithm can evidently include some simple mathematical formulas which can then be modified at will to create endless variations). -->
 
 <p>
-    So I'm not accustomed to searching for algorithmic ideas that have a clear purpose. But I absolutely love to search for ideas so I tried a lot of different things, listening to Frank's music a lot while sketching an assortment of ideas. I eventually had an idea that I found very interesting: a wall of small dots moving in different choreographies, forming into a series of intricate patterns. I sketched out a prototype using the <a href="https://editor.p5js.org/"><lnum>p5</lnum>.js web editor</a>. Here it &nbsn;is:<snr label="prototype">You can also see <a href="https://editor.p5js.org/guillaume/sketches/ej_9eAWxI">this sketch and its code</a> in the <lnum>p5</lnum>.js web editor.</snr>
+    This time around, I listened to Frank's music a lot while sketching an assortment of ideas. I eventually had an idea that I found very fitting for the music: a wall of small dots moving in different choreographies, forming into a series of intricate patterns.
+</p>
+<p>
+    I sketched out a prototype using the <a href="https://editor.p5js.org/"><lnum>p5</lnum>.js web editor</a>. Here it &nbsn;is:<snr label="prototype">You can also see <a href="https://editor.p5js.org/guillaume/sketches/ej_9eAWxI">this sketch right next to its code</a> in the <lnum>p5</lnum>.js web editor. It will let you easily modify any elements of the sketch and see the results immediately.</snr>
 </p>
 
 <div id="dot-grid-demo"></div>
@@ -82,8 +89,14 @@
     <sc>The film</sc> was made entirely by writing custom-made software. The film is itself a program—when this program runs, it either plays the film or renders it to disk. It is distributed as free, open source software, so you can find <a href="https://github.com/pelletierauger/what-the-walls-feel">all the code for it here</a>, and you are free to run it, modify it, and distribute modified versions.
 </pn>
 <p>
-    To write the film, I used another software that I’m currently writing, called Les environs (French for&nbsn;<i>The Surroundings</i>).<snl label="environs">Les environs is also distributed as free software and you can <a href="https://github.com/pelletierauger/Les-environs">download it on GitHub</a>.</snl> Les environs is a live coding environment—it allows to write and modify a program while it is running. So the film is made to run inside this environment.
+    To write the film, I used another software that I’m currently writing, called Environs (French for &nbsn;<i>Surroundings</i>).<snl label="environs">Environs is also distributed as free software and you can <a href="https://github.com/pelletierauger/Les-environs">download it on GitHub</a>.</snl> Environs is a live coding environment—it allows to write and modify a program while it is running. So the film is made to run inside this environment.
 </p>
+<p>
+    Below is what the software looks like when I work on the video.
+</p>
+
+<img class="full-size-image" src="../../../images/what-the-walls-feel/environment.png">
+
 <p>
     p5.js... the reasons behind free software, etc.
 </p>
@@ -102,6 +115,8 @@
 
 <img class="full-size-image" src="../../../images/what-the-walls-feel/spicy-lemon-a.png">
 <img class="full-size-image" src="../../../images/what-the-walls-feel/spicy-lemon-b.png">
+<img class="full-size-image" src="../../../images/what-the-walls-feel/mustard.png">
+<img class="full-size-image" src="../../../images/what-the-walls-feel/red-and-blue.png">
 <img class="full-size-image" src="../../../images/what-the-walls-feel/mustard-muscles.png">
 
 <h3>The mathematics behind the film</h3>
@@ -151,3 +166,7 @@
     p_y &= y + m \cdot \sin\bigg(\frac{x}{2} + \frac{t}{40}\bigg)^{700}
 \end{align*}
 </math>
+
+<pn>
+    This is the equation used in the opening scene of the video, where the dots all move in straight lines, resembling cars stuck in traffic.
+</pn>
