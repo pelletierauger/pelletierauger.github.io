@@ -29,9 +29,9 @@
 }
 
 .thumbnail img {
-    /*width: 100%;*/
-    /*height: 50%;*/
     width: 100%;
+    /*width: calc(100% + 5rem);*/
+    /*margin: 0 -2.5rem;*/
 }
 
 .portfolio-banner {
@@ -41,6 +41,7 @@
     display: block;
     float: left;
     margin: 0;
+    /*margin: 0 -2.5rem;*/
     padding: 2rem;
     /*border-bottom: 5px solid black;*/
 }
@@ -89,6 +90,7 @@
     margin: 0;
     padding: 0 0em 0 0;
     line-height: 1.5em;
+    /*max-width: 25em;*/
 }
 @media screen and (min-width: 950px) {
     .portfolio-description h2 {
