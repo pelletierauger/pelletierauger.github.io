@@ -331,6 +331,12 @@ img {
     text-indent: 0em;
 }
 
+.blockquote {
+    padding-left: 2rem;
+    text-indent: 0em;
+    max-width: calc(650px - 2em);
+}
+
 .vegetal {
     font-family: 'vegetal-g', 'EBG12-It';
     -moz-font-feature-settings: 'swsh';
@@ -488,5 +494,9 @@ img.full-size-image {
 }
 
 .nomarginbottom pre {
+    margin: 2rem auto 0.5rem auto;
+}
+
+.nomarginbottom .audio-box {
     margin: 2rem auto 0.5rem auto;
 }
