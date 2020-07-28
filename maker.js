@@ -995,3 +995,5 @@ function parseHTMLTemplate(s) {
         });
     return page;
 }
+
+require('child_process').fork('rss-feed-maker.js');
