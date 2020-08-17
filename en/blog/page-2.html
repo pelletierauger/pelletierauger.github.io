@@ -25,6 +25,38 @@
             </div><div class="blog-posts">
             <div class="blog-post">
                 <div class="blog-post-header">
+                    <a href="../blog/2018/12/blurry-quadrilaterals.html"><div class="date">December 17, 2018</div>
+                    <div class="blog-title-box"><h2 class="header">Blurry quadrilaterals</h2></div>
+                    <div class="description">
+                    Geometric studies with WebGL.
+
+            </div></a>
+                </div>
+                <div class="blog-post-content">
+                    
+<img src="../../../images/blurry-quadrilaterals/sketch-00243.png">
+
+<p class="article-top">
+    <span class="small-caps">Drawing blurry shapes</span> with WebGL can be quite complicated. All the basic shapes it creates are very precise, with well-defined (and often poorly aliased) contours. Because I want to create animations that are foggy, atmospheric, and uncertain, I&rsquo;m slowly building a set of tools dedicated to drawing blurry WebGL geometry.
+</p>
+<p>
+    Blurry circles are not so hard to draw because the distance from the center of a circle can be used to draw a gradient, and then this gradient can be adjusted with the <span class="inline-code">smoothstep()</span> function—it&rsquo;s all fast calculations for the <span class="small-caps">gpu</span>. Drawing more complex shapes requires me to learn a lot more about WebGL, a technology that I do not yet know a lot about.
+</p>
+<p>
+    I started with quadrilaterals. I created a system where I only need to specify the position and blurriness of a quadrilateral, and all the triangles necessary to interpolate the colour of the shape are created automatically. In the upper left part of the diagram below, asking for a rectangle whose area is equal to the area of triangles <span class="small-caps">a</span> and <span class="small-caps">b</span> will generate the triangles <span class="small-caps">a, b, c, d, e, f, g, h, i,</span> and <span class="small-caps">j</span>.
+</p>
+
+<img class="inline-image" src="../../../images/blurry-quadrilaterals/drawings.png">
+
+
+                <div class="languageJump">
+                    <a href="../blog/2018/12/blurry-quadrilaterals.html">Read more…</a>
+                </div>
+               
+                </div>
+            </div>
+            <div class="blog-post">
+                <div class="blog-post-header">
                     <a href="../blog/2018/12/a-flock-of-singing-boids.html"><div class="date">December 12, 2018</div>
                     <div class="blog-title-box"><h2 class="header">A flock of singing boids</h2></div>
                     <div class="description">
@@ -225,27 +257,6 @@
 
                 <div class="languageJump">
                     <a href="../blog/2018/7/a-recaman-spiral.html">Read more…</a>
-                </div>
-               
-                </div>
-            </div>
-            <div class="blog-post">
-                <div class="blog-post-header">
-                    <a href="../blog/2018/7/study-for-cellular-automata-no-2.html"><div class="date">July 26, 2018</div>
-                    <div class="blog-title-box"><h2 class="header">Study for cellular automata nº 2
-</h2></div>
-                    <div class="description">
-                    
-
-            </div></a>
-                </div>
-                <div class="blog-post-content">
-                    
-<img src="../../../images/study-for-ca-no2/study-no2-still-01.jpg">
-
-
-                <div class="languageJump">
-                    <a href="../blog/2018/7/study-for-cellular-automata-no-2.html">Read more…</a>
                 </div>
                
                 </div>

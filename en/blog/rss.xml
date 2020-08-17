@@ -6,6 +6,15 @@
     <language>en-us</language>
     <atom:link href="https://pelletierauger.com/en/blog/rss.xml" rel="self" type="application/rss+xml" />
         <item>
+            <title>Songs of Parabolae</title>
+            <description>Directionless experiments in geometry and sound synthesis.
+</description>
+            <pubDate>Wed, 5 Aug 2020 23:59:59 EST</pubDate>
+            <link>https://pelletierauger.com/en/blog/2020/8/songs-of-parabolae.html</link>
+            <guid isPermaLink="true">https://pelletierauger.com/en/blog/2020/8/songs-of-parabolae.html</guid>
+            <source url="https://pelletierauger.com/en/blog/rss.xml">Guillaume Pelletier-Auger - Blog</source>
+        </item>
+        <item>
             <title>A Piano for SuperCollider</title>
             <description>Complete code for the project and some documentation.
 </description>
