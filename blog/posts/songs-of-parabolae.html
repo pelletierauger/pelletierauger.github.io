@@ -1,6 +1,6 @@
 <!-- year -->2020
 <!-- month -->08
-<!-- day -->15
+<!-- day -->5
 <!-- style -->songs-of-parabolae
 <!-- fr-title -->Le chant des paraboles
 <!-- fr-html-title -->Le chant <span class="italic8"><span class="small-title">des</span></span> paraboles
@@ -12,9 +12,14 @@
 <p>
     Dans la métaphore d'Hendy, nous peignons un paysage qui contient un horizon, une montagne et un champignon situé près du sommet de la montagne.
 </p>
+<div class="drawing-caption">
+    <img class="drawing" src="../../../images/songs-of-parabolae/drawing-3.jpg">&#171;&nbsp;Quelle montagne étrangement lisse&nbsp;&#187;,
+    <br>pensèrent les mycologues.
+</div>
 <pn>
-    Elle explique qu'il nous est possible de définir spatialement le contour de la montagne en connaissant uniquement la position de l'horizon et celle du champignon. Elle se met ensuite à dessiner cette montagne avec projetant des lignes droites qui descendent verticalement de l'horizon et qui se croisent à des lignes projetées à divers angles depuis le champignon. Une parabole apparaît ensuite aux endroits où se croisent ces lignes.
+    Hendy explique qu'il nous est possible de définir spatialement le contour de la montagne en connaissant uniquement la position de l'horizon et celle du champignon. Elle dessine ensuite cette montagne avec projetant des lignes droites qui descendent verticalement de l'horizon et qui rejoignent des lignes projetées à divers angles depuis le champignon. Une parabole apparaît finalement aux endroits où se rejoignent ces lignes.
 </pn>
+<img class="parabolic-drawings" src="../../../images/songs-of-parabolae/drawing-2.png">
 <pn>
     En voyant cette parabole apparaître, je n'étais pas certain de comprendre exactement ce qui s'était passé. J'ai donc décidé de recréer cette expérience avec une animation programmée à l'aide de <a href="https://p5js.org/"><lnum>p5.js</lnum></a>. Voici ce que j'ai &nbsn;obtenu&nbsp;:<snl label="p5editor1">Vous pouvez consulter <a href="https://editor.p5js.org/guillaume/sketches/qQKIE7uAZ">le code de cette animation</a> dans l'éditeur Web <lnum>p5.js</lnum>.</snl>
 </pn>
@@ -22,7 +27,7 @@
 <img class="parabolic-animation-1" src="../../../images/songs-of-parabolae/parabola-animation-lossy-50.gif">
 
 <pn>
-    Dans cette animation, nous voyons qu'il est possible de construire un triangle dont deux des sommets sont situés aux points <im>A</im> et <im>B</im> et dont le troisième sommet trace une parabole.
+    Dans cette animation, nous voyons qu'il est possible de construire un triangle isocèle dont le premier sommet est situé sur une ligne d'horizon, le second sommet est situé près du haut de la &nbsn;montagne,<snr label="foyer">Cet endroit où Hendy nous fait imaginer un champignon s'appelle le <i8>foyer</i8> de la parabole. <a href="https://fr.wikipedia.org/wiki/Parabole">Wikipédia décrit une parabole</a> comme étant &#171;&nbsp;une courbe plane dont chacun des points est situé à égale distance d'un point fixe, le foyer, et d'une droite fixe, la directrice.&nbsp;&#187; On constate ainsi que le présent exercice nous fait répliquer très précisément cette définition.</snr> et le troisième sommet trace une parabole. J'ai aussi découpé ce triangle isocèle en deux triangles rectangles &mdash; je trouvais que cette coupe rendait plus claire la symétrie qui est présente dans le triangle isocèle et qui est ici très importante.
 </pn>
 
 <img class="parabolic-animation-1" src="../../../images/songs-of-parabolae/parabola-animation-info-2.png">
@@ -30,8 +35,6 @@
 <pn>
     Pour construire ce triangle <im>ABC</im>, il faut d'abord projeter une ligne verticale <im>c</im> vers le bas depuis le sommet <im>A</im> et une autre ligne <im>a</im> entre les sommets <im>A</im> et <im>B</im>. Ensuite, il faut calculer l'angle <im>A</im> et projeter une ligne <im>b</im> depuis le sommet <im>B</im> de façon à former un angle égal à <im>A</im> (pour que <im>ABC</im> soit isocèle). Les côtés <im>b</im> et <im>c</im> du triangle se croisent finalement au sommet <im>C</im>. Lorsque ce processus est répété en partant de plusieurs points sur la ligne d'horizon, les sommets <im>C</im> de tous les triangles obtenus forment une parabole.
 </pn>
-
-<!-- read-more -->
 
 <h3>Une visite impromptue au royaume des sons</h3>
 
@@ -42,22 +45,25 @@
     <img class="inline-image" src="../../../images/songs-of-parabolae/parabolic-wave-2.png">
 </div>
 <pn>
-    J'ai été immédiatement curieux d'entendre cette onde. Je me suis imaginé (de façon peut-être na&iuml;ve) que sa sonorité ressemblerait au mélange d'une onde sinuso&iuml;dale et d'une onde triangulaire, puisqu'elle semble avoir des caractéristiques communes avec ces deux ondes : une courbe sinueuse ainsi qu'une &nbsn;discontinuité.<snr label="absolute-of-sine">L'onde parabolique ressemble aussi beaucoup à la valeur absolue d'une onde sinuso&iuml;dale, mais elle en est tout de même différente, <a href="https://codepen.io/tim_heap/details/jPWZrL">comme on peut le voir ici.</a></snr> Mon intuition s'est avérée fausse.
+    J'ai tout de suite été curieux d'entendre cette onde. Puisque l'onde parabolique semble avoir des caractéristiques communes avec l'onde sinuso&iuml;dale et l'onde triangulaire (la courbe douce de l'une et l'angle acéré de l'autre), j'ai d'abord imaginé que sa sonorité semblerait être à mi-chemin entre ces deux &nbsn;ondes.<snr label="absolute-of-sine">L'onde parabolique ressemble aussi beaucoup à la valeur absolue d'une onde sinuso&iuml;dale, mais elle en est tout de même différente, <a href="https://codepen.io/tim_heap/details/jPWZrL">comme on peut le voir ici.</a></snr> Mon intuition s'est avérée fausse.
 </pn>
 <p>
-    Ci-dessous, vous pouvez écouter un fichier sonore qui contient trois notes : un la à 220 Hz joué avec une onde sinuso&iuml;dale, puis une onde parabolique, et finalement une onde triangulaire. On peut entendre que la sonorité de l'onde parabolique n'est pas du tout à mi-chemin entre l'onde sinuso&iuml;dale et l'onde triangulaire.
+    Ci-dessous, vous pouvez écouter un fichier sonore qui contient trois notes : un la à 220 Hz joué avec une onde sinuso&iuml;dale, puis avec une onde parabolique, et finalement avec une onde triangulaire. On peut remarquer que l'onde parabolique, par sa sonorité, ne semble pas être à mi-chemin entre les deux autres ondes.
 </p>
 
 <!-- <div class="nomarginbottom"> -->
 <audiobox url="https://dl.dropboxusercontent.com/s/5wc2l6edyckhup2/sine-parabola-triangle-2.mp3">
-    A sine wave, a parabolic wave, and a triangle wave.
+    Une onde sinuso&iuml;dale, une onde parabolique et une onde triangulaire.
     <img class="audio-caption" src="../../../images/songs-of-parabolae/spectra7.png">
 </audiobox>
 <!-- </div> -->
 
+<!-- read-more -->
+
 <pn>
-    These three notes were generated with simple code written in SuperCollider. Below is the SuperCollider code I wrote to get the parabolic wave. You don't need to understand this code to understand what it is doing. It's very simple: it defines an <ic>x</ic> value that linearly ramps between <ic>-1</ic> and <ic>1</ic>, and then a <ic>y</ic> value that is equal to <ic>x</ic> squared, which is just the simplest way to express a parabola: <im>y = x^2</im>.
+    Ces trois notes ont été générées avec du code assez simple écrit dans SuperCollider. Le code que j'ai écrit pour obtenir l'onde parabolique est reproduit ci-dessous. Il n'est pas nécessaire de comprendre ce code pour comprendre ce qu'il fait. C'est très simple : on définit d'abord une valeur <ic>x</ic> qui grimpe de façon linéaire de <ic>-1</ic> à <ic>1</ic>, et ensuite une valeur <ic>y</ic> qui est égale au carré de la valeur <ic>x</ic>. Il s'agit de la façon la plus simple de représenter une parabole : <im>y = x^2</im>.
 </pn>
+
 <supercollider>
 (
 {
@@ -71,39 +77,38 @@
 <h3>La mystérieuse apparition d'une onde triangulaire</h3>
 
 <pn>
-    <sc>Après avoir entendu</sc> le son de l'onde parabolique, j'ai cherché sur Internet pour trouver des informations la concernant. J'ai trouvé <a href="http://msp.ucsd.edu/techniques/latest/book-html/node187.html">une section d'un livre de Miller Puckette</a> (le créateur de Pure Data et de Max/M<sc>sp</sc>) traitant en détail des ondes &nbsn;paraboliques.<snl label="puckette"> Puckette utilise une équation pour calculer une onde parabolique sur une période allant de <im>0</im> à <im>N</im> qui est formulée différemment de la solution que j'ai écrite avec SuperCollider, mais qui donne des résultats similaires&nbsp;: <im>p[n] = \frac{1}{2}\bigg(\frac{n}{N} - \frac{1}{2}\bigg)^2 - \frac{1}{24}</im> Ici, nous pouvons considérer <im>\frac{n}{N}</im> comme étant la composante <im>x</im>&nbsp;: il s'agit d'une montée linaire entre <im>0</im> et <im>1</im> (autrement dit, c'est un signal en dents de scie), qui est ensuite mis au carré après avoir été placé sur l'intervalle <im>\big[-\frac{1}{2}, \frac{1}{2}\big]</im>. Notons que Puckette n'ajuste pas son onde parabolique pour quelle soit centrée visuellement sur l'axe vertical, comme je l'ai fait. Il explique la raison du décentrage vertical de son onde&nbsp;: &#171;&nbsp; la composante <i8>DC</i8> (courant direct) est ainsi à zéro (en d'autres termes, la valeur moyenne d'un cycle de l'onde est de zéro)&nbsp;&#187;. Ce choix a beaucoup de sens : il assure que cette onde produise un <a href="https://fr.wikipedia.org/wiki/Courant_continu">courant continu</a>. Je n'y avais définitivement pas pensé lorsque j'ai écrit ma propre onde parabolique.
+    <sc>Après avoir entendu</sc> le son de l'onde parabolique, j'ai cherché sur Internet pour trouver des informations la concernant. J'ai trouvé <a href="http://msp.ucsd.edu/techniques/latest/book-html/node187.html">une section d'un livre de Miller Puckette</a> (le créateur de Pure Data et de Max/M<sc>sp</sc>) qui traite en détail des ondes &nbsn;paraboliques.<snl label="puckette"> Puckette utilise une équation pour calculer une onde parabolique sur une période allant de <im>0</im> à <im>N</im> qui est formulée différemment de la solution que j'ai écrite avec SuperCollider, mais qui donne des résultats similaires&nbsp;: <im>p[n] = \frac{1}{2}\bigg(\frac{n}{N} - \frac{1}{2}\bigg)^2 - \frac{1}{24}</im> Ici, nous pouvons considérer <im>\frac{n}{N}</im> comme étant la composante <im>x</im>&nbsp;: il s'agit d'une montée linaire entre <im>0</im> et <im>1</im> (autrement dit, c'est un signal en dents de scie), qui est ensuite mis au carré après avoir été placé sur l'intervalle <im>\big[-\frac{1}{2}, \frac{1}{2}\big]</im>. Notons que Puckette n'ajuste pas son onde parabolique pour quelle soit centrée visuellement sur l'axe vertical, comme je l'ai fait. Il explique la raison du décentrage vertical de son onde&nbsp;: &#171;&nbsp; la composante <i8>DC</i8> (courant direct) est ainsi à zéro (en d'autres termes, la valeur moyenne d'un cycle de l'onde est de zéro)&nbsp;&#187;. Ce choix a beaucoup de sens : il assure que cette onde produise un <a href="https://fr.wikipedia.org/wiki/Courant_continu">courant continu</a>. Je n'y avais définitivement pas pensé lorsque j'ai écrit ma propre onde parabolique.
 </snl>
 </pn>
 <p>
-    One thing from Puckette's book that I found absolutely fascinating was that <i>the midpoint between two parabolic waves of inverted signs and inverted phase is a triangle wave</i>. He visualized this in his book, but I felt that an animated visualization would help me to understand more satisfyingly. So I made another <lnum>p5.js</lnum> sketch.
+    Un point soulevé par Puckette m'a particulièrement fasciné : la courbe à mi-chemin entre deux ondes paraboliques dont la phase et le signe sont inversés est une onde triangulaire. Il visualise ce phénomène dans son livre, mais j'ai pensé qu'une animation me permettrait de comprendre ce point de façon plus satisfisante. J'ai donc fait un autre croquis à l'aide de <lnum>p5.js</lnum>&nbsp;:
 </p>
 
 <img class="parabolic-animation-2" src="../../../images/songs-of-parabolae/parabola-equidistant-lossy-50.gif">
 
 <pn>
-    The animation above features two black paths which are two parabolic waves of inverted signs and inverted phase, and a red path situated between them. The fascinating thing here is that the red path is always exactly halfway between the two black paths, on the vertical axis. This seems visually counterintuitive to me, and so I added a vertical axis that moves along the paths to very explicitly show the phenomenon. We can clearly see that the two vertical lines that stretch upward and downward from the red dot are always of equal lengths.
+    Cette animation présente deux courbes noires (deux ondes paraboliques dont la phase et le signe sont inversés) et une courbe rouge située entre elles. J'ai trouvé fascinant de remarquer que la courbe rouge est toujours très exactement à mi-chemin entre les deux courbes noires, sur l'axe vertical. Le phénomène me semblait assez visuellement contre-intuitif, et j'ai donc ajouté un axe vertical qui se déplace le long des trois courbes afin de clarifier cette observation. Il est facile de remarquer que les deux lignes verticales qui sont projetées du point rouge, une vers le haut et l'autre vers le bas, sont toujours d'une longueur égale.
 </pn>
-
 <p>
-    I was confused and curious enough about this phenomenon to create another version of the animation, where the whole system can be said to be <i>stabilized on the red path</i>, meaning that the red path was transformed to a straight line by dividing all of its values by themselves, and then the two black paths went through the same transformation&mdash;they were also divided by the original value of the red path. To make the transformation very clear, here is an animation where we interpolate smoothly between both states of the system.
+    J'ai aussi eu l'idée de créer une nouvelle version de cette animation dans laquelle le système entier est <i>stabilisé sur la courbe rouge</i>. J'entends ainsi que la courbe rouge a été transformée en ligne droite en divisant chacune de ses valeurs par elles-mêmes. (Ainsi, chacune de ses valeurs devient <im>1</im> ; c'est donc un signal plat). Les valeurs des courbes noires ont ensuite subi la même transformation : elles ont été divisées par les valeurs originales de la courbe rouge. Pour rendre cette transformation plus facile à saisir, voici une animation qui nous fait osciller lentement entre les deux états du système (l'état original et la stabilisation sur la courbe rouge)&nbsp;:
 </p>
 
 <img class="parabolic-animation-2" src="../../../images/songs-of-parabolae/parabola-transition-lossy-50.gif">
 
 <pn>
-    And below is the system once the transformation is fully applied&mdash;once it is <i>stabilized on the red path</i>.
+    Et ci-dessous, on peut voir le système lorsque la transformation est terminée.
 </pn>
 
 <img class="parabolic-animation-2" src="../../../images/songs-of-parabolae/parabola-c-stable2-lossy-50.gif">
 
 <pn>
-    It's interesting to see that now that the two black paths went through the same transformation, they are now perfectly &nbsn;symmetrical.<snr label="lemniscate">Also, the two black paths now resemble a <a href="https://en.wikipedia.org/wiki/Lemniscate">lemniscate</a>, but I'm not sure if it fits the precise definition.</snr>Does that imply that they were already symmetrical in some sense <i>before</i> the transformation, but that the symmetry was not yet apparent? In any case, it it now very obvious that the two black paths are always equidistant to the red path.
+    Il est intéressant de voir que suite à cette transformation, les deux courbes noires sont maintenant parfaitement symétriques sur l'axe formé par la courbe &nbsn;rouge. <snr label="lemniscate">Les deux courbes noires ressemblent aussi à une <a href="https://fr.wikipedia.org/wiki/Lemniscate">lemniscate</a>, mais je ne suis pas certain que la définition d'une lemniscate soit vraiment respectée.</snr> Cela implique-t-il que ces courbes étaient déjà symétriques, d'une certaine façon, avant même la transformation, et que cette symétrie n'était simplement pas apparente ? Dans tous les cas, il est maintenant très clair que les deux courbes noires sont équidistantes à la courbe rouge.
 </pn>
 
 <h3>Une autre onde</h3>
 
 <pn>
-    <img class="w-parabolic-drop-caps" src="../../../images/songs-of-parabolae/m2.png"><sc>a première observation</sc>, à la vue du système <i>stabilisé</i>, était qu'il peut être interprété visuellement de deux façons différentes : on peut choisir d'y voir deux courbes noires situées chacune en haut et en bas de la courbe rouge, ou alors on peut y voir deux courbes noires qui se croisent ensemble par-dessus le centre horizontal de la ligne rouge. Si l'on considère le second scénario, les deux courbes noires croisées forment chacune une onde qui rappelle un peu l'onde sinuso&iuml;dale, mais qui est curieusement <i>inclinée</i>. J'ai été immédiatement curieux d'entendre le son de cette onde inclinée. Je l'ai obtenue dans SuperCollider en multipliant les valeurs de la première courbe noire (celle qui est située au-dessus de la courbe rouge, de tout son long) avec les valeurs d'un signal carré. Ci-dessous, nous pouvons voir que la valeur du signal carré <im>b</im> est toujours égale à <im>-1</im> ou à <im>1</im>, et qu'ainsi, la multiplication avec le signal <im>b</im> a pour effet de miroiter l'onde <im>a</im>.
+    <img class="w-parabolic-drop-caps" src="../../../images/songs-of-parabolae/m2.png"><sc>a première observation</sc>, à la vue du système <i>stabilisé</i>, était qu'il peut être interprété visuellement de deux façons différentes : on peut choisir d'y voir deux courbes noires situées chacune en haut et en bas de la courbe rouge, ou alors on peut y voir deux courbes noires qui se croisent ensemble au centre horizontal de la ligne rouge. Si l'on considère le second scénario, les deux courbes noires croisées forment chacune une onde qui rappelle un peu une onde sinuso&iuml;dale, mais qui est curieusement <i>inclinée</i>. J'ai été immédiatement curieux d'entendre le son de cette onde inclinée. Je l'ai obtenue dans SuperCollider en multipliant les valeurs de la première courbe noire (celle qui est située au-dessus de la courbe rouge, de tout son long) avec les valeurs d'un signal carré. Ci-dessous, nous pouvons voir que la valeur du signal carré <im>b</im> est toujours égale à <im>-1</im> ou à <im>1</im>, et qu'ainsi, la multiplication avec le signal <im>b</im> a pour effet de miroiter l'onde <im>a</im>.
 </pn>
 
 <img class="waves-mult" src="../../../images/songs-of-parabolae/waves-multiplied.png">
@@ -141,7 +146,7 @@
 <h3>Conclusion</h3>
 
 <pn>
-    <sc>Cette première plongée</sc> parmi les paraboles me rend très curieux d'en apprendre davantage sur cette courbe fascinante. Les paraboles possèdent certainement de nombreuses autres caractéristiques qui pourraient mener à de nouvelles expérimentations. Par exemple, <a href="https://twitter.com/matthen2/status/1279593918745608192">cette animation fascinante</a> par Matt Henderson illustre comment une parabole préserve sa forme lorsqu'elle subit une <a href="https://fr.wikipedia.org/wiki/Transvection">transvection</a>.
+    <sc>Cette première plongée</sc> parmi les paraboles me rend très curieux d'en apprendre davantage sur cette courbe intriguante. Les paraboles possèdent certainement de nombreuses autres caractéristiques qui pourraient mener à de nouvelles expérimentations. Par exemple, <a href="https://twitter.com/matthen2/status/1279593918745608192">cette animation fascinante</a> par Matt Henderson illustre comment une parabole préserve sa forme lorsqu'elle subit une <a href="https://fr.wikipedia.org/wiki/Transvection">transvection</a>.
 </pn>
 <p>
     D'ici les prochaines expérimentations, j'espère que vous avez apprécié ce sinueux chemin parmi quelques idées inspirées de la belle et humble expression <im>y = x^2</im>.
@@ -152,21 +157,32 @@
 <!-- en-description -->Directionless experiments in geometry and sound synthesis.
 <!-- en-content -->
 <p class="noindent">
-    <img class="m-parabolic-drop-caps" src="../../../images/songs-of-parabolae/m.png"><sc>aking connections</sc> between mathematical and artistic ideas is a major source of joy for me, and consequently I'm always on the lookout for interesting experiments that I can conduct to get more familiar with different areas of mathematics in ways that feel free and creative. A few weeks ago, I watched a <a href="https://www.youtube.com/watch?v=x0dTbsfWFIQ">YouTube video</a> by physics and mathematics educator Toby Hendy in which she explains parabol&aelig; using a metaphor inspired by Bob Ross, host of the <sc>tv</sc> show <i>The Joy of Painting</i>.
+    <img class="m-parabolic-drop-caps" src="../../../images/songs-of-parabolae/m.png"><sc>aking connections</sc> between mathematical and artistic ideas is a major source of joy for me, and consequently I'm always on the lookout for interesting experiments that I can conduct to get more familiar with different areas of mathematics in ways that feel free and creative. A few weeks ago, I watched a <a href="https://www.youtube.com/watch?v=x0dTbsfWFIQ">YouTube video</a> by physics and mathematics educator Toby Hendy in which she explains parabol&aelig; using a metaphor inspired by Bob Ross, the late host of <i>The Joy of Painting</i>.
 </p>
 <p>
-    In Hendy's metaphor, we are painting a landscape which contains a horizon, a mountain, and a mushroom situated near the top of the mountain. She explains that the only information we need to draw the entire contour of the mountain is the position of the mushroom and the horizon. She proceeds to draw the mountain by projecting straight lines between the horizon and the mushroom, and a parabola appears, seemingly out of nowhere. I couldn't quite understand how this was possible, so I decided to recreate this experiment in code using <lnum>p5.js</lnum>. Here is how it turned &nbsn;out:<snl label="p5editor1">You can find the code for this animation in the <lnum>p5.js</lnum> web editor <a href="https://editor.p5js.org/guillaume/sketches/qQKIE7uAZ">here</a>.</snl>
+    In Hendy's metaphor, we paint a landscape that contains a horizon, a mountain, and a mushroom situated near the top of the mountain.
 </p>
-
-<img class="parabolic-animation-1" src="../../../images/songs-of-parabolae/parabola-animation-lossy-50.gif">
-
+<div class="drawing-caption">
+    <img class="drawing" src="../../../images/songs-of-parabolae/drawing-3.jpg">&ldquo;What an eerily smooth mountain&rdquo;,
+    <br>the mycologists remarked.
+</div>
 <pn>
-    We can see in this animation that by knowing only the positions of points <im>A</im> and <im>B</im>, we are able to construct this whole triangle which turns out to travel on the path of the parabola. Another important assumption is that the line <im>c</im> is always completely vertical.
+    Hendy explains that it's possible for us to define the contour of the mountain while only knowing the position of the mushroom and the horizon. She proceeds to draw a set of lines projected downward from the horizon, and another set of lines projected from the mushroom at various angles. A parabola then appears at the points where those two sets of lines meet.
+</pn>
+<img class="parabolic-drawings" src="../../../images/songs-of-parabolae/drawing-2.png">
+<pn>
+    When I saw the parabola appear, I couldn't quite understand what was happening exactly, so I decided to recreate this experiment in code using <lnum>p5.js</lnum>. Here is what I &nbsn;obtained:<snl label="p5editor1">You can find the code for this animation in the <lnum>p5.js</lnum> web editor <a href="https://editor.p5js.org/guillaume/sketches/qQKIE7uAZ">here</a>.</snl>
+</pn>
+<img class="parabolic-animation-1" src="../../../images/songs-of-parabolae/parabola-animation-lossy-50.gif">
+<pn>
+    In this animation, we see that it's possible to construct an isosceles triangle whose first vertex is situated on the horizon, whose second vertex is situated on the &nbsn;mushroom,<snr label="foyer">This point that Hendy makes us imagine as a mushroom is called the <i8>focus</i8> of the parabola. <a href="https://fr.wikipedia.org/wiki/Parabole">Wikipedia describes a parabola</a> as &ldquo;the locus of points in [the] plane that are equidistant from both the directrix and the focus.&rdquo; The directrix is the horizon in our metaphor. We can thus see that the present exercise makes us replicate this definition very precisely.</snr> and whose third vertex traces a parabola. I also cut the isosceles triangle into two right triangles&mdash;I feel like this cut clarifies the symmetry that is present in the isosceles triangle and which is so important here.
 </pn>
 
 <img class="parabolic-animation-1" src="../../../images/songs-of-parabolae/parabola-animation-info-2.png">
 
-<!-- read-more -->
+<pn>
+    To build this <im>ABC</im> triangle, we must first project a vertical line <im>c</im> downward from the vertex <im>A</im> and another line <im>a</im> between the vertices <im>A</im> and <im>B</im>. We must then calculate the angle <im>A</im> and project a line <im>b</im> from the vertex <im>B</im> to form an angle equal to <im>A</im> (so that <im>ABC</im> is isosceles). Edges <im>b</im> and <im>c</im> of the triangle must then meet at vertex <im>C</im>. When this process is repeated starting from several different points on the horizon, the vertex <im>C</im> of each triangle always falls on the path of the parabola.
+</pn>
 
 <h3>Onward to the realm of sounds</h3>
 
@@ -177,7 +193,7 @@
     <img class="inline-image" src="../../../images/songs-of-parabolae/parabolic-wave-2.png">
 </div>
 <pn>
-    I got really curious about how this would sound. I (na&iuml;vely perhaps) imagined that it would sound something halfway between a sine wave and a triangle wave, because it visually seems to have characteristics of both: a smooth curve and a sharp &nbsn;corner.<snr label="absolute-of-sine">The parabolic wave also looks very similar to the absolute value of a sine wave, but it is a little bit different, <a href="https://codepen.io/tim_heap/details/jPWZrL">as shown here.</a></snr> It turns out to sound completely different than what I expected.
+    I got really curious about how this would sound. I first imagined that it would sound something halfway between a sine wave and a triangle wave, because it visually seems to have characteristics of both: a smooth curve and a sharp &nbsn;corner.<snr label="absolute-of-sine">The parabolic wave also looks very similar to the absolute value of a sine wave, but it is a little bit different, <a href="https://codepen.io/tim_heap/details/jPWZrL">as shown here.</a></snr> This intuition turned out to be wrong.
 </pn>
 <p>
     Below you can listen to a sound file containing three notes: an A at 220 Hz played with a sine wave, then a parabolic wave, and then a triangle wave. You'll hear that the parabolic wave in the middle doesn't sound at all like it is halfway between the sine wave and the triangle wave.
@@ -190,8 +206,10 @@
 </audiobox>
 <!-- </div> -->
 
+<!-- read-more -->
+
 <pn>
-    These three notes were generated with simple code written in SuperCollider. Below is the SuperCollider code I wrote to get the parabolic wave. You don't need to understand this code to understand what it is doing. It's very simple: it defines an <ic>x</ic> value that linearly ramps between <ic>-1</ic> and <ic>1</ic>, and then a <ic>y</ic> value that is equal to <ic>x</ic> squared, which is just the simplest way to express a parabola: <im>y = x^2</im>.
+    These three notes were generated with simple code written in SuperCollider. Below is the SuperCollider code I wrote to get the parabolic wave. You don't need to understand this code to understand what it is doing. It's very simple: it defines an <ic>x</ic> value that linearly ramps between <ic>-1</ic> and <ic>1</ic>, and then a <ic>y</ic> value that is equal to <ic>x</ic> squared, which is the simplest way to express a parabola: <im>y = x^2</im>.
 </pn>
 <supercollider>
 (
@@ -207,7 +225,7 @@
 
 <pn>
     <sc>After hearing</sc> the sound of the parabolic wave, I searched the internet to see if I could find any information about it, and I found <a href="http://msp.ucsd.edu/techniques/latest/book-html/node187.html">a section of an online book by Miller Puckette</a> (the creator of Pure Data and Max/M<sc>sp</sc>) where he talks about parabolic &nbsn;waveforms.<snl label="puckette">
-    Puckette uses an equation to calculate the parabolic waveform over a period from <im>0</im> to <im>N</im> which is formulated differently than my own SuperCollider solution, but which gives similar results: <im>p[n] = \frac{1}{2}\bigg(\frac{n}{N} - \frac{1}{2}\bigg)^2 - \frac{1}{24}</im> Here, we can think of <im>\frac{n}{N}</im> as the <im>x</im> component: it is a linear ramp between <im>0</im> and <im>1</im> (in other words, a sawtooth wave), which is then squared after having been remapped between <im>-\frac{1}{2}</im> and <im>\frac{1}{2}</im>. Notably, Puckette does not set his parabolic wave to be centered visually on the vertical axis, like I did. He explains that that he designed it thusly so that &ldquo;the DC component is zero (or in other words, the average value over one cycle of the waveform is zero)&rdquo;. This makes a lot of sense (it prevents <a href="https://en.wikipedia.org/wiki/DC_bias">DC bias</a>) and I definitely did not think of this when I wrote my own parabolic wave.
+    Puckette uses an equation to calculate the parabolic waveform over a period from <im>0</im> to <im>N</im> which is formulated differently than my own SuperCollider solution, but which gives similar results: <im>p[n] = \frac{1}{2}\bigg(\frac{n}{N} - \frac{1}{2}\bigg)^2 - \frac{1}{24}</im> Here, we can think of <im>\frac{n}{N}</im> as the <im>x</im> component: it is a linear ramp between <im>0</im> and <im>1</im> (in other words, a sawtooth wave), which is then squared after having been remapped between <im>-\frac{1}{2}</im> and <im>\frac{1}{2}</im>. Notably, Puckette does not set his parabolic wave to be visually centered on the vertical axis, like I did. He explains that that he designed it thusly so that &ldquo;the DC component is zero (or in other words, the average value over one cycle of the waveform is zero)&rdquo;. This makes a lot of sense (it prevents <a href="https://en.wikipedia.org/wiki/DC_bias">DC bias</a>) and I definitely did not think of this when I wrote my own parabolic wave.
 </snl>
 </pn>
 
@@ -252,12 +270,12 @@
 <img class="tilted-wave" src="../../../images/songs-of-parabolae/tilted-wave.png">
 
 <audiobox url="https://dl.dropboxusercontent.com/s/239ot6rffxk9k5g/sine-tilted-sine.mp3">
-    An actual sine wave and a &ldquo;tilted&rdquo; sine wave.
+    A sine wave and a &ldquo;tilted&rdquo; sine wave.
     <img class="audio-caption" src="../../../images/songs-of-parabolae/spectrab2.png">
 </audiobox>
 
 <pn>
-    So as we can hear, and as we could expect from its appearance, this new waveform is much closer to a good old sine wave than the parabolic wave. Below is the SuperCollider code with which I got this wave. All it does is what I explained above visually.
+    As we can hear, and as we could expect from its appearance, this new waveform is much closer to a good old sine wave than the parabolic wave. Below is the SuperCollider code with which I got this wave. All it does is what I explained above visually.
 </pn>
 
 <supercollider>
@@ -278,7 +296,7 @@
 <h3>Conclusion</h3>
 
 <pn>
-    <sc>This first foray</sc> into parabol&aelig; leaves me curious to find out more about this fascinating curve through future explorations. I'm certain that parabol&aelig; possess many more interesting features worth investigating. For example, <a href="https://twitter.com/matthen2/status/1279593918745608192">this fascinating animation</a> by Matt Henderson shows how a parabola preserves its shape perfectly when it is sheared.
+    <sc>This first foray</sc> into parabol&aelig; leaves me curious to find out more about this captivating curve through future explorations. Parabol&aelig; certainly possess many more interesting features worth investigating. For example, <a href="https://twitter.com/matthen2/status/1279593918745608192">this fascinating animation</a> by Matt Henderson shows how a parabola preserves its shape perfectly when it is sheared.
 </pn>
 <p>
     In the meantime, I hope you enjoyed following this meandering path among some ideas inspired by the beautiful and humble expression <im>y = x^2</im>.
