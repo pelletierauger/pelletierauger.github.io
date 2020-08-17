@@ -5,11 +5,12 @@ var verbose = true;
 
 function makeFeed(language) {
     // let feedName = (language == "en") ? "feed" : "flux";
+    let description = (language == "en") ? "Art and music made with code." : "Art et musique réalisés avec du code.";
     let head = `<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Guillaume Pelletier-Auger</title>
     <link>https://pelletierauger.com/${language}/blog/</link>
-    <description>Art and music made with code.</description>
+    <description>${description}</description>
     <language>en-us</language>
     <atom:link href="https://pelletierauger.com/${language}/blog/rss.xml" rel="self" type="application/rss+xml" />`;
     let footer = `
