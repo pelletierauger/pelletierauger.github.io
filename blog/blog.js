@@ -6,7 +6,7 @@ exports.posts = [
     // "joy-and-confusion",
     // "what-the-walls-feel",
     // "the-dance-of-numbers",
-    // "songs-of-parabolae",
+    "songs-of-parabolae",
     "a-piano-for-supercollider",
     // "notes-for-what-the-walls-feel",
     // "linear-transformations",
