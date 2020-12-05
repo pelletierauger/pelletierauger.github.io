@@ -2,19 +2,19 @@
     font-family: 'EBG12-Re';
     src: url(./fonts/EBGaramond/EBGaramond12-Regular.eot );
     src: url('./fonts/EBGaramond/EBGaramond12-Regular.ttf') format('truetype'),
-    url('./fonts/EBGaramond/EBGaramond12-Regular.woff') format('woff');
+        url('./fonts/EBGaramond/EBGaramond12-Regular.woff') format('woff');
 }
 @font-face {
     font-family: "EBG08-Re";
     src: url(./fonts/EBGaramond/EBGaramond08-Regular.eot );
     src: url('./fonts/EBGaramond/EBGaramond08-Regular.ttf') format('truetype'),
-    url('./fonts/EBGaramond/EBGaramond08-Regular.woff') format('woff');
+        url('./fonts/EBGaramond/EBGaramond08-Regular.woff') format('woff');
 }
 @font-face {
     font-family: "EBG12-It";
     src: url(./fonts/EBGaramond/EBGaramond12-Italic.eot );
     src: url('./fonts/EBGaramond/EBGaramond12-Italic.ttf') format('truetype'),
-    url('./fonts/EBGaramond/EBGaramond12-Italic.woff') format('woff');
+        url('./fonts/EBGaramond/EBGaramond12-Italic.woff') format('woff');
 }
 @font-face {
     font-family: "vegetal-g";
@@ -24,19 +24,19 @@
     font-family: "EBG08-It";
     src: url(./fonts/EBGaramond/EBGaramond08-Italic.eot );
     src: url('./fonts/EBGaramond/EBGaramond08-Italic.ttf') format('truetype'),
-    url('./fonts/EBGaramond/EBGaramond08-Italic.woff') format('woff');
+        url('./fonts/EBGaramond/EBGaramond08-Italic.woff') format('woff');
 }
 @font-face {
     font-family: "EBG12-SC";
     src: url(./fonts/EBGaramond/EBGaramondSC12-Regular.eot );
     src: url('./fonts/EBGaramond/EBGaramondSC12-Regular.ttf') format('truetype'),
-    url('./fonts/EBGaramond/EBGaramondSC12-Regular.woff') format('woff');
+        url('./fonts/EBGaramond/EBGaramondSC12-Regular.woff') format('woff');
 }
 @font-face {
     font-family: "EBG08-SC";
     src: url(./fonts/EBGaramond/EBGaramondSC08-Regular.eot );
     src: url('./fonts/EBGaramond/EBGaramondSC08-Regular.ttf') format('truetype'),
-    url('./fonts/EBGaramond/EBGaramondSC08-Regular.woff') format('woff');
+        url('./fonts/EBGaramond/EBGaramondSC08-Regular.woff') format('woff');
 }
 @font-face {
     font-family: "Silentype";
@@ -47,7 +47,7 @@
     font-family: "Genericons";
     src: url(./fonts/Genericons/genericons-regular-webfont.eot );
     src: url('./fonts/Genericons/genericons-regular-webfont.ttf') format('truetype'),
-    url('./fonts/Genericons/genericons-regular-webfont.woff') format('woff');
+        url('./fonts/Genericons/genericons-regular-webfont.woff') format('woff');
 }
 
 * {
@@ -160,11 +160,11 @@ article a, nav ul li a, h1 a, .blog-post-content a {
     box-shadow: inset 0 -3px 0 0 #fff, inset 0 -4px 0 0 #000;
     /*box-shadow: inset 0 -0.02em 0 0 #fff, inset 0 -0.05em 0 0 #000;*/
     text-shadow: 1px 1px 0 #fff, -1px 1px 0 #fff,
-    2px 0 0 #fff, -2px 0 0 #fff,
-    3px 0 0 #fff, -3px 0 0 #fff,
-    0px -1px 0 #fff, 0px -2px 0 #fff,
-    -1px -1px 0 #fff, 1px -1px 0 #fff,
-    -2px -1px 0 #fff, 2px -1px 0 #fff;
+        2px 0 0 #fff, -2px 0 0 #fff,
+        3px 0 0 #fff, -3px 0 0 #fff,
+        0px -1px 0 #fff, 0px -2px 0 #fff,
+        -1px -1px 0 #fff, 1px -1px 0 #fff,
+        -2px -1px 0 #fff, 2px -1px 0 #fff;
     /*   These two extra text-shadows work for italic "f"s but not for roman "pp"s.
     -2px -2px 0 #fff, 2px -2px 0 #fff;*/
 }
@@ -172,12 +172,12 @@ article a, nav ul li a, h1 a, .blog-post-content a {
 nav ul li a, h1 a, .blog-post h2 {
     box-shadow: unset;
     text-shadow: 1px 1px 0 #fff, -1px 1px 0 #fff,
-    2px 0 0 #fff, -2px 0 0 #fff,
-    3px 0 0 #fff, -3px 0 0 #fff,
-    3px -1px 0 #fff, 3px -2px 0 #fff,
-    0px -1px 0 #fff, 0px -2px 0 #fff,
-    -1px -1px 0 #fff, 1px -1px 0 #fff,
-    -2px -1px 0 #fff, 2px -1px 0 #fff;
+        2px 0 0 #fff, -2px 0 0 #fff,
+        3px 0 0 #fff, -3px 0 0 #fff,
+        3px -1px 0 #fff, 3px -2px 0 #fff,
+        0px -1px 0 #fff, 0px -2px 0 #fff,
+        -1px -1px 0 #fff, 1px -1px 0 #fff,
+        -2px -1px 0 #fff, 2px -1px 0 #fff;
 }
 h1 {
     display: inline-block;
@@ -446,6 +446,14 @@ canvas {
     line-height: 1em;
 }
 
+#Genericons-Patreon {
+    font-family: "Genericons";
+    position: relative;
+    bottom: -4px;
+    padding: 0 0 0 5px;
+    line-height: 1em;
+}
+
 #Genericons-GitHub {
     font-family: "Genericons";
     position: relative;
@@ -454,7 +462,7 @@ canvas {
     line-height: 1em;
 }
 
-a #Genericons, a #Genericons-GitHub {
+a #Genericons, a #Genericons-GitHub, a #Genericons-Patreon {
     background-color: white;
 }
 
