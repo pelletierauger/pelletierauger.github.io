@@ -1,0 +1,75 @@
+<!-- year -->2021
+<!-- month -->05
+<!-- day -->09
+<!-- fr-title -->Un vortex apaisant
+<!-- fr-description -->Animation et musique à télécharger en haute résolution.
+<!-- fr-content --><img src="../../../images/a-calming-vortex/sketch-01680.png">
+
+N'hésitez pas à <a href="https://pelletierauger.com/fr/a-propos.html#contact">me contacter</a> pour des commentaires ou des questions. Merci de votre lecture !
+
+<!-- en-title -->A Calming Vortex
+<!-- en-description -->Animation and music shared as a high resolution download.
+<!-- en-content --><img src="../../../images/a-calming-vortex/sketch-01680.png">
+
+<p class="article-top">
+    <sc>Here is a video</sc> that you can <a href="">download in high resolution format</a>, for free. If you enjoy this work, I encourage you to subscribe to my <a href="https://www.patreon.com/pelletierauger">
+    <span id="Genericons-Patreon">
+    <svg width="1em" viewBox="0 0 105 105">
+        <circle cx="65" cy="37.5" r="37" fill="black" />
+        <rect width="18" height="100" fill="black" />
+    </svg>
+    </span>Patreon</a>. You'll be helping me to create and share more work.
+</p>
+
+<h3>Context</h3>
+
+<pn>
+  <sc>I've been making</sc> a lot of animations like this one, and sharing them on social media always feels wrong because of the poor quality of recompressed files. The whole point of such animations is to lose oneself into all their tiny details, and all of that is lost on Twitter or Instagram. Even on YouTube and Vimeo, the quality isn't on par with the original file (a file that people can also keep and rewatch as many times as they want). I wouldn't want to watch my work on a streaming platform, and inviting other people to do so feels odd.
+</pn>
+<p>
+  So I've been thinking about sharing my work as high resolution downloads instead. This is an experiment. For now, this video is not available to stream anywhere. I would love to get your feedback on this. Don't hesitate to <a href="https://pelletierauger.com/en/about.html#contact"><span id="Genericons">&#62480;</span>contact me</a> if you have any thoughts. Thank you.
+</pn>
+
+<h3>Music</h3>
+
+<pn>
+  <sc>The soothing synthesizer drone</sc> that you can hear in the video is written with SuperCollider, using the excellent <a href="https://github.com/v7b1/mi-UGens/">SuperCollider ports of the Mutable Instruments &nbsn;modules.</a><snl label="volker">The ports are written by <a href="https://vboehm.net/">Volker Böhm</a>. And the original code for the modules, of course, is written by <a href="https://github.com/pichenettes">Émilie Gillet</a>.</snl> The code for the drone is below.
+</pn>
+<p> 
+  As you can see, it's nothing more than a big stack of <ic>MiBraids</ic> instances modulated with some <sc>LFO</sc>s and filtered with a Low Pass and some reverb. Each instance of <ic>MiBraids</ic> is doubled by multiplying its pitch by <ic>[1, 1.001]</ic>, which slightly detunes one channel to get a spatial effect.
+</p>
+<p>
+  What I like about this drone is that it's essentially a big major seventh chord, and it includes some pitches that are only a minor second away (one semitone away). You can see it easily because all frequencies are calculated from the root pitch set with <ic>var root = 58;</ic>, which is the midi value for A#3. And then one instance of <ic>MiBraids</ic> has a pitch of <ic>root - 1</ic>, which gives us the A natural (the major seventh of the chord), which rubs against the more prominent root note A#. The rubbing creates tension in the chord, so there's a nice contrast between how mellow the drone feels, and the subtle dissonance in its harmony. Also, more generally, the presence of multiple tones that are very close to each other (G3, A3, A#3, C4, D4) creates a thick and crunchy sound, not unlike some synth pads from pop songs of the <lnum>1980</lnum>s.
+</p>
+
+<supercollider>
+(
+var root = 58;
+if(~drone.isPlaying, {~drone.set(\gate, 0, \fadeTime, 0.1)});
+~drone = {
+    var f = root;
+    var lfo = SinOsc.kr(0.1 * 0.25).range(0.025, 0.125);
+    var lfo2 = SinOsc.kr(0.2 * 0.25, pi).range(0.025, 0.85);
+    var sig = MiBraids.ar(f - 24 * [1, 1.001], lfo, lfo2, 3) * 0.15;
+    sig = sig + (MiBraids.ar(f - 12 * [1, 1.001], lfo, lfo2, 3) * 0.1);
+    sig = sig + (MiBraids.ar(f - 5 * [1, 1.001], lfo, lfo2, 3) * 0.1);
+    sig = sig + (MiBraids.ar(f * [1, 1.001], lfo, lfo2, 3) * 0.05);
+    sig = LPF.ar(sig, 1000);
+    sig = sig + (MiBraids.ar(f + 2 * [1, 1.001], lfo, lfo2, 3) * 0.025);
+    f = f + 12;    
+    sig = sig + (MiBraids.ar(f - 3 * [1.002, 1], lfo, lfo2, 5) * 0.00625);
+    sig = sig + (MiBraids.ar(f - 3 * [1.001, 1.004] * 2, lfo, lfo2, 5) * 0.00625);
+    sig = sig + (MiBraids.ar(f - 1 * [0.998, 1], lfo, lfo2, 5) * 0.00625);
+    sig = sig + (MiBraids.ar(f + 0 * [1, 1.001], lfo, lfo2, 5) * 0.00625);
+    sig = sig + (MiBraids.ar(f + 2 * [1, 1.001], lfo, lfo2, 5) * 0.00625);
+    sig = sig + (MiBraids.ar(f + 4 * [1, 1.001], lfo, lfo2, 5) * 0.00625);
+    sig = sig + (MiBraids.ar(f + 12 * [1, 1.001], lfo, lfo2, 4) * 0.025);
+    sig = MiVerb.ar(sig, time: 0.7, amount: 0.25, diff: 0.7, damp: 0.9);
+    sig = sig * 0.75 * XLine.kr(0.001, 1, 3);
+}.play.register;
+)
+</supercollider>
+
+<pn>
+  I've been making a lot of similar work as a way to soothe my anxiety during the pandemic. I hope you'll find it a warm, relaxing place too. Thank you.
+</pn>
