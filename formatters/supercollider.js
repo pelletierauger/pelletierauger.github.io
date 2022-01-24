@@ -121,7 +121,12 @@ module.exports = function(hljs) {
             MatchingPResynth Max MaxLocalBufs Maxamp Maybe MdaPiano MeanTriggered 
             Meddis Median MedianSeparation MedianTriggered MembraneCircle 
             MembraneHexagon Message Method MethodError MethodInspector MethodOverride 
-            MethodQuote Metro MidEQ Mix MixedBundle ModDif Module Monitor MonitorGui 
+            MethodQuote Metro MidEQ 
+
+            MiBraids MiClouds MiElements MiGrids MiMu MiOmi MiPlaits 
+            MiRings MiRipples MiTides MiVerb MiWarps 
+
+            Mix MixedBundle ModDif Module Monitor MonitorGui 
             MonoGrain MonoGrainBF MoogFF MoogLadder MoogVCF MostChange MouseButton 
             MouseX MouseY MulAdd MultiLevelIdentityDictionary MultiOutDemandUGen 
             MultiOutUGen MultiSliderView MultiTap MustBeBooleanError NAryOpFunction 
