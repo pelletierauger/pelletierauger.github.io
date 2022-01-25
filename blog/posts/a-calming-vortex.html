@@ -1,6 +1,6 @@
-<!-- year -->2021
-<!-- month -->05
-<!-- day -->09
+<!-- year -->2022
+<!-- month -->01
+<!-- day -->06
 <!-- fr-title -->Un vortex apaisant
 <!-- fr-description -->Animation et musique à télécharger en haute résolution.
 <!-- fr-content --><img src="../../../images/a-calming-vortex/sketch-01680.png">
@@ -12,37 +12,33 @@ N'hésitez pas à <a href="https://pelletierauger.com/fr/a-propos.html#contact">
 <!-- en-content --><img src="../../../images/a-calming-vortex/sketch-01680.png">
 
 <p class="article-top">
-    <sc>Here is a video</sc> that you can <a href="">download in high resolution format</a>, for free. If you enjoy this work, I encourage you to subscribe to my <a href="https://www.patreon.com/pelletierauger">
+    <sc>Here is a video</sc> that you can <a href="https://we.tl/t-zUyShhUSgH">download in high resolution format</a>, for free. If you enjoy this work, I invite you to subscribe to my <a href="https://www.patreon.com/pelletierauger">
     <span id="Genericons-Patreon">
     <svg width="1em" viewBox="0 0 105 105">
         <circle cx="65" cy="37.5" r="37" fill="black" />
         <rect width="18" height="100" fill="black" />
     </svg>
-    </span>Patreon</a>. You'll be helping me to create and share more work.
+    </span>Patreon</a>. You'll be helping me to create and share more work. There is currently another high resolution video that my patrons can download, and more videos on the way.
 </p>
 
 <h3>Context</h3>
-
 <pn>
-  <sc>I've been making</sc> a lot of animations like this one, and sharing them on social media always feels wrong because of the poor quality of recompressed files. The whole point of such animations is to lose oneself into all their tiny details, and all of that is lost on Twitter or Instagram. Even on YouTube and Vimeo, the quality isn't on par with the original file (a file that people can also keep and rewatch as many times as they want). I wouldn't want to watch my work on a streaming platform, and inviting other people to do so feels odd.
+    <sc>I've been making</sc> a lot of animations like this one, simply for my own enjoyment, and sharing them on social media always feels unsatisfying because of the poor quality of recompressed files. The point of such animations is to lose oneself into all their tiny details, and this is lost on Twitter or Instagram. Even on YouTube and Vimeo, the quality isn't on par with the original file. I wouldn't want to watch my own work on a streaming platform, and inviting other people to do so doesn't feel ideal.
 </pn>
+<!-- read-more -->
 <p>
-  So I've been thinking about sharing my work as high resolution downloads instead. This is an experiment. For now, this video is not available to stream anywhere. I would love to get your feedback on this. Don't hesitate to <a href="https://pelletierauger.com/en/about.html#contact"><span id="Genericons">&#62480;</span>contact me</a> if you have any thoughts. Thank you.
-</pn>
+    So I've been thinking about sharing my work as high resolution downloads instead. This is an experiment. For now, this video is not available to stream anywhere, but I will probably put it on YouTube in a few days/weeks. I would love to know what you think of this little experiment, as I might repeat it more if it generates interest. Don't hesitate to <a href="https://pelletierauger.com/en/about.html#contact"><span id="Genericons">&#62480;</span>contact me</a> with any feedback you might want to offer. Thank you very much.
+    </pn>
 
-<h3>Music</h3>
+    <h3>Music</h3>
 
-<pn>
-  <sc>The soothing synthesizer drone</sc> that you can hear in the video is written with SuperCollider, using the excellent <a href="https://github.com/v7b1/mi-UGens/">SuperCollider ports of the Mutable Instruments &nbsn;modules.</a><snl label="volker">The ports are written by <a href="https://vboehm.net/">Volker Böhm</a>. And the original code for the modules, of course, is written by <a href="https://github.com/pichenettes">Émilie Gillet</a>.</snl> The code for the drone is below.
-</pn>
-<p> 
-  As you can see, it's nothing more than a big stack of <ic>MiBraids</ic> instances modulated with some <sc>LFO</sc>s and filtered with a Low Pass and some reverb. Each instance of <ic>MiBraids</ic> is doubled by multiplying its pitch by <ic>[1, 1.001]</ic>, which slightly detunes one channel to get a spatial effect.
-</p>
-<p>
-  What I like about this drone is that it's essentially a big major seventh chord, and it includes some pitches that are only a minor second away (one semitone away). You can see it easily because all frequencies are calculated from the root pitch set with <ic>var root = 58;</ic>, which is the midi value for A#3. And then one instance of <ic>MiBraids</ic> has a pitch of <ic>root - 1</ic>, which gives us the A natural (the major seventh of the chord), which rubs against the more prominent root note A#. The rubbing creates tension in the chord, so there's a nice contrast between how mellow the drone feels, and the subtle dissonance in its harmony. Also, more generally, the presence of multiple tones that are very close to each other (G3, A3, A#3, C4, D4) creates a thick and crunchy sound, not unlike some synth pads from pop songs of the <lnum>1980</lnum>s.
-</p>
-
-<supercollider>
+    <pn>
+        <sc>The soothing synthesizer drone</sc> that you can hear in the video is written with SuperCollider, using the excellent <a href="https://github.com/v7b1/mi-UGens/">SuperCollider ports of the Mutable Instruments &nbsn;modules.</a><snl label="volker">The ports are written by <a href="https://vboehm.net/">Volker Böhm</a> and the original code for the modules is written by Mutable Instrument's <a href="https://github.com/pichenettes">Émilie Gillet</a>. I highly recommend those UGens; they sound fantastic.</snl>
+    </pn>
+    <p>
+        Here is the code for the synthesizer drone:
+    </p>
+    <supercollider>
 (
 var root = 58;
 if(~drone.isPlaying, {~drone.set(\gate, 0, \fadeTime, 0.1)});
@@ -69,7 +65,12 @@ if(~drone.isPlaying, {~drone.set(\gate, 0, \fadeTime, 0.1)});
 }.play.register;
 )
 </supercollider>
-
-<pn>
-  I've been making a lot of similar work as a way to soothe my anxiety during the pandemic. I hope you'll find it a warm, relaxing place too. Thank you.
-</pn>
+    <pn>
+        As you can see, it's simply a big stack of <ic>MiBraids</ic> instances modulated with some <sc>LFO</sc>s and filtered with a Low Pass and some reverb. Each instance of <ic>MiBraids</ic> is doubled by multiplying its pitch by <ic>[1, 1.001]</ic>, which slightly detunes one channel to get a spatial stereo effect.
+    </pn>
+    <p>
+        What I like about this drone is that it's essentially a big major seventh chord, and that it includes notes that are only one semitone away (a minor second). You can see it easily because all frequencies are calculated from the root pitch set with <ic>var root = 58;</ic>, which is the midi value for A#3. And then one instance of <ic>MiBraids</ic> has a pitch of <ic>root - 1</ic>, which gives us the A natural (the major seventh of the chord) that rubs against the more prominent root note A#. This rubbing creates tension in the chord, so there's a nice contrast between how mellow the drone feels, and the subtle dissonance in its &nbsn;harmony.<snr label="major7">I'm not saying anything new here, major seventh chords are notoriously relaxing and quite ubiquitous in <a href="https://www.youtube.com/watch?v=6bNMxWGHlTI">the mellowest of tracks</a>.</snr> Also, more generally, the presence of multiple tones that are very close to each other (G3, A3, A#3, C4, D4) creates a thick and crunchy sound, not unlike some synth pads from <lnum>1980</lnum>s music.
+    </p>
+    <p>
+        I made this calming piece as a way to soothe my anxiety during the pandemic. I hope you'll find it a warm, relaxing place too.
+    </p>
