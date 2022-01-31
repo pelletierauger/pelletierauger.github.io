@@ -1,11 +1,85 @@
 <!-- year -->2022
-<!-- month -->01
-<!-- day -->06
+<!-- month -->02
+<!-- day -->01
 <!-- fr-title -->Un vortex apaisant
 <!-- fr-description -->Animation et musique à télécharger en haute résolution.
-<!-- fr-content --><img src="../../../images/a-calming-vortex/sketch-01680.png">
+<!-- fr-content -->
+<img src="../../../images/a-calming-vortex/sketch-01680.png">
 
-N'hésitez pas à <a href="https://pelletierauger.com/fr/a-propos.html#contact">me contacter</a> pour des commentaires ou des questions. Merci de votre lecture !
+<p class="article-top">
+    <sc>Voici une vidéo</sc> que vous pouvez <a href="https://we.tl/t-zUyShhUSgH">télécharger en format haute résolution</a>, gratuitement. J'ai aussi <a href="https://www.youtube.com/watch?v=Oks-e9-Xc58">mis en ligne la vidéo sur YouTube</a>, pour celles et ceux qui ne peuvent télécharger le gros fichier.
+</p>
+<p>
+Si vous appréciez ce travail, je vous invite à vous inscrire à ma page <a href="https://www.patreon.com/pelletierauger">
+    <nb>
+    <span id="Genericons-Patreon">
+    <svg width="1em" viewBox="0 0 105 105">
+        <circle cx="65" cy="37.5" r="37" fill="black" />
+        <rect width="18" height="100" fill="black" />
+    </svg>
+    </span>Patreon</a>.
+    </nb> Vous m'aiderez ainsi à créer et à partager davantage de nouveaux projets. Vous y trouverez présentement une autre vidéo haute résolution que les inscrit&middot;e&middot;s peuvent télécharger en exclusivité, et d'autres vidéos suivront.
+</p>
+
+<h3>Contexte</h3>
+
+<pn>
+    <sc>J'ai réalisé</sc> beaucoup d'animations comme celle-ci depuis quelques années, simplement pour mon propre plaisir, mais je trouve toujours que partager ce travail sur les réseaux sociaux est une expérience insatisfaisante, en raison de la mauvaise qualité des fichiers recompressés. Le but de ces animations est de se perdre dans tous leurs petits détails, et tout ça se perd sur Twitter ou Instagram. Même sur YouTube et Vimeo la qualité n'est pas à la hauteur du fichier original. Je ne voudrais personnellement pas regarder mon travail sur une plateforme de <i>streaming</i>, et inviter d'autres personnes à le faire ne me semble pas idéal.
+</pn>
+
+<!-- read-more -->
+
+<p>
+    J'ai donc pensé à partager plutôt mon travail sous forme de téléchargements haute résolution. J'aimerais savoir ce que vous pensez de cette idée, car je serai plus enclin à répéter l'expérience si elle suscite de l'intérêt (et je ne pourrai pas mesurer cet intérêt automatiquement grâce au nombre de vues, de <i>likes</i> et de nouveaux abonnés générés par la vidéo). N'hésitez pas à <a href="https://pelletierauger.com/en/about.html#contact"><span id="Genericons">&#62480;</span>me contacter</a> pour tous commentaires ou suggestions. Merci beaucoup.
+</pn>
+
+<h3>Musique</h3>
+
+<pn>
+    <sc>Le drone synthétiseur apaisant</sc> que vous pouvez entendre dans la vidéo est écrit avec SuperCollider, en utilisant les excellents <a href="https://github.com/v7b1/mi-UGens/">ports SuperCollider des &nbsn;modules Mutable Instruments.</a><snl label="volker">Les ports sont écrits par <a href="https://vboehm.net/">Volker Böhm</a> et le code original des modules est écrit par <a href="https://github.com/pichenettes">Émilie Gillet</a> de Mutable Instruments. Je recommande fortement ces UGens ; ils sonnent merveilleusement bien.</snl> 
+</pn>
+
+<p>
+   Voici le code pour le drone de synthétiseur :
+</p>
+
+<supercollider>
+(
+var root = 58;
+if(~drone.isPlaying, {~drone.set(\gate, 0, \fadeTime, 0.1)});
+~drone = {
+    var f = root;
+    var lfo = SinOsc.kr(0.1 * 0.25).range(0.025, 0.125);
+    var lfo2 = SinOsc.kr(0.2 * 0.25, pi).range(0.025, 0.85);
+    var sig = MiBraids.ar(f - 24 * [1, 1.001], lfo, lfo2, 3) * 0.15;
+    sig = sig + (MiBraids.ar(f - 12 * [1, 1.001], lfo, lfo2, 3) * 0.1);
+    sig = sig + (MiBraids.ar(f - 5 * [1, 1.001], lfo, lfo2, 3) * 0.1);
+    sig = sig + (MiBraids.ar(f * [1, 1.001], lfo, lfo2, 3) * 0.05);
+    sig = LPF.ar(sig, 1000);
+    sig = sig + (MiBraids.ar(f + 2 * [1, 1.001], lfo, lfo2, 3) * 0.025);
+    f = f + 12;    
+    sig = sig + (MiBraids.ar(f - 3 * [1.002, 1], lfo, lfo2, 5) * 0.00625);
+    sig = sig + (MiBraids.ar(f - 3 * [1.001, 1.004] * 2, lfo, lfo2, 5) * 0.00625);
+    sig = sig + (MiBraids.ar(f - 1 * [0.998, 1], lfo, lfo2, 5) * 0.00625);
+    sig = sig + (MiBraids.ar(f + 0 * [1, 1.001], lfo, lfo2, 5) * 0.00625);
+    sig = sig + (MiBraids.ar(f + 2 * [1, 1.001], lfo, lfo2, 5) * 0.00625);
+    sig = sig + (MiBraids.ar(f + 4 * [1, 1.001], lfo, lfo2, 5) * 0.00625);
+    sig = sig + (MiBraids.ar(f + 12 * [1, 1.001], lfo, lfo2, 4) * 0.025);
+    sig = MiVerb.ar(sig, time: 0.7, amount: 0.25, diff: 0.7, damp: 0.9);
+    sig = sig * 0.75 * XLine.kr(0.001, 1, 3);
+}.play.register;
+)
+</supercollider>
+
+<pn>
+    Comme vous pouvez le voir, c'est simplement une grosse pile d'instances de <ic>MiBraids</ic> modulées avec quelques <sc>LFO</sc> et filtrées avec un passe-bas et de la réverbération. Chaque instance de <ic>MiBraids</ic> est doublée en multipliant sa hauteur par <ic>[1, 1.001]</ic>, ce qui désaccorde légèrement un canal pour obtenir un effet stéréo spatial.
+</pn>
+<p>
+    Ce que j'aime dans ce drone, c'est qu'il s'agit essentiellement d'un gros accord de septième majeure et qu'il comprend des notes qui ne sont qu'à un demi-ton de distance (une seconde mineure). Vous pouvez le voir facilement car toutes les fréquences sont calculées à partir de la hauteur tonale définie avec <ic>var root = 58;</ic>, qui est la valeur midi pour A#3. Et puis une instance de <ic>MiBraids</ic> a une hauteur de <ic>racine - 1</ic>, ce qui nous donne le La naturel (la septième majeure de l'accord) qui frotte contre la note fondamentale la plus proéminente La dièse. Ce frottement crée une tension dans l'accord, il y a donc un joli contraste entre la douceur du bourdon et la subtile dissonance dans son &nbsn;harmonie.<snr label="major7">Je ne dis rien de nouveau ici, les accords de septième majeure sont notoirement relaxants et assez omniprésents dans <a href="https://www.youtube.com/watch?v=6bNMxWGHlTI">les morceaux les plus doux</a>.</snr> Aussi, plus généralement, la présence de plusieurs tonalités très proches les unes des autres (G3, A3, A#3, C4, D4) créent un son épais et croustillant, un peu comme certaines nappes de synthé de la musique des <lnum>1980</lnum>.
+</p>
+<p>
+    J'ai fait cette pièce apaisante comme un moyen d'apaiser mon anxiété pendant la pandémie. J'espère que vous y trouverez aussi un endroit chaleureux et relaxant.
+</p>
 
 <!-- en-title -->A Calming Vortex
 <!-- en-description -->Animation and music shared as a high resolution download.
@@ -18,7 +92,10 @@ N'hésitez pas à <a href="https://pelletierauger.com/fr/a-propos.html#contact">
         <circle cx="65" cy="37.5" r="37" fill="black" />
         <rect width="18" height="100" fill="black" />
     </svg>
-    </span>Patreon</a>. You'll be helping me to create and share more work. There is currently another high resolution video that my patrons can download, and more videos on the way.
+    </span>Patreon</a>. You'll be helping me to create and share more work. There is currently another high resolution video that patrons can download, and more videos on the way.
+</p>
+<p>
+    I’ve also <a href="https://www.youtube.com/watch?v=Oks-e9-Xc58">uploaded the video on YouTube</a> for accessibility. I’m assuming not everyone can download the big file (if you only watch videos on your phone, for example).
 </p>
 
 <h3>Context</h3>
@@ -27,7 +104,7 @@ N'hésitez pas à <a href="https://pelletierauger.com/fr/a-propos.html#contact">
 </pn>
 <!-- read-more -->
 <p>
-    So I've been thinking about sharing my work as high resolution downloads instead. This is an experiment. For now, this video is not available to stream anywhere, but I will probably put it on YouTube in a few days/weeks. I would love to know what you think of this little experiment, as I might repeat it more if it generates interest. Don't hesitate to <a href="https://pelletierauger.com/en/about.html#contact"><span id="Genericons">&#62480;</span>contact me</a> with any feedback you might want to offer. Thank you very much.
+    So I've been thinking about sharing my work as high resolution downloads instead. I would love to know what you think of this idea, as I might repeat it if it generates interest (I will not have the views, likes, and subscribes to measure interest). Don't hesitate to <a href="https://pelletierauger.com/en/about.html#contact"><span id="Genericons">&#62480;</span>contact me</a> with any feedback you might want to offer. Thank you very much.
     </pn>
 
     <h3>Music</h3>
