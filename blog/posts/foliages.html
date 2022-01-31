@@ -135,6 +135,126 @@ https://en.wikipedia.org/wiki/Whorl_(botany)
 <!-- en-content -->
 
 
+<img src="../../../images/foliages/notes.jpg">
+
+<p class="article-top">
+    <sc>Un jardin sans feuillage</sc> serait d'une tristesse accablante. Je suis donc en train de construire un système avec lequel je pourrai affubler mes branches artificielles de différents types de feuillage. Ce faisant, j'ai pris beaucoup de notes très techniques et qui ne seront pas nécessairement digestes pour quiconque, mais je les partage tout de même ci-dessous, afin de documenter mon processus.
+</p>
+<p>
+    Les croquis ci-dessus proviennent des mêmes recherches. Ce travail a aussi mené à la création d'une première animation, partagée <a href="https://twitter.com/PelletierAuger/status/1009853191117254658">sur mon fil Twitter</a>.
+</p>
+
+<!-- read-more -->
+
+<h3>Physiologie d'une feuille</h3>
+
+<pn>
+    Il me faut un prototype <ic>Leaf</ic>. Je dois pouvoir avoir des feuilles paripennées, imparipennées, bipennées et tripennées. Aussi, des feuilles palmées.
+</pn>
+<p>
+    Tout commence avec un pétiole. La pétiole peut être de longueur <ic>0</ic>, ce qui créerait une feuille &nbsn;sessile.<snl label="sessile">Depuis le <a href="https://fr.wiktionary.org/wiki/sessile">Wiktionnaire</a>&nbsp;: Sessile, qui ne possède pas d’attache apparente et semble donc directement fixé au support sans l’intermédiaire d’un pied, d’un stipe, d’un pétiole ou d’un pédicelle.</snl> Le pétiole doit être séparé en segments, tout comme les branches de la plante. Au fond, un pétiole partage presque toutes les mêmes caractéristiques que les branches… Pourrais-je imaginer qu'un pétiole, ici, serait simplement la branche ou les quelques dernières branches auxquelles sont attachées une feuille ?
+</p>
+
+<p>
+    Mais ce serait bien qu'un pétiole puisse avoir une structure d'embranchement différente de celle de la plante à laquelle il est attaché.
+</p>
+<p>
+    Un pétiole est divisé en segments. Ces segments peuvent générer des folioles ou d'autres pétioles. Si un pétiole ne génère qu'un seul foliole, nous avons une feuille unifoliée.
+</p>
+<p>
+    Le pied du pétiole s'appelle le nœud. Il y aussi la stipule qui est connectée au nœud. Les “sous-pétioles” s'appellent des pétiolules. Et les segments d'un pétiole qui s'étendent après la première “division” du pétiole s'appelent des rachis. Est-ce que les rachis sont aussi des pétiolules et vice versa?
+</p>
+<p>
+    En partant, le génome doit contenir un gêne qui exprime le niveau de divisions du pétiole. <ic>0</ic> signifiant que le pétiole ne se divise pas, <ic>1</ic> qu'il se divise une seule fois, et ainsi de suite. Il devrait y avoir une limite, mais je ne sais pas laquelle. Disons <ic>3</ic>, pour obtenir des feuilles tripennées. Ça semble être la limite selon Wikipedia. Donc, lors que ce gêne est d'une valeur de <ic>3</ic>… Les segments de pétioles doivent contenir une propriété <ic>petioluleLevel</ic> qui est initialisée à <ic>0</ic> lorsque le premier segment de pétiole est créé. Ensuite, lorsqu'un segment de pétiole crée un embranchement, il crée un nouveau segment de pétiole avec une propriété <ic>petioluleIndex</ic> de <ic>1</ic>. C'est exactement la même chose que la propriété <ic>segmentID</ic> que j'ai présentement dans mon prototype <ic>Tree</ic>.
+</p>
+<p>
+    Il y a vraiment beaucoup de concepts qui seront tout simplement copiés de mes structures d'embranchement pour le corps de la plante, mais je crois néanmoins qu'il est plus pratique de créer un système indépendant pour les feuilles. Notamment parce que, contrairement aux branches, la création des folioles ne semblent pas du tout varier par le hasard. Une feuille paripennée et alterne, par exemple, n'omet aucune foliole tout au long de son pétiolule (enfin, je pense bien).
+</p>
+<code>
+let DNA = function() {
+    // Energy
+    this.initialEnergy = 30;
+    this.energyLoss = 0.9;
+    this.branchGrowthCost = 0.01;
+    this.branchingCost = 0.02;
+
+    // Branching struture
+    this.branchGrowth = 0.1;
+    this.branchingAngle = Math.PI * 0.5;
+    this.branchingProbability = 0.25;
+    this.branchingFrequencyLeft = 9;
+    this.branchingFrequencyRight = 9;
+    this.branchingOffsetLeft = 3;
+    this.branchingOffsetRight = 0;
+
+    // Leaf structure
+    this.petioleSegmentGrowth = 0.1;
+    this.petioleMaxBranchings = 3;
+    this.petioleMaxSegmentLength = 10;
+    this.petioleSegmentsToLeaflet = 10;
+    this.petioleMaxAngle = Math.PI * 0.15;
+    this.petioleFrequencyLeft = 9;
+    this.petioleFrequencyRight = 9;
+    this.petioleOffsetLeft = 3;
+    this.petioleOffsetRight = 0;
+    this.petioluleDepth = 3;
+    this.petioleTerminalLeaflet = 0;
+    this.petioleMaxLeafletAmount = 10;
+};
+</code>
+
+<pn>
+    Pour l'instant, je nomme <ic>petioluleDepth</ic> le niveau maximal de subdivisions du pétiole. Donc, lorsque <ic>petioluleDepth == 2</ic>, nous avons une feuille bipennée. La propriété <ic>petioleTerminalLeaflet</ic>, quant à elle, est une booléenne qui détermine si nous avons une foliole terminale. Lorsque <ic>petioluleDepth == 0</ic>, <ic>petioleTerminalLeaflet</ic> doit forcément être <ic>true</ic>, puisque si ce n'était pas le cas, la feuille n'aurait tout simplement pas de foliole.
+</pn>
+<p>
+    La propriété <ic>petioleSegmentsToLeaflet</ic> déterminera combien de segments séparent la foliole du “pied” du pétiole.
+</p>
+<p>
+    Les folioles pourraient pousser à des moments différents. Par exemple, le long d'un pétiole ou d'un pétiolule, les folioles du “bas” pourraient se mettrent à pousser avant même que les folioles suivants existent. Au final, ça n'aurait pas une grande conséquence.
+</p>
+<p>
+    Oh, peut-être que la propriété <ic>petioleMaxLeafletAmount</ic> pourrait rendre la propriété <ic>petioleTerminalLeaflet</ic> inutile. Si <ic>petioleMaxLeafletAmount == 1</ic>, nous avons un
+</p>
+
+<p>
+    Les feuilles pennées et les feuilles palmées ne devraient pas être compatibles.
+</p>
+
+
+<h3>La propriété <ic>petioleSegmentsToLeaflet</ic></h3>
+
+<pn>
+    La propriété <ic>petioleSegmentsToLeaflet</ic> est utilisée lorsqu'un segment donné a une propriété <ic>(this.petioluleIndex == this.dna.petioluleDepth)</ic>.
+</pn>
+
+<!-- https://fr.wikipedia.org/wiki/Verticille
+
+https://en.wikipedia.org/wiki/Whorl_(botany)
+
+ -->
+<p>
+    Les feuilles seront verticillées si elles sont palmées et que <ic>(this.dot.petioleMaxBranchings > 1)</ic>. En fait, non.
+</p>
+
+<h3>Algorithme de structuration des feuilles pennées</h3>
+
+<pn>
+    Il me faut… des propriétés <ic>maxKnotsLevel0</ic>, <ic>maxKnotsLevel1</ic>, <ic>maxKnotsLevel2</ic>, <ic>maxKnotsLevel3</ic> et <ic>maxKnotsLevel4</ic>. Un segment de pétiole doit ainsi connaître la quantité de nœuds que lui et ses enfants peuvent encore produire. Lorsqu'il y a un embranchement <ic>forward</ic>, nous ne changeons pas de <ic>petioleLevel</ic>. Lorsqu'il y a un embranchement <ic>left</ic> ou <ic>right</ic>, nous incrémentons <ic>this.petioleLevel</ic> de <ic>1</ic> et donnons à la propriété <ic>this.knots</ic> la valeur <ic>0</ic>. Un <ic>petioleSegment</ic> est ainsi initialisé avec une propriété <ic>knots</ic> qui dépend de son embranchement d'origine.
+</pn>
+<p>
+    Lorsque <ic>(this.petioleLevel == this.dna.this.petioluleDepth)</ic>, nous avons affaire à un pétiolule qui formera enfin une foliole. Il ne peut plus y avoir d'embranchement <ic>left</ic> ou <ic>right</ic>.
+</p>
+<p>
+    Lorsque <ic>(this.dna.petioleTerminalLeaflet == 1)</ic>, le dernier <ic>knot</ic> qui est permis créera aussi, spécialement, un dernier embranchement <ic>forward</ic>, qui lui, exceptionnellement, incrémentera la propriété <ic>petioluleLevel</ic> de 1, de façon à créer une autre foliole vers l'avant.
+</p>
+<p>
+    Il me faut aussi des propriétés <ic>petioleMaxSegmentLengthLevel0</ic>, <ic>petioleMaxSegmentLengthLevel1</ic>, <ic>petioleMaxSegmentLengthLevel2</ic>, <ic>petioleMaxSegmentLengthLevel3</ic> et <ic>petioleMaxSegmentLengthLevel4</ic>.
+</p>
+<p>
+    Un pétiolule peut se former à gauche ou à droite lorsque… sa propriété <ic>this.knots</ic> est plus petite que sa propriété <ic>knots</ic>. Mais comment calculer sa propriété <ic>knots</ic>?
+</p>
+
+
 
 <h3>Context</h3>
 
