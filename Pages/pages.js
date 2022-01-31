@@ -1,5 +1,6 @@
 exports.list = [
     "ravines",
+    "online-classes",
     "raspberries",
     "truchet",
     "what-the-walls-feel",
