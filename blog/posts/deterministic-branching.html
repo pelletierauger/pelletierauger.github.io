@@ -5,7 +5,7 @@
 <!-- fr-description -->En chemin vers un jardin algorithmique.
 <!-- fr-content -->
 
-<!-- <img src="../../../images/deterministic-branching/notes-cosine-branching.jpg"> -->
+<img src="../../../images/deterministic-branching/notes-cosine-branching.jpg">
 
 <p class="article-top">
     <sc>Je veux créer</sc> un système d'embranchements pour mon système de botanique algorithmique qui ne repose pas sur le hasard, de façon à ce que mes algorithmes génétiques puissent déterminer quels sont les types d'arbres les plus « performants » (je ne sais toujours pas comment ces performances pourront être évaluées).
@@ -173,6 +173,166 @@ Segment.prototype.branch = function(direction) {
 <!-- en-title -->Deterministic branching
 <!-- en-description -->En route to an algorithmic garden.
 <!-- en-content -->
+
+
+<img src="../../../images/deterministic-branching/notes-cosine-branching.jpg">
+
+<p class="article-top">
+    <sc>Je veux créer</sc> un système d'embranchements pour mon système de botanique algorithmique qui ne repose pas sur le hasard, de façon à ce que mes algorithmes génétiques puissent déterminer quels sont les types d'arbres les plus « performants » (je ne sais toujours pas comment ces performances pourront être évaluées).
+</p>
+<p>
+    Mon système d'embranchement m'a permis de créer une grande quantité d'arbres différents ; chaque arbre possède clairement une apparence, ou un caractère visuel, qui lui est propre. On peut voir un montage de plusieurs de ces arbres en croissance <a href="https://twitter.com/PelletierAuger/status/1006226540043137024">sur mon fil Twitter</a>.
+</p>
+<p>
+    J'ai rassemblé ci-dessous beaucoup de notes techniques prises lors de ce travail.
+</p>
+
+
+<!-- read-more -->
+
+<h3>Notes de travail</h3>
+
+<pn>
+    <sc>En ce moment</sc>, tout dépend d'une probabilité, définie dans le prototype <ic>DNA</ic> :
+</pn>
+
+<code>
+this.branchingProbability = 0.02;
+</code>
+
+<pn>
+    Et ensuite, dans la méthode <ic>grow</ic> d'un objet <ic>Segment</ic>, un simple test permet de déterminer si un embranchement doit se faire :
+</pn>
+
+<code>
+if (Math.random() <= this.dna.branchingProbability) {
+    this.branch();
+}
+</code>
+
+<pn>
+    Les embranchements sont ainsi complètement probabilistes, et peuvent aussi se faire à répétition. Ils ne sont pas limités. Ce qu'il me faut, maintenant, ce sont des objets <ic>Segment</ic> qui aient deux nouvelles propriétés lors de leur création :
+</pn>
+
+<code>
+this.branchedLeft = false;
+this.branchedRight = false;
+</code>
+
+<pn>
+    Et une fois qu'un embranchement se ferait, une de ces deux booléennes deviendrait <ic>true</ic> et cet embranchement ne pourrait plus se faire. Il pourrait quand même y avoir une probabilité qu'un embranchement se fasse ou non… Ce serait quand même beau de voir certains petits rameaux se former sur des segments d'arbres qui ont déjà créé des embranchements plus grands.
+</pn>
+
+<h3>Fréquence d'embranchement</h3>
+
+<pn>
+    <sc>Le problème plus compliqué</sc> est celui de la fréquence d'embranchement. Il doit y avoir quatre valeurs différentes pour gérer cette fréquence dans l'objet &nbsn;<ic>DNA</ic>.<snl label="normalized-genotype">Chaque gène du génotype d'un arbre sera, comme on le voit ici, <i8>normalisé</i8>, c'est-à-dire que sa valeur sera située entre <lnum>0 et 1</lnum>. Je ne suis pas certain que ce soit la meilleure solution mais, pour l'instant, j'avance avec cette idée.</snl>
+</pn>
+
+<code>
+this.branchingFrequencyLeft = 0.1;
+this.branchingFrequencyRight = 0.20;
+this.branchingOffsetLeft = 0.5;
+this.branchingOffsetRight = 0.9;
+</code>
+
+<pn>
+    Cependant, ces quatres valeurs devront être transformées en nombres entiers par la partie du code qui interprétera l'objet <ic>DNA</ic>.
+</pn>
+<p>
+    Maintenant, je dois avoir un nombre qui représente la distance <i>en segments</i> d'un segment à la base de l'arbre. Je pourrais déclarer une propriété <ic>segmentID</ic> lors de la création d'un arbre.
+</p>
+
+<code>
+let Tree = function(x, y, dna) {
+    //...
+    this.segmentID = 0;
+};
+</code>
+
+<pn>
+    Et ensuite, incrémenter cette valeur à chaque nouveau segment.
+</pn>
+
+<code>
+let Segment = function(parent) {
+    this.parent = parent;
+    this.dna = parent.dna;
+    this.isRoot = this.parent instanceof Tree;
+    this.segmentID = parent.segmentID + 1;
+</code>
+
+<pn>
+    Maintenant, un embranchement à gauche peut être réalisé si…
+</pn>
+
+<code>
+let fL = this.dna.branchingFrequencyLeft;
+let oL = this.dna.branchingOffsetLeft;
+if ((this.segmentID - oL) % fL == 0) {
+    branchLeft();
+}
+</code>
+
+<pn>
+    À moins que… j'initialise les booléennes <ic>branchedLeft</ic> et <ic>branchedRight</ic> avec ce test.
+</pn>
+
+<code>
+let Segment = function(parent) {
+    //...
+    let fL = this.dna.branchingFrequencyLeft;
+    let oL = this.dna.branchingOffsetLeft;
+    let fR = this.dna.branchingFrequencyRight;
+    let oR = this.dna.branchingOffsetRight;
+    this.branchedLeft = (this.segmentID + oL) % fL == 0;
+    this.branchedRight = (this.segmentID + oR) % fR == 0;
+    this.branchedForward = false;
+</code>
+
+<pn>
+    Ainsi, lorsque <ic>branchedLeft</ic> ou <ic>branchedRight</ic> sont <ic>true</ic>, ces embranchements ne peuvent pas se faire, peu importe s'ils se sont déjà faits. Et si elles sont <ic>false</ic>, le petit test probabiliste peut être exécuté.
+</pn>
+<p>
+    Il me faut donc deux nouvelles méthodes, <ic>branchLeft</ic> et <ic>branchRight</ic>, dans le prototype <ic>Segment</ic>. Elles seront bien entendu presque identiques.
+</p>
+
+<code>
+Segment.prototype.branchLeft = function() {
+    this.children.push(new Segment(this));
+    this.energy -= this.dna.branchingCost;
+    this.branchedLeft = true;
+};
+</code>
+
+<pn>
+    Quand je crée un nouveau segment, maintenant, ce segment doit pouvoir recevoir un second argument, <ic>direction</ic>, qui pourra être égal à <ic>left</ic>, <ic>forward</ic>, ou <ic>right</ic>. Ah, et pendant tout ce temps, j'ai aussi besoin d'une propriété <ic>branchedForward</ic> déclarée dans le constructeur du prototype <ic>Segment</ic>. L'argument <ic>direction</ic> ne sert qu'à ajuster l'angle du nouveau segment créé. Je crois bien, si j'y pense, qu'un segment n'a pas besoin de savoir s'il est à gauche, devant ou à droite de son parent.
+</pn>
+<p>
+    Dont je peux préserver la propriété <ic>branchingProbability</ic> du prototype <ic>DNA</ic> telle quelle, mais maintenant elle servira dans trois contextes — elle déterminera l'embranchement à gauche, devant et à droite.
+</p>
+
+<code>
+Segment.prototype.branch = function(direction) {
+    this.children.push(new Segment(this, direction));
+    this.energy -= this.dna.branchingCost;
+    if (direction == "left") {
+        this.branchedLeft = true;
+    } else if (direction == "forward") {
+        this.branchedForward = true;
+    } else if (direction == "right") {
+        this.branchedRight = true;
+    } else {
+        console.error("Invalid branching direction.");
+    }
+};
+</code>
+
+<h3>Notes éparses</h3>
+
+<pn>
+    <sc>J'aimerais bien</sc> aussi explorer <a href="https://en.wikipedia.org/wiki/Rapidly-exploring_random_tree">ce type d'arbre</a>.
+</pn>
 
 <h3>Context</h3>
 
