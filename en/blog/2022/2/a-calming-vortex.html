@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Guillaume Pelletier-Auger - A Calming Vortex</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=4, user-scalable=yes" />
+        <link href="../../../../style/style.css" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Inconsolata|EB+Garamond" rel="stylesheet">
+        <link href="../../../../style/code.css" rel="stylesheet" type="text/css">
+    </head><body>
+    <nav>
+        <h1><a href="../../../../">Guillaume <span class="nobreak">Pelletier-Auger</span></a></h1>
+        <ul>
+            <li><a href="../../../../">Projects</a></li>
+            <li class = "selected"><a href="../../../../en/blog/">Blog</a></li>
+            <li><a href="../../../../en/about.html">About</a></li>
+            <li><a href="../../../../fr/blog/2022/2/un-vortex-apaisant.html">En &#8594; Fr</a></li>
+        </ul>
+    </nav>
+    
+            <article>
+                <h2 class="with-date">A Calming Vortex</h2><div class="description">
+                    Animation and music shared as a high resolution download.
+
+            </div>
+                <div class="date">February 1, 2022</div>
+                <img src="../../../../images/a-calming-vortex/sketch-01680.png">
+
+<p class="article-top">
+    <span class="small-caps">Here is a video</span> that you can <a href="https://we.tl/t-zUyShhUSgH">download in high resolution format</a><span class="cleardescenders">,</span> for free. The video <a href="https://www.youtube.com/watch?v=Oks-e9-Xc58">is also on YouTube</a> for those who can&rsquo;t download the big file.
+</p>
+<p>
+    If you enjoy this work, I invite you to subscribe to my <a href="https://www.patreon.com/pelletierauger">
+    <span id="Genericons-Patreon">
+    <svg width="1em" viewBox="0 0 105 105">
+        <circle cx="65" cy="37.5" r="37" fill="black" />
+        <rect width="18" height="100" fill="black" />
+    </svg>
+    </span>Patreon</a>. You&rsquo;ll be helping me to create and share more work. There is currently another exclusive high resolution video that patrons can download, and more videos on the way.
+</p>
+
+<h3>Context</h3>
+<p class="noindent">
+    <span class="small-caps">I&rsquo;ve been making</span> a lot of animations like this one, simply for my own enjoyment, and sharing them on social media always feels unsatisfying because of the poor quality of recompressed files. The point of such animations is to lose oneself into all their tiny details, and this is lost on Twitter or Instagram. Even on YouTube and Vimeo, the quality isn&rsquo;t on par with the original file. I wouldn&rsquo;t want to watch my own work on a streaming platform, and inviting other people to do so doesn&rsquo;t feel ideal.
+</p>
+<!-- read-more -->
+<p>
+    So I&rsquo;ve been thinking about sharing my work as high resolution downloads instead. I would love to know what you think of this idea, as I might repeat it if it generates interest (I will not have the views, likes, and subscribes to measure interest). Don&rsquo;t hesitate to <a href="https://pelletierauger.com/en/about.html#contact"><span id="Genericons">&#62480;</span>contact me</a> with any feedback you might want to offer. Thank you very much.
+    </p>
+
+    <h3>Music</h3>
+
+    <p class="noindent">
+        <span class="small-caps">The soothing synthesizer drone</span> that you can hear in the video is written with SuperCollider, using the excellent <a href="https://github.com/v7b1/mi-UGens/">SuperCollider ports of the Mutable Instruments <span class="nobreak">modules.</a>
+        <label for="volker" class="margin-toggle sidenote-number"></label></span>
+        <input type="checkbox" id="volker" class="margin-toggle"/>
+        <span class="sidenote-left">The ports are written by <a href="https://vboehm.net/">Volker Böhm</a> and the original code for the modules is written by Mutable Instrument&rsquo;s <a href="https://github.com/pichenettes">Émilie Gillet</a>. I highly recommend those UGens; they sound fantastic.</span>
+    </p>
+    <p>
+        Here is the code for the synthesizer drone:
+    </p>
+    <div class="codebox"><pre><code class="supercollider">(
+<span class="hljs-keyword">var</span> root<span class="hljs-punctuation"> = </span><span class="hljs-number">58</span>;
+if(~drone<span class="hljs-punctuation">.</span>isPlaying, {~drone<span class="hljs-punctuation">.</span>set(\gate, <span class="hljs-number">0</span>, \fadeTime, <span class="hljs-number">0.1</span>)});
+~drone<span class="hljs-punctuation"> = </span>{
+    <span class="hljs-keyword">var</span> f<span class="hljs-punctuation"> = </span>root;
+    <span class="hljs-keyword">var</span> lfo<span class="hljs-punctuation"> = </span><span class="hljs-built_in">SinOsc</span><span class="hljs-punctuation">.</span>kr(<span class="hljs-number">0.1</span><span class="hljs-punctuation"> * </span><span class="hljs-number">0.25</span>).range(<span class="hljs-number">0.025</span>, <span class="hljs-number">0.125</span>);
+    <span class="hljs-keyword">var</span> lfo2<span class="hljs-punctuation"> = </span><span class="hljs-built_in">SinOsc</span><span class="hljs-punctuation">.</span>kr(<span class="hljs-number">0.2</span><span class="hljs-punctuation"> * </span><span class="hljs-number">0.25</span>, pi).range(<span class="hljs-number">0.025</span>, <span class="hljs-number">0.85</span>);
+    <span class="hljs-keyword">var</span> sig<span class="hljs-punctuation"> = </span><span class="hljs-built_in">MiBraids</span><span class="hljs-punctuation">.</span>ar(f<span class="hljs-punctuation"> - </span><span class="hljs-number">24</span><span class="hljs-punctuation"> * </span>[<span class="hljs-number">1</span>, <span class="hljs-number">1.001</span>], lfo, lfo2, <span class="hljs-number">3</span>)<span class="hljs-punctuation"> * </span><span class="hljs-number">0.15</span>;
+    sig<span class="hljs-punctuation"> = </span>sig<span class="hljs-punctuation"> + </span>(<span class="hljs-built_in">MiBraids</span><span class="hljs-punctuation">.</span>ar(f<span class="hljs-punctuation"> - </span><span class="hljs-number">12</span><span class="hljs-punctuation"> * </span>[<span class="hljs-number">1</span>, <span class="hljs-number">1.001</span>], lfo, lfo2, <span class="hljs-number">3</span>)<span class="hljs-punctuation"> * </span><span class="hljs-number">0.1</span>);
+    sig<span class="hljs-punctuation"> = </span>sig<span class="hljs-punctuation"> + </span>(<span class="hljs-built_in">MiBraids</span><span class="hljs-punctuation">.</span>ar(f<span class="hljs-punctuation"> - </span><span class="hljs-number">5</span><span class="hljs-punctuation"> * </span>[<span class="hljs-number">1</span>, <span class="hljs-number">1.001</span>], lfo, lfo2, <span class="hljs-number">3</span>)<span class="hljs-punctuation"> * </span><span class="hljs-number">0.1</span>);
+    sig<span class="hljs-punctuation"> = </span>sig<span class="hljs-punctuation"> + </span>(<span class="hljs-built_in">MiBraids</span><span class="hljs-punctuation">.</span>ar(f<span class="hljs-punctuation"> * </span>[<span class="hljs-number">1</span>, <span class="hljs-number">1.001</span>], lfo, lfo2, <span class="hljs-number">3</span>)<span class="hljs-punctuation"> * </span><span class="hljs-number">0.05</span>);
+    sig<span class="hljs-punctuation"> = </span><span class="hljs-built_in">LPF</span><span class="hljs-punctuation">.</span>ar(sig, <span class="hljs-number">1000</span>);
+    sig<span class="hljs-punctuation"> = </span>sig<span class="hljs-punctuation"> + </span>(<span class="hljs-built_in">MiBraids</span><span class="hljs-punctuation">.</span>ar(f<span class="hljs-punctuation"> + </span><span class="hljs-number">2</span><span class="hljs-punctuation"> * </span>[<span class="hljs-number">1</span>, <span class="hljs-number">1.001</span>], lfo, lfo2, <span class="hljs-number">3</span>)<span class="hljs-punctuation"> * </span><span class="hljs-number">0.025</span>);
+    f<span class="hljs-punctuation"> = </span>f<span class="hljs-punctuation"> + </span><span class="hljs-number">12</span>;    
+    sig<span class="hljs-punctuation"> = </span>sig<span class="hljs-punctuation"> + </span>(<span class="hljs-built_in">MiBraids</span><span class="hljs-punctuation">.</span>ar(f<span class="hljs-punctuation"> - </span><span class="hljs-number">3</span><span class="hljs-punctuation"> * </span>[<span class="hljs-number">1.002</span>, <span class="hljs-number">1</span>], lfo, lfo2, <span class="hljs-number">5</span>)<span class="hljs-punctuation"> * </span><span class="hljs-number">0.00625</span>);
+    sig<span class="hljs-punctuation"> = </span>sig<span class="hljs-punctuation"> + </span>(<span class="hljs-built_in">MiBraids</span><span class="hljs-punctuation">.</span>ar(f<span class="hljs-punctuation"> - </span><span class="hljs-number">3</span><span class="hljs-punctuation"> * </span>[<span class="hljs-number">1.001</span>, <span class="hljs-number">1.004</span>]<span class="hljs-punctuation"> * </span><span class="hljs-number">2</span>, lfo, lfo2, <span class="hljs-number">5</span>)<span class="hljs-punctuation"> * </span><span class="hljs-number">0.00625</span>);
+    sig<span class="hljs-punctuation"> = </span>sig<span class="hljs-punctuation"> + </span>(<span class="hljs-built_in">MiBraids</span><span class="hljs-punctuation">.</span>ar(f<span class="hljs-punctuation"> - </span><span class="hljs-number">1</span><span class="hljs-punctuation"> * </span>[<span class="hljs-number">0.998</span>, <span class="hljs-number">1</span>], lfo, lfo2, <span class="hljs-number">5</span>)<span class="hljs-punctuation"> * </span><span class="hljs-number">0.00625</span>);
+    sig<span class="hljs-punctuation"> = </span>sig<span class="hljs-punctuation"> + </span>(<span class="hljs-built_in">MiBraids</span><span class="hljs-punctuation">.</span>ar(f<span class="hljs-punctuation"> + </span><span class="hljs-number">0</span><span class="hljs-punctuation"> * </span>[<span class="hljs-number">1</span>, <span class="hljs-number">1.001</span>], lfo, lfo2, <span class="hljs-number">5</span>)<span class="hljs-punctuation"> * </span><span class="hljs-number">0.00625</span>);
+    sig<span class="hljs-punctuation"> = </span>sig<span class="hljs-punctuation"> + </span>(<span class="hljs-built_in">MiBraids</span><span class="hljs-punctuation">.</span>ar(f<span class="hljs-punctuation"> + </span><span class="hljs-number">2</span><span class="hljs-punctuation"> * </span>[<span class="hljs-number">1</span>, <span class="hljs-number">1.001</span>], lfo, lfo2, <span class="hljs-number">5</span>)<span class="hljs-punctuation"> * </span><span class="hljs-number">0.00625</span>);
+    sig<span class="hljs-punctuation"> = </span>sig<span class="hljs-punctuation"> + </span>(<span class="hljs-built_in">MiBraids</span><span class="hljs-punctuation">.</span>ar(f<span class="hljs-punctuation"> + </span><span class="hljs-number">4</span><span class="hljs-punctuation"> * </span>[<span class="hljs-number">1</span>, <span class="hljs-number">1.001</span>], lfo, lfo2, <span class="hljs-number">5</span>)<span class="hljs-punctuation"> * </span><span class="hljs-number">0.00625</span>);
+    sig<span class="hljs-punctuation"> = </span>sig<span class="hljs-punctuation"> + </span>(<span class="hljs-built_in">MiBraids</span><span class="hljs-punctuation">.</span>ar(f<span class="hljs-punctuation"> + </span><span class="hljs-number">12</span><span class="hljs-punctuation"> * </span>[<span class="hljs-number">1</span>, <span class="hljs-number">1.001</span>], lfo, lfo2, <span class="hljs-number">4</span>)<span class="hljs-punctuation"> * </span><span class="hljs-number">0.025</span>);
+    sig<span class="hljs-punctuation"> = </span><span class="hljs-built_in">MiVerb</span><span class="hljs-punctuation">.</span>ar(sig, time: <span class="hljs-number">0.7</span>, amount: <span class="hljs-number">0.25</span>, diff: <span class="hljs-number">0.7</span>, damp: <span class="hljs-number">0.9</span>);
+    sig<span class="hljs-punctuation"> = </span>sig<span class="hljs-punctuation"> * </span><span class="hljs-number">0.75</span><span class="hljs-punctuation"> * </span><span class="hljs-built_in">XLine</span><span class="hljs-punctuation">.</span>kr(<span class="hljs-number">0.001</span>, <span class="hljs-number">1</span>, <span class="hljs-number">3</span>);
+}.play<span class="hljs-punctuation">.</span>register;
+)</code></pre></div>
+    <p class="noindent">
+        As you can see, it&rsquo;s simply a big stack of <span class="inline-code">MiBraids</span> instances modulated with some <span class="small-caps">LFO</span>s and filtered with a Low Pass and some reverb. Each instance of <span class="inline-code">MiBraids</span> is doubled by multiplying its pitch by <span class="inline-code">[1, 1.001]</span>, which slightly detunes one channel to get a spatial stereo effect.
+    </p>
+    <p>
+        What I like about this drone is that it&rsquo;s essentially a big major seventh chord, and that it includes notes that are only one semitone away (a minor second). You can see it easily because all frequencies are calculated from the root pitch set with <span class="inline-code">var root = 58;</span>, which is the midi value for A#3. And then one instance of <span class="inline-code">MiBraids</span> has a pitch of <span class="inline-code">root - 1</span>, which gives us the A natural (the major seventh of the chord) that rubs against the more prominent root note A#. This rubbing creates tension in the chord, so there&rsquo;s a nice contrast between how mellow the drone feels, and the subtle dissonance in its <span class="nobreak">harmony.
+        <label for="major7" class="margin-toggle sidenote-number"></label></span>
+        <input type="checkbox" id="major7" class="margin-toggle"/>
+        <span class="sidenote">I&rsquo;m not saying anything new here, major seventh chords are notoriously relaxing and quite ubiquitous in <a href="https://www.youtube.com/watch?v=6bNMxWGHlTI">the mellowest of tracks</a>.</span> Also, more generally, the presence of multiple tones that are very close to each other (G3, A3, A#3, C4, D4) creates a thick and crunchy sound, not unlike some synth pads from <span class="lnum">1980</span>s music.
+    </p>
+    <p>
+        I made this calming piece as a way to soothe my anxiety during the pandemic. I hope you&rsquo;ll find it a warm, relaxing place too.
+    </p>
+            </article>
+            
+    <div id="rss-link">
+        <a href="https://pelletierauger.com/en/blog/rss.xml">RSS Feed</a>
+    </div>
+    <div id="footer">Guillaume Pelletier-Auger &mdash; 2016-2022
+    </div>
+    </body>
+    </html>

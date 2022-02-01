@@ -7,8 +7,8 @@
         <link href="../../style/style.css" rel="stylesheet" type="text/css">
         <link href="../../style/truchet.css" rel="stylesheet" type="text/css">
         
-        <link href="https://fonts.googleapis.com/css?family=EB+Garamond" rel="stylesheet">
-        
+        <link href="https://fonts.googleapis.com/css?family=Inconsolata|EB+Garamond" rel="stylesheet">
+        <link href="../../style/code.css" rel="stylesheet" type="text/css">
     </head><body>
     <nav>
         <h1><a href="../../fr/">Guillaume <span class="nobreak">Pelletier-Auger</span></a></h1>
@@ -23,6 +23,101 @@
             <div id="blog-page-number">
                 <h2>Page 2</h2>
             </div><div class="blog-posts">
+            <div class="blog-post">
+                <div class="blog-post-header">
+                    <a href="../blog/2019/1/arbres-chantants.html"><div class="date">12 janvier 2019</div>
+                    <div class="blog-title-box"><h2 class="header">Arbres chantants</h2></div>
+                    <div class="description">
+                    Graphes animés.
+
+            </div></a>
+                </div>
+                <div class="blog-post-content">
+                    
+<p class="noindent">
+    <span class="small-caps">Mes séquenceurs en forme de graphe</span> pourraient également générer leur propre accompagnement musical lorsqu&rsquo;ils croissent.
+</p>
+
+<h3>Structure et composition</h3>
+
+<p class="noindent">
+    <span class="small-caps">Comment ces arbres</span> produiront-ils de la musique&nbsp;? Comment cette musique sera-t-elle définie à l&rsquo;intérieur de l&rsquo;arbre&nbsp;? Par exemple, un arbre pourrait être doté d&rsquo;une tonique et d&rsquo;une armature.
+</p>
+<p>
+    La notion de &#171;&nbsp;marcheur&nbsp;&#187; est aussi très importante. Ce devrait être le marcheur qui &#171;&nbsp;consulte&nbsp;&#187; l&rsquo;arbre et produit la musique. De cette façon, puisque l&rsquo;on voit le marcheur se promener, le lien visuel entre son mouvement et la musique est plus intéressant que si la musique provenait inexplicablement de l&rsquo;arbre seul. Enfin, la musique sans marcheur pourrait aussi être intéressante, mais je vais commencer par les marcheurs.
+</p>
+<p>
+    Un marcheur pourrait commencer au tronc de l&rsquo;arbre en produisant la tonique. Lorsqu&rsquo;il arrive à un embranchement, il pourra créer un nouveau marcheur. Ces marcheurs pourront ensuite s&rsquo;engager dans les branches de l&rsquo;arbre, et générer des sons simultanément.
+</p>
+<p>
+    Les notes pourraient être générées par les embranchements ou par les branches elles-mêmes. La longueur d&rsquo;une note pourrait être déterminée par la longueur du segment sur lequel le marcheur se trouve&nbsp;—&nbsp;cependant, ces longueurs pourraient changer pendant que le marcheur avance, ce qui créerait des sons atonaux.
+</p>
+<p>
+    Pour l&rsquo;instant, les notes seront représentées par les embranchements. Ça me semble une façon naturelle de commencer l&rsquo;expérience. Donc, les objets <span class="inline-code">Segment</span> dont la propriété <span class="inline-code">children</span> est plus grande que <span class="inline-code">1</span> représentent un embranchement. Ce serait plus simple qu&rsquo;un marcheur &#171;&nbsp;s&rsquo;endorme&nbsp;&#187; lorsqu&rsquo;il atteint un embranchement. Avant de s&rsquo;endormir, il crée de nouveaux marcheurs (un pour chaque <span class="inline-code">children</span> du <span class="nobreak"><span class="inline-code">Segment</span>)</span> et leur lègue sa mémoire. Ou alors il ne s&rsquo;endort pas et s&rsquo;engage toujours dans la première branche de la liste <span class="inline-code">children</span>. De toute façon, un marcheur et les marcheurs qu&rsquo;il a généré doivent être absolument égaux, il n&rsquo;y aura pas de hiérarchie chez ces marcheurs.
+</p>
+<div class="codebox"><pre><code><span class="hljs-comment">// All the walkers would refer to a single instance of Song.</span>
+<span class="hljs-comment">// Then, when a walker modulates the song, it will be modulated</span>
+<span class="hljs-comment">// for all walkers.</span>
+<span class="hljs-keyword">let</span> mixo<span class="hljs-punctuation"> = </span><span class="hljs-keyword">new</span> Song({
+    <span class="hljs-attr">scale</span>: <span class="hljs-string">"E mixolydian"</span>,
+    <span class="hljs-attr">currentChord</span>: <span class="hljs-number">1</span>
+});
+<span class="hljs-comment">// Define the music inside the Walker itself?</span>
+<span class="hljs-comment">// The melody notes should represent degrees on the scale,</span>
+<span class="hljs-comment">// starting at 1 being the tonic,</span>
+<span class="hljs-comment">// not semitones with zero-based numbering.</span>
+
+<span class="hljs-comment">//branchingModulo</span>
+<span class="hljs-keyword">let</span> walker<span class="hljs-punctuation"> = </span><span class="hljs-keyword">new</span> Walker({
+    <span class="hljs-attr">scale</span>: <span class="hljs-string">"E mixolydian"</span>,
+    <span class="hljs-attr">melodies</span>: [[<span class="hljs-number">1</span>, <span class="hljs-number">4</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>],
+               [<span class="hljs-number">1</span>, <span class="hljs-number">5</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>]],
+    <span class="hljs-attr">currentMelodyIndex</span>: [<span class="hljs-number">0</span>, <span class="hljs-number">2</span>],
+    <span class="hljs-attr">speed</span>: <span class="hljs-number">3</span>,
+    <span class="hljs-attr">branchingModulo</span>: <span class="hljs-number">4</span>,
+    <span class="hljs-attr">walkingDepth</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">song</span>: mixo
+});
+
+<span class="hljs-comment">// A walker could then have any number of methods</span>
+<span class="hljs-comment">// that would define and alter its behaviour.</span>
+
+walker<span class="hljs-punctuation">.</span>branch<span class="hljs-punctuation"> = </span><span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">s</span>) </span>{
+    <span class="hljs-comment">// What happens when the Walker meets a branching Segment</span>
+    <span class="hljs-comment">// s.children</span>
+    <span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>makeNote();
+    <span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>currentSegment<span class="hljs-punctuation"> = </span>s<span class="hljs-punctuation">.</span>children[<span class="hljs-number">0</span>];
+};
+
+walker<span class="hljs-punctuation">.</span>sing<span class="hljs-punctuation"> = </span><span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-comment">// What happens when the Walker meets a branching Segment</span>
+    <span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>sing();
+};</code></pre></div>
+
+<h3>L&rsquo;avancée d&rsquo;un marcheur</h3>
+
+<p class="noindent">
+    Le niveau d&rsquo;avancée d&rsquo;un marcheur sur son segment doit être une valeur entre 0 et 1. Donc, sa vitesse est aussi un nombre entre 0 et 1. Sa vitesse est ajoutée à son niveau d&rsquo;avancée à chaque pas (niveau qui plafonne à 1). La position du marcheur est ensuite calculée par interpolation linéaire entre les deux extrémités du segment.
+</p>
+
+<h3>Librairies musicales</h3>
+<p class="noindent">
+    <span class="small-caps">Afin de soutenir ces liens</span> entre la structure mathématique (et spatiale) de mes arbres et les accompagnements musicaux qu&rsquo;ils généreront, je vais utiliser deux librairies JavaScript à vocation musicale: <a href="https://github.com/danigb/tonal">Tonal</a> et <a href="https://github.com/saebekassebil/teoria">Teoria</a>. Ces outils devraient me permettre de manipuler des notions de théorie musicale plus aisément.
+</p>
+<p>
+    Une note à moi-même&nbsp;: afin d&rsquo;utiliser l&rsquo;extension Tonal.Key de Tonal.js dans un fureteur (plutôt que sur un serveur Node.js), j&rsquo;ai dû utiliser Browserify en l&rsquo;invoquant de cette manière&nbsp;:
+</p>
+<div class="codebox"><pre><code class="nosyntax">node ./node_modules/.bin/browserify main.js -o bundle.js</code></pre></div>
+
+<h3>Contexte</h3>
+
+<p class="noindent">
+    <span class="small-caps">Cette note de blog</span> fait partie de mon projet de recherche <span class="italic">Vers un cinéma algorithmique</span>, démarré en avril 2018. Je vous invite à consulter <a href="https://pelletierauger.github.io/fr/blog/2018/4/vers-un-cinema-algorithmique.html">la toute première note du projet</a> pour en apprendre davantage.
+</p>
+
+
+                </div>
+            </div>
             <div class="blog-post">
                 <div class="blog-post-header">
                     <a href="../blog/2018/12/quadrilateres-flous.html"><div class="date">17 décembre 2018</div>
@@ -278,35 +373,6 @@
                
                 </div>
             </div>
-            <div class="blog-post">
-                <div class="blog-post-header">
-                    <a href="../blog/2018/7/une-spirale-de-recaman.html"><div class="date">30 juillet 2018</div>
-                    <div class="blog-title-box"><h2 class="header">Une spirale de Rec&aacute;man
-</h2></div>
-                    <div class="description">
-                    Visualisation d&rsquo;une suite mathématique.
-
-            </div></a>
-                </div>
-                <div class="blog-post-content">
-                    
-
-<img class="inline-image" src="../../../images/a-recaman-spiral/recaman-spiral.gif">
-
-<p class="article-top">
-    <span class="small-caps">L&rsquo;animation ci-dessus</span> est une représentation visuelle de la <a href="https://fr.wikipedia.org/wiki/Suite_de_Recam%C3%A1n">suite de Rec&aacute;man</a><span class="cleardescenders">,</span> qui est une suite d&rsquo;entiers naturels nommée d&rsquo;après le mathématicien colombien Bernardo Recamán Santos. J&rsquo;ai appris l&rsquo;existence de cette suite dans <a href="https://www.youtube.com/watch?v=DhFZfzOvNTU">une vidéo de Daniel Shiffman</a>.
-</p>
-<p>
-    Comme <span class="italic">j&rsquo;aime beaucoup les spirales</span> la première idée qui m&rsquo;est venue en regardant cette vidéo a été de visualiser la suite en la déployant sur un axe gradué qui aurait la forme d&rsquo;une spirale.
-</p>
-
-
-                <div class="languageJump">
-                    <a href="../blog/2018/7/une-spirale-de-recaman.html">Continuer à lire…</a>
-                </div>
-               
-                </div>
-            </div>
         </div>
         <div id = "blog-pagination">
             <div class="pagination-link">
@@ -325,7 +391,7 @@
     <div id="rss-link">
         <a href="https://pelletierauger.com/fr/blog/rss.xml">Flux RSS</a>
     </div>
-    <div id="footer">Guillaume Pelletier-Auger &mdash; 2016-2020
+    <div id="footer">Guillaume Pelletier-Auger &mdash; 2016-2022
     </div>
     </body>
     </html>

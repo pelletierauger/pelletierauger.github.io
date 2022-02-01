@@ -147,6 +147,47 @@
     <div class="blog-posts">
             <div class="blog-post">
                 <div class="blog-post-header">
+                    <a href="../blog/2022/2/un-vortex-apaisant.html"><div class="date">1 février 2022</div>
+                    <div class="blog-title-box"><h2 class="header">Un vortex apaisant</h2></div>
+                    <div class="description">
+                    Animation et musique à télécharger en haute résolution.
+
+            </div></a>
+                </div>
+                <div class="blog-post-content">
+                    
+<img src="../../../images/a-calming-vortex/sketch-01680.png">
+
+<p class="article-top">
+    <span class="small-caps">Voici une vidéo</span> que vous pouvez <a href="https://we.tl/t-zUyShhUSgH">télécharger en format haute résolution</a><span class="cleardescenders">,</span> gratuitement. La vidéo est <a href="https://www.youtube.com/watch?v=Oks-e9-Xc58">aussi sur YouTube</a><span class="cleardescenders">,</span> pour celles et ceux qui ne peuvent télécharger le gros fichier.
+</p>
+<p>
+Si vous appréciez ce travail, je vous invite à vous inscrire à ma page <a href="https://www.patreon.com/pelletierauger">
+    <span class="nobreak">
+    <span id="Genericons-Patreon">
+    <svg width="1em" viewBox="0 0 105 105">
+        <circle cx="65" cy="37.5" r="37" fill="black"></circle>
+        <rect width="18" height="100" fill="black"></rect>
+    </svg>
+    </span>Patreon</span></a>.
+     Vous m’aiderez ainsi à créer et à partager davantage de nouveaux projets. Vous y trouverez présentement une autre vidéo haute résolution que les inscrit·e·s peuvent télécharger en exclusivité, et d’autres vidéos suivront plus tard.
+</p>
+
+<h3>Contexte</h3>
+
+<p class="noindent">
+    <span class="small-caps">J’ai réalisé</span> beaucoup d’animations comme celle-ci ces dernières années, simplement pour mon propre plaisir, et je trouve toujours que partager de tels travaux sur les réseaux sociaux est une expérience insatisfaisante, en raison de la mauvaise qualité des vidéos recompressées. J’aime me perdre dans les petits détails de ces animations, et cette expérience ne peut se vivre sur Twitter ou sur Instagram. Même sur YouTube et Vimeo la qualité n’est pas à la hauteur du fichier original. Je ne voudrais personnellement pas regarder mon travail sur une plateforme de <span class="italic">streaming</span>, et inviter d’autres personnes à le faire ne me semble pas idéal.
+</p>
+
+
+                <div class="languageJump">
+                    <a href="../blog/2022/2/un-vortex-apaisant.html">Continuer à lire…</a>
+                </div>
+               
+                </div>
+            </div>
+            <div class="blog-post">
+                <div class="blog-post-header">
                     <a href="../blog/2020/8/le-chant-des-paraboles.html"><div class="date">5 août 2020</div>
                     <div class="blog-title-box"><h2 class="header">Le chant <span class="italic8"><span class="small-title">des</span></span> paraboles
 </h2></div>
@@ -686,101 +727,6 @@ pitches<span class="hljs-punctuation"> = </span>dynAmnt<span class="hljs-punctua
                
                 </div>
             </div>
-            <div class="blog-post">
-                <div class="blog-post-header">
-                    <a href="../blog/2019/1/arbres-chantants.html"><div class="date">12 janvier 2019</div>
-                    <div class="blog-title-box"><h2 class="header">Arbres chantants</h2></div>
-                    <div class="description">
-                    Graphes animés.
-
-            </div></a>
-                </div>
-                <div class="blog-post-content">
-                    
-<p class="noindent">
-    <span class="small-caps">Mes séquenceurs en forme de graphe</span> pourraient également générer leur propre accompagnement musical lorsqu’ils croissent.
-</p>
-
-<h3>Structure et composition</h3>
-
-<p class="noindent">
-    <span class="small-caps">Comment ces arbres</span> produiront-ils de la musique&nbsp;? Comment cette musique sera-t-elle définie à l’intérieur de l’arbre&nbsp;? Par exemple, un arbre pourrait être doté d’une tonique et d’une armature.
-</p>
-<p>
-    La notion de «&nbsp;marcheur&nbsp;» est aussi très importante. Ce devrait être le marcheur qui «&nbsp;consulte&nbsp;» l’arbre et produit la musique. De cette façon, puisque l’on voit le marcheur se promener, le lien visuel entre son mouvement et la musique est plus intéressant que si la musique provenait inexplicablement de l’arbre seul. Enfin, la musique sans marcheur pourrait aussi être intéressante, mais je vais commencer par les marcheurs.
-</p>
-<p>
-    Un marcheur pourrait commencer au tronc de l’arbre en produisant la tonique. Lorsqu’il arrive à un embranchement, il pourra créer un nouveau marcheur. Ces marcheurs pourront ensuite s’engager dans les branches de l’arbre, et générer des sons simultanément.
-</p>
-<p>
-    Les notes pourraient être générées par les embranchements ou par les branches elles-mêmes. La longueur d’une note pourrait être déterminée par la longueur du segment sur lequel le marcheur se trouve&nbsp;—&nbsp;cependant, ces longueurs pourraient changer pendant que le marcheur avance, ce qui créerait des sons atonaux.
-</p>
-<p>
-    Pour l’instant, les notes seront représentées par les embranchements. Ça me semble une façon naturelle de commencer l’expérience. Donc, les objets <span class="inline-code">Segment</span> dont la propriété <span class="inline-code">children</span> est plus grande que <span class="inline-code">1</span> représentent un embranchement. Ce serait plus simple qu’un marcheur «&nbsp;s’endorme&nbsp;» lorsqu’il atteint un embranchement. Avant de s’endormir, il crée de nouveaux marcheurs (un pour chaque <span class="inline-code">children</span> du <span class="nobreak"><span class="inline-code">Segment</span>)</span> et leur lègue sa mémoire. Ou alors il ne s’endort pas et s’engage toujours dans la première branche de la liste <span class="inline-code">children</span>. De toute façon, un marcheur et les marcheurs qu’il a généré doivent être absolument égaux, il n’y aura pas de hiérarchie chez ces marcheurs.
-</p>
-<div class="codebox"><pre><code><span class="hljs-comment">// All the walkers would refer to a single instance of Song.</span>
-<span class="hljs-comment">// Then, when a walker modulates the song, it will be modulated</span>
-<span class="hljs-comment">// for all walkers.</span>
-<span class="hljs-keyword">let</span> mixo<span class="hljs-punctuation"> = </span><span class="hljs-keyword">new</span> Song({
-    <span class="hljs-attr">scale</span>: <span class="hljs-string">"E mixolydian"</span>,
-    <span class="hljs-attr">currentChord</span>: <span class="hljs-number">1</span>
-});
-<span class="hljs-comment">// Define the music inside the Walker itself?</span>
-<span class="hljs-comment">// The melody notes should represent degrees on the scale,</span>
-<span class="hljs-comment">// starting at 1 being the tonic,</span>
-<span class="hljs-comment">// not semitones with zero-based numbering.</span>
-
-<span class="hljs-comment">//branchingModulo</span>
-<span class="hljs-keyword">let</span> walker<span class="hljs-punctuation"> = </span><span class="hljs-keyword">new</span> Walker({
-    <span class="hljs-attr">scale</span>: <span class="hljs-string">"E mixolydian"</span>,
-    <span class="hljs-attr">melodies</span>: [[<span class="hljs-number">1</span>, <span class="hljs-number">4</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>],
-               [<span class="hljs-number">1</span>, <span class="hljs-number">5</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>]],
-    <span class="hljs-attr">currentMelodyIndex</span>: [<span class="hljs-number">0</span>, <span class="hljs-number">2</span>],
-    <span class="hljs-attr">speed</span>: <span class="hljs-number">3</span>,
-    <span class="hljs-attr">branchingModulo</span>: <span class="hljs-number">4</span>,
-    <span class="hljs-attr">walkingDepth</span>: <span class="hljs-number">0</span>,
-    <span class="hljs-attr">song</span>: mixo
-});
-
-<span class="hljs-comment">// A walker could then have any number of methods</span>
-<span class="hljs-comment">// that would define and alter its behaviour.</span>
-
-walker<span class="hljs-punctuation">.</span>branch<span class="hljs-punctuation"> = </span><span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">s</span>) </span>{
-    <span class="hljs-comment">// What happens when the Walker meets a branching Segment</span>
-    <span class="hljs-comment">// s.children</span>
-    <span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>makeNote();
-    <span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>currentSegment<span class="hljs-punctuation"> = </span>s<span class="hljs-punctuation">.</span>children[<span class="hljs-number">0</span>];
-};
-
-walker<span class="hljs-punctuation">.</span>sing<span class="hljs-punctuation"> = </span><span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
-    <span class="hljs-comment">// What happens when the Walker meets a branching Segment</span>
-    <span class="hljs-keyword">this</span><span class="hljs-punctuation">.</span>sing();
-};</code></pre></div>
-
-<h3>L’avancée d’un marcheur</h3>
-
-<p class="noindent">
-    Le niveau d’avancée d’un marcheur sur son segment doit être une valeur entre 0 et 1. Donc, sa vitesse est aussi un nombre entre 0 et 1. Sa vitesse est ajoutée à son niveau d’avancée à chaque pas (niveau qui plafonne à 1). La position du marcheur est ensuite calculée par interpolation linéaire entre les deux extrémités du segment.
-</p>
-
-<h3>Librairies musicales</h3>
-<p class="noindent">
-    <span class="small-caps">Afin de soutenir ces liens</span> entre la structure mathématique (et spatiale) de mes arbres et les accompagnements musicaux qu’ils généreront, je vais utiliser deux librairies JavaScript à vocation musicale: <a href="https://github.com/danigb/tonal">Tonal</a> et <a href="https://github.com/saebekassebil/teoria">Teoria</a>. Ces outils devraient me permettre de manipuler des notions de théorie musicale plus aisément.
-</p>
-<p>
-    Une note à moi-même&nbsp;: afin d’utiliser l’extension Tonal.Key de Tonal.js dans un fureteur (plutôt que sur un serveur Node.js), j’ai dû utiliser Browserify en l’invoquant de cette manière&nbsp;:
-</p>
-<div class="codebox"><pre><code class="nosyntax">node ./node_modules/.bin/browserify main.js -o bundle.js</code></pre></div>
-
-<h3>Contexte</h3>
-
-<p class="noindent">
-    <span class="small-caps">Cette note de blog</span> fait partie de mon projet de recherche <span class="italic">Vers un cinéma algorithmique</span>, démarré en avril 2018. Je vous invite à consulter <a href="https://pelletierauger.github.io/fr/blog/2018/4/vers-un-cinema-algorithmique.html">la toute première note du projet</a> pour en apprendre davantage.
-</p>
-
-
-                </div>
-            </div>
         </div>
         <div id="blog-pagination">
             <div class="pagination-link-single">
@@ -793,7 +739,7 @@ walker<span class="hljs-punctuation">.</span>sing<span class="hljs-punctuation">
     <div id="rss-link">
         <a href="https://pelletierauger.com/fr/blog/rss.xml">Flux RSS</a>
     </div>
-    <div id="footer">Guillaume Pelletier-Auger — 2016-2020
+    <div id="footer">Guillaume Pelletier-Auger — 2016-2022
     </div>
     
     </body></html>

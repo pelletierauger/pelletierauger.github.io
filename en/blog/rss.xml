@@ -6,6 +6,15 @@
     <language>en-us</language>
     <atom:link href="https://pelletierauger.com/en/blog/rss.xml" rel="self" type="application/rss+xml" />
         <item>
+            <title>A Calming Vortex</title>
+            <description>Animation and music shared as a high resolution download.
+</description>
+            <pubDate>Tue, 1 Feb 2022 23:59:59 EST</pubDate>
+            <link>https://pelletierauger.com/en/blog/2022/2/a-calming-vortex.html</link>
+            <guid isPermaLink="true">https://pelletierauger.com/en/blog/2022/2/a-calming-vortex.html</guid>
+            <source url="https://pelletierauger.com/en/blog/rss.xml">Guillaume Pelletier-Auger - Blog</source>
+        </item>
+        <item>
             <title>Songs of Parabolae</title>
             <description>Directionless experiments in geometry and sound synthesis.
 </description>
@@ -16,7 +25,7 @@
         </item>
         <item>
             <title>A Piano for SuperCollider</title>
-            <description>Complete code for the project and some documentation.
+            <description>Complete code and documentation.
 </description>
             <pubDate>Wed, 26 Feb 2020 23:59:59 EST</pubDate>
             <link>https://pelletierauger.com/en/blog/2020/2/a-piano-for-supercollider.html</link>

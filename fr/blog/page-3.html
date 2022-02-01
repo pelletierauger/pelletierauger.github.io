@@ -1,142 +1,24 @@
 <!DOCTYPE html>
-<html><head>
+    <html>
+    <head>
         <meta charset="UTF-8">
         <title>Guillaume Pelletier-Auger - Blog - Page 3</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=4, user-scalable=yes">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=4, user-scalable=yes" />
         <link href="../../style/style.css" rel="stylesheet" type="text/css">
         <link href="../../style/growing-mountains.css" rel="stylesheet" type="text/css">
         
         <link href="../../style/walking-cosine.css" rel="stylesheet" type="text/css">
         
-        <link href="../../style/notes-on-genetic-automata.css" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=EB+Garamond" rel="stylesheet">
         
-        <link href="https://fonts.googleapis.com/css?family=Inconsolata|EB+Garamond" rel="stylesheet">
-        <link href="../../style/code.css" rel="stylesheet" type="text/css">
-    <style id="MathJax_CHTML_styles">.mjx-chtml {display: inline-block; line-height: 0; text-indent: 0; text-align: left; text-transform: none; font-style: normal; font-weight: normal; font-size: 100%; font-size-adjust: none; letter-spacing: normal; word-wrap: normal; word-spacing: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0; min-height: 0; border: 0; margin: 0; padding: 1px 0}
-.MJXc-display {display: block; text-align: center; margin: 1em 0; padding: 0}
-.mjx-chtml[tabindex]:focus, body :focus .mjx-chtml[tabindex] {display: inline-table}
-.mjx-full-width {text-align: center; display: table-cell!important; width: 10000em}
-.mjx-math {display: inline-block; border-collapse: separate; border-spacing: 0}
-.mjx-math * {display: inline-block; -webkit-box-sizing: content-box!important; -moz-box-sizing: content-box!important; box-sizing: content-box!important; text-align: left}
-.mjx-numerator {display: block; text-align: center}
-.mjx-denominator {display: block; text-align: center}
-.MJXc-stacked {height: 0; position: relative}
-.MJXc-stacked > * {position: absolute}
-.MJXc-bevelled > * {display: inline-block}
-.mjx-stack {display: inline-block}
-.mjx-op {display: block}
-.mjx-under {display: table-cell}
-.mjx-over {display: block}
-.mjx-over > * {padding-left: 0px!important; padding-right: 0px!important}
-.mjx-under > * {padding-left: 0px!important; padding-right: 0px!important}
-.mjx-stack > .mjx-sup {display: block}
-.mjx-stack > .mjx-sub {display: block}
-.mjx-prestack > .mjx-presup {display: block}
-.mjx-prestack > .mjx-presub {display: block}
-.mjx-delim-h > .mjx-char {display: inline-block}
-.mjx-surd {vertical-align: top}
-.mjx-mphantom * {visibility: hidden}
-.mjx-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 2px 3px; font-style: normal; font-size: 90%}
-.mjx-annotation-xml {line-height: normal}
-.mjx-menclose > svg {fill: none; stroke: currentColor}
-.mjx-mtr {display: table-row}
-.mjx-mlabeledtr {display: table-row}
-.mjx-mtd {display: table-cell; text-align: center}
-.mjx-label {display: table-row}
-.mjx-box {display: inline-block}
-.mjx-block {display: block}
-.mjx-span {display: inline}
-.mjx-char {display: block; white-space: pre}
-.mjx-itable {display: inline-table; width: auto}
-.mjx-row {display: table-row}
-.mjx-cell {display: table-cell}
-.mjx-table {display: table; width: 100%}
-.mjx-line {display: block; height: 0}
-.mjx-strut {width: 0; padding-top: 1em}
-.mjx-vsize {width: 0}
-.MJXc-space1 {margin-left: .167em}
-.MJXc-space2 {margin-left: .222em}
-.MJXc-space3 {margin-left: .278em}
-.mjx-ex-box-test {position: absolute; width: 1px; height: 60ex}
-.mjx-line-box-test {display: table!important}
-.mjx-line-box-test span {display: table-cell!important; width: 10000em!important; min-width: 0; max-width: none; padding: 0; border: 0; margin: 0}
-.MJXc-TeX-unknown-R {font-family: monospace; font-style: normal; font-weight: normal}
-.MJXc-TeX-unknown-I {font-family: monospace; font-style: italic; font-weight: normal}
-.MJXc-TeX-unknown-B {font-family: monospace; font-style: normal; font-weight: bold}
-.MJXc-TeX-unknown-BI {font-family: monospace; font-style: italic; font-weight: bold}
-.MJXc-TeX-ams-R {font-family: MJXc-TeX-ams-R,MJXc-TeX-ams-Rw}
-.MJXc-TeX-cal-B {font-family: MJXc-TeX-cal-B,MJXc-TeX-cal-Bx,MJXc-TeX-cal-Bw}
-.MJXc-TeX-frak-R {font-family: MJXc-TeX-frak-R,MJXc-TeX-frak-Rw}
-.MJXc-TeX-frak-B {font-family: MJXc-TeX-frak-B,MJXc-TeX-frak-Bx,MJXc-TeX-frak-Bw}
-.MJXc-TeX-math-BI {font-family: MJXc-TeX-math-BI,MJXc-TeX-math-BIx,MJXc-TeX-math-BIw}
-.MJXc-TeX-sans-R {font-family: MJXc-TeX-sans-R,MJXc-TeX-sans-Rw}
-.MJXc-TeX-sans-B {font-family: MJXc-TeX-sans-B,MJXc-TeX-sans-Bx,MJXc-TeX-sans-Bw}
-.MJXc-TeX-sans-I {font-family: MJXc-TeX-sans-I,MJXc-TeX-sans-Ix,MJXc-TeX-sans-Iw}
-.MJXc-TeX-script-R {font-family: MJXc-TeX-script-R,MJXc-TeX-script-Rw}
-.MJXc-TeX-type-R {font-family: MJXc-TeX-type-R,MJXc-TeX-type-Rw}
-.MJXc-TeX-cal-R {font-family: MJXc-TeX-cal-R,MJXc-TeX-cal-Rw}
-.MJXc-TeX-main-B {font-family: MJXc-TeX-main-B,MJXc-TeX-main-Bx,MJXc-TeX-main-Bw}
-.MJXc-TeX-main-I {font-family: MJXc-TeX-main-I,MJXc-TeX-main-Ix,MJXc-TeX-main-Iw}
-.MJXc-TeX-main-R {font-family: MJXc-TeX-main-R,MJXc-TeX-main-Rw}
-.MJXc-TeX-math-I {font-family: MJXc-TeX-math-I,MJXc-TeX-math-Ix,MJXc-TeX-math-Iw}
-.MJXc-TeX-size1-R {font-family: MJXc-TeX-size1-R,MJXc-TeX-size1-Rw}
-.MJXc-TeX-size2-R {font-family: MJXc-TeX-size2-R,MJXc-TeX-size2-Rw}
-.MJXc-TeX-size3-R {font-family: MJXc-TeX-size3-R,MJXc-TeX-size3-Rw}
-.MJXc-TeX-size4-R {font-family: MJXc-TeX-size4-R,MJXc-TeX-size4-Rw}
-@font-face {font-family: MJXc-TeX-ams-R; src: local('MathJax_AMS'), local('MathJax_AMS-Regular')}
-@font-face {font-family: MJXc-TeX-ams-Rw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_AMS-Regular.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_AMS-Regular.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_AMS-Regular.otf') format('opentype')}
-@font-face {font-family: MJXc-TeX-cal-B; src: local('MathJax_Caligraphic Bold'), local('MathJax_Caligraphic-Bold')}
-@font-face {font-family: MJXc-TeX-cal-Bx; src: local('MathJax_Caligraphic'); font-weight: bold}
-@font-face {font-family: MJXc-TeX-cal-Bw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Caligraphic-Bold.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Caligraphic-Bold.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Caligraphic-Bold.otf') format('opentype')}
-@font-face {font-family: MJXc-TeX-frak-R; src: local('MathJax_Fraktur'), local('MathJax_Fraktur-Regular')}
-@font-face {font-family: MJXc-TeX-frak-Rw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Fraktur-Regular.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Fraktur-Regular.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Fraktur-Regular.otf') format('opentype')}
-@font-face {font-family: MJXc-TeX-frak-B; src: local('MathJax_Fraktur Bold'), local('MathJax_Fraktur-Bold')}
-@font-face {font-family: MJXc-TeX-frak-Bx; src: local('MathJax_Fraktur'); font-weight: bold}
-@font-face {font-family: MJXc-TeX-frak-Bw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Fraktur-Bold.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Fraktur-Bold.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Fraktur-Bold.otf') format('opentype')}
-@font-face {font-family: MJXc-TeX-math-BI; src: local('MathJax_Math BoldItalic'), local('MathJax_Math-BoldItalic')}
-@font-face {font-family: MJXc-TeX-math-BIx; src: local('MathJax_Math'); font-weight: bold; font-style: italic}
-@font-face {font-family: MJXc-TeX-math-BIw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Math-BoldItalic.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Math-BoldItalic.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Math-BoldItalic.otf') format('opentype')}
-@font-face {font-family: MJXc-TeX-sans-R; src: local('MathJax_SansSerif'), local('MathJax_SansSerif-Regular')}
-@font-face {font-family: MJXc-TeX-sans-Rw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_SansSerif-Regular.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_SansSerif-Regular.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_SansSerif-Regular.otf') format('opentype')}
-@font-face {font-family: MJXc-TeX-sans-B; src: local('MathJax_SansSerif Bold'), local('MathJax_SansSerif-Bold')}
-@font-face {font-family: MJXc-TeX-sans-Bx; src: local('MathJax_SansSerif'); font-weight: bold}
-@font-face {font-family: MJXc-TeX-sans-Bw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_SansSerif-Bold.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_SansSerif-Bold.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_SansSerif-Bold.otf') format('opentype')}
-@font-face {font-family: MJXc-TeX-sans-I; src: local('MathJax_SansSerif Italic'), local('MathJax_SansSerif-Italic')}
-@font-face {font-family: MJXc-TeX-sans-Ix; src: local('MathJax_SansSerif'); font-style: italic}
-@font-face {font-family: MJXc-TeX-sans-Iw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_SansSerif-Italic.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_SansSerif-Italic.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_SansSerif-Italic.otf') format('opentype')}
-@font-face {font-family: MJXc-TeX-script-R; src: local('MathJax_Script'), local('MathJax_Script-Regular')}
-@font-face {font-family: MJXc-TeX-script-Rw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Script-Regular.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Script-Regular.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Script-Regular.otf') format('opentype')}
-@font-face {font-family: MJXc-TeX-type-R; src: local('MathJax_Typewriter'), local('MathJax_Typewriter-Regular')}
-@font-face {font-family: MJXc-TeX-type-Rw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Typewriter-Regular.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Typewriter-Regular.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Typewriter-Regular.otf') format('opentype')}
-@font-face {font-family: MJXc-TeX-cal-R; src: local('MathJax_Caligraphic'), local('MathJax_Caligraphic-Regular')}
-@font-face {font-family: MJXc-TeX-cal-Rw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Caligraphic-Regular.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Caligraphic-Regular.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Caligraphic-Regular.otf') format('opentype')}
-@font-face {font-family: MJXc-TeX-main-B; src: local('MathJax_Main Bold'), local('MathJax_Main-Bold')}
-@font-face {font-family: MJXc-TeX-main-Bx; src: local('MathJax_Main'); font-weight: bold}
-@font-face {font-family: MJXc-TeX-main-Bw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Main-Bold.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Main-Bold.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Main-Bold.otf') format('opentype')}
-@font-face {font-family: MJXc-TeX-main-I; src: local('MathJax_Main Italic'), local('MathJax_Main-Italic')}
-@font-face {font-family: MJXc-TeX-main-Ix; src: local('MathJax_Main'); font-style: italic}
-@font-face {font-family: MJXc-TeX-main-Iw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Main-Italic.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Main-Italic.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Main-Italic.otf') format('opentype')}
-@font-face {font-family: MJXc-TeX-main-R; src: local('MathJax_Main'), local('MathJax_Main-Regular')}
-@font-face {font-family: MJXc-TeX-main-Rw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Main-Regular.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Main-Regular.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Main-Regular.otf') format('opentype')}
-@font-face {font-family: MJXc-TeX-math-I; src: local('MathJax_Math Italic'), local('MathJax_Math-Italic')}
-@font-face {font-family: MJXc-TeX-math-Ix; src: local('MathJax_Math'); font-style: italic}
-@font-face {font-family: MJXc-TeX-math-Iw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Math-Italic.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Math-Italic.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Math-Italic.otf') format('opentype')}
-@font-face {font-family: MJXc-TeX-size1-R; src: local('MathJax_Size1'), local('MathJax_Size1-Regular')}
-@font-face {font-family: MJXc-TeX-size1-Rw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Size1-Regular.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Size1-Regular.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Size1-Regular.otf') format('opentype')}
-@font-face {font-family: MJXc-TeX-size2-R; src: local('MathJax_Size2'), local('MathJax_Size2-Regular')}
-@font-face {font-family: MJXc-TeX-size2-Rw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Size2-Regular.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Size2-Regular.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Size2-Regular.otf') format('opentype')}
-@font-face {font-family: MJXc-TeX-size3-R; src: local('MathJax_Size3'), local('MathJax_Size3-Regular')}
-@font-face {font-family: MJXc-TeX-size3-Rw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Size3-Regular.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Size3-Regular.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Size3-Regular.otf') format('opentype')}
-@font-face {font-family: MJXc-TeX-size4-R; src: local('MathJax_Size4'), local('MathJax_Size4-Regular')}
-@font-face {font-family: MJXc-TeX-size4-Rw; src /*1*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Size4-Regular.eot'); src /*2*/: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Size4-Regular.woff') format('woff'), url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Size4-Regular.otf') format('opentype')}
-</style></head><body>
+    </head><body>
     <nav>
         <h1><a href="../../fr/">Guillaume <span class="nobreak">Pelletier-Auger</span></a></h1>
         <ul>
             <li><a href="../../fr/">Projets</a></li>
-            <li class="selected"><a href="../../fr/blog/">Blog</a></li>
+            <li class = "selected"><a href="../../fr/blog/">Blog</a></li>
             <li><a href="../../fr/a-propos.html">À propos</a></li>
-            <li><a href="../../en/blog/page-3.html">Fr → En</a></li>
+            <li><a href="../../en/blog/page-3.html">Fr &#8594; En</a></li>
         </ul>
     </nav>
     
@@ -145,8 +27,37 @@
             </div><div class="blog-posts">
             <div class="blog-post">
                 <div class="blog-post-header">
+                    <a href="../blog/2018/7/une-spirale-de-recaman.html"><div class="date">30 juillet 2018</div>
+                    <div class="blog-title-box"><h2 class="header">Une spirale de Rec&aacute;man
+</h2></div>
+                    <div class="description">
+                    Visualisation d&rsquo;une suite mathématique.
+
+            </div></a>
+                </div>
+                <div class="blog-post-content">
+                    
+
+<img class="inline-image" src="../../../images/a-recaman-spiral/recaman-spiral.gif">
+
+<p class="article-top">
+    <span class="small-caps">L&rsquo;animation ci-dessus</span> est une représentation visuelle de la <a href="https://fr.wikipedia.org/wiki/Suite_de_Recam%C3%A1n">suite de Rec&aacute;man</a><span class="cleardescenders">,</span> qui est une suite d&rsquo;entiers naturels nommée d&rsquo;après le mathématicien colombien Bernardo Recamán Santos. J&rsquo;ai appris l&rsquo;existence de cette suite dans <a href="https://www.youtube.com/watch?v=DhFZfzOvNTU">une vidéo de Daniel Shiffman</a>.
+</p>
+<p>
+    Comme <span class="italic">j&rsquo;aime beaucoup les spirales</span> la première idée qui m&rsquo;est venue en regardant cette vidéo a été de visualiser la suite en la déployant sur un axe gradué qui aurait la forme d&rsquo;une spirale.
+</p>
+
+
+                <div class="languageJump">
+                    <a href="../blog/2018/7/une-spirale-de-recaman.html">Continuer à lire…</a>
+                </div>
+               
+                </div>
+            </div>
+            <div class="blog-post">
+                <div class="blog-post-header">
                     <a href="../blog/2018/7/etude-pour-automates-cellulaires-no-2.html"><div class="date">26 juillet 2018</div>
-                    <div class="blog-title-box"><h2 class="header">Étude pour automates cellulaires nº 2
+                    <div class="blog-title-box"><h2 class="header">&Eacute;tude pour automates cellulaires nº 2
 </h2></div>
                     <div class="description">
                     
@@ -157,7 +68,7 @@
                     
 <img src="../../../images/study-for-ca-no2/study-no2-still-01.jpg">
 <p class="article-top">
-    <span class="small-caps">Suite à la création</span> d’un premier court métrage utilisant les automates cellulaires, de nouvelles expérimentations m’ont fourni le matériel nécessaire à la création d’un second : <span class="italic">Étude pour automates cellulaires nº 2</span>, qui <a href="https://www.youtube.com/watch?v=sOEmaJY6h6M">se trouve aussi sur YouTube.</a>
+    <span class="small-caps">Suite à la création</span> d&rsquo;un premier court métrage utilisant les automates cellulaires, de nouvelles expérimentations m&rsquo;ont fourni le matériel nécessaire à la création d&rsquo;un second : <span class="italic">Étude pour automates cellulaires nº 2</span>, qui <a href="https://www.youtube.com/watch?v=sOEmaJY6h6M">se trouve aussi sur YouTube.</a>
 </p>
 
                 <div class="languageJump">
@@ -169,7 +80,7 @@
             <div class="blog-post">
                 <div class="blog-post-header">
                     <a href="../blog/2018/7/etude-pour-automates-cellulaires-no-1.html"><div class="date">26 juillet 2018</div>
-                    <div class="blog-title-box"><h2 class="header">Étude pour automates cellulaires nº 1
+                    <div class="blog-title-box"><h2 class="header">&Eacute;tude pour automates cellulaires nº 1
 </h2></div>
                     <div class="description">
                     
@@ -180,10 +91,10 @@
                     
 <img src="../../../images/study-for-ca-no1/still-01.jpg">
 <p class="article-top">
-    <span class="small-caps">Le brillant livre</span> de Melanie Mitchell <span class="italic">Complexity: A Guided Tour</span> contient une explication assez exhaustive des algorithmes génétiques, c’est-à-dire des algorithmes qui sont conçus pour pouvoir évoluer en fonction de forces extérieures qui sont appliquées sur eux. Mitchell se sert des automates cellulaires pour construire un exemple de ces algorithmes génétiques. Lors de ma lecture de ce livre, j’ai programmé un système me permettant d’appliquer cette matière fascinante et d’en faire des courts métrages d’animation.
+    <span class="small-caps">Le brillant livre</span> de Melanie Mitchell <span class="italic">Complexity: A Guided Tour</span> contient une explication assez exhaustive des algorithmes génétiques, c&rsquo;est-à-dire des algorithmes qui sont conçus pour pouvoir évoluer en fonction de forces extérieures qui sont appliquées sur eux. Mitchell se sert des automates cellulaires pour construire un exemple de ces algorithmes génétiques. Lors de ma lecture de ce livre, j&rsquo;ai programmé un système me permettant d&rsquo;appliquer cette matière fascinante et d&rsquo;en faire des courts métrages d&rsquo;animation.
 </p>
 <p>
-    <span class="italic">Étude pour automates cellulaires nº 1</span> est un premier exemple de film d’animation réalisé avec ces méthodes, et il peut être <a href="https://www.youtube.com/watch?v=2QywbLDit2I">visionné sur YouTube.</a> L’image ci-dessus est tirée de ce film.
+    <span class="italic">Étude pour automates cellulaires nº 1</span> est un premier exemple de film d&rsquo;animation réalisé avec ces méthodes, et il peut être <a href="https://www.youtube.com/watch?v=2QywbLDit2I">visionné sur YouTube.</a> L&rsquo;image ci-dessus est tirée de ce film.
 </p>
 
                 <div class="languageJump">
@@ -208,18 +119,18 @@
 
 <p class="article-top">
     <!--     <span class="falaise-paragraph">«&nbsp;Nous ne savions rien de notre itinéraire ni même des motifs abscons de ce voyage. Ça c&rsquo;était décidé hâtivement, dans la peur de la fixité.&nbsp;»</span> -->
-    <span class="falaise-paragraph">Ce malheur qui nous asphyxiait nous avait d’abord semblé doux comme un matin rose en terrain familier.</span>
+    <span class="falaise-paragraph">Ce malheur qui nous asphyxiait nous avait d&rsquo;abord semblé doux comme un matin rose en terrain familier.</span>
 </p>
 
 <p class="article-top">
-    <span class="mountain-drop-caps">L'</span><span class="small-caps">image ci-dessus</span> est tirée d’une <span class="nobreak">animation
+    <span class="mountain-drop-caps">L'</span><span class="small-caps">image ci-dessus</span> est tirée d&rsquo;une <span class="nobreak">animation
         <label for="animtwitter" class="margin-toggle sidenote-number">
         </label></span>
-        <input type="checkbox" id="animtwitter" class="margin-toggle">
-        <span class="sidenote">Une version basse résolution de cette animation <a href="https://twitter.com/PelletierAuger/status/1016743429685030916">se trouve sur mon fil Twitter</a>.</span> générée par un programme que je suis en train d’écrire. L’image a été formée par des automates cellulaires, c’est-à-dire que chacune des cases colorées que l’on voit répond à un ensemble de règles qui modifient ses propriétés.
+        <input type="checkbox" id="animtwitter" class="margin-toggle"/>
+        <span class="sidenote">Une version basse résolution de cette animation <a href="https://twitter.com/PelletierAuger/status/1016743429685030916">se trouve sur mon fil Twitter</a>.</span> générée par un programme que je suis en train d&rsquo;écrire. L&rsquo;image a été formée par des automates cellulaires, c&rsquo;est-à-dire que chacune des cases colorées que l&rsquo;on voit répond à un ensemble de règles qui modifient ses propriétés.
 </p>
 <p>
-    Je compte rassembler une collection de ces animations afin d’en faire un court métrage ainsi qu’une bande dessinée composée d’images fixes. J’ai publié une esquisse du projet de bande dessinée dans le premier numéro de <a href="https://revuecolere.wordpress.com/">la revue Colère</a><span class="cleardescenders">,</span> un journal de création qui contient aussi des merveilleux travaux d’Alexa Perchemal, de Mirion Malle, de Sophie Bédard et de Saturnome. Les pages ont <a href="http://www.procjam.com/seeds/issues/3/nos.txt.html">également été publiées</a> dans <a href="http://www.procjam.com/seeds/issues/3/">le troisième numéro</a> du zine <a href="http://www.procjam.com/seeds/">Seeds</a><span class="cleardescenders">,</span> une publication annuelle dédiée à l’art procédural et éditée par Jupiter Hadley et Dann Sullivan.
+    Je compte rassembler une collection de ces animations afin d&rsquo;en faire un court métrage ainsi qu&rsquo;une bande dessinée composée d&rsquo;images fixes. J&rsquo;ai publié une esquisse du projet de bande dessinée dans le premier numéro de <a href="https://revuecolere.wordpress.com/">la revue Colère</a><span class="cleardescenders">,</span> un journal de création qui contient aussi des merveilleux travaux d&rsquo;Alexa Perchemal, de Mirion Malle, de Sophie Bédard et de Saturnome. Les pages ont <a href="http://www.procjam.com/seeds/issues/3/nos.txt.html">également été publiées</a> dans <a href="http://www.procjam.com/seeds/issues/3/">le troisième numéro</a> du zine <a href="http://www.procjam.com/seeds/">Seeds</a><span class="cleardescenders">,</span> une publication annuelle dédiée à l&rsquo;art procédural et éditée par Jupiter Hadley et Dann Sullivan.
 </p>
 
 
@@ -242,10 +153,10 @@
                     
 
 <p class="noindent">
-    Il me faut construire un phénotype complet&nbsp;; pour l’instant, je n’en ai qu’un prototype. Il me faut tout d’abord séparer la définition du phénotype et son interprétation. Son interprétation doit être séparée, elle ne doit pas être une méthode du prototype <span class="inline-code">DNA</span>.
+    Il me faut construire un phénotype complet&nbsp;; pour l&rsquo;instant, je n&rsquo;en ai qu&rsquo;un prototype. Il me faut tout d&rsquo;abord séparer la définition du phénotype et son interprétation. Son interprétation doit être séparée, elle ne doit pas être une méthode du prototype <span class="inline-code">DNA</span>.
 </p>
 <p>
-    Une chose un peu complexe&nbsp;: je veux avoir plusieurs types d’<span class="small-caps">adn</span>, mais également plusieurs façons d’exprimer un type d’<span class="small-caps">adn</span>.
+    Une chose un peu complexe&nbsp;: je veux avoir plusieurs types d&rsquo;<span class="small-caps">adn</span>, mais également plusieurs façons d&rsquo;exprimer un type d&rsquo;<span class="small-caps">adn</span>.
 </p>
 
 
@@ -270,10 +181,10 @@
 <img src="../../../images/foliages/notes.jpg">
 
 <p class="article-top">
-    <span class="small-caps">Un jardin sans feuillage</span> serait d’une tristesse accablante. Je suis donc en train de construire un système avec lequel je pourrai affubler mes branches artificielles de différents types de feuillage. Ce faisant, j’ai pris beaucoup de notes très techniques et qui ne seront pas nécessairement digestes pour quiconque, mais je les partage tout de même ci-dessous, afin de documenter mon processus.
+    <span class="small-caps">Un jardin sans feuillage</span> serait d&rsquo;une tristesse accablante. Je suis donc en train de construire un système avec lequel je pourrai affubler mes branches artificielles de différents types de feuillage. Ce faisant, j&rsquo;ai pris beaucoup de notes très techniques et qui ne seront pas nécessairement digestes pour quiconque, mais je les partage tout de même ci-dessous, afin de documenter mon processus.
 </p>
 <p>
-    Les croquis ci-dessus proviennent des mêmes recherches. Ce travail a aussi mené à la création d’une première animation, partagée <a href="https://twitter.com/PelletierAuger/status/1009853191117254658">sur mon fil Twitter</a>.
+    Les croquis ci-dessus proviennent des mêmes recherches. Ce travail a aussi mené à la création d&rsquo;une première animation, partagée <a href="https://twitter.com/PelletierAuger/status/1009853191117254658">sur mon fil Twitter</a>.
 </p>
 
 
@@ -288,7 +199,7 @@
                     <a href="../blog/2018/6/scenes-botaniques.html"><div class="date">9 juin 2018</div>
                     <div class="blog-title-box"><h2 class="header">Scènes botaniques</h2></div>
                     <div class="description">
-                    Encore des notes de travail d’un regrettable ésotérisme.
+                    Encore des notes de travail d&rsquo;un regrettable ésotérisme.
 
             </div></a>
                 </div>
@@ -299,8 +210,8 @@
     <span class="small-caps">Le rêve</span> vers lequel tendent mes recherches sur la botanique algorithmique est de créer des scènes botaniques complètes, avec couleurs, feuillages, perspective atmosphérique, mouvements venteux dans les branches, <span class="nobreak">etc.
         <label for="rousseau" class="margin-toggle sidenote-number">
         </label></span>
-        <input type="checkbox" id="rousseau" class="margin-toggle">
-        <span class="sidenote-left">Pour tout dire, ça ne déplairait pas de devenir le Henri Rousseau de l’art algorithmique…</span> Je suis loin d’en être là, mais j’y travaille. J’ai rassemblé ci-dessous plusieurs notes prises lors de l’élaboration d’un système qui me permettrait de gérer des scènes avec de multiples végétaux distribués dans un tableau.
+        <input type="checkbox" id="rousseau" class="margin-toggle"/>
+        <span class="sidenote-left">Pour tout dire, ça ne déplairait pas de devenir le Henri Rousseau de l&rsquo;art algorithmique&hellip;</span> Je suis loin d&rsquo;en être là, mais j&rsquo;y travaille. J&rsquo;ai rassemblé ci-dessous plusieurs notes prises lors de l&rsquo;élaboration d&rsquo;un système qui me permettrait de gérer des scènes avec de multiples végétaux distribués dans un tableau.
 </p>
 
 
@@ -325,10 +236,10 @@
 <img class="inline-image" src="../../../images/walking-cosine/cosine-demo-c-2.gif">
 
 <p class="article-top">
-    <img class="turtle-drop-caps" src="../../../images/walking-cosine/lettrine-t.png"><span class="small-caps">ravailler</span> sur le système d’embranchements déterministes dont je parle dans ma note de blog précédente m’a amené à créer la petite animation ci-dessus. J’utilise dans mon système la fonction cosinus afin de créer des branches courbées, et pour tester l’effet de cette fonction sur une branche en pleine croissance, j’ai isolé le problème en faisant marcher une tortue géométrique sur le parcours du cosinus.
+    <img class="turtle-drop-caps" src="../../../images/walking-cosine/lettrine-t.png"><span class="small-caps">ravailler</span> sur le système d&rsquo;embranchements déterministes dont je parle dans ma note de blog précédente m&rsquo;a amené à créer la petite animation ci-dessus. J&rsquo;utilise dans mon système la fonction cosinus afin de créer des branches courbées, et pour tester l&rsquo;effet de cette fonction sur une branche en pleine croissance, j&rsquo;ai isolé le problème en faisant marcher une tortue géométrique sur le parcours du cosinus.
 </p>
 <p>
-    J’ai été très surpris des résultats de cette petite expérience. Je m’attendais à ce que le parcours de la tortue ressemble simplement à une onde sinusoïdale, mais la tortue produit en réalité un grand ensemble de parcours différents selon la fréquence à laquelle est appliquée la fonction cosinus. Afin de bien illustrer le phénomène, j’ai indiqué, dans le coin inférieur gauche de l’animation, à quelle fréquence le cosinus est appliqué lors de chacune des marches de la tortue.
+    J&rsquo;ai été très surpris des résultats de cette petite expérience. Je m&rsquo;attendais à ce que le parcours de la tortue ressemble simplement à une onde sinusoïdale, mais la tortue produit en réalité un grand ensemble de parcours différents selon la fréquence à laquelle est appliquée la fonction cosinus. Afin de bien illustrer le phénomène, j&rsquo;ai indiqué, dans le coin inférieur gauche de l&rsquo;animation, à quelle fréquence le cosinus est appliqué lors de chacune des marches de la tortue.
 </p>
 
 
@@ -350,16 +261,16 @@
                 <div class="blog-post-content">
                     
 
-<!-- <img src="../../../images/deterministic-branching/notes-cosine-branching.jpg"> -->
+<img src="../../../images/deterministic-branching/notes-cosine-branching.jpg">
 
 <p class="article-top">
-    <span class="small-caps">Je veux créer</span> un système d’embranchements pour mon système de botanique algorithmique qui ne repose pas sur le hasard, de façon à ce que mes algorithmes génétiques puissent déterminer quels sont les types d’arbres les plus «&nbsp;performants&nbsp;» (je ne sais toujours pas comment ces performances pourront être évaluées).
+    <span class="small-caps">Je veux créer</span> un système d&rsquo;embranchements pour mon système de botanique algorithmique qui ne repose pas sur le hasard, de façon à ce que mes algorithmes génétiques puissent déterminer quels sont les types d&rsquo;arbres les plus «&nbsp;performants&nbsp;» (je ne sais toujours pas comment ces performances pourront être évaluées).
 </p>
 <p>
-    Mon système d’embranchement m’a permis de créer une grande quantité d’arbres différents&nbsp;; chaque arbre possède clairement une apparence, ou un caractère visuel, qui lui est propre. On peut voir un montage de plusieurs de ces arbres en croissance <a href="https://twitter.com/PelletierAuger/status/1006226540043137024">sur mon fil Twitter</a>.
+    Mon système d&rsquo;embranchement m&rsquo;a permis de créer une grande quantité d&rsquo;arbres différents&nbsp;; chaque arbre possède clairement une apparence, ou un caractère visuel, qui lui est propre. On peut voir un montage de plusieurs de ces arbres en croissance <a href="https://twitter.com/PelletierAuger/status/1006226540043137024">sur mon fil Twitter</a>.
 </p>
 <p>
-    J’ai rassemblé ci-dessous beaucoup de notes techniques prises lors de ce travail.
+    J&rsquo;ai rassemblé ci-dessous beaucoup de notes techniques prises lors de ce travail.
 </p>
 
 
@@ -373,7 +284,7 @@
             <div class="blog-post">
                 <div class="blog-post-header">
                     <a href="../blog/2018/5/un-modele-p5js-pour-l'animation.html"><div class="date">27 mai 2018</div>
-                    <div class="blog-title-box"><h2 class="header">Un modèle <span class="lnum">p5.js</span> pour l’animation
+                    <div class="blog-title-box"><h2 class="header">Un modèle <span class="lnum">p5.js</span> pour l&rsquo;animation
 </h2></div>
                     <div class="description">
                     
@@ -386,41 +297,8 @@
 
                 </div>
             </div>
-            <div class="blog-post">
-                <div class="blog-post-header">
-                    <a href="../blog/2018/5/notes-sur-les-automates-genetiques.html"><div class="date">12 mai 2018</div>
-                    <div class="blog-title-box"><h2 class="header">Notes sur les automates génétiques</h2></div>
-                    <div class="description">
-                    Pour un système en construction.
-
-            </div></a>
-                </div>
-                <div class="blog-post-content">
-                    
-
-<p class="noindent">
-    <img class="genetic-drop-caps" src="../../../images/notes-on-genetic-automata/c.jpg"><span class="small-caps">et article</span> contient une série de notes un peu éparpillées prises alors que je me familiarise avec les algorithmes génétiques et, plus particulièrement, leurs applications dans les automates cellulaires. Je ne suis pas certain que ces notes puissent servir à quiconque à part moi, mais elles ont néanmoins leur place dans un journal de travail.
-</p>
-
-<p>
-    Si un système d’automates cellulaires a un «&nbsp;voisinage&nbsp;» de <span id="MathJax-Element-1-Frame" class="mjx-chtml"><span id="MJXc-Node-2959" class="mjx-math"><span id="MJXc-Node-2960" class="mjx-mrow"><span id="MJXc-Node-2961" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">9</span></span></span></span></span> cellules, et que chacune de ces cellules peut avoir un état de <span id="MathJax-Element-2-Frame" class="mjx-chtml"><span id="MJXc-Node-2962" class="mjx-math"><span id="MJXc-Node-2963" class="mjx-mrow"><span id="MJXc-Node-2964" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">0</span></span></span></span></span>, <span id="MathJax-Element-3-Frame" class="mjx-chtml"><span id="MJXc-Node-2965" class="mjx-math"><span id="MJXc-Node-2966" class="mjx-mrow"><span id="MJXc-Node-2967" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">1</span></span></span></span></span> ou <span id="MathJax-Element-4-Frame" class="mjx-chtml"><span id="MJXc-Node-2968" class="mjx-math"><span id="MJXc-Node-2969" class="mjx-mrow"><span id="MJXc-Node-2970" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">2</span></span></span></span></span>, un exemple de voisinage possible pourrait s’écrire&nbsp;: <span class="inline-code">"101022010"</span>. Ça me limiterait cependant à <span id="MathJax-Element-5-Frame" class="mjx-chtml"><span id="MJXc-Node-2971" class="mjx-math"><span id="MJXc-Node-2972" class="mjx-mrow"><span id="MJXc-Node-2973" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">10</span></span></span></span></span> états possibles (de <span id="MathJax-Element-6-Frame" class="mjx-chtml"><span id="MJXc-Node-2974" class="mjx-math"><span id="MJXc-Node-2975" class="mjx-mrow"><span id="MJXc-Node-2976" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">0</span></span></span></span></span> à <span id="MathJax-Element-7-Frame" class="mjx-chtml"><span id="MJXc-Node-2977" class="mjx-math"><span id="MJXc-Node-2978" class="mjx-mrow"><span id="MJXc-Node-2979" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">9</span></span></span></span></span>) pour un système. Une autre façon d’encoder un voisinage serait&nbsp;:
-</p>
-
-<div class="codebox"><pre><code><span class="hljs-keyword">let</span> neighborhood<span class="hljs-punctuation"> = </span>[<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">11</span>, <span class="hljs-number">13</span>, <span class="hljs-number">2</span>, <span class="hljs-number">20</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>];</code></pre></div>
-
-<p class="noindent">
-    Ici, je ne serais pas limité à <span id="MathJax-Element-8-Frame" class="mjx-chtml"><span id="MJXc-Node-2980" class="mjx-math"><span id="MJXc-Node-2981" class="mjx-mrow"><span id="MJXc-Node-2982" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.372em; padding-bottom: 0.372em;">9</span></span></span></span></span> états possibles. Mais, dans tous les cas, comment ferais-je pour générer chacune des règles d’un système&nbsp;?
-</p>
-
-
-                <div class="languageJump">
-                    <a href="../blog/2018/5/notes-sur-les-automates-genetiques.html">Continuer à lire…</a>
-                </div>
-               
-                </div>
-            </div>
         </div>
-        <div id="blog-pagination">
+        <div id = "blog-pagination">
             <div class="pagination-link">
                 <a href="./page-2.html">
                 Page précédente
@@ -437,7 +315,7 @@
     <div id="rss-link">
         <a href="https://pelletierauger.com/fr/blog/rss.xml">Flux RSS</a>
     </div>
-    <div id="footer">Guillaume Pelletier-Auger — 2016-2020
+    <div id="footer">Guillaume Pelletier-Auger &mdash; 2016-2022
     </div>
-    
-    </body></html>
+    </body>
+    </html>
