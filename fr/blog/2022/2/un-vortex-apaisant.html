@@ -57,7 +57,7 @@ Si vous appréciez ce travail, je vous invite à vous inscrire à ma page <a hre
 <h3>Musique</h3>
 
 <p class="noindent">
-    <span class="small-caps">Le nuage apaisant de synthétiseurs</span> que vous pouvez entendre dans la vidéo est écrit avec SuperCollider, en utilisant les excellents <a href="https://github.com/v7b1/mi-UGens/">ports SuperCollider des <span class="nobreak">modules Mutable Instruments.</a>
+    <span class="small-caps">Le <a href="https://fr.wikipedia.org/wiki/Bourdon_(musique)">bourdon</a> apaisant de synthétiseurs</span> que vous pouvez entendre dans la vidéo est écrit avec SuperCollider, en utilisant les excellents <a href="https://github.com/v7b1/mi-UGens/">ports SuperCollider des <span class="nobreak">modules Mutable Instruments.</a>
         <label for="volker" class="margin-toggle sidenote-number">
         </label></span>
         <input type="checkbox" id="volker" class="margin-toggle"/>
@@ -65,14 +65,13 @@ Si vous appréciez ce travail, je vous invite à vous inscrire à ma page <a hre
 </p>
 
 <p>
-   Voici le code pour cette bande sonore&nbsp;:
+   Voici le code du bourdon&nbsp;:
 </p>
 
 <div class="codebox"><pre><code class="supercollider">(
-<span class="hljs-keyword">var</span> root<span class="hljs-punctuation"> = </span><span class="hljs-number">58</span>;
 if(~drone<span class="hljs-punctuation">.</span>isPlaying, {~drone<span class="hljs-punctuation">.</span>set(\gate, <span class="hljs-number">0</span>, \fadeTime, <span class="hljs-number">0.1</span>)});
 ~drone<span class="hljs-punctuation"> = </span>{
-    <span class="hljs-keyword">var</span> f<span class="hljs-punctuation"> = </span>root;
+    <span class="hljs-keyword">var</span> f<span class="hljs-punctuation"> = </span><span class="hljs-number">58</span>;
     <span class="hljs-keyword">var</span> lfo<span class="hljs-punctuation"> = </span><span class="hljs-built_in">SinOsc</span><span class="hljs-punctuation">.</span>kr(<span class="hljs-number">0.1</span><span class="hljs-punctuation"> * </span><span class="hljs-number">0.25</span>).range(<span class="hljs-number">0.025</span>, <span class="hljs-number">0.125</span>);
     <span class="hljs-keyword">var</span> lfo2<span class="hljs-punctuation"> = </span><span class="hljs-built_in">SinOsc</span><span class="hljs-punctuation">.</span>kr(<span class="hljs-number">0.2</span><span class="hljs-punctuation"> * </span><span class="hljs-number">0.25</span>, pi).range(<span class="hljs-number">0.025</span>, <span class="hljs-number">0.85</span>);
     <span class="hljs-keyword">var</span> sig<span class="hljs-punctuation"> = </span><span class="hljs-built_in">MiBraids</span><span class="hljs-punctuation">.</span>ar(f<span class="hljs-punctuation"> - </span><span class="hljs-number">24</span><span class="hljs-punctuation"> * </span>[<span class="hljs-number">1</span>, <span class="hljs-number">1.001</span>], lfo, lfo2, <span class="hljs-number">3</span>)<span class="hljs-punctuation"> * </span><span class="hljs-number">0.15</span>;
@@ -89,23 +88,23 @@ if(~drone<span class="hljs-punctuation">.</span>isPlaying, {~drone<span class="h
     sig<span class="hljs-punctuation"> = </span>sig<span class="hljs-punctuation"> + </span>(<span class="hljs-built_in">MiBraids</span><span class="hljs-punctuation">.</span>ar(f<span class="hljs-punctuation"> + </span><span class="hljs-number">2</span><span class="hljs-punctuation"> * </span>[<span class="hljs-number">1</span>, <span class="hljs-number">1.001</span>], lfo, lfo2, <span class="hljs-number">5</span>)<span class="hljs-punctuation"> * </span><span class="hljs-number">0.00625</span>);
     sig<span class="hljs-punctuation"> = </span>sig<span class="hljs-punctuation"> + </span>(<span class="hljs-built_in">MiBraids</span><span class="hljs-punctuation">.</span>ar(f<span class="hljs-punctuation"> + </span><span class="hljs-number">4</span><span class="hljs-punctuation"> * </span>[<span class="hljs-number">1</span>, <span class="hljs-number">1.001</span>], lfo, lfo2, <span class="hljs-number">5</span>)<span class="hljs-punctuation"> * </span><span class="hljs-number">0.00625</span>);
     sig<span class="hljs-punctuation"> = </span>sig<span class="hljs-punctuation"> + </span>(<span class="hljs-built_in">MiBraids</span><span class="hljs-punctuation">.</span>ar(f<span class="hljs-punctuation"> + </span><span class="hljs-number">12</span><span class="hljs-punctuation"> * </span>[<span class="hljs-number">1</span>, <span class="hljs-number">1.001</span>], lfo, lfo2, <span class="hljs-number">4</span>)<span class="hljs-punctuation"> * </span><span class="hljs-number">0.025</span>);
-    sig<span class="hljs-punctuation"> = </span><span class="hljs-built_in">MiVerb</span><span class="hljs-punctuation">.</span>ar(sig, time: <span class="hljs-number">0.7</span>, amount: <span class="hljs-number">0.25</span>, diff: <span class="hljs-number">0.7</span>, damp: <span class="hljs-number">0.9</span>);
+    sig<span class="hljs-punctuation"> = </span><span class="hljs-built_in">MiVerb</span><span class="hljs-punctuation">.</span>ar(sig, time: <span class="hljs-number">0.7</span>, diff: <span class="hljs-number">0.7</span>, damp: <span class="hljs-number">0.9</span>);
     sig<span class="hljs-punctuation"> = </span>sig<span class="hljs-punctuation"> * </span><span class="hljs-number">0.75</span><span class="hljs-punctuation"> * </span><span class="hljs-built_in">XLine</span><span class="hljs-punctuation">.</span>kr(<span class="hljs-number">0.001</span>, <span class="hljs-number">1</span>, <span class="hljs-number">3</span>);
 }.play<span class="hljs-punctuation">.</span>register;
 )</code></pre></div>
 
 <p class="noindent">
-    Comme on peut le voir, il s&rsquo;agit simplement d&rsquo;une pile de synthétiseurs <span class="inline-code">MiBraids</span>, modulés avec quelques oscillateurs basse fréquence et filtrées avec un filtre passe-bas et de la réverbération. Chaque synthétiseur <span class="inline-code">MiBraids</span> est doublé en multipliant son paramètre <span class="inline-code">pitch</span> par <span class="inline-code">[1, 1.001]</span>, ce qui désaccorde légèrement le canal droit pour obtenir un effet stéréo spatial.
+    Comme on peut le voir, il s&rsquo;agit simplement d&rsquo;une pile de synthétiseurs <span class="inline-code">MiBraids</span>, modulés avec quelques oscillateurs basse fréquence et filtrées avec un filtre passe-bas et de la réverbération. Chaque synthétiseur <span class="inline-code">MiBraids</span> est doublé en multipliant son paramètre <span class="inline-code">pitch</span> par <span class="inline-code">[1, 1.001]</span>, ce qui désaccorde légèrement le canal droit pour obtenir un effet spatial stéréo.
 </p>
 <p>
-    Ce que j&rsquo;aime dans ce nuage de synthétiseurs, c&rsquo;est qu&rsquo;il s&rsquo;agit essentiellement d&rsquo;un gros accord de septième majeure et qu&rsquo;il contient des notes qui ne sont qu&rsquo;à un demi-ton de distance (une seconde mineure). On peut voir ceci facilement car toutes les fréquences sont calculées à partir de la tonique définie avec <span class="inline-code">var root = 58;</span>, qui est la valeur <span class="small-caps">midi</span> pour la note A#3. Un des synthétiseurs <span class="inline-code">MiBraids</span> a une hauteur de <span class="inline-code">root - 1</span>, ce qui nous donne A3 (la septième majeure de l&rsquo;accord A#Maj7) qui se frotte (de par sa proximité) contre la tonique A#3. Ce frottement crée une tension dans l&rsquo;accord, et il y a ainsi un beau contraste entre la douceur générale de ce nuage de synthétiseurs et la dissonance subtile qui se glisse dans son <span class="nobreak">harmonie.
+    Ce que j&rsquo;aime dans ce bourdon de synthétiseurs, c&rsquo;est qu&rsquo;il s&rsquo;agit essentiellement d&rsquo;un gros accord de septième majeure et qu&rsquo;il contient des notes qui ne sont qu&rsquo;à un demi-ton de distance (une seconde mineure). On peut voir ceci facilement car toutes les fréquences sont calculées à partir de la tonique définie avec <span class="inline-code">var f = 58;</span>, qui est la valeur <span class="small-caps">midi</span> pour la note <span class="lnum">A#3</span>. Un des synthétiseurs <span class="inline-code">MiBraids</span> a une hauteur de <span class="inline-code">f - 1</span>, ce qui nous donne la note <span class="lnum">A3</span> (la septième majeure de l&rsquo;accord <span class="lnum">A#maj7</span>) qui se frotte (de par sa proximité) contre la tonique <span class="lnum">A#3</span>. Ce frottement crée une tension dans l&rsquo;accord, et il y a ainsi un beau contraste entre la douceur générale de ce bourdon de synthétiseurs et la dissonance subtile qui se glisse dans son <span class="nobreak">harmonie.
         <label for="major7" class="margin-toggle sidenote-number">
         </label></span>
         <input type="checkbox" id="major7" class="margin-toggle"/>
-        <span class="sidenote">Je ne dis ici rien de nouveau ou de remarquable. Les accords de septième majeure sont appréciés pour leur son relaxant depuis longtemps, et on les retrouve dans un grand nombre <a href="https://www.youtube.com/watch?v=6bNMxWGHlTI">de pièces musicales des plus apaisantes</a>.</span> Aussi, plus généralement, la présence de plusieurs tonalités très proches les unes des autres (G3, A3, A#3, C4, D4) crée un son riche et sirupeux, un peu comme certaines partitions de synthétiseurs dans la musique des <span class="lnum">1980</span>.
+        <span class="sidenote">Je ne dis ici rien de nouveau ou de remarquable. Les accords de septième majeure sont appréciés pour leur son relaxant depuis longtemps, et on les retrouve dans un grand nombre <a href="https://www.youtube.com/watch?v=6bNMxWGHlTI">de pièces musicales des plus apaisantes</a>.</span> Aussi, plus généralement, la présence de plusieurs tonalités très proches les unes des autres (<span class="lnum">G3, A3, A#3, C4, D4</span>) crée un son riche et sirupeux, un peu comme certaines partitions de synthétiseurs que l&rsquo;on trouvait dans la musique des années <span class="lnum">1980</span>.
 </p>
 <p>
-    J&rsquo;ai réalisé cette pièce apaisante afin de diminuer mon anxiété pendant la pandémie. J&rsquo;espère que vous y trouverez aussi un peu de chaleur et de réconfort.
+    J&rsquo;ai réalisé ce morceau apaisant afin de diminuer mon anxiété pendant la pandémie. J&rsquo;espère que vous y trouverez aussi un peu de chaleur et de réconfort.
 </p>
 
 
