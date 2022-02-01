@@ -36,19 +36,18 @@ Si vous appréciez ce travail, je vous invite à vous inscrire à ma page <a hre
 <h3>Musique</h3>
 
 <pn>
-    <sc>Le nuage apaisant de synthétiseurs</sc> que vous pouvez entendre dans la vidéo est écrit avec SuperCollider, en utilisant les excellents <a href="https://github.com/v7b1/mi-UGens/">ports SuperCollider des &nbsn;modules Mutable Instruments.</a><snl label="volker">Ces ports sont écrits par <a href="https://vboehm.net/">Volker Böhm</a> et le code original des modules est écrit par <a href="https://github.com/pichenettes">Émilie Gillet</a> de Mutable Instruments. Je recommande fortement ces UGens ; ils sonnent merveilleusement bien.</snl>
+    <sc>Le <a href="https://fr.wikipedia.org/wiki/Bourdon_(musique)">bourdon</a> apaisant de synthétiseurs</sc> que vous pouvez entendre dans la vidéo est écrit avec SuperCollider, en utilisant les excellents <a href="https://github.com/v7b1/mi-UGens/">ports SuperCollider des &nbsn;modules Mutable Instruments.</a><snl label="volker">Ces ports sont écrits par <a href="https://vboehm.net/">Volker Böhm</a> et le code original des modules est écrit par <a href="https://github.com/pichenettes">Émilie Gillet</a> de Mutable Instruments. Je recommande fortement ces UGens ; ils sonnent merveilleusement bien.</snl>
 </pn>
 
 <p>
-   Voici le code pour cette bande sonore :
+   Voici le code du bourdon :
 </p>
 
 <supercollider>
 (
-var root = 58;
 if(~drone.isPlaying, {~drone.set(\gate, 0, \fadeTime, 0.1)});
 ~drone = {
-    var f = root;
+    var f = 58;
     var lfo = SinOsc.kr(0.1 * 0.25).range(0.025, 0.125);
     var lfo2 = SinOsc.kr(0.2 * 0.25, pi).range(0.025, 0.85);
     var sig = MiBraids.ar(f - 24 * [1, 1.001], lfo, lfo2, 3) * 0.15;
@@ -65,20 +64,20 @@ if(~drone.isPlaying, {~drone.set(\gate, 0, \fadeTime, 0.1)});
     sig = sig + (MiBraids.ar(f + 2 * [1, 1.001], lfo, lfo2, 5) * 0.00625);
     sig = sig + (MiBraids.ar(f + 4 * [1, 1.001], lfo, lfo2, 5) * 0.00625);
     sig = sig + (MiBraids.ar(f + 12 * [1, 1.001], lfo, lfo2, 4) * 0.025);
-    sig = MiVerb.ar(sig, time: 0.7, amount: 0.25, diff: 0.7, damp: 0.9);
+    sig = MiVerb.ar(sig, time: 0.7, diff: 0.7, damp: 0.9);
     sig = sig * 0.75 * XLine.kr(0.001, 1, 3);
 }.play.register;
 )
 </supercollider>
 
 <pn>
-    Comme on peut le voir, il s'agit simplement d'une pile de synthétiseurs <ic>MiBraids</ic>, modulés avec quelques oscillateurs basse fréquence et filtrées avec un filtre passe-bas et de la réverbération. Chaque synthétiseur <ic>MiBraids</ic> est doublé en multipliant son paramètre <ic>pitch</ic> par <ic>[1, 1.001]</ic>, ce qui désaccorde légèrement le canal droit pour obtenir un effet stéréo spatial.
+    Comme on peut le voir, il s'agit simplement d'une pile de synthétiseurs <ic>MiBraids</ic>, modulés avec quelques oscillateurs basse fréquence et filtrées avec un filtre passe-bas et de la réverbération. Chaque synthétiseur <ic>MiBraids</ic> est doublé en multipliant son paramètre <ic>pitch</ic> par <ic>[1, 1.001]</ic>, ce qui désaccorde légèrement le canal droit pour obtenir un effet spatial stéréo.
 </pn>
 <p>
-    Ce que j'aime dans ce nuage de synthétiseurs, c'est qu'il s'agit essentiellement d'un gros accord de septième majeure et qu'il contient des notes qui ne sont qu'à un demi-ton de distance (une seconde mineure). On peut voir ceci facilement car toutes les fréquences sont calculées à partir de la tonique définie avec <ic>var root = 58;</ic>, qui est la valeur <sc>midi</sc> pour la note A#3. Un des synthétiseurs <ic>MiBraids</ic> a une hauteur de <ic>root - 1</ic>, ce qui nous donne A3 (la septième majeure de l'accord A#Maj7) qui se frotte (de par sa proximité) contre la tonique A#3. Ce frottement crée une tension dans l'accord, et il y a ainsi un beau contraste entre la douceur générale de ce nuage de synthétiseurs et la dissonance subtile qui se glisse dans son &nbsn;harmonie.<snr label="major7">Je ne dis ici rien de nouveau ou de remarquable. Les accords de septième majeure sont appréciés pour leur son relaxant depuis longtemps, et on les retrouve dans un grand nombre <a href="https://www.youtube.com/watch?v=6bNMxWGHlTI">de pièces musicales des plus apaisantes</a>.</snr> Aussi, plus généralement, la présence de plusieurs tonalités très proches les unes des autres (G3, A3, A#3, C4, D4) crée un son riche et sirupeux, un peu comme certaines partitions de synthétiseurs dans la musique des <lnum>1980</lnum>.
+    Ce que j'aime dans ce bourdon de synthétiseurs, c'est qu'il s'agit essentiellement d'un gros accord de septième majeure et qu'il contient des notes qui ne sont qu'à un demi-ton de distance (une seconde mineure). On peut voir ceci facilement car toutes les fréquences sont calculées à partir de la tonique définie avec <ic>var f = 58;</ic>, qui est la valeur <sc>midi</sc> pour la note <lnum>A#3</lnum>. Un des synthétiseurs <ic>MiBraids</ic> a une hauteur de <ic>f - 1</ic>, ce qui nous donne la note <lnum>A3</lnum> (la septième majeure de l'accord <lnum>A#maj7</lnum>) qui se frotte (de par sa proximité) contre la tonique <lnum>A#3</lnum>. Ce frottement crée une tension dans l'accord, et il y a ainsi un beau contraste entre la douceur générale de ce bourdon de synthétiseurs et la dissonance subtile qui se glisse dans son &nbsn;harmonie.<snr label="major7">Je ne dis ici rien de nouveau ou de remarquable. Les accords de septième majeure sont appréciés pour leur son relaxant depuis longtemps, et on les retrouve dans un grand nombre <a href="https://www.youtube.com/watch?v=6bNMxWGHlTI">de pièces musicales des plus apaisantes</a>.</snr> Aussi, plus généralement, la présence de plusieurs tonalités très proches les unes des autres (<lnum>G3, A3, A#3, C4, D4</lnum>) crée un son riche et sirupeux, un peu comme certaines partitions de synthétiseurs que l'on trouvait dans la musique des années <lnum>1980</lnum>.
 </p>
 <p>
-    J'ai réalisé cette pièce apaisante afin de diminuer mon anxiété pendant la pandémie. J'espère que vous y trouverez aussi un peu de chaleur et de réconfort.
+    J'ai réalisé ce morceau apaisant afin de diminuer mon anxiété pendant la pandémie. J'espère que vous y trouverez aussi un peu de chaleur et de réconfort.
 </p>
 
 <!-- en-title -->A Calming Vortex
@@ -117,10 +116,9 @@ if(~drone.isPlaying, {~drone.set(\gate, 0, \fadeTime, 0.1)});
     </p>
     <supercollider>
 (
-var root = 58;
 if(~drone.isPlaying, {~drone.set(\gate, 0, \fadeTime, 0.1)});
 ~drone = {
-    var f = root;
+    var f = 58;
     var lfo = SinOsc.kr(0.1 * 0.25).range(0.025, 0.125);
     var lfo2 = SinOsc.kr(0.2 * 0.25, pi).range(0.025, 0.85);
     var sig = MiBraids.ar(f - 24 * [1, 1.001], lfo, lfo2, 3) * 0.15;
@@ -137,16 +135,16 @@ if(~drone.isPlaying, {~drone.set(\gate, 0, \fadeTime, 0.1)});
     sig = sig + (MiBraids.ar(f + 2 * [1, 1.001], lfo, lfo2, 5) * 0.00625);
     sig = sig + (MiBraids.ar(f + 4 * [1, 1.001], lfo, lfo2, 5) * 0.00625);
     sig = sig + (MiBraids.ar(f + 12 * [1, 1.001], lfo, lfo2, 4) * 0.025);
-    sig = MiVerb.ar(sig, time: 0.7, amount: 0.25, diff: 0.7, damp: 0.9);
+    sig = MiVerb.ar(sig, time: 0.7, diff: 0.7, damp: 0.9);
     sig = sig * 0.75 * XLine.kr(0.001, 1, 3);
 }.play.register;
 )
 </supercollider>
     <pn>
-        As you can see, it's simply a big stack of <ic>MiBraids</ic> instances modulated with some <sc>LFO</sc>s and filtered with a Low Pass and some reverb. Each instance of <ic>MiBraids</ic> is doubled by multiplying its pitch by <ic>[1, 1.001]</ic>, which slightly detunes one channel to get a spatial stereo effect.
+        As you can see, it's simply a big stack of <ic>MiBraids</ic> instances modulated with some <sc>LFO</sc>s and filtered with a Low Pass and some reverb. Each instance of <ic>MiBraids</ic> is doubled by multiplying its pitch by <ic>[1, 1.001]</ic>, which slightly detunes the right channel to get a spatial stereo effect.
     </pn>
     <p>
-        What I like about this drone is that it's essentially a big major seventh chord, and that it includes notes that are only one semitone away (a minor second). You can see it easily because all frequencies are calculated from the root pitch set with <ic>var root = 58;</ic>, which is the midi value for A#3. And then one instance of <ic>MiBraids</ic> has a pitch of <ic>root - 1</ic>, which gives us the A natural (the major seventh of the chord) that rubs against the more prominent root note A#. This rubbing creates tension in the chord, so there's a nice contrast between how mellow the drone feels, and the subtle dissonance in its &nbsn;harmony.<snr label="major7">I'm not saying anything new here, major seventh chords are notoriously relaxing and quite ubiquitous in <a href="https://www.youtube.com/watch?v=6bNMxWGHlTI">the mellowest of tracks</a>.</snr> Also, more generally, the presence of multiple tones that are very close to each other (G3, A3, A#3, C4, D4) creates a thick and crunchy sound, not unlike some synth pads from <lnum>1980</lnum>s music.
+        What I like about this drone is that it's essentially a big major seventh chord, and that it includes notes that are only one semitone away (a minor second). You can see it easily because all frequencies are calculated from the root pitch set with <ic>var f = 58;</ic>, which is the <sc>midi</sc> value for <lnum>A#3</lnum>. And then one instance of <ic>MiBraids</ic> has a pitch of <ic>f - 1</ic>, which gives us the A natural (the major seventh of the <lnum>A#maj7</lnum> chord) that rubs against the more prominent root note A#. This rubbing creates tension in the chord, so there's a nice contrast between how mellow the drone feels, and the subtle dissonance in its &nbsn;harmony.<snr label="major7">I'm not saying anything new here, major seventh chords are notoriously relaxing and quite ubiquitous in <a href="https://www.youtube.com/watch?v=6bNMxWGHlTI">the mellowest of tracks</a>.</snr> Also, more generally, the presence of multiple tones that are very close to each other (<lnum>G3, A3, A#3, C4, D4</lnum>) creates a thick and crunchy sound, not unlike some synth pads from <lnum>1980</lnum>s music.
     </p>
     <p>
         I made this calming piece as a way to soothe my anxiety during the pandemic. I hope you'll find it a warm, relaxing place too.
