@@ -7,7 +7,7 @@
 <img src="../../../images/a-calming-vortex/sketch-01680.png">
 
 <p class="article-top">
-    <sc>Voici une vidéo</sc> que vous pouvez <a href="https://we.tl/t-zUyShhUSgH">télécharger en format haute résolution</a>, gratuitement. J'ai aussi <a href="https://www.youtube.com/watch?v=Oks-e9-Xc58">mis en ligne la vidéo sur YouTube</a>, pour celles et ceux qui ne peuvent télécharger le gros fichier.
+    <sc>Voici une vidéo</sc> que vous pouvez <a href="https://we.tl/t-zUyShhUSgH">télécharger en format haute résolution</a>, gratuitement. La vidéo est <a href="https://www.youtube.com/watch?v=Oks-e9-Xc58">aussi sur YouTube</a>, pour celles et ceux qui ne peuvent télécharger le gros fichier.
 </p>
 <p>
 Si vous appréciez ce travail, je vous invite à vous inscrire à ma page <a href="https://www.patreon.com/pelletierauger">
@@ -18,13 +18,13 @@ Si vous appréciez ce travail, je vous invite à vous inscrire à ma page <a hre
         <rect width="18" height="100" fill="black" />
     </svg>
     </span>Patreon</a>.
-    </nb> Vous m'aiderez ainsi à créer et à partager davantage de nouveaux projets. Vous y trouverez présentement une autre vidéo haute résolution que les inscrit&middot;e&middot;s peuvent télécharger en exclusivité, et d'autres vidéos suivront.
+    </nb> Vous m'aiderez ainsi à créer et à partager davantage de nouveaux projets. Vous y trouverez présentement une autre vidéo haute résolution que les inscrit&middot;e&middot;s peuvent télécharger en exclusivité, et d'autres vidéos suivront plus tard.
 </p>
 
 <h3>Contexte</h3>
 
 <pn>
-    <sc>J'ai réalisé</sc> beaucoup d'animations comme celle-ci depuis quelques années, simplement pour mon propre plaisir, mais je trouve toujours que partager ce travail sur les réseaux sociaux est une expérience insatisfaisante, en raison de la mauvaise qualité des fichiers recompressés. Le but de ces animations est de se perdre dans tous leurs petits détails, et tout ça se perd sur Twitter ou Instagram. Même sur YouTube et Vimeo la qualité n'est pas à la hauteur du fichier original. Je ne voudrais personnellement pas regarder mon travail sur une plateforme de <i>streaming</i>, et inviter d'autres personnes à le faire ne me semble pas idéal.
+    <sc>J'ai réalisé</sc> beaucoup d'animations comme celle-ci ces dernières années, simplement pour mon propre plaisir, et je trouve toujours que partager de tels travaux sur les réseaux sociaux est une expérience insatisfaisante, en raison de la mauvaise qualité des vidéos recompressées. J'aime me perdre dans les petits détails de ces animations, et cette expérience ne peut se vivre sur Twitter ou sur Instagram. Même sur YouTube et Vimeo la qualité n'est pas à la hauteur du fichier original. Je ne voudrais personnellement pas regarder mon travail sur une plateforme de <i>streaming</i>, et inviter d'autres personnes à le faire ne me semble pas idéal.
 </pn>
 
 <!-- read-more -->
@@ -36,11 +36,11 @@ Si vous appréciez ce travail, je vous invite à vous inscrire à ma page <a hre
 <h3>Musique</h3>
 
 <pn>
-    <sc>Le drone synthétiseur apaisant</sc> que vous pouvez entendre dans la vidéo est écrit avec SuperCollider, en utilisant les excellents <a href="https://github.com/v7b1/mi-UGens/">ports SuperCollider des &nbsn;modules Mutable Instruments.</a><snl label="volker">Les ports sont écrits par <a href="https://vboehm.net/">Volker Böhm</a> et le code original des modules est écrit par <a href="https://github.com/pichenettes">Émilie Gillet</a> de Mutable Instruments. Je recommande fortement ces UGens ; ils sonnent merveilleusement bien.</snl> 
+    <sc>Le nuage apaisant de synthétiseurs</sc> que vous pouvez entendre dans la vidéo est écrit avec SuperCollider, en utilisant les excellents <a href="https://github.com/v7b1/mi-UGens/">ports SuperCollider des &nbsn;modules Mutable Instruments.</a><snl label="volker">Ces ports sont écrits par <a href="https://vboehm.net/">Volker Böhm</a> et le code original des modules est écrit par <a href="https://github.com/pichenettes">Émilie Gillet</a> de Mutable Instruments. Je recommande fortement ces UGens ; ils sonnent merveilleusement bien.</snl>
 </pn>
 
 <p>
-   Voici le code pour le drone de synthétiseur :
+   Voici le code pour cette bande sonore :
 </p>
 
 <supercollider>
@@ -72,13 +72,13 @@ if(~drone.isPlaying, {~drone.set(\gate, 0, \fadeTime, 0.1)});
 </supercollider>
 
 <pn>
-    Comme vous pouvez le voir, c'est simplement une grosse pile d'instances de <ic>MiBraids</ic> modulées avec quelques <sc>LFO</sc> et filtrées avec un passe-bas et de la réverbération. Chaque instance de <ic>MiBraids</ic> est doublée en multipliant sa hauteur par <ic>[1, 1.001]</ic>, ce qui désaccorde légèrement un canal pour obtenir un effet stéréo spatial.
+    Comme on peut le voir, il s'agit simplement d'une pile de synthétiseurs <ic>MiBraids</ic>, modulés avec quelques oscillateurs basse fréquence et filtrées avec un filtre passe-bas et de la réverbération. Chaque synthétiseur <ic>MiBraids</ic> est doublé en multipliant son paramètre <ic>pitch</ic> par <ic>[1, 1.001]</ic>, ce qui désaccorde légèrement le canal droit pour obtenir un effet stéréo spatial.
 </pn>
 <p>
-    Ce que j'aime dans ce drone, c'est qu'il s'agit essentiellement d'un gros accord de septième majeure et qu'il comprend des notes qui ne sont qu'à un demi-ton de distance (une seconde mineure). Vous pouvez le voir facilement car toutes les fréquences sont calculées à partir de la hauteur tonale définie avec <ic>var root = 58;</ic>, qui est la valeur midi pour A#3. Et puis une instance de <ic>MiBraids</ic> a une hauteur de <ic>racine - 1</ic>, ce qui nous donne le La naturel (la septième majeure de l'accord) qui frotte contre la note fondamentale la plus proéminente La dièse. Ce frottement crée une tension dans l'accord, il y a donc un joli contraste entre la douceur du bourdon et la subtile dissonance dans son &nbsn;harmonie.<snr label="major7">Je ne dis rien de nouveau ici, les accords de septième majeure sont notoirement relaxants et assez omniprésents dans <a href="https://www.youtube.com/watch?v=6bNMxWGHlTI">les morceaux les plus doux</a>.</snr> Aussi, plus généralement, la présence de plusieurs tonalités très proches les unes des autres (G3, A3, A#3, C4, D4) créent un son épais et croustillant, un peu comme certaines nappes de synthé de la musique des <lnum>1980</lnum>.
+    Ce que j'aime dans ce nuage de synthétiseurs, c'est qu'il s'agit essentiellement d'un gros accord de septième majeure et qu'il contient des notes qui ne sont qu'à un demi-ton de distance (une seconde mineure). On peut voir ceci facilement car toutes les fréquences sont calculées à partir de la tonique définie avec <ic>var root = 58;</ic>, qui est la valeur <sc>midi</sc> pour la note A#3. Un des synthétiseurs <ic>MiBraids</ic> a une hauteur de <ic>root - 1</ic>, ce qui nous donne A3 (la septième majeure de l'accord A#Maj7) qui se frotte (de par sa proximité) contre la tonique A#3. Ce frottement crée une tension dans l'accord, et il y a ainsi un beau contraste entre la douceur générale de ce nuage de synthétiseurs et la dissonance subtile qui se glisse dans son &nbsn;harmonie.<snr label="major7">Je ne dis ici rien de nouveau ou de remarquable. Les accords de septième majeure sont appréciés pour leur son relaxant depuis longtemps, et on les retrouve dans un grand nombre <a href="https://www.youtube.com/watch?v=6bNMxWGHlTI">de pièces musicales des plus apaisantes</a>.</snr> Aussi, plus généralement, la présence de plusieurs tonalités très proches les unes des autres (G3, A3, A#3, C4, D4) crée un son riche et sirupeux, un peu comme certaines partitions de synthétiseurs dans la musique des <lnum>1980</lnum>.
 </p>
 <p>
-    J'ai fait cette pièce apaisante comme un moyen d'apaiser mon anxiété pendant la pandémie. J'espère que vous y trouverez aussi un endroit chaleureux et relaxant.
+    J'ai réalisé cette pièce apaisante afin de diminuer mon anxiété pendant la pandémie. J'espère que vous y trouverez aussi un peu de chaleur et de réconfort.
 </p>
 
 <!-- en-title -->A Calming Vortex
@@ -86,16 +86,16 @@ if(~drone.isPlaying, {~drone.set(\gate, 0, \fadeTime, 0.1)});
 <!-- en-content --><img src="../../../images/a-calming-vortex/sketch-01680.png">
 
 <p class="article-top">
-    <sc>Here is a video</sc> that you can <a href="https://we.tl/t-zUyShhUSgH">download in high resolution format</a>, for free. If you enjoy this work, I invite you to subscribe to my <a href="https://www.patreon.com/pelletierauger">
+    <sc>Here is a video</sc> that you can <a href="https://we.tl/t-zUyShhUSgH">download in high resolution format</a>, for free. The video <a href="https://www.youtube.com/watch?v=Oks-e9-Xc58">is also on YouTube</a> for those who can't download the big file.
+</p>
+<p>
+    If you enjoy this work, I invite you to subscribe to my <a href="https://www.patreon.com/pelletierauger">
     <span id="Genericons-Patreon">
     <svg width="1em" viewBox="0 0 105 105">
         <circle cx="65" cy="37.5" r="37" fill="black" />
         <rect width="18" height="100" fill="black" />
     </svg>
-    </span>Patreon</a>. You'll be helping me to create and share more work. There is currently another high resolution video that patrons can download, and more videos on the way.
-</p>
-<p>
-    I’ve also <a href="https://www.youtube.com/watch?v=Oks-e9-Xc58">uploaded the video on YouTube</a> for accessibility. I’m assuming not everyone can download the big file (if you only watch videos on your phone, for example).
+    </span>Patreon</a>. You'll be helping me to create and share more work. There is currently another exclusive high resolution video that patrons can download, and more videos on the way.
 </p>
 
 <h3>Context</h3>
