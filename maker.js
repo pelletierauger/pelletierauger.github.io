@@ -135,6 +135,11 @@ function makeBlog(language) {
         for (var l = 0; l < postsOnThisPage; l++) {
             // var post = require('./blog/posts/' + blog.posts[currentPost]);
             var post = seekPage(blog.posts[currentPost], './blog/posts/');
+
+            let itemscope = "";
+            if (post.itemscope) {
+                itemscope = ` itemscope itemtype="https://schema.org/${post.itemscope}"`;
+            };
             // console.log("How many times?");
             if (post.sketch) {
                 // console.log("Sketch!" + post.sketch);
@@ -181,7 +186,7 @@ function makeBlog(language) {
             }
 
             content += `
-            <div class="blog-post">
+            <div class="blog-post"${itemscope}>
                 <div class="blog-post-header">
                     <a href="../${linkIndividual}.html"><div class="date">${date}</div>
                     <div class="blog-title-box"><h2 class="header">${title}</h2></div>
@@ -204,7 +209,7 @@ function makeBlog(language) {
             var individualNavigation = makeNavigation(post, language, stepsFromRoot + 2, blogPrefix, oppositePrefix, false);
             var individualContent = individualHeader + individualNavigation;
             individualContent += `
-            <article>
+            <article${itemscope}>
                 <h2 class="with-date">${title}</h2>${description}
                 <div class="date">${date}</div>
                 ${post[language].content}
@@ -567,16 +572,20 @@ function makeContent(page, language) {
             ${page[language].description}
         </div>
         ` || "";
+        let itemscope = "";
+        if (page.itemscope) {
+            itemscope = ` itemscope itemtype="https://schema.org/${page.itemscope}"`;
+        };
         if (page[language].date) {
             return `
-            <article>
+            <article${itemscope}>
                 <h2 class="with-date">${title}</h2>${description}
                 <div class="date">${page[language].date}</div>
                 ${page[language].content}
             </article>`;
         } else {
             return `
-            <article>
+            <article${itemscope}>
                 <h2>${title}</h2>${description}
                 ${page[language].content}
             <article>`;
@@ -727,6 +736,12 @@ function parseHTMLTemplate(s) {
         page.fr.description = page.fr.description.replace(/([a-zA-ZÀ-ú])(\')([a-zA-ZÀ-ú])/g, function(a, b, c, d) {
             return "" + b + "&rsquo;" + d;
         });
+    }
+
+    let itemscope = data.match(/(<!-- itemscope -->)([\S\s]*?)(<!--)/);
+    if (itemscope) {
+        page.itemscope = itemscope[2];
+        page.itemscope = page.itemscope.replace(/(?:\r\n|\r|\n)/g, "");
     }
 
     let frExcerpt = data.match(/(<!-- fr-excerpt -->)([\S\s]*?)(<!--)/);
