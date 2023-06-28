@@ -250,6 +250,10 @@ article .description .small-caps {
     font-family: 'EBG08-SC';
 }
 
+article .description .italic {
+    font-family: 'EBG08-It';
+}
+
 article .date {
     font-family: 'EBG08-Re';
     font-size: 0.8em;
