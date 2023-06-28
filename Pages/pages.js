@@ -1,6 +1,7 @@
 exports.list = [
-    "ravines",
+    "grimoire",
     "online-classes",
+    "ravines",
     "raspberries",
     "truchet",
     "what-the-walls-feel",
@@ -71,5 +72,17 @@ exports.pages = {
             description: "A short animation film combining<br>Perlin noise and turtle graphics."
         },
         link: "https://www.youtube.com/watch?v=f6wJo1TIbaE"
-    }
+    },
+    
+    // grimoire: {
+    //     fr: {
+    //         title: "Grimoire",
+    //         description: 'Un environnement de programmation <span class="italic">à la volée</span><br>pour SuperCollider et WebGL.'
+    //     },
+    //     en: {
+    //         title: "Grimoire",
+    //         description: "A live coding environment for SuperCollider and WebGL."
+    //     },
+    //     link: "https://www.youtube.com/watch?v=f6wJo1TIbaE"
+    // }
 };
