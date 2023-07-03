@@ -21,6 +21,8 @@ exports.typeset = function(language, fileName, htmlContent, verbose) {
         document.head.appendChild(document.body.firstChild);
         var HTML = "<!DOCTYPE html>\n" + document.documentElement.outerHTML.replace(/^(\n|\s)*/, "");
         // callback(HTML);
+        HTML = HTML.replace(/<article itemscope=""/g, "<article itemscope");
+        HTML = HTML.replace(/<div class="blog-post" itemscope=""/g, `<div class="blog-post" itemscope`);
         var prefix = (language) ? './' + language + '/' : "./";
         fs.writeFile(prefix + fileName + '.html', HTML, function(err) {
             if (err) {
