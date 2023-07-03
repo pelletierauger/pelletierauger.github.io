@@ -8,6 +8,7 @@ exports.posts = [
     // "the-dance-of-numbers",
     // "understanding-the-dx7",
     // "orbiting-superellipses",
+    "mists-and-candles",
     "a-calming-vortex",
     "songs-of-parabolae",
     "a-piano-for-supercollider",

@@ -1,5 +1,5 @@
 exports.list = [
-    "grimoire",
+    // "grimoire",
     "online-classes",
     "ravines",
     "raspberries",
