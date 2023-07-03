@@ -1,7 +1,7 @@
 exports.list = [
     // "grimoire",
-    "online-classes",
     "ravines",
+    "online-classes",
     "raspberries",
     "truchet",
     "what-the-walls-feel",
