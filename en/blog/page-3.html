@@ -9,8 +9,8 @@
         
         <link href="../../style/walking-cosine.css" rel="stylesheet" type="text/css">
         
-        <link href="https://fonts.googleapis.com/css?family=Inconsolata|EB+Garamond" rel="stylesheet">
-        <link href="../../style/code.css" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=EB+Garamond" rel="stylesheet">
+        
     </head><body>
     <nav>
         <h1><a href="../../">Guillaume <span class="nobreak">Pelletier-Auger</span></a></h1>
@@ -25,6 +25,27 @@
             <div id="blog-page-number">
                 <h2>Page 3</h2>
             </div><div class="blog-posts">
+            <div class="blog-post">
+                <div class="blog-post-header">
+                    <a href="../blog/2018/8/the-turtles-of-perlin.html"><div class="date">August 20, 2018</div>
+                    <div class="blog-title-box"><h2 class="header">The turtles of Perlin</h2></div>
+                    <div class="description">
+                    Various mergers between Papert’s turtles and Perlin noise.
+
+            </div></a>
+                </div>
+                <div class="blog-post-content">
+                    
+
+<img src="../../../images/perlin-turtles/perlin-turtle-001.png">
+
+<h3>Context</h3>
+
+<p class="noindent">
+    <span class="small-caps">This blog post</span> is part of my research project <span class="italic">Towards an algorithmic cinema</span>, started in April 2018. I invite you to read <a href="https://pelletierauger.github.io/en/blog/2018/4/towards-an-algorithmic-cinema.html">the first blog post of the project</a> to learn more about it.
+</p>
+                </div>
+            </div>
             <div class="blog-post">
                 <div class="blog-post-header">
                     <a href="../blog/2018/7/a-recaman-spiral.html"><div class="date">July 30, 2018</div>
@@ -72,7 +93,7 @@
                
                 </div>
             </div>
-            <div class="blog-post">
+            <div class="blog-post" itemscope itemtype="https://schema.org/Movie">
                 <div class="blog-post-header">
                     <a href="../blog/2018/7/study-for-cellular-automata-no-1.html"><div class="date">July 26, 2018</div>
                     <div class="blog-title-box"><h2 class="header">Study for cellular automata nº 1
@@ -245,43 +266,6 @@
 
                 <div class="languageJump">
                     <a href="../blog/2018/6/deterministic-branching.html">Read more…</a>
-                </div>
-               
-                </div>
-            </div>
-            <div class="blog-post">
-                <div class="blog-post-header">
-                    <a href="../blog/2018/5/a-p5js-template-for-animation.html"><div class="date">May 27, 2018</div>
-                    <div class="blog-title-box"><h2 class="header">A <span class="lnum">p5.js</span> template for animation
-</h2></div>
-                    <div class="description">
-                    
-
-            </div></a>
-                </div>
-                <div class="blog-post-content">
-                    
-<p class="noindent">
-    <span class="small-caps">While doing a lot of animation</span> with <span class="lnum">p5.js</span> over the last few months, I&rsquo;ve slowly developed a template that I now use to start all my projects. It&rsquo;s designed for my own use but perhaps it could also be useful (in part or as a whole) for other people. So I&rsquo;m <a href="">sharing it on GitHub</a> and documenting it below. There&rsquo;s always ample room for improvement, so if you have any ideas don&rsquo;t hesite to <a href="">get in touch</a>.
-</p>
-<p>
-    The main feature of this template is a convenient system to export frames to create videos and gifs. This is accomplished with a small Node.js server, named <span class="inline-code">server.js</span>, that communicates with the <span class="lnum">p5.js</span> sketch via Socket.io. To export frames, the sketch gets a reference to the web canvas and sends it to <span class="inline-code">server.js</span>, which saves it to disk. The best part is that the exportation can all happen behind the scene, in the command line, using the Node module Puppeteer. Then, when all the frames are exported, they can be turned into videos and gifs using <span class="small-caps">ffmpeg</span>.
-</p>
-<p>
-    Below are all the files included in the template. I will now go through how all the pieces fit together.
-</p>
-<div class="codebox"><pre><code class="nosyntax">frame-export.js
-frames
-headless.js
-index.html
-libraries
-server.js
-sketch.js
-style.css</code></pre></div>
-
-
-                <div class="languageJump">
-                    <a href="../blog/2018/5/a-p5js-template-for-animation.html">Read more…</a>
                 </div>
                
                 </div>
