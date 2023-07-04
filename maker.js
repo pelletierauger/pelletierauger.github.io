@@ -214,7 +214,7 @@ function makeBlog(language) {
             var individualContent = individualHeader + individualNavigation;
             individualContent += `
             <article${itemscope}>
-                <h2 class="with-date">${title}</h2>${description}
+                <h2 class="with-date"${itempropName}>${title}</h2>${itempropAbstract}${description}${itempropAbstractEnd}
                 <div class="date">${date}</div>
                 ${post[language].content}
             </article>
