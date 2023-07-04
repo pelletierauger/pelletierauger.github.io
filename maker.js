@@ -373,8 +373,8 @@ function makeMosaic(pages, language, stepsFromRoot) {
         var itemDiv = `
         <div class="portfolio-item"${itemscope}>
             <a href="${link}"${itempropURL}>
-            <div class="thumbnail"${itempropThumbnail}>
-                <img src="${navPrefix}images/thumbnails/${thumbnailName}.jpg">
+            <div class="thumbnail">
+                <img src="${navPrefix}images/thumbnails/${thumbnailName}.jpg"${itempropThumbnail}>
             </div>
             <div class="portfolio-banner">
                 <div class="portfolio-description">
