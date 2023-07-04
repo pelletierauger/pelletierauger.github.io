@@ -357,17 +357,25 @@ function makeMosaic(pages, language, stepsFromRoot) {
         var thumbnailName = pages.list[i];
         var description = page[language].description;
         var link = (page[language].link || page.link || innerLink + filename + ".html");
-
+        let itemscope = "";
+        if (page.itemscope) {
+            itemscope = ` itemscope itemtype="https://schema.org/${page.itemscope}"`;
+        };
+        let itempropURL = (page.itemscope) ? ` itemprop="url"` : "";
+        let itempropName = (page.itemscope) ? ` itemprop="name"` : "";
+        let itempropThumbnail = (page.itemscope) ? ` itemprop="thumbnail"` : "";
+        let itempropAbstract = (page.itemscope) ? `<span itemprop="abstract">` : "";
+        let itempropAbstractEnd = (page.itemscope) ? `</span>` : "";
         var itemDiv = `
-        <div class="portfolio-item">
-            <a href="${link}">
-            <div class="thumbnail">
+        <div class="portfolio-item"${itemscope}>
+            <a href="${link}"${itempropURL}>
+            <div class="thumbnail"${itempropThumbnail}>
                 <img src="${navPrefix}images/thumbnails/${thumbnailName}.jpg">
             </div>
             <div class="portfolio-banner">
                 <div class="portfolio-description">
-                    <h2>${title}</h2> 
-                    ${description}
+                    <h2${itempropName}>${title}</h2> 
+                    ${itempropAbstract}${description}${itempropAbstractEnd}
                 </div>
             </div>
             </a>
