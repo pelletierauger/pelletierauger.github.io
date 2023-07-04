@@ -23,7 +23,8 @@ exports.pages = {
             title: "Growing Wreath",
             description: "A group of growing recursive trees."
         },
-        link: "http://codepen.io/pelletierauger/full/xOqNYa/"
+        link: "http://codepen.io/pelletierauger/full/xOqNYa/",
+        itemscope: "VisualArtwork"
     },
 
     joy_and_confusion: {
@@ -60,7 +61,7 @@ exports.pages = {
             description: "A set of live coded music and animation."
         },
         link: "https://www.youtube.com/watch?v=6QXGw4NHXzE",
-        itemscope: "https://schema.org/MusicRecording"
+        itemscope: "MusicRecording"
     },
 
     ravines: {
@@ -73,7 +74,7 @@ exports.pages = {
             description: "A short animation film combining<br>Perlin noise and turtle graphics."
         },
         link: "https://www.youtube.com/watch?v=f6wJo1TIbaE",
-        itemscope: "https://schema.org/Movie"
+        itemscope: "Movie"
     },
     
     // grimoire: {
