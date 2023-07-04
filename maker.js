@@ -185,12 +185,16 @@ function makeBlog(language) {
                ` : post[language].content;
             }
 
+            let itempropURL = (post.itemscope) ? ` itemprop="url"` : "";
+            let itempropName = (post.itemscope) ? ` itemprop="name"` : "";
+            let itempropAbstract = (post.itemscope) ? `<span itemprop="abstract">` : "";
+            let itempropAbstractEnd = (post.itemscope) ? `</span>` : "";
             content += `
             <div class="blog-post"${itemscope}>
                 <div class="blog-post-header">
-                    <a href="../${linkIndividual}.html"><div class="date">${date}</div>
-                    <div class="blog-title-box"><h2 class="header">${title}</h2></div>
-                    ${description}</a>
+                    <a href="../${linkIndividual}.html"${itempropURL}><div class="date">${date}</div>
+                    <div class="blog-title-box"><h2 class="header"${itempropName}>${title}</h2></div>
+                    ${itempropAbstract}${description}${itempropAbstractEnd}</a>
                 </div>
                 <div class="blog-post-content">
                     ${blogPostContent}
@@ -575,26 +579,28 @@ function makeContent(page, language) {
         </article>`;
     } else {
         let title = page[language].HTMLTitle || page[language].title;
-        let description = `
-        <div class="description">
-            ${page[language].description}
-        </div>
-        ` || "";
         let itemscope = "";
         if (page.itemscope) {
             itemscope = ` itemscope itemtype="https://schema.org/${page.itemscope}"`;
         };
+        let itempropName = (page.itemscope) ? ` itemprop="name"` : "";
+        let itempropAbstract = (page.itemscope) ? ` itemprop="abstract"` : "";
+        let description = `
+        <div class="description"${itempropAbstract}>
+            ${page[language].description}
+        </div>
+        ` || "";
         if (page[language].date) {
             return `
             <article${itemscope}>
-                <h2 class="with-date">${title}</h2>${description}
+                <h2 class="with-date"${itempropName}>${title}</h2>${description}
                 <div class="date">${page[language].date}</div>
                 ${page[language].content}
             </article>`;
         } else {
             return `
             <article${itemscope}>
-                <h2>${title}</h2>${description}
+                <h2${itempropName}>${title}</h2>${description}
                 ${page[language].content}
             <article>`;
         }
