@@ -59,7 +59,8 @@ exports.pages = {
             title: 'Raspberry Plants <span class="nobreak"><span class="italic8"><span class="small-title">in the</span></span></span> Snow',
             description: "A set of live coded music and animation."
         },
-        link: "https://www.youtube.com/watch?v=6QXGw4NHXzE"
+        link: "https://www.youtube.com/watch?v=6QXGw4NHXzE",
+        itemscope: "https://schema.org/MusicRecording"
     },
 
     ravines: {
@@ -71,7 +72,8 @@ exports.pages = {
             title: "Ravines",
             description: "A short animation film combining<br>Perlin noise and turtle graphics."
         },
-        link: "https://www.youtube.com/watch?v=f6wJo1TIbaE"
+        link: "https://www.youtube.com/watch?v=f6wJo1TIbaE",
+        itemscope: "https://schema.org/Movie"
     },
     
     // grimoire: {
