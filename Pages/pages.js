@@ -1,5 +1,5 @@
 exports.list = [
-    // "grimoire",
+    "grimoire",
     "ravines",
     "online-classes",
     "raspberries",
@@ -77,15 +77,16 @@ exports.pages = {
         itemscope: "Movie"
     },
     
-    // grimoire: {
-    //     fr: {
-    //         title: "Grimoire",
-    //         description: 'Un environnement de programmation <span class="italic">à la volée</span><br>pour SuperCollider et WebGL.'
-    //     },
-    //     en: {
-    //         title: "Grimoire",
-    //         description: "A live coding environment for SuperCollider and WebGL."
-    //     },
-    //     link: "https://www.youtube.com/watch?v=f6wJo1TIbaE"
-    // }
+    grimoire: {
+        fr: {
+            title: "Grimoire",
+            description: `Un logiciel expérimental pour l'animation, le dessin<br>et la programmation <span class="italic">in vivo</span> avec SuperCollider et WebGL.`
+        },
+        en: {
+            title: "Grimoire",
+            description: "An experimental software for animation, drawing,<br>and live coding with SuperCollider and WebGL."
+        },
+        link: "https://pelletierauger.com/grimoire/",
+        itemscope: "SoftwareApplication"
+    }
 };
