@@ -608,7 +608,7 @@ function makeContent(page, language) {
 }
 
 function makeFooter(language) {
-    return `<div id="footer">Guillaume Pelletier-Auger &mdash; 2016-2023
+    return `<div id="footer">Guillaume Pelletier-Auger &mdash; 2016-2024
     </div>
     </body>
     </html>`;
