@@ -1,0 +1,29 @@
+img.paramsquare-drop-caps {
+    /*display: inline-block;*/
+    width: 6em;
+    /*max-width: 10em;*/
+    /*margin: 0 auto;*/
+    /*margin-right: 0.5rem;*/
+    margin: 0.5rem 1.0rem 0.5rem 0.0rem;
+    /*margin-bottom: 1rem;*/
+    display: inline-block;
+    float: left;
+}
+
+img.abcd {
+    /*display: inline-block;*/
+    max-width: 250px;
+    margin: 2em auto;
+}
+
+img.interpolation {
+    /*display: inline-block;*/
+    max-width: 450px;
+    margin: 2em auto;
+}
+
+img.interpolation-animation {
+    /*display: inline-block;*/
+    max-width: 450px;
+    margin: 2em auto;
+}
