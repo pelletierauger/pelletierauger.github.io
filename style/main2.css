@@ -68,7 +68,7 @@ html {
     /*-webkit-font-variant-ligatures: discretionary-ligatures;*/
     /*font-size: 1.4em;*/
     font-weight: normal;
-    -webkit-text-stroke: 0.1px;
+    /*-webkit-text-stroke: 0.1px;*/
     -webkit-font-smoothing: antialiased;
 }
 
