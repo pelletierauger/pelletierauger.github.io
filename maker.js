@@ -413,12 +413,13 @@ function makeHeader(page, language, stepsFromRoot, sketches) {
         var r = /(<code>|<code class="supercollider">|<code class="glsl">|<code class="nosyntax">)([\S\s]*?)(<\/code>)/g;
         var inlineCodeTest = /(<span class="inline-code8">)([\S\s]*?)(<\/span>)/g;
         if (page[language].content.match(inlineCodeTest)) {
-            codeFont = "Inconsolata:400,700|";
+            codeFont = '<link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">';
         }
         if (page[language].content.match(r)) {
             codeCSS = `<link href="${prefixToRoot}style/code.css" rel="stylesheet" type="text/css">`;
             if (!codeFont) {
-                codeFont = "Inconsolata|";
+                
+            codeFont = '<link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">';
             }
         }
     }
@@ -479,7 +480,7 @@ function makeHeader(page, language, stepsFromRoot, sketches) {
         <title>Guillaume Pelletier-Auger${title}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=4, user-scalable=yes" />${scripts}
         <link href="${prefix}style/style.css" rel="stylesheet" type="text/css">${style}
-        <link href="https://fonts.googleapis.com/css?family=${codeFont}EB+Garamond" rel="stylesheet">
+        ${codeFont}
         ${codeCSS}
     </head>`;
 }
