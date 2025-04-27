@@ -92,7 +92,7 @@ body {
     margin: 0em auto;
     max-width: 76rem;
     counter-reset: sidenote-counter;
-    text-shadow: unset;
+    text-shadow: none;
 }
 
 .italic {
