@@ -1,0 +1,248 @@
+<!-- year -->2025
+<!-- month -->4
+<!-- day -->27
+<!-- style -->squares-circles-clovers
+<!-- fr-title -->Carrés, cercles et trèfles
+<!-- fr-description -->Unions géométriques et mystiques
+<!-- fr-content -->
+
+<pn>
+     <img class="paramsquare-drop-caps" src="../../../images/squares-circles-clovers/lettrine.png"><sc>ptimiser mes outils</sc> de dessin est toujours un plaisir. Ainsi, comme je dessine regulièrement des carrés en joignant 4 lignes formées par des points, je me suis dit qu’il était finalement temps de trouver une solution plus élégante. Je rêvais d’une simple équation paramétrique qui me permettrait de dessiner un carré complet d’un seul coup. J’ai cherché sur Internet et trouvé plusieurs solutions différentes, mais aucune ne m’a pleinement satisfait. J’ai d’abord considéré <a href="https://math.stackexchange.com/a/41954">cette équation</a>, que j’appelerai solution <im>A</im>. C’est l’équation polaire d’un polygone régulier à <im>n</im> côtés. Alors lorsque <im>n=4</im>, on obtient un carré.
+</p>
+
+<math>
+    \begin{align*}
+        \theta &\in [0,2\pi] \\
+  r &= \frac{cos\big(\frac{\pi}{n}\big)}{cos\bigg(\big(\theta mod \frac{2\pi}{n}\big)−\frac{\pi}{n}\bigg)}
+      \end{align*}
+</math>
+<!-- read-more -->
+<pn>
+  J’ai ensuite considéré <a href="https://math.stackexchange.com/a/69134">cette équation</a>, que j’appelerai solution <im>B</im>. Elle est basée sur la <a href="https://fr.wikipedia.org/wiki/Courbe_de_Lam%C3%A9">courbe de Lamé</a>.
+</pn>
+
+<math>
+    \begin{align*}
+        \theta &\in [0,2\pi] \\
+        p &= 1 \\
+        q &= 1 \\
+        \begin{bmatrix} x \\ y \end{bmatrix} &= \begin{bmatrix} p(|cos\theta|cos\theta+|sin\theta|sin\theta) \\ q(|cos\theta|cos\theta−|sin\theta|sin\theta) \end{bmatrix}
+    \end{align*}
+</math>
+
+<pn>
+  Ces solutions sont excellentes mais elles ont l’inconvénient de distribuer les points de manière inégale le long des côtés du carré. L’effet est plutôt subtil avec la solution <im>A</im> et davantage visible avec la solution <im>B</im>. Il me fallait trouver une autre solution.
+</pn>
+
+<img class="inline-image" src="../../../images/squares-circles-clovers/3-squares.png">
+
+<h3>Un carré qui se comporte comme un cercle</h3>
+
+<pn>
+  <sc>Je savais que je voulais</sc> un carré dont l’équation ressemblerait à celle du cercle unitaire, parce que je dessine souvent des cercles et des carrés qui sont connectés ensemble dans l’espace, et parce que je trouve que la façon typique de dessiner un cercle unitaire avec <im>sin</im> et <im>cos</im> est parfaite et élégante.
+</pn>
+<p>
+  En bref, je voulais ceci :
+</p>
+<img class="inline-image" src="../../../images/squares-circles-clovers/paramsquare.gif">
+
+<pn>
+  J’ai d’abord dessiné sur papier les courbes exactes qu’il me fallait.
+</pn>
+
+<img class="inline-image" src="../../../images/squares-circles-clovers/sketch.jpg">
+
+<pn>
+  J’ai ensuite utilisé une application de graphes (le logiciel Grapher qui est inclus gratuitement avec macOS) et j’ai écrit cette fonction par essais et erreurs.
+</pn>
+
+<math>
+    \begin{align*}
+        \theta &\in [0,2\pi] \\
+        t &= \frac{\theta}{\pi} \\
+        \begin{bmatrix} x \\ y \end{bmatrix} &= \begin{bmatrix} min\big(1, max(-1, |t \cdot 4-4|-2)\big) \\ min\bigg(1, max\big(-1, |(t-0.5)\%2-1|\cdot4-2\big)\bigg) \end{bmatrix}
+    \end{align*}
+</math>
+
+<p>
+    <img class="abcd" src="../../../images/squares-circles-clovers/solution-c.png">
+</p>
+
+
+<h3>L’union mystique du carré et du cercle</h3>
+
+<pn><sc>Les connexions symboliques</sc> entre le carré et le cercle me trottaient dans la tête depuis ma lecture de <i>Psychologie et alchimie</i> de C. G. Jung. Le livre explique en détail la notion de la <i>quadrature du cercle</i>&nbsp;: «&nbsp;Le problème de la <i>quadrature du cercle</i> a préoccupé les esprits du Moyen Âge [...]. La quadrature du cercle est un symbole de l’<i>opus alchymicum</i> (œuvre alchimique),<snr label="opus">Pour expliquer rapidement, l’<i8>opus alchymicum</i8> est l’œuvre idéale qu’un alchimiste cherche à accomplir. Il peut s'agir de la transformation de substances ou d’une transformation personnelle comme l’acquisition de sagesse.</snl> en ce sens qu’elle décompose l'unité originelle chaotique pour la réduire aux quatre éléments, qu’elle recombine ensuite en une unité supérieure. L’unité est représentée par le cercle et les quatre éléments par le carré.&nbsp;»<snl label="squaring-the-circle">Psychologie et alchimie, page 184.</snl>
+</p>
+<p>
+  Pour illustrer cette <i>quadrature du cercle</i>, le livre présente cette gravure tirée du <i>Viatorium Spagyricum</i> (1625) de Herbrandt Jamsthaler.<snl label="viatorium">J’ai retrouvé cette image <a href="https://collection.sciencemuseumgroup.org.uk/objects/co481703/viatorium-spagyricum-by-herbrandt-jamsthaler-and-crede-mike-seu-ordinale-genaudt-by-thomas-norton-book">ici</a>.</snl>
+</p>
+<p>
+    <img class="inline-image" src="../../../images/squares-circles-clovers/viatorium-spagyricum.jpg">
+</p>
+<ul class="dash">
+    <li>
+        «&nbsp;Toutes choses ne font que vivre dans les trois /<br>
+        Mais sont heureuses dans les quatre. /&nbsp;»
+    </li>
+</ul>
+
+<h3>Géométrie alchimique maison</h3>
+
+<pn>
+    <sc>Une fois mon équation trouvée</sc> je me suis mis à explorer l’idée de l’union du carré et du cercle. Ma première idée (la plus évidente) a été de faire une interpolation linéaire entre les deux formes. 
+</pn>
+<p>
+  Ci-dessous, nous obtenons un carré lorsque l’interpolation est à <im>0</im> et un cercle lorsqu’elle est à <im>1</im>. Entre <im>0</im> et <im>1</im>, nous avons un mélange graduel des deux.
+</p>
+
+<p>
+    <img class="interpolation" src="../../../images/squares-circles-clovers/interpolation.png">
+</p>
+<pn>
+À la vue de cette image, je me suis demandé ce qui se passerait si l’interpolation allait plus loin que <im>1</im>. Que verrait-on en allant à <im>2</im> ? Le résultat m'a surpris et enchanté : nous obtenons un trèfle à quatre feuilles. J’ai répété l’expérience avec les équations <im>A</im>, <im>B</im> et <im>C</im>, et j’ai ajouté des lignes et des points animés afin de montrer que le cercle se situe toujours exactement à mi-distance entre le carré et le trèfle.
+</pn>
+<p>
+    <img class="interpolation-animation" src="../../../images/squares-circles-clovers/a-lossy200.gif">
+    <img class="interpolation-animation" src="../../../images/squares-circles-clovers/b-lossy200.gif">
+    <img class="interpolation-animation" src="../../../images/squares-circles-clovers/c-lossy200.gif">
+</p>
+<pn>
+  Chaque trèfle a une forme bien distincte, qui découle des différentes façons que nous avons de dessiner chaque carré. Ainsi les carrés, malgré qu’ils puissent sembler identiques lorsqu’ils sont dessinés avec assez de points, ont des comportements distincts.
+</pn>
+<p>
+  Ces beaux trèfles m’ont inspiré une nouvelle visite d’un de mes sites Web préférés, <a href="https://mathcurve.com/"><i>L’encyclopédie des formes mathématiques remarquables</i></a>. Le site a une excellente page sur le <a href="https://mathcurve.com/courbes2d/trefle/trefle.shtml">trèfle à quatre feuilles</a>.  
+</p>
+
+<h3>Conclusion</h3>
+
+<pn>
+    <img class="paramsquare-drop-caps" src="../../../images/squares-circles-clovers/lettrine2.png"><sc>ù nous mèneront ensuite</sc> ces belles équations paramétriques et cette <i>quadrature du cercle</i>&nbsp;? Ces trèfles nous pousseront-ils à errer parmi quelques <a href="https://fr.wikipedia.org/wiki/Quatre-feuilles#/media/Fichier:Bretagne_Beauport_Abbaye_05.jpg">ruines gothiques</a>&nbsp;? Dans tous les cas, je suis déjà enchanté par ces premiers résultats. Si vous avez apprécié cet article, je vous invite à m'appuyer sur <a href="https://www.patreon.com/pelletierauger">
+    <span id="Genericons-Patreon">
+    <svg width="1em" viewBox="0 0 105 105">
+        <circle cx="65" cy="37.5" r="37" fill="black" />
+        <rect width="18" height="100" fill="black" />
+    </svg>
+    </span>Patreon</a>. Merci beaucoup pour votre lecture !
+</pn>
+
+<!-- en-title -->Squares, circles, and clovers
+<!-- en-description -->Unions both geometric and mystical
+<!-- en-content -->
+<pn>
+     <img class="paramsquare-drop-caps" src="../../../images/squares-circles-clovers/lettrine.png"><sc>ver the last few years</sc> I’ve often drawn squares using 4 lines made out of dots, and recently I decided it was time to find a more elegant solution. I wanted a simple parametric equation that would draw the whole square in one fell swoop. I searched online and found many different solutions, none of which fit all my criteria. I first considered <a href="https://math.stackexchange.com/a/41954">this equation</a>, which I’ll call solution <im>A</im>. It’s a polar equation for a regular <im>n</im>-gon. So if <im>n=4</im>, we expectedly obtain a square.
+</p>
+
+<math>
+    \begin{align*}
+        \theta &\in [0,2\pi] \\
+  r &= \frac{cos\big(\frac{\pi}{n}\big)}{cos\bigg(\big(\theta mod \frac{2\pi}{n}\big)−\frac{\pi}{n}\bigg)}
+      \end{align*}
+</math>
+<!-- read-more -->
+<pn>
+  And then I considered <a href="https://math.stackexchange.com/a/69134">this equation</a>, which I’ll call solution <im>B</im>. It’s based on the <a href="https://en.wikipedia.org/wiki/Superellipse">Lamé curve</a>.
+</pn>
+
+<math>
+    \begin{align*}
+        \theta &\in [0,2\pi] \\
+        p &= 1 \\
+        q &= 1 \\
+        \begin{bmatrix} x \\ y \end{bmatrix} &= \begin{bmatrix} p(|cos\theta|cos\theta+|sin\theta|sin\theta) \\ q(|cos\theta|cos\theta−|sin\theta|sin\theta) \end{bmatrix}
+    \end{align*}
+</math>
+
+<pn>
+  These solutions are great but they both have the disadvantage of creating lines from sequences of dots that are unevenly distributed along the square. The effect is a bit subtle with solution <im>A</im> and more visible in solution <im>B</im>. I needed another solution.
+</pn>
+
+<img class="inline-image" src="../../../images/squares-circles-clovers/3-squares.png">
+
+<h3>A square that behaves like a circle</h3>
+
+<pn>
+  <sc>I knew I wanted</sc> an equation for a square that would be as similar to a unit circle as possible, because I often draw squares and circles that are spatially connected together, and the familiar way to draw a unit circle with <im>sin</im> and <im>cos</im> is perfect and elegant.
+</p>
+<p>
+  In short, I wanted that:
+</p>
+<img class="inline-image" src="../../../images/squares-circles-clovers/paramsquare.gif">
+
+<pn>
+  So I first sketched out on paper the exact curves that I wanted.
+</pn>
+
+<img class="inline-image" src="../../../images/squares-circles-clovers/sketch.jpg">
+
+<pn>
+  Then I used a graphing application (the free Grapher that ships with macOS) and wrote this function via simple trial and error.
+</pn>
+
+<math>
+    \begin{align*}
+        \theta &\in [0,2\pi] \\
+        t &= \frac{\theta}{\pi} \\
+        \begin{bmatrix} x \\ y \end{bmatrix} &= \begin{bmatrix} min\big(1, max(-1, |t \cdot 4-4|-2)\big) \\ min\bigg(1, max\big(-1, |(t-0.5)\%2-1|\cdot4-2\big)\bigg) \end{bmatrix}
+    \end{align*}
+</math>
+
+<p>
+    <img class="abcd" src="../../../images/squares-circles-clovers/solution-c.png">
+</p>
+
+
+<h3>Mystical union of the square and the circle</h3>
+
+<pn><sc>The symbolic connections</sc> between the square and the circle have been on my mind since I read C. G. Jung’s <i>Psychology and Alchemy</i>. The book treats in detail the notion of <i>squaring the circle</i>: “the squaring of the circle was a problem that greatly exercised medieval minds. It is a symbol of the <i>opus alchymicum</i>,<snr label="opus">Simply put, the <i8>opus alchymicum</i8> is the ideal work that an alchemist aims to accomplish. It can be the transformation of substances or a personal transformation like the acquisition of wisdom.</snl> since it breaks down the original chaotic unity into the four elements and then combines them again in a higher unity. Unity is represented by a circle and the four elements by a square.”<snl label="squaring-the-circle">Collected Works of C.G. Jung, Vol 12, Psychology and Alchemy, page 124.</snl>
+</p>
+<p>
+  To illustrate the <i>squaring of the circle</i>, the book reproduces this engraving from Herbrandt Jamsthaler’s <i>Viatorium Spagyricum</i> (1625).<snl label="viatorium">Image source <a href="https://collection.sciencemuseumgroup.org.uk/objects/co481703/viatorium-spagyricum-by-herbrandt-jamsthaler-and-crede-mike-seu-ordinale-genaudt-by-thomas-norton-book">here</a>.</snl>
+</p>
+<p>
+    <img class="inline-image" src="../../../images/squares-circles-clovers/viatorium-spagyricum.jpg">
+</p>
+<ul class="dash">
+    <li>
+        “All things do live in the three /<br>
+        But in the four they merry be. /”
+    </li>
+</ul>
+
+<h3>Alchemical geometry at home</h3>
+
+<pn>
+    <sc>With my parametric square equation</sc> at hand I started to play around with the unions of squares and circles. My first idea (the most obvious one) was to make linear interpolations between them.
+</pn>
+<p>
+  Below, when the interpolation is at <im>0</im> we get a square, and at <im>1</im> we get a circle. Between <im>0</im> and <im>1</im>, we get a gradual melding of both.
+</p>
+
+<p>
+    <img class="interpolation" src="../../../images/squares-circles-clovers/interpolation.png">
+</p>
+<pn>
+  Seeing this made me wonder what would happen if the interpolation kept going beyond <im>1</im>. What would it look like at <im>2</im>? The result surprised and delighted me: we get a four-leaf clover. I repeated the experiment with equations <im>A</im>, <im>B</im>, and <im>C</im>, and I added animated dots and lines to show that the circle always stands exactly halfway between the square and the clover.
+</p>
+<p>
+    <img class="interpolation-animation" src="../../../images/squares-circles-clovers/a-lossy200.gif">
+    <img class="interpolation-animation" src="../../../images/squares-circles-clovers/b-lossy200.gif">
+    <img class="interpolation-animation" src="../../../images/squares-circles-clovers/c-lossy200.gif">
+</p>
+<pn>
+  Each clover is quite different, based solely on how the square is drawn. The squares look identical if they’re drawn with enough dots, but they still behave quite differently.
+</p>
+<p>
+  Seeing those clovers made me go back to one of my favourite websites, <a href="https://mathcurve.com/"><i>L’encyclopédie des formes mathématiques remarquables</i></a> (The Encyclopedia of Remarkable Mathematical Shapes). It has a very good page (in English) on the <a href="https://mathcurve.com/courbes2d.gb/trefle/trefle.shtml">quatrefoil curve</a>.  
+</p>
+
+<h3>Conclusion</h3>
+
+<pn>
+    <img class="paramsquare-drop-caps" src="../../../images/squares-circles-clovers/lettrine2.png"><sc>n what journeys</sc> will these beautiful parametric equations and this <i>squaring of the circle</i> bring us next? Will these clovers urge us to go wander around some <a href="https://fr.wikipedia.org/wiki/Quatre-feuilles#/media/Fichier:Bretagne_Beauport_Abbaye_05.jpg">gothic ruins</a>? In any case, I’m already enchanted by this first foray. If you enjoyed this article, I invite you to support me on <a href="https://www.patreon.com/pelletierauger">
+    <span id="Genericons-Patreon">
+    <svg width="1em" viewBox="0 0 105 105">
+        <circle cx="65" cy="37.5" r="37" fill="black" />
+        <rect width="18" height="100" fill="black" />
+    </svg>
+    </span>Patreon</a>. Thank you very much for reading!
+</pn>
