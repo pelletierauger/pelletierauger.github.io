@@ -31,11 +31,11 @@ img.interpolation-animation {
 
 .tripleimage {
     display: inline-block;
-    padding-top: 2.8%;
-    padding-bottom: 0;
+    /*padding-top: 2.8%;*/
+    /*padding-bottom: 2.8%;*/
     margin-bottom: 0;
     vertical-align: middle;
-    margin: 0 auto;
+    margin: 2em auto;
     /*background-color:blue;*/
 }
 
@@ -44,7 +44,7 @@ img.interpolation-animation {
     float: left;
     max-width: 33.33%;
     /*margin: 0 0 1.4% 0;*/
-    padding: 0 0 1.4% 0;
+    padding: 0 0 0 0;
 }
 
 .tripleimage a:nth-child(even) img {
@@ -53,4 +53,8 @@ img.interpolation-animation {
 
 .tripleimage a:nth-child(1n+3) img {
     /*margin-bottom: 0%;*/
+}
+
+#triplebottom {
+    margin: 2em auto 0em auto;
 }
